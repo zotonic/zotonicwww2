@@ -106,7 +106,8 @@ list_fun(IsFull, F, Acc) ->
     F1 = unicode:characters_to_binary(F),
     [ Basename | RevPath ] = lists:reverse( filename:split(F1) ),
     Rootname = filename:rootname(Basename),
-    case filename_to_name(Rootname, RevPath) of
+    Rootname1 = binary:replace(Rootname, <<"-">>, <<"_">>, [ global ]),
+    case filename_to_name(Rootname1, RevPath) of
         {_Name, undefined, _IsAlways} ->
             error;
         {Name, Cat, IsAlways} when IsAlways orelse IsFull ->
@@ -221,11 +222,13 @@ find_main(File, Html) ->
     #{
         in_module := InModule,
         links := Links,
-        seealso := Seealso
+        seealso := Seealso,
+        toctree := TocTree
     } = extract_props(Main, RevPath),
     Edges = map_edge(lists:usort(Links), references)
          ++ map_edge(lists:usort(Seealso), relation)
-         ++ map_edge(lists:usort(InModule), in_module),
+         ++ map_edge(lists:usort(InModule), in_module)
+         ++ map_edge(lists:usort(TocTree), haspart),
     {ok, {
         #{
             <<"title">> => text(Title),
@@ -456,7 +459,9 @@ extract_props(Html, RevPath) ->
     extract(Html, RevPath, #{
             in_module => [],
             links => [],
-            seealso => []
+            seealso => [],
+            toctree => [],
+            other => []
         }).
 
 extract({<<"a">>, Attrs, Elts}, RevPath, #{ links := Links } = Acc) ->
@@ -479,6 +484,7 @@ extract({_Elt, Attrs, Elts}, RevPath, Acc) ->
     Class = proplists:get_value(<<"class">>, Attrs, <<>>),
     Classes = binary:split(Class, <<" ">>, [global]),
     Acc1 = extract_first([
+            fun extract_toctree/5,
             fun extract_seealso/5,
             fun extract_in_module/5
         ],
@@ -500,6 +506,38 @@ extract_first([ F | Fs ], Classes, Attrs, Elts, RevPath, Acc) ->
             extract_first(Fs, Classes, Attrs, Elts, RevPath, Acc)
     end.
 
+
+extract_toctree(Classes, _Attrs, Elts, RevPath, Acc) ->
+    #{
+        toctree := TocTreeAcc,
+        links := LinksAcc,
+        other := OtherAcc
+    } = Acc,
+    case lists:member(<<"toctree-l1">>, Classes) of
+        true ->
+            #{
+                links := Links,
+                other := Other
+            } = extract_props(Elts, RevPath),
+            Acc1 = Acc#{
+                toctree => Links ++ TocTreeAcc,
+                links => Links ++ Other ++ LinksAcc
+            },
+            {ok, Acc1};
+        false ->
+            case lists:member(<<"toctree-l2">>, Classes)
+                orelse lists:member(<<"toctree-l3">>, Classes)
+            of
+                true ->
+                    #{ links := Links } = extract_props(Elts, RevPath),
+                    Acc1 = Acc#{
+                        other => Links ++ OtherAcc
+                    },
+                    {ok, Acc1};
+                false ->
+                    false
+            end
+    end.
 
 % Seealso links are grouped in an "admonition-see-also" class div
 extract_seealso(Classes, _Attrs, Elts, RevPath, #{ seealso := SeeAlsoAcc } = Acc) ->
