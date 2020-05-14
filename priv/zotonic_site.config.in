@@ -30,8 +30,11 @@
     % What skeleton site this site is based on.
     {skeleton, basesite},
 
-    {sign_key, "5OfHtDzqQHjeMHDALpqX"},
-    {sign_key_simple, "SnoaQhLpfjAM"},
+    % These can be set to something complex.
+    % If not set then Zotonic will generate some and store them
+    % in the config table.
+    {sign_key, ""},
+    {sign_key_simple, ""},
 
     {title, "Zotonic"},
 
