@@ -1,0 +1,48 @@
+.list-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .list-item {
+        flex-grow: 0;
+        width: 400px;
+        max-width: 100%;
+        overflow: hidden;
+    }
+}
+
+.connections {
+    position: relative;
+    border-top: 1px solid $zotonic-blue;
+    padding-bottom: 1rem;
+
+    &.paged {
+        padding-top: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .page-count {
+        position: absolute;
+        border: 1px solid $zotonic-blue;
+        font-weight: bold;
+        top: -15px;
+        left: 1rem;
+        padding: 0.2rem 1rem;
+        background-color: $bg-color-light;
+
+        span {
+            font-weight: normal;
+            color: #666;
+        }
+    }
+
+    .list-item {
+        h3 {
+            font-size: $font-size-h4;
+        }
+
+        p {
+            font-size: $font-size-small;
+        }
+    }
+}

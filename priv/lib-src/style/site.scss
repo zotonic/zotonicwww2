@@ -1,0 +1,45 @@
+/* Main styles for Zotonic site.
+ *
+ * This file is compiled by the zotonic filehandler.
+ * The filehandler will find the 'Makefile' in this directory
+ * and execute make to generate the css file `priv/lib/style.css`
+ */
+
+// Zotonic blue
+$zotonic-blue:          rgb(28,165,222);
+
+// Bg color
+$bg-color-dark:         rgb(0,0,32);
+$bg-color-light:        #f3f3ff;
+$bg-color-marker:       lighten($zotonic-blue, 40%);
+
+@import "bs3/assets/stylesheets/bootstrap/_variables.scss";
+
+// Grid for uploaded photos on wall
+$file-grid-height:      400px !default;
+
+// Generic border color, for white background.
+$divider-color:         $zotonic-blue;
+
+// Misc
+$line-height-sm:        floor($font-size-small * $line-height-small) !default;
+
+// One size smaller
+$font-size-smaller:      ceil(($font-size-base * 0.75)) !default; // ~12px
+$font-size-smallest:     ceil(($font-size-base * 0.6)) !default; // ~10px
+
+
+/////// Grid break points ///////
+
+// No sidemenu (use hamburger menu)
+$grid-max-no-sidemenu:    759px;
+$grid-min-sidemenu:       760px;
+
+
+@import "_grid.scss";
+@import "_page_parts.scss";
+@import "_nav.scss";
+@import "_lists.scss";
+@import "_search.scss";
+@import "_code.scss";
+@import "_home.scss";
