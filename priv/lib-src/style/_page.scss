@@ -125,7 +125,6 @@ html {
 
     pre {
         padding-left: 2rem;
-        max-width: 100%;
         overflow-x: auto;
     }
 
@@ -137,9 +136,15 @@ html {
         color: $code-color;
         background-color: $code-bg;
         border-radius: $border-radius-base;
+        word-break: break-all;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
     }
 
     table {
+        table-layout: fixed;
         border: 0;
         overflow-x: auto;
         margin: 1rem 0 1rem 2rem;
