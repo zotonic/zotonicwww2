@@ -30,22 +30,29 @@
 
     {% with id.o.relation as relo %}
     {% with id.s.relation as rels %}
-        {% if relo or rels %}
+    {% with id.s.haspart -- [id.category_id] as hasparts %}
+        {% if relo or rels or hasparts %}
             <div class="connections">
                 <h3>&#x21C4; {_ See also _}</h3>
 
                 <div class="list-items">
-                    {% for id in relo %}
+                    {% for id in hasparts %}
                         {% catinclude "_list_item.tpl" id %}
                     {% endfor %}
+                    {% for id in relo %}
+                        {% if not id|member:hasparts %}
+                            {% catinclude "_list_item.tpl" id %}
+                        {% endif %}
+                    {% endfor %}
                     {% for id in rels %}
-                        {% if not id|member:relo %}
+                        {% if not id|member:hasparts and not id|member:relo %}
                             {% catinclude "_list_item.tpl" id %}
                         {% endif %}
                     {% endfor %}
                 </div>
             </div>
         {% endif %}
+    {% endwith %}
     {% endwith %}
     {% endwith %}
 

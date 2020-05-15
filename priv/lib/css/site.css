@@ -261,9 +261,9 @@ html {
   #content h5 .text-muted,
   #content h6 .text-muted {
     font-weight: normal; }
-#content h2 {
-  border-bottom: 1px solid #1ca5de;
-  padding-bottom: 0.2rem;
+#content .body h2 {
+  padding-left: 0.4rem;
+  border-left: 1.5rem solid #1ca5de;
   margin-top: 2rem;
   max-width: 55rem; }
 #content p,
@@ -273,6 +273,12 @@ html {
 #content .admonition {
   max-width: 55rem;
   padding: 0 2rem; }
+  #content p p,
+  #content ol p,
+  #content ul p,
+  #content dl p,
+  #content .admonition p {
+    padding-left: 0; }
 #content p.in-module {
   background-color: #1ca5de;
   max-width: 100%;

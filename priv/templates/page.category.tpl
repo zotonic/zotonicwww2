@@ -21,19 +21,24 @@
         </div>
     {% endif %}
 
-    {% with m.search.paged[{query cat=id sort="pivot_title" pagelen=100 page=q.page}] as result %}
-        <div class="connections paged" id="content-pager">
-            <div class="page-count">
-                {{ result.total }} <span>{_ Pages _}</span>
-            </div>
-            <div class="list-items">
-                {% for id in result %}
-                    {% catinclude "_list_item.tpl" id %}
-                {% endfor %}
-            </div>
+    {% with m.category[id].is_a.documentation
+            | if : "pivot_title"
+                 : "-created" as sort
+    %}
+        {% with m.search.paged[{query cat=id sort=sort pagelen=100 page=q.page}] as result %}
+            <div class="connections paged" id="content-pager">
+                <div class="page-count">
+                    {{ result.total }} <span>{_ Pages _}</span>
+                </div>
+                <div class="list-items">
+                    {% for id in result %}
+                        {% catinclude "_list_item.tpl" id %}
+                    {% endfor %}
+                </div>
 
-            {% pager result=result id=id qargs hide_single_page %}
-        </div>
+                {% pager result=result id=id qargs hide_single_page %}
+            </div>
+        {% endwith %}
     {% endwith %}
 </div>
 

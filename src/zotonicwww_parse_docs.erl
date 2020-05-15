@@ -17,7 +17,8 @@
     list_files/1,
     parse_file/1,
 
-    cleanup_do_not_run/1
+    cleanup_do_not_run/1,
+    cleanup_edges_do_not_run/1
     ]).
 
 -define(DOC_HTML_DIR, <<"doc/_build/html/">>).
@@ -88,7 +89,15 @@ add_edges(SubjectId, Edges, Context) ->
                 ObjId ->
                     ObjId
             end,
-            m_edge:insert(SubjectId, Predicate, ObjectId, Context)
+
+            case m_rsc:p(ObjectId, category_id, Context) of
+                SubjectId when Predicate =:= references ->
+                    % Ignore references from a category (index) to pages
+                    % of that same category
+                    ok;
+                _ ->
+                    m_edge:insert(SubjectId, Predicate, ObjectId, Context)
+            end
         end,
         Edges).
 
@@ -130,22 +139,23 @@ filename_to_name(<<"index">>, [ Group, <<"filters">> | _ ]) ->
 filename_to_name(<<"index">>, [ Group, <<"actions">> | _ ]) ->
     {<<"doc_actions_", Group/binary>>, reference, true};
 %
-filename_to_name(<<"index">>, [ <<"filters">> | _ ]) ->
-    {<<"doc_filters">>, reference, true};
-filename_to_name(<<"index">>, [ <<"actions">> | _ ]) ->
-    {<<"doc_actions">>, reference, true};
-filename_to_name(<<"index">>, [ <<"models">> | _ ]) ->
-    {<<"doc_models">>, reference, true};
-filename_to_name(<<"index">>, [ <<"controllers">> | _ ]) ->
-    {<<"doc_controllers">>, reference, true};
-filename_to_name(<<"index">>, [ <<"validators">> | _ ]) ->
-    {<<"doc_validators">>, reference, true};
-filename_to_name(<<"index">>, [ <<"scomps">> | _ ]) ->
-    {<<"doc_scomps">>, reference, true};
+% Use the categories for some index files.
 filename_to_name(<<"index">>, [ <<"modules">> | _ ]) ->
-    {<<"doc_modules">>, reference, true};
+    {<<"module">>, category, true};
+filename_to_name(<<"index">>, [ <<"models">> | _ ]) ->
+    {<<"model">>, category, true};
+filename_to_name(<<"index">>, [ <<"controllers">> | _ ]) ->
+    {<<"controller">>, category, true};
+filename_to_name(<<"index">>, [ <<"filters">> | _ ]) ->
+    {<<"template_filter">>, category, true};
+filename_to_name(<<"index">>, [ <<"actions">> | _ ]) ->
+    {<<"template_action">>, category, true};
+filename_to_name(<<"index">>, [ <<"validators">> | _ ]) ->
+    {<<"template_validator">>, category, true};
+filename_to_name(<<"index">>, [ <<"scomps">> | _ ]) ->
+    {<<"template_scomp">>, category, true};
 filename_to_name(<<"index">>, [ <<"tags">> | _ ]) ->
-    {<<"doc_tags">>, reference, true};
+    {<<"template_tag">>, category, true};
 %
 filename_to_name(<<"filter_", _/binary>> = Filter, [ <<"filters">> | _ ]) ->
     {<<"doc_template_filter_", Filter/binary>>, template_filter, true};
@@ -198,6 +208,8 @@ filename_to_name(Name, [ <<"cli">>, <<"ref">> | _ ]) ->
 filename_to_name(<<"glossary">>, [ <<"html">> | _ ]) ->
     {<<"doc_glossary">>, documentation, true};
 %
+% Templates should be done by being able to show the template from
+% the git checkout.
 filename_to_name(_Name, [ <<"templates">> | _ ]) ->
     error;
 %
@@ -588,6 +600,31 @@ cleanup_do_not_run(Context) ->
         delete from rsc
         where name like 'doc_%'
           and not id in (select id from protect)",
+        Context),
+    %
+    % Delete all remaining edges made by the Gitbot.
+    GitUserId = m_rsc:rid(gitbot, Context),
+    z_db:q("
+        delete from edge
+        where creator_id = $1",
+        [ GitUserId ],
+        Context),
+    % Reset all caches - as we deleted data from the database
+    % without telling the caching systems.
+    z:flush(Context),
+    {ok, Count}.
+
+-spec cleanup_edges_do_not_run( z:context() ) -> {ok, non_neg_integer()}.
+cleanup_edges_do_not_run(Context) ->
+    % Crash if the current user is not an administrator
+    true = z_acl:is_admin(Context),
+    %
+    % Delete all remaining edges made by the Gitbot.
+    GitUserId = m_rsc:rid(gitbot, Context),
+    Count = z_db:q("
+        delete from edge
+        where creator_id = $1",
+        [ GitUserId ],
         Context),
     % Reset all caches - as we deleted data from the database
     % without telling the caching systems.

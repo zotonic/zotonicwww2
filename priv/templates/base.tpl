@@ -106,9 +106,6 @@
           -->
           {% block content %}
           {% endblock %}
-          <!-- This block is only for this site -->
-          {% block content_after %}
-          {% endblock %}
           <!--
             The block 'below_body' is used by some modules to add
             content, it MUST be present to allow those modules to
@@ -116,6 +113,9 @@
             Example is 'mod_survey' which adds buttons for survey pages.
           -->
           {% block below_body %}
+          {% endblock %}
+          <!-- This block is only for this site -->
+          {% block content_after %}
           {% endblock %}
         {% endblock %}
       </main>
