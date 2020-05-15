@@ -26,12 +26,17 @@ html, body {
 
 body {
     display: -ms-grid;
-    -ms-grid-columns: 1fr minmax(200px,400px) minmax(500px,1500px) 1fr;
+    -ms-grid-columns: 1fr minmax(200px,300px) minmax(500px,1500px) 1fr;
     -ms-grid-rows: 0 auto 1fr auto auto;
 
     display: grid;
-    grid-template-columns: 1fr minmax(200px,400px) minmax(500px,1500px) 1fr;
+    grid-template-columns: 1fr minmax(200px,300px) minmax(500px,1500px) 1fr;
     grid-template-rows: 0 auto 1fr auto auto;
+
+    @media (min-width: 1200px) {
+        -ms-grid-columns: 1fr minmax(200px,400px) minmax(500px,1500px) 1fr;
+        grid-template-columns: 1fr minmax(200px,400px) minmax(500px,1500px) 1fr;
+    }
 
     background-color: $bg-color-dark;
 }
