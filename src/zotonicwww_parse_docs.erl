@@ -237,7 +237,8 @@ find_main(File, Html) ->
         seealso := Seealso,
         toctree := TocTree
     } = extract_props(Main, RevPath),
-    Edges = map_edge(lists:usort(Links), references)
+    References = Links -- TocTree,
+    Edges = map_edge(lists:usort(References), references)
          ++ map_edge(lists:usort(Seealso), relation)
          ++ map_edge(lists:usort(InModule), in_module)
          ++ map_edge(lists:usort(TocTree), haspart),

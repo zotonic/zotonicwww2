@@ -77,7 +77,7 @@
 
     {% if id.o.in_module as module %}
         <div class="connections">
-            <h3>&#8776; {_ Module _} <span class="text-muted"> / {{ id.category_id.title }} </span></h3>
+            <h3>&#8776; {_ Module _} <span class="text-muted"> / {{ id.category_id.title|lower }} </span></h3>
             <div class="list-items">
                 {% for id in module %}
                     {% catinclude "_list_item.tpl" id is_highlight %}
