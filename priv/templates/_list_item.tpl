@@ -1,4 +1,4 @@
-<div class="list-item">
+<div class="list-item{% if is_highlight or id.is_featured %} featured{% endif %}">
     <h3>
         <a href="{{ id.page_url }}">
             {{ id.title }}

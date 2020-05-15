@@ -8,6 +8,10 @@
         width: 400px;
         max-width: 100%;
         overflow: hidden;
+
+        &.featured {
+            background-color: $bg-color-marker;
+        }
     }
 }
 

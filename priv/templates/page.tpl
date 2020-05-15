@@ -34,25 +34,6 @@
         </div>
     {% endif %}
 
-    {% if id.o.in_module as module %}
-        <div class="connections">
-            <h3>&#8776; {_ Module _}</h3>
-            <div class="list-items">
-                {% for id in module %}
-                    {% catinclude "_list_item.tpl" id %}
-                {% endfor %}
-                {% for id in m.search[
-                    {query cat=id.category_id
-                           id_exclude=id
-                           hasobject=[module[1], "in_module"]
-                           sort="pivot_title"
-                    }] %}
-                    {% catinclude "_list_item.tpl" id %}
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
-
     {% with id.o.relation as relo %}
     {% with id.s.relation as rels %}
     {% with id.s.haspart -- [ id.category_id ] as hasparts %}
@@ -94,6 +75,24 @@
         </div>
     {% endif %}
 
+    {% if id.o.in_module as module %}
+        <div class="connections">
+            <h3>&#8776; {_ Module _} <span class="text-muted"> / {{ id.category_id.title }} </span></h3>
+            <div class="list-items">
+                {% for id in module %}
+                    {% catinclude "_list_item.tpl" id is_highlight %}
+                {% endfor %}
+                {% for id in m.search[
+                    {query cat=id.category_id
+                           id_exclude=id
+                           hasobject=[module[1], "in_module"]
+                           sort="pivot_title"
+                    }] %}
+                    {% catinclude "_list_item.tpl" id %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 
     <div class="connections">
         <h3>&#8712; {{ id.category_id.title }} <span class="text-muted">{_ Category _}</span></h3>
