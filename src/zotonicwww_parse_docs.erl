@@ -26,10 +26,10 @@
 -include_lib("zotonic_core/include/zotonic.hrl").
 
 import_one_time_only(Context) ->
-    do_import(false, Context).
+    do_import(true, Context).
 
 import_all(Context) ->
-    do_import(true, Context).
+    do_import(false, Context).
 
 do_import(IsFull, Context0) when is_boolean(IsFull) ->
     % Use the special 'gitbot' user to perform all imports.
@@ -238,10 +238,10 @@ find_main(File, Html) ->
         toctree := TocTree
     } = extract_props(Main, RevPath),
     References = Links -- TocTree,
-    Edges = map_edge(lists:usort(References), references)
-         ++ map_edge(lists:usort(Seealso), relation)
-         ++ map_edge(lists:usort(InModule), in_module)
-         ++ map_edge(lists:usort(TocTree), haspart),
+    Edges = map_edge(References, references)
+         ++ map_edge(Seealso, relation)
+         ++ map_edge(InModule, in_module)
+         ++ map_edge(TocTree, haspart),
     {ok, {
         #{
             <<"title">> => text(Title),
@@ -305,13 +305,27 @@ flatten({nop, Enclosed}, RevPath) ->
     flatten(Enclosed, RevPath);
 flatten({comment, _Text}, _RevPath) ->
     <<>>;
+flatten({<<"colgroup">>, _, _}, _RevPath) ->
+    <<>>;
 flatten({<<"blockquote">>, _Attrs, Enclosed}, RevPath) ->
     % Sphinx surrounds some normal ul-lists with the
     % blockquote tag. This make for strange markup and there
     % are no real block quotes in the reference docs, so just
     % remove all blockquotes from the imported HTML.
     flatten(Enclosed, RevPath);
-flatten({Elt, Attrs, Enclosed}, RevPath) ->
+flatten({<<"table">>, _, _} = Elt, RevPath) ->
+    [
+        <<"<div class='table-wrapper'>">>,
+        flatten_elt(Elt, RevPath),
+        <<"</div>">>
+    ];
+flatten({_, _, _} = Elt, RevPath) ->
+    flatten_elt(Elt, RevPath);
+flatten(L, RevPath) when is_list(L) ->
+    iolist_to_binary([ flatten(A, RevPath) || A <- L ]).
+
+
+flatten_elt({Elt, Attrs, Enclosed}, RevPath) ->
     case is_ignore(Elt, Attrs, Enclosed) of
         true ->
             <<>>;
@@ -323,9 +337,7 @@ flatten({Elt, Attrs, Enclosed}, RevPath) ->
                 true ->  <<$<, Elt/binary, Attrs2/binary, 32, $/, $>>>;
                 false -> <<$<, Elt/binary, Attrs2/binary, $>, EncBin/binary, $<, $/, Elt/binary, $>>>
             end
-    end;
-flatten(L, RevPath) when is_list(L) ->
-    iolist_to_binary([ flatten(A, RevPath) || A <- L ]).
+    end.
 
 is_ignore(<<"h1">>, _, _Enclosed) ->
     % There is only a single h1 title, it is copied to the title

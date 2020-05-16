@@ -27,7 +27,7 @@
                 {{ haspart|length }} <span>{_ Pages _}</span>
             </div>
             <div class="list-items">
-                {% for id in haspart|sort:`title` %}
+                {% for id in haspart %}
                     {% catinclude "_list_item.tpl" id %}
                 {% endfor %}
             </div>

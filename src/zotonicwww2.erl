@@ -167,11 +167,11 @@ manage_schema(_Version, _Context) ->
             {page_home, other, [
                 {title, <<"Zotonic">>},
                 {body, <<
-                    "<p>The <a href='#cms'>content management system</a> that combines ",
-                    "a <a href='#data-model'>flexible data model</a> with ",
+                    "<p>The <a href='#cms'>content management system</a> that combines ",
+                    "a <a href='#data-model'>flexible data model</a> with ",
                     "<a href='#templates'>powerful templates</a>, and "
                     "<a href='#mqtt'>real time communication</a>.</p>",
-                    "<p>Build <a href='#examples'>any website</a>, quick.</p>"
+                    "<p>Build <a href='#examples'>any website</a>, quick.</p>"
                 >>},
                 {page_path, <<"/">>}
             ]},
