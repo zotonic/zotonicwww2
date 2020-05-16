@@ -34,6 +34,13 @@
 % the manage_schema function.
 -mod_schema(7).
 
+% Modules that should be started before this module
+% In this case 'acl' as an edge to 'acl_user_group_managers' is
+% added in the manage_schema/2 function.
+% 'acl' is provided by the mod_acl_user_groups and other modules
+% that implement access control.
+-mod_depends([ acl ]).
+
 % Exports - if exports change then the module is restarted after
 % compilation.
 -export([
