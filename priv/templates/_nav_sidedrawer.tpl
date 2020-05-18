@@ -26,8 +26,13 @@
      # The submenu is shown for all navigation items on the path to the
      # current page and below the current page.
      #}
-    {% if id.category_id|menu_trail as trail %}
-        {% with id.category_id as id %}
+    {% with [
+                id,
+                id.category_id,
+                id.s.haspart[1],
+                is.s.haspart[1].category_id
+            ]|menu_trail as trail %}
+        {% with trail|last as id %}
             {% for mid, submenu in m.rsc.main_menu.menu %}
                 <li {% if mid == id %}class="selected"{% endif %}>
                     <a href="{{ mid.page_url }}">{{ mid.short_title|default:mid.title }}</a>
@@ -37,18 +42,7 @@
                 </li>
             {% endfor %}
         {% endwith %}
-    {% else %}
-        {% with id|menu_trail as trail %}
-            {% for mid, submenu in m.rsc.main_menu.menu %}
-                <li {% if mid == id %}class="selected"{% endif %}>
-                    <a href="{{ mid.page_url }}">{{ mid.short_title|default:mid.title }}</a>
-                    {% if submenu and mid|member:trail %}
-                        {% include "_nav_sidedrawer_submenu.tpl" menu=submenu %}
-                    {% endif %}
-                </li>
-            {% endfor %}
-        {% endwith %}
-    {% endif %}
+    {% endwith %}
 
     {% if m.acl.user %}
         <li class="divider"></li>

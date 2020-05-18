@@ -300,7 +300,7 @@ html {
     float: right; }
 #content .admonition {
   border: 1px solid #1ca5de;
-  margin-left: 2rem;
+  margin: 1rem 0 1rem 2rem;
   padding: 0;
   background-color: #cdecf9;
   overflow: hidden; }

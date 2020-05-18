@@ -14,7 +14,7 @@
     <div class="search-results">
         {% with m.search.paged[
                 {query text=q.qs
-                       cat=[`text`, `video`, `document`]
+                       cat=[`text`, `video`, `document`, `category`]
                        cat_exclude=[ `template`, `releasenotes` ]
                        page=q.page
                        pagelen=20
