@@ -486,13 +486,23 @@ body.search .search-results {
   height: 100%;
   background-color: #000020;
   color: #f3f3ff;
-  font-size: 3em; }
+  font-size: 2.1rem; }
   .page-page_home #content div.title p {
     margin: 0 0 1rem 0;
     max-width: 100rem; }
-  @media (min-width: 800px) {
+  @media (min-width: 420px) and (max-width: 1024px) {
     .page-page_home #content div.title {
-      font-size: 5em; }
+      font-size: 3rem; }
+      .page-page_home #content div.title p {
+        margin: 0 0 1rem 0; } }
+  @media (min-width: 1025px) and (max-width: 1199px) {
+    .page-page_home #content div.title {
+      font-size: 4rem; }
+      .page-page_home #content div.title p {
+        margin: 0 0 1rem 0; } }
+  @media (min-width: 1200px) {
+    .page-page_home #content div.title {
+      font-size: 5rem; }
       .page-page_home #content div.title p {
         margin: 0 0 3rem 0; } }
   .page-page_home #content div.title a {

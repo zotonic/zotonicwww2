@@ -359,10 +359,13 @@ is_ignore(_, Attrs, Enclosed) ->
         end,
         Classes).
 
-% Elements that are removed from the html in the body
-is_ignore_class(<<"admonition-see-also">>, _Enclosed) ->
-    % The see-also are now edges, remove the HTML
-    true;
+% % Elements that are removed from the html in the body
+% is_ignore_class(<<"admonition-see-also">>, _Enclosed) ->
+%     % The see-also are now edges, remove the HTML
+%     true;
+% is_ignore_class(<<"seealso">>, _Enclosed) ->
+%     % The see-also are now edges, remove the HTML
+%     true;
 % is_ignore_class(<<"admonition">>, _Enclosed) ->
 %     true;
 is_ignore_class(<<"simple">>, Enclosed) ->
