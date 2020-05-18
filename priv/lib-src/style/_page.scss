@@ -126,6 +126,8 @@ html {
     pre {
         padding-left: 2rem;
         overflow-x: auto;
+        word-break: normal;
+        word-wrap: normal;
     }
 
     // Inline code from Sphinx
@@ -140,13 +142,12 @@ html {
     }
 
     .table-wrapper {
-        overflow-x: auto;
+        overflow: auto;
     }
 
     table {
         table-layout: fixed;
         border: 0;
-        overflow-x: auto;
         margin: 1rem 0 1rem 2rem;
 
         tr:nth-child(odd) {

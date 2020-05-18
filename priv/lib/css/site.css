@@ -45,10 +45,10 @@ body {
   grid-column: 3;
   grid-row: 3;
   display: -ms-grid;
-  -ms-grid-columns: 1fr;
+  -ms-grid-columns: minmax(0, 1fr);
   -ms-grid-rows: 1fr auto;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 1fr auto;
   background-color: #f3f3ff; }
   #content-wrapper main {
@@ -317,7 +317,9 @@ html {
     padding-bottom: 0.1rem; }
 #content pre {
   padding-left: 2rem;
-  overflow-x: auto; }
+  overflow-x: auto;
+  word-break: normal;
+  word-wrap: normal; }
 #content span.pre {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   padding: 2px 4px;
@@ -327,11 +329,10 @@ html {
   border-radius: 4px;
   word-break: break-all; }
 #content .table-wrapper {
-  overflow-x: auto; }
+  overflow: auto; }
 #content table {
   table-layout: fixed;
   border: 0;
-  overflow-x: auto;
   margin: 1rem 0 1rem 2rem; }
   #content table tr:nth-child(odd) td {
     background-color: #cdecf9; }
