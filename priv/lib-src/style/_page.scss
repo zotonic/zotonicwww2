@@ -134,7 +134,8 @@ html {
         .code-block-caption {
             padding-left: 2rem;
             background: $code-bg;
-            border-top: 1px solid #ccc
+            border-top: 1px solid #ccc;
+            color: $text-muted;
         }
     }
 
