@@ -323,7 +323,7 @@ html {
 #content .docutils .code-block-caption {
   padding-left: 2rem;
   background: #f9f2f4;
-  border: 1px solid #ccc; }
+  border-top: 1px solid #ccc; }
 #content pre {
   padding-left: 2rem;
   overflow-x: auto;
