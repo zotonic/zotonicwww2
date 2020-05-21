@@ -315,6 +315,15 @@ html {
     width: 100%;
     padding-top: 0.1rem;
     padding-bottom: 0.1rem; }
+#content .docutils.container {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0; }
+#content .docutils .code-block-caption {
+  padding-left: 2rem;
+  background: #f9f2f4;
+  border: 1px solid #ccc; }
 #content pre {
   padding-left: 2rem;
   overflow-x: auto;

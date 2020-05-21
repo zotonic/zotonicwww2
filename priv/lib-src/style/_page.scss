@@ -123,6 +123,21 @@ html {
         }
     }
 
+    .docutils {
+        &.container {
+            padding-right: 0;
+            padding-left: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .code-block-caption {
+            padding-left: 2rem;
+            background: $code-bg;
+            border: 1px solid #ccc
+        }
+    }
+
     pre {
         padding-left: 2rem;
         overflow-x: auto;
