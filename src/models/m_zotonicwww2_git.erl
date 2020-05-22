@@ -92,12 +92,13 @@ clone(Context) ->
         true ->
             {error, eexist};
         false ->
-            ok = filelib:ensure_dir(Dir),
+            DataDir = unicode:characters_to_list( filename:dirname(Dir) ),
+            ok = z_filelib:ensure_dir(DataDir),
             Cmd = "git clone https://github.com/zotonic/zotonic.git zotonic-git",
             Options = [
                 sync,
                 stdout,
-                {cd, unicode:characters_to_list( filename:dirname(Dir) )}
+                {cd, DataDir}
             ],
             lager:info("Command: \"~s\"", [ Cmd ]),
             case exec:run(Cmd, Options) of
