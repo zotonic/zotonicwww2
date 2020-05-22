@@ -75,10 +75,8 @@ build_doc(Context) ->
     run_gitcmds([
             "rm -rf doc/_build",
             "make docs",
-            "rm -rf ../doc/html~",
-            "mv ../doc/html ../doc/html~",
-            "mv doc/_build/html ../doc/.",
-            "rm -rf ../html~"
+            "rm -rf ../doc/html",
+            "mv doc/_build/html ../doc/."
         ],
         Context).
 
@@ -121,12 +119,10 @@ build_edoc(Context) ->
     ok = z_filelib:ensure_dir(edoc_dir(Context)),
     run_gitcmds([
             "rm -rf doc/_build",
-            "make",
+            % "make",
             "make edocs",
-            "rm -rf ../doc/edoc~",
-            "mv ../doc/edoc ../doc/edoc~",
-            "mv doc/_build/edoc ../doc/.",
-            "rm -rf ../edoc~"
+            "rm -rf ../doc/edoc",
+            "mv doc/_build/edoc ../doc/."
         ],
         Context).
 
