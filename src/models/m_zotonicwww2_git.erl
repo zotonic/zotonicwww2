@@ -119,7 +119,7 @@ build_edoc(Context) ->
     ok = z_filelib:ensure_dir(edoc_dir(Context)),
     run_gitcmds([
             "rm -rf doc/_build",
-            % "make",
+            "make",
             "make edocs",
             "rm -rf ../doc/edoc",
             "mv doc/_build/edoc ../doc/."
