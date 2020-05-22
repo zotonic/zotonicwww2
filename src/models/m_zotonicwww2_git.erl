@@ -92,6 +92,7 @@ clone(Context) ->
         true ->
             {error, eexist};
         false ->
+            ok = filelib:ensure_dir(Dir),
             Cmd = "git clone https://github.com/zotonic/zotonic.git zotonic-git",
             Options = [
                 sync,
