@@ -93,7 +93,7 @@ clone(Context) ->
             {error, eexist};
         false ->
             DataDir = unicode:characters_to_list( filename:dirname(Dir) ),
-            ok = z_filelib:ensure_dir(DataDir),
+            ok = z_filelib:ensure_dir(Dir),
             Cmd = "git clone https://github.com/zotonic/zotonic.git zotonic-git",
             Options = [
                 sync,
@@ -109,7 +109,7 @@ clone(Context) ->
                     lager:info("Command output: "),
                     {ok, <<>>};
                 {error, _} = Error ->
-                    lager:error("Command \"~s\" error: ~p", [ Error ]),
+                    lager:error("Command \"~s\" error: ~p", [ Cmd, Error ]),
                     Error
             end
     end.
