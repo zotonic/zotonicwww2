@@ -9,19 +9,17 @@
 %% of valuable data on temporary errors.
 %%
 
--module(zotonicwww_parse_docs).
+-module(zotonicwww2_parse_docs).
 
 -export([
     import_one_time_only/1,
     import_all/1,
-    list_files/1,
+    list_files/2,
     parse_file/1,
 
     cleanup_do_not_run/1,
     cleanup_edges_do_not_run/1
     ]).
-
--define(DOC_HTML_DIR, <<"doc/_build/html/">>).
 
 -include_lib("zotonic_core/include/zotonic.hrl").
 
@@ -35,7 +33,7 @@ do_import(IsFull, Context0) when is_boolean(IsFull) ->
     % Use the special 'gitbot' user to perform all imports.
     Context = z_acl:logon(gitbot, Context0),
     % Fetch all generated html files to be imported
-    Fs = list_files(IsFull),
+    Fs = list_files(IsFull, Context),
     % Import each found file as a resource into the database
     maps:fold(
         fun(F, Type, Stat) ->
@@ -101,9 +99,13 @@ add_edges(SubjectId, Edges, Context) ->
         end,
         Edges).
 
-list_files(IsFull) ->
+%% @doc List all files in the generated doc directory. Returns a map
+%% with per filename the category and unique name.
+-spec list_files( boolean(), z:context() ) -> map().
+list_files(IsFull, Context) ->
+    DocDir = unicode:characters_to_list( m_zotonicwww2_git:doc_dir(Context) ),
     filelib:fold_files(
-        ?DOC_HTML_DIR,
+        DocDir,
         "\\.html$",
         true,
         fun(F, Acc) ->

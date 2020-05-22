@@ -1,4 +1,5 @@
-files
+priv/files
+priv/data
 zotonic_site.config
 .eunit
 .rebar3
