@@ -65,7 +65,7 @@ do_import(IsFull, Context0) when is_boolean(IsFull) ->
 github_url(F) ->
     F1 = re:replace(F, ".html$", ".rst"),
     Fs = filename:split( iolist_to_binary(F1) ),
-    [ <<"doc">>, <<"_build">>, <<"html">> | Fs1 ] = lists:dropwhile( fun(P) -> P =/= <<"doc">> end, Fs ),
+    [ <<"doc">>, <<"html">> | Fs1 ] = lists:dropwhile( fun(P) -> P =/= <<"doc">> end, Fs ),
     iolist_to_binary([
             <<"https://github.com/zotonic/zotonic/tree/master/doc">>,
             [ [ $/, Part ] || Part <- Fs1 ]
@@ -158,6 +158,8 @@ filename_to_name(<<"index">>, [ <<"scomps">> | _ ]) ->
     {<<"template_scomp">>, category, true};
 filename_to_name(<<"index">>, [ <<"tags">> | _ ]) ->
     {<<"template_tag">>, category, true};
+filename_to_name(<<"index">>, [ <<"notifications">>, <<"ref">> | _ ]) ->
+    {<<"notification">>, category, true};
 %
 filename_to_name(<<"filter_", _/binary>> = Filter, [ <<"filters">> | _ ]) ->
     {<<"doc_template_filter_", Filter/binary>>, template_filter, true};
@@ -177,6 +179,8 @@ filename_to_name(<<"controller_", _/binary>> = Name, [ <<"controllers">> | _ ]) 
     {<<"doc_controller_", Name/binary>>, controller, true};
 filename_to_name(Name, [ <<"dispatch">>, <<"ref">> | _ ]) ->
     {<<"doc_dispatch_", Name/binary>>, dispatch, true};
+filename_to_name(Name, [ <<"notification">>, <<"notifications">>, <<"ref">> | _ ]) ->
+    {<<"doc_notification_", Name/binary>>, notification, true};
 %
 filename_to_name(<<"acl_options">>, [ <<"controllers">> | _ ]) ->
     {<<"doc_controller__acl_options">>, controller, true};
@@ -198,7 +202,7 @@ filename_to_name(Name, [ <<"user-guide">> | _ ]) ->
 filename_to_name(Name, [ <<"deployment">>, <<"developer-guide">> | _ ]) ->
     {<<"doc_developerguide_deployment_", Name/binary>>, developerguide, false};
 filename_to_name(Name, [ <<"releasenotes">>, <<"developer-guide">> | _ ]) ->
-    {<<"doc_releasenotes_", Name/binary>>, releasenotes, false};
+    {<<"doc_releasenotes_", Name/binary>>, releasenotes, true};
 %
 filename_to_name(Name, [ <<"configuration">>, <<"ref">> | _ ]) ->
     {<<"doc_developerguide_configuration_", Name/binary>>, reference, true};
@@ -227,12 +231,13 @@ parse_file(F) ->
 
 
 find_main(File, Html) ->
+    FileB = unicode:characters_to_binary(File),
     FMain = fun(Args) ->
         proplists:get_value(<<"role">>, Args) =:= <<"main">>
     end,
     {ok, Main} = find_element(<<"div">>, FMain, Html),
     {ok, Title} = find_element(<<"h1">>, fun(_) -> true end, Main),
-    [ _Filename | RevPath ] = lists:reverse( filename:split(File) ),
+    [ _Filename | RevPath ] = lists:reverse( filename:split(FileB) ),
     #{
         in_module := InModule,
         links := Links,

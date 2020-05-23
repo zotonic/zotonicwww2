@@ -32,7 +32,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(7).
+-mod_schema(8).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -121,6 +121,9 @@ manage_schema(_Version, _Context) ->
                     {template, reference, [
                         {title, <<"Template">>}
                     ]},
+                    {notification, reference, [
+                        {title, <<"Notificaion">>}
+                    ]},
                 {releasenotes, documentation, [
                     {title, <<"Release notes">>}
                 ]},
@@ -131,38 +134,13 @@ manage_schema(_Version, _Context) ->
                     {title, <<"Automata">>}
                 ]}
         ],
-        predicates = [
-            % Edges from documentation to other documentation that is
-            % linked from the HTML content on the page.
-            %
-            % These links are extracted by the zotonicwww_parse_docs
-            % erlang module.
-            {references,
-                [
-                    {title, {trans, [{en, <<"References">>}]}}
-                ],
-                [
-                    {text, text},
-                    {text, media}
-                ]
-            },
 
-            % All imported reference documentation receives an edge
-            % to the module where the part is defined.
-            %
-            % This edge is extracted by the zotonicwww_parse_docs
-            % erlang module.
-            {in_module,
-                [
-                    {title, {trans, [{en, <<"In module">>}]}}
-                ],
-                [
-                    {documentation, module}
-                ]
-            }
-        ],
+        % These are resources installed by this module. They can use
+        % the categories defined above.
+        %
+        % In the admin the resources are called 'pages', as that is a
+        % concept that is easier to understand for editors.
         resources = [
-
             % This is the resource (page) for the home page.
             % The page_path is set to "/"" and there is a matching
             % dispatch rule in priv/dispatch/dispatch that matches
@@ -197,9 +175,55 @@ manage_schema(_Version, _Context) ->
                 {summary, <<"User for automatic update of the reference documentation.">>}
             ]}
         ],
+
+        % Predicates are the 'labels' on the edges (aka connections)
+        % between pages. They give meaning to an edge.
+        % Edges are added below.
+        % Predicates themselves are just like resources, except that
+        % they have an extra list to define the valid subject (from)
+        % and object (to) categories.
+        predicates = [
+            % Edges from documentation to other documentation that is
+            % linked from the HTML content on the page.
+            % These links are extracted by the zotonicwww_parse_docs
+            % erlang module.
+            {references,
+                [
+                    % Resource properties, just like with resources
+                    {title, {trans, [{en, <<"References">>}]}}
+                ],
+                [
+                    % Valid from text resources, to text or media
+                    {text, text},
+                    {text, media}
+                ]
+            },
+
+            % All imported reference documentation receives an edge
+            % to the module where the part is defined.
+            %
+            % This edge is extracted by the zotonicwww_parse_docs
+            % erlang module.
+            {in_module,
+                [
+                    {title, {trans, [{en, <<"In module">>}]}}
+                ],
+                [
+                    {documentation, module}
+                ]
+            }
+        ],
+
+        % Edges are tuples {subject, predicate, object}
+        % The edges are directed from subject to object, with the
+        % predicate as the label.
+        % In the admin the edges are called 'connections', as that is a
+        % concept that is easier to understand for editors.
         edges = [
             % We make the user 'user_git' member of the managers user group.
             % This allows the Git user to perform all updates to the content.
+            % The hasusergroup predicate and the acl_user_group_managers are
+            % added by the mod_acl_user_groups.
             {gitbot, hasusergroup, acl_user_group_managers}
         ]
     }.
