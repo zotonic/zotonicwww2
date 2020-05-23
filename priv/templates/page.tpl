@@ -37,13 +37,14 @@
     {% with id.o.relation as relo %}
     {% with id.s.relation as rels %}
     {% with id.s.haspart -- [ id.category_id ] as hasparts %}
+    {% with id.s.haspart.o.haspart as hassibling %}
         {% if relo or rels or hasparts %}
             <div class="connections">
                 <h3>&#x21C4; {_ See also _}</h3>
 
                 <div class="list-items">
                     {% for id in hasparts %}
-                        {% catinclude "_list_item.tpl" id %}
+                        {% catinclude "_list_item.tpl" id is_highlight %}
                     {% endfor %}
                     {% for id in relo %}
                         {% if not id|member:hasparts %}
@@ -57,9 +58,18 @@
                             {% catinclude "_list_item.tpl" id %}
                         {% endif %}
                     {% endfor %}
+                    {% for id in hassibling %}
+                        {% if  not id|member:hasparts
+                           and not id|member:relo
+                           and not id|member:rels
+                        %}
+                            {% catinclude "_list_item.tpl" id %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         {% endif %}
+    {% endwith %}
     {% endwith %}
     {% endwith %}
     {% endwith %}
