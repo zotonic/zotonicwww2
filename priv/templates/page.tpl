@@ -37,7 +37,7 @@
     {% with id.o.relation as relo %}
     {% with id.s.relation as rels %}
     {% with id.s.haspart -- [ id.category_id ] as hasparts %}
-    {% with id.s.haspart.o.haspart as hassibling %}
+    {% with hasparts[1].o.haspart as hassibling %}
         {% if relo or rels or hasparts %}
             <div class="connections">
                 <h3>&#x21C4; {_ See also _}</h3>
