@@ -114,7 +114,7 @@ m_post( [ <<"docs">>, <<"rebuild">>, Secret ], _Payload, Context) ->
                     <<>>,           % Give a key for multiple tasks with same mod:fun
                     [],             % Arguments, non needed for this task
                     Context),
-            ok;
+            {ok, <<"queued">>};
         _ ->
             % Log a message to the lager logs
             lager:info("Docs rebuild request with wrong secret from ~p", [ m_req:get(peer, Context) ]),
