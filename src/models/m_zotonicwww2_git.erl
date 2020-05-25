@@ -87,7 +87,7 @@ m_get( [ <<"hash">> | Rest ], _Payload, Context) ->
         false ->
             {error, eacces}
     end;
-m_get( [ <<"rebuild-hash">> | Rest ], _Payload, Context) ->
+m_get( [ <<"rebuild_hash">> | Rest ], _Payload, Context) ->
     % The task_rebuild stores the hash of the last rebuild in the
     % config key site.rebuild_hash.
     Hash = m_config:get_value(site, rebuild_hash, Context),
@@ -98,7 +98,7 @@ m_get( [ <<"rebuild-hash">> | Rest ], _Payload, Context) ->
 %% and MQTT publish to "model/zotonicwww2_git/post"
 %% Note that a post handler always consumes the whole path.
 -spec m_post( Path :: list( binary() ), zotonic_model:opt_msg(), z:context() ) -> {ok, term()} | ok | {error, term()}.
-m_post( [ <<"docs-rebuild">>, Secret ], _Payload, Context) ->
+m_post( [ <<"docs">>, <<"rebuild">>, Secret ], _Payload, Context) ->
     % Compare the value in the config tables with the passed secret.
     % Config values can be set with m_config:set_value/4 or in the
     % admin on "/admin/config"
@@ -135,7 +135,7 @@ task_rebuild(Context) ->
             fun() ->
                 {ok, Hash} = hash(Context),
                 lager:info("Rebuild of docs success for '~s'", [ Hash ]),
-                m_config:set_value(zotonicwww2, rebuild_hash, Hash, Context),
+                m_config:set_value(site, rebuild_hash, Hash, Context),
                 ok
             end
         ],
