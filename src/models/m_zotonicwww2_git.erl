@@ -89,8 +89,8 @@ m_get( [ <<"hash">> | Rest ], _Payload, Context) ->
     end;
 m_get( [ <<"rebuild-hash">> | Rest ], _Payload, Context) ->
     % The task_rebuild stores the hash of the last rebuild in the
-    % config key zotonicwww2.rebuild_hash.
-    Hash = m_config:get_value(zotonicwww2, rebuild_hash, Context),
+    % config key site.rebuild_hash.
+    Hash = m_config:get_value(site, rebuild_hash, Context),
     {ok, {Hash, Rest}}.
 
 
@@ -102,7 +102,7 @@ m_post( [ <<"docs-rebuild">>, Secret ], _Payload, Context) ->
     % Compare the value in the config tables with the passed secret.
     % Config values can be set with m_config:set_value/4 or in the
     % admin on "/admin/config"
-    case m_config:get_value(zotonicwww2, rebuild_secret, Context) of
+    case m_config:get_value(site, rebuild_secret, Context) of
         Secret ->
             % As a build takes a long time we schedule a build task.
             % The task is slightly delayed so that repetitive pushes

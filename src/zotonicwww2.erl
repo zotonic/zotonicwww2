@@ -235,11 +235,11 @@ manage_schema(_Version, _Context) ->
 %% This key is used in 'src/models/m_zotonicwww2_git.erl'
 -spec manage_data( z_module_manager:manage_schema(), z:context() ) -> ok.
 manage_data(_Version, Context) ->
-    case m_config:get_value(zotonicwww2, rebuild_secret, Context) of
+    case m_config:get_value(site, rebuild_secret, Context) of
         undefined ->
-            m_config:set_value(zotonicwww2, rebuild_secret, z_ids:id(), Context);
+            m_config:set_value(site, rebuild_secret, z_ids:id(), Context);
         <<>> ->
-            m_config:set_value(zotonicwww2, rebuild_secret, z_ids:id(), Context);
+            m_config:set_value(site, rebuild_secret, z_ids:id(), Context);
         _ ->
             ok
     end.
