@@ -13,7 +13,7 @@
 
 -export([
     import_one_time_only/1,
-    import_all/1,
+    import/1,
     list_files/2,
     parse_file/1,
 
@@ -23,19 +23,30 @@
 
 -include_lib("zotonic_core/include/zotonic.hrl").
 
+%% @doc Import all reference-docs and release-notes. This is used to
+%% incrementally update the documentation after a git commit.
+-spec import( z:context() ) -> {ok, map()}.
+import(Context) ->
+    do_import(incremental, Context).
+
+%% @doc Import all documentation. This also imports documentation that is
+%% now maintained in the CMS. So only run this a single time when the
+%% ReStucturedText documentation is imported for the initial setup.
+-spec import_one_time_only( z:context() ) -> {ok, map()}.
 import_one_time_only(Context) ->
-    do_import(true, Context).
+    % Extra security - only run this with admin rights.
+    % Set admin rights with:  z_acl:sudo(Context)
+    % Get an anonymous context for zotonicwww2 with: z:c(zotonicwww2)
+    true = z_acl:is_admin(Context),
+    do_import(full, Context).
 
-import_all(Context) ->
-    do_import(false, Context).
-
-do_import(IsFull, Context0) when is_boolean(IsFull) ->
+do_import(ImportType, Context0) when ImportType =:= incremental; ImportType =:= full ->
     % Use the special 'gitbot' user to perform all imports.
     Context = z_acl:logon(gitbot, Context0),
     % Fetch all generated html files to be imported
-    Fs = list_files(IsFull, Context),
+    Fs = list_files(ImportType, Context),
     % Import each found file as a resource into the database
-    maps:fold(
+    Stats = maps:fold(
         fun(F, Type, Stat) ->
             #{
                 category := Cat,
@@ -60,7 +71,8 @@ do_import(IsFull, Context0) when is_boolean(IsFull) ->
             Stat#{ Cat => Count + 1 }
         end,
         #{},
-        Fs).
+        Fs),
+    {ok, Stats}.
 
 github_url(F) ->
     F1 = re:replace(F, ".html$", ".rst"),
@@ -101,19 +113,19 @@ add_edges(SubjectId, Edges, Context) ->
 
 %% @doc List all files in the generated doc directory. Returns a map
 %% with per filename the category and unique name.
--spec list_files( boolean(), z:context() ) -> map().
-list_files(IsFull, Context) ->
+-spec list_files( full | incremental, z:context() ) -> map().
+list_files(ImportType, Context) ->
     DocDir = unicode:characters_to_list( m_zotonicwww2_git:doc_dir(Context) ),
     filelib:fold_files(
         DocDir,
         "\\.html$",
         true,
         fun(F, Acc) ->
-            list_fun(IsFull, F, Acc)
+            list_fun(ImportType, F, Acc)
         end,
         #{}).
 
-list_fun(IsFull, F, Acc) ->
+list_fun(ImportType, F, Acc) ->
     F1 = unicode:characters_to_binary(F),
     [ Basename | RevPath ] = lists:reverse( filename:split(F1) ),
     Rootname = filename:rootname(Basename),
@@ -121,7 +133,7 @@ list_fun(IsFull, F, Acc) ->
     case filename_to_name(Rootname1, RevPath) of
         {_Name, undefined, _IsAlways} ->
             error;
-        {Name, Cat, IsAlways} when IsAlways orelse IsFull ->
+        {Name, Cat, IsIncremental} when IsIncremental orelse ImportType =:= full ->
             C = #{
                 category => Cat,
                 name => Name
@@ -183,7 +195,7 @@ filename_to_name(Name, [ <<"notification">>, <<"notifications">>, <<"ref">> | _ 
     {<<"doc_notification_", Name/binary>>, notification, true};
 %
 filename_to_name(<<"acl_options">>, [ <<"controllers">> | _ ]) ->
-    {<<"doc_controller__acl_options">>, controller, true};
+    {<<"doc_controller__acl_options">>, reference, true};
 %
 filename_to_name(Name, [ <<"notifications">>, <<"ref">> | _ ]) ->
     {<<"doc_reference_notifications_", Name/binary>>, reference, true};
@@ -618,6 +630,8 @@ extract_in_module(_Classes, _Attrs, _Elts, _RevPath, _Acc) ->
 -spec cleanup_do_not_run( z:context() ) -> {ok, non_neg_integer()}.
 cleanup_do_not_run(Context) ->
     % Crash if the current user is not an administrator
+    % Set admin rights with:  z_acl:sudo(Context)
+    % Get an anonymous context for zotonicwww2 with: z:c(zotonicwww2)
     true = z_acl:is_admin(Context),
     Count = z_db:q("
         delete from rsc
@@ -640,6 +654,8 @@ cleanup_do_not_run(Context) ->
 -spec cleanup_edges_do_not_run( z:context() ) -> {ok, non_neg_integer()}.
 cleanup_edges_do_not_run(Context) ->
     % Crash if the current user is not an administrator
+    % Set admin rights with:  z_acl:sudo(Context)
+    % Get an anonymous context for zotonicwww2 with: z:c(zotonicwww2)
     true = z_acl:is_admin(Context),
     %
     % Delete all remaining edges made by the Gitbot.

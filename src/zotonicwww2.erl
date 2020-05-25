@@ -32,7 +32,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(8).
+-mod_schema(9).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -44,7 +44,8 @@
 % Exports - if exports change then the module is restarted after
 % compilation.
 -export([
-    manage_schema/2
+    manage_schema/2,
+    manage_data/2
     ]).
 
 % This is the main header file, it contains useful definitions and
@@ -227,3 +228,18 @@ manage_schema(_Version, _Context) ->
             {gitbot, hasusergroup, acl_user_group_managers}
         ]
     }.
+
+
+%% This function runs after the schema is installed or updated. In this case
+%% it is ensured that the 'rebuild_secret' configurarion key is set.
+%% This key is used in 'src/models/m_zotonicwww2_git.erl'
+-spec manage_data( z_module_manager:manage_schema(), z:context() ) -> ok.
+manage_data(_Version, Context) ->
+    case m_config:get_value(zotonicwww2, rebuild_secret, Context) of
+        undefined ->
+            m_config:set_value(zotonicwww2, rebuild_secret, z_ids:id(), Context);
+        <<>> ->
+            m_config:set_value(zotonicwww2, rebuild_secret, z_ids:id(), Context);
+        _ ->
+            ok
+    end.

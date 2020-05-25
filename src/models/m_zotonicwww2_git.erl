@@ -31,6 +31,9 @@
 
 -export([
     m_get/3,
+    m_post/3,
+
+    task_rebuild/1,
 
     build_edoc/1,
     build_doc/1,
@@ -42,6 +45,10 @@
     doc_dir/1
     ]).
 
+%% Include the central definitions of Zotonic. Useful for macro
+%% definitions like ?DEBUG.
+-include_lib("zotonic_core/include/zotonic.hrl").
+
 %% @doc Handle GET requests for this model. Can be called from the
 %% templates (m.zotonicwww2_git), the API (/api/model/zotonic_www2/get/...)
 %% or via MQTT (topic model/zotonic_www2/get).
@@ -50,7 +57,7 @@
 %%
 %% The second argument is the MQTT messages, if any. For template calls
 %% this could be 'undefined'. API calls also construct a MQTT message, as
-%% the API routes calls via the MQTT tree and the zotonic_model.erl (in 
+%% the API routes calls via the MQTT tree and the zotonic_model.erl (in
 %% zotonic_core/src/support).
 %%
 %% The m_get function consumes as much of the Path as is needed, it must
@@ -63,7 +70,76 @@
 %% a payload with the error to the caller.
 -spec m_get( Path :: list(), zotonic_model:opt_msg(), z:context() ) -> zotonic_model:return().
 m_get( [ <<"hash">> | Rest ], _Payload, Context) ->
-    {ok, {hash(Context), Rest}}.
+    % Only for authenticated users, as we are running a command line
+    % program and don't want to do that to anonymous bots and users.
+    case z_auth:is_auth(Context) of
+        true ->
+            % Return the hash of the current checkout
+            case hash(Context) of
+                {ok, Hash} ->
+                    % Note the 'Rest', this is the non-consumed part of the
+                    % path. It is often used by templates for further lookups
+                    % in returned maps or other structured values.
+                    {ok, {Hash, Rest}};
+                {error, _} = Error ->
+                    Error
+            end;
+        false ->
+            {error, eacces}
+    end;
+m_get( [ <<"rebuild-hash">> | Rest ], _Payload, Context) ->
+    % The task_rebuild stores the hash of the last rebuild in the
+    % config key zotonicwww2.rebuild_hash.
+    Hash = m_config:get_value(zotonicwww2, rebuild_hash, Context),
+    {ok, {Hash, Rest}}.
+
+
+%% This is a post handler for HTTP posts to `/api/model/zototonicwww2_git/post`
+%% and MQTT publish to "model/zotonicwww2_git/post"
+%% Note that a post handler always consumes the whole path.
+-spec m_post( Path :: list( binary() ), zotonic_model:opt_msg(), z:context() ) -> {ok, term()} | ok | {error, term()}.
+m_post( [ <<"docs-rebuild">>, Secret ], _Payload, Context) ->
+    % Compare the value in the config tables with the passed secret.
+    % Config values can be set with m_config:set_value/4 or in the
+    % admin on "/admin/config"
+    case m_config:get_value(zotonicwww2, rebuild_secret, Context) of
+        Secret ->
+            % As a build takes a long time we schedule a build task.
+            % The task is slightly delayed so that repetitive pushes
+            % are started after a small period of inactivity.
+            z_pivot_rsc:insert_task_after(
+                    10,             % Seconds or a date
+                    ?MODULE,        % This module
+                    task_rebuild,   % Prepend task functions with 'task_'
+                    <<>>,           % Give a key for multiple tasks with same mod:fun
+                    [],             % Arguments, non needed for this task
+                    Context),
+            ok;
+        _ ->
+            % Log a message to the lager logs
+            lager:info("Docs rebuild request with wrong secret from ~p", [ m_req:get(peer, Context) ]),
+            % Try to use posix error codes
+            {error, eacces}
+    end.
+
+%% @doc Documentation rebuild task scheduled by the 'm_post' handler for
+%% 'docs-rebuild' above. This task is executed by z_pivot_rsc. Only a single
+%% task is executed in parallel.
+-spec task_rebuild( z:context() ) -> ok | {error, term()}.
+task_rebuild(Context) ->
+    z_utils:pipeline([
+            fun pull/1,
+            fun build_doc/1,
+            fun zotonicwww2_parse_docs:import/1,
+            fun build_edoc/1,
+            fun() ->
+                {ok, Hash} = hash(Context),
+                lager:info("Rebuild of docs success for '~s'", [ Hash ]),
+                m_config:set_value(zotonicwww2, rebuild_hash, Hash, Context),
+                ok
+            end
+        ],
+        [ Context ]).
 
 
 
@@ -101,7 +177,8 @@ clone(Context) ->
             lager:info("Command: \"~s\"", [ Cmd ]),
             case exec:run(Cmd, Options) of
                 {ok, [ {stdout, Output} ]} ->
-                    lager:info("Command output: ~s", [ Output ]),
+                    Output1 = filter_output(Output),
+                    lager:info("Command output: ~s", [ Output1 ]),
                     {ok, iolist_to_binary(Output)};
                 {ok, []} ->
                     lager:info("Command output: "),
@@ -111,6 +188,22 @@ clone(Context) ->
                     Error
             end
     end.
+
+%% Remove escape sequences, especially from the rebar3 output which
+%% adds color escapes.
+filter_output(Output) ->
+    O1 = iolist_to_binary(Output),
+    filter_output_1(O1, <<>>).
+
+filter_output_1(<<>>, Acc) ->
+    Acc;
+filter_output_1(<<C, R/binary>>, Acc) when C =:= 9; C =:= 10; C =:= 13 ->
+    filter_output_1(R, <<Acc/binary, C>>);
+filter_output_1(<<C, R/binary>>, Acc) when C < 32 ->
+    filter_output_1(R, Acc);
+filter_output_1(<<C, R/binary>>, Acc) ->
+    filter_output_1(R, <<Acc/binary, C>>).
+
 
 %% @doc Build Zotonic, the edoc and move them to the edoc_dir. Returns
 %% an error or the current hash. This command takes a long time to run.
