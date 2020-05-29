@@ -10,7 +10,7 @@
 
 <div class="logo if-full-width">
     <a href="{% url home %}">
-        <img src="/lib/images/zotonic/zotonic-logo.png" alt="{{ m.site.title }}" class="img-responsive">
+        <img src="{% image_url '/lib/images/zotonic/zotonic-logo.png' mediaclass='logo' %}" alt="{{ m.site.title }}" class="img-responsive">
     </a>
 </div>
 

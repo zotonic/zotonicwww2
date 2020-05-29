@@ -9,7 +9,7 @@
   <!-- Brand logo or name -->
   <div class="home-link">
       <a href="{% url home %}">
-        <img src="/lib/images/zotonic/zotonic-logo.png" alt="{{ m.site.title }}">
+        <img src="{% image_url '/lib/images/zotonic/zotonic-logo.png' mediaclass='logo' %}" alt="{{ m.site.title }}">
       </a>
   </div>
 </nav>
