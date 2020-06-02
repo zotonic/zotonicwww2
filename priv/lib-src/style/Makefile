@@ -1,5 +1,5 @@
 
-.PHONY: site bs
+.PHONY: site bs3
 
 all: site bs3
 
