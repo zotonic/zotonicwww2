@@ -31,7 +31,13 @@
           "css/bs3.css"
           "css/site.css"
           "css/logon.css"
+          minify
+    %}
+
+    {% lib
           "font-awesome-4/css/font-awesome.css"
+          async
+          minify
     %}
 
     <!--

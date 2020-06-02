@@ -1,5 +1,8 @@
 
-{% include "_js_include_jquery.tpl" %}
+{% lib
+    "js/apps/jquery-latest.min.js"
+    "js/modules/jquery.ui.touch-punch.min.js"
+%}
 
 {% lib
     "js/modules/jstz.min.js"
@@ -12,6 +15,8 @@
     "js/modules/livevalidation-1.3.js"
     "js/modules/jquery.loadmask.js"
     "bootstrap/js/bootstrap.min.js"
+
+    minify
 %}
 
 {% worker name="auth" src="js/zotonic.auth.worker.js" %}
