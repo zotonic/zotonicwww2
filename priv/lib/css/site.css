@@ -455,6 +455,15 @@ footer {
       .list-items .list-item {
         width: 400px; } }
 
+.search .list-items .list-item {
+  width: 100%; }
+  .search .list-items .list-item h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem; }
+  .search .list-items .list-item p {
+    max-width: 55rem;
+    margin: 0; }
+
 .connections {
   position: relative;
   border-top: 1px solid #1ca5de;
