@@ -11,6 +11,38 @@
         <span class="text-muted">{_ Search _}</span> {% if q.qs %}“{{ q.qs|escape }}”{% endif %}
     </h1>
 
+    {% if not q.page %}
+        {% if m.zotonicwww2_search.exact_match[q.qs] as match_ids %}
+            <div class="search-results">
+                <div class="connections paged">
+                    <div class="page-count">
+                        <span>{_ Exact match _}</span>
+                    </div>
+                    <div class="list-items">
+                        {% for id in match_ids %}
+                            {% catinclude "_list_item.tpl" id %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if m.zotonicwww2_search.title_match[q.qs] as match_ids %}
+            <div class="search-results">
+                <div class="connections paged">
+                    <div class="page-count">
+                        <span>{_ Title match _}</span>
+                    </div>
+                    <div class="list-items">
+                        {% for id in match_ids %}
+                            {% catinclude "_list_item.tpl" id %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
     <div class="search-results">
         {% with m.search.paged[
                 {query text=q.qs
