@@ -50,8 +50,8 @@
 -include_lib("zotonic_core/include/zotonic.hrl").
 
 %% @doc Handle GET requests for this model. Can be called from the
-%% templates (m.zotonicwww2_git), the API (/api/model/zotonic_www2/get/...)
-%% or via MQTT (topic model/zotonic_www2/get).
+%% templates (m.zotonicwww2_git), the API (/api/model/zotonicwww2_git/get/...)
+%% or via MQTT (topic model/zotonicwww2_git/get).
 %%
 %% The first argument is the split path of the request (after 'get').
 %%
