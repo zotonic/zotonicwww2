@@ -231,9 +231,14 @@ hash(Context) ->
 %% new current hash.
 -spec pull( z:context() ) -> {ok, binary()} | {error, term()}.
 pull(Context) ->
-    case run_gitcmd("git pull", Context) of
+    case run_gitcmd("git clean -f", Context) of
         {ok, _} ->
-            hash(Context);
+            case run_gitcmd("git pull", Context) of
+                {ok, _} ->
+                    hash(Context);
+                {error, _} = Error ->
+                    Error
+            end;
         {error, _} = Error ->
             Error
     end.
