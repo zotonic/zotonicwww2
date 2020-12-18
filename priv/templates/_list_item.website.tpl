@@ -8,7 +8,7 @@
     Where 'id' contains the id of a page in category 'website' or a sub-category
 #}
 <div class="list-item list-item-website {% if is_highlight or id.is_featured %} featured{% endif %} do_clickable">
-    {% image id mediaclass="list-item" %}
+    {% image id mediaclass="list-item-bg" %}
     <h3>
         <a href="{{ id.page_url }}">
             {{ id.title }}
