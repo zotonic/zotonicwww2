@@ -448,15 +448,15 @@ footer {
   .list-items .list-item {
     flex-grow: 0;
     max-width: 100%;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-bottom: 0.5rem; }
+    @media (min-width: 960px) {
+      .list-items .list-item {
+        margin-right: 0.5rem; } }
     .list-items .list-item.featured {
       background-color: #cdecf9; }
     .list-items .list-item.list-item-website, .list-items .list-item.list-item-media {
-      position: relative;
-      margin-bottom: 0.5rem; }
-      @media (min-width: 960px) {
-        .list-items .list-item.list-item-website, .list-items .list-item.list-item-media {
-          margin-right: 0.5rem; } }
+      position: relative; }
       .list-items .list-item.list-item-website img, .list-items .list-item.list-item-media img {
         width: 100%;
         height: auto; }

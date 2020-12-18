@@ -8,6 +8,12 @@
         max-width: 100%;
         overflow: hidden;
 
+        margin-bottom: 0.5rem;
+
+        @media (min-width: $grid-min-sidemenu + 200px) {
+            margin-right: 0.5rem;
+        }
+
         &.featured {
             background-color: $bg-color-marker;
         }
@@ -15,12 +21,6 @@
         &.list-item-website,
         &.list-item-media {
             position: relative;
-
-            margin-bottom: 0.5rem;
-
-            @media (min-width: $grid-min-sidemenu + 200px) {
-                margin-right: 0.5rem;
-            }
 
             img {
                 width: 100%;
