@@ -36,6 +36,7 @@ $grid-max-no-sidemenu:    759px;
 $grid-min-sidemenu:       760px;
 
 
+@import "_generic.scss";
 @import "_grid.scss";
 @import "_page.scss";
 @import "_nav.scss";

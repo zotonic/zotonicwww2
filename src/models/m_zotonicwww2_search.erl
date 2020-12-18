@@ -108,7 +108,6 @@ title_match(Term, Context) when is_binary(Term) ->
         ",
         [ Lower, RefFrom, RefTo, CookFrom, CookTo ],
         Context),
-    ?DEBUG(WordIds),
     AllIds = z_db:q("
         select id
         from rsc

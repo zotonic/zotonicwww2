@@ -108,7 +108,7 @@
           {% endblock %}
           <!--
             There MUST be a 'content' block for pages to place
-            content that don't need to have maximum available space
+            content that doesn't need to have maximum available space
           -->
           {% block content %}
           {% endblock %}

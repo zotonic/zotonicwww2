@@ -32,7 +32,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(9).
+-mod_schema(10).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -127,6 +127,11 @@ manage_schema(_Version, _Context) ->
                     ]},
                 {releasenotes, documentation, [
                     {title, <<"Release notes">>}
+                ]},
+
+                % Examples of sites made with Zotonic
+                {website_example, website, [
+                    {title, <<"Made with Zotonic">>}
                 ]},
 
                 % This is a special sub-category for automated actors.

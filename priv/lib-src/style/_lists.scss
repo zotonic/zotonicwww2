@@ -12,6 +12,32 @@
             background-color: $bg-color-marker;
         }
 
+        &.list-item-website,
+        &.list-item-media {
+            position: relative;
+
+            margin-bottom: 0.5rem;
+
+            @media (min-width: $grid-min-sidemenu + 200px) {
+                margin-right: 0.5rem;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+            h3 {
+                position: absolute;
+                bottom: 0;
+                margin: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                padding: 0.5rem !important;
+                background-color: rgba(255, 255, 255, 0.8);
+            }
+        }
+
         @media (min-width: $grid-min-sidemenu + 200px) {
             width: 300px;
         }

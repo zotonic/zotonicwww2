@@ -1,4 +1,4 @@
-<div class="list-item{% if is_highlight or id.is_featured %} featured{% endif %}">
+<div class="list-item{% if is_highlight or id.is_featured %} featured{% endif %} do_clickable">
     <h3>
         <a href="{{ id.page_url }}">
             {{ id.title }}

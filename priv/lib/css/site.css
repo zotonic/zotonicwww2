@@ -4,6 +4,9 @@
  * The filehandler will find the 'Makefile' in this directory
  * and execute make to generate the css file `priv/lib/style.css`
  */
+.clickable {
+  cursor: pointer; }
+
 /*! autoprefixer: off */
 :root {
   --safe-area-inset-top: 0px;
@@ -448,6 +451,24 @@ footer {
     overflow: hidden; }
     .list-items .list-item.featured {
       background-color: #cdecf9; }
+    .list-items .list-item.list-item-website, .list-items .list-item.list-item-media {
+      position: relative;
+      margin-bottom: 0.5rem; }
+      @media (min-width: 960px) {
+        .list-items .list-item.list-item-website, .list-items .list-item.list-item-media {
+          margin-right: 0.5rem; } }
+      .list-items .list-item.list-item-website img, .list-items .list-item.list-item-media img {
+        width: 100%;
+        height: auto; }
+      .list-items .list-item.list-item-website h3, .list-items .list-item.list-item-media h3 {
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0.5rem !important;
+        background-color: rgba(255, 255, 255, 0.8); }
     @media (min-width: 960px) {
       .list-items .list-item {
         width: 300px; } }
