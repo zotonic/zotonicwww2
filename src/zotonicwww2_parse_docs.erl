@@ -77,7 +77,7 @@ do_import(ImportType, Context0) when ImportType =:= incremental; ImportType =:= 
             resource_ids => []
         },
         Fs),
-    % Delete all previously imported documentation not mentioned anymore
+    % Clean all previously imported documentation not mentioned anymore
     % in the current import.
     cleanup_deleted_docs(ImportType, maps:get(resource_ids, Stats), Context),
     {ok, Stats}.
@@ -87,6 +87,7 @@ cleanup_deleted_docs(ImportType, ResourceIds, Context) ->
     ToDelete = AllIds -- ResourceIds,
     lists:foreach(
         fun(Id) ->
+            % Set the doc to unpublished, can be deleted later.
             m_rsc:update(Id, #{ <<"is_published">> => false }, Context)
         end,
         ToDelete).
