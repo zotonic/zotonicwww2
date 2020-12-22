@@ -68,11 +68,29 @@ do_import(ImportType, Context0) when ImportType =:= incremental; ImportType =:= 
             end,
             add_edges(RscId, Edges, Context),
             Count = maps:get(Cat, Stat, 0),
-            Stat#{ Cat => Count + 1 }
+            Stat#{
+                Cat => Count + 1,
+                resource_ids => [ RscId | maps:get(resource_ids, Stat) ]
+            }
         end,
-        #{},
+        #{
+            resource_ids => []
+        },
         Fs),
+    % Delete all previously imported documentation not mentioned anymore
+    % in the current import.
+    cleanup_deleted_docs(ImportType, maps:get(resource_ids, Stats), Context),
     {ok, Stats}.
+
+cleanup_deleted_docs(ImportType, ResourceIds, Context) ->
+    AllIds = all_doc_ids(ImportType, Context),
+    ToDelete = AllIds -- ResourceIds,
+    lists:foreach(
+        fun(Id) ->
+            m_rsc:update(Id, #{ <<"is_published">> => false }, Context)
+        end,
+        ToDelete).
+
 
 github_url(F) ->
     F1 = re:replace(F, ".html$", ".rst"),
@@ -670,3 +688,31 @@ cleanup_edges_do_not_run(Context) ->
     z:flush(Context),
     {ok, Count}.
 
+
+%% @doc Fetch all ids from the documentation category that have a name
+%% starting with 'doc_'. These are the imported documents.
+-spec all_doc_ids( full | incremental, z:context() ) -> list( m_rsc:resource_id() ).
+all_doc_ids(full, Context) ->
+    all_doc_ids_category(documentation, Context);
+all_doc_ids(incremental, Context) ->
+    all_doc_ids_category(reference, Context).
+
+all_doc_ids_category(Name, Context) ->
+    % All categories are organized in a tree. Every category in the
+    % tree has a number. This fetches the number range for the
+    % named category and all its sub-categories.
+    {From, To} = m_category:get_range_by_name(Name, Context),
+    % The number of the category in the category tree is pivoted into
+    % the field 'pivot_category_nr'. In this way we can find all
+    % resources within a category.
+    Ids = z_db:q("
+        select id
+        from resource
+        where name like 'doc_%'
+          and pivot_category_nr >= $1
+          and pivot_category_nr <= $2",
+        [ From, To ],
+        Context),
+    % The query above returns records, unpack them and return a list of
+    % resource ids.
+    [ Id || {Id} <- Ids ].
