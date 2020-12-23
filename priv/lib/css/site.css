@@ -392,6 +392,8 @@ html {
       display: block;
       width: 100%;
       max-width: 100%; } }
+  #content figure.media-preview {
+    max-width: 25vw; }
   #content figure figcaption {
     font-size: 0.9rem;
     padding: 5px 0;
