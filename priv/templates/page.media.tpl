@@ -15,9 +15,7 @@
     <h1>{{ id.title }}</h1>
 
     {% if id.is_a.document %}
-        <a href="{% url media_inline id=id %}" target="_blank">
-            {% include "_body_media.tpl" id=id mediaclass="media-preview" align="left" %}
-        </a>
+        {% include "_body_media.tpl" id=id mediaclass="media-preview" align="left" caption='-' link={media_inline id=id}|url %}
     {% endif %}
 
     <p class="summary">
