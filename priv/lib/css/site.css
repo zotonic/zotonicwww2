@@ -455,26 +455,29 @@ footer {
         margin-right: 0.5rem; } }
     .list-items .list-item.featured {
       background-color: #cdecf9; }
-    .list-items .list-item.list-item-website, .list-items .list-item.list-item-media {
-      position: relative; }
-      .list-items .list-item.list-item-website img, .list-items .list-item.list-item-media img {
-        width: 100%;
-        height: auto; }
-      .list-items .list-item.list-item-website h3, .list-items .list-item.list-item-media h3 {
-        position: absolute;
-        bottom: 0;
-        margin: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        padding: 0.5rem !important;
-        background-color: rgba(255, 255, 255, 0.8); }
     @media (min-width: 960px) {
       .list-items .list-item {
         width: 300px; } }
     @media (min-width: 1100px) {
       .list-items .list-item {
         width: 400px; } }
+
+.page-relations .list-item.list-item-website, .page-relations .list-item.list-item-media {
+  position: relative; }
+  .page-relations .list-item.list-item-website img, .page-relations .list-item.list-item-media img {
+    width: 100%;
+    height: auto; }
+  .page-relations .list-item.list-item-website h3, .page-relations .list-item.list-item-media h3 {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0.5rem !important;
+    background-color: rgba(255, 255, 255, 0.8); }
+  .page-relations .list-item.list-item-website p, .page-relations .list-item.list-item-media p {
+    display: none; }
 
 .search .list-items .list-item {
   width: 100%; }
@@ -484,6 +487,23 @@ footer {
   .search .list-items .list-item p {
     max-width: 55rem;
     margin: 0; }
+  .search .list-items .list-item.list-item-website, .search .list-items .list-item.list-item-media {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: minmax(20%, 20rem) 1fr; }
+    .search .list-items .list-item.list-item-website > img, .search .list-items .list-item.list-item-media > img {
+      grid-column: 1;
+      grid-row: 1/3;
+      max-width: 100%;
+      width: auto; }
+    .search .list-items .list-item.list-item-website > h3, .search .list-items .list-item.list-item-media > h3 {
+      grid-column: 2;
+      grid-row: 1;
+      max-width: 35rem; }
+    .search .list-items .list-item.list-item-website > p, .search .list-items .list-item.list-item-media > p {
+      grid-column: 2;
+      grid-row: 2;
+      max-width: 35rem !important; }
 
 .connections {
   position: relative;

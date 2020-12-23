@@ -15,4 +15,7 @@
             <span class="text-muted">{{ id.category_id.title|lower }}</span>
         </a>
     </h3>
+    <p>
+        {{ id|summary }}
+    </p>
 </div>
