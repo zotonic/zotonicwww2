@@ -47,7 +47,7 @@
 {% endblock %}
 
 {% block content_after %}
-<div class="page-relations clearfix">
+<div class="page-relations">
     {% with id.o.relation as relo %}
     {% with id.s.relation as rels %}
     {% with id.s.haspart -- [ id.category_id ] as hasparts %}
