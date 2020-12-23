@@ -45,3 +45,75 @@
     {% endif %}
 
 {% endblock %}
+
+{% block content_after %}
+<div class="page-relations">
+    {% with id.o.relation as relo %}
+    {% with id.s.relation as rels %}
+    {% with id.s.haspart -- [ id.category_id ] as hasparts %}
+    {% with hasparts[1].o.haspart as hassibling %}
+        {% if relo or rels or hasparts %}
+            <div class="connections">
+                <h3>&#x21C4; {_ See also _}</h3>
+
+                <div class="list-items">
+                    {% for id in hasparts %}
+                        {% catinclude "_list_item.tpl" id is_highlight %}
+                    {% endfor %}
+                    {% for id in relo %}
+                        {% if not id|member:hasparts %}
+                            {% catinclude "_list_item.tpl" id %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for id in rels %}
+                        {% if  not id|member:hasparts
+                           and not id|member:relo
+                        %}
+                            {% catinclude "_list_item.tpl" id %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for id in hassibling %}
+                        {% if  not id|member:hasparts
+                           and not id|member:relo
+                           and not id|member:rels
+                        %}
+                            {% catinclude "_list_item.tpl" id %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+
+    {% if id.s.references as refs %}
+        <div class="connections">
+            <h3>&rarr; {_ Referred by _}</h3>
+            <div class="list-items">
+                {% for id in refs %}
+                    {% catinclude "_list_item.tpl" id %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="connections">
+        <h3>{_ Latest in _} {{ id.category_id.title }}</h3>
+        <div class="list-items">
+            {% for id in m.search[{latest cat=id.category_id pagelen=20}] %}
+                {% catinclude "_list_item.tpl" id %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="connections">
+        <h3>&#8712; {{ id.category_id.title }} <span class="text-muted">{_ Category _}</span></h3>
+        <div class="list-items">
+            {% catinclude "_list_item.tpl" id.category_id %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
