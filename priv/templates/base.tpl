@@ -22,10 +22,12 @@
       {% endblock %}
     </title>
 
-    <!-- There is a default favicon dispatch in the mod_base. The favicon.ico -->
-    <!-- file is located in apps/zotonic_mod_base/priv/lib/images/favicon.ico -->
-    <!-- Place your own favicon.ico file in your site's priv/lib/images/ -->
-    <!-- directory to overrule this favicon.ico file. Or add your own dispatch. -->
+    <!--
+      There is a default favicon dispatch in the mod_base. The favicon.ico
+      file is located in apps/zotonic_mod_base/priv/lib/images/favicon.ico
+      Place your own favicon.ico file in your site's priv/lib/images/
+      directory to overrule this favicon.ico file. Or add your own dispatch.
+    -->
     <link rel="shortcut icon" type="image/x-icon" href="{% url favicon %}">
 
     <!--

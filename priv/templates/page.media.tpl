@@ -16,7 +16,7 @@
 
     {% if id.is_a.document %}
         <a href="{% url media_inline id=id %}" target="_blank">
-            {% include "_body_media.tpl" id=id mediaclass="body-media-medium" align="left" %}
+            {% include "_body_media.tpl" id=id mediaclass="media-preview" align="left" %}
         </a>
     {% endif %}
 
