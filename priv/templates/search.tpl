@@ -11,7 +11,7 @@
         <span class="text-muted">{_ Search _}</span> {% if q.qs %}“{{ q.qs|escape }}”{% endif %}
     </h1>
 
-    {% if not q.page %}
+    {% if not q.page and q.qs|trim|length > 0 %}
         {% if m.zotonicwww2_search.exact_match[q.qs] as match_ids %}
             <div class="search-results">
                 <div class="connections paged">
