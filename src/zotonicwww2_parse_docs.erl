@@ -708,7 +708,7 @@ all_doc_ids_category(Name, Context) ->
     % resources within a category.
     Ids = z_db:q("
         select id
-        from resource
+        from rsc
         where name like 'doc_%'
           and pivot_category_nr >= $1
           and pivot_category_nr <= $2",
