@@ -1,6 +1,6 @@
 %% @author Marc Worrell <marc@worrell.nl>
 %% @copyright 2021 Marc Worrell
-%% @doc Filter for sorting release note resources on their version number.
+%% @doc Template filter for sorting release note resources on their version number.
 
 %% Copyright 2021 Marc Worrell
 %%
