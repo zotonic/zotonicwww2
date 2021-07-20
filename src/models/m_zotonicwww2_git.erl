@@ -282,15 +282,20 @@ run_gitcmd(Cmd, Context) ->
 %% @doc Return the directory of the git checkout.
 -spec git_dir( z:context() ) -> file:filename_all().
 git_dir(Context) ->
-    filename:join([ z_path:site_dir(Context), <<"priv">>, <<"data">>, <<"zotonic-git">> ]).
+    filename:join([ base_dir(Context), <<"zotonic-git">> ]).
 
 %% @doc Return the directory for the generated edoc documentation (from the erlang sources)
 -spec edoc_dir( z:context() ) -> file:filename_all().
 edoc_dir(Context) ->
-    filename:join([ z_path:site_dir(Context), <<"priv">>, <<"data">>, <<"doc">>, <<"edoc">> ]).
+    filename:join([ base_dir(Context), <<"doc">>, <<"edoc">> ]).
 
 %% @doc Return the directory for the generated html documentation (from ReStructuredText)
 -spec doc_dir( z:context() ) -> file:filename_all().
 doc_dir(Context) ->
-    filename:join([ z_path:site_dir(Context), <<"priv">>, <<"data">>, <<"doc">>, <<"html">> ]).
+    filename:join([ base_dir(Context), <<"doc">>, <<"html">> ]).
+
+%% @doc Return the base directory for all data.
+-spec base_dir( z:context() ) -> file:filename_all().
+base_dir(Context) ->
+    z_path:files_subdir_ensure(<<"data">>, Context).
 

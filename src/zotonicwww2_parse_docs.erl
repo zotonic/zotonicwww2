@@ -254,12 +254,25 @@ filename_to_name(Name, RevPath) ->
     io:format("No link map for: ~p in ~p~n", [ Name, RevPath ]),
     error.
 
-
 parse_file(F) ->
     {ok, Bin} = file:read_file(F),
     {ok, Html} = z_html_parse:parse(Bin),
-    find_main(F, Html).
+    find_main(F, replace_anchors(Html) ).
 
+% All anchors in the generated HTML are of the format <span id="..."></span>
+% As the 'id' is removed during sanitization we replace these anchors
+% with <a name="..."></a>.
+replace_anchors(Html) when is_list(Html) ->
+    lists:map(fun replace_anchors/1, Html);
+replace_anchors({<<"span">>, [ {<<"id">>, SpanId} ], []}) ->
+    {<<"a">>, [ {<<"name">>, SpanId} ], []};
+replace_anchors({Elt, [ {<<"id">>, Id} ], SubElts}) ->
+    SubElts1 = replace_anchors(SubElts),
+    {Elt, [], [ {<<"a">>, [ {<<"name">>, Id} ], []} | SubElts1 ]};
+replace_anchors({Element, Args, SubElts}) when is_list(SubElts) ->
+    {Element, Args, replace_anchors(SubElts)};
+replace_anchors(E) ->
+    E.
 
 find_main(File, Html) ->
     FileB = unicode:characters_to_binary(File),

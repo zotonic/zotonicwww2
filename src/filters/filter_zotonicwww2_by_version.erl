@@ -71,5 +71,9 @@ vsn(<<"Notes", _/binary>>) ->
 vsn(Vsn) ->
     Vs = binary:split( z_string:trim(Vsn), <<".">>, [ global ]),
     lists:map(
-        fun z_convert:to_integer/1,
+        fun(N) ->
+            try z_convert:to_integer(N)
+            catch _:_ -> N
+            end
+        end,
         Vs).

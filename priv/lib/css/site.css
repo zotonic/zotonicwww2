@@ -444,6 +444,12 @@ footer {
 #sidedrawer > div > .nav-stacked .nav-stacked .nav-stacked .nav-stacked > li > a {
   padding-left: 5.2rem; }
 
+dd {
+  margin-bottom: 10px; }
+
+ul.simple li {
+  margin-left: 20px; }
+
 .list-items {
   display: flex;
   flex-wrap: wrap;

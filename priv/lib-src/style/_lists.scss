@@ -1,3 +1,13 @@
+dd {
+    margin-bottom: $padding-large-vertical;
+}
+
+ul.simple {
+    li {
+        margin-left: 20px;
+    }
+}
+
 .list-items {
     display: flex;
     flex-wrap: wrap;

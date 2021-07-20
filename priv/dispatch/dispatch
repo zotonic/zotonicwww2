@@ -9,7 +9,7 @@
     % Generated edocs
     {edoc, ["edoc", '*'],
            controller_static_pages,
-           [ {root, "priv/data/doc/edoc"},
+           [ {root, {files, "data/doc/edoc"}},
              {allow_directory_index, true}
            ]}
 ].
