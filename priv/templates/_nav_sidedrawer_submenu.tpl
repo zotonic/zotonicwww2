@@ -1,13 +1,13 @@
 <ul class="nav nav-stacked">
-{% for mid, submenu in menu %}
-    <li {% if mid == id %}class="selected"{% endif %}>
-        <a href="{{ mid.page_url }}">{{ mid.short_title|default:mid.title }}</a>
+{% for node in menu %}
+    <li {% if node.id == id %}class="selected"{% endif %}>
+        <a href="{{ node.id.page_url }}">{{ node.id.short_title|default:node.id.title }}</a>
 
         {# Shows all menu items on the path to the current menu item, and the
          # submenu below the current menu item.
          #}
-        {% if submenu and mid|member:trail %}
-            {% include "_nav_sidedrawer_submenu.tpl" menu=submenu %}
+        {% if node.tree and node.id|member:trail %}
+            {% include "_nav_sidedrawer_submenu.tpl" menu=node.tree %}
         {% endif %}
     </li>
 {% endfor %}

@@ -33,11 +33,11 @@
                 is.s.haspart[1].category_id
             ]|menu_trail as trail %}
         {% with trail|last as id %}
-            {% for mid, submenu in m.rsc.main_menu.menu %}
-                <li {% if mid == id %}class="selected"{% endif %}>
-                    <a href="{{ mid.page_url }}">{{ mid.short_title|default:mid.title }}</a>
-                    {% if submenu and mid|member:trail %}
-                        {% include "_nav_sidedrawer_submenu.tpl" menu=submenu %}
+            {% for menu in m.rsc.main_menu.menu %}
+                <li {% if menu.id == id %}class="selected"{% endif %}>
+                    <a href="{{ menu.id.page_url }}">{{ menu.id.short_title|default:menu.id.title }}</a>
+                    {% if menu.tree and menu.id|member:trail %}
+                        {% include "_nav_sidedrawer_submenu.tpl" menu=menu.tree %}
                     {% endif %}
                 </li>
             {% endfor %}
