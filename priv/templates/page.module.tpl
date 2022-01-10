@@ -28,12 +28,12 @@
         {% endif %}
     {% endfor %}
 
-    {% with id.o.relation as relo %}
-    {% with id.s.relation as rels %}
-    {% with id.s.haspart -- [id.category_id] as hasparts %}
+    {% with id.o.relation|is_visible as relo %}
+    {% with id.s.relation|is_visible as rels %}
+    {% with id.s.haspart|is_visible -- [id.category_id] as hasparts %}
         {% if relo or rels or hasparts %}
             <div class="connections">
-                <h3>&#x21C4; {_ See also _}</h3>
+                <h3>{_ See also _}</h3>
 
                 <div class="list-items">
                     {% for id in hasparts %}
@@ -56,9 +56,9 @@
     {% endwith %}
     {% endwith %}
 
-    {% if id.s.references as refs %}
+    {% if id.s.references|is_visible as refs %}
         <div class="connections">
-            <h3>&rarr; {_ Referred by _}</h3>
+            <h3>{_ Referred by _}</h3>
             <div class="list-items">
                 {% for rid in refs %}
                     {% catinclude "_list_item.tpl" rid %}
@@ -67,6 +67,7 @@
         </div>
     {% endif %}
 
+{#
     <div class="connections">
         <h3>&#8712; {{ id.category_id.title }} <span class="text-muted">{_ Category _}</span></h3>
 
@@ -74,7 +75,7 @@
             {% catinclude "_list_item.tpl" id.category_id %}
         </div>
     </div>
-
+#}
 </div>
 
 {% endblock %}

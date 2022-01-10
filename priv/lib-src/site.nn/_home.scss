@@ -1,0 +1,124 @@
+.page-home {
+    #header {
+        .header__logo {
+            display: none !important;
+        }
+    }
+
+    #nav-label {
+        color: $brand-primary;
+    }
+}
+
+.home {
+    h1 {
+        display: none;
+    }
+
+    // padding-top: 2rem;
+    margin-bottom: 30px;
+
+    .home__text {
+        padding: 0 20px;
+
+        .home__text__block {
+            background-color: $home-bg;
+            border-radius: 20px;
+            padding: 20px;
+
+            max-width: 700px;
+            margin: 0 auto;
+
+            &.intro {
+                p {
+                    font-size: 1.1em;
+                }
+            }
+
+            .home__text__more {
+                text-align: center;
+                margin-bottom: 0;
+            }
+
+
+            .home__text__buttons {
+                @media (min-width: 500px) {
+                    display: flex;
+                }
+                margin: 3rem 0 2rem 0;
+
+                a {
+                    flex-grow: 1;
+                    display: block;
+                    text-align: center;
+                    margin-bottom: 0.5rem;
+                }
+            }
+
+            > :first-child {
+                margin-top: 0;
+                padding-top: 0;
+            }
+        }
+    }
+
+    .home__cols {
+
+        .btn {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .home__rails {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .naambordje {
+            &.first {
+                padding-top: 40px;
+                a {
+                    display: block;
+                    border-radius: $border-radius;
+
+                    img {
+                        display: block;
+                    }
+                }
+            }
+
+            img {
+                border-radius: $border-radius;
+            }
+
+            padding: 20px;
+            margin: 0;
+
+            background-image: url("/lib/images/track3.png");
+            background-repeat: repeat-y;
+            background-size: 100%;
+            background-position: 10px 0%;
+        }
+    }
+
+    .naambordje_logo,
+    .naambordje_button {
+        a {
+            border-radius: $border-radius;
+            background-image: url("/lib/images/plank-small.jpg");
+            display: block;
+            color: $text-color;
+            font-size: $font-size-h2;
+            font-family: 'Allerta Stencil', $font-family-sans-serif;
+            text-shadow: $content-bg-light 0 0 4px;
+            text-decoration: none;
+            text-align: center;
+            padding: 20px 10px;
+
+            &:hover {
+                filter: brightness(110%);
+            }
+        }
+    }
+}

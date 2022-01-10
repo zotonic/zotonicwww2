@@ -1,0 +1,52 @@
+.editor {
+    .media {
+        border: 1px solid #ccc;
+        border-radius: $border-radius;
+        padding: 15px 15px 0 15px;
+
+        li {
+            position: relative;
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 15px;
+
+            img {
+                border-radius: $border-radius;
+            }
+
+            &.ui-sortable-placeholder {
+                display: inline-block;
+                width: 180px;
+                height: 60px;
+            }
+
+            .z-btn-remove {
+                position: absolute;
+                top: 4px;
+                right: 4px;
+                line-height: 16px;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 20px;
+                background-color: rgba(255, 0, 0, 0.5);
+
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(255, 0, 0, 1);
+                }
+            }
+        }
+    }
+}
+
+.form__is_dependent,
+.form__is_published {
+    display: none;
+}
+
+
+.mce-wordcount {
+    font-weight: bold !important;
+    font-size: 16px !important;
+}

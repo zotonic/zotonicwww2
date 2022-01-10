@@ -1,0 +1,22 @@
+.geomap-static {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+
+    .geomap-row-first {
+        :first-child {
+            border-top-left-radius: $border-radius;
+        }
+        :last-child {
+            border-top-right-radius: $border-radius;
+        }
+    }
+
+    .geomap-row-last {
+        :first-child {
+            border-bottom-left-radius: $border-radius;
+        }
+        :last-child {
+            border-bottom-right-radius: $border-radius;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.pagination {
+    > li:not(.active) {
+        > a {
+            .bg-light &,
+            .bg-middle & {
+                color: $text-color;
+            }
+        }
+    }
+}

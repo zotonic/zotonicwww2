@@ -1,0 +1,104 @@
+#sidedrawer {
+    background-color: $body-bg;
+    color: $text-color;
+
+    > div {
+        > label {
+            display: block;
+            text-align: right;
+            font-size: 40px;
+            line-height: 30px;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+    }
+
+
+    > div > .nav-stacked > li > a {
+        text-transform: uppercase;
+    }
+
+    .nav-stacked {
+        padding-left: 1.2rem;
+        line-height: 2rem;
+
+        a {
+            padding: 0;
+            color: $text-color;
+
+            &:hover {
+                color: $contrast-color;
+            }
+        }
+        li {
+            margin-top: 0;
+            padding: 0;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+        }
+
+        ul {
+            padding: 0 0 0 1.2rem;
+            display: none;
+        }
+
+        li.nav__show {
+            > a {
+                color: $contrast-color;
+                &::before {
+                    position: absolute;
+                    left: -0.95rem;
+                    content: ">";
+                }
+            }
+            > ul {
+                display: block;
+            }
+        }
+
+        li.divider {
+            padding: 1rem;
+        }
+    }
+}
+
+@media (min-width: 1500px) {
+    #sidedrawer-bg,
+    #nav-label {
+        display: none;
+    }
+
+    #sidedrawer {
+        > div {
+            > label {
+                display: none;
+            }
+        }
+    }
+}
+
+
+.page-haspart {
+    clear: both;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 2.8rem;
+
+    .haspart__prev {
+        float: left;
+        &:before {
+            content: " < ";
+        }
+    }
+
+    .haspart__next {
+        float: right;
+        &:after {
+            content: " > ";
+        }
+    }
+}
+
+.pagination {
+    width: 100%;
+}

@@ -6,7 +6,7 @@
 
 {% lib
     "js/modules/jstz.min.js"
-    "cotonic/zotonic-wired-bundle.js"
+    "cotonic/cotonic.js"
     "js/apps/zotonic-wired.js"
     "js/apps/z.widgetmanager.js"
     "js/modules/z.notice.js"
@@ -24,24 +24,27 @@
 {% block _js_include_extra %}{% endblock %}
 
 <script type="text/javascript">
-  $(function() {
-    var lastScrollTop = 0;
-    var isScrolledDown = false;
+  let lastScrollTop = 0;
+  let isScrolledDown = false;
 
-    window.onscroll = function() {
-      var scrollTop = $(document).scrollTop();
-      if (scrollTop > lastScrollTop) {
-        if (!isScrolledDown && scrollTop > 50) {
-          $('body').addClass('scrolled-down');
-          isScrolledDown = true;
-        }
-      } else if (isScrolledDown) {
-        $('body').removeClass('scrolled-down');
-        isScrolledDown = false;
+  let checkScrollPosition = function() {
+    var scrollTop = $(document).scrollTop();
+    if (scrollTop > lastScrollTop) {
+      if (!isScrolledDown && scrollTop > 50) {
+        $('body').addClass('scrolled-down');
+        isScrolledDown = true;
       }
-      lastScrollTop = scrollTop;
+    } else if (isScrolledDown) {
+      $('body').removeClass('scrolled-down');
+      isScrolledDown = false;
     }
-  });
+    lastScrollTop = scrollTop;
+  }
+  window.onscroll = checkScrollPosition;
+  window.onpageload = checkScrollPosition;
+  window.onhashchange = function() {
+    lastScrollTop = 0;
+  };
 </script>
 
 <script type="text/javascript">

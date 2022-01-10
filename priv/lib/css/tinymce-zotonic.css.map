@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAEA,IAAK;EACD,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EAEtB,iFAA6E;IACzE,KAAK,EAAE,GAAG;IACV,UAAU,EAAE,UAAU",
+"sources": ["../../lib-src/tinymce-zotonic.scss"],
+"names": [],
+"file": "tinymce-zotonic.css"
+}

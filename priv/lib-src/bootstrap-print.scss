@@ -1,0 +1,199 @@
+/* Zotonic admin scss main file, setting our preferences. */
+
+
+/* -------begin customization-------- */
+
+$brand-bright-color: #fa99d1;
+
+
+$brand-primary:      #e5dde2; // #0fa2db;
+$brand-success:      #5cb85c;
+$brand-info:         #5bc0de;
+$brand-warning:      #f0ad4e;
+$brand-danger:       #d9534f;
+
+
+$body-bg-darkest:    #424550;
+$body-bg-dark:       #6D6569;
+$body-bg-middle:     #B09FA9;
+$body-bg-light:      #D6C8D0;
+
+$body-bg:            #ffffff;
+
+
+$body-bg-text:       #f7dbeb;
+
+$content-bg:         #faf1f6;
+$content-bg-middle:  $content-bg;
+$content-bg-dark:    #af9fa9; // #e5dde2; // #d3c3cc;
+$content-bg-light:   #faf1f6; // #e5dde2;
+
+$modal-content-bg:  $content-bg-light;
+
+$nav-bg:             #312a38;
+$btn-bg:             #6c6669;
+
+$border-color:       $nav-bg;
+$border-radius:      8px;
+
+$home-bg:            #f6daea;
+
+$navbar-default-bg:  #312a38;
+$navbar-default-link-color: #e6e6e6;
+$navbar-default-link-active-color: $brand-bright-color;
+$navbar-default-link-hover-color: $brand-bright-color;
+
+$btn-primary-color:  #e5cdda;
+$btn-primary-bg:     $body-bg-middle;
+$btn-primary-border: darken($btn-primary-bg, 5%);
+
+$item-bg-dark:       #6c6669;
+$item-bg-light:      #ab9782;
+
+$gray-base:          #000 !default;
+$gray-darker:        lighten($gray-base, 13.5%); // #222
+$gray-dark:          lighten($gray-base, 20%);   // #333
+$gray:               lighten($gray-base, 33.5%); // #555
+$gray-light:         lighten($gray-base, 46.7%); // #777
+$gray-lighter:       lighten($gray-base, 69%);   // #b0b0b0
+$gray-lightest:      lighten($gray-base, 93.5%); // #eee
+
+$icon-font-path: "/lib/fonts/";
+
+$input-border-radius:         0;
+$input-border-radius-large:   0;
+$input-border-radius-small:   0;
+
+
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-base:        $font-family-sans-serif;
+
+$font-size-base:  16px;
+$font-size-medium: ceil(($font-size-base * 1.15));
+$font-size-large: ceil(($font-size-base * 1.25));
+$font-size-small: ceil(($font-size-base * .85));
+
+$font-size-h1:    floor(($font-size-base * 2.15));
+$font-size-h2:    floor(($font-size-base * 1.7));
+$font-size-h3:    ceil(($font-size-base * 1.25));
+$font-size-h4:    ceil(($font-size-base * 1.25));
+$font-size-h5:    $font-size-base;
+$font-size-h6:    ceil(($font-size-base * .85));
+
+$text-color: #222;
+$text-color-gray: #555;
+$link-color: black;
+
+$nav-active-text: #FA9AD1;
+
+/////// Grid break points ///////
+
+// No sidemenu (use hamburger menu)
+$grid-max-no-sidemenu:    759px;
+$grid-min-sidemenu:       760px;
+
+$navbar-height:           110px;
+
+/* import the necessary Bootstrap files */
+
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/variables";
+
+$link-hover-color: lighten($link-color, 8%);
+
+$pagination-bg:          none;
+$pagination-disabled-bg: none;
+$pagination-color:       white;
+$pagination-active-bg:   $item-bg-dark;
+$pagination-active-border: $pagination-border;
+
+
+/* -------end customization-------- */
+
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/variables";
+
+// Core variables and mixins
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/mixins";
+
+// Reset and dependencies
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/normalize";
+
+/* Zotonic.com site definitions */
+// @import "site/base";
+
+@import "site/grid_print";
+
+// @import "tufte/tufte";
+
+
+// @import "site/list";
+// @import "site/nav";
+// @import "site/edit";
+// @import "site/dragdrop";
+// @import "site/pager";
+// @import "site/forms";
+// @import "site/geomap";
+// @import "site/media";
+// @import "site/filter";
+
+// @import "site/home";
+// @import "site/warvictim";
+// @import "site/collectionpoint";
+
+@import "tufte/print";
+
+/* finally, import Bootstrap to set the changes! */
+
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/print";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/glyphicons";
+
+// Core CSS
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/scaffolding";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/type";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/code";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/grid";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/tables";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/forms";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/buttons";
+
+// // Components
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/component-animations";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/dropdowns";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/button-groups";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/input-groups";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/navs";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/navbar";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/breadcrumbs";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/pagination";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/pager";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/labels";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/badges";
+// // @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/jumbotron";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/thumbnails";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/alerts";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/progress-bars";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/media";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/list-group";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/panels";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/responsive-embed";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/wells";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/close";
+
+// // Components w/ JavaScript
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/modals";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/tooltip";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/popovers";
+// @import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/carousel";
+
+// Utility classes
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/utilities";
+@import "bootstrap-sass-3.4.1/assets/stylesheets/bootstrap/responsive-utilities";
+
+
+/* -------begin customization-------- */
+/* create new custom classes from existing classes */
+
+
+/* -------end customization-------- */
+

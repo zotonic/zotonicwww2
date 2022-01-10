@@ -1,0 +1,18 @@
+.connections {
+    clear: both;
+}
+
+.list-item {
+    p {
+        max-width: 55%;
+
+        @media screen and (max-width: $screen-width-breakpoint) {
+           max-width: 90%;
+        }
+
+        margin-inline-start: 5%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

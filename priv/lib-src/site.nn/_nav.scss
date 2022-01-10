@@ -1,0 +1,111 @@
+.nav.nav-stacked {
+
+    @media (min-width: $grid-min-sidemenu) {
+        li.name-page_home {
+            display: none;
+        }
+    }
+
+    li {
+        margin-top: 2rem;
+
+        a {
+            background-color: $nav-bg;
+            padding: 1.4rem 1rem;
+            text-align: center;
+            text-transform: lowercase;
+            color: $brand-primary;
+            font-family: 'Allerta Stencil', $font-family-sans-serif;
+
+            &:hover {
+                background-color: $content-bg-light;
+                color: black;
+            }
+        }
+
+        &.active a {
+            color: $nav-active-text;
+        }
+    }
+
+    form {
+        input {
+            padding: 0 10px;
+            background-color: inherit;
+            border: none;
+            border-bottom: 1px solid $brand-primary;
+            color: $brand-primary;
+            box-shadow: none;
+            &::placeholder {
+                color: darken($brand-primary, 10%);
+            }
+
+            .bg-light & {
+                color: $text-color;
+
+                &::placeholder {
+                    color: lighten($text-color, 20%);
+                }
+            }
+        }
+    }
+
+}
+
+
+#nav-label {
+    color: $nav-active-text;
+}
+
+#header {
+
+    @media (max-width: $grid-max-no-sidemenu) {
+        .navbar {
+            margin-bottom: 0;
+        }
+    }
+
+    .header__logo {
+        display: block !important;
+        padding: 10px;
+        img {
+            max-width: 300px;
+        }
+
+        @media (max-width: $grid-max-no-sidemenu) {
+            a {
+                margin-left: calc(50vw - 100px);
+                img {
+                    max-width: 100px;
+                }
+            }
+        }
+
+    }
+
+    .header__navs {
+
+        .header__user {
+            text-transform: uppercase;
+            a:not(.btn) {
+                color: $brand-primary;
+
+                .bg-light & {
+                    color: lighten($text-color, 10%);
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    text-align: center;
+
+    a {
+        color: $content-bg;
+
+        &:hover {
+            color: $nav-active-text;
+        }
+    }
+}

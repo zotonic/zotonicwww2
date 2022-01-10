@@ -1,0 +1,9 @@
+/* Styling for tinymce */
+body {
+  display: flex;
+  flex-direction: column; }
+  body > p > .z-tinymce-media.z-tinymce-media-align-left.z-tinymce-media-size-small {
+    width: 24%;
+    box-sizing: border-box; }
+
+/*# sourceMappingURL=tinymce-zotonic.css.map */

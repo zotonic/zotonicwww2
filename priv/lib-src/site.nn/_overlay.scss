@@ -1,0 +1,99 @@
+
+$overlay_z_index: 1031;
+
+.modal-overlay.modal-overlay-level-1 {
+    z-index: $overlay_z_index+1;
+}
+
+.modal-overlay.modal-overlay-level-2 {
+    z-index: $overlay_z_index+2;
+}
+
+.modal-overlay.modal-overlay-level-3 {
+    z-index: $overlay_z_index+3;
+}
+
+/* modal overlay - full screen dialog - below normal dialog */
+.modal-overlay {
+    position: fixed;
+    z-index: $overlay_z_index;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    overflow: hidden;
+    // overflow-y: auto;
+    margin: 10px;
+
+    background-color: black;
+    background-color: rgba(0,0,0,0.9);
+
+    color: white;
+
+    > div {
+        background-color: rgba(255,255,255,0.97);
+        border-radius: 10px;
+    }
+
+    .modal-overlay-close {
+        position: fixed;
+        z-index: 2033;
+        right: 10px;
+        top: 10px;
+        padding: 2px 8px 14px 8px;
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 0.6;
+        cursor: pointer;
+        color: white;
+        background-color: black;
+        background-color: rgba(0,0,0,0.4);
+        border-radius: 50%;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .sticky {
+        position: sticky;
+        top: 0;
+        z-index: $overlay_z_index+1;
+    }
+
+    .sticky-bottom {
+        position: sticky;
+        bottom: 0;
+        z-index: $overlay_z_index+1;
+
+        padding: 10px;
+        background-color: white;
+
+        > div {
+            max-width: 52rem;
+            margin: 0 auto;
+        }
+    }
+
+    .overlay-content-wrapper {
+        height: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+
+        .overlay-content {
+            overflow: hidden;
+            padding: $padding-base-vertical $padding-base-horizontal;
+
+            .body {
+                max-width: 52rem;
+                margin: 0 auto;
+            }
+        }
+    }
+
+}
+
+body.overlay-open,
+body.modal-open {
+    overflow: hidden;
+}

@@ -1,0 +1,292 @@
+/* Styling of special page parts
+ */
+
+html {
+    font-size: 16px;
+}
+
+#content {
+
+    .page-header {
+        margin-top: 0;
+        height: 30vw;
+        max-height: 19.7rem;
+        background-size: cover;
+        background-position: center;
+        padding-left: 0;
+
+        h1 {
+            padding-top: 1.2rem;
+            @media (min-width: 1200px) {
+                padding-top: 2rem;
+            }
+            margin-top: 0;
+            color: white;
+
+        }
+    }
+
+    h1 {
+        @media (max-width: 600px) {
+            font-size: 2rem;
+        }
+        @media (min-width: 601px) and (max-width: 1200px) {
+            font-size: 3rem;
+        }
+        @media (min-width: 1200px) {
+            font-size: 4rem;
+        }
+    }
+
+    .body {
+        max-width: calc(55rem + 330px);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        padding: 0 2rem;
+        .text-muted {
+            font-weight: normal;
+        }
+        word-break: break-word;
+    }
+
+    .body {
+        h2 {
+            padding-left: 0.4rem;
+            border-left: 1.5rem solid $zotonic-blue;
+            margin-top: 2rem;
+            max-width: 55rem;
+        }
+    }
+
+    p,
+    ol,
+    ul,
+    dl,
+    .admonition {
+        max-width: 55rem;
+        padding: 0 2rem;
+
+        p {
+            padding-left: 0;
+        }
+    }
+
+    p.in-module {
+        background-color: $zotonic-blue;
+        max-width: 100%;
+        overflow: hidden;
+        a {
+            display: block;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            color: white;
+            span {
+                opacity: 0.8;
+            }
+        }
+
+        p.edit-github {
+            text-align: 
+        }
+    }
+
+    // A note block from Sphinx
+    // Make it colored with a darker bar for the title.
+    .admonition {
+        border: 1px solid $zotonic-blue;
+        margin: 1rem 0 1rem 2rem;
+        padding: 0;
+        background-color: $bg-color-marker;
+        overflow: hidden;
+
+        p {
+            padding: 0 0 0 0.5rem;
+            margin-bottom: 0.5rem;
+
+            span.pre {
+                background-color: rgba($code-bg, 0.4);
+            }
+        }
+
+        .admonition-title {
+            color: white;
+            background-color: $zotonic-blue;
+            width: 100%;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+    }
+
+    .docutils {
+        &.container {
+            padding-right: 0;
+            padding-left: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: auto;
+        }
+
+        .code-block-caption {
+            padding-left: 2rem;
+            background: $code-bg;
+            border-top: 1px solid #ccc;
+            color: $text-muted;
+        }
+    }
+
+    pre {
+        padding-left: 2rem;
+        overflow-x: auto;
+        word-break: normal;
+        word-wrap: normal;
+    }
+
+    // Inline code from Sphinx
+    span.pre {
+        font-family: $font-family-monospace;
+        padding: 2px 4px;
+        font-size: 90%;
+        color: $code-color;
+        background-color: $code-bg;
+        border-radius: $border-radius-base;
+        word-break: break-all;
+    }
+
+    .table-wrapper {
+        overflow: auto;
+    }
+
+    table {
+        table-layout: fixed;
+        border: 0;
+        margin: 1rem 0 1rem 2rem;
+
+        tr:nth-child(odd) {
+            td {
+                background-color: $bg-color-marker;
+            }
+        }
+
+        tr {
+            td, th {
+                border: 0;
+                padding: 0.3rem;
+
+                p {
+                    padding: 0;
+                }
+                pre {
+                    padding-left: 10px;
+                }
+            }
+
+            th {
+                font-weight: bold;
+                border-bottom: 1px solid $zotonic-blue;
+            }
+        }
+    }
+
+    .summary {
+        font-size: 1.2rem;
+    }
+
+    figure {
+        img,
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        margin: 0 1rem 1rem 1rem;
+        border-bottom: 1px solid $zotonic-blue;
+
+        &.pull-right {
+            clear: right;
+        }
+
+        &.pull-left {
+            clear: left;
+        }
+
+        &.body-media-medium {
+            display: inline-block;
+            width: 300px;
+            max-width: 50%;
+
+            img {
+                border: 1px solid #d0d0d0;
+            }
+        }
+
+        &.body-media-large {
+            display: block;
+            width: 100%;
+            margin: 0 0 2rem 0;
+
+            img,
+            video {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 400px) {
+            &.body-media-small,
+            &.body-media-medium {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        &.media-preview {
+            max-width: 25vw;
+        }
+
+        figcaption {
+            font-size: 0.9rem;
+            padding: 5px 0;
+            font-style: italic;
+            text-align: right;
+            color: #666;
+        }
+    }
+
+    .page-relations {
+        padding-top: 4rem;
+        clear: both;
+
+        .connections {
+            > h3 {
+                font-weight: normal;
+            }
+        }
+    }
+
+    .toctree-wrapper {
+        display: none;
+    }
+
+}
+
+footer {
+    padding: .5rem 2rem;
+    text-align: right;
+    font-size: 0.8rem;
+    color: $zotonic-blue;
+
+    > * {
+        margin-left: 1rem;
+    }
+
+    a {
+        color: $zotonic-blue;
+    }
+}

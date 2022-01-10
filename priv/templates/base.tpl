@@ -36,8 +36,7 @@
       or sites.
     -->
     {% lib
-          "css/bs3.css"
-          "css/site.css"
+          "css/bootstrap.css"
           "css/logon.css"
           minify
     %}
