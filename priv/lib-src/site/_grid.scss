@@ -35,11 +35,11 @@ body {
     }
 
     @media (min-width: 1500px) {
-        grid-template-columns: minmax(300px,300px) minmax(15px,1fr) minmax(800px,1400px) minmax(15px,1fr);
+        grid-template-columns: minmax(300px,300px) minmax(45px,1fr) minmax(800px,1400px) minmax(15px,1fr);
     }
 
     @media (min-width: 2000px) {
-        grid-template-columns: minmax(300px,500px) minmax(15px,1fr) minmax(800px,1400px) minmax(15px,1fr);
+        grid-template-columns: minmax(300px,500px) minmax(45px,1fr) minmax(800px,1400px) minmax(15px,1fr);
     }
 }
 

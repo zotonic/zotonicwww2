@@ -214,10 +214,10 @@ body {
       grid-template-columns: 0 minmax(15px, 1fr) minmax(800px, 1400px) minmax(15px, 1fr); } }
   @media (min-width: 1500px) {
     body {
-      grid-template-columns: minmax(300px, 300px) minmax(15px, 1fr) minmax(800px, 1400px) minmax(15px, 1fr); } }
+      grid-template-columns: minmax(300px, 300px) minmax(45px, 1fr) minmax(800px, 1400px) minmax(15px, 1fr); } }
   @media (min-width: 2000px) {
     body {
-      grid-template-columns: minmax(300px, 500px) minmax(15px, 1fr) minmax(800px, 1400px) minmax(15px, 1fr); } }
+      grid-template-columns: minmax(300px, 500px) minmax(45px, 1fr) minmax(800px, 1400px) minmax(15px, 1fr); } }
 
 #content-wrapper {
   width: 100%;
@@ -489,7 +489,8 @@ a.bg-danger:focus {
     line-height: 2rem; }
     #sidedrawer .nav-stacked a {
       padding: 0;
-      color: #111; }
+      color: #111;
+      white-space: nowrap; }
       #sidedrawer .nav-stacked a:hover {
         color: #a00000; }
     #sidedrawer .nav-stacked li {
@@ -522,21 +523,31 @@ a.bg-danger:focus {
   clear: both;
   text-align: center;
   overflow: hidden;
+  display: flex;
   margin-top: 2.8rem; }
+  .page-haspart > * {
+    flex-grow: 0;
+    flex-basis: 32%;
+    display: block; }
   .page-haspart .haspart__prev {
-    float: left; }
+    text-align: left;
+    text-indent: -1rem;
+    margin-left: 1rem; }
     .page-haspart .haspart__prev:before {
       content: " < "; }
   .page-haspart .haspart__next {
-    float: right; }
+    text-align: right;
+    margin-right: 1rem; }
     .page-haspart .haspart__next:after {
-      content: " > "; }
+      content: " >";
+      margin-right: -1rem; }
 
 .pagination {
   width: 100%; }
 
 main .admonition.note,
 main .admonition.seealso,
+main .admonition.tip,
 main .admonition-see-also,
 main .admonition-todo,
 main .edit-github {
@@ -550,20 +561,28 @@ main .edit-github {
   line-height: 1.96;
   vertical-align: baseline;
   position: relative; }
-  main .admonition.note p,
+  main .admonition.note p, main .admonition.note pre,
   main .admonition.seealso p,
+  main .admonition.seealso pre,
+  main .admonition.tip p,
+  main .admonition.tip pre,
   main .admonition-see-also p,
+  main .admonition-see-also pre,
   main .admonition-todo p,
-  main .edit-github p {
+  main .admonition-todo pre,
+  main .edit-github p,
+  main .edit-github pre {
     width: 100%; }
   main .admonition.note .first,
   main .admonition.seealso .first,
+  main .admonition.tip .first,
   main .admonition-see-also .first,
   main .admonition-todo .first,
   main .edit-github .first {
     margin-top: 0; }
   main .admonition.note .first ~ p,
   main .admonition.seealso .first ~ p,
+  main .admonition.tip .first ~ p,
   main .admonition-see-also .first ~ p,
   main .admonition-todo .first ~ p,
   main .edit-github .first ~ p {
@@ -571,6 +590,7 @@ main .edit-github {
   @media screen and (max-width: 760px) {
     main .admonition.note,
     main .admonition.seealso,
+    main .admonition.tip,
     main .admonition-see-also,
     main .admonition-todo,
     main .edit-github {
@@ -582,6 +602,8 @@ main .toctree-wrapper {
   display: none; }
 main .page-developerguide .toctree-wrapper {
   display: block; }
+main .literal-block-wrapper {
+  margin-top: 1.4rem; }
 main dt,
 main dd {
   font-size: 1.4rem; }

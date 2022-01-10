@@ -25,6 +25,7 @@
         a {
             padding: 0;
             color: $text-color;
+            white-space: nowrap;
 
             &:hover {
                 color: $contrast-color;
@@ -82,19 +83,30 @@
     clear: both;
     text-align: center;
     overflow: hidden;
+    display: flex;
     margin-top: 2.8rem;
 
+    > * {
+        flex-grow: 0;
+        flex-basis: 32%;
+        display: block;
+    }
+
     .haspart__prev {
-        float: left;
+        text-align: left;
+        text-indent: -1rem;
+        margin-left: 1rem;
         &:before {
-            content: " < ";
+            content: "< ";
         }
     }
 
     .haspart__next {
-        float: right;
+        text-align: right;
+        margin-right: 1rem;
         &:after {
-            content: " > ";
+            content: " >";
+            margin-right: -1rem;
         }
     }
 }

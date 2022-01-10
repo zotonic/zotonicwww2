@@ -29,6 +29,8 @@
                 <p class="page-haspart">
                     {% if siblings[forloop.counter - 1] as prev %}
                         <a class="haspart__prev" href="{{ prev.page_url }}">{{ prev.title }}</a>
+                    {% else %}
+                        <span></span>
                     {% endif %}
                     <a class="haspart__link" href="{{ s.page_url }}">{{ s.title }}</a>
                     {% if siblings[forloop.counter + 1] as next %}

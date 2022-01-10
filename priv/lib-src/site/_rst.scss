@@ -1,6 +1,7 @@
 main {
     .admonition.note,
     .admonition.seealso,
+    .admonition.tip,
     .admonition-see-also,
     .admonition-todo,
     .edit-github {
@@ -15,7 +16,7 @@ main {
         vertical-align: baseline;
         position: relative;
 
-        p {
+        p, pre {
             width: 100%;
         }
 
@@ -44,6 +45,10 @@ main {
         .toctree-wrapper {
             display: block;
         }
+    }
+
+    .literal-block-wrapper {
+        margin-top: 1.4rem;
     }
 
     dt,
