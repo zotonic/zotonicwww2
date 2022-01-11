@@ -394,11 +394,17 @@ flatten({<<"table">>, _, _} = Elt, RevPath) ->
     ];
 flatten({<<"div">>, [], SubElts}, RevPath) ->
     flatten_elt({<<"p">>, [], SubElts}, RevPath);
+flatten({<<"div">>, Attrs, SubElts} = E, RevPath) ->
+    case is_class(Attrs, <<"admonition">>) of
+        true ->
+            flatten_elt({<<"aside">>, Attrs, SubElts}, RevPath);
+        false ->
+            flatten_elt(E, RevPath)
+    end;
 flatten({_, _, _} = Elt, RevPath) ->
     flatten_elt(Elt, RevPath);
 flatten(L, RevPath) when is_list(L) ->
     iolist_to_binary([ flatten(A, RevPath) || A <- L ]).
-
 
 flatten_elt({Elt, Attrs, Enclosed}, RevPath) ->
     case is_ignore(Elt, Attrs, Enclosed) of
@@ -433,6 +439,10 @@ is_ignore(_, Attrs, Enclosed) ->
             is_ignore_class(C, Enclosed)
         end,
         Classes).
+
+is_class(Attrs, Class) ->
+    ClassAttr = proplists:get_value(<<"class">>, Attrs, <<>>),
+    binary:match(ClassAttr, Class) =/= nomatch.
 
 % % Elements that are removed from the html in the body
 % is_ignore_class(<<"admonition-see-also">>, _Enclosed) ->

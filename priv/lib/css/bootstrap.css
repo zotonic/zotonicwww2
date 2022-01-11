@@ -534,7 +534,7 @@ a.bg-danger:focus {
     text-indent: -1rem;
     margin-left: 1rem; }
     .page-haspart .haspart__prev:before {
-      content: " < "; }
+      content: "< "; }
   .page-haspart .haspart__next {
     text-align: right;
     margin-right: 1rem; }
@@ -641,9 +641,6 @@ main th pre {
 main dd dd, main dd ol, main dd ul, main ol dd, main ol ol, main ol ul, main ul dd, main ul ol, main ul ul {
   width: 100%;
   max-width: 100%; }
-
-.connections {
-  clear: both; }
 
 .list-item p {
   max-width: 55%;

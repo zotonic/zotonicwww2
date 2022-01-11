@@ -7,7 +7,7 @@
             {# Shows all menu items on the path to the current menu item, and the
              # submenu below the current menu item.
              #}
-            {% if node.tree %}
+            {% if node.tree and node.id|member:trail %}
                 {% include "_nav_sidedrawer_submenu.tpl" menu=node.tree %}
             {% endif %}
         </li>
