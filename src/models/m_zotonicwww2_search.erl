@@ -67,11 +67,18 @@ m_get([ <<"title_match">>, Term | Rest ], _Msg, Context) ->
 -spec exact_match( binary(), z:context() ) -> list( m_rsc:resource_id() ).
 exact_match(Term, Context) when is_binary(Term) ->
     Lower = z_string:trim( z_string:to_lower(Term) ),
+    {TextFrom, TextTo} = m_category:get_range_by_name(text, Context),
+    {MediaFrom, MediaTo} = m_category:get_range_by_name(media, Context),
     Ids = z_db:q("
         select id
         from rsc
-        where pivot_title = $1",
-        [ Lower ],
+        where pivot_title = $1
+          and (
+                (pivot_category_nr >= $2 and pivot_category_nr <= $3)
+             or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
+          )
+        ",
+        [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
         Context),
     [ Id || {Id} <- Ids ].
 
@@ -80,8 +87,8 @@ exact_match(Term, Context) when is_binary(Term) ->
 title_match(Term, Context) when is_binary(Term) ->
     Exact = exact_match(Term, Context),
     Lower = z_string:trim( z_string:to_lower(Term) ),
-    {RefFrom, RefTo} = m_category:get_range_by_name(reference, Context),
-    {CookFrom, CookTo} = m_category:get_range_by_name(cookbook, Context),
+    {TextFrom, TextTo} = m_category:get_range_by_name(text, Context),
+    {MediaFrom, MediaTo} = m_category:get_range_by_name(media, Context),
     StartIds = z_db:q("
         select id
         from rsc
@@ -91,7 +98,7 @@ title_match(Term, Context) when is_binary(Term) ->
              or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
           )
         ",
-        [ Lower, RefFrom, RefTo, CookFrom, CookTo ],
+        [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
         Context),
     WordIds = z_db:q("
         select id
@@ -106,7 +113,7 @@ title_match(Term, Context) when is_binary(Term) ->
              or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
           )
         ",
-        [ Lower, RefFrom, RefTo, CookFrom, CookTo ],
+        [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
         Context),
     AllIds = z_db:q("
         select id
@@ -117,7 +124,7 @@ title_match(Term, Context) when is_binary(Term) ->
              or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
           )
         ",
-        [ Lower, RefFrom, RefTo, CookFrom, CookTo ],
+        [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
         Context),
     WordIds1 = WordIds -- StartIds,
     AllIds1 = (AllIds -- WordIds) -- StartIds,
