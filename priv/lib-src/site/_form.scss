@@ -5,6 +5,7 @@ input.form-control {
     border: none;
     border-bottom: 1px solid $border-color;
     box-shadow: none;
+    color: $text-color;
 
     &:focus {
         border-bottom: 2px solid $contrast-color;
@@ -16,6 +17,14 @@ input.form-control {
 
 .search main {
     padding: 1rem 0rem 2.5rem 0rem;
+
+    form {
+        padding-bottom: 1.4rem;
+    }
+
+    h2 {
+        margin-top: 2.8rem;
+    }
 }
 
 .label-floating {

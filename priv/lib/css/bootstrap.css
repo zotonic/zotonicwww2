@@ -628,15 +628,23 @@ main dd dd, main dd ol, main dd ul, main ol dd, main ol ol, main ol ul, main ul 
   width: 100%;
   max-width: 100%; }
 
-.list-item p {
-  max-width: 55%;
-  margin-inline-start: 5%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; }
-  @media screen and (max-width: 760px) {
-    .list-item p {
-      max-width: 90%; } }
+.list-item {
+  margin-top: 1.4rem; }
+  .list-item p {
+    max-width: 55%;
+    margin-inline-start: 5%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 0; }
+    @media screen and (max-width: 760px) {
+      .list-item p {
+        max-width: 90%; } }
+  .list-item p.title {
+    margin-inline-start: 0;
+    font-size: 1.5rem; }
+  .list-item figure {
+    padding-left: 5%; }
 
 input.form-control {
   font-size: 1.5rem;
@@ -645,6 +653,7 @@ input.form-control {
   border: none;
   border-bottom: 1px solid #333333;
   box-shadow: none;
+  color: #111;
   width: 55%; }
   input.form-control:focus {
     border-bottom: 2px solid #a00000;
@@ -652,6 +661,10 @@ input.form-control {
 
 .search main {
   padding: 1rem 0rem 2.5rem 0rem; }
+  .search main form {
+    padding-bottom: 1.4rem; }
+  .search main h2 {
+    margin-top: 2.8rem; }
 
 .label-floating {
   position: relative;

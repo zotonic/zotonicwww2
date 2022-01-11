@@ -8,15 +8,9 @@
 {% extends "base.tpl" %}
 
 {% block content %}
-    {% if not id.is_a.document %}
-        {% include "_body_media.tpl" id=id mediaclass="body-media-large" %}
-    {% endif %}
-
     <h1>{{ id.title }}</h1>
 
-    {% if id.is_a.document %}
-        {% include "_body_media.tpl" id=id mediaclass="media-preview" align="left" caption='-' link={media_inline id=id}|url %}
-    {% endif %}
+    {% include "_body_media.tpl" id=id mediaclass="media-preview" align="left" caption='-' link={media_inline id=id}|url %}
 
     <p class="summary">
         {{ id.summary }}
@@ -105,13 +99,6 @@
             {% for id in m.search[{latest cat=id.category_id pagelen=20}] %}
                 {% catinclude "_list_item.tpl" id %}
             {% endfor %}
-        </div>
-    </div>
-
-    <div class="connections">
-        <h3>&#8712; {{ id.category_id.title }} <span class="text-muted">{_ Category _}</span></h3>
-        <div class="list-items">
-            {% catinclude "_list_item.tpl" id.category_id %}
         </div>
     </div>
 

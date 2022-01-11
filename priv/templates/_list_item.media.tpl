@@ -7,15 +7,16 @@
 
     Where 'id' contains the id of a page in category 'website' or a sub-category
 #}
+{% if id.is_visible %}
 <div class="list-item list-item-media {% if is_highlight or id.is_featured %} featured{% endif %} do_clickable">
-    {% image id mediaclass="list-item-bg" %}
-    <h3>
+    <p class="title">
         <a href="{{ id.page_url }}">
-            {{ id.title }}
-            <span class="text-muted">{{ id.category_id.title|lower }}</span>
+            {{ id.title|default:_"Untitled" }}
         </a>
-    </h3>
-    <p>
-        {{ id|summary }}
     </p>
+    <figure>
+        {% image id mediaclass="list-item" crop=crop link=link alt=id.title %}
+        <figcaption class="maincolumn-figure">{{ id|summary }}</figcaption>
+    </figure>
 </div>
+{% endif %}
