@@ -546,11 +546,6 @@ a.bg-danger:focus {
   width: 100%; }
 
 main aside,
-main .admonition.note,
-main .admonition.seealso,
-main .admonition.tip,
-main .admonition-see-also,
-main .admonition-todo,
 main .edit-github {
   float: right;
   clear: right;
@@ -563,45 +558,22 @@ main .edit-github {
   vertical-align: baseline;
   position: relative; }
   main aside p, main aside pre,
-  main .admonition.note p,
-  main .admonition.note pre,
-  main .admonition.seealso p,
-  main .admonition.seealso pre,
-  main .admonition.tip p,
-  main .admonition.tip pre,
-  main .admonition-see-also p,
-  main .admonition-see-also pre,
-  main .admonition-todo p,
-  main .admonition-todo pre,
   main .edit-github p,
   main .edit-github pre {
     width: 100%; }
   main aside .first,
-  main .admonition.note .first,
-  main .admonition.seealso .first,
-  main .admonition.tip .first,
-  main .admonition-see-also .first,
-  main .admonition-todo .first,
   main .edit-github .first {
     margin-top: 0; }
   main aside .first ~ p,
-  main .admonition.note .first ~ p,
-  main .admonition.seealso .first ~ p,
-  main .admonition.tip .first ~ p,
-  main .admonition-see-also .first ~ p,
-  main .admonition-todo .first ~ p,
   main .edit-github .first ~ p {
     margin-top: 0; }
   @media screen and (max-width: 760px) {
     main aside,
-    main .admonition.note,
-    main .admonition.seealso,
-    main .admonition.tip,
-    main .admonition-see-also,
-    main .admonition-todo,
     main .edit-github {
       float: none;
       margin-left: 5%; } }
+main li aside {
+  margin-right: -80%; }
 main .admonition-title {
   color: #a00000; }
 main .toctree-wrapper {

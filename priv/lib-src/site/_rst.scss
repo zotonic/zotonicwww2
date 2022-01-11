@@ -1,10 +1,10 @@
 main {
     aside,
-    .admonition.note,
-    .admonition.seealso,
-    .admonition.tip,
-    .admonition-see-also,
-    .admonition-todo,
+    // .admonition.note,
+    // .admonition.seealso,
+    // .admonition.tip,
+    // .admonition-see-also,
+    // .admonition-todo,
     .edit-github {
         float: right;
         clear: right;
@@ -32,6 +32,10 @@ main {
             float: none;
             margin-left: 5%;
         }
+    }
+
+    li aside {
+        margin-right: -80%;
     }
 
     .admonition-title {
