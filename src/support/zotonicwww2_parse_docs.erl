@@ -17,6 +17,8 @@
     list_files/2,
     parse_file/1,
 
+    filename_to_name/2,
+
     cleanup_do_not_run/1,
     cleanup_edges_do_not_run/1
     ]).

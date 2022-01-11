@@ -3,7 +3,7 @@
 %% the system can see that this Erlang application is a Zotonic
 %% site. All exports below are also valid for a Zotonic module.
 %% @author Marc Worrell <marc@worrell.nl>
-%% @copyright 2020 Marc Worrell
+%% @copyright 2020-2022 Marc Worrell
 
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
@@ -44,6 +44,7 @@
 % Exports - if exports change then the module is restarted after
 % compilation.
 -export([
+    observe_dispatch/2,
     manage_schema/2,
     manage_data/2
     ]).
@@ -51,6 +52,36 @@
 % This is the main header file, it contains useful definitions and
 % also includes record defintions, as used by manage_schema/2.
 -include_lib("zotonic_core/include/zotonic.hrl").
+
+
+%% @doc Check if there is a controller or template matching the path. This observer is
+%% called if the dispatcher could not match the request path with the dispatch rules.
+%% If this observer returns 'undefined' then the next observer is called.
+%% Check the list of observers in /admin/development/observers
+observe_dispatch(#dispatch{ path = Path }, Context) ->
+    % Split the path on "/"
+    case lists:reverse(binary:split(Path, <<"/">>, [ global, trim_all ])) of
+        [ File | Dirs ] ->
+            % Remove the ".html" extension
+            Rootname = filename:rootname(File),
+            % Let the git doc import routines map the filenam and path
+            % to a resource name.
+            case zotonicwww2_parse_docs:filename_to_name(Rootname, Dirs) of
+                {Name, _Cat, _} ->
+                    % Check if the resource name exists.
+                    case m_rsc:rid(Name, Context) of
+                        undefined ->
+                            undefined;
+                        RscId ->
+                            % Map the path to the given resource id
+                            {ok, RscId}
+                    end;
+                error ->
+                    undefined
+            end;
+        _ ->
+            undefined
+    end.
 
 
 %%====================================================================
