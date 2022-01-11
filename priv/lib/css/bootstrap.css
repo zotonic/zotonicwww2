@@ -212,7 +212,7 @@ body {
   @media (min-width: 1200px) {
     body {
       grid-template-columns: 0 minmax(15px, 1fr) minmax(800px, 1400px) minmax(15px, 1fr); } }
-  @media (min-width: 1250px) {
+  @media (min-width: 1200px) {
     body {
       grid-template-columns: minmax(300px, 300px) minmax(45px, 1fr) minmax(800px, 1400px) minmax(15px, 1fr); } }
   @media (min-width: 2000px) {
@@ -255,7 +255,7 @@ body {
   grid-template-columns: 60px 1fr;
   grid-template-rows: 50px auto;
   background-color: #fffffc; }
-  @media (min-width: 1250px) {
+  @media (min-width: 1200px) {
     .navbar.navbar-grid {
       grid-template-columns: 10px 1fr; } }
   .navbar.navbar-grid > label {
@@ -298,7 +298,7 @@ body {
         display: flex;
         width: auto;
         padding-left: 50px; }
-        @media (min-width: 1250px) {
+        @media (min-width: 1200px) {
           .navbar.navbar-grid .nav-wrapper .nav-wrapper2 ul {
             padding-left: 0px; } }
         .navbar.navbar-grid .nav-wrapper .nav-wrapper2 ul li {
@@ -316,11 +316,11 @@ body {
   max-width: 100%;
   bottom: 0;
   transition: .3s ease-in-out; }
-  @media (max-width: 1249px) {
+  @media (max-width: 1199px) {
     #sidedrawer > div {
       height: 100vh;
       overflow-y: auto; } }
-  @media (min-width: 1250px) {
+  @media (min-width: 1200px) {
     #sidedrawer {
       grid-column: 1;
       grid-row: 3;
@@ -334,7 +334,7 @@ body {
 #nav-toggle {
   display: none; }
 
-@media (max-width: 1249px) {
+@media (max-width: 1199px) {
   #nav-toggle:checked ~ #sidedrawer {
     left: 0;
     border-top: 1px solid #ccc;
@@ -512,7 +512,7 @@ a.bg-danger:focus {
     #sidedrawer .nav-stacked li.divider {
       padding: 1rem; }
 
-@media (min-width: 1250px) {
+@media (min-width: 1200px) {
   #sidedrawer-bg,
   #nav-label {
     display: none; }
