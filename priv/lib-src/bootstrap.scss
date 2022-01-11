@@ -43,13 +43,6 @@ $brand-danger:       #d9534f;
 
 $body-bg:            $bg-color;
 
-
-// $body-bg-text:       #f7dbeb;
-
-$nav-bg:             #312a38;
-$btn-bg:             #6c6669;
-
-$border-color:       $nav-bg;
 $border-radius:      8px;
 
 $home-bg:            #f6daea;
@@ -76,7 +69,6 @@ $icon-font-path: "/lib/fonts/";
 $input-border-radius:         0;
 $input-border-radius-large:   0;
 $input-border-radius-small:   0;
-
 
 $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif;
@@ -155,6 +147,7 @@ $line-height-sm:        floor($font-size-small * $line-height-small) !default;
 @import "site/nav";
 @import "site/rst";
 @import "site/list";
+@import "site/form";
 @import "site/misc";
 @import "tufte/tufte";
 

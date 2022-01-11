@@ -23,19 +23,20 @@
                     is.s.haspart[1].category_id
                 ]|menu_trail as trail %}
             {% with trail|last as id %}
-                {% for menu in m.rsc.main_menu.menu %}
+                <li>
+                    <a href="{% url search %}">
+                      <span class="glyphicon glyphicon-search"></span> {_ Search _}
+                    </a>
+                </li>
+                {% for menu in m.rsc.top_menu.menu|default:m.rsc.main_menu.menu %}
                   <li {% if menu.id|member:trail %}class="selected"{% endif %}>
                       <a href="{{ menu.id.page_url }}">{{ menu.id.short_title|default:menu.id.title }}</a>
-    {% comment %}
-                        {% if menu.tree and menu.id|member:trail %}
-                            {% include "_nav_sidedrawer_submenu.tpl" menu=menu.tree %}
-                        {% endif %}
-    {% endcomment %}
                   </li>
                 {% endfor %}
             {% endwith %}
         {% endwith %}
       </ul>
+
     </div>
   </div>
 </nav>

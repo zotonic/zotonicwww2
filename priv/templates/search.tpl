@@ -8,64 +8,72 @@
 
 {% block content %}
     <h1>
-        <span class="text-muted">{_ Search _}</span> {% if q.qs %}“{{ q.qs|escape }}”{% endif %}
+        {_ Search _}
     </h1>
 
-    {% if not q.page and q.qs|trim|length > 0 %}
-        {% if m.zotonicwww2_search.exact_match[q.qs] as match_ids %}
-            <div class="search-results">
-                <div class="connections paged">
-                    <div class="page-count">
-                        <span>{_ Exact match _}</span>
-                    </div>
-                    <div class="list-items">
-                        {% for id in match_ids %}
-                            {% catinclude "_list_item.tpl" id %}
-                        {% endfor %}
+    <form class="search-form" action="{% url search %}" method="GET">
+        <div class="label-floating">
+            <input placeholder="{_ Text to search _}" name="qs" class="form-control" name="qs" autofocus value="{{ q.qs|escape }}">
+        </div>
+    </form>
+
+    {% if q.qs|trim|length > 0 %}
+        {% if not q.page and q.qs|trim|length > 0 %}
+            {% if m.zotonicwww2_search.exact_match[q.qs] as match_ids %}
+                <div class="search-results">
+                    <div class="connections paged">
+                        <p class="page-count">
+                            <span>{_ Exact match _}</span>
+                        </p>
+                        <div class="list-items">
+                            {% for id in match_ids %}
+                                {% catinclude "_list_item.tpl" id %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
+
+            {% if m.zotonicwww2_search.title_match[q.qs] as match_ids %}
+                <div class="search-results">
+                    <div class="connections paged">
+                        <p class="page-count">
+                            <span>{_ Title match _}</span>
+                        </p>
+                        <div class="list-items">
+                            {% for id in match_ids %}
+                                {% catinclude "_list_item.tpl" id %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         {% endif %}
 
-        {% if m.zotonicwww2_search.title_match[q.qs] as match_ids %}
-            <div class="search-results">
+        <div class="search-results">
+            {% with m.search.paged[
+                    {query text=q.qs
+                           cat=[`text`, `video`, `document`, `category`]
+                           cat_exclude=[ `template`, `releasenotes` ]
+                           page=q.page
+                           pagelen=20
+                    }
+                ] as result %}
+
                 <div class="connections paged">
-                    <div class="page-count">
-                        <span>{_ Title match _}</span>
-                    </div>
+                    <p class="page-count">
+                        {{ result.total }} <span>{_ Pages _}</span>
+                    </p>
+
                     <div class="list-items">
-                        {% for id in match_ids %}
+                        {% for id in result %}
                             {% catinclude "_list_item.tpl" id %}
                         {% endfor %}
                     </div>
                 </div>
-            </div>
-        {% endif %}
+
+                {% pager result=result qargs %}
+            {% endwith %}
+        </div>
     {% endif %}
-
-    <div class="search-results">
-        {% with m.search.paged[
-                {query text=q.qs
-                       cat=[`text`, `video`, `document`, `category`]
-                       cat_exclude=[ `template`, `releasenotes` ]
-                       page=q.page
-                       pagelen=20
-                }
-            ] as result %}
-
-            <div class="connections paged">
-                <div class="page-count">
-                    {{ result.total }} <span>{_ Pages _}</span>
-                </div>
-
-                <div class="list-items">
-                    {% for id in result %}
-                        {% catinclude "_list_item.tpl" id %}
-                    {% endfor %}
-                </div>
-            </div>
-
-            {% pager result=result qargs %}
-        {% endwith %}
-    </div>
 {% endblock %}

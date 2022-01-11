@@ -638,6 +638,74 @@ main dd dd, main dd ol, main dd ul, main ol dd, main ol ol, main ol ul, main ul 
     .list-item p {
       max-width: 90%; } }
 
+input.form-control {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  height: auto;
+  border: none;
+  border-bottom: 1px solid #333333;
+  box-shadow: none;
+  width: 55%; }
+  input.form-control:focus {
+    border-bottom: 2px solid #a00000;
+    box-shadow: none; }
+
+.search main {
+  padding: 1rem 0rem 2.5rem 0rem; }
+
+.label-floating {
+  position: relative;
+  padding-top: 18px; }
+  .label-floating label,
+  .label-floating label.control-label {
+    position: absolute;
+    top: 0;
+    display: none;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #777777; }
+  .label-floating input:not(:placeholder-shown) + label,
+  .label-floating textarea:not(:placeholder-shown) + label {
+    display: block; }
+  .label-floating select + label.control-label {
+    display: block; }
+  .label-floating input:focus + label,
+  .label-floating textarea:focus + label,
+  .label-floating select:focus + label {
+    color: #a00000; }
+  .label-floating input.field-title {
+    font-size: 27px;
+    height: 36px; }
+  .label-floating textarea.field-summary {
+    font-size: 17px; }
+  .label-floating textarea.field-collapse:placeholder-shown,
+  .label-floating textarea.field-summary:placeholder-shown {
+    height: 33px; }
+  .label-floating.has-error input,
+  .label-floating.has-error select,
+  .label-floating.has-error textarea, .label-floating.invalid input,
+  .label-floating.invalid select,
+  .label-floating.invalid textarea {
+    padding: 0 2px;
+    border-bottom: 2px solid #d9534f; }
+  .label-floating.has-error label,
+  .label-floating.has-error input::placeholder,
+  .label-floating.has-error textarea::placeholder, .label-floating.invalid label,
+  .label-floating.invalid input::placeholder,
+  .label-floating.invalid textarea::placeholder {
+    color: #d9534f; }
+  .label-floating input:not(:placeholder-shown):invalid + label,
+  .label-floating textarea:not(:placeholder-shown):invalid + label,
+  .label-floating .did-submit :invalid + label {
+    color: #1ca5de; }
+  .label-floating input:not(:placeholder-shown):invalid,
+  .label-floating textarea:not(:placeholder-shown):invalid,
+  .label-floating .did-submit :invalid {
+    padding: 0 2px;
+    border-bottom: 2px solid #d9534f; }
+
 .clickable {
   cursor: pointer; }
 
@@ -961,11 +1029,11 @@ h1 code, h2 code, h3 code {
 table, table.booktabs {
   width: auto;
   border-spacing: 0px;
-  border-top: 2px solid #312a38;
-  border-bottom: 2px solid #312a38; }
+  border-top: 2px solid #333333;
+  border-bottom: 2px solid #333333; }
 
 .booktabs th, th {
-  border-bottom: 1px solid #312a38;
+  border-bottom: 1px solid #333333;
   padding: 0.65ex 0.5em 0.4ex 0.5em;
   font-weight: normal; }
 
@@ -974,7 +1042,7 @@ th, td {
   line-height: 1.71428571; }
 
 .booktabs th.cmid, th {
-  border-bottom: 1px solid #716181; }
+  border-bottom: 1px solid #737373; }
 
 .booktabs th.nocmid {
   border-bottom: none; }
