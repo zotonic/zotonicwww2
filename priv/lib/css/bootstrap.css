@@ -545,6 +545,7 @@ a.bg-danger:focus {
 .pagination {
   width: 100%; }
 
+main aside,
 main .admonition.note,
 main .admonition.seealso,
 main .admonition.tip,
@@ -561,7 +562,9 @@ main .edit-github {
   line-height: 1.96;
   vertical-align: baseline;
   position: relative; }
-  main .admonition.note p, main .admonition.note pre,
+  main aside p, main aside pre,
+  main .admonition.note p,
+  main .admonition.note pre,
   main .admonition.seealso p,
   main .admonition.seealso pre,
   main .admonition.tip p,
@@ -573,6 +576,7 @@ main .edit-github {
   main .edit-github p,
   main .edit-github pre {
     width: 100%; }
+  main aside .first,
   main .admonition.note .first,
   main .admonition.seealso .first,
   main .admonition.tip .first,
@@ -580,6 +584,7 @@ main .edit-github {
   main .admonition-todo .first,
   main .edit-github .first {
     margin-top: 0; }
+  main aside .first ~ p,
   main .admonition.note .first ~ p,
   main .admonition.seealso .first ~ p,
   main .admonition.tip .first ~ p,
@@ -588,6 +593,7 @@ main .edit-github {
   main .edit-github .first ~ p {
     margin-top: 0; }
   @media screen and (max-width: 760px) {
+    main aside,
     main .admonition.note,
     main .admonition.seealso,
     main .admonition.tip,
