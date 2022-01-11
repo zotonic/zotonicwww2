@@ -1,10 +1,5 @@
 main {
     aside,
-    // .admonition.note,
-    // .admonition.seealso,
-    // .admonition.tip,
-    // .admonition-see-also,
-    // .admonition-todo,
     .edit-github {
         float: right;
         clear: right;
@@ -34,6 +29,10 @@ main {
         }
     }
 
+    .edit-github {
+        margin-top: 1.4rem;
+    }
+
     li aside {
         margin-right: -80%;
     }
@@ -53,6 +52,10 @@ main {
     }
 
     .literal-block-wrapper {
+        margin-top: 1.4rem;
+    }
+
+    table {
         margin-top: 1.4rem;
     }
 

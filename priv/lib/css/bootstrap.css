@@ -572,6 +572,8 @@ main .edit-github {
     main .edit-github {
       float: none;
       margin-left: 5%; } }
+main .edit-github {
+  margin-top: 1.4rem; }
 main li aside {
   margin-right: -80%; }
 main .admonition-title {
@@ -581,6 +583,8 @@ main .toctree-wrapper {
 main .page-developerguide .toctree-wrapper {
   display: block; }
 main .literal-block-wrapper {
+  margin-top: 1.4rem; }
+main table {
   margin-top: 1.4rem; }
 main dt,
 main dd {
