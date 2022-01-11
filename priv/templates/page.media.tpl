@@ -10,7 +10,7 @@
 {% block content %}
     <h1>{{ id.title }}</h1>
 
-    {% include "_body_media.tpl" id=id mediaclass="media-preview" align="left" caption='-' link={media_inline id=id}|url %}
+    {% include "_body_media.tpl" id=id mediaclass="body-media-large" align="left" caption='-' link={media_inline id=id}|url %}
 
     <p class="summary">
         {{ id.summary }}

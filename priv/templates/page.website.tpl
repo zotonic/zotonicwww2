@@ -2,12 +2,12 @@
 
 {% block content %}
 
-    <p>{_ Made with Zotonic _}</p>
+    <p>{{ id.category_id.title }}</p>
 
     <h1>{{ id.title }}</h1>
 
     {% if id.depiction as dep %}
-        {% include "_body_media.tpl" id=dep.id size="large" caption="-" %}
+        {% include "_body_media.tpl" id=dep.id size="large" mediaclass="body-media-large" caption="-" %}
     {% endif %}
 
     <p class="summary">
