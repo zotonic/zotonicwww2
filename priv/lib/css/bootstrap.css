@@ -895,7 +895,7 @@ p, li {
   padding-right: 2rem;
   vertical-align: baseline; }
 
-li p, table p {
+li p, li pre, table p, table pre {
   width: 100%;
   padding-right: 0; }
 
