@@ -119,6 +119,8 @@ title_match(Term, Context) when is_binary(Term) ->
         ",
         [ Lower, RefFrom, RefTo, CookFrom, CookTo ],
         Context),
-    Ids = StartIds ++ (WordIds -- StartIds) ++ (AllIds -- StartIds -- WordIds),
+    WordIds1 = WordIds -- StartIds,
+    AllIds1 = (AllIds -- WordIds) -- StartIds,
+    Ids = StartIds ++ WordIds1 ++ AllIds1,
     Ids1 = [ Id || {Id} <- Ids ],
     lists:sublist(Ids1 -- Exact, 50).

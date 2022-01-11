@@ -237,6 +237,8 @@ filename_to_name(Name, [ <<"notifications">>, <<"ref">> | _ ]) ->
 %
 filename_to_name(Name, [ <<"best-practices">> | _ ]) ->
     {<<"doc_bestpractices_", Name/binary>>, developerguide, false};
+filename_to_name(Name, [ Sub, <<"cookbook">> | _ ]) ->
+    {<<"doc_cookbook_", Sub/binary, "_", Name/binary>>, cookbook, false};
 filename_to_name(Name, [ <<"cookbook">> | _ ]) ->
     {<<"doc_cookbook_", Name/binary>>, cookbook, false};
 filename_to_name(Name, [ <<"developer-guide">> | _ ]) ->
