@@ -31,8 +31,8 @@ html, body { height: 100%; }
 html{
     text-align: baseline;
     font-size: 11px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
   }
 
 @media screen and (min-width: 800px){ html{ font-size: $font-size-base;} }

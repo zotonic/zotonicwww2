@@ -517,8 +517,10 @@ a.bg-danger:focus {
   #nav-label {
     display: none; }
 
-  #sidedrawer > div > label {
-    display: none; } }
+  #sidedrawer > div {
+    padding-top: 3.2rem; }
+    #sidedrawer > div > label {
+      display: none; } }
 .page-haspart {
   clear: both;
   text-align: center;
@@ -827,9 +829,7 @@ html, body {
 
 html {
   text-align: baseline;
-  font-size: 11px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  font-size: 11px; }
 
 @media screen and (min-width: 800px) {
   html {
