@@ -1200,8 +1200,10 @@ div.table-wrapper, table {
     width: 90%; }
   main pre code {
     width: 87.5%; }
-  main ul {
+  main ol, main ul {
     width: 85%; }
+  main dl {
+    width: 100%; }
   main figure {
     max-width: 90%; }
   main figcaption, main figure.fullwidth figcaption {

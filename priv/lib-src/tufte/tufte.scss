@@ -328,7 +328,8 @@ div.table-wrapper, table { overflow-x: auto; } //changed all overflow values to 
   main {
     p, footer { width: 90%; }
     pre code { width: 87.5%; }
-    ul { width: 85%; }
+    ol, ul { width: 85%; }
+    dl { width: 100%; }
     figure { max-width: 90%; }
     figcaption, figure.fullwidth figcaption { margin-right: 0%;
                                              max-width: none; }
