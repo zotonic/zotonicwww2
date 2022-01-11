@@ -12,12 +12,12 @@
     {% endif %}
 
     {% if id.o.in_module[1] as module_id %}
-        <div class="admonition note">
+        <aside class="admonition note">
             <p class="first admonition-title">{_ Module _}</p>
             <p class="last"><a class="reference internal" href="/id/doc_template_filter_filter_is_not_a#filter-is-not-a">
                 <a href="{{ module_id.page_url }}">{{ module_id.title }}</a>
             </p>
-        </div>
+        </aside>
     {% endif %}
 
     <p class="summary">
