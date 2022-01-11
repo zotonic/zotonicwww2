@@ -25,7 +25,9 @@ main {
 
         @media screen and (max-width: $screen-width-breakpoint) {
             float: none;
+            margin-top: 1.4rem;
             margin-left: 5%;
+            width: 90%;
         }
     }
 
