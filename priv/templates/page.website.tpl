@@ -27,7 +27,7 @@
     <div class="page-relations">
         <h3>{_ More made with Zotonic _}</h3>
         <div class="list-items">
-            {% for id in m.search[{query cat=id.category_id pagelen=10 sort="random" id_exclude=id}] %}
+            {% for id in m.search[{query cat=id.category_id pagelen=5 sort="random" id_exclude=id}] %}
                 {% catinclude "_list_item.tpl" id %}
             {% endfor %}
         </div>
