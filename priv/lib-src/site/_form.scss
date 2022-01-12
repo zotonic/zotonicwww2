@@ -8,18 +8,12 @@ input.form-control {
     color: $text-color;
 
     &:focus {
-        border-bottom: 2px solid $contrast-color;
+        border-bottom: 1px solid $contrast-color;
         box-shadow: none;
     }
-
-    width: 55%;
 }
 
 .search main {
-    form {
-        padding-bottom: 1.4rem;
-    }
-
     h2 {
         margin-top: 2.8rem;
     }

@@ -7,13 +7,15 @@
 {% block body_class %}search{% endblock %}
 
 {% block content %}
-    <h1>{_ Search _}</h1>
+    <article>
+        <h1>{_ Search _}</h1>
 
-    <form class="search-form" action="{% url search %}" method="GET">
-        <div class="label-floating">
-            <input placeholder="{_ Text to search _}" name="qs" class="form-control" name="qs" autofocus value="{{ q.qs|escape }}">
-        </div>
-    </form>
+        <form class="search-form" action="{% url search %}" method="GET">
+            <p class="label-floating">
+                <input placeholder="{_ Text to search _}" name="qs" class="form-control" name="qs" autofocus value="{{ q.qs|escape }}">
+            </p>
+        </form>
+    </article>
 
     {% with q.page|default:1 as qpage %}
         {% if q.qs|trim|length > 0 %}

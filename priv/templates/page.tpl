@@ -1,19 +1,21 @@
 {% extends "base.tpl" %}
 
 {% block content %}
-    <h1>{{ id.title }}</h1>
+    <article>
+        <h1>{{ id.title }}</h1>
 
-    {% if id.depiction as dep %}
-        {% include "_body_media.tpl" id=dep.id %}
-    {% endif %}
+        {% if id.depiction as dep %}
+            {% include "_body_media.tpl" id=dep.id %}
+        {% endif %}
 
-    <p class="summary">
-        {{ id.summary }}
-    </p>
+        <p class="summary">
+            {{ id.summary }}
+        </p>
 
-    <div class="body">
-        {{ id.body|show_media }}
-    </div>
+        <div class="body">
+            {{ id.body|show_media }}
+        </div>
+    </article>
 {% endblock %}
 
 
