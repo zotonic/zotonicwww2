@@ -410,7 +410,8 @@ header > nav  a{
   font-family: $sans-font;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: $contrast-color;
+  // color: $contrast-color;
+  color: $brand-primary;
   padding-top: 1.5rem;
   text-decoration: none;
   display: inline-block;
@@ -420,6 +421,10 @@ header > nav  a{
   padding-right: 2rem;
   //margin-left: 1rem;
   vertical-align: baseline;
+
+  &:hover {
+    color: $contrast-color;
+  }
 }
 header > nav a img{
   height: 5rem;

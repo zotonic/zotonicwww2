@@ -28,9 +28,7 @@
 -behaviour(zotonic_model).
 
 -export([
-    m_get/3,
-
-    exact_match/2
+    m_get/3
     ]).
 
 
@@ -58,48 +56,15 @@
 %% On an error an error tuple should be returned. For the template routines
 %% this maps to 'undefined' and is ignored. The API and MQTT will return
 %% a payload with the error to the caller.-spec m_get( Path :: list(), zotonic_model:opt_msg(), z:context() ) -> zotonic_model:return().
-m_get([ <<"exact_match">>, Term | Rest ], _Msg, Context) ->
-    {ok, {exact_match(Term, Context), Rest}};
 m_get([ <<"title_match">>, Term | Rest ], _Msg, Context) ->
     {ok, {title_match(Term, Context), Rest}}.
 
 
--spec exact_match( binary(), z:context() ) -> list( m_rsc:resource_id() ).
-exact_match(Term, Context) when is_binary(Term) ->
-    Lower = z_string:trim( z_string:to_lower(Term) ),
-    {TextFrom, TextTo} = m_category:get_range_by_name(text, Context),
-    {MediaFrom, MediaTo} = m_category:get_range_by_name(media, Context),
-    Ids = z_db:q("
-        select id
-        from rsc
-        where pivot_title = $1
-          and (
-                (pivot_category_nr >= $2 and pivot_category_nr <= $3)
-             or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
-          )
-        ",
-        [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
-        Context),
-    [ Id || {Id} <- Ids ].
-
-
 -spec title_match( binary(), z:context() ) -> list( m_rsc:resource_id() ).
 title_match(Term, Context) when is_binary(Term) ->
-    Exact = exact_match(Term, Context),
     Lower = z_string:trim( z_string:to_lower(Term) ),
     {TextFrom, TextTo} = m_category:get_range_by_name(text, Context),
     {MediaFrom, MediaTo} = m_category:get_range_by_name(media, Context),
-    StartIds = z_db:q("
-        select id
-        from rsc
-        where pivot_title like $1 || '%'
-          and (
-                (pivot_category_nr >= $2 and pivot_category_nr <= $3)
-             or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
-          )
-        ",
-        [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
-        Context),
     WordIds = z_db:q("
         select id
         from rsc
@@ -108,10 +73,12 @@ title_match(Term, Context) when is_binary(Term) ->
               or pivot_title like '%\\_' || $1 || '%'
               or pivot_title like '% ' || $1 || '%'
           )
+          and pivot_title <> $1
           and (
                 (pivot_category_nr >= $2 and pivot_category_nr <= $3)
              or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
           )
+          order by length(pivot_title)
         ",
         [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
         Context),
@@ -119,15 +86,15 @@ title_match(Term, Context) when is_binary(Term) ->
         select id
         from rsc
         where pivot_title like '%' || $1 || '%'
+          and pivot_title <> $1
           and (
                 (pivot_category_nr >= $2 and pivot_category_nr <= $3)
              or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
           )
+        order by length(pivot_title)
         ",
         [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
         Context),
-    WordIds1 = WordIds -- StartIds,
-    AllIds1 = (AllIds -- WordIds) -- StartIds,
-    Ids = StartIds ++ WordIds1 ++ AllIds1,
+    Ids = WordIds ++ (AllIds -- WordIds),
     Ids1 = [ Id || {Id} <- Ids ],
-    lists:sublist(Ids1 -- Exact, 50).
+    lists:sublist(Ids1, 50).

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* Zotonic scss main file, setting our preferences. */
 /* ------tufte css settings-------- */
-/* -------begin customization-------- */
+/* -------Bootstrap customization-------- */
 /* import the necessary Bootstrap files */
 /* -------end customization-------- */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1317,7 +1317,7 @@ header > nav a {
   font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #a00000;
+  color: #1ca5de;
   padding-top: 1.5rem;
   text-decoration: none;
   display: inline-block;
@@ -1326,6 +1326,8 @@ header > nav a {
   margin-bottom: 0;
   padding-right: 2rem;
   vertical-align: baseline; }
+  header > nav a:hover {
+    color: #a00000; }
 
 header > nav a img {
   height: 5rem;

@@ -3,6 +3,9 @@
     <p class="title">
         <a href="{{ id.page_url }}">
             {{ id.title|default:_"Untitled" }}
+            {% if is_show_cat %}
+                <em>&ndash; {{ id.category_id.title }}</em>
+            {% endif %}
         </a>
     </p>
     <p>
