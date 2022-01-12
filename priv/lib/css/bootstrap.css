@@ -725,6 +725,15 @@ input.form-control {
     padding: 0 2px;
     border-bottom: 2px solid #d9534f; }
 
+.page-page_home .title {
+  padding-top: 1rem; }
+  .page-page_home .title p {
+    font-weight: 400;
+    margin-top: 1.568rem;
+    margin-bottom: 1.568rem;
+    font-size: 2.5rem;
+    line-height: 1.05; }
+
 .clickable {
   cursor: pointer; }
 
