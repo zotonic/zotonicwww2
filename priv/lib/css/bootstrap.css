@@ -492,7 +492,7 @@ a.bg-danger:focus {
       color: #111;
       white-space: nowrap; }
       #sidedrawer .nav-stacked a:hover {
-        color: #a00000; }
+        color: #1683b1; }
     #sidedrawer .nav-stacked li {
       margin-top: 0;
       padding: 0;
@@ -502,7 +502,7 @@ a.bg-danger:focus {
       padding: 0 0 0 1.2rem;
       display: none; }
     #sidedrawer .nav-stacked li.nav__show > a {
-      color: #a00000; }
+      color: #1683b1; }
       #sidedrawer .nav-stacked li.nav__show > a::before {
         position: absolute;
         left: -0.95rem;
@@ -581,7 +581,7 @@ main .edit-github {
 main li aside {
   margin-right: -80%; }
 main .admonition-title {
-  color: #a00000; }
+  color: #1683b1; }
 main .toctree-wrapper {
   display: none; }
 main .page-developerguide .toctree-wrapper {
@@ -594,7 +594,7 @@ main dt,
 main dd {
   font-size: 1.4rem; }
 main dt {
-  color: #a00000;
+  color: #1683b1;
   display: inline-block;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem; }
@@ -646,6 +646,9 @@ main dd dd, main dd ol, main dd ul, main ol dd, main ol ol, main ol ul, main ul 
   .list-item figure {
     padding-left: 5%; }
 
+.clickable:hover p.title a {
+  color: #1ca5de; }
+
 input.form-control {
   font-size: 1.5rem;
   line-height: 1.5;
@@ -656,7 +659,7 @@ input.form-control {
   color: #111;
   width: 55%; }
   input.form-control:focus {
-    border-bottom: 2px solid #a00000;
+    border-bottom: 2px solid #1683b1;
     box-shadow: none; }
 
 .search main {
@@ -687,7 +690,7 @@ input.form-control {
   .label-floating input:focus + label,
   .label-floating textarea:focus + label,
   .label-floating select:focus + label {
-    color: #a00000; }
+    color: #1683b1; }
   .label-floating input.field-title {
     font-size: 27px;
     height: 36px; }
@@ -919,7 +922,7 @@ html {
   font-size: 1.3rem; }
 
 a {
-  color: #a00000;
+  color: #1683b1;
   text-decoration: none; }
 
 article p > a,
@@ -1169,7 +1172,7 @@ blockquote .sidenote, blockquote .marginnote {
 .sidenote-number:after, .sidenote:before {
   content: counter(sidenote-counter) " ";
   font-family: et-bembo-roman-old-style;
-  color: #a00000;
+  color: #1683b1;
   position: relative;
   vertical-align: baseline; }
 
@@ -1181,7 +1184,7 @@ blockquote .sidenote, blockquote .marginnote {
 
 .sidenote:before {
   content: counter(sidenote-counter) ". ";
-  color: #a00000;
+  color: #1683b1;
   top: 0rem; }
 
 p,
@@ -1244,7 +1247,7 @@ label.margin-toggle:not(.sidenote-number) {
 @media (max-width: 760px) {
   label.margin-toggle:not(.sidenote-number) {
     display: inline;
-    color: #a00000; }
+    color: #1683b1; }
 
   .sidenote, .marginnote {
     display: none; }
@@ -1297,7 +1300,7 @@ label.margin-toggle:not(.sidenote-number) {
 /*--- End of Basic Layout stuff from tufte.css ---*/
 /* -- Jekyll specific styling --*/
 .contrast {
-  color: #a00000; }
+  color: #1683b1; }
 
 .smaller {
   font-size: 80%; }
@@ -1327,7 +1330,7 @@ header > nav a {
   padding-right: 2rem;
   vertical-align: baseline; }
   header > nav a:hover {
-    color: #a00000; }
+    color: #1683b1; }
 
 header > nav a img {
   height: 5rem;
@@ -1350,7 +1353,7 @@ ul.footer-links li {
 .credits {
   font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif; }
   .credits a {
-    color: #a00000; }
+    color: #1683b1; }
 
 body.full-width, .content-listing, ul.content-listing li.listing {
   width: 90%;

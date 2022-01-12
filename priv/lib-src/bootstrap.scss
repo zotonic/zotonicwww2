@@ -17,7 +17,8 @@ $url-font:      "Lucida Console", "Lucida Sans Typewriter", Monaco, "Bitstream V
 
 $text-color:     #111;
 $bg-color:       #fffffc;
-$contrast-color: #a00000;
+// $contrast-color: #a00000;
+$contrast-color: darken($zotonic-blue, 10%);
 $border-color:   #333333;
 
 $link-style:     underline; // choices are 'color' or 'underline'. Color option styles links with $contrast-color set above

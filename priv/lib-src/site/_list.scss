@@ -24,3 +24,11 @@
         padding-left: 5%;
     }
 }
+
+.clickable:hover {
+    p.title {
+        a {
+            color: $zotonic-blue;
+        }
+    }
+}
