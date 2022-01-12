@@ -646,6 +646,9 @@ main dd dd, main dd ol, main dd ul, main ol dd, main ol ol, main ol ul, main ul 
   .list-item figure {
     padding-left: 5%; }
 
+.connections dt {
+  font-size: 1.8rem; }
+
 .clickable:hover p.title a {
   color: #1ca5de; }
 
