@@ -110,23 +110,26 @@
           the available space.
         -->
         {% block content_area %}
-          <!-- This block is only for this site -->
-          {% block content_before %}
-          {% endblock %}
-          <!--
-            There MUST be a 'content' block for pages to place
-            content that doesn't need to have maximum available space
-          -->
-          {% block content %}
-          {% endblock %}
-          <!--
-            The block 'below_body' is used by some modules to add
-            content, it MUST be present to allow those modules to
-            work properly.
-            Example is 'mod_survey' which adds buttons for survey pages.
-          -->
-          {% block below_body %}
-          {% endblock %}
+          <article>
+            <!-- This block is only for this site -->
+            {% block content_before %}
+            {% endblock %}
+            <!--
+              There MUST be a 'content' block for pages to place
+              content that doesn't need to have maximum available space
+            -->
+            {% block content %}
+            {% endblock %}
+            <!--
+              The block 'below_body' is used by some modules to add
+              content, it MUST be present to allow those modules to
+              work properly.
+              Example is 'mod_survey' which adds buttons for survey pages.
+            -->
+            {% block below_body %}
+            {% endblock %}
+          </article>
+
           <!-- This block is only for this site -->
           {% block content_after %}
           {% endblock %}

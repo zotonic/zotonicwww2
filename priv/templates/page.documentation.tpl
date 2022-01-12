@@ -1,7 +1,6 @@
 {% extends "page.tpl" %}
 
 {% block content %}
-<article>
     {# Replace this with a generic documention image, based on the current category #}
     {% if id.depiction %}
         <div class="page-header" style="background-image: url({% image_url id.depiction mediaclass='page-header' %})">
@@ -36,6 +35,5 @@
             </a>
         </p>
     {% endif %}
-</article>
 {% endblock %}
 

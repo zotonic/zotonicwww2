@@ -665,12 +665,10 @@ input.form-control {
     border-bottom: 2px solid #1683b1;
     box-shadow: none; }
 
-.search main {
-  padding: 1rem 0rem 2.5rem 0rem; }
-  .search main form {
-    padding-bottom: 1.4rem; }
-  .search main h2 {
-    margin-top: 2.8rem; }
+.search main form {
+  padding-bottom: 1.4rem; }
+.search main h2 {
+  margin-top: 2.8rem; }
 
 .label-floating {
   position: relative;
