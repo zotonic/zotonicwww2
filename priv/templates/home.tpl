@@ -4,8 +4,12 @@
 
 {% block content %}
 
-<div class="title">
-    {{ m.rsc.page_home.body }}
-</div>
+    <article>
+        <h1>{{ id.title }}</h1>
+
+        <div class="subtitle">
+            {{ id.body }}
+        </div>
+    </article>
 
 {% endblock %}
