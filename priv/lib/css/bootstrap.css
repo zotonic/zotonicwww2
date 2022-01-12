@@ -934,9 +934,9 @@ a {
   color: #1683b1;
   text-decoration: none; }
 
-article p > a,
-article cite > a,
-article span > a {
+article p > a:not(.btn),
+article cite > a:not(.btn),
+article span > a:not(.btn) {
   color: #111;
   text-decoration: none;
   background: -webkit-linear-gradient(#fffffc, #fffffc), -webkit-linear-gradient(#fffffc, #fffffc), -webkit-linear-gradient(currentColor, currentColor);

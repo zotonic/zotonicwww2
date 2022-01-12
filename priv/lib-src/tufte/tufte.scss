@@ -57,9 +57,9 @@ a {
   text-decoration: none;
 }
 
-article p > a,
-article cite > a,
-article span > a {
+article p > a:not(.btn),
+article cite > a:not(.btn),
+article span > a:not(.btn) {
   @if $link-style == underline
     {
       color: $text-color;
