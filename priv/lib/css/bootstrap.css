@@ -551,7 +551,9 @@ main .pagination {
     padding: 0; }
 
 main aside,
-main .edit-github {
+main .edit-github,
+.mce-content-body aside,
+.mce-content-body .edit-github {
   float: right;
   clear: right;
   margin-top: 0;
@@ -564,55 +566,79 @@ main .edit-github {
   position: relative; }
   main aside p, main aside pre,
   main .edit-github p,
-  main .edit-github pre {
+  main .edit-github pre,
+  .mce-content-body aside p,
+  .mce-content-body aside pre,
+  .mce-content-body .edit-github p,
+  .mce-content-body .edit-github pre {
     width: 100%; }
   main aside .first,
-  main .edit-github .first {
+  main .edit-github .first,
+  .mce-content-body aside .first,
+  .mce-content-body .edit-github .first {
     margin-top: 0; }
   main aside .first ~ p,
-  main .edit-github .first ~ p {
+  main .edit-github .first ~ p,
+  .mce-content-body aside .first ~ p,
+  .mce-content-body .edit-github .first ~ p {
     margin-top: 0; }
   @media screen and (max-width: 760px) {
     main aside,
-    main .edit-github {
+    main .edit-github,
+    .mce-content-body aside,
+    .mce-content-body .edit-github {
       float: none;
       margin-top: 1.4rem;
       margin-left: 5%;
       width: 90%; } }
-main .edit-github {
+main .edit-github,
+.mce-content-body .edit-github {
   margin-top: 1.4rem; }
-main li aside {
+main li aside,
+.mce-content-body li aside {
   margin-right: -80%; }
-main .admonition-title {
+main .admonition-title,
+.mce-content-body .admonition-title {
   color: #1683b1; }
-main .toctree-wrapper {
+main .toctree-wrapper,
+.mce-content-body .toctree-wrapper {
   display: none; }
-main .page-developerguide .toctree-wrapper {
+main .page-developerguide .toctree-wrapper,
+.mce-content-body .page-developerguide .toctree-wrapper {
   display: block; }
-main .literal-block-wrapper {
+main .literal-block-wrapper,
+.mce-content-body .literal-block-wrapper {
   margin-top: 1.4rem; }
-main table {
+main table,
+.mce-content-body table {
   margin-top: 1.4rem; }
 main dt,
-main dd {
+main dd,
+.mce-content-body dt,
+.mce-content-body dd {
   font-size: 1.4rem; }
-main dt {
+main dt,
+.mce-content-body dt {
   color: #1683b1;
   display: inline-block;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem; }
-main dd {
+main dd,
+.mce-content-body dd {
   margin-bottom: 1rem;
   max-width: 55%;
   line-height: 2rem;
   padding-left: 2rem; }
   @media screen and (max-width: 760px) {
-    main dd {
+    main dd,
+    .mce-content-body dd {
       max-width: 90%; } }
-  main dd p {
+  main dd p,
+  .mce-content-body dd p {
     margin: 0;
     width: 100%; }
-  main dd a {
+  main dd a,
+  .mce-content-body dd a {
     color: #111;
     text-decoration: none;
     background: -webkit-linear-gradient(#fffffc, #fffffc), -webkit-linear-gradient(#fffffc, #fffffc), -webkit-linear-gradient(currentColor, currentColor);
@@ -625,9 +651,22 @@ main dd {
     background-position: 0% 93%, 100% 93%, 0% 93%; }
 main td p, main td pre,
 main th p,
-main th pre {
+main th pre,
+.mce-content-body td p,
+.mce-content-body td pre,
+.mce-content-body th p,
+.mce-content-body th pre {
   width: 100%; }
-main dd dd, main dd ol, main dd ul, main ol dd, main ol ol, main ol ul, main ul dd, main ul ol, main ul ul {
+main dd dd, main dd ol, main dd ul, main ol dd, main ol ol, main ol ul, main ul dd, main ul ol, main ul ul,
+.mce-content-body dd dd,
+.mce-content-body dd ol,
+.mce-content-body dd ul,
+.mce-content-body ol dd,
+.mce-content-body ol ol,
+.mce-content-body ol ul,
+.mce-content-body ul dd,
+.mce-content-body ul ol,
+.mce-content-body ul ul {
   width: 100%;
   max-width: 100%; }
 
@@ -1208,20 +1247,33 @@ div.table-wrapper, table {
   overflow-x: auto; }
 
 @media screen and (max-width: 760px) {
-  main p, main footer {
+  main p, main footer,
+  .mce-content-body p,
+  .mce-content-body footer {
     width: 90%; }
-  main pre code {
+  main pre code,
+  .mce-content-body pre code {
     width: 87.5%; }
-  main ol, main ul {
+  main ol, main ul,
+  .mce-content-body ol,
+  .mce-content-body ul {
     width: 85%; }
-  main dl {
+  main dl,
+  .mce-content-body dl {
     width: 100%; }
-  main figure {
+  main figure,
+  .mce-content-body figure {
     max-width: 90%; }
-  main figcaption, main figure.fullwidth figcaption {
+  main figcaption, main figure.fullwidth figcaption,
+  .mce-content-body figcaption,
+  .mce-content-body figure.fullwidth figcaption {
     margin-right: 0%;
     max-width: none; }
-  main blockquote p, main blockquote footer, main div.epigraph > blockquote > footer, main .MJXc-display {
+  main blockquote p, main blockquote footer, main div.epigraph > blockquote > footer, main .MJXc-display,
+  .mce-content-body blockquote p,
+  .mce-content-body blockquote footer,
+  .mce-content-body div.epigraph > blockquote > footer,
+  .mce-content-body .MJXc-display {
     width: 80%;
     padding-left: 5%;
     padding-right: 5%; } }

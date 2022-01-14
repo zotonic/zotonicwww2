@@ -325,7 +325,8 @@ div.table-wrapper {
 div.table-wrapper, table { overflow-x: auto; } //changed all overflow values to 'auto' so scroll bars appear only as needed
 
 @media screen and (max-width: $screen-width-breakpoint) {
-  main {
+  main,
+  .mce-content-body {
     p, footer { width: 90%; }
     pre code { width: 87.5%; }
     ol, ul { width: 85%; }

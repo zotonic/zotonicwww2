@@ -1,11 +1,116 @@
-/* Styling for tinymce */
+/* This file contains the CSS data for the editable area (iframe) of tinyMCE */
+/* Override this in your project to change styles in the tinymce editor      */
 
-body {
-    display: flex;
-    flex-direction: column;
+/* For this site we copy some styles from tufte.scss */
 
-    > p > .z-tinymce-media.z-tinymce-media-align-left.z-tinymce-media-size-small {
-        width: 24%;
-        box-sizing: border-box;
+$zotonic-blue:          rgb(28,165,222);
+
+$body-font: ETBembo, "Chronicle Text G2", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+
+// Note that Gill Sans is the top of the stack and corresponds to what is used in Tufte's books
+// However, it is not a free font, so if it is not present on the computer that is viewing the webpage
+// The free Google 'Lato' font is used instead. It is similar.
+
+$sans-font:     "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif;
+$code-font:     Consolas, "Liberation Mono", Menlo, Courier, monospace;
+$url-font:      "Lucida Console", "Lucida Sans Typewriter", Monaco, "Bitstream Vera Sans Mono", monospace;
+
+$text-color:     #111;
+$bg-color:       #fffffc;
+$contrast-color: darken($zotonic-blue, 10%);
+$border-color:   #333333;
+
+$link-style:     underline; // choices are 'color' or 'underline'. Color option styles links with $contrast-color set above
+$font-size-base: 12px;
+
+$brand-primary: $zotonic-blue;
+
+$screen-width-breakpoint:  760px;
+
+@import "./tufte/fonts";
+@import "./tufte/tufte.scss";
+@import "./tufte/syntax-highlighting.scss";
+@import "./site/rst.scss";
+
+h4, h5, h6 {
+    text-decoration: line-through;
+    color: #666;
+}
+
+html {
+    padding: 10px;
+}
+
+img {
+    display: block;
+    max-width: 90vw;
+    width: 53vw;
+    margin-bottom: 3em;
+
+    &.z-tinymce-media {
+        position: relative;
+        border: 1px solid #667;
+        height: auto;
+        cursor: pointer;
+        width: 270px;
+
+        &.z-active:hover {
+           border: 1px solid #039ed4;
+        }
+
+    }
+    &.z-tinymce-media-align-block {
+        // Not supported in this site
+    }
+    &.z-tinymce-media-align-right {
+        // Not supported in this site
+    }
+    &.z-tinymce-media-align-left {
+        // Not supported in this site
+    }
+    &.z-tinymce-media-size-large {
+        margin-top: 1.4rem;
+        clear: both;
+        width: 90vw;
+    }
+    &.z-tinymce-media-size-middle {
+        width: 53vw;
+    }
+    &.z-tinymce-media-size-small {
+        float: right;
+        clear: right;
+        margin-right: -60%;
+        width: 50%;
+        margin-top: 0;
+        margin-bottom: 1.96rem;
+        vertical-align: baseline;
+    }
+
+    @media screen and (max-width: $screen-width-breakpoint) {
+        &.z-tinymce-media-size-large {
+            clear: both;
+            width: 90vw;
+        }
+        &.z-tinymce-media-size-middle {
+            clear: both;
+            width: 90vw;
+        }
+    }
+}
+
+aside {
+    position: relative;
+    border: 1px dashed #666;
+    padding: 10px;
+
+    &::before {
+        content:  "aside";
+        font-size: 10px;
+        padding: 2px 4px;
+        color: white;
+        background-color: #666;
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 }
