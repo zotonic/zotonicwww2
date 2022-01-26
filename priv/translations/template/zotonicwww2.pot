@@ -18,13 +18,13 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:112./_build/default/lib/zotonicwww2/priv/templates/page.module.tpl:71./_build/default/lib/zotonicwww2/priv/templates/page.tpl:108
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.category.tpl:65
 msgid ""
-"Category"
+"All"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:42
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:37
 msgid ""
 "Download in new window"
 msgstr ""
@@ -36,7 +36,7 @@ msgid ""
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.documentation.tpl:16
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.documentation.tpl:35
 msgid ""
 "Edit on GitHub"
 msgstr ""
@@ -48,13 +48,13 @@ msgid ""
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:19
+#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:31
 msgid ""
 "Exact match"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:103
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:98
 msgid ""
 "Latest in"
 msgstr ""
@@ -66,50 +66,62 @@ msgid ""
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.tpl:90
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.documentation.tpl:16
 msgid ""
 "Module"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.documentation.tpl:21
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.website.tpl:29
 msgid ""
-"Module:"
+"More made with Zotonic"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.category.tpl:33./_build/default/lib/zotonicwww2/priv/templates/page.tpl:27./_build/default/lib/zotonicwww2/priv/templates/search.tpl:58
+#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:66
 msgid ""
 "Pages"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:93./_build/default/lib/zotonicwww2/priv/templates/page.module.tpl:61./_build/default/lib/zotonicwww2/priv/templates/page.tpl:79
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:88./_build/default/lib/zotonicwww2/priv/templates/page.module.tpl:61./_build/default/lib/zotonicwww2/priv/templates/page.tpl:59
 msgid ""
 "Referred by"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/_nav_sidedrawer.tpl:18./_build/default/lib/zotonicwww2/priv/templates/search.tpl:4./_build/default/lib/zotonicwww2/priv/templates/search.tpl:11
+#: ./_build/default/lib/zotonicwww2/priv/templates/_nav_header.tpl:28./_build/default/lib/zotonicwww2/priv/templates/search.tpl:4./_build/default/lib/zotonicwww2/priv/templates/search.tpl:11
 msgid ""
 "Search"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:57./_build/default/lib/zotonicwww2/priv/templates/page.module.tpl:36./_build/default/lib/zotonicwww2/priv/templates/page.tpl:43
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:52./_build/default/lib/zotonicwww2/priv/templates/page.module.tpl:36
 msgid ""
 "See also"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.category.tpl:9
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.category.tpl:47
 msgid ""
 "See more"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:34
+#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:15
+msgid ""
+"Text to search"
+msgstr ""
+""
+
+#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:44
 msgid ""
 "Title match"
+msgstr ""
+""
+
+#: ./_build/default/lib/zotonicwww2/priv/templates/_list_item.media.tpl:14./_build/default/lib/zotonicwww2/priv/templates/_list_item.tpl:5./_build/default/lib/zotonicwww2/priv/templates/_list_item.website.tpl:13
+msgid ""
+"Untitled"
 msgstr ""
 ""

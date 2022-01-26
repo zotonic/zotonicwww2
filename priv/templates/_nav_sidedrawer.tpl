@@ -24,7 +24,7 @@
      # The submenu is shown for all navigation items on the path to the
      # current page and below the current page.
      #}
-    {% with m.rsc.main_menu.menu|menu_expand as menu %}
+    {% with m.rsc.main_menu.id|menu_expand as menu %}
         {% with [
                     id,
                     id.category_id,
