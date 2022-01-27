@@ -1,9 +1,10 @@
 @charset "UTF-8";
 /* Zotonic scss main file, setting our preferences. */
+/* -------begin customization-------- */
 /* ------tufte css settings-------- */
 /* -------Bootstrap customization-------- */
-/* import the necessary Bootstrap files */
-/* -------end customization-------- */
+/* -------Grid break points-------- */
+/* -------Include bootstrap basic settings-------- */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -184,7 +185,8 @@ td,
 th {
   padding: 0; }
 
-/* zotonic.com site definitions */
+/* -------Extra site definitions-------- */
+/* -------end customization-------- */
 /*! autoprefixer: off */
 :root {
   --safe-area-inset-top: 0px;
