@@ -61,7 +61,7 @@ do_import(ImportType, Context0) when ImportType =:= incremental; ImportType =:= 
                 <<"name">> => Name,
                 <<"github_url">> => github_url(F)
             },
-            lager:info("Updating: ~s", [ Name ]),
+            ?LOG_INFO("Updating: ~s", [ Name ]),
 
             {ok, RscId} = case m_rsc:rid(Name, Context) of
                 undefined ->

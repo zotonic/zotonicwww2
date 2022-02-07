@@ -1084,7 +1084,7 @@ blockquote footer {
 
 pre, pre code, p code, p pre code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.71428571;
   margin-top: 1.71428571rem; }
 
@@ -1283,7 +1283,8 @@ div.table-wrapper, table {
   font-size: 1rem; }
 
 pre {
-  width: 52.5%;
+  clear: right;
+  width: 90%;
   padding-left: 2.5%;
   overflow-x: auto; }
 
