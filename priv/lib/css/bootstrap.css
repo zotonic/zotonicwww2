@@ -813,7 +813,13 @@ input.form-control {
   margin-bottom: 15px; }
 
 .highlight {
-  background: #fffff8; }
+  background: #fbfbf6;
+  border: 1px solid #f0f0f0;
+  clear: right;
+  border-radius: 4px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  overflow: hidden; }
   .highlight .c {
     color: #998;
     font-style: italic; }
