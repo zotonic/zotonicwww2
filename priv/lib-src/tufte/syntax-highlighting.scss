@@ -7,9 +7,9 @@ $spacing-unit:     30px;
 }
 
 .highlight {
+    clear: right;
     background: #fbfbf6;
     border: 1px solid #f0f0f0;
-    clear: right;
     border-radius: 4px;
     margin-top: $spacing-unit / 2;
     padding-bottom: $spacing-unit / 2;

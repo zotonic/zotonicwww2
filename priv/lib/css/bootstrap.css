@@ -775,6 +775,12 @@ input.form-control {
 .clickable {
   cursor: pointer; }
 
+.docutils.literal {
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  padding: 2px 4px;
+  background: #fbfbf6; }
+
 /*****************************************************************************/
 /*
 /* Tufte Jekyll blog theme
@@ -813,9 +819,9 @@ input.form-control {
   margin-bottom: 15px; }
 
 .highlight {
+  clear: right;
   background: #fbfbf6;
   border: 1px solid #f0f0f0;
-  clear: right;
   border-radius: 4px;
   margin-top: 15px;
   padding-bottom: 15px;
