@@ -425,7 +425,7 @@ article span > a:not(.btn) {
   background-position: 0% 93%, 100% 93%, 0% 93%; }
 
 body {
-  font-family: ETBembo, "Chronicle Text G2", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: ETBook, "Chronicle Text G2", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   background-color: #fffffc;
   color: #111;
   counter-reset: sidenote-counter; }
