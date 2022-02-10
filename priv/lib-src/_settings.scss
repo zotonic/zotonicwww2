@@ -3,7 +3,9 @@ $zotonic-blue:          rgb(28,165,222);
 
 /* ------tufte css settings-------- */
 
-$body-font: ETBook, "Chronicle Text G2", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+// $body-font: ETBook, "Chronicle Text G2", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+
+$body-font: Athelas, Constantia, Georgia, serif;
 
 // Note that Gill Sans is the top of the stack and corresponds to what is used in Tufte's books
 // However, it is not a free font, so if it is not present on the computer that is viewing the webpage
@@ -20,7 +22,7 @@ $contrast-color: darken($zotonic-blue, 10%);
 $border-color:   #333333;
 
 $link-style:     underline; // choices are 'color' or 'underline'. Color option styles links with $contrast-color set above
-$font-size-base: 13px;
+$font-size-base: 15px;
 
 /* -------Bootstrap customization-------- */
 
