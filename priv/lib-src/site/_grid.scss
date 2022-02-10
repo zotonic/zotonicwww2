@@ -91,14 +91,15 @@ body {
 
 .navbar.navbar-grid {
     display: grid;
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 62px 1fr;
     grid-template-rows: 50px auto;
 
     @media (min-width: $screen-menu-breakpoint) {
         grid-template-columns: 10px 1fr;
     }
 
-    background-color: $body-bg;
+    background-color: rgba($body-bg, 0.95);
+    background: linear-gradient(rgba($body-bg, 1.0), rgba($body-bg, 1.0), rgba($body-bg, 0.8));
 
     > label {
         grid-column: 1;
@@ -123,6 +124,7 @@ body {
         min-width: 0;
         text-align: center;
         overflow: hidden;
+        padding-top: 2px;
 
         a {
             overflow: hidden;

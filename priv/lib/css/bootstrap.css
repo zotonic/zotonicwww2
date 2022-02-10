@@ -254,9 +254,10 @@ body {
 
 .navbar.navbar-grid {
   display: grid;
-  grid-template-columns: 60px 1fr;
+  grid-template-columns: 62px 1fr;
   grid-template-rows: 50px auto;
-  background-color: #fffffc; }
+  background-color: rgba(255, 255, 252, 0.95);
+  background: linear-gradient(#fffffc, #fffffc, rgba(255, 255, 252, 0.8)); }
   @media (min-width: 1200px) {
     .navbar.navbar-grid {
       grid-template-columns: 10px 1fr; } }
@@ -278,7 +279,8 @@ body {
     grid-row: 1;
     min-width: 0;
     text-align: center;
-    overflow: hidden; }
+    overflow: hidden;
+    padding-top: 2px; }
     .navbar.navbar-grid > div.home-link a {
       overflow: hidden; }
       .navbar.navbar-grid > div.home-link a img {
