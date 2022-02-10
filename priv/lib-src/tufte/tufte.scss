@@ -343,9 +343,13 @@ div.table-wrapper, table { overflow-x: auto; } //changed all overflow values to 
 
 pre { //width: 52.5%; //, pre code, p pre code are both selectors in tufte.css - they have been removed here to fix alignment issues
       clear: right;
-      width: 90%;
-      padding-left: 2.5%;
-      overflow-x: auto; }
+      width: 85%;
+      overflow-x: auto;
+      background: #fbfbf6;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      margin-top: $spacing-unit / 2;
+      padding: $spacing-unit / 2 2.5%;}
 
 .fullwidth, li.listing div{ max-width: 90%; }
 
@@ -373,8 +377,9 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
                                                                    vertical-align: baseline;
                                                                    position: relative; }
                             label { cursor: pointer; }
-                            pre, pre code, p code, p pre code { width: 90%;
-                                       padding: 0; }
+                            pre, pre code, p code, p pre code {
+                                    width: 100%;
+                                    padding: $spacing-unit/2 1%; }
                             .table-caption { display: block;
                                              float: right;
                                              clear: both;
@@ -385,7 +390,7 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
                                              margin-right: 1%;
                                              vertical-align: baseline;
                                              position: relative; }
-                            div.table-wrapper, table, table.booktabs { width: 85%; }
+                            div.table-wrapper, table, table.booktabs { width: 100%; }
                             div.table-wrapper { border-right: 1px solid #efefef; }
                             img { max-width: 100%; } 
                             figcaption.maincolumn-figure, figure.fullwidth figcaption { float:none; text-align: center;}

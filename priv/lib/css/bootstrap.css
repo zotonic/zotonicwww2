@@ -798,11 +798,6 @@ input.form-control {
 
 .highlight {
   clear: right;
-  background: #fbfbf6;
-  border: 1px solid #f0f0f0;
-  border-radius: 4px;
-  margin-top: 15px;
-  padding-bottom: 15px;
   overflow: hidden; }
   .highlight .c {
     color: #998;
@@ -1274,9 +1269,13 @@ div.table-wrapper, table {
 
 pre {
   clear: right;
-  width: 90%;
-  padding-left: 2.5%;
-  overflow-x: auto; }
+  width: 85%;
+  overflow-x: auto;
+  background: #fbfbf6;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  margin-top: 15px;
+  padding: 15px 2.5%; }
 
 .fullwidth, li.listing div {
   max-width: 90%; }
@@ -1321,8 +1320,8 @@ label.margin-toggle:not(.sidenote-number) {
     cursor: pointer; }
 
   pre, pre code, p code, p pre code {
-    width: 90%;
-    padding: 0; }
+    width: 100%;
+    padding: 15px 1%; }
 
   .table-caption {
     display: block;
@@ -1337,7 +1336,7 @@ label.margin-toggle:not(.sidenote-number) {
     position: relative; }
 
   div.table-wrapper, table, table.booktabs {
-    width: 85%; }
+    width: 100%; }
 
   div.table-wrapper {
     border-right: 1px solid #efefef; }
