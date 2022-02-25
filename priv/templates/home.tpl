@@ -34,7 +34,11 @@
             {% for id in id.o.haspart|is_visible %}
                 {% if id.is_a.video %}
                     <div class="home__list__item{% if id.is_featured %} featured{% endif %}">
-                        {% include "_body_media.tpl" size='large' %}
+                        <figure class="fullwidth">
+                            <div class="oembed-wrapper">
+                                {% media id mediaclass=mediaclass %}
+                            </div>
+                        </figure>
                     </div>
                 {% else %}
                     <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">

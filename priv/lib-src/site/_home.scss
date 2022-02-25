@@ -1,13 +1,11 @@
 .page-page_home {
 
-    div.subtitle {
-        p {
-            font-style: italic;
-            margin-top: 2.1777777777777778rem;
-            margin-bottom: 2.1777777777777778rem;
-            font-size: 1.8rem;
-            display: block;
-            line-height: 1.08888888888889;
+    .home__list__item {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+
+        figure {
+            margin-bottom: 0;
         }
     }
 

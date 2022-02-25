@@ -766,13 +766,11 @@ input.form-control {
     padding: 0 2px;
     border-bottom: 2px solid #d9534f; }
 
-.page-page_home div.subtitle p {
-  font-style: italic;
-  margin-top: 2.1777777777777778rem;
-  margin-bottom: 2.1777777777777778rem;
-  font-size: 1.8rem;
-  display: block;
-  line-height: 1.08888888888889; }
+.page-page_home .home__list__item {
+  margin-top: 3rem;
+  margin-bottom: 3rem; }
+  .page-page_home .home__list__item figure {
+    margin-bottom: 0; }
 
 .clickable {
   cursor: pointer; }
