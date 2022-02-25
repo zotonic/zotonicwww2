@@ -2,13 +2,10 @@
 
 {% block content %}
     <article>
-        {# Replace this with a generic documention image, based on the current category #}
-        {% if id.depiction %}
-            <div class="page-header" style="background-image: url({% image_url id.depiction mediaclass='page-header' %})">
-                <h1>{{ id.title }}</h1>
-            </div>
-        {% else %}
-            <h1>{{ id.title }}</h1>
+        <h1>{{ id.title }}</h1>
+
+        {% if id.depiction as dep %}
+            {% include "_body_media.tpl" id=dep.id %}
         {% endif %}
 
         {% if id.o.in_module[1] as module_id %}
