@@ -72,16 +72,18 @@
             {{ id.body|show_media }}
         </div>
 
-        {# Show a list with articles and page we want to highlight on the home page #}
+        {# Show a list with articles and pages we want to highlight on the home page #}
         <div class="home__list">
-            {# Search for the latest 20 articles, video, documents, release notes and #}
-            {# cook book entries.                                                     #}
-            {# The 'cat' is an argumment for the 'query' search, which is implemeted  #}
-            {# by module `mod_search`.                                                #}
+            {# Search for the latest 20 articles, video, documents, release notes and  #}
+            {# cook book entries.                                                      #}
+            {# The 'cat' is an argumment for the 'query' search, which is implemeted   #}
+            {# by module `mod_search`.                                                 #}
+            {# The 'is_featured' is set for featured items, the "-is_featured" will    #}
+            {# sort 'true' values first.                                               #}
             {% for id in m.search.query::%{
                     cat: [ "article", "video", "document", "releasenotes", "cookbook" ],
                     is_published: true,
-                    sort: "-created",
+                    sort: [ "-is_featured", "-created" ],
                     pagelen: 20,
                     page: 1
                 }
