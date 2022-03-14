@@ -74,26 +74,34 @@
 
         {# Show a list with articles and page we want to highlight on the home page #}
         <div class="home__list">
-            {# Search for the latest 20 articles, video, documents or release notes. #}
-            {# The 'cat' is an argumment for the 'query' search, which is implemeted #}
-            {# by module `mod_search`                                                #}
+            {# Search for the latest 20 articles, video, documents, release notes and #}
+            {# cook book entries.                                                     #}
+            {# The 'cat' is an argumment for the 'query' search, which is implemeted  #}
+            {# by module `mod_search`.                                                #}
             {% for id in m.search.query::%{
-                    cat: [ "article", "video", "document", "releasenotes" ],
+                    cat: [ "article", "video", "document", "releasenotes", "cookbook" ],
                     is_published: true,
                     sort: "-created",
-                    pagelen: 20
+                    pagelen: 20,
+                    page: 1
                 }
             %}
                 {% if id.is_a.video %}
+                    {# Videos are shown inline, so that they can be played on the home page. #}
                     <div class="home__list__item{% if id.is_featured %} featured{% endif %}">
                         <figure class="fullwidth">
                             <div class="oembed-wrapper">
+                                {# The 'media' tag is much like 'image', except for multi-media  #}
+                                {# the media tag will display a video or audio player, where the #}
+                                {# image tag will display a static img tag.                      #}
                                 {% media id mediaclass=mediaclass %}
                             </div>
                         </figure>
                     </div>
                 {% else %}
                     <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
+                        {# The "_body_media.tpl" is also used to show media in the body texts. #}
+                        {# Here we re-use it and request a 'large' version of the image.       #}
                         {% include "_body_media.tpl" id=id.o.depiction size='large' %}
                         <h2><a href="{{ id.page_url }}">{{ id.title }}</a></h2>
                         <p>
