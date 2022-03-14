@@ -23,7 +23,7 @@
 
 {% block _js_include_extra %}{% endblock %}
 
-<script type="text/javascript">
+<script type="text/javascript" nonce="{{ m.req.csp_nonce }}">
   let lastScrollTop = 0;
   let isScrolledDown = false;
 
@@ -47,7 +47,7 @@
   };
 </script>
 
-<script type="text/javascript">
+<script type="text/javascript" nonce="{{ m.req.csp_nonce }}">
     $(function()
     {
         $.widgetManager();

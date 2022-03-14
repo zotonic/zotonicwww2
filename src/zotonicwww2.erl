@@ -32,7 +32,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(10).
+-mod_schema(13).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -186,15 +186,10 @@ manage_schema(_Version, _Context) ->
             % Names for generic pages (about, search etc) are encouraged
             % to start with "page_" to prevent name clashes with categories
             % and predicates (which don't have a prefix for their name).
-            {page_home, other, [
+            {page_home, collection, [
                 {title, <<"Zotonic">>},
-                {body, <<
-                    "<p>The <a href='#cms'>content management system</a> that combines ",
-                    "a <a href='#data-model'>flexible data model</a> with ",
-                    "<a href='#templates'>powerful templates</a>, and "
-                    "<a href='#mqtt'>real time communication</a>.</p>",
-                    "<p>Build <a href='#examples'>any website</a>, quick.</p>"
-                >>},
+                {summary, <<"Intro blurb for on home page.">>},
+                {body, <<"Longer story displayed on home page.">>},
                 {page_path, <<"/">>}
             ]},
 
@@ -227,7 +222,7 @@ manage_schema(_Version, _Context) ->
             {references,
                 [
                     % Resource properties, just like with resources
-                    {title, {trans, [{en, <<"References">>}]}}
+                    {title, #trans{ tr = [{en, <<"References">>}]}}
                 ],
                 [
                     % Valid from text resources, to text or media
@@ -243,7 +238,7 @@ manage_schema(_Version, _Context) ->
             % erlang module.
             {in_module,
                 [
-                    {title, {trans, [{en, <<"In module">>}]}}
+                    {title, #trans{ tr = [{en, <<"In module">>}]}}
                 ],
                 [
                     {documentation, module}

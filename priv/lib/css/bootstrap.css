@@ -771,6 +771,49 @@ input.form-control {
   margin-bottom: 3rem; }
   .page-page_home .home__list__item figure {
     margin-bottom: 0; }
+.page-page_home .home__summary {
+  margin-top: 2.1777777777777778rem;
+  margin-bottom: 2.1777777777777778rem;
+  font-size: 1.8rem;
+  display: block;
+  line-height: 1.08888888888889; }
+.page-page_home .home__featured {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 90%;
+  font-size: 1.4rem;
+  margin: 3rem 0; }
+  @media screen and (max-width: 760px) {
+    .page-page_home .home__featured {
+      max-width: 100%; } }
+  .page-page_home .home__featured > * {
+    width: 40%;
+    flex-grow: 1; }
+    @media screen and (max-width: 760px) {
+      .page-page_home .home__featured > * {
+        width: 100%; } }
+  .page-page_home .home__featured .home__featured__item {
+    background-color: #1ca5de;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; }
+    .page-page_home .home__featured .home__featured__item img {
+      opacity: 0.9; }
+    .page-page_home .home__featured .home__featured__item h2 {
+      color: white;
+      margin: 0;
+      padding: 1rem 1rem 0 1rem; }
+      .page-page_home .home__featured .home__featured__item h2 a {
+        color: inherit; }
+    .page-page_home .home__featured .home__featured__item p {
+      color: white;
+      margin: 0;
+      padding: 1rem;
+      width: 100%; }
+    .page-page_home .home__featured .home__featured__item:hover {
+      background-color: #2fafe5; }
+      .page-page_home .home__featured .home__featured__item:hover img {
+        opacity: 1; }
 
 .clickable {
   cursor: pointer; }
@@ -969,7 +1012,6 @@ article span > a:not(.btn) {
   -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
   background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
   background-repeat: no-repeat, no-repeat, repeat-x;
-  text-shadow: 0.03em 0 #fffffc, -0.03em 0 #fffffc, 0 0.03em #fffffc, 0 -0.03em #fffffc, 0.06em 0 #fffffc, -0.06em 0 #fffffc, 0.09em 0 #fffffc, -0.09em 0 #fffffc, 0.12em 0 #fffffc, -0.12em 0 #fffffc, 0.15em 0 #fffffc, -0.15em 0 #fffffc;
   background-position: 0% 93%, 100% 93%, 0% 93%; }
 
 body {
