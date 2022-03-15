@@ -36,7 +36,7 @@ msgid ""
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.documentation.tpl:35
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.documentation.tpl:32
 msgid ""
 "Edit on GitHub"
 msgstr ""
@@ -66,7 +66,7 @@ msgid ""
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.documentation.tpl:16
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.documentation.tpl:13
 msgid ""
 "Module"
 msgstr ""
@@ -84,13 +84,19 @@ msgid ""
 msgstr ""
 ""
 
+#: ./_build/default/lib/zotonicwww2/priv/templates/home.tpl:81
+msgid ""
+"Recent articles, cookbooks, release notes and video."
+msgstr ""
+""
+
 #: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:88./_build/default/lib/zotonicwww2/priv/templates/page.module.tpl:61./_build/default/lib/zotonicwww2/priv/templates/page.tpl:59
 msgid ""
 "Referred by"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/_nav_header.tpl:28./_build/default/lib/zotonicwww2/priv/templates/search.tpl:4./_build/default/lib/zotonicwww2/priv/templates/search.tpl:11
+#: ./_build/default/lib/zotonicwww2/priv/templates/_nav_header.tpl:32./_build/default/lib/zotonicwww2/priv/templates/search.tpl:4./_build/default/lib/zotonicwww2/priv/templates/search.tpl:11
 msgid ""
 "Search"
 msgstr ""

@@ -75,9 +75,9 @@
         {# Show a list with articles and pages we want to highlight on the home page #}
         <div class="home__list">
 
-            {# Note the {_ .. _} tags. They surround translatable texts. A .pot file    #}
-            {# with all texts can be made in priv/translations/template/ via the button #}
-            {# on the /admin/translations page.                                         #}
+            {# Note the {_ .. _} tags. They surround translatable texts. A .pot file   #}
+            {# with all texts is created in priv/translations/template/ via the button #}
+            {# on the /admin/translation page.                                         #}
             <h2>{_ Recent articles, cookbooks, release notes and video. _}</h2>
 
             {# Search for the latest 20 articles, video, documents, release notes and  #}
