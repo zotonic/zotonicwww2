@@ -6,6 +6,7 @@ zotonic_site.config
 .rebar3
 *.beam
 *.o
+*.mo
 *.plt
 *~
 *#
