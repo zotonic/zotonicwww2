@@ -245,6 +245,8 @@ filename_to_name(Name, [ <<"cookbook">> | _ ]) ->
     {<<"doc_cookbook_", Name/binary>>, cookbook, false};
 filename_to_name(Name, [ <<"developer-guide">> | _ ]) ->
     {<<"doc_developerguide_", Name/binary>>, developerguide, false};
+filename_to_name(Name, [ <<"dev">> | _ ]) ->
+    {<<"doc_developerguide_", Name/binary>>, developerguide, false};
 filename_to_name(Name, [ <<"ref">> | _ ]) ->
     {<<"doc_reference_", Name/binary>>, reference, true};
 filename_to_name(Name, [ <<"user-guide">> | _ ]) ->
