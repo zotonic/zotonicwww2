@@ -110,7 +110,7 @@
                     <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
                         {# The "_body_media.tpl" is also used to show media in the body texts. #}
                         {# Here we re-use it and request a 'large' version of the image.       #}
-                        {% include "_body_media.tpl" id=id.depiction.id size='large' %}
+                        {% include "_body_media.tpl" id=id.depiction.id size='large' caption='-' %}
                         <h2><a href="{{ id.page_url }}">{{ id.title }}</a></h2>
                         <p>
                             {{ id|summary:240 }}
