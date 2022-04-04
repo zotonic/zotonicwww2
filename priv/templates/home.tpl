@@ -102,7 +102,7 @@
                                 {# The 'media' tag is much like 'image', except for multi-media  #}
                                 {# the media tag will display a video or audio player, where the #}
                                 {# image tag will display a static img tag.                      #}
-                                {% media id mediaclass=mediaclass %}
+                                {% media id %}
                             </div>
                         </figure>
                     </div>
