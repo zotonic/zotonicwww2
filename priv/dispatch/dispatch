@@ -9,8 +9,8 @@
     {documentation, [ "docs", id, slug ], controller_page,  [ {template, {cat, "page.tpl"}} ]},
     {documentation, [ "docs", id ],       controller_page,  [ {template, {cat, "page.tpl"}} ]},
 
-    {cookbook, [ "cook-book", id, slug ], controller_page,  [ {template, {cat, "page.tpl"}} ]},
-    {cookbook, [ "cook-book", id ],       controller_page,  [ {template, {cat, "page.tpl"}} ]},
+    {cookbook, [ "cookbook", id, slug ], controller_page,  [ {template, {cat, "page.tpl"}} ]},
+    {cookbook, [ "cookbook", id ],       controller_page,  [ {template, {cat, "page.tpl"}} ]},
 
     {person,    [ "person", id, slug ],   controller_page,    [ {template, {cat, "page.tpl"}} ]},
     {person,    [ "person", id ],         controller_page,    [ {template, {cat, "page.tpl"}} ]},
