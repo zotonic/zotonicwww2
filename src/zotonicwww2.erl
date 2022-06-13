@@ -61,6 +61,8 @@
 observe_dispatch(#dispatch{ path = Path }, Context) ->
     % Split the path on "/"
     case lists:reverse(binary:split(Path, <<"/">>, [ global, trim_all ])) of
+        [ <<"index.html">>, <<"latest">> ] ->
+            {ok, m_rsc:rid(page_home, Context)};
         [ File | Dirs ] ->
             % Remove the ".html" extension
             Rootname = filename:rootname(File),
