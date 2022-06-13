@@ -116,8 +116,8 @@ m_post( [ <<"rebuild">>, Secret ], _Payload, Context) ->
                     Context),
             {ok, <<"queued">>};
         _ ->
-            % Log a message to the lager logs
-            lager:info("Docs rebuild request with wrong secret from ~p", [ m_req:get(peer, Context) ]),
+            % Log a message
+            ?LOG_NOTICE("Docs rebuild request with wrong secret from ~p", [ m_req:get(peer, Context) ]),
             % Try to use posix error codes
             {error, eacces}
     end.
@@ -135,7 +135,7 @@ task_rebuild(Context) ->
             fun build_edoc/1,
             fun() ->
                 {ok, Hash} = hash(Context),
-                lager:info("Rebuild of docs success for '~s'", [ Hash ]),
+                ?LOG_INFO("Rebuild of docs success for '~s'", [ Hash ]),
                 m_config:set_value(site, rebuild_hash, Hash, Context),
                 ok
             end
@@ -175,17 +175,17 @@ clone(Context) ->
                 stdout,
                 {cd, DataDir}
             ],
-            lager:info("Command: \"~s\"", [ Cmd ]),
+            ?LOG_INFO("Command: \"~s\"", [ Cmd ]),
             case exec:run(Cmd, Options) of
                 {ok, [ {stdout, Output} ]} ->
                     Output1 = filter_output(Output),
-                    lager:info("Command output: ~s", [ Output1 ]),
+                    ?LOG_INFO("Command output: ~s", [ Output1 ]),
                     {ok, iolist_to_binary(Output)};
                 {ok, []} ->
-                    lager:info("Command output: "),
+                    ?LOG_INFO("Command output: "),
                     {ok, <<>>};
                 {error, _} = Error ->
-                    lager:error("Command \"~s\" error: ~p", [ Cmd, Error ]),
+                    ?LOG_ERROR("Command \"~s\" error: ~p", [ Cmd, Error ]),
                     Error
             end
     end.
@@ -266,16 +266,16 @@ run_gitcmd(Cmd, Context) ->
         stdout,
         {cd, unicode:characters_to_list(Dir)}
     ],
-    lager:info("Command: \"~s\"", [ Cmd ]),
+    ?LOG_INFO("Command: \"~s\"", [ Cmd ]),
     case exec:run(Cmd, Options) of
         {ok, [ {stdout, Output} ]} ->
-            lager:info("Command output: ~s", [ Output ]),
+            ?LOG_INFO("Command output: ~s", [ Output ]),
             {ok, iolist_to_binary(Output)};
         {ok, []} ->
-            lager:info("Command output: "),
+            ?LOG_INFO("Command output: "),
             {ok, <<>>};
         {error, _} = Error ->
-            lager:error("Command \"~s\" error: ~p", [ Cmd, Error ]),
+            ?LOG_ERROR("Command \"~s\" error: ~p", [ Cmd, Error ]),
             Error
     end.
 

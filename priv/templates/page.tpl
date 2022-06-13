@@ -1,82 +1,62 @@
 {% extends "base.tpl" %}
 
 {% block content %}
-    {% if id.depiction %}
-        <div class="page-header" style="background-image: url({% image_url id.depiction mediaclass='page-header' %})">
-            <h1>{{ id.title }}</h1>
-        </div>
-    {% else %}
+    <article>
         <h1>{{ id.title }}</h1>
-    {% endif %}
 
-    <p class="summary">
-        {{ id.summary }}
-    </p>
+        {% if id.depiction as dep %}
+            {% include "_body_media.tpl" id=dep.id %}
+        {% endif %}
 
-    <div class="body">
-        {{ id.body|show_media }}
-    </div>
+        <p class="summary">
+            {{ id.summary }}
+        </p>
+
+        <div class="body">
+            {{ id.body|show_media }}
+        </div>
+    </article>
 {% endblock %}
 
 
 {% block content_after %}
 <div class="page-relations">
-    {% if id.o.haspart as haspart %}
-        <div class="connections paged" id="content-pager">
-            <div class="page-count">
-                {{ haspart|length }} <span>{_ Pages _}</span>
-            </div>
-            <div class="list-items">
-                {% for id in haspart %}
-                    {% catinclude "_list_item.tpl" id %}
-                {% endfor %}
-            </div>
-        </div>
+
+    {% if id.o.haspart|is_visible as haspart %}
+        <dl class="connections">
+            {% for id in haspart %}
+                <dt><a href="{{ id.page_url }}">{{ id.title }}</a></dt>
+                <dd class="do_clickable">
+                    {{ id|summary:160 }}
+                    <a href="{{ id.page_url }}"></a>
+                </dd>
+            {% endfor %}
+        </dl>
     {% endif %}
 
-    {% with id.o.relation as relo %}
-    {% with id.s.relation as rels %}
-    {% with id.s.haspart -- [ id.category_id ] as hasparts %}
-    {% with hasparts[1].o.haspart as hassibling %}
-        {% if relo or rels or hasparts %}
-            <div class="connections">
-                <h3>&#x21C4; {_ See also _}</h3>
+    {% for s in id.s.haspart|is_visible %}
+        {% with s.o.haspart|is_visible as siblings %}
+        {% for p in s.o.haspart %}
+            {% if p == id %}
+                <p class="page-haspart">
+                    {% if siblings[forloop.counter - 1] as prev %}
+                        <a class="haspart__prev" href="{{ prev.page_url }}">{{ prev.title }}</a>
+                    {% else %}
+                        <span></span>
+                    {% endif %}
+                    <a class="haspart__link" href="{{ s.page_url }}">{{ s.title }}</a>
+                    {% if siblings[forloop.counter + 1] as next %}
+                        <a class="haspart__next" href="{{ next.page_url }}">{{ next.title }}</a>
+                    {% endif %}
+                </p>
+            {% endif %}
+        {% endfor %}
+        {% endwith %}
+    {% endfor %}
 
-                <div class="list-items">
-                    {% for id in hasparts %}
-                        {% catinclude "_list_item.tpl" id is_highlight %}
-                    {% endfor %}
-                    {% for id in relo %}
-                        {% if not id|member:hasparts %}
-                            {% catinclude "_list_item.tpl" id %}
-                        {% endif %}
-                    {% endfor %}
-                    {% for id in rels %}
-                        {% if  not id|member:hasparts
-                           and not id|member:relo
-                        %}
-                            {% catinclude "_list_item.tpl" id %}
-                        {% endif %}
-                    {% endfor %}
-                    {% for id in hassibling %}
-                        {% if  not id|member:hasparts
-                           and not id|member:relo
-                           and not id|member:rels
-                        %}
-                            {% catinclude "_list_item.tpl" id %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-
-    {% if id.s.references as refs %}
+    {% if id.s.references  as refs %}
         <div class="connections">
-            <h3>&rarr; {_ Referred by _}</h3>
+            <h3>{_ Referred by _}</h3>
             <div class="list-items">
                 {% for id in refs %}
                     {% catinclude "_list_item.tpl" id %}
@@ -84,32 +64,5 @@
             </div>
         </div>
     {% endif %}
-
-    {% if id.o.in_module as module %}
-        <div class="connections">
-            <h3>&#8776; {_ Module _} <span class="text-muted"> / {{ id.category_id.title|lower }} </span></h3>
-            <div class="list-items">
-                {% for id in module %}
-                    {% catinclude "_list_item.tpl" id is_highlight %}
-                {% endfor %}
-                {% for id in m.search[
-                    {query cat=id.category_id
-                           id_exclude=id
-                           hasobject=[module[1], "in_module"]
-                           sort="pivot_title"
-                    }] %}
-                    {% catinclude "_list_item.tpl" id %}
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
-
-    <div class="connections">
-        <h3>&#8712; {{ id.category_id.title }} <span class="text-muted">{_ Category _}</span></h3>
-
-        <div class="list-items">
-            {% catinclude "_list_item.tpl" id.category_id %}
-        </div>
-    </div>
 </div>
 {% endblock %}

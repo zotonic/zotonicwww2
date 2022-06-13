@@ -12,9 +12,9 @@
 <div class="page-relations">
     {% with m.search.paged[{query query_id=id sort="-created" pagelen=100 page=q.page}] as result %}
         <div class="connections paged" id="content-pager">
-            <div class="page-count">
+            <p class="page-count">
                 {{ result.total }} <span> {{ id.title|lower }} </span>
-            </div>
+            </p>
             <div class="list-items">
                 {% for id in result %}
                     {% catinclude "_list_item.tpl" id %}

@@ -8,42 +8,37 @@
 {% extends "base.tpl" %}
 
 {% block content %}
-    {% if not id.is_a.document %}
-        {% include "_body_media.tpl" id=id mediaclass="body-media-large" %}
-    {% endif %}
+    <article>
+        <h1>{{ id.title }}</h1>
 
-    <h1>{{ id.title }}</h1>
+        {% include "_body_media.tpl" id=id mediaclass="body-media-large" align="left" caption='-' link={media_inline id=id}|url %}
 
-    {% if id.is_a.document %}
-        {% include "_body_media.tpl" id=id mediaclass="media-preview" align="left" caption='-' link={media_inline id=id}|url %}
-    {% endif %}
-
-    <p class="summary">
-        {{ id.summary }}
-    </p>
-
-    <div class="body">
-        {{ id.body|show_media }}
-    </div>
-
-    {% if id.website %}
-        <p>
-            <a href="{{ id.website }}" target="_blank"><span class="fa fa-external-link"></span> {{ id.website }}</a>
+        <p class="summary">
+            {{ id.summary }}
         </p>
-    {% endif %}
 
-    {% if id.medium as medium %}
-        {% if medium.size > 0 %}
-            <p class="text-muted">
-                {# Medium properties are not sanitized, so be careful to escape them #}
-                {{ medium.mime|escape }} {{ medium.size|filesizeformat }}
-            </p>
+        <div class="body">
+            {{ id.body|show_media }}
+        </div>
+
+        {% if id.website %}
             <p>
-                <a href="{% url media_inline id=id %}" target="_blank" class="btn btn-primary">{_ Download in new window _}</a>
+                <a href="{{ id.website }}" target="_blank"><span class="fa fa-external-link"></span> {{ id.website }}</a>
             </p>
         {% endif %}
-    {% endif %}
 
+        {% if id.medium as medium %}
+            {% if medium.size > 0 %}
+                <p class="text-muted">
+                    {# Medium properties are not sanitized, so be careful to escape them #}
+                    {{ medium.mime|escape }} {{ medium.size|filesizeformat }}
+                </p>
+                <p>
+                    <a href="{% url media_inline id=id %}" target="_blank" class="btn btn-primary">{_ Download in new window _}</a>
+                </p>
+            {% endif %}
+        {% endif %}
+    </article>
 {% endblock %}
 
 {% block content_after %}
@@ -105,13 +100,6 @@
             {% for id in m.search[{latest cat=id.category_id pagelen=20}] %}
                 {% catinclude "_list_item.tpl" id %}
             {% endfor %}
-        </div>
-    </div>
-
-    <div class="connections">
-        <h3>&#8712; {{ id.category_id.title }} <span class="text-muted">{_ Category _}</span></h3>
-        <div class="list-items">
-            {% catinclude "_list_item.tpl" id.category_id %}
         </div>
     </div>
 

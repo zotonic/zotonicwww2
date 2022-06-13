@@ -1,11 +1,15 @@
+{% if id.is_visible %}
 <div class="list-item{% if is_highlight or id.is_featured %} featured{% endif %} do_clickable">
-    <h3>
+    <p class="title">
         <a href="{{ id.page_url }}">
-            {{ id.title }}
-            <span class="text-muted">{{ id.category_id.title|lower }}</span>
+            {{ id.title|default:_"Untitled" }}
+            {% if is_show_cat %}
+                <em>&ndash; {{ id.category_id.title }}</em>
+            {% endif %}
         </a>
-    </h3>
+    </p>
     <p>
-        {{ id|summary }}
+        {{ id|summary:120 }}
     </p>
 </div>
+{% endif %}

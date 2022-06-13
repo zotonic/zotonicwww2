@@ -1,10 +1,12 @@
 priv/files
 priv/data
 zotonic_site.config
+.sass-cache
 .eunit
 .rebar3
 *.beam
 *.o
+*.mo
 *.plt
 *~
 *#

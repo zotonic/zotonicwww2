@@ -36,9 +36,9 @@
       or sites.
     -->
     {% lib
-          "css/bs3.css"
-          "css/site.css"
+          "css/bootstrap.css"
           "css/logon.css"
+          "css/survey.css"
           minify
     %}
 
@@ -128,6 +128,7 @@
           -->
           {% block below_body %}
           {% endblock %}
+
           <!-- This block is only for this site -->
           {% block content_after %}
           {% endblock %}

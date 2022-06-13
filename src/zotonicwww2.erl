@@ -3,7 +3,7 @@
 %% the system can see that this Erlang application is a Zotonic
 %% site. All exports below are also valid for a Zotonic module.
 %% @author Marc Worrell <marc@worrell.nl>
-%% @copyright 2020 Marc Worrell
+%% @copyright 2020-2022 Marc Worrell
 
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(10).
+-mod_schema(13).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -44,6 +44,7 @@
 % Exports - if exports change then the module is restarted after
 % compilation.
 -export([
+    observe_dispatch/2,
     manage_schema/2,
     manage_data/2
     ]).
@@ -51,6 +52,38 @@
 % This is the main header file, it contains useful definitions and
 % also includes record defintions, as used by manage_schema/2.
 -include_lib("zotonic_core/include/zotonic.hrl").
+
+
+%% @doc Check if there is a controller or template matching the path. This observer is
+%% called if the dispatcher could not match the request path with the dispatch rules.
+%% If this observer returns 'undefined' then the next observer is called.
+%% Check the list of observers in /admin/development/observers
+observe_dispatch(#dispatch{ path = Path }, Context) ->
+    % Split the path on "/"
+    case lists:reverse(binary:split(Path, <<"/">>, [ global, trim_all ])) of
+        [ <<"index.html">>, <<"latest">> ] ->
+            {ok, m_rsc:rid(page_home, Context)};
+        [ File | Dirs ] ->
+            % Remove the ".html" extension
+            Rootname = filename:rootname(File),
+            % Let the git doc import routines map the filenam and path
+            % to a resource name.
+            case zotonicwww2_parse_docs:filename_to_name(Rootname, Dirs) of
+                {Name, _Cat, _} ->
+                    % Check if the resource name exists.
+                    case m_rsc:rid(Name, Context) of
+                        undefined ->
+                            undefined;
+                        RscId ->
+                            % Map the path to the given resource id
+                            {ok, RscId}
+                    end;
+                error ->
+                    undefined
+            end;
+        _ ->
+            undefined
+    end.
 
 
 %%====================================================================
@@ -155,15 +188,10 @@ manage_schema(_Version, _Context) ->
             % Names for generic pages (about, search etc) are encouraged
             % to start with "page_" to prevent name clashes with categories
             % and predicates (which don't have a prefix for their name).
-            {page_home, other, [
+            {page_home, collection, [
                 {title, <<"Zotonic">>},
-                {body, <<
-                    "<p>The <a href='#cms'>content management system</a> that combines ",
-                    "a <a href='#data-model'>flexible data model</a> with ",
-                    "<a href='#templates'>powerful templates</a>, and "
-                    "<a href='#mqtt'>real time communication</a>.</p>",
-                    "<p>Build <a href='#examples'>any website</a>, quick.</p>"
-                >>},
+                {summary, <<"Intro blurb for on home page.">>},
+                {body, <<"Longer story displayed on home page.">>},
                 {page_path, <<"/">>}
             ]},
 
@@ -196,7 +224,7 @@ manage_schema(_Version, _Context) ->
             {references,
                 [
                     % Resource properties, just like with resources
-                    {title, {trans, [{en, <<"References">>}]}}
+                    {title, #trans{ tr = [{en, <<"References">>}]}}
                 ],
                 [
                     % Valid from text resources, to text or media
@@ -212,7 +240,7 @@ manage_schema(_Version, _Context) ->
             % erlang module.
             {in_module,
                 [
-                    {title, {trans, [{en, <<"In module">>}]}}
+                    {title, #trans{ tr = [{en, <<"In module">>}]}}
                 ],
                 [
                     {documentation, module}
