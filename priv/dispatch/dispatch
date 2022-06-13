@@ -6,6 +6,15 @@
     {page,      [ "page", id ],         controller_page,    [ {template, {cat, "page.tpl"}} ]},
     {search,    [ "search" ],           controller_template,[ {template, "search.tpl"}]},
 
+    {documentation, [ "docs", id, slug ], controller_page,  [ {template, {cat, "page.tpl"}} ]},
+    {documentation, [ "docs", id ],       controller_page,  [ {template, {cat, "page.tpl"}} ]},
+
+    {cookbook, [ "cook-book", id, slug ], controller_page,  [ {template, {cat, "page.tpl"}} ]},
+    {cookbook, [ "cook-book", id ],       controller_page,  [ {template, {cat, "page.tpl"}} ]},
+
+    {person,    [ "person", id, slug ],   controller_page,    [ {template, {cat, "page.tpl"}} ]},
+    {person,    [ "person", id ],         controller_page,    [ {template, {cat, "page.tpl"}} ]},
+
     % Generated edocs
     {edoc, ["edoc", '*'],
            controller_static_pages,
