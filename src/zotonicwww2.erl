@@ -73,7 +73,19 @@ observe_dispatch(#dispatch{ path = Path }, Context) ->
                     % Check if the resource name exists.
                     case m_rsc:rid(Name, Context) of
                         undefined ->
-                            undefined;
+                            case zotonicwww2_parse_docs:filename_to_name(<<"index">>, [ File | Dirs ]) of
+                                {Name2, _Cat2, _} ->
+                                    % Check if the resource name exists.
+                                    case m_rsc:rid(Name2, Context) of
+                                        undefined ->
+                                            undefined;
+                                        RscId ->
+                                            % Map the path to the given resource id
+                                            {ok, RscId}
+                                    end;
+                                error ->
+                                    undefined
+                            end;
                         RscId ->
                             % Map the path to the given resource id
                             {ok, RscId}
