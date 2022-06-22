@@ -94,29 +94,15 @@
                     page: 1
                 }
             %}
-                {% if id.is_a.video %}
-                    {# Videos are shown inline, so that they can be played on the home page. #}
-                    <div class="home__list__item{% if id.is_featured %} featured{% endif %}">
-                        <figure class="fullwidth">
-                            <div class="oembed-wrapper">
-                                {# The 'media' tag is much like 'image', except for multi-media  #}
-                                {# the media tag will display a video or audio player, where the #}
-                                {# image tag will display a static img tag.                      #}
-                                {% media id %}
-                            </div>
-                        </figure>
-                    </div>
-                {% else %}
-                    <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
-                        {# The "_body_media.tpl" is also used to show media in the body texts. #}
-                        {# Here we re-use it and request a 'large' version of the image.       #}
-                        {% include "_body_media.tpl" id=id.depiction.id size='large' caption='-' %}
-                        <h2><a href="{{ id.page_url }}">{{ id.title }}</a></h2>
-                        <p>
-                            {{ id|summary:240 }}
-                        </p>
-                    </div>
-                {% endif %}
+                <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
+                    {# The "_body_media.tpl" is also used to show media in the body texts. #}
+                    {# Here we re-use it and request a 'large' version of the image.       #}
+                    {% include "_body_media.tpl" id=id.depiction.id size='large' caption='-' %}
+                    <h2><a href="{{ id.page_url }}">{{ id.title }}</a></h2>
+                    <p>
+                        {{ id|summary:240 }}
+                    </p>
+                </div>
             {% endfor %}
         </div>
 
