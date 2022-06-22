@@ -7,12 +7,12 @@
 -->
 
 <!-- The current language is available in the variable 'z_language' -->
-<html xml:lang="{{ z_language }}">
+<html xml:lang="{{ z_language }}" lang="{{ z_language }}">
 
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- A block is defined to allow other templates to set their own title -->
     <!-- If not on the home page, include the page's title -->
