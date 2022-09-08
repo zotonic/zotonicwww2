@@ -343,6 +343,7 @@ figcaption {
     line-height: 1.6;
     vertical-align: baseline;
     position: relative;
+    overflow: hidden;
 }
 
 figure.fullwidth figcaption {
@@ -371,6 +372,7 @@ img {
     line-height: 1.96;              // changed to bring line heights into rational pattern
     vertical-align: baseline;
     position: relative;
+    overflow: hidden;
 }
 
 div.sidenote,

@@ -707,6 +707,7 @@ main .edit-github,
   line-height: 1.96;
   vertical-align: baseline;
   position: relative;
+  overflow: hidden;
 }
 main aside p, main aside pre,
 main .edit-github p,
@@ -1523,6 +1524,7 @@ figcaption {
   line-height: 1.6;
   vertical-align: baseline;
   position: relative;
+  overflow: hidden;
 }
 
 figure.fullwidth figcaption {
@@ -1549,6 +1551,7 @@ img {
   line-height: 1.96;
   vertical-align: baseline;
   position: relative;
+  overflow: hidden;
 }
 
 div.sidenote,
