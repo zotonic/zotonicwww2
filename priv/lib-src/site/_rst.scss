@@ -6,8 +6,10 @@ main,
         clear: right;
         margin-top: 0;
         margin-bottom: 1.96rem;
-        margin-right: 12%;              // 55+(60%*55) = 88
-        width: 27.5%;                   // 50% of 55%
+        // margin-right: 12%;              // 55+(60%*55) = 88
+        // width: 27.5%;                   // 50% of 55%
+        margin-right: 0%;
+        width: $sidebar-width;
         font-size: 1.0rem;
         line-height: 1.96; //changed to bring line heights into rational pattern
         vertical-align: baseline;
@@ -15,6 +17,7 @@ main,
 
         p, pre {
             width: 100%;
+            font-size: 1.0rem;
         }
 
         .first {

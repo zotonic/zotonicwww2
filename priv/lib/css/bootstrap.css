@@ -701,8 +701,8 @@ main .edit-github,
   clear: right;
   margin-top: 0;
   margin-bottom: 1.96rem;
-  margin-right: 12%;
-  width: 27.5%;
+  margin-right: 0%;
+  width: 25%;
   font-size: 1rem;
   line-height: 1.96;
   vertical-align: baseline;
@@ -716,6 +716,7 @@ main .edit-github pre,
 .mce-content-body .edit-github p,
 .mce-content-body .edit-github pre {
   width: 100%;
+  font-size: 1rem;
 }
 main aside .first,
 main .edit-github .first,
@@ -1285,10 +1286,6 @@ html {
     font-size: 15px;
   }
 }
-.mjx-math {
-  font-size: 1.3rem;
-}
-
 a {
   color: #1683b1;
   text-decoration: none;
@@ -1299,10 +1296,7 @@ article cite > a:not(.btn),
 article span > a:not(.btn) {
   color: #111;
   text-decoration: none;
-  background: -webkit-linear-gradient(#fffffc, #fffffc), -webkit-linear-gradient(#fffffc, #fffffc), -webkit-linear-gradient(currentColor, currentColor);
   background: linear-gradient(#fffffc, #fffffc), linear-gradient(#fffffc, #fffffc), linear-gradient(currentColor, currentColor);
-  -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-  -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
   background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
   background-repeat: no-repeat, no-repeat, repeat-x;
   background-position: 0% 93%, 100% 93%, 0% 93%;
@@ -1350,18 +1344,23 @@ p.subtitle {
   line-height: 1.0888888889;
 }
 
-p, ol, ul {
-  font-size: 1.4rem;
+p,
+ol,
+ul {
+  font-size: 1.3rem;
 }
 
-p, li {
+p,
+li {
   line-height: 2rem;
   margin-top: 1.4rem;
-  padding-right: 2rem;
   vertical-align: baseline;
 }
 
-li p, li pre, table p, table pre {
+li p,
+li pre,
+table p,
+table pre {
   width: 100%;
   padding-right: 0;
 }
@@ -1370,37 +1369,34 @@ li p, li pre, table p, table pre {
 div.epigraph {
   margin: 3.5636rem 0;
 }
-
 div.epigraph > blockquote {
   margin-top: 3rem;
   margin-bottom: 3rem;
-}
-
-div.epigraph > blockquote, div.epigraph > blockquote > p {
   font-style: italic;
 }
-
+div.epigraph > blockquote > p {
+  font-style: italic;
+}
 div.epigraph > blockquote > footer {
   font-style: normal;
-  width: 45%;
+  width: 60%;
   padding-left: 2.5%;
   padding-right: 2.5%;
   padding-top: 0;
   margin-top: 0.4455rem;
   margin-bottom: 3.1182rem;
 }
-
 div.epigraph > blockquote > footer > cite {
   font-style: italic;
 }
 
 /* end chapter epigraphs styles */
-blockquote p, blockquote footer {
-  width: 45%;
+blockquote p,
+blockquote footer {
+  width: 60%;
   padding-left: 2.5%;
   padding-right: 2.5%;
 }
-
 blockquote footer {
   font-size: 1.1rem;
   line-height: 1.78181818;
@@ -1417,14 +1413,19 @@ blockquote footer {
   letter-spacing: 0.03em;
 }
 
-pre, pre code, p code, p pre code {
+pre,
+pre code,
+p code,
+p pre code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 1.1rem;
   line-height: 1.71428571;
   margin-top: 1.71428571rem;
 }
 
-code, kbd, samp {
+code,
+kbd,
+samp {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 1.1rem;
 }
@@ -1434,51 +1435,45 @@ code, kbd, samp {
   line-height: 1.5;
 }
 
-h1 code, h2 code, h3 code {
+h1 code,
+h2 code,
+h3 code {
   font-size: 0.8em;
 }
 
 /*-- Table styling section - For Tufte-Jekyll, booktabs style is default for Markdown tables  --*/
-table, table.booktabs {
+table {
   width: auto;
   border-spacing: 0px;
   border-top: 2px solid #333333;
   border-bottom: 2px solid #333333;
 }
-
-.booktabs th, th {
+table th {
   border-bottom: 1px solid #333333;
   padding: 0.65ex 0.5em 0.4ex 0.5em;
   font-weight: normal;
 }
-
-th, td {
+table th,
+table td {
   font-size: 1.2rem;
   line-height: 1.71428571;
 }
-
-th code, td code {
+table th code,
+table td code {
   font-size: 0.9rem;
 }
-
-.booktabs th.cmid, th {
+table th {
   border-bottom: 1px solid #737373;
 }
-
-.booktabs th.nocmid {
-  border-bottom: none;
+table tr:first-child td {
+  padding-top: 0.65ex; /* add space between thead row and tbody */
 }
-
-.booktabs tbody tr:first-child td, tr:first-child td {
-  padding-top: 0.65ex;
-} /* add space between thead row and tbody */
-.booktabs td, td {
+table td {
   padding-left: 0.5em;
   padding-right: 0.5em;
   text-align: left;
 }
-
-.booktabs caption, caption {
+table caption {
   font-size: 90%;
   text-align: left;
   width: auto;
@@ -1486,29 +1481,6 @@ th code, td code {
   margin-right: auto;
   margin-top: 1ex;
   caption-side: top;
-}
-
-.booktabs tbody tr, .booktabs thead tr th.l, .booktabs td.l {
-  text-align: left !important;
-}
-
-.booktabs tbody tr, .booktabs thead tr th.c, .booktabs td.c {
-  text-align: center !important;
-}
-
-.booktabs tbody tr, .booktabs thead tr th.r, .booktabs td.r {
-  text-align: right !important;
-}
-
-.table-caption {
-  float: right;
-  clear: right;
-  margin-right: -60%;
-  width: 50%;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 1rem;
-  line-height: 1.96;
 }
 
 /* -- End of Table Styling section --*/
@@ -1523,31 +1495,34 @@ section {
   padding-bottom: 1rem;
 }
 
-main ul, main ol {
-  width: 45%;
-  -webkit-padding-start: 5%;
-  -webkit-padding-end: 5%;
+main ul,
+main ol {
+  width: 60%;
+  padding-inline-start: 5%;
+  padding-inline-end: 5%;
   list-style-type: none;
 }
 
-figure, figure img.maincolumn {
-  max-width: 55%;
-  -webkit-margin-start: 0;
-  -webkit-margin-end: 0;
+figure,
+figure img.maincolumn {
+  max-width: 70%;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
   margin-bottom: 3em;
 }
 
 figcaption {
   float: right;
   clear: right;
-  margin-right: -50%;
+  margin-right: -41%;
+  max-width: 36%;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 1rem;
   line-height: 1.6;
   vertical-align: baseline;
   position: relative;
-  max-width: 40%;
 }
 
 figure.fullwidth figcaption {
@@ -1562,11 +1537,12 @@ img {
   height: auto;
 }
 
-.sidenote, .marginnote {
+.sidenote,
+.marginnote {
   float: right;
   clear: right;
-  margin-right: -60%;
-  width: 50%;
+  margin-right: -41%;
+  width: 36%;
   margin-top: 0;
   margin-bottom: 1.96rem;
   font-size: 1rem;
@@ -1575,16 +1551,19 @@ img {
   position: relative;
 }
 
-div.sidenote, div.marginnote {
-  margin-right: 12%;
-  width: 27.5%;
+div.sidenote,
+div.marginnote {
+  margin-right: 0;
+  width: 25%;
 }
 
-li .sidenote, li .marginnote {
+li .sidenote,
+li .marginnote {
   margin-right: -80%;
 }
 
-blockquote .sidenote, blockquote .marginnote {
+blockquote .sidenote,
+blockquote .marginnote {
   margin-right: -79%;
 }
 
@@ -1592,9 +1571,9 @@ blockquote .sidenote, blockquote .marginnote {
   counter-increment: sidenote-counter;
 }
 
-.sidenote-number:after, .sidenote:before {
+.sidenote-number:after,
+.sidenote:before {
   content: counter(sidenote-counter) " ";
-  font-family: et-bembo-roman-old-style;
   color: #1683b1;
   position: relative;
   vertical-align: baseline;
@@ -1614,30 +1593,32 @@ blockquote .sidenote, blockquote .marginnote {
 }
 
 p,
-footer,
-.MJXc-display {
-  width: 55%;
+footer {
+  width: 70%;
 }
 
 div.table-wrapper {
-  width: 85%;
+  width: 100%;
 }
 
-div.table-wrapper, table {
+div.table-wrapper,
+table {
   overflow-x: auto;
 }
 
 @media screen and (max-width: 760px) {
-  main p, main footer,
+  main p,
+main footer,
 .mce-content-body p,
 .mce-content-body footer {
-    width: 90%;
+    width: 100%;
   }
   main pre code,
 .mce-content-body pre code {
-    width: 87.5%;
+    width: 100%;
   }
-  main ol, main ul,
+  main ol,
+main ul,
 .mce-content-body ol,
 .mce-content-body ul {
     width: 85%;
@@ -1648,20 +1629,26 @@ div.table-wrapper, table {
   }
   main figure,
 .mce-content-body figure {
-    max-width: 90%;
+    max-width: 100%;
   }
-  main figcaption, main figure.fullwidth figcaption,
+  main .fullwidth,
+.mce-content-body .fullwidth {
+    max-width: 100%;
+  }
+  main figcaption,
+main figure.fullwidth figcaption,
 .mce-content-body figcaption,
 .mce-content-body figure.fullwidth figcaption {
     margin-right: 0%;
     max-width: none;
   }
-  main blockquote p, main blockquote footer, main div.epigraph > blockquote > footer, main .MJXc-display,
+  main blockquote p,
+main blockquote footer,
+main div.epigraph > blockquote > footer,
 .mce-content-body blockquote p,
 .mce-content-body blockquote footer,
-.mce-content-body div.epigraph > blockquote > footer,
-.mce-content-body .MJXc-display {
-    width: 80%;
+.mce-content-body div.epigraph > blockquote > footer {
+    width: 100%;
     padding-left: 5%;
     padding-right: 5%;
   }
@@ -1672,7 +1659,7 @@ div.table-wrapper, table {
 
 pre {
   clear: right;
-  width: 85%;
+  width: 100%;
   overflow-x: auto;
   background: #fbfbf6;
   border: 1px solid #f0f0f0;
@@ -1681,11 +1668,14 @@ pre {
   padding: 15px 2.5%;
 }
 
-.fullwidth, li.listing div {
+.fullwidth,
+li.listing div {
   max-width: 90%;
 }
 
-.full-width .sidenote, .full-width .sidenote-number, .full-width .marginnote {
+.full-width .sidenote,
+.full-width .sidenote-number,
+.full-width .marginnote {
   display: none;
 }
 
@@ -1712,7 +1702,8 @@ label.margin-toggle:not(.sidenote-number) {
     display: inline;
     color: #1683b1;
   }
-  .sidenote, .marginnote {
+  .sidenote,
+.marginnote {
     display: none;
   }
   .margin-toggle:checked + .sidenote,
@@ -1729,7 +1720,10 @@ label.margin-toggle:not(.sidenote-number) {
   label {
     cursor: pointer;
   }
-  pre, pre code, p code, p pre code {
+  pre,
+pre code,
+p code,
+p pre code {
     width: 100%;
     padding: 15px 1%;
   }
@@ -1745,7 +1739,9 @@ label.margin-toggle:not(.sidenote-number) {
     vertical-align: baseline;
     position: relative;
   }
-  div.table-wrapper, table, table.booktabs {
+  div.table-wrapper,
+table,
+table.booktabs {
     width: 100%;
   }
   div.table-wrapper {
@@ -1754,7 +1750,8 @@ label.margin-toggle:not(.sidenote-number) {
   img {
     max-width: 100%;
   }
-  figcaption.maincolumn-figure, figure.fullwidth figcaption {
+  figcaption.maincolumn-figure,
+figure.fullwidth figcaption {
     float: none;
     text-align: center;
   }
@@ -1772,7 +1769,8 @@ label.margin-toggle:not(.sidenote-number) {
   font-size: 80%;
 }
 
-header > nav.group, body footer {
+header > nav.group,
+body footer {
   width: 95%;
   padding-top: 2rem;
 }
@@ -1803,7 +1801,6 @@ header > nav a {
 header > nav a:hover {
   color: #1683b1;
 }
-
 header > nav a img {
   height: 5rem;
   position: relative;
@@ -1811,7 +1808,8 @@ header > nav a img {
   top: -1.5rem;
 }
 
-ul.footer-links, .credits {
+ul.footer-links,
+.credits {
   list-style: none;
   text-align: center;
   margin: 0 auto;
@@ -1833,7 +1831,9 @@ ul.footer-links li {
   color: #1683b1;
 }
 
-body.full-width, .content-listing, ul.content-listing li.listing {
+body.full-width,
+.content-listing,
+ul.content-listing li.listing {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -1851,11 +1851,8 @@ h1.content-listing-header {
   font-size: 1.8rem;
 }
 
-li.listing hr {
-  width: 100%;
-}
-
-.listing, .listing h3 {
+.listing,
+.listing h3 {
   display: inline-block;
   margin: 0;
 }
@@ -1863,15 +1860,16 @@ li.listing hr {
 li.listing {
   margin: 0;
 }
+li.listing hr {
+  width: 100%;
+}
 li.listing p {
   width: 100%;
 }
-
 li.listing:last-of-type {
   border-bottom: none;
   margin-bottom: 1.4rem;
 }
-
 li.listing h3.new {
   text-transform: uppercase;
   font-style: normal;
@@ -1882,10 +1880,7 @@ hr.slender {
   height: 1px;
   margin-top: 1.4rem;
   margin-bottom: 1.4rem;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 @media screen {
@@ -1895,7 +1890,6 @@ hr.slender {
 }
 @media print {
   * {
-    -webkit-transition: none !important;
     transition: none !important;
   }
   *,
@@ -1913,7 +1907,7 @@ hr.slender {
   body {
     font-size: 12pt;
   }
-  html body span.print-footer {
+  html body .print-footer {
     font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif;
     font-size: 9pt;
     margin-top: 22.4pt;
@@ -1925,7 +1919,7 @@ hr.slender {
   }
   tr,
 img {
-    page-break-inside: avoid;
+    break-inside: avoid-page;
   }
   img {
     max-width: 100% !important;
@@ -1936,10 +1930,14 @@ h3 {
     orphans: 4;
     widows: 4;
   }
-  article h2, article h2 h3, article h3, article h3 h4, article h4, article h4 h5 {
-    page-break-after: avoid;
+  article h2,
+article h3,
+article h4,
+article h5 {
+    break-after: avoid-page;
   }
-  body header, body footer {
+  body header,
+body footer {
     display: none;
   }
 }
