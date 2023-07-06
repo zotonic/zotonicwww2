@@ -136,9 +136,9 @@
                             </span>
                         </p>
                     {% endif %}
-                    <h2>
+                    <h3>
                         <a href="{{ id.page_url }}">{{ id.title }}</a>
-                    </h2>
+                    </h3>
                     <p>
                         {{ id|summary:240 }}
                     </p>

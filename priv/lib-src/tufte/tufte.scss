@@ -419,8 +419,16 @@ blockquote .marginnote {
     top: 0rem;
 }
 
+h1,
+h2 {
+    clear: right;
+}
+
 p,
-footer {
+footer,
+h3,
+h4,
+h5 {
     width: $content-width;
 }
 
@@ -438,7 +446,10 @@ table {
     main,
     .mce-content-body {
         p,
-        footer {
+        footer,
+        h3,
+        h4,
+        h5 {
             // width: 90%;
             width: 100%;
         }
