@@ -78,16 +78,42 @@
             {# Note the {_ .. _} tags. They surround translatable texts. A .pot file   #}
             {# with all texts is created in priv/translations/template/ via the button #}
             {# on the /admin/translation page.                                         #}
-            <h2>{_ Recent articles, cookbooks, release notes and video. _}</h2>
+            <h2>{_ Release notes. _}</h2>
 
-            {# Search for the latest 20 articles, video, documents, release notes and  #}
-            {# cook book entries.                                                      #}
+            {# Search for the latest 2 release notes.                                  #}
             {# The 'cat' is an argumment for the 'query' search, which is implemeted   #}
             {# by module `mod_search`.                                                 #}
             {# The 'is_featured' is set for featured items, the "-is_featured" will    #}
             {# sort 'true' values first.                                               #}
             {% for id in m.search.query::%{
-                    cat: [ "article", "video", "document", "releasenotes", "cookbook" ],
+                    cat: [ "releasenotes" ],
+                    is_published: true,
+                    sort: [ "-is_featured", "-created" ],
+                    pagelen: 2,
+                    page: 1
+                }
+            %}
+                <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
+                    <h2><a href="{{ id.page_url }}">{{ id.title }}</a></h2>
+                    <p>
+                        {{ id|summary:240 }}
+                    </p>
+                </div>
+            {% endfor %}
+            <p>
+                {# Add a link to the page with the unique name "doc_releasenotes_index"  #}
+                {# This uses the page name as the id for the resource (rsc) model.       #}
+                {# The "page_url" property derive the page URL without the hostname, use #}
+                {# "page_url_abs" if you want a page url with the hostname.              #}
+                <a href="{{ m.rsc.doc_releasenotes_index.page_url }}">{_ Read all release notes _} &gt;</a>
+            </p>
+
+            <h2>{_ Recent articles, cookbooks and videos. _}</h2>
+
+            {# Search for the latest 20 articles, video, documents, and cook book      #}
+            {# entries.                                                                #}
+            {% for id in m.search.query::%{
+                    cat: [ "article", "video", "document", "cookbook" ],
                     is_published: true,
                     sort: [ "-is_featured", "-created" ],
                     pagelen: 20,

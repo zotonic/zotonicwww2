@@ -1,23 +1,14 @@
 {% extends "page.category.tpl" %}
 
-{% block content_after %}
+{# This page is used for the resource with unique name "releasenotes", which is the   #}
+{# category of all release notes. Instead of displaying all release notes we redirect #}
+{# to the documentation page which lists all release notes in descending order.       #}
 
-<div class="page-relations">
+{% block content %}
 
-    {% with m.search.paged[{query cat=id sort=sort pagelen=1000 page=q.page}] as result %}
-        <div class="connections paged" id="content-pager">
-            <div class="page-count">
-                {{ result.total }} <span> {{ id.title|lower }} </span>
-            </div>
-            <div class="list-items">
-                {% for id in result|make_list|zotonicwww2_by_version %}
-                    {% catinclude "_list_item.tpl" id %}
-                {% endfor %}
-            </div>
+    <h2>{_ Redirecting... _}</h2>
 
-            {% pager result=result id=id qargs hide_single_page %}
-        </div>
-    {% endwith %}
-</div>
+    {# Upon visit, redirect to the the page with unique name "doc_releasenotes_index" #}
+    {% wire action={redirect id="doc_releasenotes_index"} %}
 
 {% endblock %}
