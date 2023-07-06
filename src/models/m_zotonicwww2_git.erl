@@ -231,6 +231,12 @@ hash(Context) ->
 %% new current hash.
 -spec pull( z:context() ) -> {ok, binary()} | {error, term()}.
 pull(Context) ->
+    ?LOG_INFO(#{
+        in => zotonicwww2,
+        text => <<"Pulling new version">>,
+        directory => git_dir(Context)
+    }),
+    _ = run_gitcmd("git checkout -- .", Context),
     case run_gitcmd("git clean -f", Context) of
         {ok, _} ->
             case run_gitcmd("git pull", Context) of
