@@ -94,7 +94,7 @@
                 }
             %}
                 <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
-                    <h2><a href="{{ id.page_url }}">{{ id.title }}</a></h2>
+                    <h3><a href="{{ id.page_url }}">{{ id.title }}</a></h3>
                     <p>
                         {{ id|summary:240 }}
                     </p>
@@ -121,12 +121,24 @@
                 }
             %}
                 <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
-                    {# The "_body_media.tpl" is also used to show media in the body texts. #}
-                    {# Here we re-use it and request a 'large' version of the image.       #}
-                    <figure class="fullwidth">
-                        {% image id.depiction mediaclass="body-media-large" alt=id.title %}
-                    </figure>
-                    <h2><a href="{{ id.page_url }}">{{ id.title }}</a></h2>
+                    {# Fetch the image of the resource, for media items this is often the #}
+                    {# resources itself. Checks for "depiction" edges, and if none the    #}
+                    {# the medium item of the resource.                                   #}
+                    {% if id.depiction as depiction %}
+                        <p>
+                            {# Checked, so that the image is visible on small screens. #}
+                            <input type="checkbox" id="{{ #img }}" class="margin-toggle" checked>
+                            <span class="marginnote">
+                                {# Always a static image, do not show video on the home page. #}
+                                {# Use the title of the image for the alt attribute.          #}
+                                {% image depiction mediaclass="body-media-small" alt=depiction.id.title %}
+                                <br>{{ id.title }}
+                            </span>
+                        </p>
+                    {% endif %}
+                    <h2>
+                        <a href="{{ id.page_url }}">{{ id.title }}</a>
+                    </h2>
                     <p>
                         {{ id|summary:240 }}
                     </p>
