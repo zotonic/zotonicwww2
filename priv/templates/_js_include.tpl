@@ -13,6 +13,7 @@
     "js/modules/z.notice.js"
     "js/modules/z.dialog.js"
     "js/modules/z.clickable.js"
+    "js/modules/z.feedback.js"
     "js/modules/z.survey_test_feedback.js"
     "js/modules/livevalidation-1.3.js"
     "js/modules/jquery.loadmask.js"

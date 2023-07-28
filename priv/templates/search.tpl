@@ -10,71 +10,16 @@
     <article>
         <h1>{_ Search _}</h1>
 
-        <form class="search-form" action="{% url search %}" method="GET">
+        <form id="search-form" class="search-form" action="{% url search %}" method="GET">
             <p class="label-floating">
                 <input placeholder="{_ Text to search _}" name="qs" class="form-control" name="qs" autofocus value="{{ q.qs|escape }}">
             </p>
         </form>
     </article>
 
-    {% with q.page|default:1 as qpage %}
-        {% if q.qs|trim|length > 0 %}
-            {% if qpage == 1 and q.qs|trim|length > 0 %}
-                {% if m.search.query::%{
-                        cat: [ "text", "media" ],
-                        cat_exclude: [ "dispatch" ],
-                        "pivot.title": q.qs|trim
-                    } as result
-                %}
-                    <div class="search-results">
-                        <div class="connections paged">
-                            <h2>{_ Exact match _}</h2>
-                            <div class="list-items">
-                                {% for id in result %}
-                                    {% catinclude "_list_item.tpl" id is_show_cat %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-
-                {% if m.zotonicwww2_search.title_match[q.qs] as match_ids %}
-                    <div class="search-results">
-                        <div class="connections paged">
-                            <h2>{_ Title match _}</h2>
-                            <div class="list-items">
-                                {% for id in match_ids %}
-                                    {% catinclude "_list_item.tpl" id is_show_cat %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endif %}
-
-            <div class="search-results">
-                {% with m.search.paged.query::%{
-                            text: q.qs,
-                            cat: [ "text", "media" ],
-                            cat_exclude: [ "template", "releasenotes", "dispatch" ],
-                            page: q.page,
-                            pagelen: 20
-                        }
-                        as result %}
-
-                    <div class="connections paged">
-                        <h2>{{ result.total }} {_ Pages _}</h2>
-
-                        <div class="list-items">
-                            {% for id in result %}
-                                {% catinclude "_list_item.tpl" id is_show_cat %}
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    {% pager result=result qargs %}
-                {% endwith %}
-            </div>
-        {% endif %}
-    {% endwith %}
+    <div id="search-results"
+         class="do_feedback"
+         data-feedback="trigger: 'search-form', template: '_search_results.tpl'">
+        {% include "_search_results.tpl" %}
+    </div>
 {% endblock %}
