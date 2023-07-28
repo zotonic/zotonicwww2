@@ -42,7 +42,8 @@
     pull/1,
     git_dir/1,
     edoc_dir/1,
-    doc_dir/1
+    doc_dir/1,
+    fixup_release_notes/1
     ]).
 
 %% Include the central definitions of Zotonic. Useful for macro
@@ -133,6 +134,7 @@ task_rebuild(Context) ->
             fun build_doc/1,
             fun zotonicwww2_parse_docs:import/1,
             fun build_edoc/1,
+            fun fixup_release_notes/1,
             fun() ->
                 {ok, Hash} = hash(Context),
                 ?LOG_INFO("Rebuild of docs success for '~s'", [ Hash ]),
@@ -226,6 +228,22 @@ build_edoc(Context) ->
 hash(Context) ->
     run_gitcmd("git log -1 --pretty=format:%H", Context).
 
+
+%% @doc Ensure that all release notes are a part of the release notes collection.
+fixup_release_notes(Context) ->
+    #search_result{ result = Ids } = z_search:search(
+        <<"query">>,
+        #{
+            <<"cat">> => releasenotes,
+            <<"id_exclude">> => doc_releasenotes_index
+        },
+        1,
+        1000,
+        Context),
+    IdsSorted = filter_zotonicwww2_by_version:zotonicwww2_by_version(Ids, Context),
+    m_edge:update_sequence(doc_releasenotes_index, haspart, IdsSorted, Context),
+    m_edge:delete(doc_releasenotes_index, haspart, doc_releasenotes_index, Context),
+    ok.
 
 %% @doc Pull changes in the 'priv/data/zotonic-git' directory. Returns the
 %% new current hash.
