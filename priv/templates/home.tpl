@@ -132,7 +132,6 @@
                                 {# Always a static image, do not show video on the home page. #}
                                 {# Use the title of the image for the alt attribute.          #}
                                 {% image depiction mediaclass="body-media-small" alt=depiction.id.title %}
-                                <br>{{ id.title }}
                             </span>
                         </p>
                     {% endif %}
