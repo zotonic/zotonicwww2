@@ -29,7 +29,7 @@
       directory to overrule this favicon.ico file. Or add your own dispatch.
     -->
     <link rel="shortcut icon" type="image/x-icon" href="{% url favicon %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="/lib/images/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/lib/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/lib/images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
