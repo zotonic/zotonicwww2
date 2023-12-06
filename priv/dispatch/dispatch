@@ -15,8 +15,9 @@
     {person,    [ "person", id, slug ],   controller_page,    [ {template, {cat, "page.tpl"}} ]},
     {person,    [ "person", id ],         controller_page,    [ {template, {cat, "page.tpl"}} ]},
 
-    {favicon,     ["favicon.ico"],        controller_file, [ {path, "images/favicon/favicon.ico"}, {root,[lib]} ]},
-    {webmanifest, [ "site.webmanifest" ], controller_file, [ {path, "images/favicon/site.webmanifest"}, {root, [lib]} ]},
+    {favicon,     [ "favicon.ico" ],          controller_file, [ {path, "images/favicon/favicon.ico"}, {root,[lib]} ]},
+    {webmanifest, [ "site.webmanifest" ],     controller_file, [ {path, "images/favicon/site.webmanifest"}, {root, [lib]} ]},
+    {touch_icon,  [ "apple-touch-icon.png" ], controller_file, [ {path, "images/favicon/apple-touch-icon.png"}, {root, [lib]}]},
 
     % Generated edocs
     {edoc, ["edoc", '*'],
