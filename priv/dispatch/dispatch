@@ -15,6 +15,9 @@
     {person,    [ "person", id, slug ],   controller_page,    [ {template, {cat, "page.tpl"}} ]},
     {person,    [ "person", id ],         controller_page,    [ {template, {cat, "page.tpl"}} ]},
 
+    {favicon,     ["favicon.ico"],        controller_file, [ {path, "images/favicon/favicon.ico"}, {root,[lib]} ]},
+    {webmanifest, [ "site.webmanifest" ], controller_file, [ {path, "images/favicon/site.webmanifest"}, {root, [lib]} ]},
+
     % Generated edocs
     {edoc, ["edoc", '*'],
            controller_static_pages,
