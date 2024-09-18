@@ -48,7 +48,7 @@ msgid ""
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:31
+#: ./_build/default/lib/zotonicwww2/priv/templates/_search_results.tpl:12
 msgid ""
 "Exact match"
 msgstr ""
@@ -78,21 +78,39 @@ msgid ""
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:66
+#: ./_build/default/lib/zotonicwww2/priv/templates/_search_results.tpl:47
 msgid ""
 "Pages"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/home.tpl:81
+#: ./_build/default/lib/zotonicwww2/priv/templates/home.tpl:108
 msgid ""
-"Recent articles, cookbooks, release notes and video."
+"Read all release notes"
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:88./_build/default/lib/zotonicwww2/priv/templates/page.module.tpl:61./_build/default/lib/zotonicwww2/priv/templates/page.tpl:59
+#: ./_build/default/lib/zotonicwww2/priv/templates/home.tpl:111
+msgid ""
+"Recent articles, cookbooks and videos."
+msgstr ""
+""
+
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.name.releasenotes.tpl:9
+msgid ""
+"Redirecting..."
+msgstr ""
+""
+
+#: ./_build/default/lib/zotonicwww2/priv/templates/page.media.tpl:88./_build/default/lib/zotonicwww2/priv/templates/page.module.tpl:61./_build/default/lib/zotonicwww2/priv/templates/page.name.doc_releasenotes_index.tpl:40./_build/default/lib/zotonicwww2/priv/templates/page.tpl:59
 msgid ""
 "Referred by"
+msgstr ""
+""
+
+#: ./_build/default/lib/zotonicwww2/priv/templates/home.tpl:81
+msgid ""
+"Release notes."
 msgstr ""
 ""
 
@@ -120,7 +138,7 @@ msgid ""
 msgstr ""
 ""
 
-#: ./_build/default/lib/zotonicwww2/priv/templates/search.tpl:44
+#: ./_build/default/lib/zotonicwww2/priv/templates/_search_results.tpl:25
 msgid ""
 "Title match"
 msgstr ""

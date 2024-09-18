@@ -19,7 +19,7 @@
 
     <div id="search-results"
          class="do_feedback"
-         data-feedback="trigger: 'search-form', template: '_search_results.tpl'">
+         data-feedback='{ "trigger": "search-form", "template": "_search_results.tpl" }'>
         {% include "_search_results.tpl" %}
     </div>
 {% endblock %}

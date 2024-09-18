@@ -8,8 +8,12 @@
 {% lib
     "js/modules/jstz.min.js"
     "cotonic/cotonic.js"
+
+    "js/models/loadmore.js"
+
     "js/apps/zotonic-wired.js"
     "js/apps/z.widgetmanager.js"
+    "js/modules/z.live.js"
     "js/modules/z.notice.js"
     "js/modules/z.dialog.js"
     "js/modules/z.clickable.js"
@@ -17,6 +21,7 @@
     "js/modules/z.survey_test_feedback.js"
     "js/modules/livevalidation-1.3.js"
     "js/modules/jquery.loadmask.js"
+
     "bootstrap/js/bootstrap.min.js"
 
     minify

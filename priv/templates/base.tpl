@@ -7,7 +7,7 @@
 -->
 
 <!-- The current language is available in the variable 'z_language' -->
-<html xml:lang="{{ z_language }}" lang="{{ z_language }}">
+<html xml:lang="{{ z_language }}" lang="{{ z_language }}" class="environment-{{ m.site.environment }}">
 
   <head>
     <meta charset="utf-8">
