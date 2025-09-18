@@ -6,7 +6,8 @@
 %% directory 'models' and their filename always start with 'm_'.
 %%
 %% @author Marc Worrell <marc@worrell.nl>
-%% @copyright 2020 Marc Worrell
+%% @copyright 2020-2025 Marc Worrell
+%% @end
 
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
@@ -23,6 +24,7 @@
 %% Note that the filename starts with m_, followed by the module name.
 %% This ensures that there are no unexpected name clashes, which could
 %% have easily occured if the module was named something like 'm_git'.
+
 -module(m_zotonicwww2_git).
 
 %% Model behaviour, from zotonic_core/src/behaviours/
@@ -36,13 +38,14 @@
     task_rebuild/1,
 
     build_edoc/1,
-    build_doc/1,
     clone/1,
     hash/1,
     pull/1,
     git_dir/1,
     edoc_dir/1,
     doc_dir/1,
+    base_dir/1,
+    apps_dir/1,
     fixup_release_notes/1
     ]).
 
@@ -131,9 +134,8 @@ m_post( [ <<"rebuild">>, Secret ], _Payload, Context) ->
 task_rebuild(Context) ->
     z_utils:pipeline([
             fun pull/1,
-            fun build_doc/1,
-            fun zotonicwww2_parse_docs:import/1,
             fun build_edoc/1,
+            fun zotonicwww2_beam_doc:import_docs/1,
             fun fixup_release_notes/1,
             fun() ->
                 {ok, Hash} = hash(Context),
@@ -143,21 +145,6 @@ task_rebuild(Context) ->
             end
         ],
         [ Context ]).
-
-
-
-%% @doc Build Zotonic, the html docs and move them to the doc_dir. Returns
-%% an error or the current hash. This command takes a long time to run.
--spec build_doc( z:context() ) -> {ok, binary()} | {error, term()}.
-build_doc(Context) ->
-    ok = z_filelib:ensure_dir(doc_dir(Context)),
-    run_gitcmds([
-            "rm -rf doc/_build",
-            "make docs",
-            "rm -rf ../doc/html",
-            "mv doc/_build/html ../doc/."
-        ],
-        Context).
 
 
 %% @doc Clone a fresh checkout of the zotonic repository. Only running if
@@ -317,6 +304,11 @@ edoc_dir(Context) ->
 -spec doc_dir( z:context() ) -> file:filename_all().
 doc_dir(Context) ->
     filename:join([ base_dir(Context), <<"doc">>, <<"html">> ]).
+
+%% @doc Return the directory for the zotonic apps sources
+-spec apps_dir( z:context() ) -> file:filename_all().
+apps_dir(Context) ->
+    filename:join([ git_dir(Context), <<"apps">> ]).
 
 %% @doc Return the base directory for all data.
 -spec base_dir( z:context() ) -> file:filename_all().
