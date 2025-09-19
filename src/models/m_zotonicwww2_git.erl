@@ -103,27 +103,53 @@ m_get( [ <<"rebuild">>, <<"hash">> | Rest ], _Payload, Context) ->
 %% Note that a post handler always consumes the whole path.
 -spec m_post( Path :: list( binary() ), zotonic_model:opt_msg(), z:context() ) -> {ok, term()} | ok | {error, term()}.
 m_post( [ <<"rebuild">>, Secret ], _Payload, Context) ->
-    % Compare the value in the config tables with the passed secret.
-    % Config values can be set with m_config:set_value/4 or in the
-    % admin on "/admin/config"
-    case m_config:get_value(site, rebuild_secret, Context) of
-        Secret ->
-            % As a build takes a long time we schedule a build task.
-            % The task is slightly delayed so that repetitive pushes
-            % are started after a small period of inactivity.
-            z_pivot_rsc:insert_task_after(
-                    10,             % Seconds or a date
-                    ?MODULE,        % This module
-                    task_rebuild,   % Prepend task functions with 'task_'
-                    <<>>,           % Give a key for multiple tasks with same mod:fun
-                    [],             % Arguments, non needed for this task
-                    Context),
-            {ok, <<"queued">>};
-        _ ->
-            % Log a message
-            ?LOG_NOTICE("Docs rebuild request with wrong secret from ~p", [ m_req:get(peer, Context) ]),
-            % Try to use posix error codes
-            {error, eacces}
+    case m_config:get_boolean(site, rebuild_enabled, Context) of
+        true ->
+            % Compare the value in the config tables with the passed secret.
+            % Config values can be set with m_config:set_value/4 or in the
+            % admin on "/admin/config"
+            case m_config:get_value(site, rebuild_secret, Context) of
+                Secret ->
+                    ?LOG_INFO(#{
+                        in => zotonicwww2,
+                        text => <<"Docs rebuild requested and queued">>,
+                        result => error,
+                        reason => eacces,
+                        peer => m_req:get(peer, Context)
+                    }),
+                    % As a build takes a long time we schedule a build task.
+                    % The task is slightly delayed so that repetitive pushes
+                    % are started after a small period of inactivity.
+                    z_pivot_rsc:insert_task_after(
+                            10,             % Seconds or a date
+                            ?MODULE,        % This module
+                            task_rebuild,   % Prepend task functions with 'task_'
+                            <<>>,           % Give a key for multiple tasks with same mod:fun
+                            [],             % Arguments, non needed for this task
+                            Context),
+                    {ok, <<"queued">>};
+                _ ->
+                    % Log a message
+                    ?LOG_NOTICE(#{
+                        in => zotonicwww2,
+                        text => <<"Docs rebuild request with wrong secret">>,
+                        result => error,
+                        reason => eacces,
+                        peer => m_req:get(peer, Context)
+                    }),
+                    % Try to use posix error codes
+                    {error, eacces}
+            end;
+        false ->
+            % Log a message that the API is disabled.
+            ?LOG_NOTICE(#{
+                in => zotonicwww2,
+                text => <<"Docs rebuild requested but it is disabled">>,
+                result => error,
+                reason => disabled,
+                peer => m_req:get(peer, Context)
+            }),
+            {ok, <<"disabled">>}
     end.
 
 

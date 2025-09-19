@@ -8,6 +8,7 @@
 %% Documentation is never deleted to prevent "dangling" references or removal
 %% of valuable data on temporary errors.
 %%
+%% This file will be removed when the moduledoc changes are merged into Zotonic.
 
 -module(zotonicwww2_parse_docs).
 

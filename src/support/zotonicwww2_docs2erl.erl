@@ -1,3 +1,8 @@
+%% @doc This is a one-time conversion of the documentation from the HTML files
+%% to the moduledoc attributes of the Erlang files. This file will be removed
+%% in the near future, when the moduledoc updates are merged into Zotonic.
+%% @end
+
 -module(zotonicwww2_docs2erl).
 
 -export([

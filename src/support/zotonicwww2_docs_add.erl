@@ -1,3 +1,7 @@
+%% @doc One-time module to add `-moduledoc` and `-doc` attributes to Erlang source files.
+%% This file will be removed when the moduledoc changes are merged into Zotonic.
+%% @end
+
 -module(zotonicwww2_docs_add).
 -export([add_moduledoc_block/2, add_callback_doc_block/3]).
 
