@@ -93,7 +93,7 @@ observe_dispatch(#dispatch{ path = Path }, Context) ->
             Rootname = filename:rootname(File),
             % Let the git doc import routines map the filenam and path
             % to a resource name.
-            case zotonicwww2_parse_docs:filename_to_name(Rootname, Dirs) of
+            case zotonicwww2_docs:filename_to_name(Rootname, Dirs) of
                 {Name, _Cat, _} ->
                     % Check if the resource name exists.
                     case m_rsc:rid(Name, Context) of
