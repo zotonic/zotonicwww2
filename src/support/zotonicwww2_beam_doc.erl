@@ -160,7 +160,7 @@ import_controllers(Context) ->
                 module := Module
             } = Doc,
             <<"controller_", Controller/binary>> = Name,
-            PageName = <<"doc_controller_", Controller/binary>>,
+            PageName = <<"doc_controller_controller_", Controller/binary>>,
             Props = #{
                 <<"title">> => Name,
                 <<"body">> => Body
