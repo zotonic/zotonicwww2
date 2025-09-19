@@ -8,6 +8,7 @@
 %% Documentation is never deleted to prevent "dangling" references or removal
 %% of valuable data on temporary errors.
 %%
+%% This file will be removed when the moduledoc changes are merged into Zotonic.
 
 -module(zotonicwww2_parse_docs).
 
@@ -16,6 +17,7 @@
     import/1,
     list_files/2,
     parse_file/1,
+    parse_file/3,
 
     filename_to_name/2,
 
@@ -29,7 +31,8 @@
 %% incrementally update the documentation after a git commit.
 -spec import( z:context() ) -> {ok, map()}.
 import(Context) ->
-    do_import(incremental, Context).
+    % do_import(incremental, Context).
+    {error, disabled}.
 
 %% @doc Import all documentation. This also imports documentation that is
 %% now maintained in the CMS. So only run this a single time when the
@@ -40,7 +43,8 @@ import_one_time_only(Context) ->
     % Set admin rights with:  z_acl:sudo(Context)
     % Get an anonymous context for zotonicwww2 with: z:c(zotonicwww2)
     true = z_acl:is_admin(Context),
-    do_import(full, Context).
+    % do_import(full, Context).
+    {error, disabled}.
 
 do_import(ImportType, Context0) when ImportType =:= incremental; ImportType =:= full ->
     % Use the special 'gitbot' user to perform all imports.

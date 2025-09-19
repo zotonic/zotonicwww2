@@ -3,7 +3,8 @@
 %% the system can see that this Erlang application is a Zotonic
 %% site. All exports below are also valid for a Zotonic module.
 %% @author Marc Worrell <marc@worrell.nl>
-%% @copyright 2020-2022 Marc Worrell
+%% @copyright 2020-2025 Marc Worrell
+%% @end
 
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
@@ -41,6 +42,30 @@
 % that implement access control.
 -mod_depends([ acl ]).
 
+% Documentation of the configurations for this site module.
+-mod_config([
+        #{
+            module => site,     % if not set, then 'module' defaults to the Erlang module name.
+            key => rebuild_secret,
+            default => <<>>,    % default, as assumed in the code if the config
+                                % is not set.
+            description => "Secret key used to secure rebuild requests via the API. "
+                           "This key is automatically set when the site is installed."
+        },
+        #{
+            module => site,
+            key => rebuild_enabled,
+            default => false,
+            description => "Set to true to enable rebuild requests via the API."
+        },
+        #{
+            module => site,
+            key => rebuild_hash,
+            default => <<>>,
+            description => "Set after each rebuild to the Git hash of the zotonic git repository."
+        }
+    ]).
+
 % Exports - if exports change then the module is restarted after
 % compilation.
 -export([
@@ -73,7 +98,7 @@ observe_dispatch(#dispatch{ path = Path }, Context) ->
                     % Check if the resource name exists.
                     case m_rsc:rid(Name, Context) of
                         undefined ->
-                            case zotonicwww2_parse_docs:filename_to_name(<<"index">>, [ File | Dirs ]) of
+                            case zotonicwww2_docs:filename_to_name(<<"index">>, [ File | Dirs ]) of
                                 {Name2, _Cat2, _} ->
                                     % Check if the resource name exists.
                                     case m_rsc:rid(Name2, Context) of
