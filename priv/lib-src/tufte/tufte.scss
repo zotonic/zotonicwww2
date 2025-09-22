@@ -222,7 +222,7 @@ pre code,
 p code,
 p pre code {
     font-family: $code-font;    // removed .code 'class' since code is an actual html tag
-    font-size: 1.1rem;          // also added p code, p pre code and pre selector to account for Markdown parsing
+    font-size: 1rem;          // also added p code, p pre code and pre selector to account for Markdown parsing
     line-height: 1.71428571;    // of triple backticks plus rationalized line-heights and margins
     margin-top: 1.71428571rem;
 }
@@ -231,7 +231,8 @@ code,
 kbd,
 samp {
     font-family: $code-font;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: $code-color;
 }
 
 .highlight pre {

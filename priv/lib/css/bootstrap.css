@@ -1420,7 +1420,7 @@ pre code,
 p code,
 p pre code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.71428571;
   margin-top: 1.71428571rem;
 }
@@ -1429,7 +1429,8 @@ code,
 kbd,
 samp {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  color: #c7254e;
 }
 
 .highlight pre {
