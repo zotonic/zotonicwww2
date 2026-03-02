@@ -443,6 +443,9 @@ body {
   top: -120px;
   box-shadow: none;
 }
+.scrolled-down #header-wrapper header:has(.header-message) {
+  top: -170px;
+}
 .scrolled-down #sidedrawer {
   top: 0;
 }
@@ -1049,6 +1052,16 @@ form.form-survey .form-group {
 .docutils.container {
   padding-left: 0;
   padding-right: 0;
+}
+
+.header-message {
+  padding: 10px;
+  background-color: #f0ad4e;
+  color: white;
+}
+
+header:has(.header-message) .navbar {
+  padding-top: 10px;
 }
 
 /*****************************************************************************/

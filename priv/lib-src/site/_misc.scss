@@ -13,3 +13,13 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+.header-message {
+    padding: 10px;
+    background-color: $brand-warning;
+    color: white;
+}
+
+header:has(.header-message) .navbar {
+    padding-top: 10px;
+}

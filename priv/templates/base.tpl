@@ -89,6 +89,9 @@
     <!-- Top of page header -->
     <div id="header-wrapper">
       <header id="header">
+        <div class="header-message">
+            <span class="fa fa-info-circle"></span> {_ We are reorganizing the website – some things might look strange. _}
+        </div>
         {% include "_nav_header.tpl" %}
       </header>
     </div>

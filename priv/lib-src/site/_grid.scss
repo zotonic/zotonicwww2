@@ -234,6 +234,10 @@ body {
         header {
             top: -($navbar-height+10px);
             box-shadow: none;
+
+            &:has(.header-message) {
+                top: -($navbar-height+10px + 50px);
+            }
         }
     }
     #sidedrawer {
