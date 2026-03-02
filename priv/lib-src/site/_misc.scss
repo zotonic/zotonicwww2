@@ -14,12 +14,21 @@
     padding-right: 0;
 }
 
+
+
+// Optional header message in the top nav.
+
 .header-message {
     padding: 10px;
     background-color: $brand-warning;
     color: white;
 }
 
-header:has(.header-message) .navbar {
-    padding-top: 10px;
+header:has(.header-message) {
+    .home-link {
+        padding-top: 10px;
+    }
+    .navbar.navbar-grid .nav-wrapper .nav-wrapper2 {
+        padding-bottom: 0 !important;
+    }
 }

@@ -1060,8 +1060,11 @@ form.form-survey .form-group {
   color: white;
 }
 
-header:has(.header-message) .navbar {
+header:has(.header-message) .home-link {
   padding-top: 10px;
+}
+header:has(.header-message) .navbar.navbar-grid .nav-wrapper .nav-wrapper2 {
+  padding-bottom: 0 !important;
 }
 
 /*****************************************************************************/
