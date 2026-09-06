@@ -2,6 +2,9 @@
 
 {% block content_after %}
 
+{% if id.name == 'keyword' or id.subject_topic_facet_category %}
+    {% include "_subject_topic_category.tpl" id=id %}
+{% else %}
 <div class="page-relations">
 
     {# Only show the Table of Contents if the sub-pages are documentation
@@ -11,15 +14,11 @@
      #}
 
     {% if id.o.haspart|is_visible as haspart %}
-        <dl class="connections">
+        <div class="content-list">
             {% for id in haspart %}
-                <dt><a href="{{ id.page_url }}">{{ id.title }}</a></dt>
-                <dd class="do_clickable">
-                    {{ id|summary:160 }}
-                    <a href="{{ id.page_url }}"></a>
-                </dd>
+                {% catinclude "_list_item.tpl" id %}
             {% endfor %}
-        </dl>
+        </div>
     {% endif %}
 
     {% for s in id.s.haspart|is_visible %}
@@ -75,5 +74,6 @@
         {% endwith %}
     {% endwith %}
 </div>
+{% endif %}
 
 {% endblock %}

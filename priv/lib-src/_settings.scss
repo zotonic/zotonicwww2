@@ -34,7 +34,7 @@ $border-color:   #333333;
 $code-color:     #c7254e;
 
 $link-style:     underline; // choices are 'color' or 'underline'. Color option styles links with $contrast-color set above
-$font-size-base: 15px;
+$font-size-base: 16px;
 
 /* -------Bootstrap customization-------- */
 
@@ -87,7 +87,7 @@ $screen-menu-breakpoint1: 1199px;
 $nav-active-text: #FA9AD1;
 $nav-link-hover-bg: inherit;
 
-$navbar-height:           110px;
+$navbar-height:            76px;
 $navbar-height-home:       30px;
 
 // $link-hover-color: lighten($link-color, 8%);
@@ -128,4 +128,3 @@ $divider-color:         $zotonic-blue;
 
 // Misc
 $line-height-sm:        floor($font-size-small * $line-height-small) !default;
-

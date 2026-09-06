@@ -1,13 +1,13 @@
-%% @doc Model for fetching and updating the Git clone of Zotonic.
-%% The Git checkout is located in "priv/data/zotonic-git".
+%% @doc Public documentation search backed by the Zotonic search facet table.
 %%
-%% This file is a model. You will see functions like 'm_get' that
-%% implement the model behaviour. Models are always located in the
-%% directory 'models' and their filename always start with 'm_'.
-%%
-%% @author Marc Worrell <marc@worrell.nl>
-%% @copyright 2020 Marc Worrell
+%% The `important` facet contains titles, summaries and subject keywords. It is
+%% searched first using the pg_trgm index maintained by mod_search. If that
+%% produces fewer than ?FALLBACK_THRESHOLD matches then the regular Zotonic
+%% full-text index is searched as a fallback.
+%% @end
 
+%% Copyright 2020-2026 Marc Worrell
+%%
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.
 %% You may obtain a copy of the License at
@@ -20,81 +20,464 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 
-%% Note that the filename starts with m_, followed by the module name.
-%% This ensures that there are no unexpected name clashes like with the
-%% 'm_search' model in the Zotonic core.
 -module(m_zotonicwww2_search).
 
 -behaviour(zotonic_model).
 
--export([
-    m_get/3
-    ]).
+-export([m_get/3]).
 
-
-%% Include the central definitions of Zotonic. Useful for macro
-%% definitions like ?DEBUG.
 -include_lib("zotonic_core/include/zotonic.hrl").
 
-
-%% @doc Handle GET requests for this model. Can be called from the
-%% templates (m.zotonicwww2_search), the API (/api/model/zotonicwww2_search/get/...)
-%% or via MQTT (topic model/zotonicwww2_search/get).
-%%
-%% The first argument is the split path of the request (after 'get').
-%%
-%% The second argument is the MQTT messages, if any. For template calls
-%% this could be 'undefined'. API calls also construct a MQTT message, as
-%% the API routes calls via the MQTT tree and the zotonic_model.erl (in
-%% zotonic_core/src/support).
-%%
-%% The m_get function consumes as much of the Path as is needed, it must
-%% return its result together with the unconsumed part of the path. The
-%% zotonic_model functions will do a further lookup of the Path remainder
-%% in the return value.
-%%
-%% On an error an error tuple should be returned. For the template routines
-%% this maps to 'undefined' and is ignored. The API and MQTT will return
-%% a payload with the error to the caller.-spec m_get( Path :: list(), zotonic_model:opt_msg(), z:context() ) -> zotonic_model:return().
-m_get([ <<"title_match">>, Term | Rest ], _Msg, Context) ->
-    {ok, {title_match(Term, Context), Rest}}.
+-define(FALLBACK_THRESHOLD, 8).
+-define(DEFAULT_LIMIT, 20).
+-define(MAX_LIMIT, 50).
+-define(MAX_QUERY_LENGTH, 120).
+-define(BROWSE_DEFAULT_LIMIT, 40).
+-define(SUBJECT_FACET_ORDER, [
+    <<"information_type">>,
+    <<"audience">>,
+    <<"domain">>,
+    <<"architecture">>,
+    <<"task">>,
+    <<"data_type">>,
+    <<"technology">>,
+    <<"quality">>
+]).
 
 
--spec title_match( binary(), z:context() ) -> list( m_rsc:resource_id() ).
-title_match(Term, Context) when is_binary(Term) ->
-    Lower = z_string:trim( z_string:to_lower(Term) ),
-    {TextFrom, TextTo} = m_category:get_range_by_name(text, Context),
-    {MediaFrom, MediaTo} = m_category:get_range_by_name(media, Context),
-    WordIds = z_db:q("
-        select id
-        from rsc
-        where (  pivot_title like '%' || $1 || '\\_%'
-              or pivot_title like '%' || $1 || ' %'
-              or pivot_title like '%\\_' || $1 || '%'
-              or pivot_title like '% ' || $1 || '%'
-          )
-          and pivot_title <> $1
-          and (
-                (pivot_category_nr >= $2 and pivot_category_nr <= $3)
-             or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
-          )
-          order by length(pivot_title)
-        ",
-        [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
-        Context),
-    AllIds = z_db:q("
-        select id
-        from rsc
-        where pivot_title like '%' || $1 || '%'
-          and pivot_title <> $1
-          and (
-                (pivot_category_nr >= $2 and pivot_category_nr <= $3)
-             or (pivot_category_nr >= $4 and pivot_category_nr <= $5)
-          )
-        order by length(pivot_title)
-        ",
-        [ Lower, TextFrom, TextTo, MediaFrom, MediaTo ],
-        Context),
-    Ids = WordIds ++ (AllIds -- WordIds),
-    Ids1 = [ Id || {Id} <- Ids ],
-    lists:sublist(Ids1, 50).
+-spec m_get(list(), zotonic_model:opt_msg(), z:context()) -> zotonic_model:return().
+m_get([ <<"results">> | Rest ], #{ payload := Payload }, Context) when is_map(Payload) ->
+    {ok, {search(Payload, Context), Rest}};
+m_get([ <<"results">> | Rest ], _Msg, Context) ->
+    {ok, {search(#{}, Context), Rest}};
+m_get([ <<"results_page">> | Rest ], #{ payload := Payload }, Context) when is_map(Payload) ->
+    {ok, {search_page(Payload, Context), Rest}};
+m_get([ <<"results_page">> | Rest ], _Msg, Context) ->
+    {ok, {search_page(#{}, Context), Rest}};
+m_get([ <<"category">> | Rest ], #{ payload := Payload }, Context) when is_map(Payload) ->
+    {ok, {browse_category(Payload, Context), Rest}};
+m_get([ <<"category">> | Rest ], _Msg, Context) ->
+    {ok, {browse_category(#{}, Context), Rest}};
+m_get([ <<"category_page">> | Rest ], #{ payload := Payload }, Context) when is_map(Payload) ->
+    {ok, {browse_category_page(Payload, Context), Rest}};
+m_get([ <<"category_page">> | Rest ], _Msg, Context) ->
+    {ok, {browse_category_page(#{}, Context), Rest}};
+m_get(_Path, _Msg, _Context) ->
+    {error, unknown_path}.
+
+
+-spec search(map(), z:context()) -> map().
+search(Payload, Context) ->
+    search(<<"facets">>, Payload, Context).
+
+
+%% @doc Return a result page without recalculating facets. Used by the endless
+%% scroll loader after the initial faceted result page has been rendered.
+search_page(Payload, Context) ->
+    search(<<"query">>, Payload, Context).
+
+
+search(SearchName, Payload, Context) ->
+    Query = query(maps:get(<<"text">>, Payload, <<>>)),
+    Page = positive_integer(maps:get(<<"page">>, Payload, 1), 1, 10000, 1),
+    Limit = positive_integer(
+        maps:get(<<"limit">>, Payload, ?DEFAULT_LIMIT),
+        8,
+        ?MAX_LIMIT,
+        ?DEFAULT_LIMIT),
+    Selected = selected_facets(Payload, Context),
+    case z_string:len(Query) >= 2 of
+        true -> search(SearchName, Query, Selected, Page, Limit, Context);
+        false -> empty_result(Query, Selected)
+    end.
+
+search(SearchName, Query, Selected, Page, Limit, Context) ->
+    BaseArgs = search_args(Selected, Limit),
+    TrigramArgs = BaseArgs#{
+        <<"facet:important">> => Query,
+        <<"page">> => 1
+    },
+    case m_search:search(SearchName, TrigramArgs, Context) of
+        {ok, Trigram} when Trigram#search_result.total >= ?FALLBACK_THRESHOLD ->
+            TrigramPage = case Page of
+                1 -> Trigram;
+                _ -> search_or_empty(SearchName, TrigramArgs#{ <<"page">> => Page }, Context)
+            end,
+            result_map(Query, Selected, TrigramPage, TrigramPage, false, Context);
+        {ok, Trigram} ->
+            FullText = search_or_empty(
+                SearchName,
+                BaseArgs#{ <<"text">> => Query, <<"page">> => Page },
+                Context),
+            ResultIds = case Page of
+                1 -> merge_ids(Trigram#search_result.result, FullText#search_result.result, Limit);
+                _ -> FullText#search_result.result
+            end,
+            Active = FullText#search_result{ result = ResultIds },
+            result_map(Query, Selected, Trigram, Active, true, Context);
+        {error, _} ->
+            %% During a live migration the new facet columns can briefly be
+            %% unavailable. Keep search useful while the facet table is rebuilt.
+            FullText = search_or_empty(
+                SearchName,
+                BaseArgs#{ <<"text">> => Query, <<"page">> => Page },
+                Context),
+            result_map(Query, Selected, empty_search_result(Limit), FullText, true, Context)
+    end.
+
+search_args(Selected, Limit) ->
+    Facets = maps:filter(
+        fun(_Key, Value) -> Value =/= undefined end,
+        #{
+            <<"category">> => maps:get(category, Selected),
+            <<"subject">> => maps:get(subject, Selected),
+            <<"module">> => maps:get(module, Selected)
+        }),
+    #{
+        <<"cat">> => [ <<"text">>, <<"media">> ],
+        <<"is_findable">> => true,
+        <<"is_published">> => true,
+        <<"pagelen">> => Limit,
+        <<"facet">> => Facets
+    }.
+
+search_or_empty(Name, Args, Context) ->
+    case m_search:search(Name, Args, Context) of
+        {ok, Result} -> Result;
+        {error, _} -> empty_search_result(maps:get(<<"pagelen">>, Args, ?DEFAULT_LIMIT))
+    end.
+
+result_map(Query, Selected, Trigram, Active, IsFallback, Context) ->
+    #search_result{
+        result = Ids,
+        total = Total,
+        page = Page,
+        pages = Pages,
+        facets = Facets
+    } = Active,
+    VisibleFacets = prioritize_selected_facets(
+        visible_facets(Facets, Context),
+        Selected),
+    #{
+        query => Query,
+        result_ids => Ids,
+        result_count => length(Ids),
+        total => Total,
+        page => Page,
+        pages => Pages,
+        pager => Active,
+        facets => VisibleFacets,
+        primary_total => Trigram#search_result.total,
+        is_fallback => IsFallback,
+        category => maps:get(category, Selected),
+        subject => maps:get(subject, Selected),
+        module => maps:get(module, Selected)
+    }.
+
+
+%% @doc Keep selected values visible when templates limit a facet to its first
+%% entries. The remaining values retain the order returned by mod_search.
+prioritize_selected_facets(Facets, Selected) ->
+    lists:foldl(
+        fun({SelectedKey, FacetName}, Acc) ->
+            prioritize_selected_facet(
+                maps:get(SelectedKey, Selected, undefined),
+                FacetName,
+                Acc)
+        end,
+        Facets,
+        [
+            {category, <<"category">>},
+            {subject, <<"subject">>},
+            {module, <<"module">>}
+        ]).
+
+
+prioritize_selected_facet(undefined, _FacetName, Facets) ->
+    Facets;
+prioritize_selected_facet(SelectedId, FacetName, Facets) ->
+    case maps:get(FacetName, Facets, undefined) of
+        #{ <<"counts">> := Counts } = Facet ->
+            {Selected, Others} = lists:partition(
+                fun(#{ <<"value">> := Id }) -> Id =:= SelectedId end,
+                Counts),
+            Facets#{ FacetName => Facet#{ <<"counts">> => Selected ++ Others } };
+        _ ->
+            Facets
+    end.
+
+empty_result(Query, Selected) ->
+    #search_result{ facets = Facets } = Empty = empty_search_result(?DEFAULT_LIMIT),
+    #{
+        query => Query,
+        result_ids => [],
+        result_count => 0,
+        total => 0,
+        page => 1,
+        pages => 0,
+        pager => Empty,
+        facets => Facets,
+        primary_total => 0,
+        is_fallback => false,
+        category => maps:get(category, Selected),
+        subject => maps:get(subject, Selected),
+        module => maps:get(module, Selected)
+    }.
+
+empty_search_result(Limit) ->
+    #search_result{
+        result = [],
+        pagelen = Limit,
+        total = 0,
+        pages = 0,
+        facets = #{}
+    }.
+
+merge_ids(Primary, Secondary, Limit) ->
+    lists:sublist(Primary ++ [ Id || Id <- Secondary, not lists:member(Id, Primary) ], Limit).
+
+
+%% @doc Return a paged, faceted view of one documentation category. Facet
+%% counts use drill-sideways semantics, keeping alternatives for the selected
+%% facet visible. Subject facets are grouped by their keyword subcategory so
+%% that additions to the controlled vocabulary appear without template changes.
+browse_category(Payload, Context) ->
+    browse_category(<<"facets">>, Payload, Context).
+
+
+%% @doc Return a result page without recalculating facets. Used by the endless
+%% scroll loader and when reconstructing an already-scrolled bookmarked URL.
+browse_category_page(Payload, Context) ->
+    browse_category(<<"query">>, Payload, Context).
+
+
+browse_category(SearchName, Payload, Context) ->
+    Query = query(maps:get(<<"text">>, Payload, <<>>)),
+    Page = positive_integer(maps:get(<<"page">>, Payload, 1), 1, 10000, 1),
+    Limit = positive_integer(
+        maps:get(<<"limit">>, Payload, ?BROWSE_DEFAULT_LIMIT),
+        8,
+        ?MAX_LIMIT,
+        ?BROWSE_DEFAULT_LIMIT),
+    CategoryId = selected_facet(category, Payload, Context),
+    CategoryFilterId = selected_category_filter(Payload, CategoryId, Context),
+    SubjectId = selected_keyword(Payload, Context),
+    ModuleId = selected_facet(module, Payload, Context),
+    case CategoryId of
+        undefined ->
+            empty_browse_result(Query, CategoryFilterId, SubjectId, ModuleId, Limit);
+        _ ->
+            FacetArgs = maps:filter(
+                fun(_Key, Value) -> Value =/= undefined end,
+                #{
+                    <<"category">> => CategoryFilterId,
+                    <<"subject">> => SubjectId,
+                    <<"module">> => ModuleId
+                }),
+            Args0 = #{
+                <<"cat">> => CategoryId,
+                <<"is_findable">> => true,
+                <<"is_published">> => true,
+                <<"sort">> => <<"pivot_title">>,
+                <<"pagelen">> => Limit,
+                <<"page">> => Page,
+                <<"facet">> => FacetArgs
+            },
+            Args = case z_string:len(Query) >= 2 of
+                true -> Args0#{ <<"text">> => Query };
+                false -> Args0
+            end,
+            case m_search:search(SearchName, Args, Context) of
+                {ok, Result} ->
+                    browse_result(
+                        Query,
+                        CategoryId,
+                        CategoryFilterId,
+                        SubjectId,
+                        ModuleId,
+                        Result,
+                        Context);
+                {error, _} ->
+                    empty_browse_result(Query, CategoryFilterId, SubjectId, ModuleId, Limit)
+            end
+    end.
+
+
+browse_result(Query, CategoryId, CategoryFilterId, SubjectId, ModuleId, Result, Context) ->
+    #search_result{
+        result = Ids,
+        total = Total,
+        page = Page,
+        pages = Pages,
+        facets = Facets0
+    } = Result,
+    Facets = visible_facets(Facets0, Context),
+    #{
+        query => Query,
+        category => CategoryId,
+        selected_category => CategoryFilterId,
+        subject => SubjectId,
+        module => ModuleId,
+        result_ids => Ids,
+        total => Total,
+        page => Page,
+        pages => Pages,
+        pager => Result,
+        categories => sort_facet_counts(facet_counts(<<"category">>, Facets), Context),
+        subject_groups => subject_groups(Facets, Context),
+        modules => sort_facet_counts(facet_counts(<<"module">>, Facets), Context)
+    }.
+
+
+empty_browse_result(Query, CategoryFilterId, SubjectId, ModuleId, Limit) ->
+    Empty = empty_search_result(Limit),
+    #{
+        query => Query,
+        category => undefined,
+        selected_category => CategoryFilterId,
+        subject => SubjectId,
+        module => ModuleId,
+        result_ids => [],
+        total => 0,
+        page => 1,
+        pages => 0,
+        pager => Empty,
+        categories => [],
+        subject_groups => [],
+        modules => []
+    }.
+
+
+selected_category_filter(_Payload, undefined, _Context) ->
+    undefined;
+selected_category_filter(Payload, CategoryId, Context) ->
+    case m_rsc:rid(maps:get(<<"category_filter">>, Payload, undefined), Context) of
+        Id when is_integer(Id) ->
+            case m_category:is_a(Id, CategoryId, Context) of
+                true -> Id;
+                false -> undefined
+            end;
+        _ ->
+            undefined
+    end.
+
+
+selected_keyword(Payload, Context) ->
+    case selected_facet(subject, Payload, Context) of
+        Id when is_integer(Id) ->
+            case m_rsc:is_a(Id, keyword, Context) of
+                true -> Id;
+                false -> undefined
+            end;
+        undefined ->
+            undefined
+    end.
+
+
+facet_counts(Name, Facets) ->
+    case maps:get(Name, Facets, undefined) of
+        #{ <<"counts">> := Counts } -> Counts;
+        _ -> []
+    end.
+
+
+subject_groups(Facets, Context) ->
+    Groups = lists:foldl(
+        fun(#{ <<"value">> := SubjectId } = Count, Acc) ->
+            CategoryId = m_rsc:p(SubjectId, <<"category_id">>, Context),
+            case m_rsc:p(CategoryId, <<"subject_topic_facet">>, Context) of
+                Facet when is_binary(Facet), Facet =/= <<>> ->
+                    Group0 = maps:get(Facet, Acc, #{
+                        key => Facet,
+                        category_id => CategoryId,
+                        counts => []
+                    }),
+                    Counts = maps:get(counts, Group0),
+                    Acc#{ Facet => Group0#{ counts => [ Count | Counts ] } };
+                _ ->
+                    Acc
+            end
+        end,
+        #{},
+        facet_counts(<<"subject">>, Facets)),
+    [
+        Group#{ counts => sort_facet_counts(maps:get(counts, Group), Context) }
+        || Facet <- ?SUBJECT_FACET_ORDER,
+           {ok, Group} <- [ maps:find(Facet, Groups) ]
+    ].
+
+
+sort_facet_counts(Counts, Context) ->
+    lists:sort(
+        fun(#{ <<"value">> := A }, #{ <<"value">> := B }) ->
+            facet_sort_value(A, Context) =< facet_sort_value(B, Context)
+        end,
+        Counts).
+
+
+facet_sort_value(Id, Context) ->
+    Title = z_trans:lookup_fallback(m_rsc:p(Id, <<"title">>, Context), Context),
+    z_string:to_lower(z_convert:to_binary(Title)).
+
+selected_facets(Payload, Context) ->
+    #{
+        category => selected_facet(category, Payload, Context),
+        subject => selected_facet(subject, Payload, Context),
+        module => selected_facet(module, Payload, Context)
+    }.
+
+selected_facet(Name, Payload, Context) ->
+    Key = atom_to_binary(Name, utf8),
+    case m_rsc:rid(maps:get(Key, Payload, undefined), Context) of
+        Id when is_integer(Id) ->
+            case is_allowed_facet(Name, Id, Context) of
+                true -> Id;
+                false -> undefined
+            end;
+        undefined ->
+            undefined
+    end.
+
+is_allowed_facet(category, Id, Context) ->
+    m_rsc:is_a(Id, category, Context);
+is_allowed_facet(module, Id, Context) ->
+    m_rsc:is_a(Id, module, Context) andalso m_rsc:is_visible(Id, Context);
+is_allowed_facet(subject, Id, Context) ->
+    m_rsc:is_visible(Id, Context).
+
+visible_facets(undefined, _Context) ->
+    #{};
+visible_facets(Facets, Context) ->
+    maps:map(
+        fun
+            (<<"category">>, #{ <<"counts">> := Counts } = Facet) ->
+                Facet#{ <<"counts">> => [
+                    Count
+                    || #{ <<"value">> := Id } = Count <- Counts,
+                       is_integer(Id)
+                ] };
+            (Name, #{ <<"counts">> := Counts } = Facet)
+                when Name =:= <<"subject">>;
+                     Name =:= <<"module">> ->
+                Facet#{ <<"counts">> => [
+                    Count
+                    || #{ <<"value">> := Id } = Count <- Counts,
+                       is_integer(Id),
+                       m_rsc:is_visible(Id, Context)
+                ] };
+            (_Name, Facet) ->
+                Facet
+        end,
+        maps:with([ <<"category">>, <<"subject">>, <<"module">> ], Facets)).
+
+query(Value) ->
+    Value1 = z_string:sanitize_utf8(z_convert:to_binary(Value)),
+    z_string:truncatechars(z_string:trim(Value1), ?MAX_QUERY_LENGTH, <<>>).
+
+positive_integer(Value, Min, Max, Default) ->
+    try z_convert:to_integer(Value) of
+        N when is_integer(N), N >= Min, N =< Max -> N;
+        _ -> Default
+    catch
+        _:_ -> Default
+    end.

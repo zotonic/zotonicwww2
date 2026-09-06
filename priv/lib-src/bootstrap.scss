@@ -6,7 +6,6 @@
 
 /* -------end customization-------- */
 
-
 @import "site/grid";
 @import "site/type";
 @import "site/nav";
@@ -96,3 +95,6 @@
 
 /* -------end customization-------- */
 
+// Public-site layout overrides. Kept separate from Bootstrap so the later
+// bs3-to-bs5 compatibility migration has one clear integration boundary.
+@import "site/modern";

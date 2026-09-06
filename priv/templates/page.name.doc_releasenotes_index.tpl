@@ -4,15 +4,11 @@
 <div class="page-relations">
 
     {% if id.o.haspart|is_visible|zotonicwww2_by_version as haspart %}
-        <dl class="connections">
+        <div class="content-list content-list--releases">
             {% for id in haspart %}
-                <dt><a href="{{ id.page_url }}">{{ id.title }}</a></dt>
-                <dd class="do_clickable">
-                    {{ id|summary:160 }}
-                    <a href="{{ id.page_url }}"></a>
-                </dd>
+                {% catinclude "_list_item.tpl" id %}
             {% endfor %}
-        </dl>
+        </div>
     {% endif %}
 
     {% for s in id.s.haspart|is_visible %}

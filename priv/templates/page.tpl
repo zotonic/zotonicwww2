@@ -2,6 +2,7 @@
 
 {% block content %}
     <article>
+        {% include "_page_meta.tpl" %}
         <h1>{{ id.title }}</h1>
 
         {% if id.depiction as dep %}
@@ -16,6 +17,7 @@
             {{ id.body|show_media }}
         </div>
     </article>
+    {% include "_page_related.tpl" %}
 {% endblock %}
 
 
@@ -23,15 +25,11 @@
 <div class="page-relations">
 
     {% if id.o.haspart|is_visible as haspart %}
-        <dl class="connections">
+        <div class="content-list">
             {% for id in haspart %}
-                <dt><a href="{{ id.page_url }}">{{ id.title }}</a></dt>
-                <dd class="do_clickable">
-                    {{ id|summary:160 }}
-                    <a href="{{ id.page_url }}"></a>
-                </dd>
+                {% catinclude "_list_item.tpl" id %}
             {% endfor %}
-        </dl>
+        </div>
     {% endif %}
 
     {% for s in id.s.haspart|is_visible %}
