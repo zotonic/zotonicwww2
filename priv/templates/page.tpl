@@ -17,7 +17,6 @@
             {{ id.body|show_media }}
         </div>
     </article>
-    {% include "_page_related.tpl" %}
 {% endblock %}
 
 

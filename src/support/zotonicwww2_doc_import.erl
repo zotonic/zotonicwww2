@@ -180,7 +180,7 @@ sync_entry(Entry, Commit, Generation, KeywordIds, Context) ->
     Tracking = tracking(SourceKey, EntryContext),
     ExistingId = m_rsc:rid(Name, EntryContext),
     Result = change_kind(Tracking, ExistingId, SourceHash),
-    SourceUrl = maps:get(source_url, Entry, source_url(Commit, SourcePath)),
+    SourceUrl = source_url(SourcePath),
     Props0 = maps:merge(#{
         <<"name">> => Name,
         <<"title">> => Title,
@@ -530,8 +530,8 @@ source_key(Name) ->
 source_hash(Entry) ->
     z_url:hex_encode_lc(crypto:hash(sha256, term_to_binary(maps:without([source_url], Entry)))).
 
-source_url(Commit, SourcePath) ->
-    <<"https://github.com/zotonic/zotonic/blob/", Commit/binary, "/", SourcePath/binary>>.
+source_url(SourcePath) ->
+    <<"https://github.com/zotonic/zotonic/blob/master/", SourcePath/binary>>.
 
 imported_group(Context) ->
     m_rsc:rid(content_group_imported_docs, Context).
@@ -542,6 +542,11 @@ deprecated_group(Context) ->
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+
+source_url_uses_master_test() ->
+    ?assertEqual(
+        <<"https://github.com/zotonic/zotonic/blob/master/apps/zotonic_core/src/zotonic.erl">>,
+        source_url(<<"apps/zotonic_core/src/zotonic.erl">>)).
 
 manifest_keyword_slugs_test() ->
     Entries = [

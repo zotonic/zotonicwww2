@@ -48,7 +48,15 @@
                         <tr><th>{_ Created _}</th><td>{{ doc_status.created|escape }}</td></tr>
                         <tr><th>{_ Updated _}</th><td>{{ doc_status.updated|escape }}</td></tr>
                         <tr><th>{_ Unchanged _}</th><td>{{ doc_status.unchanged|escape }}</td></tr>
-                        <tr><th>{_ Deprecated _}</th><td>{{ doc_status.deprecated|escape }}</td></tr>
+                        <tr>
+                            <th>{_ Deprecated _}</th>
+                            <td>
+                                <a href="{% url admin_overview_rsc qcontent_group=m.rsc.content_group_deprecated_docs.id qis_published="0" %}"
+                                   title="{_ Show deprecated documentation _}">
+                                    {{ doc_status.deprecated|escape }}
+                                </a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 

@@ -34,7 +34,8 @@
 -include_lib("zotonic_core/include/zotonic.hrl").
 
 -define(GIT_URL, "https://github.com/zotonic/zotonic.git").
--define(GIT_BRANCH, "master").
+%% Temporary branch used to validate the documentation keyword changes locally.
+-define(GIT_BRANCH, "doc-keywords").
 -define(TASK_KEY, <<"documentation-import">>).
 
 
@@ -340,7 +341,8 @@ fetch(Context) ->
     end.
 
 fetch_remote(Context) ->
-    run_gitcmd("git fetch --prune origin " ?GIT_BRANCH, Context).
+    Refspec = "+refs/heads/" ?GIT_BRANCH ":refs/remotes/origin/" ?GIT_BRANCH,
+    run_gitcmd("git fetch --prune origin " ++ Refspec, Context).
 
 -spec checkout_commit(binary(), z:context()) -> {ok, binary()} | {error, term()}.
 checkout_commit(Commit, Context) ->

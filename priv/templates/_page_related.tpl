@@ -1,23 +1,31 @@
-{% if id.o.subject[1] as subject_id %}
-    {% with m.search.query::%{
+{% if id.is_a.text %}
+    {# Keep one ranked set so equally ranked results cannot move between the
+       initial list and the lazily rendered remainder. #}
+    {% with m.search.match_objects::%{
+        id: id,
+        predicate: "subject",
         cat: "text",
-        hasobject: [subject_id, "subject"],
-        id_exclude: id,
-        is_published: true,
-        sort: "-modified",
-        pagelen: 6
+        pagelen: 36
     } as related %}
         {% if related %}
             <section class="related-content" aria-labelledby="related-content-title">
                 <h2 id="related-content-title">{_ Related documentation _}</h2>
                 <div class="related-content__grid">
-                    {% for related_id in related %}
-                        <article>
-                            <p class="related-content__type">{{ related_id.category_id.title }}</p>
-                            <h3><a href="{{ related_id.page_url }}">{{ related_id.title }}</a></h3>
-                            <p>{{ related_id|summary:140 }}</p>
-                        </article>
-                    {% endfor %}
+                    {% include "_page_related_items.tpl" related=related.result|slice:[9] %}
+
+                    {% with related.result|slice:[10,36] as additional %}
+                        {% if additional %}
+                            <button id="related-content-more-{{ id }}"
+                                    class="related-content__more"
+                                    type="button"
+                                    data-onclick-topic="model/loadmore/post/replace"
+                                    data-template="_page_related_more.tpl"
+                                    data-url="{% url none ids=additional|join:',' %}"
+                                    data-replace-location="false">
+                                {_ Show more _}
+                            </button>
+                        {% endif %}
+                    {% endwith %}
                 </div>
             </section>
         {% endif %}

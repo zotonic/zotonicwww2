@@ -135,6 +135,10 @@
           <!-- This block is only for this site -->
           {% block content_after %}
           {% endblock %}
+
+          {# Related resources are selected for all resources in the text
+           # category tree. The partial performs the category check. #}
+          {% include "_page_related.tpl" %}
         {% endblock %}
       </main>
 

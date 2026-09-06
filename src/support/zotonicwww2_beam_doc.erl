@@ -91,14 +91,12 @@ dispatch_entries(Context) ->
                 filename := Filename,
                 module := Module,
                 path := Path,
-                rules := Rules,
-                source_url := SourceUrl
+                rules := Rules
             }, Acc) ->
             Entry = entry(dispatch, dispatch, Name, dispatch_title(Module, Filename), Body, Path),
             [Entry#{
                 keywords => dispatch_keywords(),
                 module => Module,
-                source_url => SourceUrl,
                 props => #{
                     <<"erlang_app">> => App,
                     <<"dispatch_file">> => Filename,
@@ -270,28 +268,10 @@ get_modules_doc(Context) ->
                             Beamfile = filename:join([ GitDir, "_build", "default", "lib", AppName, "ebin", DocFilename ]),
                             SourceName = filename:rootname(DocFilename, <<".beam">>),
                             SourcePath = filename:join([ <<"apps">>, AppName, <<"src">>, <<SourceName/binary, ".erl">> ]),
-                            case get_doc(Beamfile) of
-                                {ok, #docs_v1{
-                                    module_doc = #{ <<"en">> := Doc },
-                                    metadata = Metadata
-                                }} ->
-                                    Acc#{
-                                        AppName => #{
-                                            doc => z_markdown:to_html(Doc),
-                                            keywords => zotonic_keywords(Metadata),
-                                            path => SourcePath
-                                        }
-                                    };
-                                _ ->
-                                    % A module page is still useful for grouping all
-                                    % components when the application has no moduledoc.
-                                    Acc#{
-                                        AppName => #{
-                                            doc => <<>>,
-                                            keywords => [],
-                                            path => SourcePath
-                                        }
-                                    }
+                            SourceFile = filename:join(GitDir, SourcePath),
+                            case filelib:is_regular(SourceFile) of
+                                true -> add_module_doc(AppName, Beamfile, SourcePath, Acc);
+                                false -> Acc
                             end
                     end;
                 false ->
@@ -300,6 +280,31 @@ get_modules_doc(Context) ->
         end,
         #{},
         Apps).
+
+add_module_doc(AppName, Beamfile, SourcePath, Acc) ->
+    case get_doc(Beamfile) of
+        {ok, #docs_v1{
+            module_doc = #{ <<"en">> := Doc },
+            metadata = Metadata
+        }} ->
+            Acc#{
+                AppName => #{
+                    doc => z_markdown:to_html(Doc),
+                    keywords => zotonic_keywords(Metadata),
+                    path => SourcePath
+                }
+            };
+        _ ->
+            % A module page is still useful for grouping all components when
+            % its existing main module has no moduledoc.
+            Acc#{
+                AppName => #{
+                    doc => <<>>,
+                    keywords => [],
+                    path => SourcePath
+                }
+            }
+    end.
 
 %% @doc Read every dispatch file from the Zotonic applications. One generated
 %% documentation entry is kept per source file, using the legacy resource name
@@ -326,8 +331,7 @@ get_dispatch_docs(Context) ->
                         filename => Filename,
                         module => Module,
                         path => Path,
-                        rules => Rules,
-                        source_url => master_source_url(Path)
+                        rules => Rules
                     }};
                 false ->
                     Acc
@@ -443,9 +447,6 @@ dispatch_title(Module, <<"dispatch">>) ->
     <<Module/binary, " dispatch rules">>;
 dispatch_title(Module, Filename) ->
     <<Module/binary, " dispatch rules (", Filename/binary, ")">>.
-
-master_source_url(Path) ->
-    <<"https://github.com/zotonic/zotonic/blob/master/", Path/binary>>.
 
 %% @doc List the filters for which we expect documentation.
 -spec get_filters_doc(z:context()) -> #{ binary() => map() }.
@@ -824,11 +825,6 @@ dispatch_doc_test() ->
     ?assertNotEqual(nomatch, binary:match(Body, <<"/item/*">>)),
     ?assertNotEqual(nomatch, binary:match(Body, <<"controller_example">>)),
     ?assertNotEqual(nomatch, binary:match(Body, <<"page.tpl">>)).
-
-dispatch_source_url_test() ->
-    ?assertEqual(
-        <<"https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/priv/dispatch/dispatch">>,
-        master_source_url(<<"apps/zotonic_mod_base/priv/dispatch/dispatch">>)).
 
 component_name_test() ->
     ?assertEqual(<<"wire">>, remove_mod(<<"action_base_wire">>, <<"mod_base">>)),
