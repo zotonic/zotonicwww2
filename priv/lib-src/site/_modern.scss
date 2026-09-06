@@ -823,11 +823,23 @@ h2 + .subject-label-list {
     gap: 1rem;
 
     article {
+        position: relative;
         min-width: 0;
         padding: 1.25rem;
         border: 1px solid var(--site-rule);
         border-radius: 4px;
         overflow-wrap: anywhere;
+
+        &:hover,
+        &:focus-within {
+            border-color: rgba($zotonic-blue, .55);
+            background: rgba($zotonic-blue, .055);
+        }
+
+        &:hover .related-content__link,
+        .related-content__link:focus {
+            color: var(--site-accent);
+        }
 
         h3,
         p {
@@ -848,6 +860,22 @@ h2 + .subject-label-list {
             font-size: .95rem;
             line-height: 1.5;
         }
+    }
+}
+
+.related-content__link {
+    color: var(--site-ink);
+    text-decoration: none;
+
+    &::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+    }
+
+    &:focus::after {
+        outline: 2px solid var(--site-accent);
+        outline-offset: -2px;
     }
 }
 
@@ -2129,6 +2157,36 @@ pre {
     max-width: 100%;
     overflow-x: auto;
     border-radius: 3px;
+}
+
+.dispatch-controller-link {
+    display: inline-flex;
+    gap: .35em;
+    align-items: baseline;
+    color: var(--site-accent);
+    font-weight: 700;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .2em;
+
+    code {
+        color: inherit;
+    }
+
+    &::after {
+        color: currentColor;
+        font-family: var(--site-ui-font);
+        font-size: .8em;
+        line-height: 1;
+        text-decoration: none;
+        content: "→";
+    }
+
+    &:hover,
+    &:focus {
+        color: var(--site-ink);
+        text-decoration-thickness: 2px;
+    }
 }
 
 a:focus-visible,

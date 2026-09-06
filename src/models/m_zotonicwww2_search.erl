@@ -335,14 +335,15 @@ browse_result(Query, CategoryId, CategoryFilterId, SubjectId, ModuleId, Result, 
     }.
 
 
-%% @doc Build a hierarchical category view from the controlled subject
-%% vocabulary. Each level uses the best remaining keyword facet. If the
-%% displayed keywords do not cover every resource then their complement is an
-%% "Other" path step. Both named and Other steps can be split again using the
-%% best remaining facet. If no useful split remains then the matching resources
-%% are returned as a normal, paged list.
+%% @doc Build a hierarchical category or keyword view from the controlled
+%% subject vocabulary. Each level uses the best remaining keyword facet. If
+%% the displayed keywords do not cover every resource then their complement is
+%% an "Other" path step. Both named and Other steps can be split again using
+%% the best remaining facet. If no useful split remains then the matching
+%% resources are returned as a normal, paged list.
 category_cluster(Payload, Context) ->
     CategoryId = selected_facet(category, Payload, Context),
+    SubjectId = selected_keyword(Payload, Context),
     Path = cluster_path(maps:get(<<"cluster">>, Payload, undefined), Context),
     Page = positive_integer(maps:get(<<"page">>, Payload, 1), 1, 10000, 1),
     Limit = positive_integer(
@@ -350,20 +351,23 @@ category_cluster(Payload, Context) ->
         8,
         ?MAX_LIMIT,
         ?BROWSE_DEFAULT_LIMIT),
-    case CategoryId of
-        undefined ->
+    case {CategoryId, SubjectId} of
+        {undefined, undefined} ->
             empty_cluster_result(Path, Limit);
         _ ->
-            case cluster_search(CategoryId, Path, Page, Limit, Context) of
+            case cluster_search(CategoryId, SubjectId, Path, Page, Limit, Context) of
                 {ok, Result} ->
-                    category_cluster_result(CategoryId, Path, Result, Context);
+                    category_cluster_result(CategoryId, SubjectId, Path, Result, Context);
                 {error, _} ->
-                    (empty_cluster_result(Path, Limit))#{ category => CategoryId }
+                    (empty_cluster_result(Path, Limit))#{
+                        category => CategoryId,
+                        subject => SubjectId
+                    }
             end
     end.
 
 
-category_cluster_result(CategoryId, Path, Result, Context) ->
+category_cluster_result(CategoryId, SubjectId, Path, Result, Context) ->
     #search_result{
         result = Ids,
         total = Total,
@@ -373,13 +377,17 @@ category_cluster_result(CategoryId, Path, Result, Context) ->
     } = Result,
     Facets = visible_facets(Facets0, Context),
     Groups = subject_groups(Facets, Context),
+    SelectedKeywordIds = cluster_keyword_ids(SubjectId, Path),
     ExcludedCategoryIds = lists:usort([
-        m_rsc:p(Id, <<"category_id">>, Context)
-        || Id <- cluster_keyword_ids(Path)
+        KeywordCategoryId
+        || Id <- SelectedKeywordIds,
+           KeywordCategoryId <- [ m_rsc:p(Id, <<"category_id">>, Context) ],
+           is_integer(KeywordCategoryId)
     ]),
     Split = zotonicwww2_category_cluster:split(Total, Groups, ExcludedCategoryIds),
     Base = #{
         category => CategoryId,
+        subject => SubjectId,
         active => Path =/= [],
         is_other => is_other_cluster(Path),
         path_value => cluster_path_value(Path),
@@ -398,18 +406,30 @@ category_cluster_result(CategoryId, Path, Result, Context) ->
         #{ category_id := FacetCategoryId, clusters := ClusterCounts } ->
             Base#{
                 cluster_facet => FacetCategoryId,
-                clusters => cluster_cards(CategoryId, Path, ClusterCounts, Context)
+                clusters => cluster_cards(
+                    CategoryId,
+                    SubjectId,
+                    Path,
+                    ClusterCounts,
+                    Context)
             };
         undefined ->
             Base
     end.
 
 
-cluster_cards(CategoryId, Path, ClusterCounts, Context) ->
+cluster_cards(CategoryId, SubjectId, Path, ClusterCounts, Context) ->
     NamedCards = lists:filtermap(
         fun(#{ <<"value">> := KeywordId }) ->
             NextPath = Path ++ [ {keyword, KeywordId} ],
-            case cluster_search(CategoryId, NextPath, 1, ?CLUSTER_PREVIEW_LIMIT, Context) of
+            case cluster_search(
+                CategoryId,
+                SubjectId,
+                NextPath,
+                1,
+                ?CLUSTER_PREVIEW_LIMIT,
+                Context)
+            of
                 {ok, #search_result{
                         result = ResultIds,
                         total = Total,
@@ -420,7 +440,7 @@ cluster_cards(CategoryId, Path, ClusterCounts, Context) ->
                     Supporting = zotonicwww2_category_cluster:important_keywords(
                         Total,
                         Groups,
-                        cluster_keyword_ids(NextPath),
+                        cluster_keyword_ids(SubjectId, NextPath),
                         2),
                     {true, #{
                         is_other => false,
@@ -439,15 +459,22 @@ cluster_cards(CategoryId, Path, ClusterCounts, Context) ->
         KeywordId
         || #{ <<"value">> := KeywordId } <- ClusterCounts
     ],
-    case other_cluster_card(CategoryId, Path, OtherKeywordIds, Context) of
+    case other_cluster_card(CategoryId, SubjectId, Path, OtherKeywordIds, Context) of
         undefined -> NamedCards;
         OtherCard -> NamedCards ++ [ OtherCard ]
     end.
 
 
-other_cluster_card(CategoryId, Path, OtherKeywordIds, Context) ->
+other_cluster_card(CategoryId, SubjectId, Path, OtherKeywordIds, Context) ->
     NextPath = Path ++ [ {other, OtherKeywordIds} ],
-    case cluster_search(CategoryId, NextPath, 1, ?CLUSTER_PREVIEW_LIMIT, Context) of
+    case cluster_search(
+        CategoryId,
+        SubjectId,
+        NextPath,
+        1,
+        ?CLUSTER_PREVIEW_LIMIT,
+        Context)
+    of
         {ok, #search_result{ total = 0 }} ->
             undefined;
         {ok, #search_result{
@@ -460,7 +487,7 @@ other_cluster_card(CategoryId, Path, OtherKeywordIds, Context) ->
             Supporting = zotonicwww2_category_cluster:important_keywords(
                 Total,
                 Groups,
-                cluster_keyword_ids(NextPath),
+                cluster_keyword_ids(SubjectId, NextPath),
                 2),
             #{
                 is_other => true,
@@ -475,19 +502,27 @@ other_cluster_card(CategoryId, Path, OtherKeywordIds, Context) ->
     end.
 
 
-cluster_search(CategoryId, Path, Page, Limit, Context) ->
-    Base = z_search_props:from_map(#{
-        <<"cat">> => CategoryId,
-        <<"is_findable">> => true,
-        <<"is_published">> => true,
-        <<"sort">> => <<"pivot_title">>,
-        <<"page">> => Page,
-        <<"pagelen">> => Limit
-    }),
+cluster_search(CategoryId, SubjectId, Path, Page, Limit, Context) ->
+    BaseProps = maps:filter(
+        fun(_Key, Value) -> Value =/= undefined end,
+        #{
+            <<"cat">> => CategoryId,
+            <<"is_findable">> => true,
+            <<"is_published">> => true,
+            <<"sort">> => <<"pivot_title">>,
+            <<"page">> => Page,
+            <<"pagelen">> => Limit
+        }),
+    Base = z_search_props:from_map(BaseProps),
     #{ <<"q">> := Terms } = Base,
+    SubjectIds = lists:usort([
+        Id
+        || Id <- [ SubjectId | [ PathId || {keyword, PathId} <- Path ] ],
+           is_integer(Id)
+    ]),
     SubjectTerms = [
         #{ <<"term">> => <<"facet:subject">>, <<"value">> => Id }
-        || {keyword, Id} <- Path
+        || Id <- SubjectIds
     ],
     OtherTerms = other_search_terms(other_keyword_ids(Path)),
     m_search:search(
@@ -517,6 +552,7 @@ empty_cluster_result(Path, Limit) ->
     Empty = empty_search_result(Limit),
     #{
         category => undefined,
+        subject => undefined,
         active => Path =/= [],
         is_other => is_other_cluster(Path),
         path_value => cluster_path_value(Path),
@@ -636,6 +672,12 @@ cluster_keyword_ids(Path) ->
         end
         || Step <- Path
     ])).
+
+
+cluster_keyword_ids(undefined, Path) ->
+    cluster_keyword_ids(Path);
+cluster_keyword_ids(SubjectId, Path) ->
+    lists:usort([ SubjectId | cluster_keyword_ids(Path) ]).
 
 
 other_keyword_ids(Path) ->

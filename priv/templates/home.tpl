@@ -60,10 +60,25 @@
             {% endfor %}
         </div>
 
-        {# A compact editorial index of recent releases and team-written content. #}
+        {# Reference entry point followed by recent releases and editorial content. #}
         <div class="home__list">
+            <section class="home-feed" aria-labelledby="home-reference-title">
+                <header class="home-feed__header do_clickable">
+                    <div>
+                        <h2 id="home-reference-title">{_ Reference documentation _}</h2>
+                        <p>{_ Look up Zotonic modules, models, controllers, notifications, templates, and other extension points. _}</p>
+                    </div>
+                    <a class="home-feed__more" href="{{ m.rsc.reference.page_url }}">
+                        {_ Explore _}
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                        </svg>
+                    </a>
+                </header>
+            </section>
+
             <section class="home-feed home-feed--releases" aria-labelledby="home-releases-title">
-                <header class="home-feed__header">
+                <header class="home-feed__header do_clickable">
                     <div>
                         <h2 id="home-releases-title">{_ Latest releases _}</h2>
                         <p>{_ What changed, what was fixed, and how to upgrade. _}</p>

@@ -14,7 +14,7 @@
                             {{ cluster_view.current_keyword.title }}
                         {% endif %}
                     {% else %}
-                        {_ Discover _} {{ category_id.title }}
+                        {_ Discover _} {{ cluster_root_id.title|default:category_id.title }}
                     {% endif %}
                 </h2>
                 {% if cluster_view.is_other %}
@@ -96,12 +96,20 @@
                                  class="reference-result-list__loader"
                                  role="status"
                                  data-onvisible-topic="model/loadmore/post/replace"
-                                 data-template="_category_cluster_page.tpl"
+                                 data-template="{{ cluster_page_template|default:"_category_cluster_page.tpl"|escape }}"
+                                 {% if keyword_id %}
+                                 data-url="{% url none
+                                    page=cluster_view.pager.next
+                                    cluster=cluster_view.path_value
+                                    keyword_id=keyword_id
+                                 %}"
+                                 {% else %}
                                  data-url="{% url none
                                     page=cluster_view.pager.next
                                     cluster=cluster_view.path_value
                                     category_id=category_id
-                                 %}">
+                                 %}"
+                                 {% endif %}>
                                 {_ Loading more documentation… _}
                             </div>
                         {% endif %}

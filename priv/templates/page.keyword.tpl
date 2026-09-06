@@ -1,6 +1,43 @@
 {% extends "page.tpl" %}
 
+{% block content %}
+    {% if q.cluster %}
+        {% with m.zotonicwww2_search.category_cluster::%{
+                subject: id,
+                cluster: q.cluster,
+                limit: 40
+            }
+            as cluster_view
+        %}
+            {% if cluster_view.active %}
+                <article class="cluster-category-heading">
+                    <h1>{{ id.title }}</h1>
+                    <a class="cluster-category-heading__up"
+                       href="{% if cluster_view.parent_path_value %}{% url none cluster=cluster_view.parent_path_value %}{% else %}{{ id.page_url }}{% endif %}">
+                        <span aria-hidden="true">↑</span>
+                        {_ Up to _}
+                        {% if cluster_view.parent_is_other %}{_ Other _}{% else %}{{ cluster_view.parent_keyword.title|default:id.title }}{% endif %}
+                    </a>
+                </article>
+                <div class="page-relations subject-topic-page subject-topic-page--cluster">
+                    {% include "_category_cluster_view.tpl"
+                        cluster_view=cluster_view
+                        cluster_root_id=id
+                        keyword_id=id
+                        cluster_page_template="_keyword_cluster_page.tpl"
+                    %}
+                </div>
+            {% else %}
+                {% inherit %}
+            {% endif %}
+        {% endwith %}
+    {% else %}
+        {% inherit %}
+    {% endif %}
+{% endblock %}
+
 {% block content_after %}
+{% if not q.cluster %}
 <div class="page-relations subject-topic-page">
     {% with id.o.subject_topic_broader|is_visible as broader_topics %}
     {% with id.s.subject_topic_broader|is_visible as narrower_topics %}
@@ -72,6 +109,20 @@
         </section>
     {% endif %}
 
+    {% with m.zotonicwww2_search.category_cluster::%{
+            subject: id,
+            limit: 40
+        }
+        as cluster_view
+    %}
+        {% include "_category_cluster_view.tpl"
+            cluster_view=cluster_view
+            cluster_root_id=id
+            keyword_id=id
+            cluster_page_template="_keyword_cluster_page.tpl"
+        %}
+    {% endwith %}
+
     <section class="connections" aria-labelledby="subject-connected-title">
         <h2 id="subject-connected-title">{_ Connected content _}</h2>
         <div id="{{ #connected }}">
@@ -83,4 +134,5 @@
         </div>
     </section>
 </div>
+{% endif %}
 {% endblock %}

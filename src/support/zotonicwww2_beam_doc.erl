@@ -116,8 +116,8 @@ controller_entries(Context) ->
         get_controllers_doc(Context),
         controller,
         controller,
-        fun(<<"controller_", Controller/binary>>, _Module) ->
-            {<<"doc_controller_controller_", Controller/binary>>, <<"controller_", Controller/binary>>}
+        fun(Name, _Module) ->
+            {controller_page_name(Name), Name}
         end).
 
 filter_entries(Context) ->
@@ -395,9 +395,23 @@ dispatch_rule_row({Name, Path, Controller, Options}) ->
     [
         <<"<tr><td><code>">>, z_html:escape(atom_to_binary(Name)), <<"</code></td>">>,
         <<"<td><code>">>, z_html:escape(dispatch_path(Path)), <<"</code></td>">>,
-        <<"<td><code>">>, z_html:escape(atom_to_binary(Controller)), <<"</code></td>">>,
+        <<"<td>">>, dispatch_controller_link(Controller), <<"</td>">>,
         <<"<td><code>">>, z_html:escape(term_text(Options)), <<"</code></td></tr>">>
     ].
+
+dispatch_controller_link(Controller) ->
+    ControllerName = atom_to_binary(Controller),
+    PageName = controller_page_name(ControllerName),
+    [
+        <<"<a class=\"dispatch-controller-link\" href=\"/id/">>,
+        z_html:escape(PageName),
+        <<"\"><code>">>,
+        z_html:escape(ControllerName),
+        <<"</code></a>">>
+    ].
+
+controller_page_name(ControllerName) ->
+    <<"doc_controller_", ControllerName/binary>>.
 
 dispatch_path([]) ->
     <<"/">>;
@@ -824,6 +838,13 @@ dispatch_doc_test() ->
     ?assertNotEqual(nomatch, binary:match(Body, <<"/item/:id">>)),
     ?assertNotEqual(nomatch, binary:match(Body, <<"/item/*">>)),
     ?assertNotEqual(nomatch, binary:match(Body, <<"controller_example">>)),
+    ?assertNotEqual(
+        nomatch,
+        binary:match(
+            Body,
+            <<"<a class=\"dispatch-controller-link\" "
+              "href=\"/id/doc_controller_controller_example\">"
+              "<code>controller_example</code></a>">>)),
     ?assertNotEqual(nomatch, binary:match(Body, <<"page.tpl">>)).
 
 component_name_test() ->
