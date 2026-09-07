@@ -24,6 +24,11 @@
                 {% elif cluster_view.clusters %}
                     <p>{_ Explore related documentation through its most useful keyword groups. _}</p>
                 {% endif %}
+                {% if cluster_view.active and not cluster_view.is_other and cluster_view.current_keyword %}
+                    <a class="category-clusters__topic-link" href="{{ cluster_view.current_keyword.page_url }}">
+                        {_ View topic page _} <span aria-hidden="true">→</span>
+                    </a>
+                {% endif %}
             </div>
             <p class="category-clusters__count">
                 {{ cluster_view.total }}

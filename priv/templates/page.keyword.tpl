@@ -1,4 +1,4 @@
-{% extends "page.tpl" %}
+{% extends "page.tpl" seo_noindex=q.cluster seo_follow=q.cluster %}
 
 {% block content %}
     {% if q.cluster %}

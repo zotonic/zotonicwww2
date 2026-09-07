@@ -1,4 +1,4 @@
-{% extends "page.documentation.tpl" %}
+{% extends "page.documentation.tpl" seo_noindex=q.cluster seo_follow=q.cluster %}
 
 {% block content %}
     {% if q.cluster and id.name != 'keyword' and not id.subject_topic_facet_category %}

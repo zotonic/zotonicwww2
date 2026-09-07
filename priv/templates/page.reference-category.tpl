@@ -1,4 +1,4 @@
-{% extends "page.documentation.tpl" %}
+{% extends "page.documentation.tpl" seo_noindex=q.cluster seo_follow=q.cluster %}
 
 {# Shared by the named reference-category pages. Keeping this separate from
  # page.category.tpl preserves the dedicated keyword taxonomy pages. #}

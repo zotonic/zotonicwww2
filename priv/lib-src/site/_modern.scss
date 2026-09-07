@@ -1440,7 +1440,8 @@ h2 + .subject-label-list {
     }
 }
 
-.cluster-category-heading__up {
+.cluster-category-heading__up,
+.category-clusters__topic-link {
     display: inline-flex;
     gap: .45rem;
     align-items: center;
@@ -1448,6 +1449,10 @@ h2 + .subject-label-list {
     font-family: var(--site-ui-font);
     font-size: .88rem;
     font-weight: 700;
+}
+
+.category-clusters__topic-link {
+    margin-top: .85rem;
 }
 
 .cluster-category-heading + .reference-category-page--cluster {
