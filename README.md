@@ -30,6 +30,28 @@ for JSON push events, set its secret to the value of `site.rebuild_secret`, and
 set `site.rebuild_enabled` to `true`. Only pushes for
 `zotonic/zotonic`'s `master` branch are accepted.
 
+### Documentation references
+
+An inline Markdown code span in the form `kind#name` links to the corresponding
+imported reference page. The supported kinds and their public names are:
+
+| Kind | Example |
+| --- | --- |
+| Template tag | `tag#print` |
+| Template filter | `filter#escape` |
+| Scomp | `scomp#wire` |
+| Wire action | `action#update` |
+| Template validator | `validator#presence` |
+| Model | `model#rsc` |
+| Controller | `controller#controller_page` |
+| Zotonic module | `module#mod_base` |
+| Notification | `notification#media_upload` |
+| Dispatch file | `dispatch#mod_base/dispatch` |
+
+References are resolved only in inline code. Fenced and indented code blocks,
+existing links, unknown kinds, and Erlang references such as
+`z_template:render/3` remain unchanged.
+
 ## Live migration
 
 Schema version 16 installs two idempotent tracking tables, two content groups,

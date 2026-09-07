@@ -3,6 +3,13 @@
 {% block content_before_body %}
     <nav class="module-components-nav" aria-label="{_ Module contents _}">
         <ul>
+            {% if id.o.observes|is_visible as notifications %}
+                <li>
+                    <a class="module-components-nav__link" href="#module-observes">
+                        {_ Notifications _} <span>{{ notifications|length }}</span>
+                    </a>
+                </li>
+            {% endif %}
             {% include "_module_components.tpl" module_id=id is_navigation %}
         </ul>
     </nav>
@@ -11,6 +18,8 @@
 {% block content_after %}
 
 <div class="page-relations">
+    {% include "_module_observes.tpl" module_id=id %}
+
     {% include "_module_components.tpl" module_id=id %}
 
     {% with id.o.relation|is_visible as relo %}

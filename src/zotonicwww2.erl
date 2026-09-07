@@ -33,7 +33,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(20).
+-mod_schema(21).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -272,6 +272,22 @@ manage_schema(_Version, Context) ->
                 ],
                 [
                     {documentation, module}
+                ]
+            },
+
+            % Observer callbacks exported by an imported module create an edge
+            % to the corresponding notification documentation page.
+            %
+            % This edge is synchronized by zotonicwww2_doc_import.
+            {observes,
+                [
+                    {title, #trans{ tr = [{en, <<"Observes">>}]}},
+                    {summary, #trans{ tr = [{en,
+                        <<"Connects a Zotonic module to a notification it observes.">>
+                    }]}}
+                ],
+                [
+                    {module, notification}
                 ]
             }
         ],

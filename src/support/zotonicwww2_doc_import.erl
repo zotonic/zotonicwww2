@@ -125,6 +125,14 @@ unregister_delivery(DeliveryId, Context) ->
 -spec sync([map()], binary(), z:context()) -> {ok, map()} | {error, term()}.
 sync(Entries, Commit, Context0) when is_list(Entries), is_binary(Commit) ->
     Context = z_acl:sudo(Context0),
+    case validate_manifest_observes(Entries) of
+        ok ->
+            sync_with_keywords(Entries, Commit, Context);
+        {error, _} = Error ->
+            Error
+    end.
+
+sync_with_keywords(Entries, Commit, Context) ->
     case resolve_manifest_keywords(Entries, Context) of
         {ok, KeywordIds} ->
             Generation = z_ids:id(20),
@@ -237,7 +245,11 @@ store_resource(_Result, RscId, Props, Context) when is_integer(RscId) ->
 
 replace_import_edges(RscId, Entry, KeywordIds, Context) ->
     case replace_module_edge(RscId, maps:get(module, Entry, undefined), Context) of
-        ok -> replace_subject_edges(RscId, Entry, KeywordIds, Context);
+        ok ->
+            case replace_observes_edges(RscId, Entry, Context) of
+                ok -> replace_subject_edges(RscId, Entry, KeywordIds, Context);
+                {error, _} = Error -> Error
+            end;
         {error, _} = Error -> Error
     end.
 
@@ -250,11 +262,55 @@ replace_module_edge(RscId, Module, Context) when is_binary(Module) ->
         ModId -> m_edge:replace(RscId, in_module, [ ModId ], Context)
     end.
 
+replace_observes_edges(RscId, #{kind := module, observes := Notifications}, Context) ->
+    replace_observes_edges_1(RscId, Notifications, [], Context);
+replace_observes_edges(_RscId, _Entry, _Context) ->
+    ok.
+
+replace_observes_edges_1(RscId, [], NotificationIds, Context) ->
+    m_edge:replace(RscId, observes, lists:reverse(NotificationIds), Context);
+replace_observes_edges_1(RscId, [Notification | Rest], NotificationIds, Context) ->
+    Name = notification_page_name(Notification),
+    case m_rsc:rid(Name, Context) of
+        undefined -> {error, {unknown_notification, Notification}};
+        NotificationId ->
+            replace_observes_edges_1(RscId, Rest, [NotificationId | NotificationIds], Context)
+    end.
+
 replace_subject_edges(RscId, #{keywords := KeywordSlugs}, KeywordIds, Context) ->
     SubjectIds = [ maps:get(Slug, KeywordIds) || Slug <- KeywordSlugs ],
     m_edge:replace(RscId, subject, SubjectIds, Context);
 replace_subject_edges(_RscId, _Entry, _KeywordIds, _Context) ->
     ok.
+
+%% Validate all observer targets against the same complete manifest before
+%% changing resources. This catches an undocumented notification without
+%% leaving a partially updated relationship graph.
+validate_manifest_observes(Entries) ->
+    NotificationNames = sets:from_list([
+        Name
+        || #{kind := notification, name := Name} <- Entries
+    ]),
+    validate_manifest_observes(Entries, NotificationNames).
+
+validate_manifest_observes([], _NotificationNames) ->
+    ok;
+validate_manifest_observes([
+        #{kind := module, name := ModuleName, observes := Notifications} | Rest
+    ], NotificationNames) when is_list(Notifications) ->
+    case lists:dropwhile(
+        fun(Notification) ->
+            sets:is_element(notification_page_name(Notification), NotificationNames)
+        end,
+        Notifications)
+    of
+        [] -> validate_manifest_observes(Rest, NotificationNames);
+        [Unknown | _] -> {error, {unknown_observed_notification, ModuleName, Unknown}}
+    end;
+validate_manifest_observes([#{kind := module, name := ModuleName} | _], _NotificationNames) ->
+    {error, {missing_module_observes, ModuleName}};
+validate_manifest_observes([_Entry | Rest], NotificationNames) ->
+    validate_manifest_observes(Rest, NotificationNames).
 
 %% Resolve the complete manifest before changing any resource. This makes a
 %% missing or misspelled slug a deterministic import error instead of silently
@@ -306,6 +362,9 @@ keyword_resource_name(Slug) ->
 
 module_page_name(<<"zotonic_core">>) -> <<"doc_core">>;
 module_page_name(Module) -> <<"doc_module_", Module/binary>>.
+
+notification_page_name(Notification) ->
+    <<"doc_notification_", Notification/binary>>.
 
 tracking(SourceKey, Context) ->
     z_db:qmap_row("
@@ -575,6 +634,40 @@ invalid_manifest_keywords_test() ->
             #{
                 name => <<"doc_module_mod_media">>,
                 keywords => [<<"media_management">>, invalid]
+            }
+        ])).
+
+valid_manifest_observes_test() ->
+    ?assertEqual(
+        ok,
+        validate_manifest_observes([
+            #{
+                kind => notification,
+                name => <<"doc_notification_media_upload">>
+            },
+            #{
+                kind => module,
+                name => <<"doc_module_mod_media">>,
+                observes => [<<"media_upload">>]
+            }
+        ])).
+
+unknown_manifest_observes_test() ->
+    ?assertEqual(
+        {error, {
+            unknown_observed_notification,
+            <<"doc_module_mod_media">>,
+            <<"missing_notification">>
+        }},
+        validate_manifest_observes([
+            #{
+                kind => notification,
+                name => <<"doc_notification_media_upload">>
+            },
+            #{
+                kind => module,
+                name => <<"doc_module_mod_media">>,
+                observes => [<<"missing_notification">>]
             }
         ])).
 

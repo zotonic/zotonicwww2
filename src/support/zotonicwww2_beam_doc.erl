@@ -54,11 +54,15 @@ import_docs(Context) ->
             Error
     end.
 
-%% @doc Collect normalized entries in dependency order. Module resources are
-%% stored first so component-to-module edges can always be created.
+%% @doc Collect normalized entries in dependency order. Notification resources
+%% are stored before modules, and modules before their imported components, so
+%% all synchronized edges can be created on a first import.
 -spec collect_entries(z:context()) -> [map()].
 collect_entries(Context) ->
-    module_entries(Context)
+    NotificationDocs = get_notifications_doc(Context),
+    DocumentedNotifications = sets:from_list(maps:keys(NotificationDocs)),
+    notification_entries(NotificationDocs)
+    ++ module_entries(Context, DocumentedNotifications)
     ++ dispatch_entries(Context)
     ++ controller_entries(Context)
     ++ filter_entries(Context)
@@ -67,16 +71,20 @@ collect_entries(Context) ->
     ++ action_entries(Context)
     ++ validator_entries(Context)
     ++ release_entries(Context)
-    ++ tag_entries(Context)
-    ++ notification_entries(Context).
+    ++ tag_entries(Context).
 
-module_entries(Context) ->
+module_entries(Context, DocumentedNotifications) ->
     maps:fold(
-        fun(App, #{doc := Body, keywords := Keywords, path := Path}, Acc) ->
+        fun(App, #{doc := Body, keywords := Keywords, observes := Observes, path := Path}, Acc) ->
             Module = app2mod(App),
             Entry = entry(module, module_page_name(Module), module_title(Module), Body, Path),
             [Entry#{
                 keywords => Keywords,
+                observes => [
+                    Notification
+                    || Notification <- Observes,
+                       sets:is_element(Notification, DocumentedNotifications)
+                ],
                 props => #{<<"erlang_app">> => App}
             } | Acc]
         end,
@@ -222,7 +230,7 @@ tag_entries(Context) ->
         [],
         get_tags_doc(Context)).
 
-notification_entries(Context) ->
+notification_entries(Docs) when is_map(Docs) ->
     maps:fold(
         fun(_Name, Doc, Acc) ->
             #{
@@ -250,7 +258,7 @@ notification_entries(Context) ->
             } | Acc]
         end,
         [],
-        get_notifications_doc(Context)).
+        Docs).
 
 entry(Category, Name, Title, Body, Path) ->
     entry(Category, Category, Name, Title, Body, Path).
@@ -305,8 +313,9 @@ add_module_doc(AppName, Beamfile, SourcePath, Acc) ->
         }} ->
             Acc#{
                 AppName => #{
-                    doc => z_markdown:to_html(Doc),
+                    doc => zotonicwww2_doc_link:to_html(Doc),
                     keywords => zotonic_keywords(Metadata),
+                    observes => module_observes(Beamfile),
                     path => SourcePath
                 }
             };
@@ -317,10 +326,32 @@ add_module_doc(AppName, Beamfile, SourcePath, Acc) ->
                 AppName => #{
                     doc => <<>>,
                     keywords => [],
+                    observes => module_observes(Beamfile),
                     path => SourcePath
                 }
             }
     end.
+
+%% @doc Return the logical notification names handled by exported observer
+%% callbacks in a module beam. Both regular and PID observer callback names map
+%% to the same notification page.
+module_observes(Beamfile) ->
+    case beam_lib:chunks(unicode:characters_to_list(Beamfile), [exports]) of
+        {ok, {_Module, [{exports, Exports}]}} ->
+            observes_from_exports(Exports);
+        {error, beam_lib, _Reason} ->
+            []
+    end.
+
+observes_from_exports(Exports) ->
+    lists:usort(lists:filtermap(
+        fun({FunctionName, _Arity}) ->
+            case notification_callback(FunctionName) of
+                {_Variation, Notification} -> {true, Notification};
+                false -> false
+            end
+        end,
+        Exports)).
 
 %% @doc Read every dispatch file from the Zotonic applications. One generated
 %% documentation entry is kept per source file, using the legacy resource name
@@ -532,7 +563,7 @@ get_releases_doc(Context) ->
             {ok, #{
                 front_matter := FrontMatter,
                 content := Html
-            }} = z_markdown:to_html_document(Data),
+            }} = zotonicwww2_doc_link:to_html_document(Data),
             Acc#{Version => #{
                 doc => Html,
                 keywords => markdown_keywords(FrontMatter),
@@ -555,7 +586,7 @@ get_tags_doc(Context) ->
             {ok, #{
                 front_matter := FrontMatter,
                 content := Html
-            }} = z_markdown:to_html_document(Data),
+            }} = zotonicwww2_doc_link:to_html_document(Data),
             Acc#{Tag => #{
                 doc => Html,
                 keywords => markdown_keywords(FrontMatter),
@@ -590,7 +621,7 @@ notification_docs(Docs) ->
                             name => FunctionName,
                             arity => Arity,
                             callbacks => [callback_metadata(Variation, FunctionName, Arity, Sig)],
-                            doc => z_markdown:to_html(Doc),
+                            doc => zotonicwww2_doc_link:to_html(Doc),
                             keywords => zotonic_keywords(Metadata),
                             path => <<"apps/zotonic_core/src/behaviours/zotonic_observer.erl">>,
                             record => record_fields(Notification)
@@ -663,7 +694,7 @@ get_docs(Files, Context) ->
                 }} ->
                    Acc#{
                         Name => #{
-                            doc => z_markdown:to_html(Doc),
+                            doc => zotonicwww2_doc_link:to_html(Doc),
                             keywords => zotonic_keywords(Metadata),
                             app => AppName,
                             module => app2mod(AppName),
@@ -841,6 +872,16 @@ module_names_test() ->
     ?assertEqual(<<"zotonic_core">>, app2mod(<<"zotonic_core">>)),
     ?assertEqual(<<"doc_core">>, module_page_name(<<"zotonic_core">>)),
     ?assertEqual(<<"doc_module_mod_base">>, module_page_name(<<"mod_base">>)).
+
+module_observer_exports_test() ->
+    ?assertEqual(
+        [<<"media_upload">>, <<"search_query">>],
+        observes_from_exports([
+            {module_info, 0},
+            {observe_search_query, 2},
+            {pid_observe_search_query, 3},
+            {observe_media_upload, 3}
+        ])).
 
 dispatch_names_test() ->
     ?assertEqual(
