@@ -6,8 +6,8 @@
     }
 
     function updateFacet(link) {
-        var form = searchForm(link.dataset.searchForm);
-        var input = form && form.elements.namedItem(link.dataset.searchFacet);
+        const form = searchForm(link.dataset.searchForm);
+        const input = form && form.elements.namedItem(link.dataset.searchFacet);
 
         if (!input) {
             return false;
@@ -19,14 +19,14 @@
     }
 
     function clearFacets(link) {
-        var form = searchForm(link.dataset.searchForm);
+        const form = searchForm(link.dataset.searchForm);
 
         if (!form) {
             return false;
         }
 
         ["category", "subject", "module"].forEach(function (name) {
-            var input = form.elements.namedItem(name);
+            const input = form.elements.namedItem(name);
             if (input) {
                 input.value = "";
             }
@@ -36,10 +36,10 @@
     }
 
     function initSearchOverlay() {
-        var overlay = document.getElementById("site-search-overlay");
-        var form = document.getElementById("site-search-form");
-        var input = document.getElementById("site-search");
-        var header = document.getElementById("header-wrapper");
+        const overlay = document.getElementById("site-search-overlay");
+        const form = document.getElementById("site-search-form");
+        const input = document.getElementById("site-search");
+        const header = document.getElementById("header-wrapper");
 
         if (!overlay || !form || !input) {
             return;
@@ -90,9 +90,9 @@
         }
 
         document.addEventListener("click", function (event) {
-            var facet = event.target.closest("[data-search-facet]");
-            var clear = event.target.closest("[data-search-clear]");
-            var close = event.target.closest("[data-search-close]");
+            const facet = event.target.closest("[data-search-facet]");
+            const clear = event.target.closest("[data-search-clear]");
+            const close = event.target.closest("[data-search-close]");
 
             if (facet && updateFacet(facet)) {
                 event.preventDefault();

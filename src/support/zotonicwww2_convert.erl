@@ -423,13 +423,13 @@ register_page_paths(Id, [Path | Rest], Count, Context) ->
 
 
 grouping_page_paths(Id, Name, Context) ->
+    %% The dispatcher strips a recognized language prefix before consulting
+    %% rsc_page_path_log, so store only the language-neutral documentation URLs.
     XDefault = z_context:set_language('x-default', Context),
     configured_page_paths(m_rsc:p_no_acl(Id, page_path, Context)) ++
         page_path_log_paths(Id, Context) ++
         legacy_dispatch_paths(Name) ++
         [
-            documentation_url(Id, true, Context),
-            documentation_url(Id, false, Context),
             documentation_url(Id, true, XDefault),
             documentation_url(Id, false, XDefault)
         ].
