@@ -44,10 +44,13 @@ and queues a full repivot, so it is safe to deploy before the content import.
 While that repivot is running, public searches automatically fall back to the
 regular full-text index.
 
-Release-note imports extract the date following “released on” from the source
-Markdown. The date is stored as `org_pubdate` with the resource and import
-context set to UTC. Re-running **Import compiled docs** safely backfills these
-dates on existing release-note resources; no schema migration is needed.
+Release-note Markdown declares an ISO date in the YAML front-matter
+`release_date` property. These values were initially derived from the release
+text, with the corresponding Git tag date as a fallback. The importer treats
+the explicit metadata as authoritative and stores it as the resource's
+`publication_start` in UTC. Re-running **Import compiled docs** safely
+backfills these dates on existing release-note resources; no schema migration
+is needed.
 
 Installing the schema does not adopt, unpublish, or otherwise migrate existing
 documentation. This keeps deployment separate from the content migration.

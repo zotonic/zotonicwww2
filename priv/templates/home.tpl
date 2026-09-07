@@ -95,7 +95,7 @@
                     {% for id in m.search.query::%{
                             cat: [ "releasenotes" ],
                             is_published: true,
-                            sort: [ "-is_featured", "-created" ],
+                            sort: [ "-is_featured", "-publication_start" ],
                             pagelen: 2,
                             page: 1
                         }
@@ -103,9 +103,9 @@
                         <article class="home-release-list__item do_clickable">
                             <p class="home-entry__type">
                                 <span>{_ Release notes _}</span>
-                                {% if id.org_pubdate %}
-                                    <time datetime="{{ id.org_pubdate|date:"c":"UTC" }}">
-                                        {{ id.org_pubdate|date:_"j M Y":"UTC" }}
+                                {% if id.publication_start %}
+                                    <time datetime="{{ id.publication_start|date:"c":"UTC" }}">
+                                        {{ id.publication_start|date:_"j M Y":"UTC" }}
                                     </time>
                                 {% endif %}
                             </p>

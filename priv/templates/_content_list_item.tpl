@@ -3,9 +3,9 @@
         <article class="content-list__item{% if item_depiction %} content-list__item--media{% endif %}{% if is_highlight or id.is_featured %} content-list__item--highlight{% endif %} do_clickable">
             <p class="content-list__meta">
                 <span>{{ label|default:id.category_id.title }}</span>
-                {% if id.is_a.releasenotes and id.org_pubdate %}
-                    <time datetime="{{ id.org_pubdate|date:"c":"UTC" }}">
-                        {{ id.org_pubdate|date:_"j M Y":"UTC" }}
+                {% if id.is_a.releasenotes and id.publication_start %}
+                    <time datetime="{{ id.publication_start|date:"c":"UTC" }}">
+                        {{ id.publication_start|date:_"j M Y":"UTC" }}
                     </time>
                 {% elseif id.is_a.article and id.publication_start %}
                     <time datetime="{{ id.publication_start|date:"c" }}">

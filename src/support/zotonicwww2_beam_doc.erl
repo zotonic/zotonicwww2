@@ -184,17 +184,33 @@ component_entries(Docs, Category, Kind, NameFun) ->
 
 release_entries(Context) ->
     maps:fold(
-        fun(Version, #{doc := Body, path := Path, org_pubdate := OrgPubDate}, Acc) ->
+        fun(Version, #{
+                doc := Body,
+                keywords := Keywords,
+                path := Path,
+                release_date := ReleaseDate
+            }, Acc) ->
             Name = <<"doc_releasenotes_rel_", Version/binary>>,
             Entry = entry(releasenotes, release, Name, Version, Body, Path),
-            [Entry#{props => #{
-                <<"version">> => Version,
-                <<"org_pubdate">> => OrgPubDate,
-                <<"tz">> => <<"UTC">>
-            }} | Acc]
+            [Entry#{
+                keywords => Keywords,
+                props => release_props(Version, ReleaseDate)
+            } | Acc]
         end,
         [],
         get_releases_doc(Context)).
+
+release_props(Version, undefined) ->
+    #{
+        <<"version">> => Version,
+        <<"tz">> => <<"UTC">>
+    };
+release_props(Version, ReleaseDate) ->
+    #{
+        <<"version">> => Version,
+        <<"publication_start">> => ReleaseDate,
+        <<"tz">> => <<"UTC">>
+    }.
 
 tag_entries(Context) ->
     maps:fold(
@@ -513,10 +529,15 @@ get_releases_doc(Context) ->
         fun(File, Acc) ->
             Version = unicode:characters_to_binary(filename:rootname(filename:basename(File))),
             {ok, Data} = file:read_file(File),
+            {ok, #{
+                front_matter := FrontMatter,
+                content := Html
+            }} = z_markdown:to_html_document(Data),
             Acc#{Version => #{
-                doc => z_markdown:to_html(Data),
+                doc => Html,
+                keywords => markdown_keywords(FrontMatter),
                 path => relative_path(File, GitDir),
-                org_pubdate => zotonicwww2_release_notes:org_pubdate(Data)
+                release_date => markdown_release_date(FrontMatter)
             }}
         end,
         #{},
@@ -680,6 +701,16 @@ markdown_keywords(#{format := yaml, source := Source}) ->
         Invalid ->
             erlang:error({invalid_markdown_keywords, Invalid})
     end.
+
+%% @doc Read the release date declared in Markdown front matter. The source
+%% metadata is deliberately authoritative so imports remain reproducible and
+%% do not depend on prose wording or the availability of Git tags.
+markdown_release_date(undefined) ->
+    undefined;
+markdown_release_date(#{format := yaml, source := Source}) ->
+    Metadata = decode_yaml_front_matter(Source),
+    zotonicwww2_release_notes:release_date(
+        maps:get(<<"release_date">>, Metadata, undefined)).
 
 decode_yaml_front_matter(Source) ->
     ok = ensure_yamerl_loaded(),
@@ -889,6 +920,21 @@ markdown_keywords_test() ->
         markdown_keywords(#{
             format => yaml,
             source => <<"keywords: cache">>
+        })).
+
+markdown_release_date_test() ->
+    ?assertEqual(undefined, markdown_release_date(undefined)),
+    ?assertEqual(
+        {{2026, 8, 25}, {0, 0, 0}},
+        markdown_release_date(#{
+            format => yaml,
+            source => <<"release_date: '2026-08-25'">>
+        })),
+    ?assertError(
+        {invalid_release_date, <<"2026-02-30">>},
+        markdown_release_date(#{
+            format => yaml,
+            source => <<"release_date: '2026-02-30'">>
         })).
 
 notification_keywords_are_per_notification_test() ->

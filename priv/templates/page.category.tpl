@@ -100,10 +100,11 @@
         %}
 
         {% if not cluster_view.active %}
-            {% with (m.category[id].is_a.documentation
+            {% with ((m.category[id].is_a.documentation
+                      and id.name != 'releasenotes')
                      or id.name == 'category')
                     | if : "pivot_title"
-                         : "-created" as sort
+                         : "-publication_start" as sort
             %}
                 {% with m.search.paged[{query cat=id sort=sort pagelen=100 page=q.page}] as result %}
                     <div class="connections paged" id="content-pager">
