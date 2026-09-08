@@ -12,5 +12,9 @@ For home page:
 
     Zotonic is the content management system and framework for your semantic data and high connectivity web sites.
 
-Blurb:
+Winner:
+
+    Knowing together.
+
+    The CMS where people, content and rich data come together. Build connected websites that grow with your ideas.
 

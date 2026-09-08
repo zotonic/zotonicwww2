@@ -7862,24 +7862,31 @@ h2 + .subject-label-list {
 }
 
 .category-index__card {
+  display: flex;
   margin: 0;
   border: 1px solid var(--site-rule);
   border-radius: 4px;
+  transition: border-color 0.14s ease, background-color 0.14s ease;
+}
+.category-index__card:hover, .category-index__card:focus-within {
+  border-color: var(--site-accent);
+  background: rgba(28, 165, 222, 0.045);
+}
+.category-index__card:hover h3, .category-index__card:focus-within h3 {
+  color: var(--site-accent);
 }
 .category-index__card > a {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  height: 100%;
+  min-width: 0;
   padding: 1rem;
   color: var(--site-ink);
   text-decoration: none;
 }
-.category-index__card > a:hover, .category-index__card > a:focus {
-  border-color: var(--site-accent);
-  background: rgba(28, 165, 222, 0.045);
-}
-.category-index__card > a:hover h3, .category-index__card > a:focus h3 {
-  color: var(--site-accent);
+.category-index__card > a:focus-visible {
+  outline: 2px solid var(--site-accent);
+  outline-offset: 2px;
 }
 .category-index__card h3,
 .category-index__card p {
