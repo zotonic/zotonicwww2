@@ -33,14 +33,14 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(13).
+-mod_schema(21).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
 % added in the manage_schema/2 function.
 % 'acl' is provided by the mod_acl_user_groups and other modules
 % that implement access control.
--mod_depends([ acl ]).
+-mod_depends([ acl, admin, mod_content_groups, mod_search ]).
 
 % Documentation of the configurations for this site module.
 -mod_config([
@@ -69,58 +69,14 @@
 % Exports - if exports change then the module is restarted after
 % compilation.
 -export([
-    observe_dispatch/2,
     manage_schema/2,
-    manage_data/2
+    manage_data/2,
+    event/2
     ]).
 
 % This is the main header file, it contains useful definitions and
 % also includes record defintions, as used by manage_schema/2.
 -include_lib("zotonic_core/include/zotonic.hrl").
-
-
-%% @doc Check if there is a controller or template matching the path. This observer is
-%% called if the dispatcher could not match the request path with the dispatch rules.
-%% If this observer returns 'undefined' then the next observer is called.
-%% Check the list of observers in /admin/development/observers
-observe_dispatch(#dispatch{ path = Path }, Context) ->
-    % Split the path on "/"
-    case lists:reverse(binary:split(Path, <<"/">>, [ global, trim_all ])) of
-        [ <<"index.html">>, <<"latest">> ] ->
-            {ok, m_rsc:rid(page_home, Context)};
-        [ File | Dirs ] ->
-            % Remove the ".html" extension
-            Rootname = filename:rootname(File),
-            % Let the git doc import routines map the filenam and path
-            % to a resource name.
-            case zotonicwww2_docs:filename_to_name(Rootname, Dirs) of
-                {Name, _Cat, _} ->
-                    % Check if the resource name exists.
-                    case m_rsc:rid(Name, Context) of
-                        undefined ->
-                            case zotonicwww2_docs:filename_to_name(<<"index">>, [ File | Dirs ]) of
-                                {Name2, _Cat2, _} ->
-                                    % Check if the resource name exists.
-                                    case m_rsc:rid(Name2, Context) of
-                                        undefined ->
-                                            undefined;
-                                        RscId ->
-                                            % Map the path to the given resource id
-                                            {ok, RscId}
-                                    end;
-                                error ->
-                                    undefined
-                            end;
-                        RscId ->
-                            % Map the path to the given resource id
-                            {ok, RscId}
-                    end;
-                error ->
-                    undefined
-            end;
-        _ ->
-            undefined
-    end.
 
 
 %%====================================================================
@@ -138,7 +94,8 @@ observe_dispatch(#dispatch{ path = Path }, Context) ->
 % All #datamodel resources are added after the transaction, to prevent conflicts
 % with other initialization code.
 -spec manage_schema( z_module_manager:manage_schema(), z:context() ) -> ok | #datamodel{}.
-manage_schema(_Version, _Context) ->
+manage_schema(_Version, Context) ->
+    ok = zotonicwww2_doc_import:install(Context),
     #datamodel{
 
         % These are the extra categories for our website.
@@ -163,37 +120,48 @@ manage_schema(_Version, _Context) ->
                     {title, <<"Reference">>}
                 ]},
                     {module, reference, [
-                        {title, <<"Module">>}
+                        {title, <<"Module">>},
+                        {summary, <<"Zotonic applications that package functionality, templates, models, and integration points.">>}
                     ]},
                     {controller, reference, [
-                        {title, <<"Controller">>}
+                        {title, <<"Controller">>},
+                        {summary, <<"HTTP request handlers that connect dispatch rules to rendered or generated responses.">>}
                     ]},
                     {model, reference, [
-                        {title, <<"Model">>}
+                        {title, <<"Model">>},
+                        {summary, <<"Data APIs available from Erlang, templates, and MQTT through Zotonic's model interface.">>}
                     ]},
                     {dispatch, reference, [
-                        {title, <<"Dispatch rules">>}
+                        {title, <<"Dispatch rules">>},
+                        {summary, <<"URL routing rules exposed by modules, including their paths, arguments, and controllers.">>}
                     ]},
                     {template_tag, reference, [
-                        {title, <<"Tag">>}
+                        {title, <<"Tag">>},
+                        {summary, <<"Template language constructs for control flow, inclusion, inheritance, wiring, and output.">>}
                     ]},
                     {template_filter, reference, [
-                        {title, <<"Filter">>}
+                        {title, <<"Filter">>},
+                        {summary, <<"Template value transformations for text, collections, dates, numbers, URLs, and other data.">>}
                     ]},
                     {template_action, reference, [
-                        {title, <<"Action">>}
+                        {title, <<"Action">>},
+                        {summary, <<"Browser actions that templates attach to events with Zotonic's wiring system.">>}
                     ]},
                     {template_scomp, reference, [
-                        {title, <<"Scomp">>}
+                        {title, <<"Scomp">>},
+                        {summary, <<"Server-rendered template components for reusable dynamic page elements.">>}
                     ]},
                     {template_validator, reference, [
-                        {title, <<"Input validator">>}
+                        {title, <<"Input validator">>},
+                        {summary, <<"Client- and server-side input validation attached to form fields.">>}
                     ]},
                     {template, reference, [
-                        {title, <<"Template">>}
+                        {title, <<"Template">>},
+                        {summary, <<"Built-in templates that define pages, emails, and reusable interface fragments.">>}
                     ]},
                     {notification, reference, [
-                        {title, <<"Notificaion">>}
+                        {title, <<"Notification">>},
+                        {summary, <<"Messages exchanged between Zotonic components to observe events, request data, or alter behavior.">>}
                     ]},
                 {releasenotes, documentation, [
                     {title, <<"Release notes">>}
@@ -209,7 +177,7 @@ manage_schema(_Version, _Context) ->
                 {robot, person, [
                     {title, <<"Automata">>}
                 ]}
-        ],
+        ] ++ zotonicwww2_subject_import:datamodel_categories(),
 
         % These are resources installed by this module. They can use
         % the categories defined above.
@@ -232,9 +200,8 @@ manage_schema(_Version, _Context) ->
                 {page_path, <<"/">>}
             ]},
 
-            % The "zotonic core" module, it is not in the rst documentation, so it is
-            % added here. Filters and other reference documentation can refer to this
-            % module.
+            % The core module does not have an application-level module resource,
+            % so it is seeded here for grouping imported reference documentation.
             {doc_core, module, [
                 {title, <<"Zotonic Core">>},
                 {summary, <<"The Zotonic core system implements the basic parts needed for every site.">>}
@@ -244,6 +211,15 @@ manage_schema(_Version, _Context) ->
             {gitbot, robot, [
                 {title, <<"Git">>},
                 {summary, <<"User for automatic update of the reference documentation.">>}
+            ]},
+
+            {content_group_imported_docs, content_group, [
+                {title, <<"Imported documentation">>},
+                {summary, <<"Documentation synchronized from the Zotonic source repository.">>}
+            ]},
+            {content_group_deprecated_docs, content_group, [
+                {title, <<"Deprecated imported documentation">>},
+                {summary, <<"Source documentation which is no longer present in the current Zotonic version.">>}
             ]}
         ],
 
@@ -256,8 +232,8 @@ manage_schema(_Version, _Context) ->
         predicates = [
             % Edges from documentation to other documentation that is
             % linked from the HTML content on the page.
-            % These links are extracted by the zotonicwww_parse_docs
-            % erlang module.
+            % Kept for editorial links and future link extraction from imported
+            % Markdown documentation.
             {references,
                 [
                     % Resource properties, just like with resources
@@ -270,17 +246,48 @@ manage_schema(_Version, _Context) ->
                 ]
             },
 
+            % Hierarchy between imported subject keywords. The predicate has a
+            % private name, so the importer can replace its edges without
+            % touching editorially managed relations between keyword pages.
+            {subject_topic_broader,
+                <<"http://www.w3.org/2004/02/skos/core#broader">>,
+                #{
+                    <<"title">> => #trans{ tr = [{en, <<"Broader concept">>}]},
+                    <<"summary">> => #trans{ tr = [{en,
+                        <<"Connects a subject keyword to a broader subject concept.">>
+                    }]}
+                },
+                [
+                    {keyword, keyword}
+                ]
+            },
+
             % All imported reference documentation receives an edge
             % to the module where the part is defined.
             %
-            % This edge is extracted by the zotonicwww_parse_docs
-            % erlang module.
+            % This edge is synchronized by zotonicwww2_doc_import.
             {in_module,
                 [
                     {title, #trans{ tr = [{en, <<"In module">>}]}}
                 ],
                 [
                     {documentation, module}
+                ]
+            },
+
+            % Observer callbacks exported by an imported module create an edge
+            % to the corresponding notification documentation page.
+            %
+            % This edge is synchronized by zotonicwww2_doc_import.
+            {observes,
+                [
+                    {title, #trans{ tr = [{en, <<"Observes">>}]}},
+                    {summary, #trans{ tr = [{en,
+                        <<"Connects a Zotonic module to a notification it observes.">>
+                    }]}}
+                ],
+                [
+                    {module, notification}
                 ]
             }
         ],
@@ -300,9 +307,8 @@ manage_schema(_Version, _Context) ->
     }.
 
 
-%% This function runs after the schema is installed or updated. In this case
-%% it is ensured that the 'rebuild_secret' configurarion key is set.
-%% This key is used in 'src/models/m_zotonicwww2_git.erl'
+%% This function runs after the schema is installed or updated. It ensures the
+%% documentation task configuration and rebuilds the public search facets.
 -spec manage_data( z_module_manager:manage_schema(), z:context() ) -> ok.
 manage_data(_Version, Context) ->
     case m_config:get_value(site, rebuild_secret, Context) of
@@ -312,4 +318,96 @@ manage_data(_Version, Context) ->
             m_config:set_value(site, rebuild_secret, z_ids:id(), Context);
         _ ->
             ok
+    end,
+    ok = m_config:set_default_value(zotonicwww2, import_status, <<"idle">>, Context),
+    ok = m_config:set_default_value(zotonicwww2, import_stage, <<"idle">>, Context),
+    ok = search_facet:ensure_table(Context),
+    ok = search_facet:pivot_all(Context),
+    ok.
+
+
+%% @doc Handle signed admin dashboard actions. Every action is authorized again
+%% server-side even though Zotonic postbacks are signed.
+event(#postback{message=docs_fetch}, Context) ->
+    queue_admin_action(fetch, Context);
+event(#postback{message=docs_rebuild}, Context) ->
+    queue_admin_action(rebuild, Context);
+event(#postback{message=docs_update}, Context) ->
+    queue_admin_action(update, Context);
+event(#postback{message=docs_import}, Context) ->
+    queue_admin_action(import, Context);
+event(#postback{message=docs_import_keywords}, Context) ->
+    import_subject_keywords(Context);
+event(#postback{message=docs_migrate_legacy}, Context) ->
+    case z_acl:is_admin(Context) of
+        true ->
+            case zotonicwww2_doc_import:migrate_legacy(Context) of
+                {ok, #{deprecated := Count}} ->
+                    refresh_docs_dashboard(
+                        z_render:growl(
+                            iolist_to_binary(io_lib:format("Migrated ~p legacy documentation pages.", [Count])),
+                            Context));
+                {error, import_required} ->
+                    refresh_docs_dashboard(
+                        z_render:growl_error(
+                            ?__("Run a successful documentation import before migrating legacy pages.", Context),
+                            Context));
+                {error, Reason} ->
+                    refresh_docs_dashboard(
+                        z_render:growl_error(
+                            iolist_to_binary(io_lib:format("Legacy migration failed: ~p", [Reason])),
+                            Context))
+            end;
+        false ->
+            z_render:growl_error(?__("You are not allowed to manage documentation imports.", Context), Context)
+    end;
+event(_Event, Context) ->
+    Context.
+
+
+-spec import_subject_keywords(z:context()) -> z:context().
+import_subject_keywords(Context) ->
+    case z_acl:is_admin(Context) of
+        true ->
+            case zotonicwww2_subject_import:import(Context) of
+                {ok, _Report} ->
+                    z_render:growl(?__("All subject keywords imported.", Context), Context);
+                {error, Reason} ->
+                    ?LOG_ERROR(#{
+                        in => zotonicwww2,
+                        text => <<"Could not import subject keywords">>,
+                        result => error,
+                        reason => Reason
+                    }),
+                    z_render:growl_error(
+                        ?__("Could not import subject keywords. Check the server log for details.", Context),
+                        Context)
+            end;
+        false ->
+            z_render:growl_error(?__("You are not allowed to import subject keywords.", Context), Context)
     end.
+
+queue_admin_action(Action, Context) ->
+    case z_acl:is_admin(Context) of
+        true ->
+            case m_zotonicwww2_git:queue(Action, Context) of
+                {ok, _TaskId} ->
+                    refresh_docs_dashboard(
+                        z_render:growl(?__("The documentation task has been queued.", Context), Context));
+                {error, Reason} ->
+                    refresh_docs_dashboard(
+                        z_render:growl_error(
+                            iolist_to_binary(io_lib:format("Could not queue documentation task: ~p", [Reason])),
+                            Context))
+            end;
+        false ->
+            z_render:growl_error(?__("You are not allowed to manage documentation imports.", Context), Context)
+    end.
+
+%% @doc Replace every dynamic value and action in the documentation dashboard.
+-spec refresh_docs_dashboard(z:context()) -> z:context().
+refresh_docs_dashboard(Context) ->
+    z_render:update(
+        "zotonic-docs-dashboard",
+        #render{template = "_admin_dashboard_zotonic_docs_status.tpl"},
+        Context).

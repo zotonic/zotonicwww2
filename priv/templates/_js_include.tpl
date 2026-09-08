@@ -13,6 +13,7 @@
 
     "js/apps/zotonic-wired.js"
     "js/apps/z.widgetmanager.js"
+    "js/modules/z.forminit.js"
     "js/modules/z.live.js"
     "js/modules/z.notice.js"
     "js/modules/z.dialog.js"
@@ -24,6 +25,8 @@
 
     "bootstrap/js/bootstrap.min.js"
 
+    "js/zotonicwww2-search.js"
+
     minify
 %}
 
@@ -31,29 +34,7 @@
 
 {% block _js_include_extra %}{% endblock %}
 
-<script type="text/javascript" nonce="{{ m.req.csp_nonce }}">
-  let lastScrollTop = 0;
-  let isScrolledDown = false;
-
-  let checkScrollPosition = function() {
-    var scrollTop = $(document).scrollTop();
-    if (scrollTop > lastScrollTop) {
-      if (!isScrolledDown && scrollTop > 50) {
-        $('body').addClass('scrolled-down');
-        isScrolledDown = true;
-      }
-    } else if (isScrolledDown) {
-      $('body').removeClass('scrolled-down');
-      isScrolledDown = false;
-    }
-    lastScrollTop = scrollTop;
-  }
-  window.onscroll = checkScrollPosition;
-  window.onpageload = checkScrollPosition;
-  window.onhashchange = function() {
-    lastScrollTop = 0;
-  };
-</script>
+{# Scroll-state detection is disabled while the header behavior is being redesigned. #}
 
 <script type="text/javascript" nonce="{{ m.req.csp_nonce }}">
     $(function()

@@ -86,27 +86,19 @@
         {% block body_attrs %}{% endblock %}
         data-cotonic-pathname-search="{% cotonic_pathname_search %}">
 
+    <a class="skip-link" href="#content">{_ Skip to content _}</a>
+
     <!-- Top of page header -->
     <div id="header-wrapper">
       <header id="header">
-        <div class="header-message">
-            <span class="fa fa-info-circle"></span> {_ We are reorganizing the website – some things might look strange. _}
-        </div>
         {% include "_nav_header.tpl" %}
       </header>
     </div>
 
+    {% include "_search_overlay.tpl" %}
+
     <!-- Optional page header -->
     {% block page_header %}{% endblock %}
-
-    <!-- Main navigation sidebar -->
-    <input type="checkbox" id="nav-toggle" />
-    <label id="sidedrawer-bg" for="nav-toggle"></label>
-    <nav id="sidedrawer">
-      <div>
-        {% include "_nav_sidedrawer.tpl" %}
-      </div>
-    </nav>
 
     <!-- Main content including footer -->
     <div id="content-wrapper">
@@ -115,7 +107,7 @@
         Convention is to give the element that contains the page content
         the id 'content'
       -->
-      <main id="content">
+      <main id="content" tabindex="-1">
         <!--
           There MUST be a 'content_area' block where pages like
           the logon.tpl can place their content. This should maximize
@@ -143,6 +135,10 @@
           <!-- This block is only for this site -->
           {% block content_after %}
           {% endblock %}
+
+          {# Related resources are selected for all resources in the text
+           # category tree. The partial performs the category check. #}
+          {% include "_page_related.tpl" %}
         {% endblock %}
       </main>
 
@@ -152,6 +148,8 @@
       {% endblock %}
 
     </div>
+
+    {% include "_floating_edit_button.tpl" %}
 
     <!--
       Like the '_html_head.tpl' above, this allows modules to add

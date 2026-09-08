@@ -22,127 +22,143 @@
 {% block content %}
 
     <article>
-        <p class="home__summary">
-            {# Show the summary of the resource. Here 'id.summary is a shortcut #}
-            {# for m.rsc[id].summary. The m.rsc[id] notation should be used if  #}
-            {# 'id' came from an untrusted source. In this case 'id' comes from #}
-            {# controller_page, which ensures that the passed id is sanitized.  #}
-            {{ id.summary }}
-        </p>
+        {% if id.summary or id.body %}
+            <header class="home-intro">
+                {% if id.summary %}
+                    <h1 class="home__summary">{{ id.summary }}</h1>
+                {% endif %}
 
-        {# Show blocks with all pages connected from the home page using the #}
-        {# 'featured' predicate. These are shown as colored blocks.          #}
+                {% if id.body %}
+                    <div class="home__body">
+                        {{ id.body|show_media }}
+                    </div>
+                {% endif %}
+            </header>
+        {% endif %}
+
+        {# Show the pages connected to the home page as a balanced feature grid. #}
         <div class="home__featured">
-
-            {# The "id.o.haspart" requests a list of all objects ('o') with #}
-            {# the 'haspart' predicate.                                     #}
             {% for id in id.o.haspart %}
-                {# The 'do_clickable' is a "widget". This is implementend by #}
-                {# z.clickable.js. Using these classes behavior can be added #}
-                {# in a declarative way. 'do_clickable' catches clicks and   #}
-                {# the follows the first anchor href in the child elements.  #}
-                <div class="home__featured__item do_clickable">
-                    {# The image depiction of the resource. This is either      #}
-                    {# the resource itself (for images etc) or the image        #}
-                    {# attached to the resource using the 'depiction' predicate #}
-                    {# The 'mediaclass' defines how the image is resized, these #}
-                    {# are defined in priv/templates/mediaclass.config          #}
-                    {% image id mediaclass="home-featured" %}
-
-                    {# The 'page_url' property generated the URL for the resource, it #}
-                    {# uses the 'page' dispatch rule or a dispacth rule with the name #}
-                    {# of the category of the resource. See priv/dispatch/dispatch    #}
-                    <h2><a href="{{ id.page_url }}">{{ id.title }}</a></h2>
-                    <p>
-                        {# The summary filter takes the summary property or the body  #}
-                        {# and derives a summary of the given length. Here 120 chars. #}
-                        {{ id|summary:120 }}
-                    </p>
-                </div>
+                {% with id.depiction as depiction %}
+                    <article
+                        class="home__featured__item{% if not depiction %} home__featured__item--text{% endif %} do_clickable"
+                        aria-labelledby="home-featured-{{ id }}"
+                    >
+                        {% if depiction %}
+                            <figure class="home__featured__media">
+                                {% image depiction mediaclass="home-featured" alt=depiction.title|default:id.title %}
+                            </figure>
+                        {% endif %}
+                        <div class="home__featured__body">
+                            <h2 id="home-featured-{{ id }}">
+                                <a href="{{ id.page_url }}">{{ id.title }}</a>
+                            </h2>
+                            <p>{{ id|summary:120 }}</p>
+                        </div>
+                    </article>
+                {% endwith %}
             {% endfor %}
-
-            {# Padding divs to pad out the flex box of home__featured on wider screens #}
-            <div></div>
-            <div></div>
         </div>
 
-        {# The home page body, for a short text with images expanded. #}
-        {# In this text we explain all the pro's of using Zotonic     #}
-        <div class="home__body">
-            {{ id.body|show_media }}
-        </div>
-
-        {# Show a list with articles and pages we want to highlight on the home page #}
+        {# Reference entry point followed by recent releases and editorial content. #}
         <div class="home__list">
+            <section class="home-feed" aria-labelledby="home-reference-title">
+                <header class="home-feed__header do_clickable">
+                    <div>
+                        <h2 id="home-reference-title">{_ Reference documentation _}</h2>
+                        <p>{_ Look up Zotonic modules, models, controllers, notifications, templates, and other extension points. _}</p>
+                    </div>
+                    <a class="home-feed__more" href="{{ m.rsc.reference.page_url }}">
+                        {_ Explore _}
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                        </svg>
+                    </a>
+                </header>
+            </section>
 
-            {# Note the {_ .. _} tags. They surround translatable texts. A .pot file   #}
-            {# with all texts is created in priv/translations/template/ via the button #}
-            {# on the /admin/translation page.                                         #}
-            <h2>{_ Release notes. _}</h2>
+            <section class="home-feed home-feed--releases" aria-labelledby="home-releases-title">
+                <header class="home-feed__header do_clickable">
+                    <div>
+                        <h2 id="home-releases-title">{_ Latest releases _}</h2>
+                        <p>{_ What changed, what was fixed, and how to upgrade. _}</p>
+                    </div>
+                    <a class="home-feed__more" href="{{ m.rsc.doc_releasenotes_index.page_url }}">
+                        {_ All release notes _}
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                        </svg>
+                    </a>
+                </header>
 
-            {# Search for the latest 2 release notes.                                  #}
-            {# The 'cat' is an argumment for the 'query' search, which is implemeted   #}
-            {# by module `mod_search`.                                                 #}
-            {# The 'is_featured' is set for featured items, the "-is_featured" will    #}
-            {# sort 'true' values first.                                               #}
-            {% for id in m.search.query::%{
-                    cat: [ "releasenotes" ],
-                    is_published: true,
-                    sort: [ "-is_featured", "-created" ],
-                    pagelen: 2,
-                    page: 1
-                }
-            %}
-                <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
-                    <h3><a href="{{ id.page_url }}">{{ id.title }}</a></h3>
-                    <p>
-                        {{ id|summary:240 }}
-                    </p>
+                <div class="home-release-list">
+                    {% for id in m.search.query::%{
+                            cat: [ "releasenotes" ],
+                            is_published: true,
+                            sort: [ "-is_featured", "-publication_start" ],
+                            pagelen: 2,
+                            page: 1
+                        }
+                    %}
+                        <article class="home-release-list__item do_clickable">
+                            <p class="home-entry__type">
+                                <span>{_ Release notes _}</span>
+                                {% if id.publication_start %}
+                                    <time datetime="{{ id.publication_start|date:"c":"UTC" }}">
+                                        {{ id.publication_start|date:_"j M Y":"UTC" }}
+                                    </time>
+                                {% endif %}
+                            </p>
+                            <h3><a href="{{ id.page_url }}">{{ id.title }}</a></h3>
+                            <p class="home-entry__summary">{{ id|summary:180 }}</p>
+                        </article>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-            <p>
-                {# Add a link to the page with the unique name "doc_releasenotes_index"  #}
-                {# This uses the page name as the id for the resource (rsc) model.       #}
-                {# The "page_url" property derive the page URL without the hostname, use #}
-                {# "page_url_abs" if you want a page url with the hostname.              #}
-                <a href="{{ m.rsc.doc_releasenotes_index.page_url }}">{_ Read all release notes _} &gt;</a>
-            </p>
+            </section>
 
-            <h2>{_ Recent articles, cookbooks and videos. _}</h2>
+            <section class="home-feed home-feed--reading" aria-labelledby="home-reading-title">
+                <header class="home-feed__header">
+                    <div>
+                        <h2 id="home-reading-title">{_ Articles and cookbook recipes _}</h2>
+                        <p>{_ Practical explanations and solutions from the Zotonic team. _}</p>
+                    </div>
+                </header>
 
-            {# Search for the latest 20 articles, video, documents, and cook book      #}
-            {# entries.                                                                #}
-            {% for id in m.search.query::%{
-                    cat: [ "article", "video", "document", "cookbook" ],
-                    is_published: true,
-                    sort: [ "-is_featured", "-created" ],
-                    pagelen: 20,
-                    page: 1
-                }
-            %}
-                <div class="home__list__item{% if id.is_featured %} featured{% endif %} do_clickable">
-                    {# Fetch the image of the resource, for media items this is often the #}
-                    {# resources itself. Checks for "depiction" edges, and if none the    #}
-                    {# the medium item of the resource.                                   #}
-                    {% if id.depiction as depiction %}
-                        <p>
-                            {# Checked, so that the image is visible on small screens. #}
-                            <input type="checkbox" id="{{ #img }}" class="margin-toggle" checked>
-                            <span class="marginnote">
-                                {# Always a static image, do not show video on the home page. #}
-                                {# Use the title of the image for the alt attribute.          #}
-                                {% image depiction mediaclass="body-media-small" alt=depiction.id.title %}
-                            </span>
-                        </p>
-                    {% endif %}
-                    <h3>
-                        <a href="{{ id.page_url }}">{{ id.title }}</a>
-                    </h3>
-                    <p>
-                        {{ id|summary:240 }}
-                    </p>
+                <div class="home-reading-list">
+                    {% for id in m.search.query::%{
+                            cat: [ "article", "cookbook" ],
+                            is_published: true,
+                            sort: [ "-is_featured", "-publication_start" ],
+                            pagelen: 8,
+                            page: 1
+                        }
+                    %}
+                        {% with id.depiction as depiction %}
+                            <article class="home-reading-list__item{% if depiction %} home-reading-list__item--media{% else %} home-reading-list__item--text{% endif %} do_clickable">
+                                <p class="home-reading-list__meta">
+                                    <span>{{ id.category_id.title }}</span>
+                                    {% if id.is_a.article and id.publication_start %}
+                                        <time datetime="{{ id.publication_start|date:"c" }}">
+                                            {{ id.publication_start|date:_"j M Y" }}
+                                        </time>
+                                    {% endif %}
+                                </p>
+                                <div class="home-reading-list__copy">
+                                    <h3><a href="{{ id.page_url }}">{{ id.title }}</a></h3>
+                                    {% if id|summary as item_summary %}
+                                        <p>{{ item_summary|truncate:220 }}</p>
+                                    {% endif %}
+                                </div>
+                                {% if depiction %}
+                                    <figure class="home-reading-list__media">
+                                        {% image depiction mediaclass="home-list" alt=depiction.title|default:id.title %}
+                                    </figure>
+                                {% endif %}
+                            </article>
+                        {% endwith %}
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            </section>
         </div>
 
     </article>

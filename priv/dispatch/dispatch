@@ -5,6 +5,7 @@
     {page,      [ "page", id, slug ],   controller_page,    [ {template, {cat, "page.tpl"}} ]},
     {page,      [ "page", id ],         controller_page,    [ {template, {cat, "page.tpl"}} ]},
     {search,    [ "search" ],           controller_template,[ {template, "search.tpl"}]},
+    {github_webhook, [ "github", "webhook" ], controller_zotonicwww2_webhook, []},
 
     {documentation, [ "docs", id, slug ], controller_page,  [ {template, {cat, "page.tpl"}} ]},
     {documentation, [ "docs", id ],       controller_page,  [ {template, {cat, "page.tpl"}} ]},
