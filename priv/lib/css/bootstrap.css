@@ -6610,7 +6610,22 @@ body.search-overlay-open #header-wrapper {
   width: min(100%, 700px);
 }
 
+.not-found-intro {
+  width: min(100%, 900px) !important;
+  padding-top: 1.35rem;
+  border-top: 4px solid var(--site-accent);
+}
+.not-found-intro h1 {
+  width: min(100%, 780px);
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 1.02;
+}
+.not-found-intro > p {
+  width: min(100%, 700px);
+}
+
 .search-page-intro__eyebrow,
+.not-found-intro__eyebrow,
 .search-summary__label,
 .search-empty__label {
   margin-bottom: 0.35rem;
@@ -6620,6 +6635,11 @@ body.search-overlay-open #header-wrapper {
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
+}
+
+.not-found-results {
+  width: min(100%, 1100px);
+  margin-top: clamp(3rem, 7vw, 5.5rem);
 }
 
 .search-page-form {

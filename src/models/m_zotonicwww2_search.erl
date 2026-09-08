@@ -35,6 +35,16 @@
 -define(BROWSE_DEFAULT_LIMIT, 40).
 -define(CLUSTER_PREVIEW_LIMIT, 3).
 -define(MAX_CLUSTER_DEPTH, 8).
+-define(PATH_STOP_WORDS, [
+    <<"docs">>,
+    <<"latest">>,
+    <<"ref">>,
+    <<"index">>,
+    <<"html">>,
+    <<"htm">>,
+    <<"page">>,
+    <<"id">>
+]).
 -define(SUBJECT_FACET_ORDER, [
     <<"information_type">>,
     <<"audience">>,
@@ -48,6 +58,11 @@
 
 
 -spec m_get(list(), zotonic_model:opt_msg(), z:context()) -> zotonic_model:return().
+m_get([ <<"path_query">> | Rest ], #{ payload := Payload }, Context) when is_map(Payload) ->
+    Path = maps:get(<<"path">>, Payload, m_req:get(path, Context)),
+    {ok, {path_query(Path, z_context:language(Context)), Rest}};
+m_get([ <<"path_query">> | Rest ], _Msg, Context) ->
+    {ok, {path_query(m_req:get(path, Context), z_context:language(Context)), Rest}};
 m_get([ <<"results">> | Rest ], #{ payload := Payload }, Context) when is_map(Payload) ->
     {ok, {search(Payload, Context), Rest}};
 m_get([ <<"results">> | Rest ], _Msg, Context) ->
@@ -832,6 +847,52 @@ query(Value) ->
     Value1 = z_string:sanitize_utf8(z_convert:to_binary(Value)),
     z_string:truncatechars(z_string:trim(Value1), ?MAX_QUERY_LENGTH, <<>>).
 
+
+%% @doc Turn a missing request path into useful search words. URL and filename
+%% punctuation becomes whitespace; routing words and numeric resource ids are
+%% omitted because they make documentation matches less relevant.
+path_query(Path0) ->
+    path_query(Path0, en).
+
+path_query(Path0, Language) ->
+    Path = decode_path(z_string:sanitize_utf8(path_value(Path0))),
+    Name = z_string:to_name(Path),
+    Tokens0 = binary:split(Name, <<"_">>, [ global, trim_all ]),
+    Tokens1 = drop_language_prefix(Tokens0, z_convert:to_binary(Language)),
+    Tokens = [ Token || Token <- Tokens1, is_path_search_token(Token) ],
+    query(lists:join(<<" ">>, Tokens)).
+
+path_value([ Token | _ ] = Tokens) when is_binary(Token) ->
+    iolist_to_binary(lists:join($/, Tokens));
+path_value(Path) ->
+    z_convert:to_binary(Path).
+
+decode_path(Path) ->
+    try z_url:url_decode(Path)
+    catch
+        _:_ -> Path
+    end.
+
+drop_language_prefix([ Language | Rest ], Language) ->
+    Rest;
+drop_language_prefix(Tokens, _Language) ->
+    Tokens.
+
+is_path_search_token(Token) ->
+    not lists:member(Token, ?PATH_STOP_WORDS) andalso not is_digits(Token).
+
+is_digits(<<>>) ->
+    false;
+is_digits(Token) ->
+    is_digits_1(Token).
+
+is_digits_1(<<>>) ->
+    true;
+is_digits_1(<<C, Rest/binary>>) when C >= $0, C =< $9 ->
+    is_digits_1(Rest);
+is_digits_1(_) ->
+    false.
+
 positive_integer(Value, Min, Max, Default) ->
     try z_convert:to_integer(Value) of
         N when is_integer(N), N >= Min, N =< Max -> N;
@@ -839,3 +900,28 @@ positive_integer(Value, Min, Max, Default) ->
     catch
         _:_ -> Default
     end.
+
+
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+
+path_query_test_() ->
+    [
+        ?_assertEqual(
+            <<"filters strings">>,
+            path_query(<<"/latest/ref/filters/strings/">>)),
+        ?_assertEqual(
+            <<"making an admin widget conditionally visible">>,
+            path_query(<<"/docs/1234/making-an-admin-widget-conditionally-visible">>)),
+        ?_assertEqual(
+            <<"controllers controller admin config">>,
+            path_query(<<"/en/docs/latest/ref/controllers/controller_admin_config.html">>)),
+        ?_assertEqual(
+            <<"template filters">>,
+            path_query(<<"/template%20filters.html">>)),
+        ?_assertEqual(
+            <<"filters strings">>,
+            path_query([ <<"latest">>, <<"ref">>, <<"filters">>, <<"strings">> ]))
+    ].
+
+-endif.

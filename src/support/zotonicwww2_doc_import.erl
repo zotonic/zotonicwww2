@@ -375,11 +375,14 @@ tracking(SourceKey, Context) ->
         Context).
 
 track(RscId, SourceKey, Kind, SourcePath, SourceHash, Generation, Commit, Context) ->
+    track(RscId, SourceKey, Kind, SourcePath, SourceHash, Generation, Commit, <<"current">>, Context).
+
+track(RscId, SourceKey, Kind, SourcePath, SourceHash, Generation, Commit, Status, Context) ->
     _ = z_db:q("
         insert into zotonicwww2_doc_import
             (rsc_id, source_key, source_kind, source_path, source_hash,
              generation, git_commit, status)
-        values ($1, $2, $3, $4, $5, $6, $7, 'current')
+        values ($1, $2, $3, $4, $5, $6, $7, $8)
         on conflict (source_key) do update set
             rsc_id = excluded.rsc_id,
             source_kind = excluded.source_kind,
@@ -387,9 +390,9 @@ track(RscId, SourceKey, Kind, SourcePath, SourceHash, Generation, Commit, Contex
             source_hash = excluded.source_hash,
             generation = excluded.generation,
             git_commit = excluded.git_commit,
-            status = 'current',
+            status = excluded.status,
             modified = now()",
-        [ RscId, SourceKey, atom_to_binary(Kind), SourcePath, SourceHash, Generation, Commit ],
+        [ RscId, SourceKey, atom_to_binary(Kind), SourcePath, SourceHash, Generation, Commit, Status ],
         Context),
     ok.
 
@@ -408,11 +411,7 @@ reconcile(Generation, Context) ->
 reconcile_rows([], Count, _Context) ->
     {ok, Count};
 reconcile_rows([#{ <<"rsc_id">> := RscId } | Rest], Count, Context) ->
-    Props = #{
-        <<"is_published">> => false,
-        <<"content_group_id">> => deprecated_group(Context),
-        <<"doc_status">> => <<"deprecated">>
-    },
+    Props = deprecated_props(Context),
     case m_rsc:update(RscId, Props, Context) of
         {ok, _} ->
             _ = z_db:q("
@@ -516,9 +515,19 @@ migrate_legacy([#{ <<"id">> := RscId, <<"name">> := Name } | Rest], Generation, 
             migrate_legacy(Rest, Generation, Count, Context);
         {error, enoent} ->
             Kind = legacy_kind(Name),
-            ok = track(RscId, SourceKey, Kind, <<"legacy">>, <<"legacy">>, <<"legacy">>, <<"legacy">>, Context),
-            case reconcile_rows([#{ <<"rsc_id">> => RscId }], 0, Context) of
-                {ok, 1} -> migrate_legacy(Rest, Generation, Count + 1, Context);
+            case m_rsc:update(RscId, deprecated_props(Context), Context) of
+                {ok, _} ->
+                    ok = track(
+                        RscId,
+                        SourceKey,
+                        Kind,
+                        <<"legacy">>,
+                        <<"legacy">>,
+                        <<"legacy">>,
+                        <<"legacy">>,
+                        <<"deprecated">>,
+                        Context),
+                    migrate_legacy(Rest, Generation, Count + 1, Context);
                 {error, _} = Error -> Error
             end;
         {error, _} = Error ->
@@ -597,6 +606,13 @@ imported_group(Context) ->
 
 deprecated_group(Context) ->
     m_rsc:rid(content_group_deprecated_docs, Context).
+
+deprecated_props(Context) ->
+    #{
+        <<"is_published">> => false,
+        <<"content_group_id">> => deprecated_group(Context),
+        <<"doc_status">> => <<"deprecated">>
+    }.
 
 
 -ifdef(TEST).

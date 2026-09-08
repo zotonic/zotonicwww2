@@ -595,9 +595,9 @@ legacy_dispatch_paths(<<"template_scomp">>) -> index_paths(<<"ref/scomps">>);
 legacy_dispatch_paths(<<"template_tag">>) -> index_paths(<<"ref/tags">>);
 legacy_dispatch_paths(<<"notification">>) -> index_paths(<<"ref/notifications">>);
 legacy_dispatch_paths(<<"doc_filters_", Group/binary>>) ->
-    legacy_paths(<<"ref/filters/", Group/binary, "/index.html">>);
+    index_paths(<<"ref/filters/", Group/binary>>);
 legacy_dispatch_paths(<<"doc_actions_", Group/binary>>) ->
-    legacy_paths(<<"ref/actions/", Group/binary, "/index.html">>);
+    index_paths(<<"ref/actions/", Group/binary>>);
 legacy_dispatch_paths(<<"doc_template_filter_", Name/binary>>) ->
     doc_paths(<<"ref/filters">>, Name);
 legacy_dispatch_paths(<<"doc_template_action_", Name/binary>>) ->
@@ -649,7 +649,7 @@ legacy_dispatch_paths(_) ->
 
 
 index_paths(Directory) ->
-    legacy_paths(<<Directory/binary, "/index.html">>).
+    legacy_paths(Directory) ++ legacy_paths(<<Directory/binary, "/index.html">>).
 
 doc_paths(Directory, Name) ->
     legacy_paths(<<Directory/binary, $/, Name/binary, ".html">>).
@@ -749,3 +749,29 @@ group_by_name(Name) ->
 -spec group(binary(), atom()) -> group().
 group(Name, Category) ->
     #{name => Name, category => Category}.
+
+
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+
+directory_legacy_paths_test_() ->
+    [
+        ?_assertEqual(
+            [
+                <<"/latest/ref/filters/strings">>,
+                <<"/docs/latest/ref/filters/strings">>,
+                <<"/latest/ref/filters/strings/index.html">>,
+                <<"/docs/latest/ref/filters/strings/index.html">>
+            ],
+            legacy_dispatch_paths(<<"doc_filters_strings">>)),
+        ?_assertEqual(
+            [
+                <<"/latest/ref/modules">>,
+                <<"/docs/latest/ref/modules">>,
+                <<"/latest/ref/modules/index.html">>,
+                <<"/docs/latest/ref/modules/index.html">>
+            ],
+            legacy_dispatch_paths(<<"module">>))
+    ].
+
+-endif.

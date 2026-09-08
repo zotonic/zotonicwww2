@@ -81,7 +81,7 @@ Use this sequence on the live site:
 
 1. Back up the database and the site's files directory.
 2. Deploy the code and reinstall or restart the `zotonicwww2` site module so
-   schema version 16 is installed and its background repivot has completed.
+   its current schema is installed and the background repivot has completed.
 3. In the admin dashboard, run **Fetch and rebuild**.
 4. Verify the imported commit, counts, reference pages, and EDoc before making
    any legacy changes.
@@ -89,10 +89,15 @@ Use this sequence on the live site:
 6. Run **Migrate legacy imports**. This explicit, repeatable step adopts only
    recognized source-documentation names which were absent from the successful
    manifest, moves them to the deprecated content group, and unpublishes them.
+7. From an Erlang shell with the site context, run
+   `zotonicwww2_convert:plan/1` and review the affected resources, edges, and
+   page paths.
+8. Run `zotonicwww2_convert:run/1` with the same context to install the legacy
+   page paths and finish removing the old hierarchy.
+9. Crawl the known production documentation URLs and verify their redirects.
 
-The old RST dispatch mapper remains enabled. It must only be removed after old
-page paths have been imported into `rsc_page_path_log` and a production URL
-crawl confirms the redirects.
+The old RST dispatch mapper has already been removed. Legacy documentation URLs
+can therefore be unavailable between deploying the code and completing step 8.
 
 ## Frontend compatibility
 
