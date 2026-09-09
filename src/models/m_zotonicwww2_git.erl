@@ -248,6 +248,7 @@ status(Context) ->
         imported_hash => config(imported_hash, m_config:get_value(site, rebuild_hash, Context), Context),
         checkout_hash => value_or_empty(hash(Context)),
         remote_hash => value_or_empty(remote_hash(Context)),
+        checkout_dir => unicode:characters_to_binary(git_dir(Context)),
         branch => <<?GIT_BRANCH>>,
         created => config_int(import_created, Context),
         updated => config_int(import_updated, Context),

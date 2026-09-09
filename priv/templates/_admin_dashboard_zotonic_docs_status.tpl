@@ -33,6 +33,21 @@
                     <dd>{{ doc_status.finished|default:"—"|escape }}</dd>
                 </dl>
 
+                <p class="help-block admin-word-break">
+                    <small>
+                        {_ Checkout directory _}:
+                        <code>{{ doc_status.checkout_dir|escape }}</code>
+                        <button type="button"
+                                class="btn btn-xs btn-default"
+                                data-onclick-topic="model/clipboard/post/copy"
+                                data-text="{{ doc_status.checkout_dir|escape }}"
+                                title="{_ Copy the checkout directory to the clipboard. _}">
+                            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+                            {_ Copy _}
+                        </button>
+                    </small>
+                </p>
+
                 {% if doc_status.error %}
                     <div class="alert alert-danger" role="alert">
                         <strong>{_ Last error _}</strong><br>
