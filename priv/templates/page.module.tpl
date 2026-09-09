@@ -1,32 +1,26 @@
 {% extends "page.documentation.tpl" %}
 
+{% block content_before_body %}
+    <nav class="module-components-nav" aria-label="{_ Module contents _}">
+        <ul>
+            {% if id.o.observes|is_visible as notifications %}
+                <li>
+                    <a class="module-components-nav__link" href="#module-observes">
+                        {_ Notifications _} <span>{{ notifications|length }}</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% include "_module_components.tpl" module_id=id is_navigation %}
+        </ul>
+    </nav>
+{% endblock %}
+
 {% block content_after %}
 
 <div class="page-relations">
+    {% include "_module_observes.tpl" module_id=id %}
 
-    {% for cat in [
-        `model`,
-        `controller`,
-        `dispatch`,
-        `template_tag`,
-        `template_filter`,
-        `template_action`,
-        `template_scomp`,
-        `template_validator`
-    ] %}
-
-        {% if m.search[{query cat=cat hasobject=[id, `in_module`] sort=`pivot_title`}] as result %}
-            <div class="connections">
-                <h3>{{ cat.title }}</h3>
-
-                <div class="list-items">
-                    {% for id in result %}
-                        {% catinclude "_list_item.tpl" id %}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-    {% endfor %}
+    {% include "_module_components.tpl" module_id=id %}
 
     {% with id.o.relation|is_visible as relo %}
     {% with id.s.relation|is_visible as rels %}

@@ -1,7 +1,44 @@
-{% extends "page.documentation.tpl" %}
+{% extends "page.documentation.tpl" seo_noindex=q.cluster seo_follow=q.cluster %}
+
+{% block content %}
+    {% if q.cluster and id.name != 'keyword' and not id.subject_topic_facet_category %}
+        {% with m.zotonicwww2_search.category_cluster::%{
+                category: id,
+                cluster: q.cluster,
+                limit: 40
+            }
+            as cluster_view
+        %}
+            {% if cluster_view.active %}
+                <article class="cluster-category-heading">
+                    <h1>{{ id.title }}</h1>
+                    <a class="cluster-category-heading__up"
+                       href="{% if cluster_view.parent_path_value %}{% url none cluster=cluster_view.parent_path_value %}{% else %}{{ id.page_url }}{% endif %}">
+                        <span aria-hidden="true">↑</span>
+                        {_ Up to _}
+                        {% if cluster_view.parent_is_other %}{_ Other _}{% else %}{{ cluster_view.parent_keyword.title|default:id.title }}{% endif %}
+                    </a>
+                </article>
+                <div class="page-relations reference-category-page reference-category-page--cluster">
+                    {% include "_category_cluster_view.tpl"
+                        cluster_view=cluster_view
+                        category_id=id
+                    %}
+                </div>
+            {% else %}
+                {% inherit %}
+            {% endif %}
+        {% endwith %}
+    {% else %}
+        {% inherit %}
+    {% endif %}
+{% endblock %}
 
 {% block content_after %}
 
+{% if id.name == 'keyword' or id.subject_topic_facet_category %}
+    {% include "_subject_topic_category.tpl" id=id %}
+{% elif not q.cluster %}
 <div class="page-relations">
 
     {# Only show the Table of Contents if the sub-pages are documentation
@@ -11,15 +48,11 @@
      #}
 
     {% if id.o.haspart|is_visible as haspart %}
-        <dl class="connections">
+        <div class="content-list">
             {% for id in haspart %}
-                <dt><a href="{{ id.page_url }}">{{ id.title }}</a></dt>
-                <dd class="do_clickable">
-                    {{ id|summary:160 }}
-                    <a href="{{ id.page_url }}"></a>
-                </dd>
+                {% catinclude "_list_item.tpl" id %}
             {% endfor %}
-        </dl>
+        </div>
     {% endif %}
 
     {% for s in id.s.haspart|is_visible %}
@@ -54,26 +87,43 @@
         </div>
     {% endif %}
 
-    {% with (m.category[id].is_a.documentation
-             or id.name == 'category')
-            | if : "pivot_title"
-                 : "-created" as sort
+    {% with m.zotonicwww2_search.category_cluster::%{
+            category: id,
+            cluster: q.cluster,
+            limit: 40
+        }
+        as cluster_view
     %}
-        {% with m.search.paged[{query cat=id sort=sort pagelen=100 page=q.page}] as result %}
-            <div class="connections paged" id="content-pager">
-                <h3>
-                    {_ All _} <span>{{ id.title }}</span>
-                </h3>
-                <div class="list-items">
-                    {% for id in result %}
-                        {% catinclude "_list_item.tpl" id %}
-                    {% endfor %}
-                </div>
+        {% include "_category_cluster_view.tpl"
+            cluster_view=cluster_view
+            category_id=id
+        %}
 
-                {% pager result=result id=id qargs hide_single_page %}
-            </div>
-        {% endwith %}
+        {% if not cluster_view.active %}
+            {% with ((m.category[id].is_a.documentation
+                      and id.name != 'releasenotes')
+                     or id.name == 'category')
+                    | if : "pivot_title"
+                         : "-publication_start" as sort
+            %}
+                {% with m.search.paged[{query cat=id sort=sort pagelen=100 page=q.page}] as result %}
+                    <div class="connections paged" id="content-pager">
+                        <h3>
+                            {_ All _} <span>{{ id.title }}</span>
+                        </h3>
+                        <div class="list-items">
+                            {% for id in result %}
+                                {% catinclude "_list_item.tpl" id %}
+                            {% endfor %}
+                        </div>
+
+                        {% pager result=result id=id qargs hide_single_page %}
+                    </div>
+                {% endwith %}
+            {% endwith %}
+        {% endif %}
     {% endwith %}
 </div>
+{% endif %}
 
 {% endblock %}

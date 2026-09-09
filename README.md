@@ -1,3 +1,106 @@
 # zotonicwww2
 
-The second incarnation of the Zotonic web site - also used as an example site
+The second incarnation of the Zotonic web site - also used as an example site.
+
+## Documentation import
+
+The site maintains a disposable checkout of `zotonic/zotonic` below the
+operating system's `TMPDIR`. Erlang module documentation, Markdown reference
+pages, release notes, and generated EDoc are synchronized from that checkout.
+The checkout is cloned again automatically if the operating system removes it.
+
+The temporary location is intentional. Native dependencies built with GNU Make
+can misinterpret whitespace in absolute target paths. On macOS, Zotonic's
+default data directory contains `Application Support`, whereas the per-user
+`TMPDIR` is normally space-free. If `TMPDIR` itself contains whitespace, the
+checkout falls back to `/tmp`. Published EDoc remains in the site's durable
+files directory; it is copied to a sibling staging directory before an atomic
+replacement, so the temporary and data directories may be on different file
+systems.
+
+Administrators can inspect and control this process from the site dashboard.
+The panel shows the checked-out, fetched, and last imported commits together
+with the active stage, timestamps, result counts, and the last error. Every
+successful import also reports keyword coverage per documentation category:
+the number of pages with at least one subject keyword, the pages still missing
+keywords, and the total number of assigned keywords.
+
+The GitHub push webhook endpoint is `/github/webhook`. Configure the webhook
+for JSON push events, set its secret to the value of `site.rebuild_secret`, and
+set `site.rebuild_enabled` to `true`. Only pushes for
+`zotonic/zotonic`'s `master` branch are accepted.
+
+### Documentation references
+
+An inline Markdown code span in the form `kind#name` links to the corresponding
+imported reference page. The supported kinds and their public names are:
+
+| Kind | Example |
+| --- | --- |
+| Template tag | `tag#print` |
+| Template filter | `filter#escape` |
+| Scomp | `scomp#wire` |
+| Wire action | `action#update` |
+| Template validator | `validator#presence` |
+| Model | `model#rsc` |
+| Controller | `controller#controller_page` |
+| Zotonic module | `module#mod_base` |
+| Notification | `notification#media_upload` |
+| Dispatch file | `dispatch#mod_base/dispatch` |
+
+References are resolved only in inline code. Fenced and indented code blocks,
+existing links, unknown kinds, and Erlang references such as
+`z_template:render/3` remain unchanged.
+
+## Live migration
+
+Schema version 16 installs two idempotent tracking tables, two content groups,
+and the public faceted-search index:
+
+- `Imported documentation`
+- `Deprecated imported documentation`
+
+The search index combines title, summary, and `subject` keywords in a
+PostgreSQL trigram-indexed facet. The schema migration checks the facet table
+and queues a full repivot, so it is safe to deploy before the content import.
+While that repivot is running, public searches automatically fall back to the
+regular full-text index.
+
+Release-note Markdown declares an ISO date in the YAML front-matter
+`release_date` property. These values were initially derived from the release
+text, with the corresponding Git tag date as a fallback. The importer treats
+the explicit metadata as authoritative and stores it as the resource's
+`publication_start` in UTC. Re-running **Import compiled docs** safely
+backfills these dates on existing release-note resources; no schema migration
+is needed.
+
+Installing the schema does not adopt, unpublish, or otherwise migrate existing
+documentation. This keeps deployment separate from the content migration.
+
+Use this sequence on the live site:
+
+1. Back up the database and the site's files directory.
+2. Deploy the code and reinstall or restart the `zotonicwww2` site module so
+   its current schema is installed and the background repivot has completed.
+3. In the admin dashboard, run **Fetch and rebuild**.
+4. Verify the imported commit, counts, reference pages, and EDoc before making
+   any legacy changes.
+5. Review the number of legacy candidates shown in the dashboard.
+6. Run **Migrate legacy imports**. This explicit, repeatable step adopts only
+   recognized source-documentation names which were absent from the successful
+   manifest, moves them to the deprecated content group, and unpublishes them.
+7. From an Erlang shell with the site context, run
+   `zotonicwww2_convert:plan/1` and review the affected resources, edges, and
+   page paths.
+8. Run `zotonicwww2_convert:run/1` with the same context to install the legacy
+   page paths and finish removing the old hierarchy.
+9. Crawl the known production documentation URLs and verify their redirects.
+
+The old RST dispatch mapper has already been removed. Legacy documentation URLs
+can therefore be unavailable between deploying the code and completing step 8.
+
+## Frontend compatibility
+
+The public and admin templates continue to use Bootstrap 3 classes. Keep this
+structure until the planned Bootstrap 5 migration using the compatibility CSS
+from the `bs3-to-bs5` branch.

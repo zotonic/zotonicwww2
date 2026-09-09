@@ -16,9 +16,19 @@ main,
         position: relative;
         overflow: hidden;
 
-        p, pre {
+        p, pre, ol, ul {
             width: 100%;
             font-size: 1.0rem;
+        }
+
+        ol, ul {
+            max-width: 100%;
+
+            li {
+                margin-top: .75rem;
+                font-size: inherit;
+                line-height: 1.5;
+            }
         }
 
         .first {
