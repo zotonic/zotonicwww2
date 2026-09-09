@@ -6,7 +6,8 @@
 #}
 {% block important_ft %}
     {{ id.title }}
-    {{ id.summary|truncatechars:300 }}
+    {{ id|summary|truncatechars:300 }}
+    {{ id.category_id.title }}
     {% for subject_id in id.o.subject %}
         {{ subject_id.title }}
     {% endfor %}
