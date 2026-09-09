@@ -34,8 +34,7 @@
 -include_lib("zotonic_core/include/zotonic.hrl").
 
 -define(GIT_URL, "https://github.com/zotonic/zotonic.git").
-%% Temporary branch used to validate the documentation keyword changes locally.
--define(GIT_BRANCH, "doc-keywords").
+-define(GIT_BRANCH, "master").
 -define(TASK_KEY, <<"documentation-import">>).
 
 
