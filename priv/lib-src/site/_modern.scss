@@ -11,6 +11,7 @@
 
 html,
 body {
+    height: auto;
     min-height: 100%;
     max-height: none;
     width: 100%;
@@ -101,10 +102,21 @@ body {
     border-bottom: 1px solid var(--site-rule);
     background: rgba(255, 255, 252, .96);
     backdrop-filter: blur(14px);
+    transition: transform .22s ease, box-shadow .22s ease;
 
     header {
         position: static;
         top: auto;
+    }
+}
+
+body.site-nav-hidden:not(.search-overlay-open) #header-wrapper {
+    transform: translateY(calc(-100% - 1px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #header-wrapper {
+        transition: none;
     }
 }
 
@@ -202,6 +214,7 @@ body {
     input {
         min-width: 0;
         padding: .62rem .25rem .62rem 1rem;
+        font-size: 1rem;
         outline: 0;
     }
 
@@ -2285,6 +2298,10 @@ input:focus-visible {
         flex: 1 0 100%;
         justify-content: space-between;
         overflow-x: auto;
+
+        a {
+            font-size: .875rem;
+        }
     }
 
     .site-nav__search {
@@ -2326,6 +2343,19 @@ input:focus-visible {
     .site-search-overlay__panel {
         max-height: calc(100% - .5rem);
         border-radius: 0 0 5px 5px;
+    }
+
+    .site-search-overlay__toolbar p,
+    .search-page-intro__eyebrow,
+    .not-found-intro__eyebrow,
+    .search-summary__label,
+    .search-empty__label,
+    .search-facet-group > p,
+    .search-facet,
+    .search-facets__clear,
+    .search-result-card__meta,
+    .search-result-card__topics li {
+        font-size: .875rem;
     }
 
     .search-feedback--overlay {
@@ -2445,6 +2475,7 @@ input:focus-visible {
     .content-list__meta {
         flex-direction: row;
         gap: .65rem;
+        font-size: .875rem;
     }
 
     .home-reading-list__item {
@@ -2461,6 +2492,11 @@ input:focus-visible {
     .home-reading-list__meta {
         flex-direction: row;
         gap: .7rem;
+        font-size: .875rem;
+    }
+
+    .home-entry__type {
+        font-size: .875rem;
     }
 
     .home-reading-list__item--media {
@@ -2473,6 +2509,19 @@ input:focus-visible {
         align-content: center;
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .site-nav__links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 .75rem;
+        overflow: visible;
+
+        a {
+            text-align: center;
+        }
     }
 }
 

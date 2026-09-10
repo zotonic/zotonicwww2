@@ -30,31 +30,14 @@ html, body {
     height: 100%;
 }
 
-// First significant deviation from CSS on tufte.css site - variable font size as browser width expands or contracts
-//html { font-size: 15px; }
-
 html {
     text-align: baseline;
-    font-size: 13px;
+    // Keep rem-based copy and UI text readable on phones. The former 13px
+    // mobile root reduced supporting text to 9–12px.
+    font-size: $font-size-base;
     // -webkit-font-smoothing: antialiased;
     // -moz-osx-font-smoothing: grayscale;
 }
-
-@media screen and (min-width: 800px) {
-    html {
-        font-size: $font-size-base;
-    }
-}
-
-// @media screen and (min-width: 900px){ html{ font-size: 13px;} }
-
-// @media screen and (min-width: 1000px){ html{ font-size: 14px;} }
-
-// @media screen and (min-width: 1100px){ html{ font-size: 15px; } }
-
-// @media screen and (min-width: 1200px){ html{ font-size: 16px; } }
-
-// @media screen and (min-width: 1300px){ html{ font-size: 17px; } }
 
 // sets link style according to values in _settings.scss
 a {

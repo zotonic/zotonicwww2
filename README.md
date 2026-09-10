@@ -95,6 +95,13 @@ whole-value trigram matching (`%`/`similarity`) and word-extent matching
 normal search pipeline when making that change, so that ACL SQL continues to
 be injected centrally.
 
+The site also overrides `pivot/_related_ids.tpl`. Only outgoing `subject`
+keyword ids are stored as `zpo...` tokens in `rsc.pivot_rtsv`; other predicates,
+the content group, and categories are excluded. This makes both sides of the
+`match_objects` query use the controlled subject vocabulary. Schema upgrade 22
+queues all existing resources for repivoting so the stored vectors are updated
+after deployment.
+
 Release-note Markdown declares an ISO date in the YAML front-matter
 `release_date` property. These values were initially derived from the release
 text, with the corresponding Git tag date as a fallback. The importer treats

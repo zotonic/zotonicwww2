@@ -25,6 +25,7 @@
 
     "bootstrap/js/bootstrap.min.js"
 
+    "js/zotonicwww2-navigation.js"
     "js/zotonicwww2-search.js"
 
     minify
@@ -33,8 +34,6 @@
 {% worker name="auth" src="js/zotonic.auth.worker.js" args=%{  auth: m.authentication.status  } %}
 
 {% block _js_include_extra %}{% endblock %}
-
-{# Scroll-state detection is disabled while the header behavior is being redesigned. #}
 
 <script type="text/javascript" nonce="{{ m.req.csp_nonce }}">
     $(function()

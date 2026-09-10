@@ -1322,14 +1322,9 @@ html, body {
 
 html {
   text-align: baseline;
-  font-size: 13px;
+  font-size: 16px;
 }
 
-@media screen and (min-width: 800px) {
-  html {
-    font-size: 16px;
-  }
-}
 a {
   color: #1683b1;
   text-decoration: none;
@@ -6320,6 +6315,7 @@ button.close {
 
 html,
 body {
+  height: auto;
   min-height: 100%;
   max-height: none;
   width: 100%;
@@ -6406,12 +6402,22 @@ body {
   border-bottom: 1px solid var(--site-rule);
   background: rgba(255, 255, 252, 0.96);
   backdrop-filter: blur(14px);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 #header-wrapper header {
   position: static;
   top: auto;
 }
 
+body.site-nav-hidden:not(.search-overlay-open) #header-wrapper {
+  transform: translateY(calc(-100% - 1px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #header-wrapper {
+    transition: none;
+  }
+}
 .site-nav {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) minmax(220px, 320px);
@@ -6498,6 +6504,7 @@ body {
 .site-nav__search input {
   min-width: 0;
   padding: 0.62rem 0.25rem 0.62rem 1rem;
+  font-size: 1rem;
   outline: 0;
 }
 .site-nav__search button {
@@ -8390,6 +8397,9 @@ input:focus-visible {
     justify-content: space-between;
     overflow-x: auto;
   }
+  .site-nav__links a {
+    font-size: 0.875rem;
+  }
   .site-nav__search {
     flex: 1 1 220px;
   }
@@ -8421,6 +8431,18 @@ input:focus-visible {
   .site-search-overlay__panel {
     max-height: calc(100% - 0.5rem);
     border-radius: 0 0 5px 5px;
+  }
+  .site-search-overlay__toolbar p,
+  .search-page-intro__eyebrow,
+  .not-found-intro__eyebrow,
+  .search-summary__label,
+  .search-empty__label,
+  .search-facet-group > p,
+  .search-facet,
+  .search-facets__clear,
+  .search-result-card__meta,
+  .search-result-card__topics li {
+    font-size: 0.875rem;
   }
   .search-feedback--overlay {
     padding: 1rem;
@@ -8511,6 +8533,7 @@ input:focus-visible {
   .content-list__meta {
     flex-direction: row;
     gap: 0.65rem;
+    font-size: 0.875rem;
   }
   .home-reading-list__item {
     grid-template-columns: minmax(0, 1fr);
@@ -8523,6 +8546,10 @@ input:focus-visible {
   .home-reading-list__meta {
     flex-direction: row;
     gap: 0.7rem;
+    font-size: 0.875rem;
+  }
+  .home-entry__type {
+    font-size: 0.875rem;
   }
   .home-reading-list__item--media {
     grid-template-columns: minmax(0, 1fr) 5.75rem;
@@ -8532,6 +8559,17 @@ input:focus-visible {
     align-content: center;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+  }
+}
+@media (max-width: 360px) {
+  .site-nav__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 0.75rem;
+    overflow: visible;
+  }
+  .site-nav__links a {
+    text-align: center;
   }
 }
 @media print {

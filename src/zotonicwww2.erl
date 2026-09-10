@@ -33,7 +33,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(21).
+-mod_schema(22).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -311,7 +311,7 @@ manage_schema(_Version, Context) ->
 %% This function runs after the schema is installed or updated. It ensures the
 %% documentation task configuration and rebuilds the public search facets.
 -spec manage_data( z_module_manager:manage_schema(), z:context() ) -> ok.
-manage_data(_Version, Context) ->
+manage_data(Version, Context) ->
     case m_config:get_value(site, rebuild_secret, Context) of
         undefined ->
             m_config:set_value(site, rebuild_secret, z_ids:id(), Context);
@@ -324,6 +324,14 @@ manage_data(_Version, Context) ->
     ok = m_config:set_default_value(zotonicwww2, import_stage, <<"idle">>, Context),
     % ok = search_facet:ensure_table(Context),
     % ok = search_facet:pivot_all(Context),
+    maybe_queue_related_ids_repivot(Version, Context).
+
+
+%% @doc Repivot existing resources after restricting the related-id pivot to
+%% subject edges. New resources are pivoted through the normal update queue.
+maybe_queue_related_ids_repivot({upgrade, 22}, Context) ->
+    z_pivot_rsc:queue_all(Context);
+maybe_queue_related_ids_repivot(_Version, _Context) ->
     ok.
 
 
