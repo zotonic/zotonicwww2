@@ -8,7 +8,7 @@
         <a href="{{ module_id.page_url }}">{{ module_id.title }}</a>
     {% endif %}
 
-    {% if id.is_a.releasenotes and id.publication_start %}
+    {% if id.is_a.releasenotes and id.name != 'doc_releasenotes_index' and id.publication_start %}
         <span aria-hidden="true">·</span>
         <time datetime="{{ id.publication_start|date:"c":"UTC"|escape }}">
             {% trans "Released {date}" date=id.publication_start|date:"F Y":"UTC" %}
