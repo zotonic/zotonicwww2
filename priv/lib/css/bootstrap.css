@@ -6958,6 +6958,225 @@ h2 + .subject-label-list {
   width: 70%;
 }
 
+.page-subjects {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  width: 70%;
+  margin-bottom: 1.75rem;
+}
+
+.page-subjects__labels {
+  display: contents;
+}
+
+.page-subjects .subject-label-list--meta {
+  flex: 1 1 auto;
+  width: auto;
+  margin-bottom: 0;
+}
+
+.subject-label-edit {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.42rem 0.7rem;
+  border: 1px dashed rgba(28, 165, 222, 0.7);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--site-accent);
+  font-family: var(--site-ui-font);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.15;
+  cursor: pointer;
+}
+.subject-label-edit svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+.subject-label-edit:hover, .subject-label-edit:focus-visible {
+  border-style: solid;
+  background: rgba(28, 165, 222, 0.08);
+  color: var(--site-ink);
+}
+
+#dialog-connect-panels {
+  font-family: var(--site-ui-font);
+}
+#dialog-connect-panels > .tab-pane > form:first-child {
+  margin-bottom: 1.25rem;
+}
+#dialog-connect-panels .form-control {
+  font-family: var(--site-ui-font);
+  font-size: 1rem;
+}
+
+#find-connect-objects {
+  max-height: min(60vh, 38rem);
+  padding-right: 0.25rem;
+  overflow-y: auto;
+}
+#find-connect-objects .checkbox-list-heading {
+  margin: 1rem 0 0.45rem;
+  padding: 0.45rem 0.6rem;
+  border-left: 3px solid rgba(28, 165, 222, 0.6);
+  border-radius: 0.3rem;
+  background: rgba(23, 23, 23, 0.045);
+  font-family: var(--site-ui-font);
+}
+#find-connect-objects .checkbox-list-heading:first-child {
+  margin-top: 0;
+}
+#find-connect-objects .checkbox-list-heading__title {
+  margin: 0;
+  color: var(--site-muted);
+  font-family: var(--site-ui-font);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+#find-connect-objects .checkbox-list-heading__summary {
+  margin: 0.2rem 0 0;
+  color: var(--site-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+#find-connect-objects .checkbox-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.3rem 0.6rem;
+  padding: 0.25rem 0 0.85rem;
+}
+#find-connect-objects .checkbox-list--separated {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--site-rule);
+}
+#find-connect-objects .connection-checkbox {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.4rem;
+  font-family: var(--site-ui-font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+}
+#find-connect-objects .connection-checkbox:hover, #find-connect-objects .connection-checkbox:focus-within {
+  background: rgba(23, 23, 23, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(23, 23, 23, 0.07);
+}
+#find-connect-objects .connection-checkbox input[type=checkbox] {
+  position: static;
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.1rem 0 0;
+  accent-color: var(--site-accent);
+}
+#find-connect-objects .connection-checkbox__label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.6rem;
+  align-items: flex-start;
+  min-height: 1rem;
+  padding: 0;
+  margin: 0;
+  font-weight: inherit;
+  cursor: pointer;
+}
+#find-connect-objects .connection-checkbox--described .connection-checkbox__label {
+  padding-right: 1.5rem;
+}
+#find-connect-objects .connection-checkbox__title {
+  min-width: 0;
+}
+#find-connect-objects .connection-checkbox__help {
+  position: absolute;
+  z-index: 2;
+  top: 0.5rem;
+  right: 0.6rem;
+  margin: 0;
+}
+#find-connect-objects .connection-checkbox__help-toggle {
+  display: block;
+  width: 1.05rem;
+  height: 1.05rem;
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  list-style: none;
+  font-size: 0;
+  line-height: 0;
+  cursor: help;
+}
+#find-connect-objects .connection-checkbox__help-toggle::marker {
+  display: none;
+  content: none;
+}
+#find-connect-objects .connection-checkbox__help-toggle::-webkit-details-marker {
+  display: none !important;
+}
+#find-connect-objects .connection-checkbox__info {
+  display: inline-grid;
+  place-items: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  border: 1px solid rgba(28, 165, 222, 0.65);
+  border-radius: 50%;
+  color: var(--site-accent);
+  font-size: 0.66rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1;
+  cursor: help;
+}
+#find-connect-objects .connection-checkbox__description {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+#find-connect-objects .connection-checkbox__help:hover + .connection-checkbox__description,
+#find-connect-objects .connection-checkbox__help:focus-within + .connection-checkbox__description,
+#find-connect-objects .connection-checkbox__help[open] + .connection-checkbox__description {
+  position: absolute;
+  z-index: 12;
+  top: 2rem;
+  right: 0.5rem;
+  width: min(18rem, 100% - 1rem);
+  height: auto;
+  padding: 0.55rem 0.65rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  border-radius: 0.35rem;
+  background: var(--site-accent);
+  box-shadow: 0 5px 14px rgba(23, 23, 23, 0.18);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
 .module-components-nav {
   margin: 1.25rem 0 2rem;
   font-family: var(--site-ui-font);
@@ -8479,6 +8698,7 @@ input:focus-visible {
   }
   .page-meta,
   .subject-label-list--meta,
+  .page-subjects,
   .article-toc {
     width: 100%;
   }

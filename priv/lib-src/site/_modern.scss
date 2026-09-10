@@ -707,6 +707,250 @@ h2 + .subject-label-list {
     width: 70%;
 }
 
+.page-subjects {
+    display: flex;
+    gap: .55rem;
+    align-items: flex-start;
+    width: 70%;
+    margin-bottom: 1.75rem;
+}
+
+.page-subjects__labels {
+    display: contents;
+}
+
+.page-subjects .subject-label-list--meta {
+    flex: 1 1 auto;
+    width: auto;
+    margin-bottom: 0;
+}
+
+.subject-label-edit {
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: .4rem;
+    align-items: center;
+    padding: .42rem .7rem;
+    border: 1px dashed rgba($zotonic-blue, .7);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--site-accent);
+    font-family: var(--site-ui-font);
+    font-size: .82rem;
+    font-weight: 700;
+    line-height: 1.15;
+    cursor: pointer;
+
+    svg {
+        width: .9rem;
+        height: .9rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+    }
+
+    &:hover,
+    &:focus-visible {
+        border-style: solid;
+        background: rgba($zotonic-blue, .08);
+        color: var(--site-ink);
+    }
+}
+
+#dialog-connect-panels {
+    font-family: var(--site-ui-font);
+
+    > .tab-pane > form:first-child {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-control {
+        font-family: var(--site-ui-font);
+        font-size: 1rem;
+    }
+}
+
+#find-connect-objects {
+    max-height: min(60vh, 38rem);
+    padding-right: .25rem;
+    overflow-y: auto;
+
+    .checkbox-list-heading {
+        margin: 1rem 0 .45rem;
+        padding: .45rem .6rem;
+        border-left: 3px solid rgba($zotonic-blue, .6);
+        border-radius: .3rem;
+        background: rgba(23, 23, 23, .045);
+        font-family: var(--site-ui-font);
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .checkbox-list-heading__title {
+        margin: 0;
+        color: var(--site-muted);
+        font-family: var(--site-ui-font);
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+    }
+
+    .checkbox-list-heading__summary {
+        margin: .2rem 0 0;
+        color: var(--site-muted);
+        font-size: .8rem;
+        font-weight: 400;
+        line-height: 1.4;
+    }
+
+    .checkbox-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        gap: .3rem .6rem;
+        padding: .25rem 0 .85rem;
+    }
+
+    .checkbox-list--separated {
+        margin-bottom: .5rem;
+        border-bottom: 1px solid var(--site-rule);
+    }
+
+    .connection-checkbox {
+        position: relative;
+        min-width: 0;
+        margin: 0;
+        padding: .5rem .6rem;
+        border-radius: .4rem;
+        font-family: var(--site-ui-font);
+        font-size: .95rem;
+        font-weight: 600;
+        line-height: 1.3;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-within {
+            background: rgba(23, 23, 23, .03);
+            box-shadow: inset 0 0 0 1px rgba(23, 23, 23, .07);
+        }
+
+        input[type="checkbox"] {
+            position: static;
+            flex: 0 0 auto;
+            width: 1rem;
+            height: 1rem;
+            margin: .1rem 0 0;
+            accent-color: var(--site-accent);
+        }
+    }
+
+    .connection-checkbox__label {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: .6rem;
+        align-items: flex-start;
+        min-height: 1rem;
+        padding: 0;
+        margin: 0;
+        font-weight: inherit;
+        cursor: pointer;
+    }
+
+    .connection-checkbox--described .connection-checkbox__label {
+        padding-right: 1.5rem;
+    }
+
+    .connection-checkbox__title {
+        min-width: 0;
+    }
+
+    .connection-checkbox__help {
+        position: absolute;
+        z-index: 2;
+        top: .5rem;
+        right: .6rem;
+        margin: 0;
+    }
+
+    .connection-checkbox__help-toggle {
+        display: block;
+        width: 1.05rem;
+        height: 1.05rem;
+        padding: 0;
+        margin: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        list-style: none;
+        font-size: 0;
+        line-height: 0;
+        cursor: help;
+
+        &::marker {
+            display: none;
+            content: none;
+        }
+
+        &::-webkit-details-marker {
+            display: none !important;
+        }
+    }
+
+    .connection-checkbox__info {
+        display: inline-grid;
+        place-items: center;
+        width: 1.05rem;
+        height: 1.05rem;
+        border: 1px solid rgba($zotonic-blue, .65);
+        border-radius: 50%;
+        color: var(--site-accent);
+        font-size: .66rem;
+        font-weight: 700;
+        font-style: normal;
+        line-height: 1;
+        cursor: help;
+    }
+
+    .connection-checkbox__description {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .connection-checkbox__help:hover + .connection-checkbox__description,
+    .connection-checkbox__help:focus-within + .connection-checkbox__description,
+    .connection-checkbox__help[open] + .connection-checkbox__description {
+        position: absolute;
+        z-index: 12;
+        top: 2rem;
+        right: .5rem;
+        width: min(18rem, calc(100% - 1rem));
+        height: auto;
+        padding: .55rem .65rem;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+        border-radius: .35rem;
+        background: var(--site-accent);
+        box-shadow: 0 5px 14px rgba(23, 23, 23, .18);
+        color: white;
+        font-size: .8rem;
+        font-weight: 400;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+}
+
 .module-components-nav {
     margin: 1.25rem 0 2rem;
     font-family: var(--site-ui-font);
@@ -2393,6 +2637,7 @@ input:focus-visible {
 
     .page-meta,
     .subject-label-list--meta,
+    .page-subjects,
     .article-toc {
         width: 100%;
     }
