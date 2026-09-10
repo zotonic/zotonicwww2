@@ -91,29 +91,29 @@
                     </a>
                 </header>
 
-                <div class="home-release-list">
-                    {% for id in m.search.query::%{
+                {#
+                    Always reserve one position for the highest semantic version. A newer
+                    maintenance release can otherwise push a release candidate off the list.
+                #}
+                {% with m.rsc.doc_releasenotes_index.o.haspart
+                        |is_visible
+                        |zotonicwww2_by_version
+                        |first as highest_release
+                %}
+                    {% with m.search.query::%{
                             cat: [ "releasenotes" ],
                             is_published: true,
                             sort: [ "-is_featured", "-publication_start" ],
                             pagelen: 2,
                             page: 1
-                        }
+                        } as recent_releases
                     %}
-                        <article class="home-release-list__item do_clickable">
-                            <p class="home-entry__type">
-                                <span>{_ Release notes _}</span>
-                                {% if id.publication_start %}
-                                    <time datetime="{{ id.publication_start|date:"c":"UTC" }}">
-                                        {{ id.publication_start|date:_"j M Y":"UTC" }}
-                                    </time>
-                                {% endif %}
-                            </p>
-                            <h3><a href="{{ id.page_url }}">{{ id.title }}</a></h3>
-                            <p class="home-entry__summary">{{ id|summary:180 }}</p>
-                        </article>
-                    {% endfor %}
-                </div>
+                        <div class="home-release-list">
+                            {% include "_home_release_item.tpl" id=highest_release %}
+                            {% include "_home_release_item.tpl" id=recent_releases|without:highest_release|first %}
+                        </div>
+                    {% endwith %}
+                {% endwith %}
             </section>
 
             <section class="home-feed home-feed--reading" aria-labelledby="home-reading-title">
