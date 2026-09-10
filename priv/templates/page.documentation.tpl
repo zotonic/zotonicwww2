@@ -22,9 +22,7 @@
 
         {% block content_before_body %}{% endblock %}
 
-        <div class="body">
-            {{ id.body|show_media }}
-        </div>
+        {% include "_page_body.tpl" id=id %}
 
         {# Reference documentation and release notes are maintained on GitHub #}
         {% if id.github_url and (id.is_a.reference or id.is_a.releasenotes) %}

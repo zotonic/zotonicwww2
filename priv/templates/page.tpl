@@ -13,9 +13,7 @@
             {{ id.summary }}
         </p>
 
-        <div class="body">
-            {{ id.body|show_media }}
-        </div>
+        {% include "_page_body.tpl" id=id %}
     </article>
 {% endblock %}
 

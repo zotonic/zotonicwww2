@@ -830,6 +830,65 @@ h2 + .subject-label-list {
     --subject-label-color: #873535;
 }
 
+.article-toc {
+    width: 70%;
+    margin: 2rem 0 2.75rem;
+    padding: 1.25rem 1.4rem 1.35rem;
+    border-left: 3px solid var(--site-accent);
+    background: rgba($zotonic-blue, .065);
+    font-family: var(--site-ui-font);
+}
+
+.article-toc__title {
+    width: 100%;
+    margin: 0 0 .75rem;
+    color: var(--site-ink);
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .055em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.article-toc ol {
+    display: grid;
+    gap: .38rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    ol {
+        gap: .3rem;
+        margin-top: .35rem;
+        padding-left: 1rem;
+        border-left: 1px solid rgba($zotonic-blue, .28);
+    }
+
+    li {
+        margin: 0;
+        font-size: .95rem;
+        line-height: 1.4;
+    }
+
+    a {
+        color: var(--site-ink);
+        text-decoration-color: rgba($zotonic-blue, .45);
+        text-decoration-thickness: 1px;
+        text-underline-offset: .18em;
+
+        &:hover,
+        &:focus {
+            color: var(--site-accent);
+            text-decoration-color: currentColor;
+        }
+    }
+}
+
+.body > div[id^="toc"] {
+    scroll-margin-top: 6.5rem;
+}
+
 .subject-label-relation {
     color: var(--site-muted);
     font-family: var(--site-ui-font);
@@ -964,7 +1023,8 @@ h2 + .subject-label-list {
 }
 
 .page-relations .connections > h3,
-.page-relations .page-count {
+.page-relations .page-count,
+.release-index__label {
     width: 100%;
     margin: 2.5rem 0 0;
     color: var(--site-muted);
@@ -975,6 +1035,10 @@ h2 + .subject-label-list {
     letter-spacing: .06em;
     line-height: 1.4;
     text-transform: uppercase;
+}
+
+.release-index__label + .content-list {
+    margin-top: .75rem;
 }
 
 .page-relations .connections {
@@ -2328,7 +2392,8 @@ input:focus-visible {
     }
 
     .page-meta,
-    .subject-label-list--meta {
+    .subject-label-list--meta,
+    .article-toc {
         width: 100%;
     }
 
@@ -2528,6 +2593,7 @@ input:focus-visible {
 @media print {
     #header-wrapper,
     .related-content,
+    .article-toc,
     .edit-github,
     .page-edit-button,
     .site-search-overlay,

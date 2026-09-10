@@ -3,13 +3,36 @@
 {% block content_after %}
 <div class="page-relations">
 
-    {% if id.o.haspart|is_visible|zotonicwww2_by_version as haspart %}
-        <div class="content-list content-list--releases">
-            {% for id in haspart %}
-                {% catinclude "_list_item.tpl" id %}
-            {% endfor %}
-        </div>
-    {% endif %}
+    {% with id.o.haspart
+            |is_visible
+            |zotonicwww2_by_version
+            |first as newest_release
+    %}
+        {% if newest_release %}
+            <p class="release-index__label">{_ Newest version _}</p>
+            <div class="content-list content-list--releases">
+                {% catinclude "_list_item.tpl" newest_release label=_"Release notes" %}
+            </div>
+        {% endif %}
+
+        {% with m.search.query::%{
+                cat: [ "releasenotes" ],
+                is_published: true,
+                sort: [ "-publication_start", "-id" ],
+                pagelen: 1000,
+                page: 1
+            } as releases_by_date
+        %}
+            {% if releases_by_date %}
+                <p class="release-index__label">{_ Releases by date _}</p>
+                <div class="content-list content-list--releases">
+                    {% for release_id in releases_by_date|without:newest_release %}
+                        {% catinclude "_list_item.tpl" release_id %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    {% endwith %}
 
     {% for s in id.s.haspart|is_visible %}
         {% with s.o.haspart|is_visible as siblings %}
