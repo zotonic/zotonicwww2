@@ -71,6 +71,7 @@
 -export([
     manage_schema/2,
     manage_data/2,
+    observe_search_query/2,
     event/2
     ]).
 
@@ -321,9 +322,24 @@ manage_data(_Version, Context) ->
     end,
     ok = m_config:set_default_value(zotonicwww2, import_status, <<"idle">>, Context),
     ok = m_config:set_default_value(zotonicwww2, import_stage, <<"idle">>, Context),
-    ok = search_facet:ensure_table(Context),
-    ok = search_facet:pivot_all(Context),
+    % ok = search_facet:ensure_table(Context),
+    % ok = search_facet:pivot_all(Context),
     ok.
+
+
+%% @doc Provide the site-specific public documentation searches. The model
+%% returns search terms instead of executing SQL directly, allowing z_search to
+%% add its normal publication and ACL restrictions.
+observe_search_query(
+        #search_query{ name = <<"zotonicwww2_trigram_facets">>, args = Args },
+        Context) ->
+    m_zotonicwww2_search:search_query(Args, facets, Context);
+observe_search_query(
+        #search_query{ name = <<"zotonicwww2_trigram">>, args = Args },
+        Context) ->
+    m_zotonicwww2_search:search_query(Args, query, Context);
+observe_search_query(#search_query{}, _Context) ->
+    undefined.
 
 
 %% @doc Handle signed admin dashboard actions. Every action is authorized again

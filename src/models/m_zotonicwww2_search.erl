@@ -1,9 +1,13 @@
 %% @doc Public documentation search backed by the Zotonic search facet table.
 %%
-%% The `important` facet contains titles, summaries and subject keywords. It is
-%% searched first using the pg_trgm index maintained by mod_search. If that
-%% produces fewer than ?FALLBACK_THRESHOLD matches then the regular Zotonic
-%% full-text index is searched as a fallback.
+%% The `title` and `important` facets contain the text used for the public
+%% documentation search. A site-specific pg_trgm query searches both facets
+%% before falling back to Zotonic's regular full-text index.
+%%
+%% All public result and facet paths are evaluated as an anonymous visitor,
+%% including when the caller is logged in. SQL searches are returned through
+%% Zotonic's search pipeline so that publication and ACL restrictions are
+%% added before the query is executed.
 %% @end
 
 %% Copyright 2020-2026 Marc Worrell
@@ -24,7 +28,10 @@
 
 -behaviour(zotonic_model).
 
--export([m_get/3]).
+-export([
+    m_get/3,
+    search_query/3
+]).
 
 -include_lib("zotonic_core/include/zotonic.hrl").
 
@@ -99,6 +106,7 @@ search_page(Payload, Context) ->
 
 
 search(SearchName, Payload, Context) ->
+    AnonContext = z_acl:anondo(Context),
     Query = query(maps:get(<<"text">>, Payload, <<>>)),
     Page = positive_integer(maps:get(<<"page">>, Payload, 1), 1, 10000, 1),
     Limit = positive_integer(
@@ -106,23 +114,27 @@ search(SearchName, Payload, Context) ->
         8,
         ?MAX_LIMIT,
         ?DEFAULT_LIMIT),
-    Selected = selected_facets(Payload, Context),
+    Selected = selected_facets(Payload, AnonContext),
     case z_string:len(Query) >= 2 of
-        true -> search(SearchName, Query, Selected, Page, Limit, Context);
+        true -> search(SearchName, Query, Selected, Page, Limit, AnonContext);
         false -> empty_result(Query, Selected)
     end.
 
 search(SearchName, Query, Selected, Page, Limit, Context) ->
     BaseArgs = search_args(Selected, Limit),
     TrigramArgs = BaseArgs#{
-        <<"facet:important">> => Query,
+        <<"text">> => Query,
         <<"page">> => 1
     },
-    case m_search:search(SearchName, TrigramArgs, Context) of
+    TrigramSearchName = trigram_search_name(SearchName),
+    case m_search:search(TrigramSearchName, TrigramArgs, Context) of
         {ok, Trigram} when Trigram#search_result.total >= ?FALLBACK_THRESHOLD ->
             TrigramPage = case Page of
                 1 -> Trigram;
-                _ -> search_or_empty(SearchName, TrigramArgs#{ <<"page">> => Page }, Context)
+                _ -> search_or_empty(
+                    TrigramSearchName,
+                    TrigramArgs#{ <<"page">> => Page },
+                    Context)
             end,
             result_map(Query, Selected, TrigramPage, TrigramPage, false, Context);
         {ok, Trigram} ->
@@ -145,6 +157,106 @@ search(SearchName, Query, Selected, Page, Limit, Context) ->
                 Context),
             result_map(Query, Selected, empty_search_result(Limit), FullText, true, Context)
     end.
+
+
+trigram_search_name(<<"facets">>) ->
+    <<"zotonicwww2_trigram_facets">>;
+trigram_search_name(<<"query">>) ->
+    <<"zotonicwww2_trigram">>.
+
+
+%% @doc Build the site-specific trigram query. The returned search terms are
+%% processed by z_search, which adds the ACL SQL for the rsc table.
+%%
+%% This query deliberately uses two different pg_trgm operators:
+%%
+%% - `$1 OPERATOR(public.%) ft_title` compares the complete query with the
+%%   complete title. It is ranked with `similarity/2` and uses PostgreSQL's
+%%   `pg_trgm.similarity_threshold` (normally 0.3).
+%% - `$1 OPERATOR(public.<%) ft_important` looks for the query as the best
+%%   matching word extent within the longer combined text. It is ranked with
+%%   `word_similarity/2` and uses `pg_trgm.word_similarity_threshold`
+%%   (normally 0.6).
+%%
+%% The title branch intentionally has the more tolerant threshold, so a typo
+%% such as `ifeqaul` can match the complete title `ifequal` without making the
+%% combined-text search excessively broad. The branches are combined with
+%% `union` because neither is a strict superset of the other. They are kept in
+%% this site module until mod_search can express the choice between whole-value
+%% and word-extent trigram matching as a generic facet query option.
+-spec search_query(Args, Mode, Context) -> Result
+    when
+        Args :: map(),
+        Mode :: facets | query,
+        Context :: z:context(),
+        Result :: #search_sql_terms{} | #search_result{}.
+search_query(Args, Mode, Context) ->
+    Query = query(z_search:lookup_qarg_value(<<"text">>, Args, <<>>)),
+    BaseArgs = remove_query_term(<<"text">>, Args),
+    case search_query:search(BaseArgs, Context) of
+        #search_sql_terms{ terms = Terms } = Search ->
+            Search#search_sql_terms{
+                terms = [ trigram_search_term(Query, Context) | Terms ],
+                post_func = trigram_post_func(Mode)
+            };
+        #search_result{} = Result ->
+            Result
+    end.
+
+
+remove_query_term(Name, #{ <<"q">> := Terms } = Args) ->
+    Args#{ <<"q">> => [
+        Term
+        || Term <- Terms,
+           not is_query_term(Name, Term)
+    ] };
+remove_query_term(Name, Args) ->
+    maps:remove(Name, Args).
+
+
+is_query_term(Name, #{ <<"term">> := Name }) -> true;
+is_query_term(_Name, _Term) -> false.
+
+
+trigram_search_term(Query, Context) ->
+    Normalized = z_search:normalize_value(<<"title">>, text, Query, Context),
+    #search_sql_term{
+        label = {zotonicwww2, trigram},
+        join_inner = #{
+            <<"facet">> => {<<"search_facet">>, <<"facet.id = rsc.id">>}
+        },
+        where = [[
+            <<"facet.id in (">>,
+                <<"select id from search_facet where ">>,
+                    '$1', <<" OPERATOR(public.%) ft_title ">>,
+                <<"union ">>,
+                <<"select id from search_facet where ">>,
+                    '$1', <<" OPERATOR(public.<%) ft_important">>,
+            <<")">>
+        ]],
+        sort = [
+            [
+                <<"coalesce(">>, '$1',
+                <<" OPERATOR(public.%) facet.ft_title, false) desc">>
+            ],
+            [
+                <<"coalesce(public.similarity(">>, '$1',
+                <<", facet.ft_title), 0) desc">>
+            ],
+            [
+                <<"coalesce(public.word_similarity(">>, '$1',
+                <<", facet.ft_important), 0) desc">>
+            ],
+            <<"rsc.id asc">>
+        ],
+        args = [ Normalized ]
+    }.
+
+
+trigram_post_func(facets) ->
+    fun search_facet:search_query_facets/3;
+trigram_post_func(query) ->
+    undefined.
 
 search_args(Selected, Limit) ->
     Facets = maps:filter(

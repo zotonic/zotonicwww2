@@ -1,5 +1,8 @@
 {% overrules %}
 
+{# Dedicated title text for exact and fuzzy title matching. #}
+{% block title_ft %}{{ id.title }}{% endblock %}
+
 {#
     Important documentation text. The `_ft` suffix makes mod_search store a
     normalized value and create a PostgreSQL GIN pg_trgm index for it.

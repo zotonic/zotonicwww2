@@ -60,11 +60,40 @@ and the public faceted-search index:
 - `Imported documentation`
 - `Deprecated imported documentation`
 
-The search index combines title, summary, and `subject` keywords in a
-PostgreSQL trigram-indexed facet. The schema migration checks the facet table
-and queues a full repivot, so it is safe to deploy before the content import.
-While that repivot is running, public searches automatically fall back to the
-regular full-text index.
+The search index has a dedicated title facet and a combined facet containing
+title, summary, category, and `subject` keywords. The public site query uses
+PostgreSQL whole-string trigram similarity for titles and word similarity for
+the combined text, with title matches ranked first. It runs through Zotonic's
+search pipeline for ACL filtering, and the public search model always uses an
+anonymous context. The schema migration checks the facet table and queues a
+full repivot, so it is safe to deploy before the content import. While that
+repivot is running, public searches automatically fall back to the regular
+full-text index.
+
+### Site-specific trigram operators
+
+The two trigram branches intentionally use different PostgreSQL `pg_trgm`
+operators:
+
+| Facet | Match | Ranking | Default threshold |
+| --- | --- | --- | --- |
+| `ft_title` | `$1 OPERATOR(public.%) ft_title` | `similarity($1, ft_title)` | `pg_trgm.similarity_threshold`, normally `0.3` |
+| `ft_important` | `$1 OPERATOR(public.<%) ft_important` | `word_similarity($1, ft_important)` | `pg_trgm.word_similarity_threshold`, normally `0.6` |
+
+`%` compares the complete query with the complete title. `<%` searches for the
+query as the best matching word extent inside the longer combined text. The
+title match is intentionally more tolerant, which catches misspellings such as
+`ifeqaul` without lowering the threshold for every page containing a related
+word. Because the operators and thresholds differ, neither result set is a
+strict superset of the other; the site query combines them with `UNION` and
+ranks title matches first.
+
+This implementation is local to `zotonicwww2` for now. It can move into
+`mod_search` when facet query terms gain an explicit choice between
+whole-value trigram matching (`%`/`similarity`) and word-extent matching
+(`<%`/`word_similarity`). Keep using parameterized query terms and Zotonic's
+normal search pipeline when making that change, so that ACL SQL continues to
+be injected centrally.
 
 Release-note Markdown declares an ISO date in the YAML front-matter
 `release_date` property. These values were initially derived from the release
