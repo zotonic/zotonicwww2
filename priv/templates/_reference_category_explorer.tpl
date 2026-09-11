@@ -12,8 +12,12 @@
 <section class="reference-explorer" aria-labelledby="reference-explorer-title">
     <header class="reference-explorer__header">
         <div>
-            <p class="reference-explorer__eyebrow">{_ Browse the reference _}</p>
-            <h2 id="reference-explorer-title">{_ Explore _} {{ category_id.title }}</h2>
+            <p class="reference-explorer__eyebrow">
+                {% if explorer_eyebrow %}{{ explorer_eyebrow }}{% else %}{_ Browse the reference _}{% endif %}
+            </p>
+            <h2 id="reference-explorer-title">
+                {% if explorer_title %}{{ explorer_title }}{% else %}{_ Explore _} {{ category_id.title }}{% endif %}
+            </h2>
         </div>
         <p class="reference-explorer__count">
             {{ explorer.total }}
@@ -27,10 +31,12 @@
           data-onsubmit-topic="model/location/post/qlist/submit"
           data-oninput-topic="model/location/post/qlist/submit">
         <div class="reference-explorer__search">
-            <label for="{{ #query }}">{_ Search in _} {{ category_id.title }}</label>
+            <label for="{{ #query }}">
+                {% if explorer_search_label %}{{ explorer_search_label }}{% else %}{_ Search in _} {{ category_id.title }}{% endif %}
+            </label>
             <div>
                 <input id="{{ #query }}" type="search" name="qs" value="{{ explorer.query|escape }}"
-                       placeholder="{_ Search by name or description _}">
+                       placeholder="{% if explorer_search_placeholder %}{{ explorer_search_placeholder }}{% else %}{_ Search by name or description _}{% endif %}">
             </div>
         </div>
 
@@ -166,8 +172,12 @@
         </div>
     {% else %}
         <div class="reference-explorer__empty">
-            <h3>{_ No matching documentation _}</h3>
-            <p>{_ Try a broader keyword or clear the filters. _}</p>
+            <h3>
+                {% if explorer_empty_title %}{{ explorer_empty_title }}{% else %}{_ No matching documentation _}{% endif %}
+            </h3>
+            <p>
+                {% if explorer_empty_text %}{{ explorer_empty_text }}{% else %}{_ Try a broader keyword or clear the filters. _}{% endif %}
+            </p>
         </div>
     {% endif %}
 </section>

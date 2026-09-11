@@ -14,6 +14,6 @@
             module=explorer.module
             category_id=category_id
          %}">
-        {_ Loading more documentation… _}
+        {_ Loading more results… _}
     </div>
 {% endif %}

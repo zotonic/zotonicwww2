@@ -33,7 +33,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(22).
+-mod_schema(23).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -199,6 +199,14 @@ manage_schema(_Version, Context) ->
                 {summary, <<"Intro blurb for on home page.">>},
                 {body, <<"Longer story displayed on home page.">>},
                 {page_path, <<"/">>}
+            ]},
+
+            % The main navigation start page offers the two complementary
+            % documentation collections without exposing their categories.
+            {page_start, collection, [
+                {title, <<"Start with Zotonic">>},
+                {summary, <<"Choose the guide that matches what you want to do with Zotonic.">>},
+                {page_path, <<"/start">>}
             ]},
 
             % The core module does not have an application-level module resource,

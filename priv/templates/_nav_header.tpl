@@ -7,7 +7,7 @@
     </a>
 
     <ul class="site-nav__links">
-        <li><a href="{{ m.rsc.userguide.page_url }}">{_ Start _}</a></li>
+        <li><a href="{{ m.rsc.page_start.page_url }}">{_ Start _}</a></li>
         <li><a href="{{ m.rsc.cookbook.page_url }}">{_ Guides _}</a></li>
         <li><a href="{{ m.rsc.reference.page_url }}">{_ Reference _}</a></li>
         <li><a href="{{ m.rsc.doc_releasenotes_index.page_url }}">{_ Releases _}</a></li>

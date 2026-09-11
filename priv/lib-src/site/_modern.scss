@@ -2010,6 +2010,10 @@ h2 + .subject-label-list {
     margin-top: 1rem;
 }
 
+.start-guides__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .category-index__card {
     display: flex;
     margin: 0;
