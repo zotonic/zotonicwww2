@@ -25,8 +25,8 @@ msgid "All"
 msgstr "Alles"
 
 #: _build/default/lib/zotonicwww2/priv/templates/page.media.tpl:37
-msgid "Download in new window"
-msgstr "Downloaden in een nieuw venster"
+msgid "Open in new window"
+msgstr "Openen in een nieuw venster"
 
 #: _build/default/lib/zotonicwww2/priv/templates/_nav_sidedrawer.tpl:57
 msgid "Edit menu"

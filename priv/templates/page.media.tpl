@@ -9,6 +9,7 @@
 
 {% block content %}
     <article>
+        {% include "_page_meta.tpl" %}
         <h1>{{ id.title }}</h1>
 
         {% include "_body_media.tpl" id=id mediaclass="body-media-large" align="left" caption='-' link={media_inline id=id}|url %}
@@ -28,13 +29,11 @@
         {% endif %}
 
         {% if id.medium as medium %}
+            {% include "_media_metadata.tpl" id=id medium=medium %}
+
             {% if medium.size > 0 %}
-                <p class="text-muted">
-                    {# Medium properties are not sanitized, so be careful to escape them #}
-                    {{ medium.mime|escape }} {{ medium.size|filesizeformat }}
-                </p>
-                <p>
-                    <a href="{% url media_inline id=id %}" target="_blank" class="btn btn-primary">{_ Download in new window _}</a>
+                <p class="media-metadata__actions">
+                    <a href="{% url media_inline id=id %}" target="_blank" class="btn btn-primary">{_ Open in new window _}</a>
                 </p>
             {% endif %}
         {% endif %}

@@ -158,6 +158,21 @@
                         {% endwith %}
                     {% endfor %}
                 </div>
+
+                <nav class="home-feed__links" aria-label="{_ Browse articles and cookbook recipes _}">
+                    <a class="home-feed__more" href="{{ m.rsc.article.page_url }}">
+                        {_ All articles _}
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                        </svg>
+                    </a>
+                    <a class="home-feed__more" href="{{ m.rsc.cookbook.page_url }}">
+                        {_ All cookbook recipes _}
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                        </svg>
+                    </a>
+                </nav>
             </section>
 
             {% with m.search.query::%{
@@ -207,6 +222,14 @@
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
+                                        <nav class="home-feed__links home-feed__links--shelf" aria-label="{_ Browse documents _}">
+                                            <a class="home-feed__more" href="{{ m.rsc.document.page_url }}">
+                                                {_ All documents _}
+                                                <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                    <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                                                </svg>
+                                            </a>
+                                        </nav>
                                     </section>
                                 {% endif %}
 
@@ -229,6 +252,14 @@
                                                 {% include "_home_media_item.tpl" id=media_id kind="video" %}
                                             {% endfor %}
                                         </div>
+                                        <nav class="home-feed__links home-feed__links--shelf" aria-label="{_ Browse videos _}">
+                                            <a class="home-feed__more" href="{{ m.rsc.video.page_url }}">
+                                                {_ All videos _}
+                                                <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                    <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+                                                </svg>
+                                            </a>
+                                        </nav>
                                     </section>
                                 {% endif %}
                             </div>
