@@ -132,6 +132,14 @@
           {% block below_body %}
           {% endblock %}
 
+          {# Category resources share this navigation, including named category
+           # pages which provide their own content_after block. #}
+          {% block category_navigation %}
+            {% if id.is_a.category %}
+              {% include "_category_tree_navigation.tpl" id=id %}
+            {% endif %}
+          {% endblock %}
+
           <!-- This block is only for this site -->
           {% block content_after %}
           {% endblock %}

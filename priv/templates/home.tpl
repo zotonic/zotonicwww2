@@ -159,6 +159,83 @@
                     {% endfor %}
                 </div>
             </section>
+
+            {% with m.search.query::%{
+                    cat: [ "document" ],
+                    is_published: true,
+                    sort: [ "-is_featured", "-publication_start" ],
+                    pagelen: 3,
+                    page: 1
+                } as documents
+            %}
+                {% with m.search.query::%{
+                        cat: [ "video" ],
+                        is_published: true,
+                        sort: [ "-is_featured", "-publication_start" ],
+                        pagelen: 3,
+                        page: 1
+                    } as videos
+                %}
+                    {% if documents or videos %}
+                        <section class="home-feed home-feed--media" aria-labelledby="home-media-title">
+                            <header class="home-feed__header">
+                                <div>
+                                    <h2 id="home-media-title">{_ Watch and read _}</h2>
+                                    <p>{_ Videos and PDF resources from the Zotonic community—an evolving collection of talks, presentations, handouts, and papers. _}</p>
+                                </div>
+                            </header>
+
+                            <div class="home-media-shelves">
+                                {% if documents %}
+                                    <section class="home-media-shelf" aria-labelledby="home-pdfs-title">
+                                        <header class="home-media-shelf__header">
+                                            <span class="home-media-shelf__icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M6.5 2.5h7l4 4v15h-11z" />
+                                                    <path d="M13.5 2.5v4h4M9 12h6M9 16h6" />
+                                                </svg>
+                                            </span>
+                                            <div>
+                                                <h3 id="home-pdfs-title">{_ PDFs _}</h3>
+                                                <p>{_ Publications and downloadable material _}</p>
+                                            </div>
+                                        </header>
+                                        <div class="home-media-list">
+                                            {% for media_id in documents %}
+                                                {% if m.media[media_id].mime == "application/pdf" %}
+                                                    {% include "_home_media_item.tpl" id=media_id kind="pdf" %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </section>
+                                {% endif %}
+
+                                {% if videos %}
+                                    <section class="home-media-shelf" aria-labelledby="home-videos-title">
+                                        <header class="home-media-shelf__header">
+                                            <span class="home-media-shelf__icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24">
+                                                    <rect x="2.5" y="5" width="19" height="14" rx="2" />
+                                                    <path class="home-media-shelf__icon-fill" d="m10 9 5 3-5 3z" />
+                                                </svg>
+                                            </span>
+                                            <div>
+                                                <h3 id="home-videos-title">{_ Videos _}</h3>
+                                                <p>{_ Talks, demos, and recorded presentations _}</p>
+                                            </div>
+                                        </header>
+                                        <div class="home-media-list">
+                                            {% for media_id in videos %}
+                                                {% include "_home_media_item.tpl" id=media_id kind="video" %}
+                                            {% endfor %}
+                                        </div>
+                                    </section>
+                                {% endif %}
+                            </div>
+                        </section>
+                    {% endif %}
+                {% endwith %}
+            {% endwith %}
         </div>
 
     </article>
