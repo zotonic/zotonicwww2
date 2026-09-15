@@ -84,7 +84,7 @@
                 {% endif %}
                 {% for group in explorer.subject_groups %}
                     <details class="reference-facet-group"
-                             {% if group.key == 'domain' or group.key == 'architecture' or explorer.subject.category_id == group.category_id %}open{% endif %}>
+                             {% if explorer.subject.category_id == group.category_id %}open{% endif %}>
                         <summary>
                             <span>{{ group.category_id.title }}</span>
                             <span>{{ group.counts|length }}</span>

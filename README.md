@@ -9,6 +9,14 @@ operating system's `TMPDIR`. Erlang module documentation, Markdown reference
 pages, release notes, and generated EDoc are synchronized from that checkout.
 The checkout is cloned again automatically if the operating system removes it.
 
+The documentation build and import require Erlang/OTP 28 or newer. OTP 27
+does not retain binary documentation literals such as
+`-moduledoc(<<"...">>)` in the beam file's EEP-48 `Docs` chunk; the resulting
+`module_doc` value is `none`. Running an import from an OTP 27 build can
+therefore replace documented module pages, including `mod_survey` and
+`mod_export`, with an empty body. Upgrade the production host to OTP 28 before
+running **Fetch and rebuild** or **Import compiled docs**.
+
 The temporary location is intentional. Native dependencies built with GNU Make
 can misinterpret whitespace in absolute target paths. On macOS, Zotonic's
 default data directory contains `Application Support`, whereas the per-user
