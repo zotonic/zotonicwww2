@@ -13,7 +13,8 @@
         %}
             {% if cluster_view.active %}
                 <article class="cluster-category-heading">
-                    <h1>{{ id.title }}</h1>
+                    <h1 class="category-page__title">{{ id.title }}</h1>
+                    {% include "_category_tree_navigation.tpl" id=id %}
                     <a class="cluster-category-heading__up"
                        href="{% if cluster_view.parent_path_value %}{% url none cluster=cluster_view.parent_path_value %}{% else %}{{ id.page_url }}{% endif %}">
                         <span aria-hidden="true">↑</span>

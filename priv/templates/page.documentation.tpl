@@ -3,7 +3,11 @@
 {% block content %}
     <article>
         {% include "_page_meta.tpl" %}
-        <h1>{{ id.title }}</h1>
+        <h1{% if id.is_a.category %} class="category-page__title"{% endif %}>{{ id.title }}</h1>
+
+        {% if id.is_a.category %}
+            {% include "_category_tree_navigation.tpl" id=id %}
+        {% endif %}
 
         {% if id.depiction as dep %}
             {% include "_body_media.tpl" id=dep.id %}
@@ -35,3 +39,6 @@
         {% endif %}
     </article>
 {% endblock %}
+
+{# Category navigation is rendered beside the page heading above. #}
+{% block category_navigation %}{% endblock %}
