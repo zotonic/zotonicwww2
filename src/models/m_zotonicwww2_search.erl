@@ -39,6 +39,13 @@
 -define(DEFAULT_LIMIT, 20).
 -define(MAX_LIMIT, 50).
 -define(MAX_QUERY_LENGTH, 120).
+-define(SEARCH_CATEGORIES, [
+    <<"text">>,
+    <<"media">>,
+    <<"keyword">>,
+    <<"category">>,
+    <<"collection">>
+]).
 -define(BROWSE_DEFAULT_LIMIT, 40).
 -define(CLUSTER_PREVIEW_LIMIT, 3).
 -define(MAX_CLUSTER_DEPTH, 8).
@@ -267,7 +274,7 @@ search_args(Selected, Limit) ->
             <<"module">> => maps:get(module, Selected)
         }),
     #{
-        <<"cat">> => [ <<"text">>, <<"media">> ],
+        <<"cat">> => ?SEARCH_CATEGORIES,
         <<"is_findable">> => true,
         <<"is_published">> => true,
         <<"pagelen">> => Limit,
@@ -1016,6 +1023,11 @@ positive_integer(Value, Min, Max, Default) ->
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+
+search_categories_test() ->
+    Selected = #{ category => undefined, subject => undefined, module => undefined },
+    Args = search_args(Selected, ?DEFAULT_LIMIT),
+    ?assertEqual(?SEARCH_CATEGORIES, maps:get(<<"cat">>, Args)).
 
 path_query_test_() ->
     [
