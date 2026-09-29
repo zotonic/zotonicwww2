@@ -555,13 +555,19 @@ has_path_whitespace(Path) ->
 
 -spec edoc_dir(z:context()) -> binary().
 edoc_dir(Context) ->
-    unicode:characters_to_binary(filename:join([ base_dir(Context), <<"doc">>, <<"edoc">> ])).
+    Path = unicode:characters_to_binary(filename:join([ base_dir(Context), <<"doc">>, <<"edoc">> ])),
+    true = is_binary(Path),
+    Path.
 
 -spec apps_dir(z:context()) -> file:filename_all().
 apps_dir(Context) -> filename:join([ git_dir(Context), <<"apps">> ]).
 
 -spec base_dir(z:context()) -> file:filename_all().
-base_dir(Context) -> z_path:files_subdir_ensure(<<"data">>, Context).
+base_dir(Context) ->
+    case z_path:files_subdir_ensure(<<"data">>, Context) of
+        {error, Reason} -> error({files_subdir, Reason});
+        Path -> Path
+    end.
 
 config(Key, Default, Context) ->
     case m_config:get_value(zotonicwww2, Key, Context) of

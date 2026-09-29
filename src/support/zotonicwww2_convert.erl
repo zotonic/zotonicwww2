@@ -410,14 +410,14 @@ register_page_paths(Id, Paths, Context) ->
 register_page_paths(_Id, [], Count, _Context) ->
     {ok, Count};
 register_page_paths(Id, [Path | Rest], Count, Context) ->
-    case z_db:q(
+    case z_db:equery(
         "insert into rsc_page_path_log (id, page_path) "
         "values ($1, $2) "
         "on conflict (page_path) do update set id = excluded.id",
         [Id, Path],
         Context)
     of
-        1 -> register_page_paths(Id, Rest, Count + 1, Context);
+        {ok, 1} -> register_page_paths(Id, Rest, Count + 1, Context);
         {error, _} = Error -> Error
     end.
 
@@ -522,7 +522,6 @@ resource_page_url(Id, Context) ->
     m_rsc:p_no_acl(Id, page_url, Context).
 
 
-page_path_log_count(undefined, _Context) -> 0;
 page_path_log_count(Id, Context) ->
     z_db:q1("select count(*) from rsc_page_path_log where id = $1", [Id], Context).
 

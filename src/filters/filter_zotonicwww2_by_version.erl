@@ -62,8 +62,6 @@ version(Id, Context) ->
 
 % Release note titles are always of the form: "Release 9.9.9"
 % Map this to integers for easy sorting.
-vsn(undefined) ->
-    [];
 vsn(<<"Release ", Vsn/binary>>) ->
     vsn(Vsn);
 vsn(<<"Notes", _/binary>>) ->

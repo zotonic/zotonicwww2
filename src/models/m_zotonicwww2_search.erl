@@ -970,9 +970,6 @@ query(Value) ->
 %% @doc Turn a missing request path into useful search words. URL and filename
 %% punctuation becomes whitespace; routing words and numeric resource ids are
 %% omitted because they make documentation matches less relevant.
-path_query(Path0) ->
-    path_query(Path0, en).
-
 path_query(Path0, Language) ->
     Path = decode_path(z_string:sanitize_utf8(path_value(Path0))),
     Name = z_string:to_name(Path),
@@ -1022,6 +1019,9 @@ positive_integer(Value, Min, Max, Default) ->
 
 
 -ifdef(TEST).
+path_query(Path0) ->
+    path_query(Path0, en).
+
 -include_lib("eunit/include/eunit.hrl").
 
 search_categories_test() ->
