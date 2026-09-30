@@ -103,7 +103,7 @@ split_sections([T | Rest], Id, Acc, Sections) ->
     split_sections(Rest, Id, [T | Acc], Sections).
 
 entry(Id, Tokens, Anchors, Sections) ->
-    Body = iolist_to_binary(z_html_parse:to_html(lists:flatmap(fun(T) -> rewrite(T, Anchors) end, Tokens))),
+    Body = iolist_to_binary(z_html_parse:to_html(lists:flatmap(fun(T) -> rewrite(T, Anchors) end, section_headings(Id, Tokens)))),
     Index = case Id of
         <<"introduction">> -> index(Sections);
         <<"models">> -> index([{I, Ts} || {<<"model.", _/binary>> = I, Ts} <- Sections]);
@@ -118,13 +118,33 @@ entry(Id, Tokens, Anchors, Sections) ->
                               <<"reference">> | keywords(Id)]),
       props => #{<<"page_path">> => page_path(Id), <<"doc_source_anchor">> => Id}}.
 
-%% Promote upstream paragraph labels to semantic headings for the standard TOC.
+%% The section heading becomes the resource title, regardless of its wording.
+%% Preserve its source anchor, and promote remaining H3 subsections below the H1.
+section_headings(_Id, []) -> [];
+section_headings(Id, [{start_tag, Tag, Attrs, _} = Token | Rest])
+    when Tag =:= <<"h1">>; Tag =:= <<"h2">>; Tag =:= <<"h3">> ->
+    case proplists:get_value(<<"id">>, Attrs) of
+        Id ->
+            [{end_tag, Tag} | Tail] = lists:dropwhile(fun(T) -> T =/= {end_tag, Tag} end, Rest),
+            [{start_tag, <<"a">>, [{<<"name">>, Id}], false}, {end_tag, <<"a">>}
+                | section_headings(Id, Tail)];
+        _ when Tag =:= <<"h3">> ->
+            [{start_tag, <<"h2">>, Attrs, false} | section_headings(Id, Rest)];
+        _ -> [Token | section_headings(Id, Rest)]
+    end;
+section_headings(Id, [{end_tag, <<"h3">>} | Rest]) ->
+    [{end_tag, <<"h2">>} | section_headings(Id, Rest)];
+section_headings(Id, [Token | Rest]) ->
+    [Token | section_headings(Id, Rest)].
+
+%% Promote upstream paragraph labels to H2 sections below the page title.
+%% This also keeps operations at the top level of the standard TOC.
 %% Keep any function signature with its heading and preserve the paragraph body.
 operation_headings(Html) ->
     re:replace(Html,
-        <<"<p(?:\\s[^>]*)?>\\s*<(strong|em) class=\"header\">(.*?)</\\1>"
-          "(\\s*<code>.*?</code>)?\\s*<br\\s*/?>">>,
-        <<"<h4>\\2\\3</h4><p>">>,
+        <<"<p(?:\\s[^>]*)?>\\s*<(strong|em) class=\"header\">((?:(?!</(?:strong|em)>).)*)</\\1>"
+          "(\\s*<code>(?:(?!</code>).)*</code>)?\\s*(?:<br\\s*/?>)?">>,
+        <<"<h2>\\2\\3</h2><p>">>,
         [global, dotall, {return, binary}]).
 
 index(Sections) ->
@@ -218,16 +238,31 @@ operation_headings_test() ->
     Html = <<"<a name=\"operation\"></a><p>\n<strong class=\"header\">post/reload</strong>"
         "<br>Reload.</p><pre>&lt;strong class=\"header\"&gt;Example&lt;/strong&gt;</pre>">>,
     Converted = operation_headings(Html),
-    ?assertEqual(<<"<a name=\"operation\"></a><h4>post/reload</h4><p>Reload.</p>"
+    ?assertEqual(<<"<a name=\"operation\"></a><h2>post/reload</h2><p>Reload.</p>"
         "<pre>&lt;strong class=\"header\"&gt;Example&lt;/strong&gt;</pre>">>, Converted),
-    ?assertEqual(<<"<h4>call <code>call(topic)</code></h4><p>Call.</p>">>,
+    ?assertEqual(<<"<h2>call <code>call(topic)</code></h2><p>Call.</p>">>,
         operation_headings(<<"<p><strong class=\"header\">call</strong> "
             "<code>call(topic)</code><br>Call.</p>">>)),
     {ShortToc, _} = filter_toc:toc(Converted, 4, undefined),
     ?assertEqual([], ShortToc),
     {LongToc, Body} = filter_toc:toc(binary:copy(Converted, 4), 4, undefined),
-    ?assertNotEqual([], LongToc),
-    ?assertNotEqual(nomatch, binary:match(Body, <<"post/reload</h4>">>)).
+    ?assertEqual(4, length(LongToc)),
+    ?assert(lists:all(fun({_, _, Children}) -> Children =:= [] end, LongToc)),
+    ?assertNotEqual(nomatch, binary:match(Body, <<"post/reload</h2>">>)).
+
+missing_heading_break_test() ->
+    ?assertEqual(<<"<h2>post/+key</h2><p>Store.</p><pre>example</pre>"
+        "<h2>post/+key/+subkey</h2><p>Subkey.</p>">>,
+        operation_headings(<<"<p><strong class=\"header\">post/+key</strong>"
+            "Store.</p><pre>example</pre><p><strong class=\"header\">post/+key/+subkey</strong>"
+            "<br>Subkey.</p>">>)).
+
+section_headings_test() ->
+    Tokens = z_html_parse:tokens(<<"<h3 id=\"cotonic.broker\">Broker</h3>"
+        "<p>Introduction.</p><h3>Installation</h3><p>Install.</p>">>),
+    Html = iolist_to_binary(z_html_parse:to_html(section_headings(<<"cotonic.broker">>, Tokens))),
+    ?assertEqual(<<"<a name=\"cotonic.broker\"></a><p>Introduction.</p>"
+        "<h2>Installation</h2><p>Install.</p>">>, Html).
 
 split_and_link_test() ->
     Entries = collect_entries(test_document()),
