@@ -69,6 +69,7 @@
 % Exports - if exports change then the module is restarted after
 % compilation.
 -export([
+    observe_tick_24h/2,
     manage_schema/2,
     manage_data/2,
     observe_search_query/2,
@@ -365,6 +366,18 @@ observe_search_query(
 observe_search_query(#search_query{}, _Context) ->
     undefined.
 
+
+%% @doc Queue the daily Cotonic revision check outside the notification handler.
+-spec observe_tick_24h(tick_24h, z:context()) -> ok.
+observe_tick_24h(tick_24h, Context) ->
+    case m_zotonicwww2_git:queue(cotonic_poll, Context) of
+        {ok, _} -> ok;
+        {error, Reason} ->
+            ?LOG_ERROR(#{in => zotonicwww2,
+                text => <<"Could not queue daily Cotonic documentation poll">>,
+                result => error, reason => Reason}),
+            ok
+    end.
 
 %% @doc Handle signed admin dashboard actions. Every action is authorized again
 %% server-side even though Zotonic postbacks are signed.

@@ -4,7 +4,7 @@
 %% links are resolved against the complete manifest before anything is stored.
 -module(zotonicwww2_cotonic_import).
 
--export([import_docs/1, collect_entries/1]).
+-export([import_docs/1, poll/1, collect_entries/1]).
 
 -include_lib("zotonic_core/include/zotonic.hrl").
 
@@ -12,8 +12,20 @@
 -spec import_docs(Context) -> Result when
     Context :: z:context(), Result :: {ok, map()} | {error, term()}.
 import_docs(Context) ->
+    import_docs(true, Context).
+
+%% @doc Fetch daily and import only when the upstream revision has changed.
+-spec poll(Context) -> Result when
+    Context :: z:context(), Result :: {ok, map()} | {error, term()}.
+poll(Context) ->
+    import_docs(false, Context).
+
+import_docs(IsForce, Context) ->
+    Imported = m_config:get_value(zotonicwww2, cotonic_imported_hash, Context),
     Dir = filename:join(filename:dirname(m_zotonicwww2_git:git_dir(Context)), "cotonic-git"),
     case checkout(Dir) of
+        {ok, Imported} when not IsForce ->
+            {ok, #{}};
         {ok, Commit} ->
             {ok, Html} = file:read_file(filename:join(Dir, "index.html")),
             Entries = collect_entries(Html),
