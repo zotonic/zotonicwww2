@@ -111,12 +111,21 @@ entry(Id, Tokens, Anchors, Sections) ->
     end,
     #{name => page_name(Id), title => title(Id),
       category => category(Id), kind => cotonic,
-      body => <<Body/binary, Index/binary>>,
+      body => operation_headings(<<Body/binary, Index/binary>>),
       source_path => <<"index.html">>,
       source_url => <<"https://github.com/cotonic/cotonic/blob/master/index.html">>,
       keywords => lists:usort([<<"cotonic">>, <<"javascript">>, <<"frontend_developer">>,
                               <<"reference">> | keywords(Id)]),
       props => #{<<"page_path">> => page_path(Id), <<"doc_source_anchor">> => Id}}.
+
+%% Promote upstream paragraph labels to semantic headings for the standard TOC.
+%% Keep any function signature with its heading and preserve the paragraph body.
+operation_headings(Html) ->
+    re:replace(Html,
+        <<"<p(?:\\s[^>]*)?>\\s*<(strong|em) class=\"header\">(.*?)</\\1>"
+          "(\\s*<code>.*?</code>)?\\s*<br\\s*/?>">>,
+        <<"<h4>\\2\\3</h4><p>">>,
+        [global, dotall, {return, binary}]).
 
 index(Sections) ->
     iolist_to_binary([<<"<ul>">>, [
@@ -204,6 +213,21 @@ keywords(Id) ->
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+
+operation_headings_test() ->
+    Html = <<"<a name=\"operation\"></a><p>\n<strong class=\"header\">post/reload</strong>"
+        "<br>Reload.</p><pre>&lt;strong class=\"header\"&gt;Example&lt;/strong&gt;</pre>">>,
+    Converted = operation_headings(Html),
+    ?assertEqual(<<"<a name=\"operation\"></a><h4>post/reload</h4><p>Reload.</p>"
+        "<pre>&lt;strong class=\"header\"&gt;Example&lt;/strong&gt;</pre>">>, Converted),
+    ?assertEqual(<<"<h4>call <code>call(topic)</code></h4><p>Call.</p>">>,
+        operation_headings(<<"<p><strong class=\"header\">call</strong> "
+            "<code>call(topic)</code><br>Call.</p>">>)),
+    {ShortToc, _} = filter_toc:toc(Converted, 4, undefined),
+    ?assertEqual([], ShortToc),
+    {LongToc, Body} = filter_toc:toc(binary:copy(Converted, 4), 4, undefined),
+    ?assertNotEqual([], LongToc),
+    ?assertNotEqual(nomatch, binary:match(Body, <<"post/reload</h4>">>)).
 
 split_and_link_test() ->
     Entries = collect_entries(test_document()),
