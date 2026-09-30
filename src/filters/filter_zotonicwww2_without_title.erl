@@ -1,6 +1,6 @@
 %% @doc Omit a leading body heading when the page already renders that title.
 -module(filter_zotonicwww2_without_title).
--moduledoc("Remove a leading H1 matching the resource title before rendering a documentation body and its table of contents.").
+-moduledoc("Remove a leading H1, H2, or H3 matching the resource title before rendering a documentation body and its table of contents.").
 
 -export([zotonicwww2_without_title/3]).
 
@@ -12,15 +12,18 @@ zotonicwww2_without_title(Body, Title, Context) ->
     strip_title(Html, PageTitle).
 
 strip_title(Html, Title) ->
-    case re:run(Html, <<"^\\s*<h1(?:\\s[^>]*)?>(.*?)</h1>\\s*">>,
-                [dotall, {capture, [0, 1], binary}]) of
-        {match, [Heading, Text]} ->
+    case re:run(Html,
+                <<"^\\s*((?:<a\\s+(?:name|id)=\"[^\"]*\"></a>\\s*)*)"
+                  "<h([123])(?:\\s[^>]*)?>(.*?)</h\\2>\\s*">>,
+                [dotall, {capture, [0, 1, 3], binary}]) of
+        {match, [Heading, Anchors, Text]} ->
             case normalized_text(Text) =:= normalized_text(Title) of
                 true ->
                     %% The match ends at an HTML boundary, never inside UTF-8.
                     Size = byte_size(Heading),
                     <<_:Size/binary, Rest/binary>> = Html,
-                    Rest;
+                    %% Retain incoming links to the imported section anchor.
+                    <<Anchors/binary, Rest/binary>>;
                 false -> Html
             end;
         nomatch -> Html
@@ -40,9 +43,16 @@ matching_title_test() ->
     ?assertEqual(<<"<p>Body.</p>">>,
         strip_title(<<"\n<h1><code>A &amp; B</code></h1><p>Body.</p>">>, <<"A &amp; B">>)).
 
+cotonic_title_test() ->
+    ?assertEqual(<<"<a name=\"model.location\"></a><p>Location.</p><h4>post/reload</h4>">>,
+        strip_title(<<"<a name=\"model.location\"></a><h3>model/location</h3>"
+            "<p>Location.</p><h4>post/reload</h4>">>, <<"model/location">>)),
+    ?assertEqual(<<"<p>Body.</p>">>,
+        strip_title(<<"<h2>Title</h2><p>Body.</p>">>, <<"Title">>)).
+
 other_content_test() ->
     lists:foreach(fun(Html) -> ?assertEqual(Html, strip_title(Html, <<"Title">>)) end,
         [<<"<h1>Different</h1><p>Body.</p>">>,
          <<"<p>Introduction.</p><h1>Title</h1>">>,
-         <<"<h2>Title</h2>">>, <<>>]).
+         <<"<h4>Title</h4>">>, <<"<h3>Different</h3>">>, <<>>]).
 -endif.
