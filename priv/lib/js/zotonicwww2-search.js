@@ -50,6 +50,7 @@
                 return;
             }
 
+            document.body.style.setProperty("--site-header-height", header.offsetHeight + "px");
             overlay.style.setProperty(
                 "--site-search-top",
                 Math.max(0, Math.round(header.getBoundingClientRect().bottom)) + "px"
@@ -57,16 +58,17 @@
         }
 
         function openOverlay() {
+            document.body.classList.add("search-overlay-open");
             positionOverlay();
             overlay.hidden = false;
             input.setAttribute("aria-expanded", "true");
-            document.body.classList.add("search-overlay-open");
         }
 
         function closeOverlay() {
             overlay.hidden = true;
             input.setAttribute("aria-expanded", "false");
             document.body.classList.remove("search-overlay-open");
+            document.body.style.removeProperty("--site-header-height");
         }
 
         input.addEventListener("focus", openOverlay);

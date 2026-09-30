@@ -6408,12 +6408,22 @@ body {
   border-bottom: 1px solid var(--site-rule);
   background: rgba(255, 255, 252, 0.96);
   backdrop-filter: blur(14px);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 #header-wrapper header {
   position: static;
   top: auto;
 }
 
+body.site-nav-hidden:not(.search-overlay-open) #header-wrapper {
+  transform: translateY(calc(-100% - 1px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #header-wrapper {
+    transition: none;
+  }
+}
 .site-nav {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) minmax(220px, 320px);
@@ -6510,8 +6520,12 @@ body {
 
 body.search-overlay-open {
   overflow: hidden;
+  padding-top: var(--site-header-height, 75px);
 }
 body.search-overlay-open #header-wrapper {
+  position: fixed;
+  transform: none;
+  transition: none;
   z-index: 175;
   box-shadow: 0 10px 28px rgba(23, 23, 23, 0.12);
 }
