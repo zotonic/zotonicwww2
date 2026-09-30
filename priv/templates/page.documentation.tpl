@@ -31,7 +31,7 @@
         {# Reference documentation and release notes are maintained on GitHub #}
         {% if id.github_url and (id.is_a.reference or id.is_a.releasenotes) %}
             <p class="edit-github">
-                <a href="{{ id.github_url|sanitize_url }}"
+                <a href="{{ id.github_url }}"
                    target="_blank" rel="noopener">
                     <span class="fa fa-github"></span> {_ Edit on GitHub _}
                 </a>
