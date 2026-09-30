@@ -31,7 +31,7 @@
         {# Reference documentation and release notes are maintained on GitHub #}
         {% if id.github_url and (id.is_a.reference or id.is_a.releasenotes) %}
             <p class="edit-github">
-                <a href="{% if id.doc_source_path %}https://github.com/zotonic/zotonic/blob/master/{{ id.doc_source_path|escape }}{% else %}{{ id.github_url|replace:"https://github\\.com/zotonic/zotonic/(blob|edit)/[^/]+/":"https://github.com/zotonic/zotonic/\\1/master/"|escape }}{% endif %}"
+                <a href="{{ id.github_url|sanitize_url }}"
                    target="_blank" rel="noopener">
                     <span class="fa fa-github"></span> {_ Edit on GitHub _}
                 </a>

@@ -92,10 +92,10 @@ m_post(_Path, _Payload, _Context) ->
 
 %% @doc Queue an admin action. The shared key ensures queued documentation
 %% work is coalesced and never runs in parallel through the pivot task queue.
--spec queue(fetch | rebuild | update | import, z:context()) ->
+-spec queue(fetch | rebuild | update | import | cotonic, z:context()) ->
     {ok, integer()} | {error, term()}.
 queue(Action, Context)
-    when Action =:= fetch; Action =:= rebuild; Action =:= update; Action =:= import ->
+    when Action =:= fetch; Action =:= rebuild; Action =:= update; Action =:= import; Action =:= cotonic ->
     queue_action(Action, Context).
 
 -spec queue_commit(binary(), z:context()) -> {ok, integer()} | {error, term()}.
@@ -171,6 +171,11 @@ task_run(Action, Context) ->
     end,
     ok.
 
+run_action(cotonic, Context) ->
+    run_steps([
+        {<<"Cotonic import">>, fun() -> zotonicwww2_cotonic_import:import_docs(Context) end},
+        {<<"keyword coverage">>, fun() -> zotonicwww2_doc_import:keyword_coverage(Context) end}
+    ], #{}, Context);
 run_action(fetch, Context) ->
     run_steps([
         {<<"checkout">>, fun() -> ensure_checkout(Context) end},
@@ -245,6 +250,7 @@ status(Context) ->
         started => config(import_started, <<>>, Context),
         finished => config(import_finished, <<>>, Context),
         error => config(import_error, <<>>, Context),
+        cotonic_hash => config(cotonic_imported_hash, <<>>, Context),
         imported_hash => config(imported_hash, m_config:get_value(site, rebuild_hash, Context), Context),
         checkout_hash => value_or_empty(hash(Context)),
         remote_hash => value_or_empty(remote_hash(Context)),

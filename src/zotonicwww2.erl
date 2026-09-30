@@ -33,7 +33,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(23).
+-mod_schema(24).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -127,6 +127,14 @@ manage_schema(_Version, Context) ->
                     {controller, reference, [
                         {title, <<"Controller">>},
                         {summary, <<"HTTP request handlers that connect dispatch rules to rendered or generated responses.">>}
+                    ]},
+                    {cotonic_reference, reference, [
+                        {title, <<"Cotonic">>},
+                        {summary, <<"Cotonic browser APIs and messaging.">>}
+                    ]},
+                    {cotonic_model, cotonic_reference, [
+                        {title, <<"Cotonic models">>},
+                        {summary, <<"Browser-side models accessed through Cotonic topics.">>}
                     ]},
                     {model, reference, [
                         {title, <<"Model">>},
@@ -368,6 +376,8 @@ event(#postback{message=docs_update}, Context) ->
     queue_admin_action(update, Context);
 event(#postback{message=docs_import}, Context) ->
     queue_admin_action(import, Context);
+event(#postback{message=docs_cotonic}, Context) ->
+    queue_admin_action(cotonic, Context);
 event(#postback{message=docs_import_keywords}, Context) ->
     import_subject_keywords(Context);
 event(#postback{message=docs_migrate_legacy}, Context) ->

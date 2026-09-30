@@ -1,7 +1,7 @@
 {% if m.acl.is_admin %}
 {% with m.zotonicwww2_git.status as doc_status %}
 <section class="widget" aria-labelledby="zotonic-docs-status-title">
-    <div class="widget-header">{_ Zotonic documentation source _}</div>
+    <div class="widget-header">{_ Documentation sources _}</div>
     <div class="widget-content">
         <div class="row">
             <div class="col-md-7">
@@ -19,7 +19,11 @@
                         {% endif %}
                         <span class="text-muted">{{ doc_status.stage|escape }}</span>
                     </dd>
-                    <dt>{_ Imported commit _}</dt>
+                    <dt>{_ Last action _}</dt>
+                    <dd>{{ doc_status.action|escape }}</dd>
+                    <dt>{_ Cotonic commit _}</dt>
+                    <dd><code>{{ doc_status.cotonic_hash|default:"—"|escape }}</code></dd>
+                    <dt>{_ Zotonic commit _}</dt>
                     <dd><code>{{ doc_status.imported_hash|default:"—"|escape }}</code></dd>
                     <dt>{_ Checkout commit _}</dt>
                     <dd><code>{{ doc_status.checkout_hash|default:"—"|escape }}</code></dd>
@@ -119,6 +123,13 @@
         <hr>
 
         <div class="btn-toolbar" role="toolbar" aria-label="{_ Documentation import actions _}">
+            {% button
+                class="btn btn-default"
+                text=_"Update/import Cotonic documentation"
+                title=_"Fetch Cotonic master and import its reference and model pages."
+                postback=`docs_cotonic`
+                delegate=`zotonicwww2`
+            %}
             {% button
                 class="btn btn-primary"
                 text=_"Fetch and rebuild"
