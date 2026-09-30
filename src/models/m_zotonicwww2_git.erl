@@ -90,12 +90,12 @@ m_post(_Path, _Payload, _Context) ->
     {error, unknown_path}.
 
 
-%% @doc Queue an admin action. The shared key ensures queued documentation
-%% work is coalesced and never runs in parallel through the pivot task queue.
--spec queue(fetch | rebuild | update | import, z:context()) ->
+%% @doc Queue a documentation action. The pivot task queue serializes work;
+%% repeated admin requests and daily polls each coalesce under their own key.
+-spec queue(fetch | rebuild | update | import | cotonic | cotonic_poll, z:context()) ->
     {ok, integer()} | {error, term()}.
 queue(Action, Context)
-    when Action =:= fetch; Action =:= rebuild; Action =:= update; Action =:= import ->
+    when Action =:= fetch; Action =:= rebuild; Action =:= update; Action =:= import; Action =:= cotonic; Action =:= cotonic_poll ->
     queue_action(Action, Context).
 
 -spec queue_commit(binary(), z:context()) -> {ok, integer()} | {error, term()}.
@@ -106,7 +106,12 @@ queue_commit(Commit, Context) ->
     end.
 
 queue_action(Action, Context) ->
-    case z_pivot_rsc:insert_task_after(1, ?MODULE, task_run, ?TASK_KEY, [ Action ], Context) of
+    %% Keep the daily poll separate so it cannot replace a pending admin action.
+    Key = case Action of
+        cotonic_poll -> <<"cotonic-daily-poll">>;
+        _ -> ?TASK_KEY
+    end,
+    case z_pivot_rsc:insert_task_after(1, ?MODULE, task_run, Key, [ Action ], Context) of
         {ok, TaskId} = Ok ->
             set_status(<<"queued">>, action_name(Action), #{action => action_name(Action)}, Context),
             ?LOG_INFO(#{
@@ -171,6 +176,15 @@ task_run(Action, Context) ->
     end,
     ok.
 
+run_action(cotonic_poll, Context) ->
+    run_steps([
+        {<<"Cotonic poll">>, fun() -> zotonicwww2_cotonic_import:poll(Context) end}
+    ], #{}, Context);
+run_action(cotonic, Context) ->
+    run_steps([
+        {<<"Cotonic import">>, fun() -> zotonicwww2_cotonic_import:import_docs(Context) end},
+        {<<"keyword coverage">>, fun() -> zotonicwww2_doc_import:keyword_coverage(Context) end}
+    ], #{}, Context);
 run_action(fetch, Context) ->
     run_steps([
         {<<"checkout">>, fun() -> ensure_checkout(Context) end},
@@ -245,6 +259,7 @@ status(Context) ->
         started => config(import_started, <<>>, Context),
         finished => config(import_finished, <<>>, Context),
         error => config(import_error, <<>>, Context),
+        cotonic_hash => config(cotonic_imported_hash, <<>>, Context),
         imported_hash => config(imported_hash, m_config:get_value(site, rebuild_hash, Context), Context),
         checkout_hash => value_or_empty(hash(Context)),
         remote_hash => value_or_empty(remote_hash(Context)),

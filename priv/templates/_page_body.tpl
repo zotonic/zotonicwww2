@@ -1,4 +1,4 @@
-{% with id.body|toc:4 as toc, body %}
+{% with body|default_if_undefined:id.body|toc:4 as toc, body %}
     {% include "_article_toc.tpl" toc=toc %}
 
     <div class="body">

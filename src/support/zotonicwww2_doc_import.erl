@@ -13,6 +13,7 @@
 -export([
     install/1,
     sync/3,
+    sync/4,
     keyword_coverage/1,
     migrate_legacy/1,
     migration_status/1,
@@ -124,22 +125,31 @@ unregister_delivery(DeliveryId, Context) ->
 %% has been stored successfully.
 -spec sync([map()], binary(), z:context()) -> {ok, map()} | {error, term()}.
 sync(Entries, Commit, Context0) when is_list(Entries), is_binary(Commit) ->
+    sync(<<"zotonic">>, Entries, Commit, Context0).
+
+%% @doc Synchronize one repository without reconciling another repository.
+-spec sync(binary(), [map()], binary(), z:context()) -> {ok, map()} | {error, term()}.
+sync(_Source, [], _Commit, _Context) ->
+    {error, empty_manifest};
+sync(Source, Entries, Commit, Context0)
+    when (Source =:= <<"zotonic">> orelse Source =:= <<"cotonic">>), Entries =/= [] ->
     Context = z_acl:sudo(Context0),
-    case validate_manifest_observes(Entries) of
+    SourceEntries = [ E#{source => Source} || E <- Entries ],
+    case validate_manifest_observes(SourceEntries) of
         ok ->
-            sync_with_keywords(Entries, Commit, Context);
+            sync_with_keywords(Source, SourceEntries, Commit, Context);
         {error, _} = Error ->
             Error
     end.
 
-sync_with_keywords(Entries, Commit, Context) ->
+sync_with_keywords(Source, Entries, Commit, Context) ->
     case resolve_manifest_keywords(Entries, Context) of
         {ok, KeywordIds} ->
             Generation = z_ids:id(20),
             Report0 = #{created => 0, updated => 0, unchanged => 0, deprecated => 0},
             case sync_entries(Entries, Commit, Generation, KeywordIds, Report0, Context) of
                 {ok, Report1} ->
-                    case reconcile(Generation, Context) of
+                    case reconcile(Source, Generation, Context) of
                         {ok, Deprecated} ->
                             {ok, Report1#{
                                 deprecated => Deprecated,
@@ -183,12 +193,12 @@ sync_entry(Entry, Commit, Generation, KeywordIds, Context) ->
         source_path := SourcePath
     } = Entry,
     EntryContext = entry_context(Kind, Context),
-    SourceKey = source_key(Name),
+    SourceKey = source_key(maps:get(source, Entry, <<"zotonic">>), Name),
     SourceHash = source_hash(Entry),
     Tracking = tracking(SourceKey, EntryContext),
     ExistingId = m_rsc:rid(Name, EntryContext),
     Result = change_kind(Tracking, ExistingId, SourceHash),
-    SourceUrl = source_url(SourcePath),
+    SourceUrl = maps:get(source_url, Entry, source_url(SourcePath)),
     Props0 = maps:merge(#{
         <<"name">> => Name,
         <<"title">> => Title,
@@ -396,12 +406,13 @@ track(RscId, SourceKey, Kind, SourcePath, SourceHash, Generation, Commit, Status
         Context),
     ok.
 
-reconcile(Generation, Context) ->
+reconcile(Source, Generation, Context) ->
     case z_db:qmap("
         select rsc_id
         from zotonicwww2_doc_import
-        where status = 'current' and generation <> $1",
-        [ Generation ],
+        where status = 'current' and generation <> $1
+          and split_part(source_key, ':', 1) = $2",
+        [ Generation, Source ],
         Context)
     of
         {ok, Rows} -> reconcile_rows(Rows, 0, Context);
@@ -572,7 +583,7 @@ latest_generation(Context) ->
     z_db:q1("
         select generation
         from zotonicwww2_doc_import
-        where status = 'current'
+        where status = 'current' and split_part(source_key, ':', 1) = 'zotonic'
         order by modified desc
         limit 1",
         Context).
@@ -593,10 +604,13 @@ legacy_kind(Name) ->
     end.
 
 source_key(Name) ->
-    <<"zotonic:", Name/binary>>.
+    source_key(<<"zotonic">>, Name).
+
+source_key(Source, Name) ->
+    <<Source/binary, ":", Name/binary>>.
 
 source_hash(Entry) ->
-    z_url:hex_encode_lc(crypto:hash(sha256, term_to_binary(maps:without([source_url], Entry)))).
+    z_url:hex_encode_lc(crypto:hash(sha256, term_to_binary(maps:without([source_url, source], Entry)))).
 
 source_url(SourcePath) ->
     <<"https://github.com/zotonic/zotonic/blob/master/", SourcePath/binary>>.
@@ -617,6 +631,13 @@ deprecated_props(Context) ->
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+
+source_identity_test() ->
+    ?assertNotEqual(source_key(<<"zotonic">>, <<"example">>),
+                    source_key(<<"cotonic">>, <<"example">>)),
+    Entry = #{name => <<"example">>, body => <<"Body">>},
+    ?assertEqual(source_hash(Entry), source_hash(Entry#{source => <<"zotonic">>})),
+    ?assertEqual({error, empty_manifest}, sync(<<"cotonic">>, [], <<"commit">>, undefined)).
 
 source_url_uses_master_test() ->
     ?assertEqual(

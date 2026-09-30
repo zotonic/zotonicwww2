@@ -17,6 +17,7 @@
             <div class="content-list__copy">
                 <h3 class="content-list__title">
                     <a href="{{ id.page_url }}">{{ id.title|default:_"Untitled" }}</a>
+                    {% include "_doc_title_suffix.tpl" id=id %}
                 </h3>
                 {% if id|summary:160 as item_summary %}
                     <p class="content-list__summary">{{ item_summary }}</p>

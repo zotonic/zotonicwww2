@@ -6,6 +6,7 @@
                 <a class="related-content__link" href="{{ related_id.page_url }}">
                     {{ related_id.title }}
                 </a>
+                {% include "_doc_title_suffix.tpl" id=related_id %}
             </h3>
             <p>{{ related_id|summary:140 }}</p>
         </article>

@@ -31,6 +31,7 @@
     get_actions_doc/1,
     get_releases_doc/1,
     get_tags_doc/1,
+    get_cotonic_models_doc/1,
     get_notifications_doc/1
 ]).
 
@@ -71,7 +72,8 @@ collect_entries(Context) ->
     ++ action_entries(Context)
     ++ validator_entries(Context)
     ++ release_entries(Context)
-    ++ tag_entries(Context).
+    ++ tag_entries(Context)
+    ++ cotonic_model_entries(get_cotonic_models_doc(Context)).
 
 module_entries(Context, DocumentedNotifications) ->
     maps:fold(
@@ -229,6 +231,70 @@ tag_entries(Context) ->
         end,
         [],
         get_tags_doc(Context)).
+
+%% Zotonic-owned browser models share the Cotonic category, but have their own
+%% names and page paths so upstream Cotonic imports cannot overwrite them.
+cotonic_model_entries(Docs) ->
+    maps:fold(
+        fun(Model, #{doc := Body, keywords := Keywords, path := Path} = Doc, Acc) ->
+            {Name, Title, Category, PagePath} = cotonic_model_page(Model),
+            Entry = entry(Category, cotonic_model, Name, Title,
+                cotonic_model_links(Body, Path, Docs), Path),
+            [Entry#{keywords => Keywords, module => maps:get(module, Doc, undefined),
+                props => #{<<"page_path">> => PagePath}} | Acc]
+        end,
+        [],
+        Docs).
+
+cotonic_model_page(<<"README">>) ->
+    {<<"doc_zotonic_cotonic_models">>, <<"Zotonic Cotonic models">>, cotonic_reference,
+     <<"/cotonic/zotonic-models">>};
+cotonic_model_page(Model) ->
+    {<<"doc_zotonic_cotonic_model_", (z_string:to_name(Model))/binary>>,
+     <<"model/", Model/binary>>, cotonic_model, <<"/cotonic/zotonic-models/", Model/binary>>}.
+
+%% Relative Markdown links target imported resources where possible. Source
+%% files and other repository documents keep an absolute GitHub destination.
+cotonic_model_links(Html, Path, Docs) ->
+    Targets = maps:from_list([
+        {DocPath, Name}
+        || {Model, #{path := DocPath}} <- maps:to_list(Docs),
+           {Name, _, _, _} <- [cotonic_model_page(Model)]
+    ]),
+    Base = <<"https://github.com/zotonic/zotonic/blob/master/", Path/binary>>,
+    Tokens = [cotonic_model_link(T, Base, Targets) || T <- z_html_parse:tokens(Html)],
+    iolist_to_binary(z_html_parse:to_html(Tokens)).
+
+cotonic_model_link({start_tag, Tag, Attrs, Singleton}, Base, Targets) ->
+    {start_tag, Tag, [
+        case Attr of
+            {Key, Url} when Key =:= <<"href">>; Key =:= <<"src">> ->
+                {Key, cotonic_model_url(Url, Base, Targets)};
+            _ -> Attr
+        end
+        || Attr <- Attrs
+    ], Singleton};
+cotonic_model_link(Token, _Base, _Targets) -> Token.
+
+cotonic_model_url(<<"#", _/binary>> = Url, _Base, _Targets) -> Url;
+% Preserve Zotonic references emitted by the Markdown renderer.
+cotonic_model_url(<<"/id/", _/binary>> = Url, _Base, _Targets) -> Url;
+cotonic_model_url(Url, Base, Targets) ->
+    Absolute = uri_string:resolve(Url, Base),
+    case Absolute of
+        <<"https://github.com/zotonic/zotonic/blob/master/", Relative/binary>> ->
+            [Path | Fragment] = binary:split(Relative, <<"#">>),
+            case maps:find(Path, Targets) of
+                {ok, Name} ->
+                    Suffix = case Fragment of
+                        [] -> <<>>;
+                        [Anchor] -> <<"#", Anchor/binary>>
+                    end,
+                    <<"/id/", Name/binary, Suffix/binary>>;
+                error -> Absolute
+            end;
+        _ -> Absolute
+    end.
 
 notification_entries(Docs) when is_map(Docs) ->
     maps:fold(
@@ -574,22 +640,33 @@ get_releases_doc(Context) ->
         #{},
         Files).
 
-%% @doc List the releases and their documentation.
--spec get_tags_doc(z:context()) -> #{ binary() => binary() }.
+%% @doc List template tags with their Markdown documentation and keywords.
+-spec get_tags_doc(z:context()) -> #{ binary() => map() }.
 get_tags_doc(Context) ->
     GitDir = m_zotonicwww2_git:git_dir(Context),
     Files = filelib:wildcard(unicode:characters_to_list(filename:join([GitDir, "doc", "template-tags", "*.md"]))),
+    markdown_docs(Files, GitDir).
+
+%% @doc Collect the Zotonic client-model reference, including its README index.
+-spec get_cotonic_models_doc(z:context()) -> #{ binary() => map() }.
+get_cotonic_models_doc(Context) ->
+    GitDir = m_zotonicwww2_git:git_dir(Context),
+    Files = filelib:wildcard(unicode:characters_to_list(filename:join([GitDir, "doc", "cotonic-models", "*.md"]))),
+    markdown_docs(Files, GitDir).
+
+markdown_docs(Files, GitDir) ->
     lists:foldl(
         fun(File, Acc) ->
-            Tag = unicode:characters_to_binary(filename:rootname(filename:basename(File))),
+            Name = unicode:characters_to_binary(filename:rootname(filename:basename(File))),
             {ok, Data} = file:read_file(File),
             {ok, #{
                 front_matter := FrontMatter,
                 content := Html
             }} = zotonicwww2_doc_link:to_html_document(Data),
-            Acc#{Tag => #{
+            Acc#{Name => #{
                 doc => Html,
                 keywords => markdown_keywords(FrontMatter),
+                module => markdown_module(FrontMatter),
                 path => relative_path(File, GitDir)
             }}
         end,
@@ -731,6 +808,17 @@ markdown_keywords(#{format := yaml, source := Source}) ->
             unique_keywords([normalize_keyword(Keyword) || Keyword <- Keywords]);
         Invalid ->
             erlang:error({invalid_markdown_keywords, Invalid})
+    end.
+
+%% @doc Read the owning Zotonic module for the standard in_module connection.
+markdown_module(undefined) ->
+    undefined;
+markdown_module(#{format := yaml, source := Source}) ->
+    Metadata = decode_yaml_front_matter(Source),
+    case maps:get(<<"module">>, Metadata, undefined) of
+        undefined -> undefined;
+        Module when is_binary(Module), byte_size(Module) > 0 -> Module;
+        Invalid -> erlang:error({invalid_markdown_module, Invalid})
     end.
 
 %% @doc Read the release date declared in Markdown front matter. The source
@@ -947,6 +1035,45 @@ zotonic_keywords_test() ->
     ?assertError(
         {invalid_zotonic_keyword, <<>>},
         zotonic_keywords(#{zotonic_keywords => [<<>>]})).
+
+cotonic_model_entries_test() ->
+    Docs = #{
+        <<"README">> => #{doc => <<"<a href=\"activity.md\">Activity</a>">>,
+            keywords => [<<"cotonic">>], path => <<"doc/cotonic-models/README.md">>},
+        <<"activity">> => #{doc => <<"<p>Events only.</p>">>,
+            keywords => [<<"publish_and_subscribe">>], module => <<"mod_wires">>,
+            path => <<"doc/cotonic-models/activity.md">>}
+    },
+    Entries = cotonic_model_entries(Docs),
+    [Index] = [E || #{category := cotonic_reference} = E <- Entries],
+    [Activity] = [E || #{category := cotonic_model} = E <- Entries],
+    ?assertEqual(<<"model/activity">>, maps:get(title, Activity)),
+    ?assertEqual(<<"mod_wires">>, maps:get(module, Activity)),
+    ?assertEqual(undefined, maps:get(module, Index)),
+    ?assertEqual([<<"publish_and_subscribe">>], maps:get(keywords, Activity)),
+    ?assertEqual(<<"/cotonic/zotonic-models/activity">>,
+        maps:get(<<"page_path">>, maps:get(props, Activity))),
+    ?assertNotEqual(nomatch, binary:match(maps:get(body, Index),
+        <<"href=\"/id/doc_zotonic_cotonic_model_activity\"">>)).
+
+cotonic_model_urls_test() ->
+    Base = <<"https://github.com/zotonic/zotonic/blob/master/doc/cotonic-models/auth.md">>,
+    Targets = #{<<"doc/cotonic-models/auth-ui.md">> => <<"doc_zotonic_cotonic_model_auth_ui">>},
+    ?assertEqual(<<"/id/doc_zotonic_cotonic_model_auth_ui#commands">>,
+        cotonic_model_url(<<"auth-ui.md#commands">>, Base, Targets)),
+    ?assertEqual(<<"https://github.com/zotonic/zotonic/blob/master/apps/example.js">>,
+        cotonic_model_url(<<"../../apps/example.js">>, Base, Targets)),
+    ?assertEqual(<<"https://example.com/">>, cotonic_model_url(<<"https://example.com/">>, Base, Targets)),
+    ?assertEqual(<<"/id/doc_module_mod_base">>,
+        cotonic_model_url(<<"/id/doc_module_mod_base">>, Base, Targets)),
+    ?assertEqual(<<"#events">>, cotonic_model_url(<<"#events">>, Base, Targets)).
+
+markdown_module_test() ->
+    ?assertEqual(undefined, markdown_module(undefined)),
+    ?assertEqual(undefined, markdown_module(#{format => yaml, source => <<"keywords: []">>})),
+    ?assertEqual(<<"mod_wires">>, markdown_module(#{format => yaml, source => <<"module: mod_wires">>})),
+    ?assertError({invalid_markdown_module, [<<"mod_wires">>]},
+        markdown_module(#{format => yaml, source => <<"module: [mod_wires]">>})).
 
 markdown_keywords_test() ->
     ?assertEqual([], markdown_keywords(undefined)),

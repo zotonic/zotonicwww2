@@ -1,7 +1,9 @@
 %% @doc Render documentation Markdown and link Zotonic reference code spans.
 %%
 %% References use the form `kind#name`, for example `tag#print` or
-%% `module#mod_base`. Only inline code spans are considered. Code blocks,
+%% `module#mod_base` or `cotonic#sessionId`. Cotonic references cover both
+%% upstream and Zotonic-owned browser models. Only inline code spans are
+%% considered. Code blocks,
 %% existing links, and Erlang documentation references are left unchanged.
 %% @end
 
@@ -104,6 +106,11 @@ reference_page(<<"validator">> = Kind, Name) ->
     reference(Kind, <<"doc_template_validator_validator_">>, Name);
 reference_page(<<"model">> = Kind, Name) ->
     reference(Kind, <<"doc_model_model_">>, Name);
+reference_page(<<"cotonic">> = Kind, Name) ->
+    case maps:find(Name, cotonic_model_pages()) of
+        {ok, PageName} -> {ok, Kind, PageName};
+        error -> error
+    end;
 reference_page(<<"controller">> = Kind, Name) ->
     reference(Kind, <<"doc_controller_">>, Name);
 reference_page(<<"module">> = Kind, <<"zotonic_core">>) ->
@@ -116,6 +123,32 @@ reference_page(<<"dispatch">> = Kind, Name) ->
     dispatch_reference(Kind, binary:split(Name, <<"/">>, [global]));
 reference_page(_Kind, _Name) ->
     error.
+
+%% Explicit ownership keeps browser model links distinct from server model# links.
+cotonic_model_pages() ->
+    #{
+        <<"window">> => <<"doc_cotonic_model_window">>,
+        <<"document">> => <<"doc_cotonic_model_document">>,
+        <<"location">> => <<"doc_cotonic_model_location">>,
+        <<"ui">> => <<"doc_cotonic_model_ui">>,
+        <<"lifecycle">> => <<"doc_cotonic_model_lifecycle">>,
+        <<"autofocus">> => <<"doc_cotonic_model_autofocus">>,
+        <<"serviceWorker">> => <<"doc_cotonic_model_serviceworker">>,
+        <<"localStorage">> => <<"doc_cotonic_model_localstorage">>,
+        <<"sessionStorage">> => <<"doc_cotonic_model_sessionstorage">>,
+        <<"sessionId">> => <<"doc_cotonic_model_sessionid">>,
+        <<"dedup">> => <<"doc_cotonic_model_dedup">>,
+        <<"auth">> => <<"doc_zotonic_cotonic_model_auth">>,
+        <<"auth-ui">> => <<"doc_zotonic_cotonic_model_auth_ui">>,
+        <<"oauth">> => <<"doc_zotonic_cotonic_model_oauth">>,
+        <<"fileuploader">> => <<"doc_zotonic_cotonic_model_fileuploader">>,
+        <<"loadmore">> => <<"doc_zotonic_cotonic_model_loadmore">>,
+        <<"alert">> => <<"doc_zotonic_cotonic_model_alert">>,
+        <<"clipboard">> => <<"doc_zotonic_cotonic_model_clipboard">>,
+        <<"wires">> => <<"doc_zotonic_cotonic_model_wires">>,
+        <<"console">> => <<"doc_zotonic_cotonic_model_console">>,
+        <<"activity">> => <<"doc_zotonic_cotonic_model_activity">>
+    }.
 
 reference(Kind, Prefix, Name) ->
     case is_name(Name) of
@@ -177,6 +210,33 @@ reference_mapping_test_() ->
                 <<"href=\"/id/", PageName/binary, "\"">>))
         || {Reference, PageName} <- References
     ].
+
+cotonic_model_links_test_() ->
+    Groups = [
+        {<<"doc_cotonic_model_">>,
+         [<<"window">>, <<"document">>, <<"location">>, <<"ui">>, <<"lifecycle">>,
+          <<"autofocus">>, <<"serviceWorker">>, <<"localStorage">>,
+          <<"sessionStorage">>, <<"sessionId">>, <<"dedup">>]},
+        {<<"doc_zotonic_cotonic_model_">>,
+         [<<"auth">>, <<"auth-ui">>, <<"oauth">>, <<"fileuploader">>, <<"loadmore">>,
+          <<"alert">>, <<"clipboard">>, <<"wires">>, <<"console">>, <<"activity">>]}
+    ],
+    [
+        ?_assertNotEqual(nomatch,
+            binary:match(to_html(<<"`cotonic#", Name/binary, "`">>),
+                <<"href=\"/id/", Prefix/binary, (z_string:to_name(Name))/binary, "\"">>))
+        || {Prefix, Names} <- Groups, Name <- Names
+    ].
+
+cotonic_reference_boundaries_test() ->
+    ?assertEqual(nomatch, binary:match(to_html(<<"`cotonic#unknown`">>), <<"<a ">>)),
+    ?assertEqual(nomatch, binary:match(to_html(<<"```
+cotonic#auth
+```">>), <<"<a ">>)),
+    Html = to_html(<<"[`cotonic#auth`](/id/original)">>),
+    ?assertEqual(1, length(binary:matches(Html, <<"<a ">>))),
+    ?assertNotEqual(nomatch, binary:match(Html, <<"href=\"/id/original\"">>)),
+    ?assertEqual(nomatch, binary:match(to_html(<<"`cotonic#auth/../../x`">>), <<"<a ">>)).
 
 non_reference_code_test() ->
     Html = to_html(<<"`unknown#thing` and `z_template:render/3`">>),

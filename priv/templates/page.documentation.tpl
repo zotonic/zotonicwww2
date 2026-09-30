@@ -3,7 +3,7 @@
 {% block content %}
     <article>
         {% include "_page_meta.tpl" %}
-        <h1{% if id.is_a.category %} class="category-page__title"{% endif %}>{{ id.title }}</h1>
+        <h1{% if id.is_a.category %} class="category-page__title"{% endif %}>{{ id.title }} {% include "_doc_title_suffix.tpl" id=id %}</h1>
 
         {% if id.is_a.category %}
             {% include "_category_tree_navigation.tpl" id=id %}
@@ -26,12 +26,12 @@
 
         {% block content_before_body %}{% endblock %}
 
-        {% include "_page_body.tpl" id=id %}
+        {% include "_page_body.tpl" id=id body=id.body|zotonicwww2_without_title:id.title %}
 
         {# Reference documentation and release notes are maintained on GitHub #}
         {% if id.github_url and (id.is_a.reference or id.is_a.releasenotes) %}
             <p class="edit-github">
-                <a href="{% if id.doc_source_path %}https://github.com/zotonic/zotonic/blob/master/{{ id.doc_source_path|escape }}{% else %}{{ id.github_url|replace:"https://github\\.com/zotonic/zotonic/(blob|edit)/[^/]+/":"https://github.com/zotonic/zotonic/\\1/master/"|escape }}{% endif %}"
+                <a href="{{ id.github_url }}"
                    target="_blank" rel="noopener">
                     <span class="fa fa-github"></span> {_ Edit on GitHub _}
                 </a>
