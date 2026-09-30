@@ -142,7 +142,7 @@ section_headings(Id, [Token | Rest]) ->
 %% Keep any function signature with its heading and preserve the paragraph body.
 operation_headings(Html) ->
     re:replace(Html,
-        <<"<p(?:\\s[^>]*)?>\\s*<(strong|em) class=\"header\">((?:(?!</(?:strong|em)>).)*)</\\1>"
+        <<"<p(?:\\s[^>]*)?>\\s*<(strong|em) class=\"header\">((?:(?!</\\1>).)*)</\\1>"
           "(\\s*<code>(?:(?!</code>).)*</code>)?\\s*(?:<br\\s*/?>)?">>,
         <<"<h2>\\2\\3</h2><p>">>,
         [global, dotall, {return, binary}]).
@@ -249,6 +249,16 @@ operation_headings_test() ->
     ?assertEqual(4, length(LongToc)),
     ?assert(lists:all(fun({_, _, Children}) -> Children =:= [] end, LongToc)),
     ?assertNotEqual(nomatch, binary:match(Body, <<"post/reload</h2>">>)).
+
+configuration_heading_test() ->
+    ?assertEqual(<<"<a name=\"model.serviceWorker.config\"></a>"
+        "<h2><em>Configuration</em></h2><p>Options.</p>">>,
+        operation_headings(<<"<a name=\"model.serviceWorker.config\"></a><p>"
+            "<strong class=\"header\"><em>Configuration</em></strong>"
+            "<br>Options.</p>">>)),
+    ?assertEqual(<<"<h2>Configuration</h2><p>Options.</p>">>,
+        operation_headings(<<"<p><em class=\"header\">Configuration</em>"
+            "<br>Options.</p>">>)).
 
 missing_heading_break_test() ->
     ?assertEqual(<<"<h2>post/+key</h2><p>Store.</p><pre>example</pre>"
