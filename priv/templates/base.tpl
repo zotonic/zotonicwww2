@@ -108,6 +108,7 @@
         the id 'content'
       -->
       <main id="content" tabindex="-1">
+        {% include "_page_status_banner.tpl" id=id %}
         <!--
           There MUST be a 'content_area' block where pages like
           the logon.tpl can place their content. This should maximize
