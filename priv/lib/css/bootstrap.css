@@ -9024,6 +9024,14 @@ h2 + .subject-label-list {
   line-height: 1.4;
 }
 
+@media screen {
+  #content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+}
 pre {
   max-width: 100%;
   overflow-x: auto;

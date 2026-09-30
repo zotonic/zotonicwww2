@@ -2976,6 +2976,16 @@ h2 + .subject-label-list {
     line-height: 1.4;
 }
 
+// A table needs a block box for overflow to scroll instead of widening the page.
+@media screen {
+    #content table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+    }
+}
+
 pre {
     max-width: 100%;
     overflow-x: auto;
