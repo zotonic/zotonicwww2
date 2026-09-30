@@ -2,6 +2,7 @@
     'module',
     'controller',
     'model',
+    'cotonic_reference',
     'dispatch',
     'template_tag',
     'template_filter',
