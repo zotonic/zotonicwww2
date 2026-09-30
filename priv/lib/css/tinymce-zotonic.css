@@ -483,14 +483,9 @@ html, body {
 
 html {
   text-align: baseline;
-  font-size: 13px;
+  font-size: 16px;
 }
 
-@media screen and (min-width: 800px) {
-  html {
-    font-size: 16px;
-  }
-}
 a {
   color: #1683b1;
   text-decoration: none;
@@ -629,6 +624,7 @@ p pre code {
 }
 
 code,
+tt,
 kbd,
 samp {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -642,8 +638,11 @@ samp {
 }
 
 h1 code,
+h1 tt,
 h2 code,
-h3 code {
+h2 tt,
+h3 code,
+h3 tt {
   font-size: 0.8em;
 }
 
@@ -665,7 +664,9 @@ table td {
   line-height: 1.71428571;
 }
 table th code,
-table td code {
+table th tt,
+table td code,
+table td tt {
   font-size: 0.9rem;
 }
 table th {

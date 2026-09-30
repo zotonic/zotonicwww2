@@ -210,7 +210,9 @@ p pre code {
     margin-top: 1.71428571rem;
 }
 
+// Cotonic's imported HTML uses tt for inline code.
 code,
+tt,
 kbd,
 samp {
     font-family: $code-font;
@@ -224,8 +226,11 @@ samp {
 }
 
 h1 code,
+h1 tt,
 h2 code,
-h3 code {
+h2 tt,
+h3 code,
+h3 tt {
     font-size: 0.80em;
 }
 
@@ -251,7 +256,9 @@ table {
     }
 
     th code,
-    td code {
+    th tt,
+    td code,
+    td tt {
         font-size: 0.9rem;
     }
 
