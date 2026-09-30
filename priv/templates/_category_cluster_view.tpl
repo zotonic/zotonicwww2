@@ -73,7 +73,10 @@
                             {% endif %}
                             <ul class="category-cluster-card__resources">
                                 {% for result_id in cluster.result_ids %}
-                                    <li><a href="{{ result_id.page_url }}">{{ result_id.title|default:_"Untitled" }}</a></li>
+                                    <li>
+                                        <a href="{{ result_id.page_url }}">{{ result_id.title|default:_"Untitled" }}</a>
+                                        {% include "_doc_title_suffix.tpl" id=result_id %}
+                                    </li>
                                 {% endfor %}
                             </ul>
                             <a class="category-cluster-card__more"

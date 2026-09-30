@@ -8,6 +8,7 @@
                 <a class="reference-result__link" href="{{ result_id.page_url }}">
                     {{ result_id.title|default:_"Untitled" }}
                 </a>
+                {% include "_doc_title_suffix.tpl" id=result_id %}
             </h3>
             {% if result_id|summary:220 as result_summary %}
                 <p class="reference-result__summary">{{ result_summary }}</p>

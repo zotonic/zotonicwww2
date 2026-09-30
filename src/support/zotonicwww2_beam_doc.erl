@@ -236,11 +236,12 @@ tag_entries(Context) ->
 %% names and page paths so upstream Cotonic imports cannot overwrite them.
 cotonic_model_entries(Docs) ->
     maps:fold(
-        fun(Model, #{doc := Body, keywords := Keywords, path := Path}, Acc) ->
+        fun(Model, #{doc := Body, keywords := Keywords, path := Path} = Doc, Acc) ->
             {Name, Title, Category, PagePath} = cotonic_model_page(Model),
             Entry = entry(Category, cotonic_model, Name, Title,
                 cotonic_model_links(Body, Path, Docs), Path),
-            [Entry#{keywords => Keywords, props => #{<<"page_path">> => PagePath}} | Acc]
+            [Entry#{keywords => Keywords, module => maps:get(module, Doc, undefined),
+                props => #{<<"page_path">> => PagePath}} | Acc]
         end,
         [],
         Docs).
@@ -665,6 +666,7 @@ markdown_docs(Files, GitDir) ->
             Acc#{Name => #{
                 doc => Html,
                 keywords => markdown_keywords(FrontMatter),
+                module => markdown_module(FrontMatter),
                 path => relative_path(File, GitDir)
             }}
         end,
@@ -806,6 +808,17 @@ markdown_keywords(#{format := yaml, source := Source}) ->
             unique_keywords([normalize_keyword(Keyword) || Keyword <- Keywords]);
         Invalid ->
             erlang:error({invalid_markdown_keywords, Invalid})
+    end.
+
+%% @doc Read the owning Zotonic module for the standard in_module connection.
+markdown_module(undefined) ->
+    undefined;
+markdown_module(#{format := yaml, source := Source}) ->
+    Metadata = decode_yaml_front_matter(Source),
+    case maps:get(<<"module">>, Metadata, undefined) of
+        undefined -> undefined;
+        Module when is_binary(Module), byte_size(Module) > 0 -> Module;
+        Invalid -> erlang:error({invalid_markdown_module, Invalid})
     end.
 
 %% @doc Read the release date declared in Markdown front matter. The source
@@ -1028,12 +1041,15 @@ cotonic_model_entries_test() ->
         <<"README">> => #{doc => <<"<a href=\"activity.md\">Activity</a>">>,
             keywords => [<<"cotonic">>], path => <<"doc/cotonic-models/README.md">>},
         <<"activity">> => #{doc => <<"<p>Events only.</p>">>,
-            keywords => [<<"publish_and_subscribe">>], path => <<"doc/cotonic-models/activity.md">>}
+            keywords => [<<"publish_and_subscribe">>], module => <<"mod_wires">>,
+            path => <<"doc/cotonic-models/activity.md">>}
     },
     Entries = cotonic_model_entries(Docs),
     [Index] = [E || #{category := cotonic_reference} = E <- Entries],
     [Activity] = [E || #{category := cotonic_model} = E <- Entries],
     ?assertEqual(<<"model/activity">>, maps:get(title, Activity)),
+    ?assertEqual(<<"mod_wires">>, maps:get(module, Activity)),
+    ?assertEqual(undefined, maps:get(module, Index)),
     ?assertEqual([<<"publish_and_subscribe">>], maps:get(keywords, Activity)),
     ?assertEqual(<<"/cotonic/zotonic-models/activity">>,
         maps:get(<<"page_path">>, maps:get(props, Activity))),
@@ -1051,6 +1067,13 @@ cotonic_model_urls_test() ->
     ?assertEqual(<<"/id/doc_module_mod_base">>,
         cotonic_model_url(<<"/id/doc_module_mod_base">>, Base, Targets)),
     ?assertEqual(<<"#events">>, cotonic_model_url(<<"#events">>, Base, Targets)).
+
+markdown_module_test() ->
+    ?assertEqual(undefined, markdown_module(undefined)),
+    ?assertEqual(undefined, markdown_module(#{format => yaml, source => <<"keywords: []">>})),
+    ?assertEqual(<<"mod_wires">>, markdown_module(#{format => yaml, source => <<"module: mod_wires">>})),
+    ?assertError({invalid_markdown_module, [<<"mod_wires">>]},
+        markdown_module(#{format => yaml, source => <<"module: [mod_wires]">>})).
 
 markdown_keywords_test() ->
     ?assertEqual([], markdown_keywords(undefined)),

@@ -5,7 +5,7 @@
                 <p class="search-result-card__meta">
                     {{ id.category_id.title }}
                 </p>
-                <h3>{{ id.title|default:_"Untitled" }}</h3>
+                <h3>{{ id.title|default:_"Untitled" }} {% include "_doc_title_suffix.tpl" id=id %}</h3>
                 {% if id.summary %}
                     <p class="search-result-card__summary">{{ id|summary:180 }}</p>
                 {% endif %}

@@ -3,7 +3,7 @@
 {% block content %}
     <article>
         {% include "_page_meta.tpl" %}
-        <h1{% if id.is_a.category %} class="category-page__title"{% endif %}>{{ id.title }}</h1>
+        <h1{% if id.is_a.category %} class="category-page__title"{% endif %}>{{ id.title }} {% include "_doc_title_suffix.tpl" id=id %}</h1>
 
         {% if id.is_a.category %}
             {% include "_category_tree_navigation.tpl" id=id %}
@@ -26,7 +26,7 @@
 
         {% block content_before_body %}{% endblock %}
 
-        {% include "_page_body.tpl" id=id %}
+        {% include "_page_body.tpl" id=id body=id.body|zotonicwww2_without_title:id.title %}
 
         {# Reference documentation and release notes are maintained on GitHub #}
         {% if id.github_url and (id.is_a.reference or id.is_a.releasenotes) %}
