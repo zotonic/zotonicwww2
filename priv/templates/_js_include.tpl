@@ -26,7 +26,6 @@
 
     "bootstrap/js/bootstrap.min.js"
 
-    "js/zotonicwww2-navigation.js"
     "js/zotonicwww2-search.js"
 
     minify

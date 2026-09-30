@@ -102,21 +102,10 @@ body {
     border-bottom: 1px solid var(--site-rule);
     background: rgba(255, 255, 252, .96);
     backdrop-filter: blur(14px);
-    transition: transform .22s ease, box-shadow .22s ease;
 
     header {
         position: static;
         top: auto;
-    }
-}
-
-body.site-nav-hidden:not(.search-overlay-open) #header-wrapper {
-    transform: translateY(calc(-100% - 1px));
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #header-wrapper {
-        transition: none;
     }
 }
 
