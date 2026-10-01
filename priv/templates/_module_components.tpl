@@ -1,6 +1,7 @@
 
 {% for category_id in [
     `model`,
+    `cotonic_model`,
     `controller`,
     `dispatch`,
     `template_tag`,
