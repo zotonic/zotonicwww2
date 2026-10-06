@@ -1,7 +1,4 @@
-%% @doc A site is like a module, except that a site application
-%% also contains a priv/zotonic_site.config file, from which
-%% the system can see that this Erlang application is a Zotonic
-%% site. All exports below are also valid for a Zotonic module.
+%% @doc Site application for zotonic.com and its documentation library.
 %% @author Marc Worrell <marc@worrell.nl>
 %% @copyright 2020-2025 Marc Worrell
 %% @end
@@ -19,6 +16,12 @@
 %% limitations under the License.
 
 -module(zotonicwww2).
+-moduledoc("
+Site application for zotonic.com and its documentation library.
+
+Provides the site schema, admin integration, documentation import scheduling,
+and search observers for the Zotonic website.
+").
 -author("Zotonic Team").
 
 % Module attributes - shown in the /admin/modules interface.
@@ -33,7 +36,7 @@
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(24).
+-mod_schema(25).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -70,6 +73,7 @@
 % compilation.
 -export([
     observe_tick_24h/2,
+    observe_admin_menu/3,
     manage_schema/2,
     manage_data/2,
     observe_search_query/2,
@@ -79,6 +83,7 @@
 % This is the main header file, it contains useful definitions and
 % also includes record defintions, as used by manage_schema/2.
 -include_lib("zotonic_core/include/zotonic.hrl").
+-include_lib("zotonic_mod_admin/include/admin_menu.hrl").
 
 
 %%====================================================================
@@ -98,6 +103,7 @@
 -spec manage_schema( z_module_manager:manage_schema(), z:context() ) -> ok | #datamodel{}.
 manage_schema(_Version, Context) ->
     ok = zotonicwww2_doc_import:install(Context),
+    ok = m_zotonicwww2_external:install(Context),
     #datamodel{
 
         % These are the extra categories for our website.
@@ -367,9 +373,10 @@ observe_search_query(#search_query{}, _Context) ->
     undefined.
 
 
-%% @doc Queue the daily Cotonic revision check outside the notification handler.
+%% @doc Queue daily Cotonic and external repository checks outside the notification handler.
 -spec observe_tick_24h(tick_24h, z:context()) -> ok.
 observe_tick_24h(tick_24h, Context) ->
+    ok = m_zotonicwww2_external:queue_all(Context),
     case m_zotonicwww2_git:queue(cotonic_poll, Context) of
         {ok, _} -> ok;
         {error, Reason} ->
@@ -466,3 +473,11 @@ refresh_docs_dashboard(Context) ->
         "zotonic-docs-dashboard",
         #render{template = "_admin_dashboard_zotonic_docs_status.tpl"},
         Context).
+
+%% @doc External documentation administration is restricted to administrators.
+observe_admin_menu(#admin_menu{}, Acc, Context) ->
+    case z_acl:is_admin(Context) of
+        true -> [#menu_item{id=admin_external_modules, parent=admin_content,
+            label=?__("External modules", Context), url={admin_external_modules}} | Acc];
+        false -> Acc
+    end.

@@ -3,12 +3,23 @@
 {% block content_before_body %}
     <nav class="module-components-nav" aria-label="{_ Module contents _}">
         <ul>
-            {% if id.o.observes|is_visible as notifications %}
+            {% if id.doc_module_config %}
+                <li><a class="module-components-nav__link" href="#module-configuration">{_ Configuration _} <span>{{ id.doc_module_config|length }}</span></a></li>
+            {% endif %}
+            {% if id.is_external_module and id.doc_module_observers %}
                 <li>
                     <a class="module-components-nav__link" href="#module-observes">
-                        {_ Notifications _} <span>{{ notifications|length }}</span>
+                        {_ Notifications _} <span>{{ id.doc_module_observers|length }}</span>
                     </a>
                 </li>
+            {% elseif not id.is_external_module %}
+                {% if id.o.observes|is_visible as notifications %}
+                    <li>
+                        <a class="module-components-nav__link" href="#module-observes">
+                            {_ Notifications _} <span>{{ notifications|length }}</span>
+                        </a>
+                    </li>
+                {% endif %}
             {% endif %}
             {% include "_module_components.tpl" module_id=id is_navigation %}
         </ul>
@@ -18,6 +29,7 @@
 {% block content_after %}
 
 <div class="page-relations">
+    {% include "_module_configuration.tpl" module_id=id %}
     {% include "_module_observes.tpl" module_id=id %}
 
     {% include "_module_components.tpl" module_id=id %}

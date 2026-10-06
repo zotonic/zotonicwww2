@@ -58,6 +58,15 @@ main,
         color: $contrast-color;
     }
 
+    .admonition.external-module {
+        border-left: 3px solid #99621c;
+        padding-left: 1rem;
+
+        .admonition-title {
+            color: #825318;
+        }
+    }
+
     .toctree-wrapper {
         display: none;
     }

@@ -16,7 +16,39 @@
 %% `subject_topic_broader`.
 %% @end
 
+%% Copyright 2026 Marc Worrell
+%%
+%% Licensed under the Apache License, Version 2.0 (the "License");
+%% you may not use this file except in compliance with the License.
+%% You may obtain a copy of the License at
+%%
+%%     http://www.apache.org/licenses/LICENSE-2.0
+%%
+%% Unless required by applicable law or agreed to in writing, software
+%% distributed under the License is distributed on an "AS IS" BASIS,
+%% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%% See the License for the specific language governing permissions and
+%% limitations under the License.
+
 -module(zotonicwww2_subject_import).
+-moduledoc("
+Import the controlled Zotonic subject vocabulary.
+
+The CSV lives in the `doc` directory of the running Zotonic installation.
+It deliberately does not come from the separately managed documentation
+checkout: the CSV format and this importer must be deployed together. Its
+eight facets are represented as direct sub-categories of `keyword`, so the
+standard admin subject selector groups the imported concepts. Individual
+subjects remain resources, giving them their own page and connections.
+
+Every `keyword_slug` is a canonical identifier. The resource name is derived
+as `zotonic_topic_<keyword_slug>`. All names are validated for uniqueness and
+checked against existing resources before the import makes any changes.
+
+The import is idempotent. Content hashes avoid needless updates, and removed
+subjects are unpublished. The `parent_slug` column is synchronized through
+`subject_topic_broader`.
+").
 
 -export([
     import/1,

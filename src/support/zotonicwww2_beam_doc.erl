@@ -11,7 +11,34 @@
 %% `-doc(#{zotonic_keywords => ["media_management", "upload"]}).`
 %% @end
 
+%% Copyright 2026 Marc Worrell
+%%
+%% Licensed under the Apache License, Version 2.0 (the "License");
+%% you may not use this file except in compliance with the License.
+%% You may obtain a copy of the License at
+%%
+%%     http://www.apache.org/licenses/LICENSE-2.0
+%%
+%% Unless required by applicable law or agreed to in writing, software
+%% distributed under the License is distributed on an "AS IS" BASIS,
+%% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%% See the License for the specific language governing permissions and
+%% limitations under the License.
+
 -module(zotonicwww2_beam_doc).
+-moduledoc("
+Load the documentation from a beam file.
+This file has code adapted from code:get_doc/1, as we don't want to load
+the beam file into the VM when fetching the docs from the beam file.
+
+Controlled subject keywords are added as EEP-48 metadata next to the
+documentation text. Both module and callback documentation use the same
+list of canonical slugs:
+
+`-moduledoc(#{zotonic_keywords => [\"module_management\", \"configure\"]}).`
+
+`-doc(#{zotonic_keywords => [\"media_management\", \"upload\"]}).`
+").
 
 -include_lib("kernel/include/eep48.hrl").
 % -include_lib("zotonic_core/include/zotonic.hrl").
@@ -23,6 +50,8 @@
     get_doc/1,
     get_modules_doc/1,
     get_dispatch_docs/1,
+    dispatch_doc/4,
+    dispatch_keywords/0,
     get_filters_doc/1,
     get_models_doc/1,
     get_controllers_doc/1,
@@ -77,7 +106,7 @@ collect_entries(Context) ->
 
 module_entries(Context, DocumentedNotifications) ->
     maps:fold(
-        fun(App, #{doc := Body, keywords := Keywords, observes := Observes, path := Path}, Acc) ->
+        fun(App, #{doc := Body, keywords := Keywords, observes := Observes, config := Config, path := Path}, Acc) ->
             Module = app2mod(App),
             Entry = entry(module, module_page_name(Module), module_title(Module), Body, Path),
             [Entry#{
@@ -87,7 +116,7 @@ module_entries(Context, DocumentedNotifications) ->
                     || Notification <- Observes,
                        sets:is_element(Notification, DocumentedNotifications)
                 ],
-                props => #{<<"erlang_app">> => App}
+                props => #{<<"erlang_app">> => App, <<"doc_module_config">> => Config}
             } | Acc]
         end,
         [],
@@ -382,6 +411,7 @@ add_module_doc(AppName, Beamfile, SourcePath, Acc) ->
                     doc => zotonicwww2_doc_link:to_html(Doc),
                     keywords => zotonic_keywords(Metadata),
                     observes => module_observes(Beamfile),
+                    config => zotonicwww2_module_config:from_beam(Beamfile),
                     path => SourcePath
                 }
             };
@@ -393,6 +423,7 @@ add_module_doc(AppName, Beamfile, SourcePath, Acc) ->
                     doc => <<>>,
                     keywords => [],
                     observes => module_observes(Beamfile),
+                    config => zotonicwww2_module_config:from_beam(Beamfile),
                     path => SourcePath
                 }
             }
@@ -479,6 +510,8 @@ is_dispatch_rule({Name, _Path, Controller, Options}) ->
 is_dispatch_rule(_) ->
     false.
 
+%% @doc Render trusted core rules or binary display rows from the isolated parser.
+-spec dispatch_doc(binary(), binary(), binary(), [tuple() | map()]) -> binary().
 dispatch_doc(Module, Filename, Path, Rules) ->
     Intro = [
         <<"<p>This file defines the URL dispatch rules for <code>">>,
@@ -504,6 +537,20 @@ dispatch_file_note(Filename) ->
         <<"</code> dispatch file.</p>">>
     ].
 
+%% External source parsing supplies binary display values, keeping arbitrary
+%% repository atoms out of the site VM. Controller links are resolved by import.
+dispatch_rule_row(#{<<"name">> := Name, <<"path">> := Path,
+        <<"controller">> := Controller, <<"options">> := Options} = Rule) ->
+    ControllerHtml = case maps:get(<<"controller_page">>, Rule, undefined) of
+        undefined -> [<<"<code>">>, z_html:escape(Controller), <<"</code>">>];
+        Page -> dispatch_controller_link(Controller, Page)
+    end,
+    [
+        <<"<tr><td><code>">>, z_html:escape(Name), <<"</code></td>">>,
+        <<"<td><code>">>, z_html:escape(Path), <<"</code></td>">>,
+        <<"<td>">>, ControllerHtml, <<"</td>">>,
+        <<"<td><code>">>, z_html:escape(Options), <<"</code></td></tr>">>
+    ];
 dispatch_rule_row({Name, Path, Controller, Options}) ->
     [
         <<"<tr><td><code>">>, z_html:escape(atom_to_binary(Name)), <<"</code></td>">>,
@@ -514,7 +561,9 @@ dispatch_rule_row({Name, Path, Controller, Options}) ->
 
 dispatch_controller_link(Controller) ->
     ControllerName = atom_to_binary(Controller),
-    PageName = controller_page_name(ControllerName),
+    dispatch_controller_link(ControllerName, controller_page_name(ControllerName)).
+
+dispatch_controller_link(ControllerName, PageName) ->
     [
         <<"<a class=\"dispatch-controller-link\" href=\"/id/">>,
         z_html:escape(PageName),
@@ -552,6 +601,7 @@ dispatch_path_segment(Segment) ->
 term_text(Term) ->
     iolist_to_binary(io_lib:format("~tp", [Term])).
 
+-spec dispatch_keywords() -> [binary()].
 dispatch_keywords() ->
     [
         <<"reference">>,

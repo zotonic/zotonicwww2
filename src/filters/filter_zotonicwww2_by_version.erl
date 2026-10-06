@@ -21,6 +21,12 @@
 % It is good habit to prefix the filter with the name of the module or site.
 % In this way a name clash with other modules and sites is prevented.
 -module(filter_zotonicwww2_by_version).
+-moduledoc("
+Template filter for sorting release note resources on their version number.
+
+Use `{{ ids|zotonicwww2_by_version }}` to sort release resources by their
+version titles, highest first. An undefined input returns an empty list.
+").
 
 -export([
     % The name of the filter MUST be used as the entry point.
