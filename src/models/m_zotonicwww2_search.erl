@@ -25,6 +25,18 @@
 %% limitations under the License.
 
 -module(m_zotonicwww2_search).
+-moduledoc("
+Public documentation search backed by the Zotonic search facet table.
+
+The `title` and `important` facets contain the text used for the public
+documentation search. A site-specific pg_trgm query searches both facets
+before falling back to Zotonic's regular full-text index.
+
+All public result and facet paths are evaluated as an anonymous visitor,
+including when the caller is logged in. SQL searches are returned through
+Zotonic's search pipeline so that publication and ACL restrictions are
+added before the query is executed.
+").
 
 -behaviour(zotonic_model).
 

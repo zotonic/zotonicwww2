@@ -148,3 +148,126 @@ can therefore be unavailable between deploying the code and completing step 8.
 The public and admin templates continue to use Bootstrap 3 classes. Keep this
 structure until the planned Bootstrap 5 migration using the compatibility CSS
 from the `bs3-to-bs5` branch.
+
+
+## External module documentation
+
+Administrators can add and edit repositories using dialogs under **Content → External modules**
+(`/admin/external-modules`), also linked from the documentation dashboard. Store
+its public HTTPS Git URL, optional information URL, optional branch (empty means
+the remote default), and Hex package. The registry records the adding user,
+fetch/import timestamps, processing stage, errors, and imported/skipped files.
+The repository table shows processing status, timestamps, and page counts. Open
+**Import report** for the imported pages and errors for skipped pages.
+
+**Deprecate** moves all documentation belonging to the repository into the
+deprecated documentation content group, unpublishes it, and pauses updates.
+An in-flight import cannot republish deprecated pages. Re-enable the repository
+in **Edit** and save to import its documentation again.
+
+Disable daily checks to pause a repository; existing pages remain available.
+Saving or **Fetch and import now** queues a refresh. Disabled repositories are
+not processed. No package is downloaded from Hex; it is shown as a package link.
+
+The daily tick checks each enabled repository with `git ls-remote`. An unchanged
+successfully imported commit is skipped. Changed repositories are shallow-cloned
+into a disposable directory under the site's files directory. Git hooks,
+credential prompts, redirects, non-HTTPS protocols, submodules, and build commands
+are disabled. Each subprocess has a two-minute timeout and bounded output.
+Git and escript must be available on the server; Erlang/OTP 28 is required.
+
+A separate, disposable Erlang VM scans source with `erl_scan` and parses module
+and moduledoc attributes with `erl_parse`. It never compiles repository code,
+loads modules, expands macros, or evaluates include files. This keeps arbitrary
+source atoms out of the site's VM. It accepts literal strings/binaries, OTP 27+
+multiline strings, and `{file, "relative/path.md"}` docs confined to the checkout.
+Symlinks are never followed. The limits are 2,000 Erlang/dispatch files, 2 MiB per
+source or referenced documentation file, and 16 MiB of parsed data per repository.
+Conditional branches are not evaluated; ambiguous or macro-based moduledoc
+attributes are reported as skipped.
+
+Files without nonempty moduledoc (including `false`), parse errors, duplicate
+module names, and unknown subject-keyword slugs appear in **Pages not imported**.
+Keywords use the same controlled subject vocabulary as core documentation.
+A successful scan reconciles all pages for that repository in one transaction:
+new pages are inserted, existing pages updated, and absent/skipped pages hidden.
+An empty successful scan also hides all its former pages. A fetch or whole-scan
+failure preserves existing pages. File-level errors do not prevent other files
+from importing. The commit is recorded only after reconciliation succeeds.
+
+Resource names start with `doc_external_<repository id>_`. Names are limited to
+Zotonic's 80-character database limit; long or noncanonical Erlang names use a
+readable prefix and a 128-bit SHA-256 suffix. Tracking uses a separate source key
+per repository, so external imports cannot reconcile core or other repositories'
+pages. Public pages show an external-module notice, distinct aside color, Git
+and information URLs, and the optional Hex link. Module-component connections
+use the documented module in the same source tree where possible.
+
+Verification:
+
+- `escript test/external_parser_test.escript` from this site directory tests source
+  parsing, missing/hidden docs, macros, file docs, and symlink/path restrictions.
+- EUnit tests in `zotonicwww2_external_import` cover URL/branch validation and
+  bounded, collision-resistant resource names.
+- Compile `test/zotonicwww2_external_integration.erl` and call `run(Context)` on a
+  development site to test insertion, updates, hiding, restoration, repository
+  isolation, HTML sanitization, admin-only reads, and template rendering. The
+  integration test rolls back all its database fixtures.
+
+
+### Module configuration tables
+
+Both core and external module imports store `-mod_config` declarations in the
+module page's `doc_module_config` property. The module page renders a table of
+module, key, type, declared default, and description from this stored metadata.
+An omitted module defaults to the declaring Erlang module; legacy `name` keys
+are also supported. Defaults are displayed as Erlang terms, distinguishing
+`false`, `undefined`, empty strings/binaries, and structured values. Live site
+configuration is never read for this table. Reimport existing documentation to
+populate the metadata; removing the attribute clears the stored table.
+
+Core imports read the BEAM attributes without loading the module. External
+imports parse literal `-mod_config` attributes in the isolated source-parser VM,
+using the same normalization code. Unparseable attributes are reported with
+other file-level parsing errors.
+
+
+### External dispatch rules
+
+Each application's `priv/dispatch/*` files are parsed as literal Erlang terms
+inside the isolated VM. No code is evaluated or compiled. Hidden files, editor
+backups, and symlinks are ignored. Multiple lists of rules per file are combined
+in source order. Invalid syntax and malformed rules appear in the skipped report.
+
+Each file produces one dispatch documentation page with rule names, paths,
+controllers, and options. Controller links target documented controllers in the
+same repository. Pages retain the external-module notice and repository links,
+and connect to the documented module in the same application. Missing or
+ambiguous documented modules cause the dispatch file to be reported as skipped.
+No synthetic module page is created when its source lacks moduledoc.
+
+Names use `doc_external_dispatch_<repository id>_<path hash>` and remain within
+80 characters. The full relative path distinguishes identically named files in
+umbrella applications. Dispatch pages participate in the same transactional
+updates and removal/hiding as other imported pages. Use **Fetch and import now**
+to add dispatch pages from repositories whose Git commit has not changed.
+
+Run `escript test/external_dispatch_parser_test.escript` from the site directory
+for literal-term parsing, route ordering, dynamic paths, multiple applications,
+malformed input, and file exclusion checks.
+
+
+### External module observers
+
+The isolated source parser reads literal `-export` attributes and recognizes
+`observe_<notification>/2,3` and `pid_observe_<notification>/3,4`, matching
+Zotonic's observer registration rules. Multiple callbacks for the same
+notification produce one item; unexported functions and other arities are
+ignored. Parsing still requires moduledoc and never compiles the module.
+
+Imports store the complete list in `doc_module_observers` on the module page
+and replace its `observes` connections to existing notification resources.
+The Observes section links to visible notification documentation and lists
+custom or undocumented notifications as plain names. The navigation count
+includes both. Reimporting after removing exports clears the old names and
+connections. Use **Fetch and import now** for an unchanged repository revision.

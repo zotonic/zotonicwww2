@@ -8,12 +8,37 @@
 %% from the compiled module or callback documentation.
 %% @end
 
+%% Copyright 2026 Marc Worrell
+%%
+%% Licensed under the Apache License, Version 2.0 (the "License");
+%% you may not use this file except in compliance with the License.
+%% You may obtain a copy of the License at
+%%
+%%     http://www.apache.org/licenses/LICENSE-2.0
+%%
+%% Unless required by applicable law or agreed to in writing, software
+%% distributed under the License is distributed on an "AS IS" BASIS,
+%% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%% See the License for the specific language governing permissions and
+%% limitations under the License.
+
 -module(zotonicwww2_doc_import).
+-moduledoc("
+Track source-owned documentation and reconcile removed source pages.
+
+The tracking table deliberately lives outside the resource props. This makes
+imports auditable and lets a later live-site migration distinguish source
+documentation from editorial content without relying on categories alone.
+Subject keywords on source-managed documentation are authoritative: every
+import replaces those `subject` edges with the `zotonic_keywords` metadata
+from the compiled module or callback documentation.
+").
 
 -export([
     install/1,
     sync/3,
     sync/4,
+    sync_external/4,
     keyword_coverage/1,
     migrate_legacy/1,
     migration_status/1,
@@ -142,6 +167,14 @@ sync(Source, Entries, Commit, Context0)
             Error
     end.
 
+%% @doc Internal external-repository entry point. Empty successful scans are
+%% authoritative too: removing the last moduledoc must hide its old page.
+-spec sync_external(binary(), [map()], binary(), z:context()) -> {ok, map()} | {error, term()}.
+sync_external(<<"external_", Id/binary>> = Source, Entries, Commit, Context)
+    when byte_size(Id) > 0 ->
+    true = lists:all(fun(C) -> C >= $0 andalso C =< $9 end, binary_to_list(Id)),
+    sync_with_keywords(Source, [E#{source => Source} || E <- Entries], Commit, z_acl:sudo(Context)).
+
 sync_with_keywords(Source, Entries, Commit, Context) ->
     case resolve_manifest_keywords(Entries, Context) of
         {ok, KeywordIds} ->
@@ -249,12 +282,22 @@ change_kind(_Tracking, undefined, _Hash) ->
     created.
 
 store_resource(created, _RscId, Props, Context) ->
-    m_rsc:insert(Props, Context);
+    % sync_entry already sanitized the complete property map. Check escaping
+    % on storage so nested configuration values are not escaped twice.
+    m_rsc:insert(Props, [{is_escape_texts, false}], Context);
 store_resource(_Result, RscId, Props, Context) when is_integer(RscId) ->
-    m_rsc:update(RscId, Props, Context).
+    m_rsc:update(RscId, Props, [{is_escape_texts, false}], Context).
 
 replace_import_edges(RscId, Entry, KeywordIds, Context) ->
-    case replace_module_edge(RscId, maps:get(module, Entry, undefined), Context) of
+    ModuleResult = case Entry of
+        #{kind := external} ->
+            case maps:get(module, Entry, undefined) of
+                undefined -> m_edge:replace(RscId, in_module, [], Context);
+                Module -> replace_module_edge(RscId, Module, Context)
+            end;
+        _ -> replace_module_edge(RscId, maps:get(module, Entry, undefined), Context)
+    end,
+    case ModuleResult of
         ok ->
             case replace_observes_edges(RscId, Entry, Context) of
                 ok -> replace_subject_edges(RscId, Entry, KeywordIds, Context);
@@ -265,6 +308,11 @@ replace_import_edges(RscId, Entry, KeywordIds, Context) ->
 
 replace_module_edge(_RscId, undefined, _Context) ->
     ok;
+replace_module_edge(RscId, {page, Name}, Context) ->
+    case m_rsc:rid(Name, Context) of
+        undefined -> {error, {unknown_module, Name}};
+        Id -> m_edge:replace(RscId, in_module, [Id], Context)
+    end;
 replace_module_edge(RscId, Module, Context) when is_binary(Module) ->
     ModName = module_page_name(Module),
     case m_rsc:rid(ModName, Context) of
@@ -272,6 +320,18 @@ replace_module_edge(RscId, Module, Context) when is_binary(Module) ->
         ModId -> m_edge:replace(RscId, in_module, [ ModId ], Context)
     end.
 
+%% External modules can observe notifications without documentation (including
+%% their own custom notifications). Keep those names on the page, and connect
+%% only existing notification resources. Replacing also clears removed exports.
+replace_observes_edges(RscId, #{kind := external, category := module, observes := Notifications}, Context) ->
+    Ids = [
+        Id
+        || N <- Notifications,
+           Id <- [m_rsc:rid(notification_page_name(N), Context)],
+           is_integer(Id),
+           m_rsc:is_a(Id, notification, Context)
+    ],
+    m_edge:replace(RscId, observes, lists:usort(Ids), Context);
 replace_observes_edges(RscId, #{kind := module, observes := Notifications}, Context) ->
     replace_observes_edges_1(RscId, Notifications, [], Context);
 replace_observes_edges(_RscId, _Entry, _Context) ->

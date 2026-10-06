@@ -783,6 +783,15 @@ main .admonition-title,
 .mce-content-body .admonition-title {
   color: #1683b1;
 }
+main .admonition.external-module,
+.mce-content-body .admonition.external-module {
+  border-left: 3px solid #99621c;
+  padding-left: 1rem;
+}
+main .admonition.external-module .admonition-title,
+.mce-content-body .admonition.external-module .admonition-title {
+  color: #825318;
+}
 main .toctree-wrapper,
 .mce-content-body .toctree-wrapper {
   display: none;

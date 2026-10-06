@@ -19,6 +19,12 @@
 %% limitations under the License.
 
 -module(zotonicwww2_convert).
+-moduledoc("
+One-off, manually invoked conversions for the zotonic.com documentation.
+
+Run `plan/1` first and `run/1` from an Erlang shell when the result has been
+reviewed. Nothing in this module is called from `manage_schema/2`.
+").
 
 -export([
     plan/1,
