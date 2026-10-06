@@ -17,7 +17,7 @@
                     {% for config in configs %}
                         <tr>
                             <td><code>{{ config.module }}</code></td>
-                            <th scope="row"><code>{{ config.key }}</code></th>
+                            <td><code>{{ config.key }}</code></td>
                             <td><code>{{ config.type|default:"—" }}</code></td>
                             <td>{% if config.has_default %}<code>{{ config.default }}</code>{% else %}—{% endif %}</td>
                             <td>{{ config.description }}</td>
