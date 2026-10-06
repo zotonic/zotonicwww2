@@ -168,7 +168,7 @@ collect_entries(Rows, Repo, Context) ->
     Entries = [entry(R, Repo, module_parent(R, Modules, Repo)) || R <- Parsed],
     {ModuleEntries, Components} = lists:partition(fun(E) -> maps:get(category, E) =:= module end, Entries),
     CheckedDispatch = [check_dispatch(R, Modules, Context) || R <- DispatchRows],
-    DispatchEntries = [dispatch_entry(R, Repo, Parsed) || #{<<"status">> := <<"parsed">>} = R <- CheckedDispatch],
+    DispatchEntries = [dispatch_entry(R, Repo, Parsed, Context) || #{<<"status">> := <<"parsed">>} = R <- CheckedDispatch],
     Sorted = ModuleEntries ++ Components ++ DispatchEntries,
     Report = [report_row(R, Repo) || R <- Checked ++ CheckedDispatch],
     {Sorted, Report}.
@@ -196,9 +196,9 @@ check_dispatch(#{<<"status">> := <<"parsed">>, <<"path">> := Path} = Row, Module
 check_dispatch(Row, _, _) -> Row.
 
 dispatch_entry(#{<<"path">> := Path, <<"module">> := Module, <<"rules">> := Rules,
-        <<"keywords">> := Keywords}, Repo, Sources) ->
+        <<"keywords">> := Keywords}, Repo, Sources, Context) ->
     Filename = filename:basename(Path),
-    LinkedRules = [dispatch_controller(R, Repo, Sources) || R <- Rules],
+    LinkedRules = [dispatch_controller(R, Repo, Sources, Context) || R <- Rules],
     #{category => dispatch, kind => external, name => dispatch_page_name(Repo, Path),
       title => <<Module/binary, " dispatch rules (", Filename/binary, ")">>,
       body => zotonicwww2_beam_doc:dispatch_doc(Module, Filename, Path, LinkedRules),
@@ -207,10 +207,18 @@ dispatch_entry(#{<<"path">> := Path, <<"module">> := Module, <<"rules">> := Rule
       props => (external_props(Repo))#{<<"dispatch_file">> => Filename,
           <<"dispatch_rule_count">> => length(Rules)}}.
 
-dispatch_controller(#{<<"controller">> := Controller} = Rule, Repo, Sources) ->
+dispatch_controller(#{<<"controller">> := Controller} = Rule, Repo, Sources, Context) ->
     case lists:any(fun(R) -> maps:get(<<"module">>, R) =:= Controller end, Sources) of
         true -> Rule#{<<"controller_page">> => page_name(Repo, Controller)};
-        false -> Rule
+        false ->
+            %% Prefer this import's manifest, then existing public core docs.
+            Page = <<"doc_controller_", Controller/binary>>,
+            PublicContext = z_acl:anondo(Context),
+            case m_rsc:is_a(Page, controller, PublicContext)
+                andalso z_acl:rsc_visible(Page, PublicContext) of
+                true -> Rule#{<<"controller_page">> => Page};
+                false -> Rule
+            end
     end.
 
 %% Use a distinct prefix and hash the full relative path: multiple applications
@@ -367,7 +375,7 @@ dispatch_entry_test() ->
         <<"controller">> => <<"controller_example">>, <<"options">> => <<"<script>bad</script>">>}],
     Entry = dispatch_entry(#{<<"path">> => Path, <<"module">> => <<"mod_example">>,
         <<"rules">> => Rules, <<"keywords">> => []}, Repo,
-        [#{<<"module">> => <<"controller_example">>}]),
+        [#{<<"module">> => <<"controller_example">>}], undefined),
     ?assertEqual(dispatch, maps:get(category, Entry)),
     ?assertEqual({page, page_name(Repo, <<"mod_example">>)}, maps:get(module, Entry)),
     Body = maps:get(body, Entry),

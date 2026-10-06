@@ -243,7 +243,8 @@ in source order. Invalid syntax and malformed rules appear in the skipped report
 
 Each file produces one dispatch documentation page with rule names, paths,
 controllers, and options. Controller links target documented controllers in the
-same repository. Pages retain the external-module notice and repository links,
+same repository first, then existing publicly visible core controller documentation.
+Unknown or unpublished controllers remain plain text. Pages retain the external-module notice and repository links,
 and connect to the documented module in the same application. Missing or
 ambiguous documented modules cause the dispatch file to be reported as skipped.
 No synthetic module page is created when its source lacks moduledoc.

@@ -122,7 +122,7 @@ run(Context) ->
 %% Exercise the actual external collector, then persist, update, and remove a
 %% dispatch page. An unrelated application's file must not borrow this parent.
 dispatch_checks(Context) ->
-    Suffix = z_ids:id(12),
+    Suffix = z_string:to_lower(z_ids:id(12)),
     Module = <<"mod_test_", Suffix/binary>>,
     Controller = <<"controller_test_", Suffix/binary>>,
     Root = <<"./apps/", Suffix/binary>>,
@@ -140,14 +140,33 @@ dispatch_checks(Context) ->
     ControllerRow = Source#{<<"module">> => Controller, <<"path">> => <<Root/binary, "/src/controllers/", Controller/binary, ".erl">>},
     Rule = #{<<"name">> => <<"test">>, <<"path">> => <<"/test/:id">>,
         <<"controller">> => Controller, <<"options">> => <<"[{template, \"<example>\"}]">>},
+    CoreController = <<"controller_core_", Suffix/binary>>,
+    MissingController = <<"controller_missing_", Suffix/binary>>,
+    HiddenController = <<"controller_hidden_", Suffix/binary>>,
+    lists:foreach(fun({Name, Published}) ->
+        {ok, _} = m_rsc:insert(#{
+            <<"name">> => <<"doc_controller_", Name/binary>>,
+            <<"category_id">> => controller, <<"title">> => Name,
+            <<"content_group_id">> => m_rsc:rid(content_group_imported_docs, Context),
+            <<"is_published">> => Published}, Context)
+    end, [{Controller, true}, {CoreController, true}, {HiddenController, false}]),
     DispatchRow = #{<<"kind">> => <<"dispatch">>, <<"status">> => <<"parsed">>,
-        <<"path">> => <<Root/binary, "/priv/dispatch/dispatch">>, <<"rules">> => [Rule]},
+        <<"path">> => <<Root/binary, "/priv/dispatch/dispatch">>, <<"rules">> => [Rule,
+            Rule#{<<"controller">> => CoreController},
+            Rule#{<<"controller">> => MissingController},
+            Rule#{<<"controller">> => HiddenController}]},
     Orphan = DispatchRow#{<<"path">> => <<"./apps/undocumented/priv/dispatch/dispatch">>},
     {Entries, Report} = zotonicwww2_external_import:collect_entries([ModuleRow, ControllerRow, DispatchRow, Orphan], Repo, Context),
     3 = length(Entries),
     1 = length([R || #{<<"status">> := <<"skipped">>} = R <- Report]),
     [#{name := DispatchName, body := Body}] = [E || #{category := dispatch} = E <- Entries],
     true = binary:match(Body, <<"&lt;example&gt;">>) =/= nomatch,
+    [#{name := ControllerPage}] = [E || #{category := controller} = E <- Entries],
+    true = binary:match(Body, <<"/id/", ControllerPage/binary>>) =/= nomatch,
+    nomatch = binary:match(Body, <<"/id/doc_controller_", Controller/binary>>),
+    true = binary:match(Body, <<"/id/doc_controller_", CoreController/binary>>) =/= nomatch,
+    nomatch = binary:match(Body, <<"/id/doc_controller_", MissingController/binary>>),
+    nomatch = binary:match(Body, <<"/id/doc_controller_", HiddenController/binary>>),
     {ok, #{created := 3}} = zotonicwww2_doc_import:sync_external(<<"external_2147483644">>, Entries, <<"dispatch-first">>, Context),
     DispatchId = m_rsc:rid(DispatchName, Context),
     true = m_rsc:is_a(DispatchId, dispatch, Context),
