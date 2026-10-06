@@ -20,10 +20,11 @@ parse_files(Root, [Path | Rest], Bytes, Acc) ->
     parse_files(Root, Rest, Total, [Row | Acc]).
 
 files(Root, Relative) ->
-    %% Internal helpers are not documentation pages. Prune the entire subtree,
-    %% including support directories inside applications in umbrella repos.
+    %% Internal helpers and tests are not documentation pages. Prune their
+    %% subtrees, including those inside applications in umbrella repos.
     case {filename:basename(filename:dirname(Relative)), filename:basename(Relative)} of
         {"src", "support"} -> [];
+        {_, "test"} -> [];
         _ ->
             {ok, Names} = file:list_dir(filename:join(Root, Relative)),
             lists:append([file_entry(Root, filename:join(Relative, N))

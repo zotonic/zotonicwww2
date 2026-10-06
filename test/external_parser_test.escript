@@ -32,6 +32,10 @@ main(_) ->
         write(Root, "src/support/m_internal.erl", <<"-module(m_internal).\n-moduledoc(\"Internal\").\n">>),
         write(Root, "src/support/deep/broken.erl", <<"not valid Erlang \"">>),
         write(Root, "nested/src/support/filter_internal.erl", <<"-module(filter_internal).\n">>),
+        %% Tests must not be imported or reported as missing documentation.
+        write(Root, "test/mod_fixture.erl", <<"-module(mod_fixture).\n-moduledoc(\"Fixture\").\n">>),
+        write(Root, "test/deep/broken.erl", <<"not valid Erlang \"">>),
+        write(Root, "nested/test/m_fixture.erl", <<"-module(m_fixture).\n">>),
         Port = open_port({spawn_executable, os:find_executable("escript")},
             [exit_status, {args, ["priv/bin/parse_external_docs.escript", Root, Output]}]),
         receive {Port, {exit_status, 0}} -> ok after 15000 -> error(parser_failed) end,
@@ -55,7 +59,7 @@ main(_) ->
         #{<<"has_default">> := false} = Fourth,
         [#{<<"config">> := []}] = [R || #{<<"module">> := <<"m_plain">>} = R <- Imported],
         7 = length([R || #{<<"status">> := <<"skipped">>, <<"error">> := _} = R <- Rows]),
-        io:format("Parser: all 12 source fixtures passed; symlink and support subtrees ignored.~n")
+        io:format("Parser: all 12 source fixtures passed; symlink, support, and test subtrees ignored.~n")
     after
         file:del_dir_r(Root), file:delete(Output)
     end.
