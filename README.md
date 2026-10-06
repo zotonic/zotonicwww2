@@ -181,6 +181,8 @@ and moduledoc attributes with `erl_parse`. It never compiles repository code,
 loads modules, expands macros, or evaluates include files. This keeps arbitrary
 source atoms out of the site's VM. It accepts literal strings/binaries, OTP 27+
 multiline strings, and `{file, "relative/path.md"}` docs confined to the checkout.
+The scanner excludes `src/support` subtrees, including those in nested applications;
+these internal helpers do not appear in import reports or count toward scan limits.
 Symlinks are never followed. The limits are 2,000 Erlang/dispatch files, 2 MiB per
 source or referenced documentation file, and 16 MiB of parsed data per repository.
 Conditional branches are not evaluated; ambiguous or macro-based moduledoc

@@ -58,6 +58,24 @@ main,
         color: $contrast-color;
     }
 
+    .admonition.note {
+        padding: 1rem 1.25rem;
+        border-left: 4px solid $zotonic-blue;
+
+        > :first-child {
+            margin-top: 0;
+        }
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+
+        .admonition-title {
+            color: $zotonic-blue;
+            font-weight: 700;
+        }
+    }
+
     .admonition.external-module {
         border-left: 3px solid #99621c;
         padding-left: 1rem;

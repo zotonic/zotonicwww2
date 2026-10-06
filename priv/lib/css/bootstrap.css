@@ -783,6 +783,24 @@ main .admonition-title,
 .mce-content-body .admonition-title {
   color: #1683b1;
 }
+main .admonition.note,
+.mce-content-body .admonition.note {
+  padding: 1rem 1.25rem;
+  border-left: 4px solid rgb(28, 165, 222);
+}
+main .admonition.note > :first-child,
+.mce-content-body .admonition.note > :first-child {
+  margin-top: 0;
+}
+main .admonition.note > :last-child,
+.mce-content-body .admonition.note > :last-child {
+  margin-bottom: 0;
+}
+main .admonition.note .admonition-title,
+.mce-content-body .admonition.note .admonition-title {
+  color: rgb(28, 165, 222);
+  font-weight: 700;
+}
 main .admonition.external-module,
 .mce-content-body .admonition.external-module {
   border-left: 3px solid #99621c;
