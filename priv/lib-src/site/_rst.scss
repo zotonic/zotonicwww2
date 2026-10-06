@@ -59,7 +59,8 @@ main,
     }
 
     .admonition.note {
-        padding: 1rem 1.25rem;
+        margin-top: 1.4rem;
+        padding: 0 1.25rem;
         border-left: 4px solid $zotonic-blue;
 
         > :first-child {

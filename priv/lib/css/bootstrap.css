@@ -785,7 +785,8 @@ main .admonition-title,
 }
 main .admonition.note,
 .mce-content-body .admonition.note {
-  padding: 1rem 1.25rem;
+  margin-top: 1.4rem;
+  padding: 0 1.25rem;
   border-left: 4px solid rgb(28, 165, 222);
 }
 main .admonition.note > :first-child,
