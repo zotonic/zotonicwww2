@@ -8,7 +8,7 @@ is_published: true
 parent: "admin_collection_monitoring"
 order: 1
 required_modules: []
-zotonic_keywords: ["troubleshooting", "operator", "logging_and_monitoring", "reliability", "monitor"]
+zotonic_keywords: ["how_to_guide", "operator", "logging_and_monitoring", "reliability", "monitor"]
 ---
 
 # Check that a site is working

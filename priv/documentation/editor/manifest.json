@@ -446,7 +446,7 @@
         "how_to_guide",
         "content_editor",
         "publishing",
-        "validate"
+        "editorial_workflow"
       ]
     },
     {
@@ -842,7 +842,7 @@
         "how_to_guide",
         "content_editor",
         "navigation",
-        "collection"
+        "content_relationships"
       ]
     },
     {
@@ -860,7 +860,7 @@
         "how_to_guide",
         "content_editor",
         "navigation",
-        "collection"
+        "content_relationships"
       ]
     },
     {
@@ -1172,7 +1172,7 @@
         "how_to_guide",
         "content_editor",
         "localization_and_translation",
-        "translated_text"
+        "url"
       ]
     },
     {
@@ -1454,7 +1454,8 @@
         "how_to_guide",
         "content_editor",
         "mailing_lists",
-        "email_delivery"
+        "email_delivery",
+        "schedule"
       ]
     },
     {
@@ -1913,7 +1914,7 @@
         "explanation",
         "content_editor",
         "navigation",
-        "collection"
+        "content_relationships"
       ]
     },
     {
@@ -2211,8 +2212,7 @@
         "how_to_guide",
         "content_editor",
         "surveys",
-        "forms",
-        "validate"
+        "forms"
       ]
     }
   ],

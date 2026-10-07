@@ -9,7 +9,7 @@ parent: "developer_guide"
 order: 12
 required_modules: []
 source_paths: ["apps/zotonic_launcher/src/command", "apps/zotonic_launcher/include/zotonic_command.hrl"]
-zotonic_keywords: ["explanation", "backend_developer", "development_and_debugging", "erlang_otp"]
+zotonic_keywords: ["reference", "backend_developer", "development_and_debugging", "erlang_otp"]
 ---
 
 # Command-line reference

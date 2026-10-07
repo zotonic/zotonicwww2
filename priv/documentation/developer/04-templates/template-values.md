@@ -9,7 +9,7 @@ parent: "developer_collection_templates"
 order: 7
 required_modules: []
 source_paths: ["doc/template-tags", "apps/zotonic_mod_base/priv/templates", "apps/zotonic_core/src/support/z_dispatcher.erl"]
-zotonic_keywords: ["how_to_guide", "frontend_developer", "template", "data_processing_and_formatting"]
+zotonic_keywords: ["how_to_guide", "frontend_developer", "template", "security", "html"]
 ---
 
 # Display values safely

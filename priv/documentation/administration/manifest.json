@@ -562,7 +562,8 @@
         "how_to_guide",
         "operator",
         "site_management",
-        "reliability"
+        "reliability",
+        "migrate"
       ]
     },
     {
@@ -613,7 +614,7 @@
       "required_modules": [],
       "file": "07-monitoring-and-troubleshooting/health-checks.md",
       "zotonic_keywords": [
-        "troubleshooting",
+        "how_to_guide",
         "operator",
         "logging_and_monitoring",
         "reliability",

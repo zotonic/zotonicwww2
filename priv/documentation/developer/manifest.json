@@ -509,7 +509,7 @@
         "apps/zotonic_mod_zotonic_site_management/priv/skel"
       ],
       "zotonic_keywords": [
-        "how_to_guide",
+        "explanation",
         "backend_developer",
         "file_storage",
         "file_store"
@@ -1047,7 +1047,8 @@
         "how_to_guide",
         "frontend_developer",
         "template",
-        "data_processing_and_formatting"
+        "security",
+        "html"
       ]
     },
     {
@@ -1231,7 +1232,7 @@
         "apps/zotonic_core/src/support/z_search.erl"
       ],
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "backend_developer",
         "resource",
         "structured_data"
@@ -1802,7 +1803,7 @@
         "apps/zotonic_mod_oauth2"
       ],
       "zotonic_keywords": [
-        "how_to_guide",
+        "troubleshooting",
         "frontend_developer",
         "development_and_debugging",
         "javascript",
@@ -2089,7 +2090,7 @@
         "apps/zotonic_filehandler/src"
       ],
       "zotonic_keywords": [
-        "how_to_guide",
+        "troubleshooting",
         "backend_developer",
         "development_and_debugging",
         "cache",
@@ -2716,7 +2717,7 @@
         "apps/zotonic_launcher/include/zotonic_command.hrl"
       ],
       "zotonic_keywords": [
-        "explanation",
+        "reference",
         "backend_developer",
         "development_and_debugging",
         "erlang_otp"

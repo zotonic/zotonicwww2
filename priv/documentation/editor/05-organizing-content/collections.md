@@ -8,7 +8,7 @@ is_published: true
 parent: "editor_collection_organizing_content"
 order: 6
 required_modules: []
-zotonic_keywords: ["how_to_guide", "content_editor", "navigation", "collection"]
+zotonic_keywords: ["how_to_guide", "content_editor", "navigation", "content_relationships"]
 ---
 
 # Creating and using collections

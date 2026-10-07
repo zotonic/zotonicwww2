@@ -8,7 +8,7 @@ is_published: true
 parent: "editor_collection_publishing"
 order: 5
 required_modules: []
-zotonic_keywords: ["how_to_guide", "content_editor", "publishing", "validate"]
+zotonic_keywords: ["how_to_guide", "content_editor", "publishing", "editorial_workflow"]
 ---
 
 # Previewing content

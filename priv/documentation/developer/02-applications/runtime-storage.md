@@ -9,7 +9,7 @@ parent: "developer_collection_applications"
 order: 11
 required_modules: []
 source_paths: ["rebar.config", "apps/zotonic_core/src/support/z_module_manager.erl", "apps/zotonic_core/src/support/z_module_indexer.erl", "apps/zotonic_mod_zotonic_site_management/priv/skel"]
-zotonic_keywords: ["how_to_guide", "backend_developer", "file_storage", "file_store"]
+zotonic_keywords: ["explanation", "backend_developer", "file_storage", "file_store"]
 ---
 
 # Runtime data and uploaded files

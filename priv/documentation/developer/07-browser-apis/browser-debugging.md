@@ -9,7 +9,7 @@ parent: "developer_collection_browser_apis"
 order: 6
 required_modules: []
 source_paths: ["apps/zotonic_mod_wires/src/actions", "apps/zotonic_mod_base/priv/lib/js", "apps/zotonic_mod_mqtt", "apps/zotonic_mod_oauth2"]
-zotonic_keywords: ["how_to_guide", "frontend_developer", "development_and_debugging", "javascript", "cotonic"]
+zotonic_keywords: ["troubleshooting", "frontend_developer", "development_and_debugging", "javascript", "cotonic"]
 ---
 
 # Diagnose a failed browser interaction

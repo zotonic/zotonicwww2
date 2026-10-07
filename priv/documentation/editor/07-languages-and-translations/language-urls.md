@@ -8,7 +8,7 @@ is_published: true
 parent: "editor_collection_languages_and_translations"
 order: 7
 required_modules: ["mod_translation"]
-zotonic_keywords: ["how_to_guide", "content_editor", "localization_and_translation", "translated_text"]
+zotonic_keywords: ["how_to_guide", "content_editor", "localization_and_translation", "url"]
 ---
 
 # Language-specific URLs

@@ -8,7 +8,7 @@ is_published: true
 parent: "editor_collection_understanding_zotonic"
 order: 5
 required_modules: []
-zotonic_keywords: ["explanation", "content_editor", "navigation", "collection"]
+zotonic_keywords: ["explanation", "content_editor", "navigation", "content_relationships"]
 ---
 
 # Menus and collections

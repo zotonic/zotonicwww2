@@ -9,7 +9,7 @@ parent: "developer_collection_development_tools"
 order: 11
 required_modules: []
 source_paths: ["apps/zotonic_mod_development/src/mod_development.erl", "apps/zotonic_mod_development/src/models/m_development.erl", "apps/zotonic_mod_development/priv/templates", "apps/zotonic_filehandler/src"]
-zotonic_keywords: ["how_to_guide", "backend_developer", "development_and_debugging", "cache", "performance"]
+zotonic_keywords: ["troubleshooting", "backend_developer", "development_and_debugging", "cache", "performance"]
 ---
 
 # Distinguish stale cache data from stale code

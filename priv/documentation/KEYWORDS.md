@@ -18,8 +18,10 @@ facet categories and taxonomy relationships.
 - [baseline/keyword-assignments.json](baseline/keyword-assignments.json) covers
   all 94 existing baseline pages, including 45 cookbook entries. It records each
   original source URI and checksum. Original exports and hashes stay unchanged.
-- Cookbook placeholders retain a review note: a topic assignment does not make
-  unfinished or outdated content ready for publication.
+- Baseline assignments describe the reviewed replacement texts. Their source URI
+  and checksum identify the immutable original export, not the replacement body.
+- The [October keyword audit](review/keyword-audit-2026-10-07.md) records semantic
+  corrections to article types, audiences and subjects.
 - Shared tasks use one set of keywords, regardless of collection membership.
 
 These existing-page assignments cover the captured baseline, not an unseen
@@ -41,7 +43,7 @@ It resolves concrete adoption mappings from the integration CSV, combines
 authored sources targeting one page, and uses reviewed replacement keywords
 instead of the old baseline assignment when a page's body is being replaced.
 Unresolved editorial merge candidates remain separate until their mapping is
-settled. The current proposal produces 383 destination resources and 1,555
+settled. The current proposal produces 383 destination resources and 1,575
 subject connections from the 412 source records.
 
 Review keywords through the generated HTML previews or the source metadata.
@@ -63,13 +65,14 @@ blindly passing it as a resource property.
    `set_sequence` call. Sequence in this plan describes assignment order, not
    permission to reorder or remove unmanaged connections.
 5. Record inserted edges in the documentation import ledger. Verify the
-   resulting links and that a second run adds no duplicate edges. Later keyword
-   removals need explicit ownership review; the initial plan is additive.
+   resulting links and that a second run adds no duplicate edges. On subsequent imports,
+   remove obsolete edges only when the ledger records importer ownership.
+   Preserve every unmanaged connection.
 
 Do not apply both per-guide and combined keyword edges as competing owners.
 The combined plan is authoritative for the final keyword pass after aliases are
 resolved. Per-guide subject edges support preview and inspection.
 
 The baseline missing-only seed remains a source-fixture operation. It does not
-apply this conversion overlay. No live keyword assignments were changed while
-preparing the plan.
+apply this conversion overlay. Preparing the plan does not change live keyword assignments. Apply the
+rebuilt portable plan to update the destination.

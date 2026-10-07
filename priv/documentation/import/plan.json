@@ -5264,7 +5264,7 @@
       "subject": "admin_health_checks",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_troubleshooting",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_logging_and_monitoring",
         "zotonic_topic_reliability",
@@ -5683,7 +5683,8 @@
         "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_site_management",
-        "zotonic_topic_reliability"
+        "zotonic_topic_reliability",
+        "zotonic_topic_migrate"
       ]
     },
     {
@@ -5786,7 +5787,7 @@
       "subject": "developer_browser_debugging",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_how_to_guide",
+        "zotonic_topic_troubleshooting",
         "zotonic_topic_frontend_developer",
         "zotonic_topic_development_and_debugging",
         "zotonic_topic_javascript",
@@ -5852,7 +5853,7 @@
       "subject": "developer_cache_debugging",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_how_to_guide",
+        "zotonic_topic_troubleshooting",
         "zotonic_topic_backend_developer",
         "zotonic_topic_development_and_debugging",
         "zotonic_topic_cache",
@@ -7656,7 +7657,7 @@
       "subject": "developer_resource_properties",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_backend_developer",
         "zotonic_topic_resource",
         "zotonic_topic_structured_data"
@@ -7700,7 +7701,7 @@
       "subject": "developer_runtime_storage",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_how_to_guide",
+        "zotonic_topic_explanation",
         "zotonic_topic_backend_developer",
         "zotonic_topic_file_storage",
         "zotonic_topic_file_store"
@@ -8174,10 +8175,11 @@
       "subject": "doc_bestpractices_creating_sites",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_tutorial",
         "zotonic_topic_backend_developer",
         "zotonic_topic_site_management",
-        "zotonic_topic_maintainability"
+        "zotonic_topic_content_modeling",
+        "zotonic_topic_resource"
       ]
     },
     {
@@ -8219,10 +8221,13 @@
       "subject": "doc_bestpractices_media",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
+        "zotonic_topic_frontend_developer",
         "zotonic_topic_backend_developer",
         "zotonic_topic_media_management",
-        "zotonic_topic_media_resource"
+        "zotonic_topic_media_resource",
+        "zotonic_topic_template",
+        "zotonic_topic_image_management"
       ]
     },
     {
@@ -8238,10 +8243,11 @@
       "subject": "doc_bestpractices_templates",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_frontend_developer",
         "zotonic_topic_template",
-        "zotonic_topic_render"
+        "zotonic_topic_render",
+        "zotonic_topic_security"
       ]
     },
     {
@@ -8367,6 +8373,7 @@
       "objects": [
         "zotonic_topic_cookbook_recipe",
         "zotonic_topic_backend_developer",
+        "zotonic_topic_frontend_developer",
         "zotonic_topic_wire_action",
         "zotonic_topic_user_interface_and_interaction"
       ]
@@ -8402,7 +8409,8 @@
         "zotonic_topic_cookbook_recipe",
         "zotonic_topic_backend_developer",
         "zotonic_topic_template_filter",
-        "zotonic_topic_data_processing_and_formatting"
+        "zotonic_topic_scomp",
+        "zotonic_topic_template"
       ]
     },
     {
@@ -8530,9 +8538,11 @@
       "objects": [
         "zotonic_topic_cookbook_recipe",
         "zotonic_topic_frontend_developer",
+        "zotonic_topic_backend_developer",
         "zotonic_topic_forms",
-        "zotonic_topic_email",
-        "zotonic_topic_template"
+        "zotonic_topic_surveys",
+        "zotonic_topic_email_delivery",
+        "zotonic_topic_security"
       ]
     },
     {
@@ -8675,7 +8685,7 @@
       "predicate": "subject",
       "objects": [
         "zotonic_topic_cookbook_recipe",
-        "zotonic_topic_frontend_developer",
+        "zotonic_topic_backend_developer",
         "zotonic_topic_authentication",
         "zotonic_topic_routing_and_redirects"
       ]
@@ -8712,7 +8722,7 @@
       "predicate": "subject",
       "objects": [
         "zotonic_topic_cookbook_recipe",
-        "zotonic_topic_frontend_developer",
+        "zotonic_topic_backend_developer",
         "zotonic_topic_identity_and_accounts",
         "zotonic_topic_notification"
       ]
@@ -8910,7 +8920,8 @@
         "zotonic_topic_how_to_guide",
         "zotonic_topic_frontend_developer",
         "zotonic_topic_template",
-        "zotonic_topic_data_processing_and_formatting"
+        "zotonic_topic_security",
+        "zotonic_topic_html"
       ]
     },
     {
@@ -8925,7 +8936,7 @@
       "subject": "doc_cookbook_shell_activate_modules",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_troubleshooting",
+        "zotonic_topic_cookbook_recipe",
         "zotonic_topic_backend_developer",
         "zotonic_topic_module_management",
         "zotonic_topic_erlang_otp"
@@ -9039,7 +9050,8 @@
         "zotonic_topic_cookbook_recipe",
         "zotonic_topic_backend_developer",
         "zotonic_topic_scheduled_and_background_work",
-        "zotonic_topic_background_task"
+        "zotonic_topic_background_task",
+        "zotonic_topic_schedule"
       ]
     },
     {
@@ -9118,7 +9130,7 @@
       "subject": "doc_developerguide_contributing",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_backend_developer",
         "zotonic_topic_development_and_debugging",
         "zotonic_topic_maintainability"
@@ -9163,7 +9175,7 @@
       "subject": "doc_developerguide_css_classes",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_reference",
         "zotonic_topic_frontend_developer",
         "zotonic_topic_template",
         "zotonic_topic_user_interface_and_interaction"
@@ -9182,7 +9194,7 @@
       "subject": "doc_developerguide_deployment_env",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_configuration",
         "zotonic_topic_site_management"
@@ -9199,7 +9211,7 @@
       "subject": "doc_developerguide_deployment_https",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_tls_and_certificates",
         "zotonic_topic_security",
@@ -9247,7 +9259,7 @@
       "subject": "doc_developerguide_deployment_nginx",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_http",
         "zotonic_topic_configuration",
@@ -9266,7 +9278,7 @@
       "subject": "doc_developerguide_deployment_privilegedports",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_configuration",
         "zotonic_topic_http",
@@ -9285,7 +9297,7 @@
       "subject": "doc_developerguide_deployment_server_configuration",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_configuration",
         "zotonic_topic_reliability"
@@ -9303,7 +9315,7 @@
       "subject": "doc_developerguide_deployment_startup",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_site_management",
         "zotonic_topic_configuration",
@@ -9322,7 +9334,7 @@
       "subject": "doc_developerguide_deployment_varnish",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_operator",
         "zotonic_topic_cache",
         "zotonic_topic_performance",
@@ -9371,7 +9383,7 @@
       "subject": "doc_developerguide_dispatch_rules",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_backend_developer",
         "zotonic_topic_dispatch_rule",
         "zotonic_topic_routing_and_redirects"
@@ -9425,7 +9437,7 @@
       "subject": "doc_developerguide_download",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_backend_developer",
         "zotonic_topic_site_management"
       ]
@@ -9443,11 +9455,11 @@
       "subject": "doc_developerguide_email",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
-        "zotonic_topic_backend_developer",
+        "zotonic_topic_how_to_guide",
+        "zotonic_topic_operator",
         "zotonic_topic_email",
         "zotonic_topic_email_delivery",
-        "zotonic_topic_email_receiving"
+        "zotonic_topic_configuration"
       ]
     },
     {
@@ -9530,10 +9542,10 @@
       "subject": "doc_developerguide_icons",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_frontend_developer",
         "zotonic_topic_template",
-        "zotonic_topic_user_interface_and_interaction"
+        "zotonic_topic_development_and_debugging"
       ]
     },
     {
@@ -9648,10 +9660,12 @@
       "subject": "doc_developerguide_media",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
+        "zotonic_topic_frontend_developer",
         "zotonic_topic_backend_developer",
         "zotonic_topic_media_management",
-        "zotonic_topic_media_resource"
+        "zotonic_topic_media_resource",
+        "zotonic_topic_template"
       ]
     },
     {
@@ -9668,10 +9682,11 @@
       "subject": "doc_developerguide_modules",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_backend_developer",
         "zotonic_topic_module",
-        "zotonic_topic_module_management"
+        "zotonic_topic_module_management",
+        "zotonic_topic_migrate"
       ]
     },
     {
@@ -9713,10 +9728,11 @@
       "subject": "doc_developerguide_resources",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_backend_developer",
         "zotonic_topic_resource",
-        "zotonic_topic_content_modeling"
+        "zotonic_topic_content_modeling",
+        "zotonic_topic_content_relationships"
       ]
     },
     {
@@ -9751,11 +9767,12 @@
       "subject": "doc_developerguide_server_browser_interaction",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
+        "zotonic_topic_frontend_developer",
         "zotonic_topic_backend_developer",
+        "zotonic_topic_wire_action",
         "zotonic_topic_messaging_and_pubsub",
-        "zotonic_topic_mqtt",
-        "zotonic_topic_cotonic"
+        "zotonic_topic_api_and_integration"
       ]
     },
     {
@@ -9789,10 +9806,11 @@
       "subject": "doc_developerguide_sites",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_tutorial",
         "zotonic_topic_backend_developer",
         "zotonic_topic_site",
-        "zotonic_topic_site_management"
+        "zotonic_topic_site_management",
+        "zotonic_topic_configuration"
       ]
     },
     {
@@ -9844,10 +9862,12 @@
       "subject": "doc_developerguide_templates",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_frontend_developer",
         "zotonic_topic_template",
-        "zotonic_topic_render"
+        "zotonic_topic_render",
+        "zotonic_topic_security",
+        "zotonic_topic_cache"
       ]
     },
     {
@@ -10016,7 +10036,7 @@
         "zotonic_topic_backend_developer",
         "zotonic_topic_development_and_debugging",
         "zotonic_topic_erlang_otp",
-        "zotonic_topic_explanation"
+        "zotonic_topic_reference"
       ]
     },
     {
@@ -10128,7 +10148,7 @@
       "subject": "doc_userguide_issues_and_features",
       "predicate": "subject",
       "objects": [
-        "zotonic_topic_explanation",
+        "zotonic_topic_how_to_guide",
         "zotonic_topic_content_editor",
         "zotonic_topic_development_and_debugging"
       ]
@@ -10759,7 +10779,7 @@
         "zotonic_topic_how_to_guide",
         "zotonic_topic_content_editor",
         "zotonic_topic_navigation",
-        "zotonic_topic_collection"
+        "zotonic_topic_content_relationships"
       ]
     },
     {
@@ -10841,7 +10861,7 @@
         "zotonic_topic_how_to_guide",
         "zotonic_topic_content_editor",
         "zotonic_topic_navigation",
-        "zotonic_topic_collection"
+        "zotonic_topic_content_relationships"
       ]
     },
     {
@@ -11183,7 +11203,7 @@
         "zotonic_topic_how_to_guide",
         "zotonic_topic_content_editor",
         "zotonic_topic_localization_and_translation",
-        "zotonic_topic_translated_text"
+        "zotonic_topic_url"
       ]
     },
     {
@@ -11308,7 +11328,7 @@
         "zotonic_topic_explanation",
         "zotonic_topic_content_editor",
         "zotonic_topic_navigation",
-        "zotonic_topic_collection"
+        "zotonic_topic_content_relationships"
       ]
     },
     {
@@ -11582,7 +11602,7 @@
         "zotonic_topic_how_to_guide",
         "zotonic_topic_content_editor",
         "zotonic_topic_publishing",
-        "zotonic_topic_validate"
+        "zotonic_topic_editorial_workflow"
       ]
     },
     {
@@ -11802,7 +11822,8 @@
         "zotonic_topic_how_to_guide",
         "zotonic_topic_content_editor",
         "zotonic_topic_mailing_lists",
-        "zotonic_topic_email_delivery"
+        "zotonic_topic_email_delivery",
+        "zotonic_topic_schedule"
       ]
     },
     {
@@ -12074,8 +12095,7 @@
         "zotonic_topic_how_to_guide",
         "zotonic_topic_content_editor",
         "zotonic_topic_surveys",
-        "zotonic_topic_forms",
-        "zotonic_topic_validate"
+        "zotonic_topic_forms"
       ]
     },
     {
@@ -12555,11 +12575,11 @@
     },
     {
       "file": "administration/06-updates-and-maintenance/upgrade.md",
-      "sha256": "f582d5ecb8cdd16d85b48b616ab52f7c0ac7eaeb42e0ce313f353aca94844c3d"
+      "sha256": "8d794b51c42a7ad0f7b05424348f752223641b93e0b4b60c107274a576d65d91"
     },
     {
       "file": "administration/07-monitoring-and-troubleshooting/health-checks.md",
-      "sha256": "b23b1113c697211df2fe9f7e0734b9f04168b1e28b80685729f390ae738bf373"
+      "sha256": "7db276f4f90d2fc66c7f9fc0bc26886d717663a5cd3cb5d2aad535c3e8030c37"
     },
     {
       "file": "administration/07-monitoring-and-troubleshooting/incident.md",
@@ -12607,7 +12627,7 @@
     },
     {
       "file": "administration/manifest.json",
-      "sha256": "f0fc3f1c64d039037d6cc9e615e6651249550318065349c1b054c875e06c0237"
+      "sha256": "ea2e725d23819cb24ff24db5c0ee6cba092bee22323552e1755344c6f745dd3f"
     },
     {
       "file": "baseline/apply-local.erl",
@@ -12615,7 +12635,7 @@
     },
     {
       "file": "baseline/keyword-assignments.json",
-      "sha256": "38e3503234dd62bc7a30976bdb6b820d98d61c73a70a5d8deaf655f0a318ad27"
+      "sha256": "f9e25932fe92b8abcd5a1e3eb0ece831121bf8351c04318fa322cbe28d9d274d"
     },
     {
       "file": "baseline/manifest.json",
@@ -13287,7 +13307,7 @@
     },
     {
       "file": "developer/02-applications/runtime-storage.md",
-      "sha256": "ce3e7cf9886018e93df23c82c92e39325c4bfccacfcb9971d8e4cf25f29be0b5"
+      "sha256": "fb6fdb4d20d5b4fe5d92dc9302c2453f1ebfcace713202dba0b71a94367ee562"
     },
     {
       "file": "developer/02-applications/site-anatomy.md",
@@ -13419,7 +13439,7 @@
     },
     {
       "file": "developer/04-templates/template-values.md",
-      "sha256": "6658b082578b6e017f6155205f70ff5c6dbd931b0be103de9624ae1439d8f12a"
+      "sha256": "dfadf3e22627840e427736a64b05576389403257ecd57add92b4d0bc30a7195b"
     },
     {
       "file": "developer/05-content-data/access-control.md",
@@ -13463,7 +13483,7 @@
     },
     {
       "file": "developer/05-content-data/resource-properties.md",
-      "sha256": "68fb5c90399c06ba56c116e3a824472787377247809c1cb4c0f8ef67b93711cb"
+      "sha256": "cb47f6156d58df4047e77692be82d38932ca756ea1571aa54d30dd0dc1db5338"
     },
     {
       "file": "developer/05-content-data/site-context.md",
@@ -13507,7 +13527,7 @@
     },
     {
       "file": "developer/07-browser-apis/browser-debugging.md",
-      "sha256": "ad2212cee0ad70d56dbf920d7a97da449b982e8ce4e5f074d750d05f12cc3300"
+      "sha256": "7da87864098a8acbe4cba1fdf744ec278e52b3e0140b24bcd215f1c2b0029839"
     },
     {
       "file": "developer/07-browser-apis/browser-events.md",
@@ -13535,7 +13555,7 @@
     },
     {
       "file": "developer/08-development-tools/cache-debugging.md",
-      "sha256": "fc288173d79739540889ef0aa78f4f7292d09046e6604f507ae81a68072697aa"
+      "sha256": "7484821b8854ed40f503ec9d376d140d1ccb970f1f0b8aeb85f66885d90b4fc1"
     },
     {
       "file": "developer/08-development-tools/database-trace.md",
@@ -13843,7 +13863,7 @@
     },
     {
       "file": "developer/12-command-reference/index.md",
-      "sha256": "f2307b46f84b8df92bf75523c32988ddf90e80c87ab5c31f606d218cb2e8172c"
+      "sha256": "10ad167f87ada63f37ca4b833a4cc636959e8b77068aa466e75d5e9b3b88280c"
     },
     {
       "file": "developer/assets/development-tools.jpg",
@@ -13855,7 +13875,7 @@
     },
     {
       "file": "developer/manifest.json",
-      "sha256": "e21db0d5c991d3dac10be24c4a7a67b959bd66329f6232a31d13ab51f1fdbe82"
+      "sha256": "f586c6928992261c0a7957703b2abf406bbd3afc6f0b49db783a6ead3642ebbd"
     },
     {
       "file": "editor/01-getting-started/admin-interface.md",
@@ -13939,7 +13959,7 @@
     },
     {
       "file": "editor/03-publishing/preview.md",
-      "sha256": "cbcbbc99ac1ae3d235adcda47ed145c6ca11eaf99c6cbe614000255698a8c3ed"
+      "sha256": "af2195273511b827c80696619bf8faf2d3c18fd7b4dde62efbbced4d8b55c326"
     },
     {
       "file": "editor/03-publishing/publication-dates.md",
@@ -14019,7 +14039,7 @@
     },
     {
       "file": "editor/05-organizing-content/collections.md",
-      "sha256": "2da86a143f46124360fd6f3c339695234fbb8b302b027ee5aff27d91b5f557c3"
+      "sha256": "2f3c1ef417c8817f04ecaaf54d15c6fb71c41dcaa33e6810bc3edc83ac272c97"
     },
     {
       "file": "editor/05-organizing-content/connecting-pages.md",
@@ -14027,7 +14047,7 @@
     },
     {
       "file": "editor/05-organizing-content/content-order.md",
-      "sha256": "da878ab7ccc267d6d7799de053d93cf29fd488c5111c8640f5d580f857f25661"
+      "sha256": "d854a2f49f16f97c2fd8227b7ce8459f89dd6fdea9800df53b85640f4395829c"
     },
     {
       "file": "editor/05-organizing-content/featured-related.md",
@@ -14091,7 +14111,7 @@
     },
     {
       "file": "editor/07-languages-and-translations/language-urls.md",
-      "sha256": "794c96fd675368c50cc6d4f9e36fe061bb97321c60c74851f09fc0b8124ccb61"
+      "sha256": "6239548ab9c9428f877fab45a7d148722d2f7e6155be2b82acc23e17dbf0ef35"
     },
     {
       "file": "editor/07-languages-and-translations/missing-translations.md",
@@ -14167,7 +14187,7 @@
     },
     {
       "file": "editor/09-mailing-lists/schedule-mailing.md",
-      "sha256": "cd158be14aa9f018e2f446aa675f4f43829c62b27b5877fcc3cc9ccba5505ae4"
+      "sha256": "ff764b8711036044081525d92ffda5ee64d14fbda21936799755d8ae08cc2c58"
     },
     {
       "file": "editor/09-mailing-lists/sending-mailing.md",
@@ -14215,7 +14235,7 @@
     },
     {
       "file": "editor/10-surveys-and-forms/quizzes.md",
-      "sha256": "a5b877f91a5056e3ef842e204f2adae11645fcf2c3fa71a6ed39c13b7d772b7d"
+      "sha256": "92da77b0813491d14eb097cce860c84cfeb07f69fd318f37c1ec4d6852d99cac"
     },
     {
       "file": "editor/10-surveys-and-forms/reviewing-results.md",
@@ -14319,7 +14339,7 @@
     },
     {
       "file": "editor/13-understanding-zotonic/menus-collections.md",
-      "sha256": "acbaf3f063e2c62d9f16569865dcaecc64ac64501359ebfeb26094ce7bda940e"
+      "sha256": "202335e6a38b8f9e14ca7540f486ebb4e7764caf1e97ac0ca42f44ce57b6b0f3"
     },
     {
       "file": "editor/13-understanding-zotonic/pages-resources.md",
@@ -14399,7 +14419,7 @@
     },
     {
       "file": "editor/manifest.json",
-      "sha256": "fb804c546a9d30e4d065feff07f379bbf473b756afdfba9ae47bd8d8f29c881d"
+      "sha256": "c7e86f53d354d087f6310a8259a6d0b2b07dfba7f9c7799c91f2cff9ad189792"
     },
     {
       "file": "integration/draft-content-map.csv",
@@ -14430,7 +14450,6 @@
     "zotonic_topic_cache",
     "zotonic_topic_categorization",
     "zotonic_topic_category",
-    "zotonic_topic_collection",
     "zotonic_topic_configuration",
     "zotonic_topic_configure",
     "zotonic_topic_content_authoring",
@@ -14452,7 +14471,6 @@
     "zotonic_topic_editorial_workflow",
     "zotonic_topic_email",
     "zotonic_topic_email_delivery",
-    "zotonic_topic_email_receiving",
     "zotonic_topic_erlang_otp",
     "zotonic_topic_explanation",
     "zotonic_topic_export_and_syndication",
@@ -14462,6 +14480,7 @@
     "zotonic_topic_forms",
     "zotonic_topic_frontend_developer",
     "zotonic_topic_how_to_guide",
+    "zotonic_topic_html",
     "zotonic_topic_http",
     "zotonic_topic_identifier",
     "zotonic_topic_identity_and_accounts",

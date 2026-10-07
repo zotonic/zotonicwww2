@@ -8,7 +8,7 @@ is_published: true
 parent: "editor_collection_mailing_lists"
 order: 6
 required_modules: ["mod_mailinglist"]
-zotonic_keywords: ["how_to_guide", "content_editor", "mailing_lists", "email_delivery"]
+zotonic_keywords: ["how_to_guide", "content_editor", "mailing_lists", "email_delivery", "schedule"]
 ---
 
 # Scheduling a mailing

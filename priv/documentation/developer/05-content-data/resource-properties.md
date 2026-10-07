@@ -9,7 +9,7 @@ parent: "developer_collection_content_data"
 order: 3
 required_modules: []
 source_paths: ["apps/zotonic_core/src/models", "apps/zotonic_core/src/support/z_datamodel.erl", "apps/zotonic_core/src/support/z_search.erl"]
-zotonic_keywords: ["explanation", "backend_developer", "resource", "structured_data"]
+zotonic_keywords: ["how_to_guide", "backend_developer", "resource", "structured_data"]
 ---
 
 # Read and update resource properties

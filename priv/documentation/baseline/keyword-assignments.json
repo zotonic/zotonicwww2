@@ -20,10 +20,11 @@
       "source_sha256": "ca02d6b2ba273f5c01d2e54ee5028f1352ced94ca5c14e2e7555f40ea24b935c",
       "title": "Resources",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "backend_developer",
         "resource",
-        "content_modeling"
+        "content_modeling",
+        "content_relationships"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -48,10 +49,12 @@
       "source_sha256": "10ac7c05315d26fe9eb75bac5362ce6fc68f96f7a0943ec2466ee3d82dc929e2",
       "title": "Media",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
+        "frontend_developer",
         "backend_developer",
         "media_management",
-        "media_resource"
+        "media_resource",
+        "template"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -103,11 +106,12 @@
       "source_sha256": "5c9118635c4fcd72ccf1ac8fa4f587938a449d42cce94d82f2e5930dd1a257f4",
       "title": "Browser/server interaction",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
+        "frontend_developer",
         "backend_developer",
+        "wire_action",
         "messaging_and_pubsub",
-        "mqtt",
-        "cotonic"
+        "api_and_integration"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -130,7 +134,7 @@
       "source_sha256": "8df96ae0be7585a1aa7290de2eb9fd86fde81fa16c8c8a3fc0881684273d6901",
       "title": "Server configuration",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "operator",
         "configuration",
         "reliability"
@@ -145,6 +149,7 @@
       "zotonic_keywords": [
         "cookbook_recipe",
         "backend_developer",
+        "frontend_developer",
         "wire_action",
         "user_interface_and_interaction"
       ],
@@ -156,10 +161,12 @@
       "source_sha256": "69743504585531b4dc97b688744c383039342b5311ad994c8f0c2c7f9baaf627",
       "title": "Templates",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "frontend_developer",
         "template",
-        "render"
+        "render",
+        "security",
+        "cache"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -169,10 +176,11 @@
       "source_sha256": "d149a4ed9c3915e98466bc875ea8b8fb3009f8b2532633180974af11f5c80a10",
       "title": "Modules",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "backend_developer",
         "module",
-        "module_management"
+        "module_management",
+        "migrate"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -301,7 +309,7 @@
       "source_sha256": "a75a86ca06cd0d8985986171452e160db805a655a32b9f96f5cb2164a33562b9",
       "title": "Useful environment variables",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "operator",
         "configuration",
         "site_management"
@@ -327,10 +335,11 @@
       "source_sha256": "5771320820cdb9a5ab5e6df85a74f316cea2d19a79f214dd060f597f048d4669",
       "title": "Sites",
       "zotonic_keywords": [
-        "explanation",
+        "tutorial",
         "backend_developer",
         "site",
-        "site_management"
+        "site_management",
+        "configuration"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -433,7 +442,7 @@
       "source_sha256": "c7194c03826dd63c842d430130ad171f7549981e09644fbeffaf59f0bff5b8bf",
       "title": "Dispatch rules",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "backend_developer",
         "dispatch_rule",
         "routing_and_redirects"
@@ -485,11 +494,11 @@
       "source_sha256": "d1c8613493aa380e9c1f37bc5fa57ea2cf1abc930ba83d53892fb916a2ad2dcf",
       "title": "E-mail handling",
       "zotonic_keywords": [
-        "explanation",
-        "backend_developer",
+        "how_to_guide",
+        "operator",
         "email",
         "email_delivery",
-        "email_receiving"
+        "configuration"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -516,7 +525,8 @@
         "cookbook_recipe",
         "backend_developer",
         "template_filter",
-        "data_processing_and_formatting"
+        "scomp",
+        "template"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -596,7 +606,8 @@
         "cookbook_recipe",
         "backend_developer",
         "scheduled_and_background_work",
-        "background_task"
+        "background_task",
+        "schedule"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -647,9 +658,11 @@
       "zotonic_keywords": [
         "cookbook_recipe",
         "frontend_developer",
+        "backend_developer",
         "forms",
-        "email",
-        "template"
+        "surveys",
+        "email_delivery",
+        "security"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -740,7 +753,7 @@
       "title": "Managing redirection after login and signup",
       "zotonic_keywords": [
         "cookbook_recipe",
-        "frontend_developer",
+        "backend_developer",
         "authentication",
         "routing_and_redirects"
       ],
@@ -753,7 +766,7 @@
       "title": "Site-specific signup actions",
       "zotonic_keywords": [
         "cookbook_recipe",
-        "frontend_developer",
+        "backend_developer",
         "identity_and_accounts",
         "notification"
       ],
@@ -832,7 +845,7 @@
       "source_sha256": "68455778ad66914a41490f5c68e845f9a2873119d1e3569695127daa2f96ae4a",
       "title": "Activate/deactivate modules",
       "zotonic_keywords": [
-        "troubleshooting",
+        "cookbook_recipe",
         "backend_developer",
         "module_management",
         "erlang_otp"
@@ -913,10 +926,11 @@
       "source_sha256": "3e2e9588211a9eb506ed8a88307028bcfe40a51933e547cd8b9ff0ad746a8798",
       "title": "Creating sites",
       "zotonic_keywords": [
-        "explanation",
+        "tutorial",
         "backend_developer",
         "site_management",
-        "maintainability"
+        "content_modeling",
+        "resource"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -951,10 +965,10 @@
       "source_sha256": "91a1d4a41b0a54217865a1db56412376b1aa850c4ad6a050e02ee592253caae4",
       "title": "Icons",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "frontend_developer",
         "template",
-        "user_interface_and_interaction"
+        "development_and_debugging"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -1015,7 +1029,7 @@
       "source_sha256": "b835aadb192c3d8dad6cb5b9aa9224eb8a0125666b5b169dfb02932ef2beb7aa",
       "title": "Contributing to Zotonic",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "backend_developer",
         "development_and_debugging",
         "maintainability"
@@ -1028,7 +1042,7 @@
       "source_sha256": "34a964342a34288da661a8e82cc7a974f7f2d9bcc20d7eafa05c06cc08816407",
       "title": "HTTPS support",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "operator",
         "tls_and_certificates",
         "security",
@@ -1042,7 +1056,7 @@
       "source_sha256": "524e06360ce09a2af28acedfd2cfc1ffd4123e50ebc1bd1fb1ba8a8e12cf5f33",
       "title": "Running on Port 80 and Port 443",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "operator",
         "configuration",
         "http",
@@ -1056,7 +1070,7 @@
       "source_sha256": "11ac7b1afa8f910e5a7afa7e6219106c718aa41e6b4e4c6be3a5892f324fc13d",
       "title": "Proxying Zotonic with nginx",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "operator",
         "http",
         "configuration",
@@ -1083,10 +1097,13 @@
       "source_sha256": "477545febf336427b7ad6ebc5355fd240e454b35194e6ec79fd98edfd0f680fd",
       "title": "Media Best Practices",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
+        "frontend_developer",
         "backend_developer",
         "media_management",
-        "media_resource"
+        "media_resource",
+        "template",
+        "image_management"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -1096,10 +1113,11 @@
       "source_sha256": "87e7e17c32134dc6316d8692941b81d385414719f78e48bcda261d8e536d262f",
       "title": "Template Best Practices and Pitfalls",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "frontend_developer",
         "template",
-        "render"
+        "render",
+        "security"
       ],
       "review_note": "Preserve existing unrelated subject connections."
     },
@@ -1121,7 +1139,7 @@
       "source_sha256": "bf999a6d9792b6ff30ca48943a85189365ac28597fb930917fdbb089f1188f29",
       "title": "Automatic startup on system boot",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "operator",
         "site_management",
         "configuration",
@@ -1135,7 +1153,7 @@
       "source_sha256": "ee510093bba2534a611e371c6c1f315ddf326e554a84276b635c8b5639ec7be9",
       "title": "Using Varnish as frontend for Zotonic",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "operator",
         "cache",
         "performance",
@@ -1149,7 +1167,7 @@
       "source_sha256": "759daf9727dc388db52ac6fb8589b9b33d21ce43c3bf187ec1e99ac486e3f7a7",
       "title": "Issues and features",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "content_editor",
         "development_and_debugging"
       ],
@@ -1213,7 +1231,7 @@
       "source_sha256": "6614a61172c6a4399da9ff0555d6ea3111b8568af85e7cdb8a6597a7d8bc10d9",
       "title": "Download Zotonic",
       "zotonic_keywords": [
-        "explanation",
+        "how_to_guide",
         "backend_developer",
         "site_management"
       ],
@@ -1239,7 +1257,7 @@
       "source_sha256": "2bfc5314eb0ccf1efe40966a36653ea56260bf37d41c27aff1016ea3ad3d1f04",
       "title": "CSS classes used in templates",
       "zotonic_keywords": [
-        "explanation",
+        "reference",
         "frontend_developer",
         "template",
         "user_interface_and_interaction"

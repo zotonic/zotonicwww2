@@ -8,7 +8,7 @@ is_published: true
 parent: "editor_collection_organizing_content"
 order: 7
 required_modules: []
-zotonic_keywords: ["how_to_guide", "content_editor", "navigation", "collection"]
+zotonic_keywords: ["how_to_guide", "content_editor", "navigation", "content_relationships"]
 ---
 
 # Changing the order of content

@@ -8,7 +8,7 @@ is_published: true
 parent: "editor_collection_surveys_forms"
 order: 12
 required_modules: ["mod_survey"]
-zotonic_keywords: ["how_to_guide", "content_editor", "surveys", "forms", "validate"]
+zotonic_keywords: ["how_to_guide", "content_editor", "surveys", "forms"]
 ---
 
 # Creating a quiz

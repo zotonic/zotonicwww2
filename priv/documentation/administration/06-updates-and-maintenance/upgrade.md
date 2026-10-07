@@ -8,7 +8,7 @@ is_published: true
 parent: "admin_collection_maintenance"
 order: 1
 required_modules: []
-zotonic_keywords: ["how_to_guide", "operator", "site_management", "reliability"]
+zotonic_keywords: ["how_to_guide", "operator", "site_management", "reliability", "migrate"]
 ---
 
 # Plan and apply an upgrade
