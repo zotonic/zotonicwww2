@@ -20,6 +20,19 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def without_repeated_summary(body, summary):
+    """The page template displays the summary before the body.
+
+    Compare only a plain opening paragraph: retain links, formatting, partial
+    matches and later repetitions. Source Markdown stays useful on its own and
+    when reused inside a merged article with a different summary.
+    """
+    first = re.match(r'\s*<p>([^<]*)</p>\s*', body)
+    if summary and first and html.unescape(first[1]).strip() == summary.strip():
+        return body[first.end():]
+    return body
+
+
 def embed_screenshots(body):
     """Use native media figures; recognize the existing repeated-alt caption convention."""
     pattern = r'<p><img src="asset://(?P<name>[a-zA-Z0-9_]+)" alt="(?P<alt>[^"]*)"\s*/?></p>(?P<caption>\s*<p>(?P=alt)</p>)?'
@@ -134,7 +147,9 @@ def build():
         def rewrite(match):
             name = canonical(source_ids.get(match[1], match[1]))
             return '/id/' + name
-        r['properties']['body'] = embed_screenshots(re.sub(r'/id/([a-zA-Z0-9_]+)', rewrite, r['properties']['body']))
+        props = r['properties']
+        body = without_repeated_summary(props['body'], props['summary'])
+        props['body'] = embed_screenshots(re.sub(r'/id/([a-zA-Z0-9_]+)', rewrite, body))
     inputs |= {DOCS / i['file'] for i in revisions['inputs']}
     inputs |= {Path(__file__).resolve(), DOCS / 'baseline/manifest.json'}
     taxonomy = next(p / 'doc/zotonic_subject_topics.csv' for p in DOCS.parents

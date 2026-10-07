@@ -7,10 +7,18 @@ import sys
 
 DOCS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(DOCS))
-from build_import_plan import embed_screenshots
+from build_import_plan import embed_screenshots, without_repeated_summary
 
 
 class ImportPlanTests(unittest.TestCase):
+    def test_repeated_summary_is_removed_only_at_start(self):
+        self.assertEqual('<p>Next step.</p>', without_repeated_summary(
+            '<p>Build &amp; deploy.</p>\n<p>Next step.</p>', 'Build & deploy.'))
+        for body in ('<p>Build and deploy. Then verify.</p>',
+                     '<p><a href="/guide">Build and deploy.</a></p>',
+                     '<p>First step.</p><p>Build and deploy.</p>'):
+            self.assertEqual(body, without_repeated_summary(body, 'Build and deploy.'))
+
     @classmethod
     def setUpClass(cls):
         cls.plan = json.loads((DOCS / 'import/plan.json').read_text())
