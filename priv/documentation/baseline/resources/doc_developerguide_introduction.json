@@ -1,0 +1,108 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1636,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1636"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_introduction",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1636/introduction",
+    "x-default": "https://zotonic.com/docs/1636/introduction"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>This is the Zotonic Developer Guide. It takes you through all aspects of Zotonic\nso you can start building your own sites as quickly as possible.</p>\n<p>If you are an end user rather than developer, you may want to read the User\nGuide instead.</p>\n<div class=\"section\">\n<h2>An overview of Zotonic</h2>\n<p>Zotonic is a complete stack for building advanced websites quickly. It consists\nof:</p>\n<ol class=\"arabic simple\">\n<li>a content management system (CMS)</li>\n<li>a web framework</li>\n<li>a web server.</li>\n</ol>\n<p>You can rapidly develop CMS-based sites on top of Zotonic. If you need more\nflexibility, you can customise all aspects of Zotonic. The included web server\nmeans can start working with Zotonic right away, without the need for installing\nApache or Nginx separately.</p>\n<p>Zotonic is structured into modules. Each module offers a specific piece of\nfunctionality; the CMS is itself a module. There are modules for access control,\nsocial media integration, TLS, video embeds and much more.</p>\n<p>Central to Zotonic is its uniquely flexible data model.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:29Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/introduction.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:16Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_introduction",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:16Z",
+    "slug": "introduction",
+    "title": "Introduction",
+    "title_slug": "introduction",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1636",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1636"
+  }
+}

@@ -216,7 +216,23 @@ sync_entries([Entry | Rest], Commit, Generation, KeywordIds, Report, Context) ->
             Error
     end.
 
-sync_entry(Entry, Commit, Generation, KeywordIds, Context) ->
+sync_entry(#{name := Name} = Entry, Commit, Generation, KeywordIds, Context) ->
+    case m_rsc:p(Name, doc_editorial_bundle, Context) of
+        true ->
+            mark_editorial(m_rsc:rid(Name, Context), Context),
+            {ok, editorial};
+        _ -> sync_source_entry(Entry, Commit, Generation, KeywordIds, Context)
+    end.
+
+%% Reviewed guides/cookbooks have explicitly handed ownership to the bundled
+%% importer. Neither a source refresh nor missing-source reconciliation may
+%% overwrite their text, keywords, content group, or publication state.
+mark_editorial(Id, Context) ->
+    _ = z_db:q("update zotonicwww2_doc_import set status = 'editorial', modified = now()
+                where rsc_id = $1 and status <> 'editorial'", [Id], Context),
+    ok.
+
+sync_source_entry(Entry, Commit, Generation, KeywordIds, Context) ->
     #{
         category := Category,
         kind := Kind,
@@ -481,7 +497,15 @@ reconcile(Source, Generation, Context) ->
 
 reconcile_rows([], Count, _Context) ->
     {ok, Count};
-reconcile_rows([#{ <<"rsc_id">> := RscId } | Rest], Count, Context) ->
+reconcile_rows([#{ <<"rsc_id">> := RscId } = Row | Rest], Count, Context) ->
+    case m_rsc:p(RscId, doc_editorial_bundle, Context) of
+        true ->
+            ok = mark_editorial(RscId, Context),
+            reconcile_rows(Rest, Count, Context);
+        _ -> reconcile_source_row(Row, Rest, Count, Context)
+    end.
+
+reconcile_source_row(#{ <<"rsc_id">> := RscId }, Rest, Count, Context) ->
     Props = deprecated_props(Context),
     case m_rsc:update(RscId, Props, Context) of
         {ok, _} ->

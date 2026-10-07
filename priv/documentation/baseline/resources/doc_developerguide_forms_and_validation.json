@@ -1,0 +1,455 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "haspart": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1743,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_acceptance",
+            "title": "acceptance",
+            "uri": "https://zotonic.com/id/1743"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1744,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_confirmation",
+            "title": "confirmation",
+            "uri": "https://zotonic.com/id/1744"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1418,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_custom",
+            "title": "custom",
+            "uri": "https://zotonic.com/id/1418"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1745,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_date",
+            "title": "date",
+            "uri": "https://zotonic.com/id/1745"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1746,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_email",
+            "title": "email",
+            "uri": "https://zotonic.com/id/1746"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1433,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_email_unique",
+            "title": "email_unique",
+            "uri": "https://zotonic.com/id/1433"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1747,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_format",
+            "title": "format",
+            "uri": "https://zotonic.com/id/1747"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1730,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_length",
+            "title": "length",
+            "uri": "https://zotonic.com/id/1730"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1748,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_name_unique",
+            "title": "name_unique",
+            "uri": "https://zotonic.com/id/1748"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1749,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_numericality",
+            "title": "numericality",
+            "uri": "https://zotonic.com/id/1749"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1750,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_postback",
+            "title": "postback",
+            "uri": "https://zotonic.com/id/1750"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1751,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_presence",
+            "title": "presence",
+            "uri": "https://zotonic.com/id/1751"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1432,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_username_unique",
+            "title": "username_unique",
+            "uri": "https://zotonic.com/id/1432"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 310,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "haspart",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Contains"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/hasPart"
+      }
+    },
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1751,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_presence",
+            "title": "presence",
+            "uri": "https://zotonic.com/id/1751"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1418,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_custom",
+            "title": "custom",
+            "uri": "https://zotonic.com/id/1418"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1750,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_postback",
+            "title": "postback",
+            "uri": "https://zotonic.com/id/1750"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1402,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_scomp"
+            ],
+            "name": "doc_template_scomp_scomp_validate",
+            "title": "validate",
+            "uri": "https://zotonic.com/id/1402"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:42Z",
+          "object_id": {
+            "id": 1750,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_validator"
+            ],
+            "name": "doc_template_validator_validator_postback",
+            "title": "postback",
+            "uri": "https://zotonic.com/id/1750"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1419,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1419"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_forms_and_validation",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1419/forms-and-validation",
+    "x-default": "https://zotonic.com/docs/1419/forms-and-validation"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>You <a class=\"reference external\" href=\"https://www.owasp.org/index.php/Data_Validation\">should validate all input data entered in forms</a>. In Zotonic you create\nforms by writing plain HTML. You can attach one or more validators to each input\nelement. Validators define acceptable values for the input data.</p>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">the <a class=\"reference internal\" href=\"/id/doc_template_scomp_scomp_validate#scomp-validate\"><span class=\"std std-ref\">validate</span></a> tag</p>\n</aside>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">the <a class=\"reference internal\" href=\"/id/doc_template_validator_validator_postback\"><span class=\"std std-ref\">postback</span></a> validator</p>\n</aside>\n<p>Let’s say you have a required input field ‘title’. To make sure some text is\nentered in it, attach the <a class=\"reference internal\" href=\"/id/doc_template_validator_validator_presence\"><span class=\"std std-ref\">presence</span></a> validator:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">&lt;input type=&quot;text&quot; id=&quot;title&quot; name=&quot;title&quot; /&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">validate</span> <span class=\"nv\">id</span><span class=\"o\">=</span><span class=\"s2\">&quot;title&quot;</span> <span class=\"nv\">type</span><span class=\"o\">={</span><span class=\"nv\">presence</span><span class=\"o\">}</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>The validated form field is available to Erlang code using the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">z_context:get_q_validated/2</span></code> function:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">Title</span> <span class=\"o\">=</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">get_q_validated</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;title&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<div class=\"section\">\n<h2>Client- and server-side</h2>\n<p>Zotonic’s validators work both client- and server-side:</p>\n<ul class=\"simple\">\n<li>JavaScript prevents the form from being submitted until the input data\nconforms to the validators.</li>\n<li>All validation is done on the server as well, which protects against users\nbypassing the validation checks in their browser.</li>\n</ul>\n</div>\n<div class=\"section\">\n<h2>Validators</h2>\n<p>Zotonic comes with some commonly needed validators:</p>\n<div class=\"toctree-wrapper compound\">\n<ul>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_acceptance\">acceptance</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_confirmation\">confirmation</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_custom\">custom</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_date\">date</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_email\">email</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_email_unique\">email_unique</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_format\">format</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_length\">length</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_name_unique\">name_unique</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_numericality\">numericality</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_postback\">postback</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_presence\">presence</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_template_validator_validator_username_unique\">username_unique</a></li>\n</ul>\n</div>\n<p>If you need to implement custom validation logic, use the\n<a class=\"reference internal\" href=\"/id/doc_template_validator_validator_postback\"><span class=\"std std-ref\">postback</span></a> validator. For JavaScript-only custom validation, use\nthe <a class=\"reference internal\" href=\"/id/doc_template_validator_validator_custom\"><span class=\"std std-ref\">custom</span></a> validator.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:21Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/forms-and-validation.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:19Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_forms_and_validation",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:19Z",
+    "slug": "forms-and-validation",
+    "title": "Forms and validation",
+    "title_slug": "forms-and-validation",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1419",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1419"
+  }
+}

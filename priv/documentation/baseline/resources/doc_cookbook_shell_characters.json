@@ -1,0 +1,113 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1538,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1538"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_shell_characters",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1538/filter-and-convert-characters",
+    "x-default": "https://zotonic.com/cookbook/1538/filter-and-convert-characters"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Applying Erlang Binary syntax to get fast character manipulation.</p>\n<ul class=\"simple\">\n<li><cite>Author: Lloyd R. Prentice</cite></li>\n<li><cite>Co-Author: Andreas Stenius</cite></li>\n</ul>\n<div class=\"section\">\n<h2>Why</h2>\n<p>Erlang bit syntax is extraordinarily powerful and well worth learning.</p>\n<p>Review documenation here: <a class=\"reference external\" href=\"http://www.erlang.org/doc/programming_examples/bit_syntax.html\">http://www.erlang.org/doc/programming_examples/bit_syntax.html</a></p>\n<p>Here’s an experiment. Follow along in your handy Erlang shell:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"m\">1</span>&gt; <span class=\"nv\">A</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;The cat on the mat&quot;</span>.\n<span class=\"s2\">&quot;The cat on the mat&quot;</span>\n<span class=\"m\">2</span>&gt; <span class=\"nv\">B</span> <span class=\"o\">=</span> &lt;&lt;<span class=\"s2\">&quot;The cat on the mat&quot;</span>&gt;&gt;.\n&lt;&lt;<span class=\"s2\">&quot;The cat on the mat&quot;</span>&gt;&gt;\n<span class=\"m\">3</span>&gt; io:format<span class=\"o\">(</span>A,<span class=\"o\">[])</span>.\nThe cat on the matok\n<span class=\"m\">4</span>&gt; io:format<span class=\"o\">(</span>B,<span class=\"o\">[])</span>.\nThe cat on the matok\nSo, big deal. What’s the difference?\n</pre></div>\n</div>\n<p>Memory consumption, that’s what. A is represented internally as a\nlist. Each character is a membory cell with a character and a pointer\nto the next cell. The list format is a memory hog. List represention\nof text strings is both bane and blessing for Erlang programmers. B,\non the other hand, is mapped in memory as a contiguous array of\ncharacters, thus consuming much less memory.</p>\n<p>For details on working with Erlang Binaries, look here:\n<a class=\"reference external\" href=\"http://www.erlang.org/doc/man/binary.html\">http://www.erlang.org/doc/man/binary.html</a></p>\n<p>When you want to filter and convert characters in an Erlang Binary,\nhowever, things get dicey. It’s all there in the Erlang documentation,\nbut examples are few and far between.</p>\n<p>The purpose of this particular recipe is to prepare text for\nconversion from a *.txt file to *.tex, a file marked up for input to\nthe truly wonderful open source typesetting program Latex.</p>\n<p>In our case, we don’t have control of what gets typed into the source\ntext file. So we need to both filter for unwanted characters and\nsequences as well as convert characters and sequences into LateX\nmarkeup.</p>\n<p>What does this have to do with Zotonic?</p>\n<p>You’ll just have to wait and see.</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>All you’ll need here is a text editor to copy and paste an Erlang\nmodule and an Erlang shell.</p>\n<p>A passing understanding of Erlang list comprehensions will also be\nuseful. Find more here:\n<a class=\"reference external\" href=\"http://www.erlang.org/doc/programming_examples/list_comprehensions.html\">http://www.erlang.org/doc/programming_examples/list_comprehensions.html</a></p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>Study latexFilter/1 below:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">filterz</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">latexFilter</span><span class=\"o\">/</span><span class=\"mi\">1</span><span class=\"p\">]).</span>\n\n<span class=\"c\">%% Binary filters</span>\n<span class=\"c\">%% with many thanks to Andreas Stenius</span>\n<span class=\"nf\">latexFilter</span><span class=\"p\">(</span><span class=\"nv\">B</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n   <span class=\"c\">%% Delete control characters and extended ASCII</span>\n    <span class=\"nv\">B1</span> <span class=\"o\">=</span> <span class=\"o\">&lt;&lt;</span> <span class=\"o\">&lt;&lt;</span><span class=\"nv\">C</span><span class=\"o\">&gt;&gt;</span> <span class=\"p\">||</span> <span class=\"o\">&lt;&lt;</span><span class=\"nv\">C</span><span class=\"o\">&gt;&gt;</span> <span class=\"o\">&lt;=</span> <span class=\"nv\">B</span><span class=\"p\">,</span> <span class=\"p\">(</span><span class=\"nv\">C</span> <span class=\"o\">==</span> <span class=\"mi\">10</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"p\">(</span><span class=\"nv\">C</span> <span class=\"o\">==</span> <span class=\"mi\">13</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"p\">(</span><span class=\"nv\">C</span> <span class=\"o\">&gt;=</span> <span class=\"mi\">31</span><span class=\"p\">),</span>\n<span class=\"p\">(</span><span class=\"nv\">C</span> <span class=\"o\">=&lt;</span> <span class=\"mi\">127</span><span class=\"p\">)</span> <span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span>\n   <span class=\"c\">%% Filter binary for conversion to *.tex format</span>\n   <span class=\"c\">%% NOTE: Partially tested, but needs more</span>\n   <span class=\"nv\">F</span> <span class=\"o\">=</span> <span class=\"p\">[{</span><span class=\"s\">&quot;</span><span class=\"se\">\\r</span><span class=\"s\">&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">&quot;</span><span class=\"p\">},</span>                         <span class=\"c\">% Convert returns to new lines</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\"> *&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">&quot;</span><span class=\"p\">},</span>                       <span class=\"c\">% Delete spaces following newline</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;^</span><span class=\"se\">\\\\</span><span class=\"s\">s*&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;&quot;</span><span class=\"p\">},</span>                       <span class=\"c\">% Delete all whitespace</span>\n<span class=\"n\">characters</span> <span class=\"n\">at</span> <span class=\"n\">beginning</span> <span class=\"k\">of</span> <span class=\"n\">manuscript</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;^</span><span class=\"se\">\\n</span><span class=\"s\">*&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;&quot;</span><span class=\"p\">},</span>                        <span class=\"c\">% Delete new lines at</span>\n<span class=\"n\">beginning</span> <span class=\"k\">of</span> <span class=\"n\">manuscript</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">+$&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">&quot;</span><span class=\"p\">},</span>                       <span class=\"c\">% Delete excess new lines</span>\n<span class=\"n\">at</span> <span class=\"k\">end</span> <span class=\"k\">of</span> <span class=\"n\">manuscript</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;  +&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot; &quot;</span><span class=\"p\">},</span>                         <span class=\"c\">% Delete successive spaces</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">{3,}&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot;</span><span class=\"se\">\\n\\\\\\\\</span><span class=\"s\">bigskip</span><span class=\"se\">\\n</span><span class=\"s\">&quot;</span><span class=\"p\">},</span>        <span class=\"c\">% Convert three or more</span>\n<span class=\"n\">newlines</span> <span class=\"n\">to</span> <span class=\"nv\">Latex</span> <span class=\"n\">bigskip</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;[&amp;$#%~^{}]&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;</span><span class=\"se\">\\\\\\\\</span><span class=\"s\">&amp;&quot;</span><span class=\"p\">},</span>             <span class=\"c\">% Escape reserved Latex character</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;&lt;i&gt;&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;</span><span class=\"se\">\\\\\\\\</span><span class=\"s\">emph{&quot;</span><span class=\"p\">},</span>                <span class=\"c\">% Convert HTML tag to Latex tag</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;&lt;/i&gt;&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;}&quot;</span><span class=\"p\">},</span>                       <span class=\"c\">% Convert HTML tag to Latex tag</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot;</span><span class=\"se\">\\&quot;</span><span class=\"s\">(.*</span><span class=\"se\">\\&quot;</span><span class=\"s\">)&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot;``</span><span class=\"se\">\\\\</span><span class=\"s\">1&quot;</span><span class=\"p\">},</span>                <span class=\"c\">% Convert opening double quotes (&quot;) to Latex conventions (``)</span>\n        <span class=\"p\">{</span><span class=\"s\">&quot; &#39;&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot; `</span><span class=\"se\">\\\\</span><span class=\"s\">1&quot;</span><span class=\"p\">}],</span>                     <span class=\"c\">% Convert opening single quotes (&#39;) to Latex conventions (`)</span>\n   <span class=\"nv\">B2</span> <span class=\"o\">=</span> <span class=\"nn\">lists</span><span class=\"p\">:</span><span class=\"nf\">foldl</span><span class=\"p\">(</span><span class=\"k\">fun</span><span class=\"p\">({</span><span class=\"nv\">Pattern</span><span class=\"p\">,</span> <span class=\"nv\">Replacement</span><span class=\"p\">},</span> <span class=\"nv\">Subject</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n                       <span class=\"nn\">re</span><span class=\"p\">:</span><span class=\"nf\">replace</span><span class=\"p\">(</span><span class=\"nv\">Subject</span><span class=\"p\">,</span> <span class=\"nv\">Pattern</span><span class=\"p\">,</span> <span class=\"nv\">Replacement</span><span class=\"p\">,</span>\n                                  <span class=\"p\">[</span><span class=\"n\">global</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">return</span><span class=\"p\">,</span> <span class=\"n\">binary</span><span class=\"p\">}])</span> <span class=\"k\">end</span><span class=\"p\">,</span>\n                    <span class=\"nv\">B1</span><span class=\"p\">,</span> <span class=\"nv\">F</span><span class=\"p\">),</span>\n   <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nv\">B2</span><span class=\"p\">}.</span>\n</pre></div>\n</div>\n<p>The first thing that happens in latexFiler/1 is an Erlang binary\ncomprehension to delete pesky control and extended ASCII characters:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">B1</span> <span class=\"o\">=</span> <span class=\"o\">&lt;&lt;</span> <span class=\"o\">&lt;&lt;</span><span class=\"nv\">C</span><span class=\"o\">&gt;&gt;</span> <span class=\"p\">||</span> <span class=\"o\">&lt;&lt;</span><span class=\"nv\">C</span><span class=\"o\">&gt;&gt;</span> <span class=\"o\">&lt;=</span> <span class=\"nv\">B</span><span class=\"p\">,</span> <span class=\"p\">(</span><span class=\"nv\">C</span> <span class=\"o\">==</span> <span class=\"mi\">10</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"p\">(</span><span class=\"nv\">C</span> <span class=\"o\">==</span> <span class=\"mi\">13</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"p\">(</span><span class=\"nv\">C</span> <span class=\"o\">&gt;=</span> <span class=\"mi\">31</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"nv\">C</span> <span class=\"o\">=&lt;</span> <span class=\"mi\">127</span><span class=\"p\">)</span> <span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span>\n</pre></div>\n</div>\n<p>Note that the syntax is very similar to list comprehensions. As you\ncan see, a single binary comprehension can chug out a lot of\nwork. Define a few binaries in your Erlang shell and play around with\nthe conditionals. You’ll catch on pretty quick.</p>\n<p>For our purposes, we need to also search and replace a bunch of\nsubstrings. For this we’ve enlisted <code class=\"docutils literal notranslate\"><span class=\"pre\">lists:foldl/3</span></code>, a powerful list\nfunction that just happens to work with binaries. See:\n<a class=\"reference external\" href=\"http://www.erlang.org/doc/man/lists.html#append-1\">http://www.erlang.org/doc/man/lists.html#append-1</a></p>\n<p>Expect a headache when you study this function. It’s not that easy to\nunderstand.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">fold</span></code> function exists in two versions, <code class=\"docutils literal notranslate\"><span class=\"pre\">foldl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">foldr</span></code> (for left\nand right, described shortly). It takes a list, and calls a function\nfor each item in the list, along with a accumulator, or state. The\nfunction can operate on the item and state, producing a new state for\nthe next round. The fold function also takes an initial state to use\nfor the first item. The left and right mentioned previously determines\nin which order the list is traversed. So foldl moves through the list\nfrom left to right, i.e. takes the head off of the list for each\niteration moving towards the tail; whereas the foldr starts with the\ntail and moves towards the head, i.e. from right to left. Regular\nexpressions can also get hairy, but they’re invaluable if you’re\nworking with text strings. For more information:</p>\n<ul class=\"simple\">\n<li><a class=\"reference external\" href=\"http://www.troubleshooters.com/codecorn/littperl/perlreg.htm\">http://www.troubleshooters.com/codecorn/littperl/perlreg.htm</a></li>\n<li><a class=\"reference external\" href=\"http://www.erlang.org/doc/man/re.html\">http://www.erlang.org/doc/man/re.html</a></li>\n</ul>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:25Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-characters.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:24Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_shell_characters",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:24Z",
+    "slug": "filter-and-convert-characters",
+    "title": "Filter and convert characters",
+    "title_slug": "filter-and-convert-characters",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1538",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1538"
+  }
+}

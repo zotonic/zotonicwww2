@@ -1,0 +1,2490 @@
+{
+  "format": "zotonic-baseline-revisions-v2",
+  "reviewed_at": "2026-10-07",
+  "policy": {
+    "properties": [
+      "title",
+      "summary",
+      "body"
+    ],
+    "preserve": [
+      "name",
+      "page_path",
+      "category_id",
+      "publication_state",
+      "other_languages",
+      "unmanaged_connections"
+    ],
+    "precedence": "Apply once per target after raw baseline seeding and authored-body adoption; these entries merge overlapping adopted tasks. Do not apply an authored alias body again afterward.",
+    "connections": "Add hasreference and controlled subject edges; never replace refers or unrelated connections."
+  },
+  "resources": [
+    {
+      "target_name": "doc_developerguide_notifications",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/06-reusable-functionality/observers.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/08-development-tools/observer-tools.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Respond to a notification",
+      "summary": "Find the notification definition and inspect its callers before implementing an observer. The notifier operation determines whether observers collect results, stop at a first result, or fold a value.",
+      "reason": "Replace raw notification tuples with current records and explain observer registration and return contracts.",
+      "hasreference": [
+        "developer_observers",
+        "developer_observer_tools"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_core/src/behaviours",
+        "apps/zotonic_filehandler/src",
+        "apps/zotonic_mod_base/src",
+        "apps/zotonic_mod_development/priv/templates",
+        "apps/zotonic_mod_development/src/mod_development.erl",
+        "apps/zotonic_mod_development/src/models/m_development.erl"
+      ],
+      "snapshot_sha256": "3c722da4dde1c2e2d315f90d9d0bc6cab6032c78cf3ed13d7c1a9a3248ffb076",
+      "source_uri": "https://zotonic.com/id/1274"
+    },
+    {
+      "target_name": "doc_developerguide_resources",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/05-content-data/resource-identifiers.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/05-content-data/resource-properties.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/05-content-data/content-edges.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Use stable resource names",
+      "summary": "A resource has a numeric ID within its database. Give application-owned resources a stable name when code needs to find them across installations.",
+      "reason": "Complete the old resource overview with maps, identity resolution, and edge operations.",
+      "hasreference": [
+        "developer_resource_identifiers",
+        "developer_resource_properties",
+        "developer_content_edges"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/models",
+        "apps/zotonic_core/src/support/z_datamodel.erl",
+        "apps/zotonic_core/src/support/z_search.erl"
+      ],
+      "snapshot_sha256": "ca02d6b2ba273f5c01d2e54ee5028f1352ced94ca5c14e2e7555f40ea24b935c",
+      "source_uri": "https://zotonic.com/id/1276"
+    },
+    {
+      "target_name": "doc_userguide_datamodel",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_userguide_datamodel.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Understand pages and connections",
+      "summary": "See how resources, categories, predicates and collections fit together.",
+      "reason": "Complete the datamodel overview and distinguish publication, access and edge permissions.",
+      "hasreference": [
+        "developer_categories_predicates",
+        "developer_content_edges",
+        "editor_introduction"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "713bf6c3ee62e38b2936888e37a172c2709af1e53a0da1fa6de2609bff2cc4ca",
+      "source_uri": "https://zotonic.com/id/1277"
+    },
+    {
+      "target_name": "doc_developerguide_media",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_media.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Render and manage media",
+      "summary": "Use resource IDs, media metadata and consistent responsive-image descriptors.",
+      "reason": "Fix mediaclass path and dimensions, invalid mixed srcset descriptors, and media completion assumptions.",
+      "hasreference": [
+        "developer_media_data",
+        "admin_media_sandbox",
+        "developer_missing_media"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/models/m_media.erl",
+        "apps/zotonic_core/src/media/z_mediaclass.erl"
+      ],
+      "snapshot_sha256": "10ac7c05315d26fe9eb75bac5362ce6fc68f96f7a0943ec2466ee3d82dc929e2",
+      "source_uri": "https://zotonic.com/id/1280"
+    },
+    {
+      "target_name": "doc_cookbook_custom_pivot",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_custom_pivot.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Index a custom resource property",
+      "summary": "Create a pivot column and fill it through the custom_pivot notification.",
+      "reason": "Correct schema lifecycle and false destructive-table-recreation claim.",
+      "hasreference": [
+        "developer_schema_upgrades",
+        "doc_cookbook_pivot_templates"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_pivot_rsc.erl"
+      ],
+      "snapshot_sha256": "d65f291b88e9ff4a64749734eb3a9b90184474643e96c7b6c314e250ccce0f41",
+      "source_uri": "https://zotonic.com/id/1281"
+    },
+    {
+      "target_name": "doc_cookbook_pivot_templates",
+      "action": "retain",
+      "reason": "Retain the pivot block reference: template overrides and search-text pivoting still apply.",
+      "evidence": [
+        "apps/zotonic_core/src/support/z_pivot_rsc.erl"
+      ],
+      "snapshot_sha256": "16508a994dba5f102cc2d0c834df0b37f7bcdddbe948faac397e1e6a467335cd",
+      "source_uri": "https://zotonic.com/id/1282",
+      "hasreference": [
+        "doc_cookbook_custom_pivot"
+      ]
+    },
+    {
+      "target_name": "doc_cookbook_frontend_sitemap",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_sitemap.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Create a public site-map page",
+      "summary": "Render the navigation menu on a named page.",
+      "reason": "Replace removed resource_page controller and unexplained layout block.",
+      "hasreference": [
+        "developer_template_selection",
+        "editor_editing_menus"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_menu/src/scomps/scomp_menu_menu.erl"
+      ],
+      "snapshot_sha256": "a296608ba3a93e2d3e00952c946ae1c8235272f5109891b81d9900b5c5388104",
+      "source_uri": "https://zotonic.com/id/1290"
+    },
+    {
+      "target_name": "doc_developerguide_server_browser_interaction",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/07-browser-apis/browser-events.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/07-browser-apis/browser-messaging.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/07-browser-apis/http-api.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Handle a browser event with a wire",
+      "summary": "Use scomp#wire to connect a browser event to an action or a server postback. Give the target element a stable ID within the rendered page.",
+      "reason": "Remove retired z_transport/UBF/page-session transport; use wires, MQTT and model APIs.",
+      "hasreference": [
+        "developer_browser_events",
+        "developer_browser_messaging",
+        "developer_http_api"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_base/priv/lib/js",
+        "apps/zotonic_mod_mqtt",
+        "apps/zotonic_mod_oauth2",
+        "apps/zotonic_mod_wires/src/actions"
+      ],
+      "snapshot_sha256": "5c9118635c4fcd72ccf1ac8fa4f587938a449d42cce94d82f2e5930dd1a257f4",
+      "source_uri": "https://zotonic.com/id/1302"
+    },
+    {
+      "target_name": "doc_cookbook_exometer",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_exometer.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Inspect and export Zotonic metrics",
+      "summary": "Discover actual metrics before configuring subscriptions.",
+      "reason": "Correct metric namespace/types and configuration owner; remove outdated hosted-service promotion.",
+      "hasreference": [
+        "admin_health_checks",
+        "developer_slow_requests"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_stats.erl"
+      ],
+      "snapshot_sha256": "2c19b56d66b0adc2e7394d30c1681a7806dfda171fb6fdef1853d91947ae379a",
+      "source_uri": "https://zotonic.com/id/1318"
+    },
+    {
+      "target_name": "doc_developerguide_deployment_server_configuration",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_deployment_server_configuration.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Tune server limits from measured load",
+      "summary": "Check actual limits and workload before changing operating-system settings.",
+      "reason": "Remove obsolete blanket ulimit and conntrack tuning.",
+      "hasreference": [
+        "admin_health_checks",
+        "developer_slow_requests"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "8df96ae0be7585a1aa7290de2eb9fd86fde81fa16c8c8a3fc0881684273d6901",
+      "source_uri": "https://zotonic.com/id/1319"
+    },
+    {
+      "target_name": "doc_cookbook_custom_action",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_custom_action.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Create a reusable browser action",
+      "summary": "Wrap a maintained Zotonic action instead of assembling JavaScript strings.",
+      "reason": "Complete the empty action cookbook with current render_action/4.",
+      "hasreference": [
+        "developer_browser_events",
+        "developer_postback_handlers"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_render.erl"
+      ],
+      "snapshot_sha256": "6da5e28a5849a23650d3912f5ee12673d45148d34044d7ba7cca08e681c7fed3",
+      "source_uri": "https://zotonic.com/id/1340"
+    },
+    {
+      "target_name": "doc_developerguide_templates",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/04-templates/template-layout.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/04-templates/template-components.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/04-templates/template-values.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/04-templates/template-cache.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Create a page layout",
+      "summary": "Use an existing site base template as your starting point. Put shared document structure in the base and page-specific markup in blocks.",
+      "reason": "Correct old application paths, broken extends example and escaping; cover layout, composition and caching.",
+      "hasreference": [
+        "developer_template_layout",
+        "developer_template_components",
+        "developer_template_values",
+        "developer_template_cache"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_dispatcher.erl",
+        "apps/zotonic_mod_base/priv/templates",
+        "doc/template-tags"
+      ],
+      "snapshot_sha256": "69743504585531b4dc97b688744c383039342b5311ad994c8f0c2c7f9baaf627",
+      "source_uri": "https://zotonic.com/id/1352"
+    },
+    {
+      "target_name": "doc_developerguide_modules",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/06-reusable-functionality/create-module.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/02-applications/application-identities.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/06-reusable-functionality/schema-upgrades.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/02-applications/module-priority.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Create a reusable module",
+      "summary": "Create apps_user/zotonic_mod_garden with the following files. This example adds a discoverable module without starting an extra process.",
+      "reason": "Correct OTP application/module identities, app directories, mod_schema and callback examples.",
+      "hasreference": [
+        "developer_create_module",
+        "developer_application_identities",
+        "developer_schema_upgrades",
+        "developer_module_priority"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_core/src/behaviours",
+        "apps/zotonic_core/src/support/z_module_indexer.erl",
+        "apps/zotonic_core/src/support/z_module_manager.erl",
+        "apps/zotonic_mod_base/src",
+        "apps/zotonic_mod_zotonic_site_management/priv/skel",
+        "rebar.config"
+      ],
+      "snapshot_sha256": "d149a4ed9c3915e98466bc875ea8b8fb3009f8b2532633180974af11f5c80a10",
+      "source_uri": "https://zotonic.com/id/1353"
+    },
+    {
+      "target_name": "doc_developerguide_translation",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/04-templates/template-translations.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/03-command-line-workflows/cli-translations.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/02-site-settings-and-modules/enable-languages.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Translate interface text",
+      "summary": "Write the source text in English and mark static interface text for translation.",
+      "reason": "Replace old module paths and workflow with current extraction, interface translation, and content languages.",
+      "hasreference": [
+        "developer_template_translations",
+        "developer_cli_translations",
+        "admin_enable_languages"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z.erl",
+        "apps/zotonic_core/src/support/z_dispatcher.erl",
+        "apps/zotonic_launcher/src/command",
+        "apps/zotonic_mod_base/priv/templates",
+        "doc/template-tags"
+      ],
+      "snapshot_sha256": "5ab0da0b5ec659f375440a34ef9f5f7cb4061934e5cdf32c2d050432130e6f90",
+      "source_uri": "https://zotonic.com/id/1409"
+    },
+    {
+      "target_name": "doc_developerguide_docker",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/01-getting-started/install-containers.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Install with Docker or Podman",
+      "summary": "Build and run Zotonic with its development containers, then create a site.",
+      "reason": "Replace obsolete container installation instructions; keep the installation revision mapping.",
+      "hasreference": [
+        "developer_install_containers"
+      ],
+      "evidence": [
+        "apps/zotonic_launcher/src/command/zotonic_cmd_addsite.erl",
+        "docker-compose.yml",
+        "docker/Dockerfile.dev",
+        "docker/docker-entrypoint.sh",
+        "shell.nix"
+      ],
+      "snapshot_sha256": "02994630489305ac4f6ae5239f8fdad733b1c3a38ef1167ee1a4f9188de378bb",
+      "source_uri": "https://zotonic.com/id/1411"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_growl",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_growl.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Show a growl message",
+      "summary": "Use the maintained growl action with the normal browser assets.",
+      "reason": "Remove obsolete JS path and identify the current wires dependency.",
+      "hasreference": [
+        "developer_browser_debugging",
+        "developer_browser_events"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_wires/src/actions/action_wires_growl.erl"
+      ],
+      "snapshot_sha256": "ba3765b0b202421b88dd55777d1fa6f6c6a11b205fc05fbcf892d2b6f7042989",
+      "source_uri": "https://zotonic.com/id/1416"
+    },
+    {
+      "target_name": "doc_developerguide_forms_and_validation",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/07-browser-apis/forms-validation.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/07-browser-apis/postback-handlers.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Validate a form on both sides",
+      "summary": "Use semantic form controls with labels and meaningful names. Add Zotonic validators for immediate feedback, then validate the submitted values again at the server boundary.",
+      "reason": "Clarify client versus server validation and use binary request keys.",
+      "hasreference": [
+        "developer_forms_validation",
+        "developer_postback_handlers"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_base/priv/lib/js",
+        "apps/zotonic_mod_mqtt",
+        "apps/zotonic_mod_oauth2",
+        "apps/zotonic_mod_wires/src/actions"
+      ],
+      "snapshot_sha256": "cb30bb108ab5ed54520b70335f797a55504b1a2ff1c915436fa328f1890f434b",
+      "source_uri": "https://zotonic.com/id/1419"
+    },
+    {
+      "target_name": "doc_cookbook_shell_debuggingdatabase",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/08-development-tools/database-trace.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/05-content-data/database-queries.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Trace database queries for your session",
+      "summary": "Enable module#mod_server_storage if the Development page says it is needed for database tracing. On the Development page, enable Trace all database queries for the current session.",
+      "reason": "Replace global SQL logging and PostgreSQL 9.5 advice with scoped development tracing and parameterized queries.",
+      "hasreference": [
+        "developer_database_trace",
+        "developer_database_queries"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/models",
+        "apps/zotonic_core/src/support/z_datamodel.erl",
+        "apps/zotonic_core/src/support/z_search.erl",
+        "apps/zotonic_filehandler/src",
+        "apps/zotonic_mod_development/priv/templates",
+        "apps/zotonic_mod_development/src/mod_development.erl",
+        "apps/zotonic_mod_development/src/models/m_development.erl"
+      ],
+      "snapshot_sha256": "1127133e81609ebf81e02f1cad6a444e332d9c438e0a1b6990a87941e7a3bef3",
+      "source_uri": "https://zotonic.com/id/1422"
+    },
+    {
+      "target_name": "doc_cookbook_justenough_otp2",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_justenough_otp2.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Add a supervised Erlang worker",
+      "summary": "Add a gen_server and verify that its supervisor restarts it.",
+      "reason": "Replace removed pman, old Rebar workflow and incorrect gen_server callback signatures.",
+      "hasreference": [
+        "doc_cookbook_justenough_otp1",
+        "developer_background_work"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "1746f496c9111d74e0c19c76dde479f45f723bd77a4c44d30850e00f5ae8ea69",
+      "source_uri": "https://zotonic.com/id/1428"
+    },
+    {
+      "target_name": "doc_cookbook_justenough_otp1",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_justenough_otp1.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Create an Erlang application with Rebar3",
+      "summary": "Build a small standalone OTP application using Erlang/OTP 28 and Rebar3.",
+      "reason": "Remove Rebar 2 create-app/sub_dirs commands and obsolete beam paths.",
+      "hasreference": [
+        "doc_cookbook_justenough_otp2",
+        "developer_create_module"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "85c7a5ecb2b3a7c7cf23a5728190d4917d5d74a7760a0f6008efc8b51362927e",
+      "source_uri": "https://zotonic.com/id/1429"
+    },
+    {
+      "target_name": "doc_cookbook_admin_custom_style",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_admin_custom_style.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Add a stylesheet to admin",
+      "summary": "Use a small active module or site template override.",
+      "reason": "Fix OTP app filename and complete the admin-style recipe.",
+      "hasreference": [
+        "developer_create_module",
+        "developer_asset_build"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_admin/priv/templates/admin_base.tpl"
+      ],
+      "snapshot_sha256": "af86d4e1ad3a8e4fa7e3fed9c98044cc38e7c3343a4063b09599bfded1a903d5",
+      "source_uri": "https://zotonic.com/id/1430"
+    },
+    {
+      "target_name": "doc_developerguide_upgrading",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_upgrading.html",
+          "format": "html",
+          "front_matter": false
+        }
+      ],
+      "title": "Upgrade notes",
+      "summary": "Upgrade notes",
+      "reason": "Preserve necessary historical before/after migration examples; advise OTP 28 and remove obsolete JSON implementation claims.",
+      "hasreference": [
+        "developer_installation_requirements",
+        "admin_upgrade"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_json.erl"
+      ],
+      "snapshot_sha256": "219b1b6141eae3cd266f43b9c2c401d4240a8c735abe50d8f5001b0913f67dde",
+      "source_uri": "https://zotonic.com/id/1455"
+    },
+    {
+      "target_name": "doc_developerguide_deployment_env",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/10-configuration-deployment/environment-settings.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/10-configuration-deployment/configuration-layers.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/03-command-line-workflows/inspect-configuration.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Keep development and production settings distinct",
+      "summary": "Keep development and production settings distinct.",
+      "reason": "Replace drifting environment-variable/default lists with current configuration discovery and precedence.",
+      "hasreference": [
+        "developer_environment_settings",
+        "developer_configuration_layers",
+        "developer_inspect_configuration"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z.erl",
+        "apps/zotonic_core/src/support/z_config.erl",
+        "apps/zotonic_launcher/src",
+        "apps/zotonic_launcher/src/command",
+        "apps/zotonic_mod_backup",
+        "apps/zotonic_mod_filestore"
+      ],
+      "snapshot_sha256": "a75a86ca06cd0d8985986171452e160db805a655a32b9f96f5cb2164a33562b9",
+      "source_uri": "https://zotonic.com/id/1481"
+    },
+    {
+      "target_name": "doc_developerguide_getting_started",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/01-getting-started/local-environment.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Set up a local development environment",
+      "summary": "Choose one installation route, start Zotonic, create a site, and make your first visible change.",
+      "reason": "Use the reviewed step-by-step installation routes.",
+      "hasreference": [
+        "developer_local_environment"
+      ],
+      "evidence": [
+        "GNUmakefile",
+        "apps/zotonic_launcher/src/command/zotonic_cmd_addsite.erl",
+        "apps/zotonic_mod_zotonic_site_management/priv/skel",
+        "rebar.config"
+      ],
+      "snapshot_sha256": "455faa81195eaaa5d91640b79fba428412951c2d2bfea9d602d68b2a275822d2",
+      "source_uri": "https://zotonic.com/id/1526"
+    },
+    {
+      "target_name": "doc_developerguide_sites",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/01-getting-started/create-site.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/02-applications/site-configuration.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Create your first site",
+      "summary": "Create the garden blog, open it in your browser, and sign in to its admin.",
+      "reason": "Replace old database/password and site-directory assumptions with current addsite steps.",
+      "hasreference": [
+        "developer_create_site",
+        "developer_site_configuration"
+      ],
+      "evidence": [
+        "GNUmakefile",
+        "apps/zotonic_core/src/support/z_module_indexer.erl",
+        "apps/zotonic_core/src/support/z_module_manager.erl",
+        "apps/zotonic_launcher/src/command/zotonic_cmd_addsite.erl",
+        "apps/zotonic_mod_zotonic_site_management/priv/skel",
+        "rebar.config"
+      ],
+      "snapshot_sha256": "5771320820cdb9a5ab5e6df85a74f316cea2d19a79f214dd060f597f048d4669",
+      "source_uri": "https://zotonic.com/id/1527"
+    },
+    {
+      "target_name": "doc_developerguide_status_site",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/01-getting-started/status-and-admin.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/03-command-line-workflows/running-sites.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/07-monitoring-and-troubleshooting/health-checks.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Find the status site and your site's admin",
+      "summary": "The status site manages the running Zotonic installation. A site's /admin manages that site's content and enabled modules. They have different scopes and can use different credentials.",
+      "reason": "Merge both adopted status tasks and distinguish status checks from application health.",
+      "hasreference": [
+        "developer_status_and_admin",
+        "developer_running_sites",
+        "admin_health_checks"
+      ],
+      "evidence": [
+        "GNUmakefile",
+        "apps/zotonic_core/src/support/z.erl",
+        "apps/zotonic_launcher/src/command",
+        "apps/zotonic_launcher/src/command/zotonic_cmd_addsite.erl",
+        "apps/zotonic_mod_zotonic_site_management/priv/skel",
+        "rebar.config"
+      ],
+      "snapshot_sha256": "ca107f145585516b75366d4899e497fbf22c70cd52cdf26a6a33035c49ddf14a",
+      "source_uri": "https://zotonic.com/id/1528"
+    },
+    {
+      "target_name": "doc_developerguide_troubleshooting",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/11-troubleshooting/site-not-starting.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/04-configuration-and-services/database-connection.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/04-configuration-and-services/hostnames-https.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "A site does not start",
+      "summary": "Run bin/zotonic status to distinguish an unavailable node from a stopped or failing site. Inspect the relevant startup log before repeatedly restarting it.",
+      "reason": "Replace old init scripts, global authentication workarounds and certificate-bypass instructions.",
+      "hasreference": [
+        "developer_site_not_starting",
+        "admin_database_connection",
+        "admin_hostnames_https"
+      ],
+      "evidence": [
+        "apps/zotonic_filehandler/src",
+        "apps/zotonic_launcher/src/command",
+        "apps/zotonic_mod_development"
+      ],
+      "snapshot_sha256": "5cdb96769c14f483cd6355fae657ece9a2bf01cee07dc759896ead4846a24ce5",
+      "source_uri": "https://zotonic.com/id/1529"
+    },
+    {
+      "target_name": "doc_reference_installation_requirements",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/01-getting-started/installation-requirements.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Installation requirements",
+      "summary": "Check the required tools and install optional media tools when you need them.",
+      "reason": "Use OTP 28 advice and supported dependency requirements.",
+      "hasreference": [
+        "developer_installation_requirements"
+      ],
+      "evidence": [
+        "apps/zotonic_launcher/src/command/zotonic_cmd_addsite.erl",
+        "docker-compose.yml",
+        "docker/Dockerfile.dev",
+        "docker/docker-entrypoint.sh",
+        "shell.nix"
+      ],
+      "snapshot_sha256": "9383ee9fbfdb645ff410c51f70b2e71f37cf3eaafe91819c23a0705e5ecbcb8e",
+      "source_uri": "https://zotonic.com/id/1530"
+    },
+    {
+      "target_name": "doc_developerguide_access_control",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/05-content-data/access-control.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/09-testing/testing-permissions.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Keep permission checks at the boundary",
+      "summary": "Use the request context when checking access to data and actions. A hidden button is not an authorization check: callers can invoke a model or endpoint directly.",
+      "reason": "Remove ensure_all and old controller authorization signatures; explain boundary checks and permission tests.",
+      "hasreference": [
+        "developer_access_control",
+        "developer_testing_permissions"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/models",
+        "apps/zotonic_core/src/support/z_datamodel.erl",
+        "apps/zotonic_core/src/support/z_search.erl",
+        "apps/zotonic_core/src/support/z_sitetest.erl",
+        "apps/zotonic_core/test",
+        "apps/zotonic_launcher/src/command/zotonic_cmd_runtests.erl"
+      ],
+      "snapshot_sha256": "dd1eabb62d2af8366c8e4bf8a1527076f52fe2f4348432704baebef424fb569c",
+      "source_uri": "https://zotonic.com/id/1536"
+    },
+    {
+      "target_name": "doc_cookbook_shell_characters",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_shell_characters.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Normalize and filter Unicode text",
+      "summary": "Keep UTF-8 characters intact while transforming user text.",
+      "reason": "Remove byte filtering that corrupts UTF-8 and incomplete LaTeX escaping advice.",
+      "hasreference": [
+        "doc_cookbook_justenough_re",
+        "developer_template_values"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "5f0888483fed890a866f3768591047039b2558a3a8c64ce465672205175397e3",
+      "source_uri": "https://zotonic.com/id/1538"
+    },
+    {
+      "target_name": "doc_developerguide_wires",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/07-browser-apis/browser-events.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/07-browser-apis/postback-handlers.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Handle a browser event with a wire",
+      "summary": "Use scomp#wire to connect a browser event to an action or a server postback. Give the target element a stable ID within the rendered page.",
+      "reason": "Replace the broken request-value example and obsolete transport advice.",
+      "hasreference": [
+        "developer_browser_events",
+        "developer_postback_handlers"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_base/priv/lib/js",
+        "apps/zotonic_mod_mqtt",
+        "apps/zotonic_mod_oauth2",
+        "apps/zotonic_mod_wires/src/actions"
+      ],
+      "snapshot_sha256": "55f450cc7cd9541c6aa2840ce21b3d9bb2812f4530456df9bf9577d84d1af7ab",
+      "source_uri": "https://zotonic.com/id/1539"
+    },
+    {
+      "target_name": "doc_developerguide_controllers",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/06-reusable-functionality/controllers.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Add an HTTP controller",
+      "summary": "Use controller_template when a dispatch rule only needs to render a template. Write a custom controller when the endpoint needs additional request processing or response behavior.",
+      "reason": "Use current one-argument callbacks and process/4 response contract.",
+      "hasreference": [
+        "developer_controllers"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_core/src/behaviours",
+        "apps/zotonic_mod_base/src"
+      ],
+      "snapshot_sha256": "01ba8f8b22c30f3845209faf07835ddc44cbdfa290ec53337222131423fad0f8",
+      "source_uri": "https://zotonic.com/id/1540"
+    },
+    {
+      "target_name": "doc_developerguide_dispatch_rules",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/04-templates/request-path.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/04-templates/resource-links.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/03-command-line-workflows/cli-dispatch.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/11-troubleshooting/wrong-route.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Follow a request to its template",
+      "summary": "Start with the URL that gives an unexpected result. Check its hostname: Zotonic uses it to select a site before matching the site's dispatch rules.",
+      "reason": "Replace old site paths, unsafe query identifiers and obsolete controller callbacks with current dispatch workflow.",
+      "hasreference": [
+        "developer_request_path",
+        "developer_resource_links",
+        "developer_cli_dispatch",
+        "developer_wrong_route"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z.erl",
+        "apps/zotonic_core/src/support/z_dispatcher.erl",
+        "apps/zotonic_filehandler/src",
+        "apps/zotonic_launcher/src/command",
+        "apps/zotonic_mod_base/priv/templates",
+        "apps/zotonic_mod_development",
+        "doc/template-tags"
+      ],
+      "snapshot_sha256": "c7194c03826dd63c842d430130ad171f7549981e09644fbeffaf59f0bff5b8bf",
+      "source_uri": "https://zotonic.com/id/1541"
+    },
+    {
+      "target_name": "doc_cookbook_shell_completion",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_shell_completion.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Complete module and function names in the shell",
+      "summary": "Use shell completion without relying on a particular startup mode.",
+      "reason": "Remove the claim that completion requires debug mode and add code-path checks.",
+      "hasreference": [
+        "developer_compile_load",
+        "developer_shell_connect"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "85f010acce3b0860fe15ed4a0d8af83485650dfa96c9e59573dc794b41948b5a",
+      "source_uri": "https://zotonic.com/id/1544"
+    },
+    {
+      "target_name": "doc_developerguide_testing",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/09-testing/testing-strategy.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/09-testing/testing-erlang.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/09-testing/testing-templates.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/03-command-line-workflows/cli-tests.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Choose checks for a change",
+      "summary": "Choose checks for a change.",
+      "reason": "Use current test commands and a dedicated test environment.",
+      "hasreference": [
+        "developer_testing_strategy",
+        "developer_testing_erlang",
+        "developer_testing_templates",
+        "developer_cli_tests"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z.erl",
+        "apps/zotonic_core/src/support/z_sitetest.erl",
+        "apps/zotonic_core/test",
+        "apps/zotonic_launcher/src/command",
+        "apps/zotonic_launcher/src/command/zotonic_cmd_runtests.erl"
+      ],
+      "snapshot_sha256": "0b724c049af48c0e390f53ebd4a20d46c5fdf8fa77e263cfc0d098e3a73d8022",
+      "source_uri": "https://zotonic.com/id/1546"
+    },
+    {
+      "target_name": "doc_reference_cli_index",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/12-command-reference/index.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/03-command-line-workflows/cli-help.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Command-line reference",
+      "summary": "Look up the syntax, requirements, and effects of each bundled command.",
+      "reason": "Merge command-reference collection and CLI help; preserve resource identity.",
+      "hasreference": [
+        "developer_collection_command_reference",
+        "developer_cli_help"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z.erl",
+        "apps/zotonic_launcher/include/zotonic_command.hrl",
+        "apps/zotonic_launcher/src/command"
+      ],
+      "snapshot_sha256": "4ecd10b8483a56905ad57cbe33b1cf10baaec0983e70c8e76c3e78e0dd02d9ea",
+      "source_uri": "https://zotonic.com/id/1547"
+    },
+    {
+      "target_name": "doc_developerguide_email",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../administration/04-configuration-and-services/outbound-email.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/04-configuration-and-services/test-email.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/07-monitoring-and-troubleshooting/mail-failures.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Configure outbound email and verify delivery",
+      "summary": "Set a relay at the correct scope and test a real site message.",
+      "reason": "Replace obsolete SMTP keys and delivery assumptions with configured relay and verification steps.",
+      "hasreference": [
+        "admin_outbound_email",
+        "admin_test_email",
+        "admin_mail_failures"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "d1c8613493aa380e9c1f37bc5fa57ea2cf1abc930ba83d53892fb916a2ad2dcf",
+      "source_uri": "https://zotonic.com/id/1552"
+    },
+    {
+      "target_name": "doc_cookbook_admin_datetime",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_admin_datetime.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Save date and time form fields",
+      "summary": "Use the form parser deliberately and distinguish it from direct property updates.",
+      "reason": "Retain deliberate form-list parsing, clarify default times and remove obsolete template path.",
+      "hasreference": [
+        "developer_forms_validation",
+        "developer_resource_properties"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_props.erl"
+      ],
+      "snapshot_sha256": "76b8ed1925d1162a4562fdc6748b7052061c13ad038601bc5cd46f239b0ef810",
+      "source_uri": "https://zotonic.com/id/1553"
+    },
+    {
+      "target_name": "doc_cookbook_custom_filter",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/06-reusable-functionality/template-extensions.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Add a filter or rendering component",
+      "summary": "Use a filter for a small transformation of an input value. Keep missing and unexpected values predictable, and escape output at the point where it becomes HTML.",
+      "reason": "Replace incomplete filter guidance with a complete contextual filter example.",
+      "hasreference": [
+        "developer_template_extensions"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_core/src/behaviours",
+        "apps/zotonic_mod_base/src"
+      ],
+      "snapshot_sha256": "deb2d0417a69c5051cba76fe2b4b2cf3d4f43b659426fa77ad5349aad8881232",
+      "source_uri": "https://zotonic.com/id/1572"
+    },
+    {
+      "target_name": "doc_cookbook_custom_model",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/06-reusable-functionality/model-api.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Expose data through a model",
+      "summary": "Create src/models/m_garden.erl in the Garden module. This complete example exposes a public greeting:",
+      "reason": "Replace old m-record API and broken external-film-API example with a complete m_get/3 model.",
+      "hasreference": [
+        "developer_model_api"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_core/src/behaviours",
+        "apps/zotonic_mod_base/src"
+      ],
+      "snapshot_sha256": "4f088bde8c419fb1fc90a867b9539fa9c6da14dc8390054d75bc7653c7ce1265",
+      "source_uri": "https://zotonic.com/id/1573"
+    },
+    {
+      "target_name": "doc_cookbook_custom_tag",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_custom_tag.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Create a custom template tag",
+      "summary": "Render escaped text through the current zotonic_scomp behaviour.",
+      "reason": "Replace gen_scomp and invalid render return values; retain current vary/2 contract.",
+      "hasreference": [
+        "developer_template_extensions"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/behaviours/zotonic_scomp.erl"
+      ],
+      "snapshot_sha256": "9e0d55b2ad0c31acc72c246a79a6a41943b1e1e6a99d0ad82667450741ffaa4f",
+      "source_uri": "https://zotonic.com/id/1574"
+    },
+    {
+      "target_name": "doc_cookbook_custom_search",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_custom_search.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Add a named resource search",
+      "summary": "Use a current search notification and let Zotonic apply resource visibility.",
+      "reason": "Replace old tuple-based notification, invalid SQL aliases and missing ACL explanation.",
+      "hasreference": [
+        "developer_content_search",
+        "developer_access_control"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_mod_search/src/mod_search.erl"
+      ],
+      "snapshot_sha256": "7e81724d0e2625e49c4b142bf84cb0ae62c398a90c771c09a44016be9d98b3a0",
+      "source_uri": "https://zotonic.com/id/1575"
+    },
+    {
+      "target_name": "doc_cookbook_writing_module",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/06-reusable-functionality/create-module.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Create a reusable module",
+      "summary": "Create apps_user/zotonic_mod_garden with the following files. This example adds a discoverable module without starting an extra process.",
+      "reason": "Replace the TODO with a working OTP application and Zotonic module.",
+      "hasreference": [
+        "developer_create_module"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_core/src/behaviours",
+        "apps/zotonic_mod_base/src"
+      ],
+      "snapshot_sha256": "bc603b743df1fe0c218309a3068038925a3273e9bd56d429b6960698352262b5",
+      "source_uri": "https://zotonic.com/id/1576"
+    },
+    {
+      "target_name": "doc_cookbook_overriding",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/04-templates/template-overrides.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/02-applications/module-priority.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Override a module template",
+      "summary": "Find the active template and its path relative to priv/templates. Create the same relative path in your site or another active module with a higher selection priority.",
+      "reason": "Complete the override recipe and explain module priority.",
+      "hasreference": [
+        "developer_template_overrides",
+        "developer_module_priority"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_dispatcher.erl",
+        "apps/zotonic_core/src/support/z_module_indexer.erl",
+        "apps/zotonic_core/src/support/z_module_manager.erl",
+        "apps/zotonic_mod_base/priv/templates",
+        "apps/zotonic_mod_zotonic_site_management/priv/skel",
+        "doc/template-tags",
+        "rebar.config"
+      ],
+      "snapshot_sha256": "27a5617913392c85727f36fca439f604c3ffdec16181ad315a4a3d24cc62eb98",
+      "source_uri": "https://zotonic.com/id/1577"
+    },
+    {
+      "target_name": "doc_cookbook_task_queue",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_task_queue.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Schedule deferred work",
+      "summary": "Queue a complete callback and distinguish enqueueing from completion.",
+      "reason": "Replace broken callback/arity/queue examples and unsafe retry and sudo advice.",
+      "hasreference": [
+        "developer_background_work"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_pivot_rsc.erl",
+        "apps/zotonic_core/src/support/z_pivot_rsc_task_job.erl"
+      ],
+      "snapshot_sha256": "8c778709d521e0fccbe3dde41bc0cf806af584727947ddabc1881eebee70e389",
+      "source_uri": "https://zotonic.com/id/1578"
+    },
+    {
+      "target_name": "doc_cookbook_template_icons",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_template_icons.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Add an icon to a control",
+      "summary": "Use icons from the loaded theme and keep the control accessible.",
+      "reason": "Make loaded-theme dependency and accessible labels explicit.",
+      "hasreference": [
+        "developer_asset_build"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_admin/priv/templates/admin_edit.tpl"
+      ],
+      "snapshot_sha256": "f716dad32de1472faef6cd80382829ddf08831be2509a1770964c9129ce6bc17",
+      "source_uri": "https://zotonic.com/id/1579"
+    },
+    {
+      "target_name": "doc_cookbook_logstash",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_logstash.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Send structured logs to Logstash",
+      "summary": "Configure the installed Logger handler and verify delivery.",
+      "reason": "Correct Logger API and reference the actual bundled handler configuration.",
+      "hasreference": [
+        "developer_structured_logging",
+        "admin_logs"
+      ],
+      "evidence": [
+        "apps/zotonic_launcher/priv/config/erlang.config.in"
+      ],
+      "snapshot_sha256": "3de4a54b902729b70b4e2bfaba53ff50db10a3beb38837c864fdd03c3363d45d",
+      "source_uri": "https://zotonic.com/id/1580"
+    },
+    {
+      "target_name": "doc_cookbook_error_pages",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_error_pages.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Customize HTTP error pages",
+      "summary": "Override the error template while preserving the response status.",
+      "reason": "Correct template location and add status-code and failure-path verification.",
+      "hasreference": [
+        "developer_template_overrides",
+        "developer_controllers"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "d741054172ca8828a3eca3d72294033795e307734490a92004c8f84dd3b7d347",
+      "source_uri": "https://zotonic.com/id/1581"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_contactform",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_contactform.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Add a contact form",
+      "summary": "Choose a survey form or implement a validated server-side mail handler.",
+      "reason": "Replace incomplete unsafe contact-mail example with working Survey route and explicit custom-handler contracts.",
+      "hasreference": [
+        "editor_creating_form",
+        "editor_survey_email",
+        "developer_forms_validation",
+        "admin_test_email"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/smtp/z_email.erl"
+      ],
+      "snapshot_sha256": "5d3d09782ec31a732a8700be3444c437bfff7cedcbd2fa39b6e260e8f4ec2ce3",
+      "source_uri": "https://zotonic.com/id/1582"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_custom_content_block",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_custom_content_block.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Add a custom content block",
+      "summary": "Add a plain-text callout block using current admin field names.",
+      "reason": "Replace obsolete iframe service, old block fields and duplicate IDs with a simple current block.",
+      "hasreference": [
+        "developer_observers",
+        "editor_content_blocks"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_admin/src/models/m_admin_blocks.erl",
+        "apps/zotonic_mod_admin/priv/templates/_admin_edit_block_li.tpl"
+      ],
+      "snapshot_sha256": "28d14c8f3da412c6351b96e1d50b97e55c865e2cff7de825e82d14fcd34a9d03",
+      "source_uri": "https://zotonic.com/id/1583"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_formupdating",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_formupdating.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Update a form field with an action",
+      "summary": "Set a visible value without duplicate element IDs.",
+      "reason": "Remove duplicate href/ID patterns and clarify client-only state.",
+      "hasreference": [
+        "developer_browser_events",
+        "developer_forms_validation"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_wires/src/actions/action_wires_set_value.erl"
+      ],
+      "snapshot_sha256": "25f94a5a12dfe6227d8badcb33d06960ff74e17fb2404b57488d133d7b4cd663",
+      "source_uri": "https://zotonic.com/id/1584"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_pagebackgrounds",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_pagebackgrounds.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Show a page background image",
+      "summary": "Connect one image and render it without constructing inline CSS from input.",
+      "reason": "Correct multi-edge lookup and replace raw style interpolation with a rendered image.",
+      "hasreference": [
+        "developer_content_edges",
+        "developer_template_media"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/media/z_media_tag.erl"
+      ],
+      "snapshot_sha256": "10beeef2756bbf1cfa49b2387caf22df39120927dd939303c5cd086854215c0b",
+      "source_uri": "https://zotonic.com/id/1586"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_retrieving_category",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_retrieving_category.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Read a page category in a template",
+      "summary": "Use the current resource rather than parsing its URL.",
+      "reason": "Replace URL/category confusion with category_id and inherited category checks.",
+      "hasreference": [
+        "developer_categories_predicates",
+        "developer_template_selection"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "d65b6c146d0906b664d35596f67c93c07c2d5374c79ec2c75ff98c696a392999",
+      "source_uri": "https://zotonic.com/id/1587"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_share_variable",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_share_variable.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Share a value between template components",
+      "summary": "Pass values explicitly and keep browser code in the supported script tag.",
+      "reason": "Remove implicit include-scope assumptions and inline scripts without the normal CSP pipeline.",
+      "hasreference": [
+        "developer_template_components",
+        "developer_template_values"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "21c0656b89b5d1b2fa9e9d81b302be2f66d10e88de7d8e2f3717dbf94faf1278",
+      "source_uri": "https://zotonic.com/id/1588"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_signup_logon_form",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_signup_logon_form.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Customize login and signup presentation",
+      "summary": "Reuse the maintained authentication flow and override its presentation.",
+      "reason": "Remove obsolete hand-built login/signup markup and hidden terms acceptance.",
+      "hasreference": [
+        "developer_template_overrides",
+        "editor_creating_user"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_authentication/priv/templates/logon.tpl",
+        "apps/zotonic_mod_signup/priv/templates/signup.tpl"
+      ],
+      "snapshot_sha256": "fe31fa70096701809471ac4ef9a37f595e93aaaff069b0a200743e5cd03fda97",
+      "source_uri": "https://zotonic.com/id/1589"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_signup_redirection",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_signup_redirection.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Choose a destination after signup",
+      "summary": "Return a fixed local destination from the current signup notification.",
+      "reason": "Use current record fields and avoid an open redirect.",
+      "hasreference": [
+        "developer_observers"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_mod_signup/src/mod_signup.erl"
+      ],
+      "snapshot_sha256": "466b90ee0c6338ca97817afa28189f8de7f8eff2d49e50a7028bc0ea07907fdf",
+      "source_uri": "https://zotonic.com/id/1590"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_sitespecific_signup",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_sitespecific_signup.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Run site-specific work after signup",
+      "summary": "Use the current signup notification and make follow-up work repeatable.",
+      "reason": "Replace outdated tuples and unfinished provisioning stub with current records and verification boundaries.",
+      "hasreference": [
+        "developer_observers",
+        "developer_background_work"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_mod_signup/src/mod_signup.erl"
+      ],
+      "snapshot_sha256": "9070bc081f77e750b46e20693212dc361a5485ae6c5ebff3524dd8398c71c40b",
+      "source_uri": "https://zotonic.com/id/1591"
+    },
+    {
+      "target_name": "doc_cookbook_frontend_template_select_value",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_frontend_template_select_value.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Update a preview from a selection",
+      "summary": "Validate a selection before rendering a resource preview.",
+      "reason": "Replace untrusted selection lookup with an allowed-value check, resource resolution and visibility check.",
+      "hasreference": [
+        "developer_browser_events",
+        "developer_postback_handlers",
+        "developer_resource_identifiers"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/models",
+        "apps/zotonic_core/src/support/z_datamodel.erl",
+        "apps/zotonic_core/src/support/z_search.erl",
+        "apps/zotonic_mod_base/priv/lib/js",
+        "apps/zotonic_mod_mqtt",
+        "apps/zotonic_mod_oauth2",
+        "apps/zotonic_mod_wires/src/actions"
+      ],
+      "snapshot_sha256": "7d33789db7f0e453d55324f445fb16d8244f8f71de3e0c40b7ecb5d92ad280d4",
+      "source_uri": "https://zotonic.com/id/1592"
+    },
+    {
+      "target_name": "doc_cookbook_admin_a_custom_widget",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_admin_a_custom_widget.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Add a field to the resource editor",
+      "summary": "Use an admin widget and the existing resource form.",
+      "reason": "Correct field markup and explain that an admin-only field is not automatically secret.",
+      "hasreference": [
+        "developer_resource_properties",
+        "developer_access_control"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_admin/priv/templates/_admin_edit_main_parts.tpl",
+        "apps/zotonic_mod_admin/priv/templates/admin_edit_widget_std.tpl"
+      ],
+      "snapshot_sha256": "27484feced3d0bfb0536e607ad773c0fdd8a4904c605abe83eaa29b8e5ccc964",
+      "source_uri": "https://zotonic.com/id/1593"
+    },
+    {
+      "target_name": "doc_cookbook_admin_custom_layout",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_admin_custom_layout.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Adjust the resource editor layout",
+      "summary": "Override the smallest category-specific admin component.",
+      "reason": "Describe current category override points and preserve essential form behaviour.",
+      "hasreference": [
+        "doc_cookbook_admin_a_custom_widget",
+        "developer_template_overrides"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_admin/priv/templates/admin_edit.tpl"
+      ],
+      "snapshot_sha256": "c3595be8caad46416ef984982a91ba36afcf248fa330ac57b514d10b3db5bbbf",
+      "source_uri": "https://zotonic.com/id/1594"
+    },
+    {
+      "target_name": "doc_cookbook_admin_templates",
+      "action": "retain",
+      "reason": "Retain the admin dispatch/template examples; the documented customization mechanism remains supported.",
+      "evidence": [
+        "apps/zotonic_mod_admin_identity/priv/dispatch/admin_dispatch"
+      ],
+      "snapshot_sha256": "85a9a3dcee597269e93408a85bf901908078905c3461afc5f8415db48c3f7d76",
+      "source_uri": "https://zotonic.com/id/1595",
+      "hasreference": [
+        "developer_template_overrides"
+      ]
+    },
+    {
+      "target_name": "doc_cookbook_admin_user_group",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_admin_user_group.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Assign a user group from a trusted creation workflow",
+      "summary": "Add membership after creation with explicit permissions.",
+      "reason": "Replace invalid insert-time resource lookup and virtual property with an authorized membership edge after creation.",
+      "hasreference": [
+        "admin_assign_access",
+        "admin_access_rules",
+        "developer_access_control"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/models",
+        "apps/zotonic_core/src/support/z_datamodel.erl",
+        "apps/zotonic_core/src/support/z_search.erl"
+      ],
+      "snapshot_sha256": "ed2e04e833d55b6709bd50e09e9f3c6c4c7a081eaa5d423ae79bc523e72f8dc4",
+      "source_uri": "https://zotonic.com/id/1596"
+    },
+    {
+      "target_name": "doc_cookbook_shell_activate_modules",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_shell_activate_modules.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Enable a module from the Erlang shell",
+      "summary": "Enable an installed module on one site and verify the result.",
+      "reason": "Correct node-name assumptions and remote-shell exit instructions.",
+      "hasreference": [
+        "developer_module_discovery",
+        "admin_enable_modules"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_module_manager.erl"
+      ],
+      "snapshot_sha256": "68455778ad66914a41490f5c68e845f9a2873119d1e3569695127daa2f96ae4a",
+      "source_uri": "https://zotonic.com/id/1597"
+    },
+    {
+      "target_name": "doc_cookbook_shell_resetpassword",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_shell_resetpassword.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Reset a user password from the shell",
+      "summary": "Reset a normal user identity when the usual recovery flow cannot be used.",
+      "reason": "Distinguish resource lookup from identity lookup and configured admin credentials.",
+      "hasreference": [
+        "editor_creating_user",
+        "developer_inspect_configuration"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/models/m_identity.erl"
+      ],
+      "snapshot_sha256": "d75992cf56ab919e223df840c6e8d057c78749f26cebc519e7f2b61b4b6dff5c",
+      "source_uri": "https://zotonic.com/id/1598"
+    },
+    {
+      "target_name": "doc_cookbook_shell_restoring_db",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../administration/05-backups-and-recovery/restore-site.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/10-configuration-deployment/backup-recovery.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Rehearse a complete site restore",
+      "summary": "Restore into isolation and verify content, media, and access.",
+      "reason": "Replace live restore and obsolete createdb advice with a complete isolated recovery procedure.",
+      "hasreference": [
+        "admin_restore_site",
+        "developer_backup_recovery"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_config.erl",
+        "apps/zotonic_launcher/src",
+        "apps/zotonic_mod_backup",
+        "apps/zotonic_mod_filestore"
+      ],
+      "snapshot_sha256": "20aa850ee8807038f3a207d52b53142d57cb303bbd200037a89dc5fe0919dffc",
+      "source_uri": "https://zotonic.com/id/1599"
+    },
+    {
+      "target_name": "doc_cookbook_justenough_postgres",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/01-getting-started/local-postgresql.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/04-configuration-and-services/database-connection.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/03-command-line-workflows/database-shell.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Prepare local PostgreSQL",
+      "summary": "Create and check the database used by a native development installation.",
+      "reason": "Replace unsupported PostgreSQL releases, blanket trust/md5 workarounds and obsolete createdb commands; include Unix sockets.",
+      "hasreference": [
+        "developer_local_postgresql",
+        "admin_database_connection",
+        "developer_database_shell"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z.erl",
+        "apps/zotonic_launcher/src/command",
+        "apps/zotonic_launcher/src/command/zotonic_cmd_addsite.erl",
+        "docker-compose.yml",
+        "docker/Dockerfile.dev",
+        "docker/docker-entrypoint.sh",
+        "shell.nix"
+      ],
+      "snapshot_sha256": "2b6abab68f7b13bb2f5e3113cff749bd152a0c1ee9d0aa3f137133348b1f7b5e",
+      "source_uri": "https://zotonic.com/id/1600"
+    },
+    {
+      "target_name": "doc_cookbook_justenough_re",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_justenough_re.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Use regular expressions with Erlang/OTP 28",
+      "summary": "Match and replace UTF-8 text with the current re module.",
+      "reason": "Replace R14 examples, incorrect escaping and fragile compiled-pattern internals.",
+      "hasreference": [
+        "doc_cookbook_shell_characters",
+        "developer_forms_validation"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "d9464dfa64343c9b707e48620ccf32a69f19c3e758913a8e1978cd00a31f442d",
+      "source_uri": "https://zotonic.com/id/1601"
+    },
+    {
+      "target_name": "doc_cookbook_justenough_shell",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_justenough_shell.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Use an Erlang shell safely",
+      "summary": "Distinguish a practice Erlang VM from a remote Zotonic shell.",
+      "reason": "Remove R13/now() advice and distinguish detaching from stopping the server.",
+      "hasreference": [
+        "developer_shell_connect",
+        "developer_shell_data"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "df98ffdba725a15cd70a5cc0245d4320db8c0269e54f1906f4529c1b02d6b8bb",
+      "source_uri": "https://zotonic.com/id/1602"
+    },
+    {
+      "target_name": "doc_bestpractices_creating_sites",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/01-getting-started/create-site.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/05-content-data/datamodel-fixtures.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Create your first site",
+      "summary": "Create the garden blog, open it in your browser, and sign in to its admin.",
+      "reason": "Complete the placeholder with a working site and repeatable datamodel fixtures.",
+      "hasreference": [
+        "developer_create_site",
+        "developer_datamodel_fixtures"
+      ],
+      "evidence": [
+        "GNUmakefile",
+        "apps/zotonic_core/src/models",
+        "apps/zotonic_core/src/support/z_datamodel.erl",
+        "apps/zotonic_core/src/support/z_search.erl",
+        "apps/zotonic_launcher/src/command/zotonic_cmd_addsite.erl",
+        "apps/zotonic_mod_zotonic_site_management/priv/skel",
+        "rebar.config"
+      ],
+      "snapshot_sha256": "3e2e9588211a9eb506ed8a88307028bcfe40a51933e547cd8b9ff0ad746a8798",
+      "source_uri": "https://zotonic.com/id/1618"
+    },
+    {
+      "target_name": "doc_developerguide_index",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/index.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Developer guide",
+      "summary": "Build, inspect, and maintain Zotonic sites and modules.",
+      "reason": "Use the new developer landing page with graph-managed collections.",
+      "hasreference": [
+        "developer_guide"
+      ],
+      "evidence": [
+        "apps/zotonic_launcher/src/command",
+        "rebar.config"
+      ],
+      "snapshot_sha256": "3956a9b395ccbd7f8dac59bec14a54bd5030358f72cd9600aa71edebfe07bc61",
+      "source_uri": "https://zotonic.com/id/1635"
+    },
+    {
+      "target_name": "doc_developerguide_introduction",
+      "action": "retain",
+      "reason": "Retain the conceptual introduction; no pinned dependency versions or removed API instructions.",
+      "evidence": [
+        "README.md"
+      ],
+      "snapshot_sha256": "02a14238d8b46563dd027e2e3e44b82fe2e4649f4be463b9f2b152464299e3be",
+      "source_uri": "https://zotonic.com/id/1636",
+      "hasreference": []
+    },
+    {
+      "target_name": "doc_developerguide_icons",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/04-templates/asset-build.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Build and serve frontend assets",
+      "summary": "Keep source files such as SCSS in priv/lib-src and compiled assets in priv/lib. Use an app-level Makefile that delegates asset work to the source directory's Makefile.",
+      "reason": "Replace assumptions about shared LESS/icon assets with the current asset workflow; see the icon cookbook for accessible controls.",
+      "hasreference": [
+        "developer_asset_build"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_dispatcher.erl",
+        "apps/zotonic_mod_base/priv/templates",
+        "doc/template-tags"
+      ],
+      "snapshot_sha256": "91a1d4a41b0a54217865a1db56412376b1aa850c4ad6a050e02ee592253caae4",
+      "source_uri": "https://zotonic.com/id/1637"
+    },
+    {
+      "target_name": "doc_developerguide_search",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/05-content-data/content-search.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "texts/doc_developerguide_search.html",
+          "format": "html",
+          "front_matter": false
+        }
+      ],
+      "title": "Search",
+      "summary": "Query arguments and terms for searching pages using the search APIs.",
+      "reason": "Preserve the full query-term reference while correcting syntax, publication_before and unverified external search modules.",
+      "hasreference": [
+        "developer_content_search",
+        "doc_cookbook_custom_search"
+      ],
+      "evidence": [
+        "apps/zotonic_mod_search/src/support/search_query.erl"
+      ],
+      "snapshot_sha256": "f8a568a3e1b20c7c19f4a1f8a67d656c20a4203e0b9d0560db0a27aafa06cca2",
+      "source_uri": "https://zotonic.com/id/1638"
+    },
+    {
+      "target_name": "doc_developerguide_shell",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/03-command-line-workflows/shell-connect.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/03-command-line-workflows/shell-data.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Connect to the running Erlang shell",
+      "summary": "From the checkout root:",
+      "reason": "Merge adopted shell tasks, replace property lists with maps, and use Ctrl-C twice to detach.",
+      "hasreference": [
+        "developer_shell_connect",
+        "developer_shell_data"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z.erl",
+        "apps/zotonic_launcher/src/command"
+      ],
+      "snapshot_sha256": "0df4a3e3051f256aadf25d5f57c4f2877bb1491962583b8d8ce4c02c05d39868",
+      "source_uri": "https://zotonic.com/id/1639"
+    },
+    {
+      "target_name": "doc_developerguide_logging",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/08-development-tools/structured-logging.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/07-monitoring-and-troubleshooting/logs.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Write logs that explain an operation",
+      "summary": "Log the operation and its result with structured fields. Include an identifier that helps connect the message to a resource or job, without logging credentials or complete private request data.",
+      "reason": "Use structured Logger calls and operational log checks; remove incorrect size/rotation advice.",
+      "hasreference": [
+        "developer_structured_logging",
+        "admin_logs"
+      ],
+      "evidence": [
+        "apps/zotonic_filehandler/src",
+        "apps/zotonic_mod_development/priv/templates",
+        "apps/zotonic_mod_development/src/mod_development.erl",
+        "apps/zotonic_mod_development/src/models/m_development.erl"
+      ],
+      "snapshot_sha256": "9c5d2b1399992ac3f2979b4841b444aab631426ae128a5e4d073de373ef723c8",
+      "source_uri": "https://zotonic.com/id/1640"
+    },
+    {
+      "target_name": "doc_developerguide_deployment_index",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../administration/03-installation-and-deployment/index.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Installation and deployment",
+      "summary": "Prepare an environment and deploy a release with a recovery plan.",
+      "reason": "Adopt the administration deployment collection while preserving existing children.",
+      "hasreference": [
+        "admin_collection_deployment"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "e601dbd715ee4db024511cd1d589d991257c6ca9a4c40169408f4e95debb37fa",
+      "source_uri": "https://zotonic.com/id/1641"
+    },
+    {
+      "target_name": "doc_developerguide_contributing",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_contributing.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Contribute a Zotonic change",
+      "summary": "Build the checkout, verify the change, and send a focused pull request.",
+      "reason": "Remove obsolete Sphinx workflow and unsupported release/tooling promises.",
+      "hasreference": [
+        "developer_testing_strategy",
+        "developer_maintaining_dependencies"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "b835aadb192c3d8dad6cb5b9aa9224eb8a0125666b5b169dfb02932ef2beb7aa",
+      "source_uri": "https://zotonic.com/id/1642"
+    },
+    {
+      "target_name": "doc_developerguide_deployment_https",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../administration/04-configuration-and-services/hostnames-https.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Configure hostnames and HTTPS",
+      "summary": "Align DNS, site selection, and certificate termination.",
+      "reason": "Describe current certificate, hostname, and proxy verification instead of obsolete deployment links.",
+      "hasreference": [
+        "admin_hostnames_https"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "34a964342a34288da661a8e82cc7a974f7f2d9bcc20d7eafa05c06cc08816407",
+      "source_uri": "https://zotonic.com/id/1755"
+    },
+    {
+      "target_name": "doc_developerguide_deployment_privilegedports",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_deployment_privilegedports.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Serve HTTPS on a privileged port",
+      "summary": "Terminate public traffic at a reverse proxy while Zotonic stays unprivileged.",
+      "reason": "Remove outdated authbind IPv6 claim, hard-coded ERTS path and blanket root/firewall advice.",
+      "hasreference": [
+        "doc_developerguide_deployment_nginx",
+        "admin_hostnames_https"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "524e06360ce09a2af28acedfd2cfc1ffd4123e50ebc1bd1fb1ba8a8e12cf5f33",
+      "source_uri": "https://zotonic.com/id/1789"
+    },
+    {
+      "target_name": "doc_developerguide_deployment_nginx",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_deployment_nginx.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Put Zotonic behind nginx",
+      "summary": "Forward HTTP and WebSocket traffic with a narrow trust boundary.",
+      "reason": "Replace stale TLS/cipher advice and unrestricted proxy assumptions; retain current WebSocket forwarding.",
+      "hasreference": [
+        "admin_hostnames_https",
+        "doc_developerguide_deployment_privilegedports"
+      ],
+      "evidence": [
+        "apps/zotonic_launcher/priv/config/zotonic.config.in"
+      ],
+      "snapshot_sha256": "11ac7b1afa8f910e5a7afa7e6219106c718aa41e6b4e4c6be3a5892f324fc13d",
+      "source_uri": "https://zotonic.com/id/1790"
+    },
+    {
+      "target_name": "doc_userguide_cms",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../editor/01-getting-started/introduction.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Introduction to editing with Zotonic",
+      "summary": "Use the admin to keep your website up to date.",
+      "reason": "Replace the unfinished introduction.",
+      "hasreference": [
+        "editor_introduction"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "78da3c9e522214cfb08f06151e223ab794f96b34e8f6b86f3ebc206c0e3b6c64",
+      "source_uri": "https://zotonic.com/id/1819"
+    },
+    {
+      "target_name": "doc_bestpractices_media",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/04-templates/template-media.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/05-content-data/media-data.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Display images with mediaclasses",
+      "summary": "Define reusable image sizes in priv/templates/mediaclass.config and use them in image tags. For example, a local mediaclass can constrain an image's width:",
+      "reason": "Replace the one-line media placeholder with rendering, metadata and missing-media checks.",
+      "hasreference": [
+        "developer_template_media",
+        "developer_media_data"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/models",
+        "apps/zotonic_core/src/support/z_datamodel.erl",
+        "apps/zotonic_core/src/support/z_dispatcher.erl",
+        "apps/zotonic_core/src/support/z_search.erl",
+        "apps/zotonic_mod_base/priv/templates",
+        "doc/template-tags"
+      ],
+      "snapshot_sha256": "477545febf336427b7ad6ebc5355fd240e454b35194e6ec79fd98edfd0f680fd",
+      "source_uri": "https://zotonic.com/id/1854"
+    },
+    {
+      "target_name": "doc_bestpractices_templates",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/04-templates/template-components.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/04-templates/template-values.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/04-templates/template-overrides.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Reuse markup with includes and categories",
+      "summary": "Extract repeated markup into a partial and pass its inputs explicitly.",
+      "reason": "Expand the short best-practice page with explicit composition, context escaping and narrow overrides.",
+      "hasreference": [
+        "developer_template_components",
+        "developer_template_values",
+        "developer_template_overrides"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_dispatcher.erl",
+        "apps/zotonic_mod_base/priv/templates",
+        "doc/template-tags"
+      ],
+      "snapshot_sha256": "87e7e17c32134dc6316d8692941b81d385414719f78e48bcda261d8e536d262f",
+      "source_uri": "https://zotonic.com/id/1860"
+    },
+    {
+      "target_name": "doc_bestpractices_index",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_bestpractices_index.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Use maintainable Zotonic patterns",
+      "summary": "Start with a working site, reusable templates and the standard media pipeline.",
+      "reason": "Replace sparse static index with concise guidance and graph-managed related tasks.",
+      "hasreference": [
+        "doc_bestpractices_creating_sites",
+        "doc_bestpractices_templates",
+        "doc_bestpractices_media"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "7d3e67a303298d977f3092a8092eb0985649cbc30473076c42cf059bb67fe3a7",
+      "source_uri": "https://zotonic.com/id/1914"
+    },
+    {
+      "target_name": "doc_developerguide_deployment_startup",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_deployment_startup.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Run Zotonic as a service",
+      "summary": "Start a foreground Zotonic process under the host service manager.",
+      "reason": "Replace obsolete init.d startup recipe with a foreground service and verification.",
+      "hasreference": [
+        "admin_service_startup",
+        "admin_deploy_release"
+      ],
+      "evidence": [
+        "apps/zotonic_launcher/src/command/zotonic_cmd_start_nodaemon.erl"
+      ],
+      "snapshot_sha256": "bf999a6d9792b6ff30ca48943a85189365ac28597fb930917fdbb089f1188f29",
+      "source_uri": "https://zotonic.com/id/1987"
+    },
+    {
+      "target_name": "doc_developerguide_deployment_varnish",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_deployment_varnish.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Cache selected public assets with Varnish",
+      "summary": "Start with a narrow VCL 4 policy and preserve authenticated responses.",
+      "reason": "Replace VCL 3 and unsafe blanket cookie removal/caching with a narrow public-asset policy.",
+      "hasreference": [
+        "doc_developerguide_deployment_nginx",
+        "developer_template_cache"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "ee510093bba2534a611e371c6c1f315ddf326e554a84276b635c8b5639ec7be9",
+      "source_uri": "https://zotonic.com/id/1990"
+    },
+    {
+      "target_name": "doc_userguide_issues_and_features",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_userguide_issues_and_features.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Report a problem or request a feature",
+      "summary": "Give maintainers enough information to reproduce and assess the request.",
+      "reason": "Remove the unsupported monthly-release promise and clarify useful issue reports.",
+      "hasreference": [],
+      "evidence": [],
+      "snapshot_sha256": "759daf9727dc388db52ac6fb8589b9b33d21ce43c3bf187ec1e99ac486e3f7a7",
+      "source_uri": "https://zotonic.com/id/2021"
+    },
+    {
+      "target_name": "doc_userguide_user_management",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../editor/08-people-and-access/creating-user.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/01-people-and-permissions/assign-access.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../administration/01-people-and-permissions/remove-access.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Creating a user",
+      "summary": "Set up an account when your role allows user management.",
+      "reason": "Explain identity, access assignment, and removal separately.",
+      "hasreference": [
+        "editor_creating_user",
+        "admin_assign_access",
+        "admin_remove_access"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "e076692c3167a8e2682685b181d1d2de3f28fcaa28ac8848c2ac2ffa9d238bde",
+      "source_uri": "https://zotonic.com/id/2045"
+    },
+    {
+      "target_name": "doc_userguide_index",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../editor/index.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Zotonic for editors",
+      "summary": "Practical help for writing, organizing, and publishing website content.",
+      "reason": "Replace the unfinished landing page; retain collection identity.",
+      "hasreference": [
+        "editor_guide"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "4e7b29b78426e31f618b19c50833eaf49313e9904f0399033d3c9d122a34a851",
+      "source_uri": "https://zotonic.com/id/2173"
+    },
+    {
+      "target_name": "doc_developerguide_directory_structure",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/02-applications/workspace.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/02-applications/source-directories.md",
+          "format": "markdown",
+          "front_matter": true
+        },
+        {
+          "file": "../../developer/02-applications/runtime-storage.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "The Zotonic workspace",
+      "summary": "The checkout is an Erlang umbrella project: one build contains many applications.",
+      "reason": "Merge both adopted directory tasks and distinguish source from runtime storage.",
+      "hasreference": [
+        "developer_workspace",
+        "developer_source_directories",
+        "developer_runtime_storage"
+      ],
+      "evidence": [
+        "apps/zotonic_core/src/support/z_module_indexer.erl",
+        "apps/zotonic_core/src/support/z_module_manager.erl",
+        "apps/zotonic_mod_zotonic_site_management/priv/skel",
+        "rebar.config"
+      ],
+      "snapshot_sha256": "745d8fe400be47ec0485def3a194f0e33c9995fa0d81a2c38a01f3b4d8ec8e65",
+      "source_uri": "https://zotonic.com/id/2176"
+    },
+    {
+      "target_name": "doc_cookbook_custom_controller",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "../../developer/06-reusable-functionality/controllers.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Add an HTTP controller",
+      "summary": "Use controller_template when a dispatch rule only needs to render a template. Write a custom controller when the endpoint needs additional request processing or response behavior.",
+      "reason": "Replace invalid export syntax with a complete public read-only controller and dispatch rule.",
+      "hasreference": [
+        "developer_controllers"
+      ],
+      "evidence": [
+        "apps/zotonic_core/include/zotonic_notifications.hrl",
+        "apps/zotonic_core/src/behaviours",
+        "apps/zotonic_mod_base/src"
+      ],
+      "snapshot_sha256": "204b73e52c83f2b88d9723e9d38a9bfa91a9d1aca1cbd79e0a535e00b511531d",
+      "source_uri": "https://zotonic.com/id/2259"
+    },
+    {
+      "target_name": "doc_developerguide_download",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_developerguide_download.md",
+          "format": "markdown",
+          "front_matter": false
+        }
+      ],
+      "title": "Get Zotonic",
+      "summary": "Choose a release or a development checkout and follow the installation guide.",
+      "reason": "Remove pinned release candidate and obsolete git transport.",
+      "hasreference": [
+        "developer_local_environment",
+        "developer_installation_requirements"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "6614a61172c6a4399da9ff0555d6ea3111b8568af85e7cdb8a6597a7d8bc10d9",
+      "source_uri": "https://zotonic.com/id/2310"
+    },
+    {
+      "target_name": "doc_cookbook_security_templates_xss",
+      "action": "replace",
+      "sources": [
+        {
+          "file": "texts/doc_cookbook_security_templates_xss.md",
+          "format": "markdown",
+          "front_matter": false
+        },
+        {
+          "file": "../../developer/04-templates/template-values.md",
+          "format": "markdown",
+          "front_matter": true
+        }
+      ],
+      "title": "Render template values safely",
+      "summary": "Choose escaping for the value and the output context.",
+      "reason": "Clarify escaping contexts and resource sanitization limits; remove misleading broad safety claims.",
+      "hasreference": [
+        "developer_template_values",
+        "developer_access_control"
+      ],
+      "evidence": [],
+      "snapshot_sha256": "edf52146990b84bf76aa7bf5a4ba9230ca63ecb7546bd5064abe09c450826abc",
+      "source_uri": "https://zotonic.com/id/2325"
+    },
+    {
+      "target_name": "doc_developerguide_css_classes",
+      "action": "retain",
+      "reason": "Retain the Bootstrap-era standard-template class reference; it describes supplied templates, not a required frontend framework.",
+      "evidence": [
+        "apps/zotonic_mod_admin/priv/templates/admin_edit.tpl"
+      ],
+      "snapshot_sha256": "2bfc5314eb0ccf1efe40966a36653ea56260bf37d41c27aff1016ea3ad3d1f04",
+      "source_uri": "https://zotonic.com/id/2410",
+      "hasreference": [
+        "developer_asset_build",
+        "doc_cookbook_template_icons"
+      ]
+    }
+  ]
+}

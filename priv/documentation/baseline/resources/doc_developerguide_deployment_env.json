@@ -1,0 +1,143 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:23Z",
+          "object_id": {
+            "id": 1482,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_developerguide_configuration_port_ssl_configuration",
+            "title": "Port configurations",
+            "uri": "https://zotonic.com/id/1482"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1481,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1481"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_deployment_env",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1481/useful-environment-variables",
+    "x-default": "https://zotonic.com/docs/1481/useful-environment-variables"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>The following environment variables influence how Zotonic starts up.</p>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_IP</span></code></dt>\n<dd>The IPv4 address to bind the web server to. By default, it binds to\nany IP address. If Zotonic runs behind a proxy like nginx or\nVarnish, it is wise to put <code class=\"docutils literal notranslate\"><span class=\"pre\">127.0.0.1</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">localhost</span></code> here.\nUse <code class=\"docutils literal notranslate\"><span class=\"pre\">any</span></code> to bind to all IPv4 addresses, <code class=\"docutils literal notranslate\"><span class=\"pre\">none</span></code> to disable the IPv4\nweb server.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_IP6</span></code></dt>\n<dd>The IPv6 address to bind the web server to. By default it binds to\nthe ZOTONIC_IP address. If Zotonic runs behind a proxy like nginx or\nVarnish, it is wise to put <cite>::1`</cite> here.\nUse <code class=\"docutils literal notranslate\"><span class=\"pre\">any</span></code> to bind to all IPv6 addresses, <code class=\"docutils literal notranslate\"><span class=\"pre\">none</span></code> to disable the IPv6\nweb server.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_PORT</span></code></dt>\n<dd>Outside port that clients send HTTP requests to. Defaults to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_LISTEN_PORT</span></code>. See <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_port_ssl_configuration#ref-port-ssl-configuration\"><span class=\"std std-ref\">Port configurations</span></a>.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_SSL_PORT</span></code></dt>\n<dd>Outside port that clients send HTTPS requests to. Defaults to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_SSL_LISTEN_PORT</span></code>.\nUse <code class=\"docutils literal notranslate\"><span class=\"pre\">none</span></code> to disable the ssl web server.\nSee <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_port_ssl_configuration#ref-port-ssl-configuration\"><span class=\"std std-ref\">Port configurations</span></a>.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_LISTEN_PORT</span></code></dt>\n<dd>Port on which Zotonic will listen for HTTP requests. Defaults to port 8000.\nSee <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_port_ssl_configuration#ref-port-ssl-configuration\"><span class=\"std std-ref\">Port configurations</span></a>.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_SSL_LISTEN_PORT</span></code></dt>\n<dd>Port on which Zotonic will listen for HTTPS requests.\nSee <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_port_ssl_configuration#ref-port-ssl-configuration\"><span class=\"std std-ref\">Port configurations</span></a>.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_SMTP_LISTEN_IP</span></code></dt>\n<dd>The IPv4 address to bind the SMTP server to. Binds to any IP address\nby default. Use <code class=\"docutils literal notranslate\"><span class=\"pre\">none</span></code> to disable the SMTP server.\nUse <code class=\"docutils literal notranslate\"><span class=\"pre\">any</span></code> to bind to all IP addresses.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_SMTP_LISTEN_PORT</span></code></dt>\n<dd>The port number to bind the SMTP server to. Defaults to port 2525.\nUse <code class=\"docutils literal notranslate\"><span class=\"pre\">none</span></code> to disable the SMTP server.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_SMTP_LISTEN_DOMAIN</span></code></dt>\n<dd>The domain to bind the SMTP server to, if any.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_CONFIG_DIR</span></code></dt>\n<dd><p class=\"first\">The directory with the configuration files. Possible locations are:</p>\n\n<p><ul class=\"simple\">\n<li>The init argument <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic_config_dir</span></code></li>\n<li>The environment variable <code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_CONFIG_DIR</span></code></li>\n<li>The directory <code class=\"file docutils literal notranslate\"><span class=\"pre\">$HOME/.zotonic</span></code></li>\n<li>The directory <code class=\"file docutils literal notranslate\"><span class=\"pre\">/etc/zotonic</span></code> (only on Unix)</li>\n<li>The OS specific directory for application config files</li>\n</ul>\n</p>\n<p>The OS specific directories are:</p>\n\n<p><ul class=\"simple\">\n<li>On Unix: <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/.config/zotonic/config/</span></code></li>\n<li>On macOS: <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/Library/Application</span> <span class=\"pre\">Support/zotonic/config/</span></code></li>\n</ul>\n</p>\n<p>In those directories the system searches for a <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic*</span></code> file in the following subdirectories (assuming the version of Zotonic is 1.2.3 and the node is called <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic001@foobar</span></code>):</p>\n\n<p><ul class=\"simple\">\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic001@foobar/</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic001/</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">1.2.3</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">1.2</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">.</span></code></li>\n</ul>\n</p>\n<p class=\"last\">The default is the OS specific directory, with as subdirectory the major version number of Zotonic (in this case <code class=\"docutils literal notranslate\"><span class=\"pre\">1</span></code>).\nFor Linux this would be <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/.config/zotonic/config/1/</span></code></p>\n</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_SECURITY_DIR</span></code></dt>\n<dd><p class=\"first\">The directory to store the certificates and other security related data.\nPossible locations are:</p>\n\n<p><ul class=\"simple\">\n<li>The environment variable <code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_SECURITY_DIR</span></code></li>\n<li>The <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/.zotonic/security</span></code> directory</li>\n<li>The <code class=\"file docutils literal notranslate\"><span class=\"pre\">/etc/zotonic/security</span></code> directory (only on Linux)</li>\n<li>The OS specific directory for application data files</li>\n</ul>\n</p>\n<p>The OS specific directories are:</p>\n\n<p><ul class=\"simple\">\n<li>On Unix: <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/.config/zotonic/security/</span></code></li>\n<li>On macOS: <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/Library/Application</span> <span class=\"pre\">Support/zotonic/security/</span></code></li>\n</ul>\n</p>\n<p class=\"last\">The default is the OS specific directory.</p>\n</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_DATA_DIR</span></code></dt>\n<dd><p class=\"first\">The directory to store the data files.\nPossible locations are:</p>\n\n<p><ul class=\"simple\">\n<li>The environment variable <code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_DATA_DIR</span></code></li>\n<li>The <code class=\"file docutils literal notranslate\"><span class=\"pre\">data</span></code> directory in the Zotonic directory</li>\n<li>The OS specific directory for application data files</li>\n</ul>\n</p>\n<p>The OS specific directories are:</p>\n\n<p><ul class=\"simple\">\n<li>On Unix: <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/.local/share/zotonic</span></code></li>\n<li>On macOS: <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/Library/Application</span> <span class=\"pre\">Support/zotonic/</span></code></li>\n</ul>\n</p>\n<p class=\"last\">The default is the OS specific directory.</p>\n</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_LOG_DIR</span></code></dt>\n<dd><p class=\"first\">The directory to store the log files.\nPossible locations are:</p>\n\n<p><ul class=\"simple\">\n<li>The environment variable <code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_LOG_DIR</span></code></li>\n<li>The <code class=\"file docutils literal notranslate\"><span class=\"pre\">logs</span></code> directory in the Zotonic directory</li>\n<li>The OS specific directory for application log files</li>\n</ul>\n</p>\n<p>The OS specific directories are:</p>\n\n<p><ul class=\"simple\">\n<li>On Unix: <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/.cache/zotonic/log/</span></code></li>\n<li>On macOS: <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/Library/Logs/zotonic/</span></code></li>\n</ul>\n</p>\n<p class=\"last\">The default is the OS specific directory.</p>\n</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_APPS</span></code></dt>\n<dd><p class=\"first\">The directory used for sites, modules and additional OTP applications. This defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user</span></code>\nin the Zotonic umbrella application.</p>\n<p>If a separate checkouts directory is used, then this environment variable must be:</p>\n\n<p><ul class=\"simple\">\n<li>Defined when building Zotonic with <code class=\"docutils literal notranslate\"><span class=\"pre\">make</span> <span class=\"pre\">compile</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">./rebar3</span> <span class=\"pre\">compile</span></code></li>\n<li>Defined when starting Zotonic</li>\n</ul>\n</p>\n</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_PIDFILE</span></code></dt>\n<dd>Path to zotonic PID file. If set, Zotonic will create it at start and remove it before exit.\nNote however that Erlang VM is not stopped at this moment and can last for several seconds.\nSee <code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_WAIT_VM</span></code> to get rid of this.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">SNAME</span></code></dt>\n<dd>The <em>short name</em> of the Zotonic Erlang node. This defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span></code>. If a\nshort name is defined then the Erlang node is started with <code class=\"docutils literal notranslate\"><span class=\"pre\">-sname</span></code>. The name can\nbe like <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic@foobar</span></code>, but the part after the <code class=\"docutils literal notranslate\"><span class=\"pre\">@</span></code> may not have a\ndot (<code class=\"docutils literal notranslate\"><span class=\"pre\">.</span></code>), as then it is a long name.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">LNAME</span></code></dt>\n<dd>The <em>long name</em> of the Zotonic Erlang node. This defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span></code>. If a\nlong name is defined then the Erlang node is started with <code class=\"docutils literal notranslate\"><span class=\"pre\">-name</span></code>. The name can\nhave the domain defined, for example: <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic@foo.bar.com</span></code>. The part after the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">@</span></code> <strong>must</strong> be a fully qualified domain name. Zotonic will use the OS’s domain name\nif no domain is defined in the LNAME.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">TMP</span></code></dt>\n<dd>Where Zotonic puts temporary files. Examples are temporary files for image\nresizing or URL downloading.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ERL_MAX_PROCESSES</span></code></dt>\n<dd>Maximum of processes in Erlang, defaults to 500000.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ERL_MAX_ATOMS</span></code></dt>\n<dd>Maximum number of atoms in Erlang, defaults to 1048576.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ERL_MAX_PORTS</span></code></dt>\n<dd>Maximum number of ports for the Erlang VM, defaults to the output of <code class=\"docutils literal notranslate\"><span class=\"pre\">ulimit</span> <span class=\"pre\">-n</span></code>\nIf ulimit returns <code class=\"docutils literal notranslate\"><span class=\"pre\">unlimited</span></code> then 100000 is used.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ERL_KERNEL_POLL</span></code></dt>\n<dd>How the kernel polls for i/o. Defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">true</span></code>. Valid values are <code class=\"docutils literal notranslate\"><span class=\"pre\">true</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">false</span></code>.</dd>\n</dl>\n<p>The following environment variables influence how Zotonic stops.</p>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_WAIT_VM</span></code></dt>\n<dd>If set to 1, ask launcher script to wait for total stop of Zotonic Erlang VM before exit.\nThis can be used to ensure all resources are freed before trying a new start.</dd>\n</dl>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:23Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/env.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:29Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_deployment_env",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:29Z",
+    "slug": "useful-environment-variables",
+    "title": "Useful environment variables",
+    "title_slug": "useful-environment-variables",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1481",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1481"
+  }
+}

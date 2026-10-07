@@ -1,0 +1,292 @@
+{
+  "resources": [
+    {
+      "name": "doc_controller_controller_api",
+      "reference": "controller#controller_api",
+      "title": "controller_api",
+      "url": "https://zotonic.com/id/doc_controller_controller_api",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_controller_controller_template",
+      "reference": "controller#controller_template",
+      "title": "controller_template",
+      "url": "https://zotonic.com/id/doc_controller_controller_template",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_cotonic_model_location",
+      "reference": "cotonic#location",
+      "title": "model/location",
+      "url": "https://zotonic.com/id/doc_cotonic_model_location",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_model_model_acl",
+      "reference": "model#acl",
+      "title": "acl",
+      "url": "https://zotonic.com/id/doc_model_model_acl",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_model_model_category",
+      "reference": "model#category",
+      "title": "category",
+      "url": "https://zotonic.com/id/doc_model_model_category",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_model_model_edge",
+      "reference": "model#edge",
+      "title": "edge",
+      "url": "https://zotonic.com/id/doc_model_model_edge",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_model_model_media",
+      "reference": "model#media",
+      "title": "media",
+      "url": "https://zotonic.com/id/doc_model_model_media",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_model_model_predicate",
+      "reference": "model#predicate",
+      "title": "predicate",
+      "url": "https://zotonic.com/id/doc_model_model_predicate",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_model_model_rsc",
+      "reference": "model#rsc",
+      "title": "rsc",
+      "url": "https://zotonic.com/id/doc_model_model_rsc",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_model_model_rsc_export",
+      "reference": "model#rsc_export",
+      "title": "rsc_export",
+      "url": "https://zotonic.com/id/doc_model_model_rsc_export",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_model_model_search",
+      "reference": "model#search",
+      "title": "search",
+      "url": "https://zotonic.com/id/doc_model_model_search",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_module_mod_development",
+      "reference": "module#mod_development",
+      "title": "mod_development",
+      "url": "https://zotonic.com/id/doc_module_mod_development",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_module_mod_filestore",
+      "reference": "module#mod_filestore",
+      "title": "mod_filestore",
+      "url": "https://zotonic.com/id/doc_module_mod_filestore",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_module_mod_mqtt",
+      "reference": "module#mod_mqtt",
+      "title": "mod_mqtt",
+      "url": "https://zotonic.com/id/doc_module_mod_mqtt",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_module_mod_oauth2",
+      "reference": "module#mod_oauth2",
+      "title": "mod_oauth2",
+      "url": "https://zotonic.com/id/doc_module_mod_oauth2",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_module_mod_server_storage",
+      "reference": "module#mod_server_storage",
+      "title": "mod_server_storage",
+      "url": "https://zotonic.com/id/doc_module_mod_server_storage",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_module_mod_survey",
+      "title": "mod_survey",
+      "reference": "module#mod_survey",
+      "url": "https://zotonic.com/id/doc_module_mod_survey",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_module_mod_translation",
+      "reference": "module#mod_translation",
+      "title": "mod_translation",
+      "url": "https://zotonic.com/id/doc_module_mod_translation",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_notification_rsc_update",
+      "reference": "notification#rsc_update",
+      "title": "observe_rsc_update/3",
+      "url": "https://zotonic.com/id/doc_notification_rsc_update",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_notification_rsc_update_done",
+      "reference": "notification#rsc_update_done",
+      "title": "observe_rsc_update_done/2",
+      "url": "https://zotonic.com/id/doc_notification_rsc_update_done",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_filter_filter_escape",
+      "reference": "filter#escape",
+      "title": "escape",
+      "url": "https://zotonic.com/id/doc_template_filter_filter_escape",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_scomp_scomp_button",
+      "reference": "scomp#button",
+      "title": "button",
+      "url": "https://zotonic.com/id/doc_template_scomp_scomp_button",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_scomp_scomp_pager",
+      "reference": "scomp#pager",
+      "title": "pager",
+      "url": "https://zotonic.com/id/doc_template_scomp_scomp_pager",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_scomp_scomp_validate",
+      "reference": "scomp#validate",
+      "title": "validate",
+      "url": "https://zotonic.com/id/doc_template_scomp_scomp_validate",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_scomp_scomp_wire",
+      "reference": "scomp#wire",
+      "title": "wire",
+      "url": "https://zotonic.com/id/doc_template_scomp_scomp_wire",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_all_include",
+      "reference": "tag#all_include",
+      "title": "all_include",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_all_include",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_block",
+      "reference": "tag#block",
+      "title": "block",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_block",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_cache",
+      "reference": "tag#cache",
+      "title": "cache",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_cache",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_catinclude",
+      "reference": "tag#catinclude",
+      "title": "catinclude",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_catinclude",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_extends",
+      "reference": "tag#extends",
+      "title": "extends",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_extends",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_image",
+      "reference": "tag#image",
+      "title": "image",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_image",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_include",
+      "reference": "tag#include",
+      "title": "include",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_include",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_lib",
+      "reference": "tag#lib",
+      "title": "lib",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_lib",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_overrules",
+      "reference": "tag#overrules",
+      "title": "overrules",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_overrules",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_trans",
+      "reference": "tag#trans",
+      "title": "trans",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_trans",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    },
+    {
+      "name": "doc_template_tag_tag_url",
+      "reference": "tag#url",
+      "title": "url",
+      "url": "https://zotonic.com/id/doc_template_tag_tag_url",
+      "verified_on": "2026-10-07",
+      "verified_site": "zotonicwww2"
+    }
+  ]
+}

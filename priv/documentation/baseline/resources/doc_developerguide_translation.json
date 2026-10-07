@@ -1,0 +1,360 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1410,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_translation",
+            "title": "mod_translation",
+            "uri": "https://zotonic.com/id/1410"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1411,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_docker",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Docker"
+              }
+            },
+            "uri": "https://zotonic.com/id/1411"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "refers": {
+      "objects": [
+        {
+          "created": "2026-09-15T14:18:20Z",
+          "object_id": {
+            "id": 1410,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_translation",
+            "title": "mod_translation",
+            "uri": "https://zotonic.com/id/1410"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 2409,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "refers",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Refers"
+          }
+        },
+        "uri": "https://zotonic.com/id/refers"
+      }
+    },
+    "subject": {
+      "objects": [
+        {
+          "created": "2026-09-15T14:23:15Z",
+          "object_id": {
+            "id": 2556,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_information_type"
+            ],
+            "name": "zotonic_topic_explanation",
+            "title": "Explanation",
+            "uri": "https://zotonic.com/id/2556"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T14:23:21Z",
+          "object_id": {
+            "id": 2564,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_audience"
+            ],
+            "name": "zotonic_topic_backend_developer",
+            "title": "Backend developer",
+            "uri": "https://zotonic.com/id/2564"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T14:23:23Z",
+          "object_id": {
+            "id": 2563,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_audience"
+            ],
+            "name": "zotonic_topic_frontend_developer",
+            "title": "Frontend developer",
+            "uri": "https://zotonic.com/id/2563"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T14:23:47Z",
+          "object_id": {
+            "id": 2588,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_domain"
+            ],
+            "name": "zotonic_topic_localization_and_translation",
+            "title": "Localization and translation",
+            "uri": "https://zotonic.com/id/2588"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T14:24:20Z",
+          "object_id": {
+            "id": 2620,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_architecture"
+            ],
+            "name": "zotonic_topic_template",
+            "title": "Template",
+            "uri": "https://zotonic.com/id/2620"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T14:24:59Z",
+          "object_id": {
+            "id": 2641,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_task"
+            ],
+            "name": "zotonic_topic_render",
+            "title": "Render",
+            "uri": "https://zotonic.com/id/2641"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T14:25:07Z",
+          "object_id": {
+            "id": 2669,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_data_type"
+            ],
+            "name": "zotonic_topic_translated_text",
+            "title": "Translated text",
+            "uri": "https://zotonic.com/id/2669"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 308,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "subject",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Keyword"
+          }
+        },
+        "uri": "http://purl.org/dc/elements/1.1/subject"
+      }
+    }
+  },
+  "id": 1409,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1409"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_translation",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1409/translation",
+    "x-default": "https://zotonic.com/docs/1409/translation"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 20,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Translation"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>Many sites need to support content and templates in multiple languages. Luckily, Zotonic is completely multilingual, out of the box. <a class=\"reference internal\" href=\"/id/doc_module_mod_translation\"><span class=\"std std-ref\">mod_translation</span></a> does all the work for you.</p>\n<p>Zotonic will try to serve the page in the language of the user (based on the browser’s <a class=\"reference external\" href=\"http://en.wikipedia.org/wiki/Content_negotiation\">HTTP Accept header</a>) or the selected language from the URL. If this fails, Zotonic falls back to the default language as configured on the Translation admin page.</p>\n<p>In Zotonic, two kinds of information are being translated.</p>\n<ul class=\"simple\">\n<li>Static translations: The fixed texts in your templates, like button labels, confirmation texts, etc.</li>\n<li>Translated content, as edited in the admin. The text fields of each <a class=\"reference internal\" href=\"/id/doc_glossary#term-resource\"><span class=\"xref std std-term\">resource</span></a> can be translated in multiple languages.</li>\n</ul>\n<div class=\"section\">\n<h2>Enabling multiple languages</h2>\n<p>Before you can use multiple languages, you first need to enable <a class=\"reference internal\" href=\"/id/doc_module_mod_translation\"><span class=\"std std-ref\">mod_translation</span></a>.</p>\n<p>Next, you need to tell Zotonic which languages you are going to use. You can do this in admin: Structure &gt; Translation.</p>\n<p>On this page you can add and remove languages, enable/disable languages and more.</p>\n<p>The selected language can optionally get displayed in the URL of the page - useful if language versions of the page should be accessible as permanent URLs, for instance for search engine indexing.</p>\n<p>The language code in the URL is either a 2-letter code (e.g. <code class=\"docutils literal notranslate\"><span class=\"pre\">en</span></code>), a 2-2 language-territory combination (e.g. <code class=\"docutils literal notranslate\"><span class=\"pre\">en-gb</span></code>), a 2-4 language-script combination (e.g. <code class=\"docutils literal notranslate\"><span class=\"pre\">zh-hant</span></code>), or a language-territory-territory combination (e.g. <code class=\"docutils literal notranslate\"><span class=\"pre\">zh-hant-hk</span></code>).</p>\n</div>\n<div class=\"section\">\n<h2>Translation sources</h2>\n<p>Texts in templates are made localizable with different forms of underscore syntax.</p>\n<p>Translate tag:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">{_ Translate me _}</span>\n</pre>\n</div>\n</div>\n<p>Interpolation trans tag:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">trans</span> <span class=\"s2\">&quot;Hello {foo} World&quot;</span> <span class=\"nv\">foo</span><span class=\"o\">=</span><span class=\"kp\">_</span><span class=\"s2\">&quot;happy&quot;</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>As part of a tag parameter:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">button</span> <span class=\"nv\">text</span><span class=\"o\">=</span><span class=\"kp\">_</span><span class=\"s2\">&quot;Click me&quot;</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>Texts in <code class=\"docutils literal notranslate\"><span class=\"pre\">erl</span></code> files use the <code class=\"docutils literal notranslate\"><span class=\"pre\">?__()</span></code> syntax:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">?__(&quot;Translate me&quot;, Context)</span>\n</pre>\n</div>\n</div>\n<p>and with binary strings:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">?__(&lt;&lt;&quot;Translate me&quot;&gt;&gt;, Context)</span>\n</pre>\n</div>\n</div>\n<p>using iodata for the output:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">[ ?__(&quot;Edit&quot;, Context), &quot;: &quot;, Title ]</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Generation of translations</h2>\n<p>The fixed texts in a Zotonic website are translated using the <a class=\"reference external\" href=\"http://www.gnu.org/software/gettext/\">GNU gettext</a> <code class=\"docutils literal notranslate\"><span class=\"pre\">.po</span></code> file format and its related tools. If you’re not using our <a class=\"reference internal\" href=\"/id/doc_developerguide_docker#guide-docker\"><span class=\"std std-ref\">Docker</span></a> images, you may have to install gettext first:</p>\n<div class=\"highlight-shell notranslate\">\n<div class=\"highlight\">\n<pre>$ sudo apt-get install gettext\n</pre>\n</div>\n</div>\n<p>In Zotonic, translations files are placed in two locations:</p>\n<ul class=\"simple\">\n<li>for the core modules, the translation files are consolidated in <code class=\"file docutils literal notranslate\"><span class=\"pre\">priv/translations/</span></code>;</li>\n<li>third-party modules and sites, including your own, have their translation files in a <code class=\"file docutils literal notranslate\"><span class=\"pre\">priv/translations/</span></code> subdirectory in the module itself.</li>\n</ul>\n<p>In the translations directory you can find the <code class=\"docutils literal notranslate\"><span class=\"pre\">.po</span></code> files containing the translations. They are marked with the their language code. (Optionally you can name your file like: nl.foobar.po as Zotonic will only look at the part till the first ‘.’ for the language code):</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">mod_foo</span>\n<span class=\"x\">    priv/translations/</span>\n<span class=\"x\">        template/mod_foo.pot</span>\n<span class=\"x\">        tr.po</span>\n<span class=\"x\">        zh-hant.po</span>\n</pre>\n</div>\n</div>\n<p>This shows that module <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_foo</span></code> has been translated into Dutch (<cite>nl</cite>), Turkish (<cite>tr</cite>) and Chinese traditional script (<cite>zh-hant</cite>).</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">.po</span></code> translation files are based on translation templates (<code class=\"docutils literal notranslate\"><span class=\"pre\">.pot</span></code> files). The templates are located in <code class=\"file docutils literal notranslate\"><span class=\"pre\">translations/templates</span></code>:</p>\n<ul class=\"simple\">\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">priv/translations/template/zotonic.pot</span></code> for the core modules;</li>\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">mod_foo/translations/template/mod_foo.pot</span></code> for custom modules.</li>\n</ul>\n<p>This <code class=\"docutils literal notranslate\"><span class=\"pre\">.pot</span></code> file is regenerated when you click on the ‘Generate .pot files’ button on the <a class=\"reference internal\" href=\"/id/doc_module_mod_translation\"><span class=\"std std-ref\">Translation page</span></a> in the admin. Alternatively, from your Zotonic shell:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"nn\">mod_translation</span><span class=\"p\">:</span><span class=\"nf\">generate</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre>\n</div>\n</div>\n<p>Or from the command line:</p>\n<pre>bin/zotonic pot sitename</pre>\n<p>Zotonic will parse all your templates and Erlang modules for translatable strings. These strings are then added to the <code class=\"docutils literal notranslate\"><span class=\"pre\">.pot</span></code> files.</p>\n<div class=\"section\">\n<h3>Creating a new translation for a module</h3>\n<p>First, add a language in the admin with the language code for that language. See the Translation page (or the code in <code class=\"docutils literal notranslate\"><span class=\"pre\">src/i18n/languages.erl</span></code>) for possible languages.</p>\n<p>Say, we’re adding Polish, <code class=\"docutils literal notranslate\"><span class=\"pre\">pl</span></code>. Now copy the <code class=\"docutils literal notranslate\"><span class=\"pre\">.pot</span></code> template file to the language code <code class=\"docutils literal notranslate\"><span class=\"pre\">.po</span></code> file:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">$ cd modules/mod_foo</span>\n<span class=\"x\">$ cp translations/template/mod_foo.pot translations/pl.po</span>\n</pre>\n</div>\n</div>\n<p>Now, open <code class=\"docutils literal notranslate\"><span class=\"pre\">pl.po</span></code> in your favorite editor and start translating the strings. A good po file editor can be found at: <a class=\"reference external\" href=\"http://www.poedit.net/\">http://www.poedit.net/</a></p>\n</div>\n<div class=\"section\">\n<h3>Updating translation strings</h3>\n<p>When templates change, often the translatable strings change: more strings are added, strings are changed, or removed. When this happens, the translation files need to be kept in sync.</p>\n<p>In admin: Structure &gt; Translation &gt; Translation Status you can find the overview of the amount of strings that are translated for each language.</p>\n<p>After pressing the <cite>Generate .pot files</cite> button in the translation admin the <code class=\"docutils literal notranslate\"><span class=\"pre\">.pot</span></code> files are updated, but the existing <code class=\"docutils literal notranslate\"><span class=\"pre\">.po</span></code> files are not.</p>\n<p>GNU gettext comes with a tool, <code class=\"docutils literal notranslate\"><span class=\"pre\">msgmerge</span></code>, which looks at the changed strings in a <code class=\"docutils literal notranslate\"><span class=\"pre\">.pot</span></code> file and changes the translated strings in a language’s <code class=\"docutils literal notranslate\"><span class=\"pre\">.po</span></code> file accordingly:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">$ cd modules/mod_foo/translations</span>\n<span class=\"x\">$ msgmerge -U -N nl.po template/mod_foo.pot</span>\n</pre>\n</div>\n</div>\n<p>This will merge the new strings into the existing <code class=\"docutils literal notranslate\"><span class=\"pre\">nl.po</span></code> file.</p>\n<p>To update all <code class=\"docutils literal notranslate\"><span class=\"pre\">.po</span></code> files in the directory:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">$ cd modules/mod_foo/translations</span>\n<span class=\"x\">$ find . -name &quot;*.po&quot; -print0 | xargs -0 -I file msgmerge -U -N file template/*.pot</span>\n</pre>\n</div>\n</div>\n<p>After doing this, you’ll need to edit each <code class=\"docutils literal notranslate\"><span class=\"pre\">po</span></code> file again to check if there are new strings which need translation, edit existing strings, etc.</p>\n<div class=\"section\">\n<h4>Helpful commands</h4>\n<p>To remove duplicates (and make a backup first), use:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">$ cat nl.po &gt; nl~.po &amp;&amp; msguniq nl.po -o nl.po</span>\n</pre>\n</div>\n</div>\n<p>To do this for all files, without backup:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">$ find . -name &quot;*.po&quot; -print0 | xargs -0 -I file msguniq file -o file</span>\n</pre>\n</div>\n</div>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Translated content</h2>\n<p>When you have enabled languages on the Translation page of the admin you will see a Translations item on the right of the edit page.</p>\n<p>Each language has a checkbox next to it: When you click a checkbox, the language will become visible as a tab on your content items.</p>\n<p>Resources in Zotonic are translated on a per-page basis. This allows you to start translating your site by translating the most important pages first.</p>\n</div>\n<div class=\"section\">\n<h2>Text searches, translations and stemming</h2>\n<p>For text searches a full text index is maintained. This full text index is stemmed according to the site’s configured default language.</p>\n<p>All translations are added to the same full text index. This combined text is stemmed using a single stemmer. The selected stemmer depends on the configured default language (config key <code class=\"docutils literal notranslate\"><span class=\"pre\">i18n.language</span></code>). The stemmer can be overruled by setting the config key <code class=\"docutils literal notranslate\"><span class=\"pre\">i18n.language_stemmer</span></code> to the two letter language code of the language matching with the stemmer. You have to make sure that the stemmer is configured in PostgreSQL otherwise the pivot process will crash with a SQL error.</p>\n</div>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "translation",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/translation.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_translation",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:21Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "translation_status": {
+      "en": ""
+    },
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2026-09-15T14:21:12Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "translation"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1409",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1409"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1583,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1583"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_custom_content_block",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1583/how-to-add-a-custom-page-block",
+    "x-default": "https://zotonic.com/cookbook/1583/how-to-add-a-custom-page-block"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 21,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "How to add a custom page block"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>Zotonic comes with a number of standard page blocks: Header, Text and Embed page. Additional page blocks are provided by modules, for example mod_survey uses page blocks extensively for composing surveys. Page blocks allow a content manager to add sophisticated sections of content, perhaps with configuration options. They could be used for design reasons e.g. for multi-column layouts, image carousels or floating elements. This cookbook item describes how to add a simple custom page block.</p>\n<aside>\n<p>Note that we have <em>page blocks</em> and the template tag <em>{% block %}</em>. The <em>template tag block</em> implements <em>template blocks</em>. These template block tags and <em>page content blocks</em> are completely separate and do nothing have to do with each other.</p>\n</aside>\n<p>In order to add a custom page block, we need to register it, by editing an erlang file and adding two templates. For this tutorial we’ll add a page block which inserts the code for a music player from jamendo.com, a Creative Commons music hosting site.</p>\n<p>To register the page block we add an <code class=\"docutils literal notranslate\"><span class=\"pre\">observe_admin_edit_blocks/3</span></code> function to the site’s erl file e.g. <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/mysite/src/mysite.erl</span></code>:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"c\">%%====================================================================</span>\n<span class=\"c\">%% support functions go here</span>\n<span class=\"c\">%%====================================================================</span>\n\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span>\n    <span class=\"n\">observe_admin_edit_blocks</span><span class=\"o\">/</span><span class=\"mi\">3</span>\n<span class=\"p\">]).</span>\n\n\n<span class=\"nf\">observe_admin_edit_blocks</span><span class=\"p\">(</span><span class=\"nl\">#admin_edit_blocks</span><span class=\"p\">{},</span> <span class=\"nv\">Menu</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">[</span>\n         <span class=\"p\">{</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"o\">?</span><span class=\"p\">__(</span><span class=\"s\">&quot;Media&quot;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">),</span> <span class=\"p\">[</span>\n             <span class=\"p\">{</span><span class=\"n\">music_player</span><span class=\"p\">,</span> <span class=\"o\">?</span><span class=\"p\">__(</span><span class=\"s\">&quot;Music Player | show an animated player&quot;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)}</span>\n         <span class=\"p\">]}</span>\n     <span class=\"p\">|</span> <span class=\"nv\">Menu</span>\n    <span class=\"p\">].</span>\n</pre>\n</div>\n</div>\n<p>The interesting parts are <code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;Media&quot;</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;Music</span> <span class=\"pre\">Player&quot;</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">music_player</span></code>. <code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;Media&quot;</span></code> will appear as a section heading in the <code class=\"docutils literal notranslate\"><span class=\"pre\">[+add</span> page <span class=\"pre\">block]</span></code> drop down menu below the <code class=\"docutils literal notranslate\"><span class=\"pre\">Standard page block types</span></code> section.  <code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;Music</span> <span class=\"pre\">Player&quot;</span></code> will appear, and is what the content editor clicks on to insert the page block. The <code class=\"docutils literal notranslate\"><span class=\"pre\">music_player</span></code> atom is what Zotonic uses to figure out which templates to use, they will be created in the <code class=\"docutils literal notranslate\"><span class=\"pre\">templates/blocks/</span></code> directory and will be called <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_block_li_music_player.tpl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">_block_view_music_player.tpl</span></code>.</p>\n<p>As the name suggests, <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_block_li_music_player.tpl</span></code> is the template used on the edit form:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"s2\">&quot;admin_edit_widget_i18n.tpl&quot;</span> <span class=\"cp\">%}</span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_title</span> <span class=\"cp\">%}</span><span class=\"x\">{_ Music Player _}</span><span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_show_minimized</span> <span class=\"cp\">%}</span><span class=\"x\">false</span><span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_id</span> <span class=\"cp\">%}</span><span class=\"x\">edit-block-music-player</span><span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_header</span> <span class=\"cp\">%}{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_content</span> <span class=\"cp\">%}</span>\n<span class=\"x\">    &lt;div class=&quot;control-group&quot;&gt;</span>\n<span class=\"x\">            &lt;label class=&quot;control-label&quot;&gt;URL of the music widget&lt;/label&gt;</span>\n<span class=\"x\">            &lt;div class=&quot;controls&quot;&gt;</span>\n<span class=\"x\">                    &lt;input type=&quot;text&quot; id=&quot;block-</span><span class=\"cp\">{{</span><span class=\"nv\">name</span><span class=\"cp\">}}</span><span class=\"x\">-url&quot;</span>\n<span class=\"x\">                            name=&quot;block-</span><span class=\"cp\">{{</span><span class=\"nv\">name</span><span class=\"cp\">}}</span><span class=\"x\">-url&quot;</span>\n<span class=\"x\">                            value=&quot;</span><span class=\"cp\">{{</span> <span class=\"nv\">blk.url</span> <span class=\"cp\">}}</span><span class=\"x\">&quot;</span>\n<span class=\"x\">                            class=&quot;input-block-level&quot;</span>\n<span class=\"x\">                            placeholder=&quot;{_  Enter the url of the music widget _}&quot;</span>\n<span class=\"x\">                    &gt;</span>\n<span class=\"x\">            &lt;/div&gt;</span>\n<span class=\"x\">    &lt;/div&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>For the purpose of demonstration, we extend the <code class=\"docutils literal notranslate\"><span class=\"pre\">admin_edit_widget_i18n.tpl</span></code> template and use some template block tags.</p>\n<p>Each time this page block is added, the form above will be displayed. Here, we want to allow users to easily embed a music widget from Jamedo, an online music community. The way do this is by adding extra input fields to the page through the edit templates.</p>\n<p>Please note the values of the attributes of the input fields in the edit template. For example, <code class=\"docutils literal notranslate\"><span class=\"pre\">name=&quot;block-{{name}}-url&quot;</span></code> will expand to <code class=\"docutils literal notranslate\"><span class=\"pre\">name=&quot;block-mus56h-url&quot;</span></code>. The <code class=\"docutils literal notranslate\"><span class=\"pre\">name</span></code> variable is a randomly generated string that is unique within every block template. The last portion of the value of the attribute is the attribute to be added to the resource. In this case, the attribute to be added will be <code class=\"docutils literal notranslate\"><span class=\"pre\">url</span></code>.</p>\n<p>Also note the value of the input’s value attribute. This ensures that if the attribute has already been saved against the resource being edited, then the input will be filled with the saved value. Without this, the data entered will not be saved.</p>\n<p>This is all you need to be able to add a page block to the edit form. If you update your sitet, you should now be able to select the new page block. It just doesn’t display anything yet so let’s add <code class=\"docutils literal notranslate\"><span class=\"pre\">blocks/_block_view_music_player.tpl</span></code>:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&lt;iframe id=&quot;widget&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; width=&quot;400&quot;</span>\n<span class=\"x\">        height=&quot;284&quot; style=&quot;width: 400px; height: 284px;&quot;</span>\n<span class=\"x\">        src=&quot;</span><span class=\"cp\">{{</span> <span class=\"nv\">blk.url</span> <span class=\"cp\">}}</span><span class=\"x\">&quot;&gt;&lt;/iframe&gt;</span>\n</pre>\n</div>\n</div>\n<p>In the view template, a special variable called <code class=\"docutils literal notranslate\"><span class=\"pre\">blk</span></code> is available. This <code class=\"docutils literal notranslate\"><span class=\"pre\">blk</span></code> variable holds the attributes or properties of the page block. Since we added only one attribute, <code class=\"docutils literal notranslate\"><span class=\"pre\">url</span></code>, to the edit template, the <code class=\"docutils literal notranslate\"><span class=\"pre\">blk</span></code> variable will hold only two properties: <code class=\"docutils literal notranslate\"><span class=\"pre\">name</span></code>, and our custom attribute, <code class=\"docutils literal notranslate\"><span class=\"pre\">url</span></code>.</p>\n<p>So if the user supplied <code class=\"docutils literal notranslate\"><span class=\"pre\">http://widgets.jamendo.com/v3/album/40728?autoplay=0&amp;layout=standard&amp;width=400</span></code>, as the url to the music widget, the block’s frontend view template will expand to:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&lt;iframe id=&quot;widget&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; width=&quot;400&quot;</span>\n<span class=\"x\">    height=&quot;284&quot; style=&quot;width: 400px; height: 284px;&quot;</span>\n<span class=\"x\">    src=&quot;http://widgets.jamendo.com/v3/album/40728?autoplay=0&amp;layout=standard&amp;width=400&quot;&gt;</span>\n<span class=\"x\">&lt;/iframe&gt;</span>\n</pre>\n</div>\n</div>\n<p>We can extend this custom page block to allow the user to specify the widget’s height, width, and frameborder.</p>\n<p>All you have to do is add new input fields in the page block’s edit template.</p>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "how-to-add-a-custom-page-block",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-custom-content-block.rst",
+    "pivot_location_lng": null,
+    "name": "doc_cookbook_frontend_custom_content_block",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:27Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "translation_status": {
+      "en": ""
+    },
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2024-12-10T12:56:12Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "how-to-add-a-custom-page-block"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1583",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1583"
+  }
+}

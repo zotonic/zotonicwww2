@@ -1,0 +1,63 @@
+{
+  "format": "zotonic-documentation-revisions-v1",
+  "scope": "Editorial replacements for baseline pages; not an executable import request.",
+  "resources": [
+    {
+      "target_name": "doc_developerguide_getting_started",
+      "source_id": 1526,
+      "draft_name": "developer_local_environment",
+      "source_file": "../../developer/01-getting-started/local-environment.md",
+      "preserve": [
+        "name",
+        "page_path",
+        "category_id",
+        "publication_state",
+        "unmanaged_connections"
+      ],
+      "replace": [
+        "title",
+        "summary",
+        "body"
+      ],
+      "connections": "Resolve the developer manifest through the adoption map; reconcile managed relation and hasreference edges only."
+    },
+    {
+      "target_name": "doc_developerguide_docker",
+      "source_id": 1411,
+      "draft_name": "developer_install_containers",
+      "source_file": "../../developer/01-getting-started/install-containers.md",
+      "preserve": [
+        "name",
+        "page_path",
+        "category_id",
+        "publication_state",
+        "unmanaged_connections"
+      ],
+      "replace": [
+        "title",
+        "summary",
+        "body"
+      ],
+      "connections": "Resolve the developer manifest through the adoption map; reconcile managed relation and hasreference edges only."
+    },
+    {
+      "target_name": "doc_reference_installation_requirements",
+      "source_id": 1530,
+      "draft_name": "developer_installation_requirements",
+      "source_file": "../../developer/01-getting-started/installation-requirements.md",
+      "preserve": [
+        "name",
+        "page_path",
+        "category_id",
+        "publication_state",
+        "unmanaged_connections"
+      ],
+      "replace": [
+        "title",
+        "summary",
+        "body"
+      ],
+      "connections": "Resolve the developer manifest through the adoption map; reconcile managed relation and hasreference edges only."
+    }
+  ]
+}

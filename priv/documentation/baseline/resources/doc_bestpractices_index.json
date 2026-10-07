@@ -1,0 +1,173 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "haspart": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:44Z",
+          "object_id": {
+            "id": 1618,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_bestpractices_creating_sites",
+            "title": "Creating sites",
+            "uri": "https://zotonic.com/id/1618"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:44Z",
+          "object_id": {
+            "id": 1854,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_bestpractices_media",
+            "title": "Media Best Practices",
+            "uri": "https://zotonic.com/id/1854"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:44Z",
+          "object_id": {
+            "id": 1860,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_bestpractices_templates",
+            "title": "Template Best Practices and Pitfalls",
+            "uri": "https://zotonic.com/id/1860"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 310,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "haspart",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Contains"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/hasPart"
+      }
+    }
+  },
+  "id": 1914,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1914"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_bestpractices_index",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1914/best-practices",
+    "x-default": "https://zotonic.com/docs/1914/best-practices"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<div class=\"toctree-wrapper compound\">\n<ul>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_bestpractices_creating_sites\">Creating sites</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_bestpractices_media\">Media Best Practices</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_bestpractices_templates\">Template Best Practices and Pitfalls</a></li>\n</ul>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:44Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/best-practices/index.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:36Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_bestpractices_index",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:36Z",
+    "slug": "best-practices",
+    "title": "Best Practices",
+    "title_slug": "best-practices",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1914",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1914"
+  }
+}

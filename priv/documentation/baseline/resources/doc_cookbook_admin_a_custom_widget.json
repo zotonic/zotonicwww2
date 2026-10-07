@@ -1,0 +1,148 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:36Z",
+          "object_id": {
+            "id": 1594,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_admin_custom_layout",
+            "title": "Customizing the layout of the admin edit page",
+            "uri": "https://zotonic.com/id/1594"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1593,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1593"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_admin_a_custom_widget",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1593/creating-a-custom-widget-on-the-edit-page",
+    "x-default": "https://zotonic.com/cookbook/1593/creating-a-custom-widget-on-the-edit-page"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<div class=\"section\">\n<h2>Why</h2>\n<p>For an imaginary webshop edit page, we want to add 2 more data fields: the affiliate URL and a note about free shipping.</p>\n<div class=\"section\">\n<h3>Assumptions</h3>\n<p>Readers are expected to have experience with Zotonic templates.\nFor reference, look at the Zotonic admin template directory <code class=\"docutils literal notranslate\"><span class=\"pre\">apps/zotonic_mod_admin/priv/templates/</span></code>.</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Custom widget</h2>\n<p>Content widgets are created by creating a file <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_content.my_cat.tpl</span></code>, where <code class=\"docutils literal notranslate\"><span class=\"pre\">my_cat</span></code> is the category name - <code class=\"docutils literal notranslate\"><span class=\"pre\">webshop</span></code> in our case.</p>\n<p>Create a file <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_content.webshop.tpl</span></code>:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"s2\">&quot;admin_edit_widget_std.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>Extending will also give us a couple of default properties like <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">is_editable</span></code>.</p>\n<p>We can also override <code class=\"docutils literal notranslate\"><span class=\"pre\">admin_edit_widget_i18n.tpl</span></code> if fields need to get translated.</p>\n<p>Add these block definitions:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_title</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    {_ Webshop Properties _}</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_show_minimized</span> <span class=\"cp\">%}</span><span class=\"x\">false</span><span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_id</span> <span class=\"cp\">%}</span><span class=\"x\">edit-webshop-properties</span><span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">widget_content</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;fieldset class=&quot;form-horizontal&quot;&gt;</span>\n<span class=\"x\">        &lt;div class=&quot;form-group row&quot;&gt;</span>\n<span class=\"x\">            &lt;label class=&quot;control-label col-md-3&quot;&gt;{_ Affiliate URL _}&lt;/label&gt;</span>\n<span class=\"x\">            &lt;div class=&quot;col-md-9&quot;&gt;</span>\n<span class=\"x\">                &lt;input type=&quot;text&quot;</span>\n<span class=\"x\">                    name=&quot;affiliate_url&quot;</span>\n<span class=\"x\">                    class=&quot;form-control&quot;</span>\n<span class=\"x\">                    value=&quot;</span><span class=\"cp\">{{</span> <span class=\"nv\">id.affiliate_url</span> <span class=\"cp\">}}</span><span class=\"x\">&quot;</span>\n<span class=\"x\">                    </span><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"k\">not</span> <span class=\"nv\">is_editable</span> <span class=\"cp\">%}</span><span class=\"x\">disabled=&quot;disabled&quot;</span><span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">                /&gt;</span>\n<span class=\"x\">            &lt;/div&gt;</span>\n<span class=\"x\">        &lt;/div&gt;</span>\n<span class=\"x\">        &lt;div class=&quot;form-group row&quot;&gt;</span>\n<span class=\"x\">            &lt;label class=&quot;control-label col-md-3&quot;&gt;{_ Free shipping note _}&lt;/label&gt;</span>\n<span class=\"x\">            &lt;div class=&quot;col-md-9&quot;&gt;</span>\n<span class=\"x\">                &lt;input type=&quot;text&quot;</span>\n<span class=\"x\">                    name=&quot;free_shipping_note&quot;</span>\n<span class=\"x\">                    class=&quot;form-control&quot;</span>\n<span class=\"x\">                    value=&quot;</span><span class=\"cp\">{{</span> <span class=\"nv\">id.free_shipping_note</span> <span class=\"cp\">}}</span><span class=\"x\">&quot;</span>\n<span class=\"x\">                    </span><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"k\">not</span> <span class=\"nv\">is_editable</span> <span class=\"cp\">%}</span><span class=\"x\">disabled=&quot;disabled&quot;</span><span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">                /&gt;</span>\n<span class=\"x\">            &lt;/div&gt;</span>\n<span class=\"x\">        &lt;/div&gt;</span>\n<span class=\"x\">    &lt;/fieldset&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>When loading a webshop edit page, the widget should now appear below the Basics block.</p>\n<p>To customize the edit page further, see <a class=\"reference internal\" href=\"/id/doc_cookbook_admin_custom_layout#admin-custom-layout\"><span class=\"std std-ref\">Customizing the layout of the admin edit page</span></a>.</p>\n</div>\n<div class=\"section\">\n<h2>Word of caution</h2>\n<p>Admin templates will evolve over time. Custom changes you make now may not work after an update. Use these guidelines at your own risk.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-a-custom-widget.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:35Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_admin_a_custom_widget",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:35Z",
+    "slug": "creating-a-custom-widget-on-the-edit-page",
+    "title": "Creating a custom widget on the edit page",
+    "title_slug": "creating-a-custom-widget-on-the-edit-page",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1593",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1593"
+  }
+}

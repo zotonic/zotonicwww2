@@ -1,0 +1,243 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:56Z",
+          "object_id": {
+            "id": 1324,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_mqtt",
+            "title": "mod_mqtt",
+            "uri": "https://zotonic.com/id/1324"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:56Z",
+          "object_id": {
+            "id": 1323,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_scomp"
+            ],
+            "name": "doc_template_scomp_scomp_live",
+            "title": "live",
+            "uri": "https://zotonic.com/id/1323"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:56Z",
+          "object_id": {
+            "id": 1303,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_wires",
+            "title": "mod_wires",
+            "uri": "https://zotonic.com/id/1303"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:56Z",
+          "object_id": {
+            "id": 1274,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_notifications",
+            "title": "Notifications",
+            "uri": "https://zotonic.com/id/1274"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:56Z",
+          "object_id": {
+            "id": 1892,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "controller"
+            ],
+            "name": "doc_controller_controller_mqtt_transport",
+            "title": "controller_mqtt_transport",
+            "uri": "https://zotonic.com/id/1892"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:56Z",
+          "object_id": {
+            "id": 1324,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_mqtt",
+            "title": "mod_mqtt",
+            "uri": "https://zotonic.com/id/1324"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1302,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1302"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_server_browser_interaction",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1302/browser-server-interaction",
+    "x-default": "https://zotonic.com/docs/1302/browser-server-interaction"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>There are multiple ways to set up interaction between server-side Zotonic code\nand client-side JavaScript.</p>\n<p>If you want to initiate the interaction in the client (browser)</p>\n<ol class=\"arabic simple\">\n<li>publish/subscribe.</li>\n<li>API methods</li>\n<li>Wires</li>\n<li>Notifications</li>\n<li>Transport (deprecated)</li>\n</ol>\n<div class=\"section\">\n<h2>Publish/subscribe (MQTT)</h2>\n<p>The preferred transport is using publish and subscribe with MQTT topics.\nMessage that are published on the bridge topics are relayed between the server\nand the browser (and vice versa).</p>\n<p>See <a class=\"reference internal\" href=\"/id/doc_module_mod_mqtt\"><span class=\"std std-ref\">mod_mqtt</span></a> for more information.</p>\n<p>An example of MQTT PubSub usage is the custom tag <a class=\"reference internal\" href=\"/id/doc_template_scomp_scomp_live#scomp-live\"><span class=\"std std-ref\">live</span></a>.</p>\n</div>\n<div class=\"section\">\n<h2>API Methods</h2>\n<p>All model interfaces <code class=\"docutils literal notranslate\"><span class=\"pre\">m_get</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">m_post</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">m_delete</span></code> are\ndirectly exposed as JSON APIs.</p>\n<p>For example, the <code class=\"docutils literal notranslate\"><span class=\"pre\">m_get</span></code> call for the Erlang file <code class=\"docutils literal notranslate\"><span class=\"pre\">m_mymodel.erl</span></code>\nis available via a HTTP <code class=\"docutils literal notranslate\"><span class=\"pre\">GET</span></code> on the path: <code class=\"docutils literal notranslate\"><span class=\"pre\">/api/model/mymodel/get/...</span></code></p>\n<p>Similar for the <code class=\"docutils literal notranslate\"><span class=\"pre\">POST</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">DELETE</span></code> HTTP methods.</p>\n</div>\n<div class=\"section\">\n<h2>Wires</h2>\n<p>This is part of <a class=\"reference internal\" href=\"/id/doc_module_mod_wires\"><span class=\"std std-ref\">mod_wires</span></a> and is the older method of transporting data\nbetween the server and the browser.</p>\n<p>It is fully functional and the <em>admin</em> interface is using these methods.</p>\n<p>If you creating a new site then it is advised to start using the\nMQTT topics and isolate the places where you are using wires, so that these\ncan be replaced in due time.</p>\n<div class=\"section\">\n<h3>Wired events</h3>\n<p>First, define a named action:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">wire</span> <span class=\"nv\">name</span><span class=\"o\">=</span><span class=\"s2\">&quot;test&quot;</span> <span class=\"nv\">action</span><span class=\"o\">={</span><span class=\"nv\">growl</span> <span class=\"nv\">text</span><span class=\"o\">=</span><span class=\"s2\">&quot;Hello world&quot;</span><span class=\"o\">}</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>Then, call that action from your JavaScript code:</p>\n<div class=\"highlight-javascript notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nx\">z_event</span><span class=\"p\">(</span><span class=\"s2\">&quot;test&quot;</span><span class=\"p\">);</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Trigger server side notifications from JavaScript</h3>\n<p>Trigger an Erlang <a class=\"reference internal\" href=\"/id/doc_developerguide_notifications#guide-notification\"><span class=\"std std-ref\">notification</span></a> in Zotonic with the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">z_notify</span></code> JavaScript function:</p>\n<div class=\"highlight-javascript notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nx\">z_notify</span><span class=\"p\">(</span><span class=\"s2\">&quot;mymessage&quot;</span><span class=\"p\">);</span>\n</pre></div>\n</div>\n<p>or:</p>\n<div class=\"highlight-javascript notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nx\">z_notify</span><span class=\"p\">(</span><span class=\"s2\">&quot;mymessage&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"nx\">foo</span><span class=\"o\">:</span> <span class=\"nx\">bar</span><span class=\"p\">,</span> <span class=\"nx\">who</span><span class=\"o\">:</span> <span class=\"s2\">&quot;world&quot;</span><span class=\"p\">});</span>\n</pre></div>\n</div>\n<p>This will trigger a call to:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z_notifier</span><span class=\"p\">:</span><span class=\"nf\">first</span><span class=\"p\">(</span><span class=\"nl\">#postback_notify</span><span class=\"p\">{</span><span class=\"n\">message</span> <span class=\"o\">=</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;mymessage&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span>\n</pre></div>\n</div>\n<p>Which you can handle in any Zotonic module by defining:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">observe_postback_notify</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">]).</span>\n<span class=\"nf\">observe_postback_notify</span><span class=\"p\">(</span><span class=\"nl\">#postback_notify</span><span class=\"p\">{</span><span class=\"n\">message</span> <span class=\"o\">=</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;mymessage&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nv\">Who</span> <span class=\"o\">=</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">get_q</span><span class=\"p\">(</span><span class=\"n\">who</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">),</span>\n    <span class=\"nn\">z_render</span><span class=\"p\">:</span><span class=\"nf\">growl</span><span class=\"p\">([</span><span class=\"s\">&quot;Hello &quot;</span><span class=\"p\">,</span> <span class=\"nn\">z_html</span><span class=\"p\">:</span><span class=\"nf\">escape</span><span class=\"p\">(</span><span class=\"nv\">Who</span><span class=\"p\">)],</span> <span class=\"nv\">Context</span><span class=\"p\">);</span>\n<span class=\"nf\">observe_postback_notify</span><span class=\"p\">(_,</span> <span class=\"p\">_</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"n\">undefined</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n<p>All arguments are available via the <code class=\"docutils literal notranslate\"><span class=\"pre\">z_context:get_q/2</span></code> function (and friends).</p>\n</div>\n<div class=\"section\">\n<a name=\"guide-transport\"></a><h3>Transport</h3>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">It is strongly advised to use MQTT topics instead of the <code class=\"docutils literal notranslate\"><span class=\"pre\">z_transport</span></code> mechanism.\nSee <a class=\"reference internal\" href=\"/id/doc_module_mod_mqtt\"><span class=\"std std-ref\">mod_mqtt</span></a> for more information.</p>\n</aside>\n<p>Zotonic has a message bus to transport data between server and browser. It\ntransports structured data in different formats and supports retransmission in\ncase of lost messages.</p>\n<p>Zotonic uses two mechanisms to transport data from the browser to the server:</p>\n\n<p><ul class=\"simple\">\n<li>WebSocket with bidirectional transports using <a class=\"reference internal\" href=\"/id/doc_controller_controller_mqtt_transport\"><span class=\"std std-ref\">controller_mqtt_transport</span></a></li>\n<li>AJAX calls to publish via <a class=\"reference internal\" href=\"/id/doc_controller_controller_mqtt_transport\"><span class=\"std std-ref\">controller_mqtt_transport</span></a> to a topic. This is used\nto post forms with files to the server.</li>\n</ul>\n</p>\n<p>The WebSocket connection it used to transport data from the server to the browser.</p>\n<div class=\"section\">\n<h4>From browser to server</h4>\n<p>To send a message from the browser to the server:</p>\n<div class=\"highlight-javascript notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nx\">z_transport</span><span class=\"p\">(</span><span class=\"s2\">&quot;mod_example&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;ubf&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"nx\">hello</span><span class=\"o\">:</span> <span class=\"s2\">&quot;world&quot;</span><span class=\"p\">});</span>\n</pre></div>\n</div>\n<p>And then on the server, use Erlang to process the message:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">mod_example</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">event</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">]).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;zotonic_core/include/zotonic.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"nf\">event</span><span class=\"p\">(</span><span class=\"nl\">#z_msg_v1</span><span class=\"p\">{</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"nv\">Data</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nn\">io</span><span class=\"p\">:</span><span class=\"nf\">format</span><span class=\"p\">(</span><span class=\"s\">&quot;</span><span class=\"si\">~p</span><span class=\"s\">&quot;</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"nv\">Data</span><span class=\"p\">]),</span>\n    <span class=\"nv\">Context</span><span class=\"p\">;</span>\n</pre></div>\n</div>\n<p>This will print on the console:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">[{</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;hello&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;world&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">}]</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h4>Quality of service</h4>\n<p>The message will be sent with a quality of service of 0. That means the browser\nwill try to send the message, but will not check if it arrived. Alterntively,\nyou can send with a qos of 1, in that case the browser will wait for an ack,\nand if that doesn’t arrive in 30 seconds, then a duplicate message will be\nrequeued for transport:</p>\n<div class=\"highlight-javascript notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nx\">z_transport</span><span class=\"p\">(</span><span class=\"s2\">&quot;mod_example&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;ubf&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"nx\">hello</span><span class=\"o\">:</span> <span class=\"s2\">&quot;world&quot;</span><span class=\"p\">},</span> <span class=\"p\">{</span><span class=\"nx\">qos</span><span class=\"o\">:</span> <span class=\"mi\">1</span><span class=\"p\">});</span>\n</pre></div>\n</div>\n<p>It is possible to define a callback function that will be called if an ack is\nreceived:</p>\n<div class=\"highlight-javascript notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nx\">z_transport</span><span class=\"p\">(</span><span class=\"s2\">&quot;mod_example&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;ubf&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"nx\">hello</span><span class=\"o\">:</span><span class=\"s2\">&quot;world&quot;</span><span class=\"p\">},</span> <span class=\"p\">{</span>\n    <span class=\"nx\">qos</span><span class=\"o\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n    <span class=\"nx\">ack</span><span class=\"o\">:</span> <span class=\"kd\">function</span><span class=\"p\">(</span><span class=\"nx\">ackMsg</span><span class=\"p\">,</span> <span class=\"nx\">callOptions</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n        <span class=\"nx\">alert</span><span class=\"p\">(</span><span class=\"nx\">ackMsg</span><span class=\"p\">);</span>\n    <span class=\"p\">}</span>\n<span class=\"p\">});</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h4>From server to browser</h4>\n<p>Sending JavaScript (or other data) from the server to the browser is\nstraightforward:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z_transport</span><span class=\"p\">:</span><span class=\"nf\">page</span><span class=\"p\">(</span><span class=\"n\">javascript</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;alert(&#39;Hello World&#39;);&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">);</span>\n</pre></div>\n</div>\n<p>This transports the JavaScript to the page associated with <code class=\"docutils literal notranslate\"><span class=\"pre\">Context</span></code>. This\nJavaScript will then be evaluated in the browser.</p>\n<p>The default quality of service is 0 (see above); to let the page queue retry\ndelivering the message it is possible to specify another quality of service:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z_transport</span><span class=\"p\">:</span><span class=\"nf\">page</span><span class=\"p\">(</span><span class=\"n\">javascript</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;alert(&#39;Hello World&#39;);&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">qos</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">}],</span> <span class=\"nv\">Context</span><span class=\"p\">);</span>\n</pre></div>\n</div>\n<p>It is also possible to send a message to all open pages of a session, or to all\nsessions of a user:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z_transport</span><span class=\"p\">:</span><span class=\"nf\">session</span><span class=\"p\">(</span><span class=\"n\">javascript</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;alert(&#39;Hello World&#39;);&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">qos</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">}],</span> <span class=\"nv\">Context</span><span class=\"p\">);</span>\n<span class=\"nn\">z_transport</span><span class=\"p\">:</span><span class=\"nf\">user</span><span class=\"p\">(</span><span class=\"n\">javascript</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;alert(&#39;Hello World&#39;);&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">qos</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">}],</span> <span class=\"nv\">Context</span><span class=\"p\">);</span>\n</pre></div>\n</div>\n<p>Or transport to a specific page, session or user, but then you will need to\nspecify the message and the message-queue:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">Msg</span> <span class=\"o\">=</span> <span class=\"nn\">z_transport</span><span class=\"p\">:</span><span class=\"nf\">msg</span><span class=\"p\">(</span><span class=\"n\">session</span><span class=\"p\">,</span> <span class=\"n\">javascript</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;alert(&#39;Hello World&#39;);&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">qos</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">}]).</span>\n<span class=\"nn\">z_transport</span><span class=\"p\">:</span><span class=\"nf\">transport_user</span><span class=\"p\">(</span><span class=\"nv\">Msg</span><span class=\"p\">,</span> <span class=\"nv\">UserId</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>The message queue is either <code class=\"docutils literal notranslate\"><span class=\"pre\">session</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">page</span></code>. It defines which queue will\nbe responsible for resending the message and where the ack message is received.\nIf <code class=\"docutils literal notranslate\"><span class=\"pre\">user</span></code> is specified as queue then it will be replaced by <code class=\"docutils literal notranslate\"><span class=\"pre\">session</span></code>.</p>\n</div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:17Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/server-browser-interaction.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:20Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_server_browser_interaction",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:20Z",
+    "slug": "browser-server-interaction",
+    "title": "Browser/server interaction",
+    "title_slug": "browser-server-interaction",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1302",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1302"
+  }
+}

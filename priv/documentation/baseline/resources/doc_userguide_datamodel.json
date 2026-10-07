@@ -1,0 +1,396 @@
+{
+  "depiction_url": "https://zotonic.com/image/2022/2/25/any_thing.jpg%28800x800%29%28upscale%29%28BTqXPrhKNaKC_ENRUBAKAibvyK1GYEJOVB0lJTwl6P4%29.jpg",
+  "edges": {
+    "depiction": {
+      "objects": [
+        {
+          "created": "2022-02-25T15:48:06Z",
+          "object_id": {
+            "id": 2294,
+            "is_a": [
+              "media",
+              "image"
+            ],
+            "name": null,
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "any_thing.jpg"
+              }
+            },
+            "uri": "https://zotonic.com/id/2294"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2022-02-25T15:50:06Z",
+          "object_id": {
+            "id": 2295,
+            "is_a": [
+              "media",
+              "image"
+            ],
+            "name": null,
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "exampledomain.png"
+              }
+            },
+            "uri": "https://zotonic.com/id/2295"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 304,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "depiction",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Afbeelding",
+            "en": "Depiction"
+          }
+        },
+        "uri": "http://xmlns.com/foaf/0.1/depiction"
+      }
+    },
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1278,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_rsc",
+            "title": "rsc",
+            "uri": "https://zotonic.com/id/1278"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1276,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_resources",
+            "title": "Resources",
+            "uri": "https://zotonic.com/id/1276"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1297,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_edge",
+            "title": "edge",
+            "uri": "https://zotonic.com/id/1297"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1910,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_predicate",
+            "title": "predicate",
+            "uri": "https://zotonic.com/id/1910"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    },
+    "subject": {
+      "objects": [
+        {
+          "created": "2026-09-20T16:14:33Z",
+          "object_id": {
+            "id": 2556,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_information_type"
+            ],
+            "name": "zotonic_topic_explanation",
+            "title": "Explanation",
+            "uri": "https://zotonic.com/id/2556"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-20T16:14:37Z",
+          "object_id": {
+            "id": 2561,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_audience"
+            ],
+            "name": "zotonic_topic_content_editor",
+            "title": "Content editor",
+            "uri": "https://zotonic.com/id/2561"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-20T16:15:55Z",
+          "object_id": {
+            "id": 2614,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_architecture"
+            ],
+            "name": "zotonic_topic_resource",
+            "title": "Resource",
+            "uri": "https://zotonic.com/id/2614"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-20T16:15:56Z",
+          "object_id": {
+            "id": 2616,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_architecture"
+            ],
+            "name": "zotonic_topic_predicate",
+            "title": "Predicate",
+            "uri": "https://zotonic.com/id/2616"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-20T16:16:14Z",
+          "object_id": {
+            "id": 2679,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_technology"
+            ],
+            "name": "zotonic_topic_rdf_and_linked_data",
+            "title": "RDF and Linked Data",
+            "uri": "https://zotonic.com/id/2679"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 308,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "subject",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Keyword"
+          }
+        },
+        "uri": "http://purl.org/dc/elements/1.1/subject"
+      }
+    }
+  },
+  "id": 1277,
+  "is_a": [
+    "text",
+    "documentation",
+    "userguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1277"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_userguide_datamodel",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1277/the-zotonic-data-model",
+    "x-default": "https://zotonic.com/docs/1277/the-zotonic-data-model"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 21,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "The Zotonic data model"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div class=\"section\">\n<p>Zotonic’s data model is a pragmatic implementation of the <a class=\"reference external\" href=\"http://en.wikipedia.org/wiki/Semantic_Web\">Semantic Web</a>: a mixture between a traditional database and a triple store.</p>\n<p>The data model has two main concepts: the <a class=\"reference internal\" href=\"/id/doc_glossary#term-resource\"><span class=\"xref std std-term\">resource</span></a> and the <a class=\"reference internal\" href=\"/id/doc_glossary#term-edge\"><span class=\"xref std std-term\">edge</span></a>.</p>\n<p>Resources, which are often called <em>pages</em> in the admin, are the main data unit: they have properties like title, summary, body text; and importantly, they belong to a certain <a class=\"reference internal\" href=\"/id/doc_glossary#term-category\"><span class=\"xref std std-term\">category</span></a>.</p>\n<p>Edges are nothing more than connections between two resources. Each edge is labeled, with a so-called <a class=\"reference internal\" href=\"/id/doc_glossary#term-predicate\"><span class=\"xref std std-term\">predicate</span></a>.</p>\n<p>By default, Zotonic comes with a set of categories and predicates that makes sense for typical websites.</p>\n<p>You can extend the built-in domain model by adding your own categories and predicates.</p>\n<p>This manual describes the data model and its related database table in depth.</p>\n<div class=\"section\"><a name=\"guide-datamodel-example\"></a>\n<h2>The data model by example</h2>\n<!-- z-media 2295 {\"align\":\"block\",\"caption\":\"Example of resources and relations (edges) between them.\",\"crop\":false,\"link\":false,\"link_url\":\"\",\"size\":\"middle\"} --><br />\n<p>Take the example data on the right. It shows resources, connected to each other by edges. The rectangular blocks denote the resources, the arrow between them denote the edges.</p>\n<p>It shows the <a class=\"reference internal\" href=\"/id/doc_glossary#term-domain-model\"><span class=\"xref std std-term\">domain model</span></a> of a basic blog-like structure: <code class=\"docutils literal notranslate\"><span class=\"pre\">article</span></code> resources which are written by <code class=\"docutils literal notranslate\"><span class=\"pre\">persons</span></code> and articles being tagged with keywords.</p>\n<p>The edge between <cite>Alice</cite> and <cite>cooking for dummies</cite> is labelled <cite>author</cite>: indicating that Alice wrote that article.</p>\n<p>Note that these edges have a direction. When reasoning about edges, it is the easiest to think of them in terms of grammar: <a class=\"reference external\" href=\"https://en.wikipedia.org/wiki/Subject%E2%80%93verb%E2%80%93object\">Subject - verb - object</a>. In the case of Alice:</p>\n<ul class=\"simple\">\n<li><strong>Cooking for dummies</strong> is authored by <strong>Alice</strong>;</li>\n<li><strong>Cooking for dummies</strong> has the keyword (subject) <strong>Cooking</strong>;</li>\n</ul>\n<p>or more general:</p>\n<ul class=\"simple\">\n<li><strong>subject</strong> ➜ <strong>predicate</strong> ➜ <strong>object</strong>.</li>\n</ul>\n<p>In Zotonic, the terms <cite>subject</cite> and <cite>object</cite> (shortened as <code class=\"docutils literal notranslate\"><span class=\"pre\">s</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">o</span></code>) are used in the templates, allowing you to traverse the edges between resources:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">{{</span> <span class=\"n\">m</span><span class=\"p\">.</span><span class=\"n\">rsc</span><span class=\"p\">[</span><span class=\"n\">id</span><span class=\"p\">].</span><span class=\"n\">o</span><span class=\"p\">.</span><span class=\"n\">author</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">].</span><span class=\"n\">title</span> <span class=\"p\">}}</span>\n</pre>\n</div>\n</div>\n<p>Returns the name of the first author of the article with the given <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code>, by traversing to the first <code class=\"docutils literal notranslate\"><span class=\"pre\">author</span></code> object edge of the given id. See the <a class=\"reference internal\" href=\"/id/doc_model_model_rsc\"><span class=\"std std-ref\">m_rsc</span></a> model for more details on this.</p>\n</div>\n<div class=\"section\"><a name=\"id1\"></a>\n<h2>Pages</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_resources#guide-datamodel-resources\"><span class=\"std std-ref\">resources</span></a> in the Developer Guide</p>\n</aside>\n<p>Resources are the main building block of Zotonic’s data model. For simplicity of communication, a resource is often referred to as a page. Every resource usually has its own page on the web site, which is the <em>HTML representation</em> of the resource.</p>\n<p>A resource can have multiple representations, for example <code class=\"docutils literal notranslate\"><span class=\"pre\">application/json</span></code>.</p>\n<p>Different representations are served at different URLs. The <em>Non-Informational Resource URI</em> is used to negotiate the requested content-type and redirect to the best matching URI. The non-informational resource URI is usually <code class=\"docutils literal notranslate\"><span class=\"pre\">/id/{id}</span></code> where <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code> is the numerical id of the resource. The dispatch rule is called <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code>.</p>\n<p>The dispatch rule for the HTML representation is called <code class=\"docutils literal notranslate\"><span class=\"pre\">page</span></code> or after the name of the category of the resource (for example <code class=\"docutils literal notranslate\"><span class=\"pre\">article</span></code>).</p>\n<div class=\"section\">\n<h3>Resource Properties</h3>\n<p>By default, each page has the following properties.</p>\n<div class=\"table-wrapper\">\n<table class=\"docutils\" border=\"1\">\n<tbody>\n<tr>\n<td>id</td>\n<td>Unique number that identifies the resource and can be used for referring to the resource</td>\n</tr>\n<tr>\n<td>title</td>\n<td>Main title of the page</td>\n</tr>\n<tr>\n<td>summary</td>\n<td>Short, plain-text, summary</td>\n</tr>\n<tr>\n<td>short_title</td>\n<td>Short version of the title that is used in navigation and other places where an abbreviated title is shown</td>\n</tr>\n<tr>\n<td>is_published</td>\n<td>Only published pages are visible to the general public</td>\n</tr>\n<tr>\n<td>publication_start</td>\n<td>Date at which the page will be published</td>\n</tr>\n<tr>\n<td>publication_end</td>\n<td>Date at which the page will be unpublished</td>\n</tr>\n<tr>\n<td>name</td>\n<td>Alternative for <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code>: used to uniquely identify the resource</td>\n</tr>\n<tr>\n<td>page_path</td>\n<td>The page’s URL on the site. Defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">/page/{id}/{slug}</span></code> where the <code class=\"docutils literal notranslate\"><span class=\"pre\">slug</span></code> is derived from the title</td>\n</tr>\n<tr>\n<td>category_id</td>\n<td>The category of the resource (see below)</td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n</div>\n<div class=\"section\"><a name=\"guide-datamodel-categories\"></a>\n<h2>Categories</h2>\n<p>Each page belongs to exactly one category. The category a page is in determines how it is displayed.</p>\n<p>The categories are organized in a hierarchical tree of categories and sub-categories.</p>\n<p>For example:</p>\n<ul class=\"simple\">\n<li>uncategorized</li>\n<li>text - article - news</li>\n<li>media - image - video - audio - document</li>\n<li>meta - category - predicate - keyword</li>\n</ul>\n</div>\n<div class=\"section\"><a name=\"guide-datamodel-edges\"></a>\n<h2>Edges</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_model_model_edge\"><span class=\"std std-ref\">m_edge</span></a></p>\n</aside>\n<p>An <a class=\"reference internal\" href=\"/id/doc_glossary#term-edge\"><span class=\"xref std std-term\">edge</span></a> is a labeled connection between two resources.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">edge</span></code> table defines these relations between resources. It does this by adding a directed edge from one <code class=\"docutils literal notranslate\"><span class=\"pre\">rsc</span></code> (resource) record (subject) to another (object). It also adds a reference to the <a class=\"reference internal\" href=\"/id/doc_glossary#term-predicate\"><span class=\"xref std std-term\">predicate</span></a>: the label of the edge.</p>\n<p>In the admin, edges are represented in the “Page connections” sidebar panel, of the edit page of the <cite>subject</cite>: the resource where the edges originate. By convention, edges are said to <em>belong</em> to their subject. This is to simplify the access control: if you are allowed to edit the resource, you’re also allowed to edit its <cite>outgoing</cite> edges (“Page connections” in the admin), creating connections to other resources.</p>\n</div>\n<div class=\"section\"><a name=\"guide-datamodel-edge-predicates\"></a>\n<h2>Predicates</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_model_model_predicate\"><span class=\"std std-ref\">m_predicate</span></a></p>\n</aside>\n<p>Edges have a label: like in <a class=\"reference internal\" href=\"#guide-datamodel-example\"><span class=\"std std-ref\">The data model by example</span></a>, <cite>author</cite> is a <a class=\"reference internal\" href=\"/id/doc_glossary#term-predicate\"><span class=\"xref std std-term\">predicate</span></a> of an edge which denotes that a certain <cite>article</cite> was written by a certain <cite>person</cite></p>\n<p>Just like categories, these predicates are themselves also resources: allowing you to specify metadata, give them a meaningful title, et cetera.</p>\n<p>Each predicate has a list of valid subject categories and valid object categories (stored in the <code class=\"docutils literal notranslate\"><span class=\"pre\">predicate_category</span></code> table). This is used to filter the list of predicates in the admin edit page, and also to filter the list of found potential objects when making a connection. On their edit page in the admin interface, you can edit the list of valid subject and object categories for a predicate.</p>\n<p>Examples of predicates:</p>\n<ul class=\"simple\">\n<li>author (from article to person)</li>\n<li>subject (from page to keyword)</li>\n<li>depiction (from any page to an image)</li>\n<li>relation (non defined relation between two pages)</li>\n<li>hasdocument (page has an attached document)</li>\n</ul>\n<aside class=\"admonition-todo admonition\">\n<p class=\"first admonition-title\">Todo</p>\n<p class=\"last\">document categories, predicates and resources</p>\n</aside>\n</div>\n</div>"
+      }
+    },
+    "slug": "the-zotonic-data-model",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 316,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "userguide",
+      "title": "User guide",
+      "uri": "https://zotonic.com/id/userguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/user-guide/datamodel.rst",
+    "pivot_location_lng": null,
+    "name": "doc_userguide_datamodel",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:15Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2022-03-14T17:01:54Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "the-zotonic-data-model"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1277",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1277"
+  }
+}

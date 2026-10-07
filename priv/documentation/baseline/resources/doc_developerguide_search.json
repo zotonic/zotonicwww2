@@ -1,0 +1,444 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1844,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_search",
+            "title": "search",
+            "uri": "https://zotonic.com/id/1844"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1276,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_resources",
+            "title": "Resources",
+            "uri": "https://zotonic.com/id/1276"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2022-01-11T11:59:14Z",
+          "object_id": {
+            "id": 1281,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_custom_pivot",
+            "title": "Custom pivots",
+            "uri": "https://zotonic.com/id/1281"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "refers": {
+      "objects": [
+        {
+          "created": "2026-09-29T13:32:56Z",
+          "object_id": {
+            "id": 1844,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_search",
+            "title": "search",
+            "uri": "https://zotonic.com/id/1844"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-29T13:32:56Z",
+          "object_id": {
+            "id": 2060,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_search",
+            "title": "mod_search",
+            "uri": "https://zotonic.com/id/2060"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 2409,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "refers",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Refers"
+          }
+        },
+        "uri": "https://zotonic.com/id/refers"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1282,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_pivot_templates",
+            "title": "Pivot Templates",
+            "uri": "https://zotonic.com/id/1282"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1281,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_custom_pivot",
+            "title": "Custom pivots",
+            "uri": "https://zotonic.com/id/1281"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 2060,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_search",
+            "title": "mod_search",
+            "uri": "https://zotonic.com/id/2060"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    },
+    "subject": {
+      "objects": [
+        {
+          "created": "2026-09-29T13:31:03Z",
+          "object_id": {
+            "id": 2555,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_information_type"
+            ],
+            "name": "zotonic_topic_reference",
+            "title": "Reference",
+            "uri": "https://zotonic.com/id/2555"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-29T13:31:06Z",
+          "object_id": {
+            "id": 2563,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_audience"
+            ],
+            "name": "zotonic_topic_frontend_developer",
+            "title": "Frontend developer",
+            "uri": "https://zotonic.com/id/2563"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-29T13:31:07Z",
+          "object_id": {
+            "id": 2564,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_audience"
+            ],
+            "name": "zotonic_topic_backend_developer",
+            "title": "Backend developer",
+            "uri": "https://zotonic.com/id/2564"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-29T13:31:17Z",
+          "object_id": {
+            "id": 2586,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_domain"
+            ],
+            "name": "zotonic_topic_search_and_discovery",
+            "title": "Search and discovery",
+            "uri": "https://zotonic.com/id/2586"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-29T13:31:24Z",
+          "object_id": {
+            "id": 2631,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_architecture"
+            ],
+            "name": "zotonic_topic_database",
+            "title": "Database",
+            "uri": "https://zotonic.com/id/2631"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-29T13:31:30Z",
+          "object_id": {
+            "id": 2614,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_architecture"
+            ],
+            "name": "zotonic_topic_resource",
+            "title": "Resource",
+            "uri": "https://zotonic.com/id/2614"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-29T13:31:37Z",
+          "object_id": {
+            "id": 2643,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_task"
+            ],
+            "name": "zotonic_topic_query",
+            "title": "Query",
+            "uri": "https://zotonic.com/id/2643"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 308,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "subject",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Keyword"
+          }
+        },
+        "uri": "http://purl.org/dc/elements/1.1/subject"
+      }
+    }
+  },
+  "id": 1638,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1638"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_search",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1638/search",
+    "x-default": "https://zotonic.com/docs/1638/search"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 39,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Search"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div class=\"section\">\n<p>Using the query search API you can retrieve lists of resources in various ways. In your templates, you do so through the <a class=\"reference internal\" href=\"/id/doc_model_model_search\"><span class=\"std std-ref\">search model</span></a>:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">id</span> <span class=\"k\">in</span> <span class=\"nv\">m.search</span><span class=\"o\">[{</span><span class=\"nv\">query</span> <span class=\"o\">(</span><span class=\"nv\">options</span> <span class=\"nv\">go</span> <span class=\"nv\">here</span><span class=\"p\">...</span><span class=\"o\">)</span> <span class=\"o\">}]</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>For instance, to select all news items, ordered by their modification date, newest first:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">id</span> <span class=\"k\">in</span> <span class=\"nv\">m.search</span><span class=\"o\">[{</span><span class=\"nv\">query</span> <span class=\"nv\">cat</span><span class=\"o\">=</span><span class=\"s1\">&#39;news&#39;</span> <span class=\"nv\">sort</span><span class=\"o\">=</span><span class=\"s1\">&#39;-rsc.modified&#39;</span><span class=\"o\">}]</span> <span class=\"cp\">%}</span>\n    <span class=\"cp\">{{</span> <span class=\"nv\">id</span> <span class=\"cp\">}}</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<div class=\"section\">\n<h2>Trying it out</h2>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\"><code class=\"docutils literal notranslate\"><span class=\"pre\">api/model/search/get</span></code> doesn’t automatically add sort terms, ensure to add <code>sort</code> terms to have a stable search result.</p>\n</aside>\n<p>Of course you can create your own <code class=\"docutils literal notranslate\"><span class=\"pre\">for</span></code>-loop in a template, but there are easier ways to check out the inner workings of the query model: through your browser.</p>\n<p>The query-model is exposed to the browser in via the API for receiving lists of ids in JSON.  For example, to get all resources of the “documentation” category on zotonic.com:</p>\n<p><a rel=\"nofollow noopener noreferrer\" class=\"reference external\" href=\"https://zotonic.com/api/model/search/get?qcat=documentation\" target=\"_blank\">https://zotonic.com/api/model/search/get?qcat=documentation</a></p>\n</div>\n<div class=\"section\">\n<h2>Query arguments</h2>\n<div class=\"section\">\n<h3>cat</h3>\n<p>Filter resources on a specific category:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">cat=&#39;news&#39;</span>\n</pre>\n</div>\n</div>\n<p>Specifying multiple ‘cat’ arguments will do an OR on the categories. So to select both news and person resources:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">cat=&#39;news&#39; cat=&#39;person&#39;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>cat_exact</h3>\n<p>Filter resources to include the given category, but exclude any subcategory:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">cat_exact=&#39;news&#39;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>cat_exclude</h3>\n<p>Filter resources to exclude the given category:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">cat_exclude=&#39;meta&#39;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3><span style=\"font-size:1.8rem; \">id_exclude</span></h3>\n<p>Filter resources to exclude the ones with the given ids:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">id_exclude=123</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>filter</h3>\n<p>Filtering on columns:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">filter=[&#39;pivot.title&#39;, &#39;Hello&#39;]</span>\n<span class=\"x\">filter=[&#39;pivot.mypivot.foo&#39;, &#39;bar&#39;]</span>\n<span class=\"x\">filter=[&#39;facet.somefacet&#39;, &#39;baz&#39;]</span>\n</pre>\n</div>\n</div>\n<p>In its most simple form, this does an ‘equals’ compare filter. The <code class=\"docutils literal notranslate\"><span class=\"pre\">filter</span></code> keywords expects a list. If the list is two elements long, we expect the first column to be the filter column name from the database table, and the second column name to be the filter value:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">filter=[&#39;facet.numeric_value&#39;, 10]</span>\n</pre>\n</div>\n</div>\n<p>If the filter is a three-column list, the second column is the operator. This must be an atom (surround it in backquotes!) and must be one of the following: <code class=\"docutils literal notranslate\"><span class=\"pre\">eq</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">ne</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">gt</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">gte</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">lt</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">lte</span></code>; or one of <code class=\"docutils literal notranslate\"><span class=\"pre\">=</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;&gt;</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">&gt;</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">&gt;=</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;=</span></code>:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">filter=[&#39;facet.numeric_value&#39;, `&gt;`, 10]</span>\n</pre>\n</div>\n</div>\n<p>It is possible to define an OR query for multiple terms:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">filter=[ [&#39;facet.numeric_value&#39;, `&gt;`, 10], [&#39;facet.numeric_value&#39;, `&lt;=`, 0] ]</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>hassubject</h3>\n<p>Select all resources that have an <em>incoming edge</em> from the given page, which is specified by the argument (the page id <code class=\"docutils literal notranslate\"><span class=\"pre\">123</span></code> in the example, or the unique page name <code class=\"docutils literal notranslate\"><span class=\"pre\">tag_gift</span></code>). Optionally, you can pass the name of a predicate as the second argument, to specify that the connection should have this predicate.</p>\n<p>So, to select all resources that have an incoming edge from a subject with id <code class=\"docutils literal notranslate\"><span class=\"pre\">123</span></code>:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hassubject=123</span>\n</pre>\n</div>\n</div>\n<p>Alternatively, use the subject’s unique name:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hassubject=&#39;tag_gift&#39;</span>\n</pre>\n</div>\n</div>\n<p>Specifying this multiple times does an AND of the conditions:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hassubject=123</span>\n<span class=\"x\">hassubject=[123,&#39;author&#39;]</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>hasobject</h3>\n<p>Like <code class=\"docutils literal notranslate\"><span class=\"pre\">hassubject</span></code>, but selects all pages that have an <strong>outgoing edge</strong> to the given page, which is specified by the argument. Optionally, you can pass the name of a predicate as the second argument, to specify that the connection should have this predicate:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasobject=123</span>\n<span class=\"x\">hasobject=&#39;tag_gift&#39;</span>\n<span class=\"x\">hasobject=[123,&#39;hasdocument&#39;]</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>hasanyobject</h3>\n<p>Like <code class=\"docutils literal notranslate\"><span class=\"pre\">hasobject</span></code>, but allows to define an OR operation on the edge. You can define multiple combinations of predicates and objects; any resource having such an outgoing edge will be matched. The argument is a list. Each element in the list is either an id or an id/predicate combination.</p>\n<p>To select all resources that have an outgoing edge to an object with id 1, 2 or 3:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasanyobject=[1, 2, 3]</span>\n</pre>\n</div>\n</div>\n<p>For each list element, you can add the connection’s predicate. So, to select all resources that have an outgoing ‘author’ edge to an object with id 123:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasanyobject=[[123, &#39;author&#39;]]</span>\n</pre>\n</div>\n</div>\n<p>And to do the same but also include resources that have an ‘editor’ edge to an object with id 456:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasanyobject=[[123, &#39;author&#39;], [456, &#39;editor&#39;]]</span>\n</pre>\n</div>\n</div>\n<p>Substitute <code class=\"docutils literal notranslate\"><span class=\"pre\">&#39;*&#39;</span></code> for the object id to match <em>any</em> object. So, to select all resources that have any author or editor edge:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasanyobject[[&#39;*&#39;, &#39;author&#39;], [&#39;*&#39;, &#39;editor&#39;]]</span>\n</pre>\n</div>\n</div>\n<p>You can also mix the two types of elements. To select all resources that have an author or a connection (with any predicate) to resource 2 or 3:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasanyobject[[&#39;*&#39;, &#39;author&#39;], 2, 3]</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>hasmedium</h3>\n<p>Only returns resources that have a <code class=\"docutils literal notranslate\"><span class=\"pre\">medium</span></code> record attached or only those that do not have a <code class=\"docutils literal notranslate\"><span class=\"pre\">medium</span></code> record attached.</p>\n<p>For example:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasmedium</span>\n</pre>\n</div>\n</div>\n<p>Return only resources with a medium record.</p>\n<p>Or:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasmedium=false</span>\n</pre>\n</div>\n</div>\n<p>Return only resources without a medium record.</p>\n<p>The joined medium record is <cite>medium</cite>, that enables sorting on, for example, the medium record’s creation date with <code class=\"docutils literal notranslate\"><span class=\"pre\">sort=medium.created</span></code>.</p>\n</div>\n<div class=\"section\">\n<h3>match_objects</h3>\n<p>Find the resources that have similar object edges as the given resource. This is done using a full text query. The resource with most overlapping objects ids will be returned first:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">match_objects=1234</span>\n</pre>\n</div>\n</div>\n<p>An <code class=\"docutils literal notranslate\"><span class=\"pre\">id_exlude=...</span></code> is automatically added for the resource in the argument.</p>\n</div>\n<div class=\"section\">\n<h3>match_object_ids</h3>\n<p>Find the resources that have similar object edges to the given resources. This is done using a full text query. The resource with most overlapping objects ids will be returned first:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">match_object_ids=[108, 238, 1234]</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>is_authoritative</h3>\n<p>Boolean, filters whether a resource is considered authoritative (originating from this site) or not:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">is_authoritative</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>is_featured</h3>\n<p>A boolean option that specifies if a page should be featured or not:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">is_featured</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>is_published</h3>\n<p>Select published, unpublished or omit the publish check. Legal values are true, false or all:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">is_published=&#39;all&#39;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<div class=\"section\">\n<h3>is_findable</h3>\n<p>Select resource that do not have the “Hide page from search results” set. This checkbox can be found in the <em>Advanced</em> panel of edit pages in the admin.</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">is_findable</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>is_unfindable</h3>\n<p>Select resource that do have the “Hide page from search results” set. This checkbox can be found in the <em>Advanced</em> panel of edit pages in the admin.</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">is_unfindable</span>\n</pre>\n</div>\n</div>\n</div>\n<h3>upcoming</h3>\n<p>Specifying ‘upcoming’ means that you only want to select things that have a start date which lies in the future. Like the name says, useful to select upcoming events:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">upcoming</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>ongoing</h3>\n<p>Specifying ‘ongoing’ means that you only want to select things that are happening now: that have a start date which lies in the past, and an end date which lies in the future:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">ongoing</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>finished</h3>\n<p>Specifying ‘finished’ means that you only want to select things that have a end date which lies in the past:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">finished</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>unfinished</h3>\n<p>Specifying ‘unfinished’ means that you only want to select things that have an end date which lies in the future:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">unfinished</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>unfinished_or_nodate</h3>\n<p>Specifying ‘unfinished_or_nodate’ means that you only want to select things that have an end date which lies in the future or no start date:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">unfinished_or_nodate</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>sort / asort / zsort</h3>\n<p>Sort the result on a field. The name of the field is a string which directly refers to the SQL join that is being used. If you specify a dash (<code class=\"docutils literal notranslate\"><span class=\"pre\">-</span></code>) in front of the field, the order is descending. Leaving this out or specifying a <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code> means ascending.</p>\n<p>The sort terms are added in the order: <code class=\"docutils literal notranslate\"><span class=\"pre\">asort</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">sort</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">zsort</span></code>.</p>\n<p>This is useful for e.g. text search. Text search will add a <code class=\"docutils literal notranslate\"><span class=\"pre\">sort</span></code> term on relevance. This relevance sort term is appended <em>after</em> any existing sort term. By using <code class=\"docutils literal notranslate\"><span class=\"pre\">zsort</span></code> you can force sub-sorting in case of the same relevance or no text for the query. Example:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">{query cat=&#39;news&#39; text=q.qs zsort=&quot;-rsc.created&quot;}</span>\n</pre>\n</div>\n</div>\n<p>If <code class=\"docutils literal notranslate\"><span class=\"pre\">q.qs</span></code> is empty, this will return the newest <em>news</em> items. If <code class=\"docutils literal notranslate\"><span class=\"pre\">q.qs</span></code> is not empty then it will search for the text and return the best matches where equally matching news items will have the newest on top. Use <code class=\"docutils literal notranslate\"><span class=\"pre\">asort</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">zsort</span></code> to show the newest matching news, regardless on how well they match the search term:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">{query cat=&#39;news&#39; text=q.qs asort=&quot;-rsc.created&quot;}</span>\n</pre>\n</div>\n</div>\n<p>Some sort fields:</p>\n<ul class=\"simple\">\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">rsc.modified</span></code> - date of last modification</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">rsc.publication_start</span></code> - publication date</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">rsc.pivot_date_start</span></code> - the start date specified in the admin</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">rsc.pivot_date_end</span></code> - the end date specified in the admin</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">rsc.pivot_title</span></code> - the title of the page. For multilingual sites, the behavior of sorting on title is undefined.</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">seq</span></code> - sequence number of the first edge (ignored if no edge is joined)</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">edge.created</span></code> - creation date of the first edge (ignored if no edge is joined)</li>\n</ul>\n<p>For all the sort fields, you will have to consult Zotonic’s data model. Example sorting on modification date, newest first:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">sort=&#39;-rsc.modified&#39;</span>\n</pre>\n</div>\n</div>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_cookbook_pivot_templates#cookbook-pivot-templates\"><span class=\"std std-ref\">Pivot Templates</span></a></p>\n</aside>\n</div>\n<div class=\"section\"><a name=\"custompivot\"></a>\n<h3>pivot.name</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_cookbook_custom_pivot#cookbook-custom-pivots\"><span class=\"std std-ref\">Custom pivots</span></a></p>\n</aside>\n<p>Filter on the named pivot of the rsc table. The name is prefixed with <code class=\"docutils literal notranslate\"><span class=\"pre\">pivot_</span></code>.</p>\n<p>Available pivot fields are:</p>\n<ul class=\"simple\">\n<li>pivot.category_nr,</li>\n<li>pivot.first_name</li>\n<li>pivot.surname</li>\n<li>pivot.gender</li>\n<li>pivot.date_start</li>\n<li>pivot.date_end</li>\n<li>pivot.date_start_month_day</li>\n<li>pivot.date_end_month_day</li>\n<li>pivot.street</li>\n<li>pivot.city</li>\n<li>pivot.state</li>\n<li>pivot.postcode</li>\n<li>pivot.country</li>\n<li>pivot.geocode</li>\n<li>pivot.title</li>\n<li>pivot.location_lat</li>\n<li>pivot.location_lng</li>\n</ul>\n<p>These fields can also be used in <code class=\"docutils literal notranslate\"><span class=\"pre\">filter</span></code> and the <code class=\"docutils literal notranslate\"><span class=\"pre\">sort</span></code> terms.</p>\n</div>\n<div class=\"section\">\n<h3>pivot.mypivot.name</h3>\n<p>Filter on the named pivot of the custom pivot <code class=\"docutils literal notranslate\"><span class=\"pre\">mypivot</span></code>.</p>\n<p>Here <code class=\"docutils literal notranslate\"><span class=\"pre\">mypivot</span></code> is a custom pivot table defined with <code class=\"docutils literal notranslate\"><span class=\"pre\">z_pivot_rsc:define_custom_pivot/3</span></code></p>\n<p>Check the explanation and examples in <a class=\"reference internal\" href=\"/id/doc_cookbook_custom_pivot#cookbook-custom-pivots\"><span class=\"std std-ref\">Custom pivots</span></a> for more information.</p>\n<p>These fields can also be used in <code class=\"docutils literal notranslate\"><span class=\"pre\">filter</span></code> and the <code class=\"docutils literal notranslate\"><span class=\"pre\">sort</span></code> terms.</p>\n</div>\n<div class=\"section\">\n<h3>facet.name</h3>\n<p>Add a join with the facets table and filter on the named facet.</p>\n<p>The facets table is filled from the <code class=\"docutils literal notranslate\"><span class=\"pre\">pivot/facet.tpl</span></code> template, each block is a facet that can be used for filters or for the <code class=\"docutils literal notranslate\"><span class=\"pre\">facets</span></code> query.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">name</span></code> must be the name without types of a block. That is, if a block is called <code class=\"docutils literal notranslate\"><span class=\"pre\">foo_int</span></code> then the <code class=\"docutils literal notranslate\"><span class=\"pre\">name</span></code> is <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code> and the query term is <code class=\"docutils literal notranslate\"><span class=\"pre\">facet.foo</span></code>.</p>\n<p>The value can be an operator:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&gt;123</span>\n<span class=\"x\">&gt;=123</span>\n<span class=\"x\">&lt;123</span>\n<span class=\"x\">&lt;=123</span>\n<span class=\"x\">&lt;&gt;123</span>\n</pre>\n</div>\n</div>\n<p>For example, the last one translates to the SQL clause <code class=\"docutils literal notranslate\"><span class=\"pre\">facet.name</span> <span class=\"pre\">&lt;&gt;</span> <span class=\"pre\">123</span></code>.</p>\n<p>The facet fields can also be used in <code class=\"docutils literal notranslate\"><span class=\"pre\">filter</span></code> and the <code class=\"docutils literal notranslate\"><span class=\"pre\">sort</span></code> terms.</p>\n</div>\n<div class=\"section\">\n<h3>hasobjectpredicate</h3>\n<p>Filter on all things which have any outgoing edge with the given predicate:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hasobjectpredicate=&#39;hasdocument&#39;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>hassubjectpredicate</h3>\n<p>Filter on all things which have any incoming edge with the given predicate:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">hassubjectpredicate=&#39;author&#39;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>text</h3>\n<p>Perform a fulltext search on the primary “rsc” table. The result will automatically be ordered on the relevancy (rank) of the result:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">text=&quot;test&quot;</span>\n</pre>\n</div>\n</div>\n<p>Use prefix <code class=\"docutils literal notranslate\"><span class=\"pre\">id:</span></code> to find specific resources by id or name:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">text=&quot;id:1000&quot;</span>\n\n<span class=\"x\">text=&quot;id:1000,1001,1002&quot;</span>\n\n<span class=\"x\">text=&quot;id:category,1&quot;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>query_id</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"#guide-query-resources\"><span class=\"std std-ref\">Query resources</span></a></p>\n</aside>\n<p>Load the query arguments from the saved <code class=\"docutils literal notranslate\"><span class=\"pre\">query</span></code> resource:</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">query_id=331</span></code></p>\n</div>\n<div class=\"section\">\n<h3>qargs</h3>\n<p>Take all the arguments from the current request and use these. The arguments have to start with a <code class=\"docutils literal notranslate\"><span class=\"pre\">q</span></code>, for example:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">http://example.com/search?qs=test&amp;qcat=text</span>\n</pre>\n</div>\n</div>\n<p>With the query:</p>\n<p>m.search.paged[{query qargs page=q.page pagelen=20}]</p>\n<p>Will find all pages containing the string <em>test</em> in the category <em>text</em>.</p>\n<p>As <code class=\"docutils literal notranslate\"><span class=\"pre\">qs</span></code> is the usual text search argument in forms it is mapped to <code class=\"docutils literal notranslate\"><span class=\"pre\">text</span></code>. All other arguments have the <code class=\"docutils literal notranslate\"><span class=\"pre\">q</span></code> removed and should map to known query-model arguments.</p>\n</div>\n<div class=\"section\">\n<h3>publication_month</h3>\n<p>Filter on month of publication date</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">publication_month=9</span></code></p>\n</div>\n<div class=\"section\">\n<h3>publication_year</h3>\n<p>Filter on year of publication date</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">publication_year=2012</span></code></p>\n</div>\n<div class=\"section\">\n<h3>publication_after</h3>\n<p>Filter resources to only show those that are published on or after the given date.</p>\n<h3>publication_before</h3>\n<p>Filter resources to only show those that are published on or after the given date.</p>\n<h3>date_start_after</h3>\n<p>Select items with a start date greater than given value</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">date_start_after=&quot;2010-01-15&quot;</span></code></p>\n<p>It also possible to use relative times:</p>\n<ul class=\"simple\">\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">now</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">+0</span> <span class=\"pre\">sunday</span></code> (last sunday or the current sunday)</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">+0</span> <span class=\"pre\">monday</span></code> (last monday or the current monday)</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">+1</span> <span class=\"pre\">minute</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">+1</span> <span class=\"pre\">hour</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">+1</span> <span class=\"pre\">day</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">+1</span> <span class=\"pre\">week</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">+1</span> <span class=\"pre\">month</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">+1</span> <span class=\"pre\">year</span></code></li>\n</ul>\n<p>Negative offsets are allowed as well. There //must// be a <code class=\"docutils literal notranslate\"><span class=\"pre\">+</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">-</span></code> sign.</p>\n</div>\n<div class=\"section\">\n<h3>date_start_before</h3>\n<p>Select items with a start date smaller than given value:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">date_start_before=&quot;2010-01-15&quot;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>date_start_year</h3>\n<p>Select items with an “event start date” in the given year:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">date_start_year=2012</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>date_end_after</h3>\n<p>Select items with a end date greater than given value:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">date_end_after=&quot;2010-01-15&quot;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>date_end_before</h3>\n<p>Select items with a end date smaller than given value:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">date_end_before=&quot;2010-01-15&quot;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>date_end_year</h3>\n<p>Select items with an “event end date” in the given year:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">date_end_year=2012</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>created_after</h3>\n<p>Filter resources to only show those that are created on or after the given date.</p>\n<h3>created_before</h3>\n<p>Filter resources to only show those that are created on or after the given date.</p>\n<h3>modified_after</h3>\n<p>Filter resources to only show those that are modified on or after the given date.</p>\n<h3>modified_before</h3>\n<p>Filter resources to only show those that are modified on or after the given date.</p>\n<h3>content_group</h3>\n<p>Select items which are member of the given content group (or one of its children):</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">content_group=public</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>name</h3>\n<p>Find resources with a matching unique name. A wildcard can be defined, for example:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">name=page_*</span>\n</pre>\n</div>\n</div>\n<p>Searching on an empty name or just <code class=\"docutils literal notranslate\"><span class=\"pre\">*</span></code> will return all resources with a defined name. The given name will be trimmed and converted to lowercase before searching.</p>\n</div>\n<div class=\"section\">\n<h3>language</h3>\n<p>Find resources with a certain language. The language must be a valid ISO 639-1 language code. Search terms with invalid language codes are ignored.</p>\n<p>Find all resources with a German translation:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">language=de</span>\n</pre>\n</div>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Filter behaviour</h2>\n<p>All of the filters work as AND filter. The only exception to this is the <code class=\"docutils literal notranslate\"><span class=\"pre\">cat=</span></code> filter: if you specify multiple categories, those categories are “OR“‘ed together, to allow to search in multiple distinct categories with a single search query.</p>\n</div>\n<div class=\"section\"><a name=\"guide-query-resources\"></a>\n<h2>Query resources</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<ul class=\"last simple\">\n<li><a class=\"reference internal\" href=\"/id/doc_module_mod_search\"><span class=\"std std-ref\">mod_search</span></a> reference: Zotonic’s built-in search module.</li>\n<li><a class=\"reference external\" href=\"https://github.com/driebit/mod_elasticsearch\">mod_elasticsearch</a> on using Elasticsearch with Zotonic.</li>\n<li><a class=\"reference external\" href=\"https://github.com/arjan/mod_search_solr\">mod_search_solr</a> on using Solr for search.</li>\n</ul>\n</aside>\n<p>Query resources are, as the name implies, <a class=\"reference internal\" href=\"/id/doc_developerguide_resources#guide-datamodel-resources\"><span class=\"std std-ref\">Resources</span></a> of the special category <cite>query</cite>. In the admin this category is called “search query”. it is basically a stored (and thus content manageable) search query. You create an editable search query in an admin page that then is invoked from a template.</p>\n<p>When creating such a resource in the page, you will see on the admin edit page an extra text field in which you can add search terms. Each search term goes on its own line, and the possible search terms are equal to the ones described on this page (the <cite>Query-model arguments</cite>).</p>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "search",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/search.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_search",
+    "is_unfindable": false,
+    "is_published": true,
+    "summary": {
+      "_type": "trans",
+      "tr": {
+        "en": "Query arguments and terms for searching pages using the search APIs."
+      }
+    },
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:29Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "translation_status": {
+      "en": ""
+    },
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2026-09-29T13:38:31Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "search"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1638",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1638"
+  }
+}

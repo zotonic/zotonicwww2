@@ -1,0 +1,234 @@
+{
+  "depiction_url": "https://zotonic.com/image/2022/2/25/dsc00944.jpg%28800x800%29%28upscale%29%28qG2Fh3pjIj4BaD1axoicMAZi1kn6A8H9oW-_S1BUrGU%29.jpg",
+  "edges": {
+    "depiction": {
+      "objects": [
+        {
+          "created": "2022-03-25T17:34:44Z",
+          "object_id": {
+            "id": 2297,
+            "is_a": [
+              "media",
+              "image"
+            ],
+            "name": null,
+            "title": "DSC00944.jpeg",
+            "uri": "https://zotonic.com/id/2297"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 304,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "depiction",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Afbeelding",
+            "en": "Depiction"
+          }
+        },
+        "uri": "http://xmlns.com/foaf/0.1/depiction"
+      }
+    },
+    "haspart": {
+      "objects": [
+        {
+          "created": "2022-03-25T17:31:30Z",
+          "object_id": {
+            "id": 1530,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_reference_installation_requirements",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Installation requirements"
+              }
+            },
+            "uri": "https://zotonic.com/id/1530"
+          },
+          "seq": 1
+        },
+        {
+          "created": "2022-03-25T17:31:29Z",
+          "object_id": {
+            "id": 1526,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_getting_started",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Getting Started"
+              }
+            },
+            "uri": "https://zotonic.com/id/1526"
+          },
+          "seq": 2
+        },
+        {
+          "created": "2022-03-25T17:31:49Z",
+          "object_id": {
+            "id": 1643,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_releasenotes_index",
+            "title": "Release Notes",
+            "uri": "https://zotonic.com/id/1643"
+          },
+          "seq": 3
+        }
+      ],
+      "predicate": {
+        "id": 310,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "haspart",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Contains"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/hasPart"
+      }
+    }
+  },
+  "id": 2310,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/2310"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": null,
+  "page_url": {
+    "en": "https://zotonic.com/download",
+    "x-default": "https://zotonic.com/download"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 8,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Download Zotonic"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<h2>Get the latest release</h2>\n<aside>\n<p>The Git repository of Zotonic is at <a href=\"https://github.com/zotonic/zotonic\">https://github.com/zotonic/zotonic</a></p>\n</aside>\n<p><a href=\"https://github.com/zotonic/zotonic/releases\">Download the latest release </a>of Zotonic from Github. Use git clone, so that you can easily update later. Or clone our <a href=\"https://github.com/zotonic/zotonic_example\">example project</a> and start with ease.</p>\n<p>The latest release of Zotonic is release  1.0.0-rc.7.  <a href=\"http://zotonic.com/docs/latest/developer-guide/releasenotes/\">Read the release notes.</a></p>\n<p>For running Zotonic you need at least a recent version of Erlang, the <a href=\"http://www.imagemagick.org/script/binary-releases.php\">ImageMagick </a>tools and the PostgreSQL database installed. Check the <a href=\"/en/latest/developer-guide/getting-started.html\">installation guide </a>for detailed installation instructions.</p>\n<h2>Git repository</h2>\n<aside>\n<p>Get easily started with our example project at <a href=\"https://github.com/zotonic/zotonic_example\">https://github.com/zotonic/zotonic_example</a></p>\n</aside>\n<p>To run the latest-and-greatest development version of Zotonic, you can check out your own local copy of the Zotonic repository with:</p>\n<pre>    git clone git://github.com/zotonic/zotonic.git\n</pre>\n<p>This will make a complete copy of the &quot;master&quot; branch of the Zotonic repository. Github provides a nice browsable overview of <a href=\"https://github.com/zotonic/zotonic\">Zotonic&#39;s source code </a>and the change logs.</p>\n<p>Please check the <a href=\"/en/latest/developer-guide/getting-started.html#installation\">installation guide </a>for required third party software, build process and configuration.</p>\n<p>For bug/feature requests we use <a href=\"https://github.com/zotonic/zotonic/issues?sort=created&amp;direction=desc&amp;state=open\">Github&#39;s integrated issue tracker </a>. We use Google&#39;s servers for the  <a href=\"/support\">mailing lists </a>.</p>"
+      }
+    },
+    "slug": "download-zotonic",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-03-25T17:28:00Z",
+    "is_website_redirect": false,
+    "page_path": "/download",
+    "pivot_location_lng": null,
+    "name": null,
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2022-03-25T17:28:53Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "seo_noindex": false,
+    "modified": "2022-07-30T10:22:49Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "download-zotonic"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/2310",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/2310"
+  }
+}

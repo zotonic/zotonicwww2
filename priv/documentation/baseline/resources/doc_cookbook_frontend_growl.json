@@ -1,0 +1,217 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1296,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_base",
+            "title": "mod_base",
+            "uri": "https://zotonic.com/id/1296"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1372,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_lib",
+            "title": "lib",
+            "uri": "https://zotonic.com/id/1372"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1417,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_action"
+            ],
+            "name": "doc_template_action_action_growl",
+            "title": "growl",
+            "uri": "https://zotonic.com/id/1417"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1372,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_lib",
+            "title": "lib",
+            "uri": "https://zotonic.com/id/1372"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1416,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1416"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_growl",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1416/enabling-growl-notifications",
+    "x-default": "https://zotonic.com/cookbook/1416/enabling-growl-notifications"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_template_action_action_growl\"><span class=\"std std-ref\">growl</span></a>, <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_lib\"><span class=\"std std-ref\">lib</span></a></p>\n</aside>\n<p>Using growl outside admin requires some magic to make it work.</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>Growls provide an unobtrusive way of notifying users of background\nevents or the completion of tasks.  This guide provides step-by-step\ninstructions on how to enable it for your site.</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are expected to be familiar with template editing.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>Although the magic is quite simple. The missing pieces are a couple of\nclient side scripts, <code class=\"docutils literal notranslate\"><span class=\"pre\">/lib/js/modules/z.notice.js</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">/lib/css/z.growl.css</span></code> from <a class=\"reference internal\" href=\"/id/doc_module_mod_base\"><span class=\"std std-ref\">mod_base</span></a>.</p>\n<p>In your <code class=\"docutils literal notranslate\"><span class=\"pre\">base.tpl</span></code> template, include these files using the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_lib\"><span class=\"std std-ref\">lib</span></a> tag:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">lib</span> <span class=\"s2\">&quot;js/modules/z.notice.js&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>And the CSS:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">lib</span> <span class=\"s2\">&quot;css/z.growl.css&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>Now you should be able to use growl actions in your templates, example:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">button</span> <span class=\"nv\">action</span><span class=\"o\">={</span><span class=\"nv\">growl</span> <span class=\"nv\">text</span><span class=\"o\">=</span><span class=\"s2\">&quot;hello world&quot;</span><span class=\"o\">}</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:21Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-growl.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:21Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_frontend_growl",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:21Z",
+    "slug": "enabling-growl-notifications",
+    "title": "Enabling Growl Notifications",
+    "title_slug": "enabling-growl-notifications",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1416",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1416"
+  }
+}

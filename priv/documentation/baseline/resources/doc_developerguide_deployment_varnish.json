@@ -1,0 +1,108 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1990,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1990"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_deployment_varnish",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1990/using-varnish-as-frontend-for-zotonic",
+    "x-default": "https://zotonic.com/docs/1990/using-varnish-as-frontend-for-zotonic"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Using the <a class=\"reference external\" href=\"https://www.varnish-cache.org/\">Varnish HTTP frontend</a>,\nyou can speed up your Zotonic even more as this web server caches\nstatic files intelligently.</p>\n<p>Your Varnish <code class=\"docutils literal notranslate\"><span class=\"pre\">config.vcl</span></code> needs to define a <cite>backend</cite> for Zotonic:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>backend zotonic {\n  .host = &quot;127.0.0.1&quot;;\n  .port = &quot;8000&quot;;\n  .first_byte_timeout = 300s;\n  .connect_timeout = 300s;\n  .between_bytes_timeout = 300s;\n}\n</pre></div>\n</div>\n<p>Then, in <code class=\"docutils literal notranslate\"><span class=\"pre\">vcl_recv</span></code>, specify the Zotonic backend as the default backend:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>sub vcl_recv {\n  set req.http.X-Forwarded-Host = req.http.host;\n  set req.backend   = zotonic;\n\n  ...\n</pre></div>\n</div>\n<div class=\"section\">\n<h2>Full varnish example configuration file</h2>\n<p>Please see the <a class=\"reference external\" href=\"https://www.varnish-cache.org/docs\">Varnish documentation</a> for more information.</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>#\n# Varnish configuration for a Zotonic site\n#\n\nbackend zotonic_com {\n  .host = &quot;127.0.0.1&quot;;\n  .port = &quot;8000&quot;;\n  .first_byte_timeout = 300s;\n  .connect_timeout = 300s;\n  .between_bytes_timeout = 300s;\n}\n\nbackend nginx {\n  .host = &quot;127.0.0.1&quot;;\n  .port = &quot;8080&quot;;\n  .first_byte_timeout = 300s;\n  .connect_timeout = 300s;\n  .between_bytes_timeout = 300s;\n}\n\n\nsub vcl_recv {\n  set req.http.X-Forwarded-Host = req.http.host;\n\n  ######################################################################\n  ########################### VIRTUAL HOSTS ############################\n\n  if (req.http.host ~ &quot;^(www.|)(zotonic|example).(com|net)$&quot;) {\n    set req.backend   = zotonic_com;\n  }\n  # Nginx hosted sites\n  #\n  else {\n    set req.backend   = nginx;\n  }\n\n  ######################################################################\n\n  # Add a unique header containing the client address\n  unset req.http.X-Forwarded-For;\n  set   req.http.X-Forwarded-For = client.ip;\n\n  # We only deal with GET and HEAD by default\n  if (req.request != &quot;GET&quot; &amp;&amp; req.request != &quot;HEAD&quot;) {\n    return (pass);\n  }\n\n  # Cache the home page for a short period (ttl = 1 second, see vcl_fetch)\n  if (req.url ~ &quot;^/$&quot;) {\n    unset req.http.Cookie;\n    unset req.http.Authenticate;\n    set req.grace = 10s;\n    return (lookup);\n  }\n\n  # Cache served css and media files\n  if (req.url ~ &quot;^/(lib|image|media|favicon.ico)/&quot;) {\n    unset req.http.Cookie;\n    unset req.http.Authenticate;\n    set req.grace = 30m;\n    return (lookup);\n  }\n\n  return (pass);\n}\n\n\nsub vcl_pipe {\n    # Note that only the first request to the backend will have\n    # X-Forwarded-For set.  If you use X-Forwarded-For and want to\n    # have it set for all requests, make sure to have:\n    set req.http.connection = &quot;close&quot;;\n    return (pipe);\n}\n\n\nsub vcl_pass {\n  if (req.url ~ &quot;^/comet&quot;) {\n    #bereq.connect_timeout = 70;\n    #bereq.first_byte_timeout = 70;\n  }\n  return (pass);\n}\n\n\nsub vcl_fetch {\n  if (req.url ~ &quot;^/(lib|image|media|favicon.ico)/&quot;) {\n    unset beresp.http.Set-Cookie;\n    set beresp.grace = 30m;\n    set beresp.ttl = 10m;\n    return (deliver);\n  }\n  return (pass);\n}\n\nsub vcl_error {\n  if (obj.status == 503 &amp;&amp; req.restarts &lt; 4) {\n    restart;\n  }\n}\n\n\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Auto-starting Varnish on Mac OSX</h2>\n<p>To automatically start Varnish on Max OSX, add the following <code class=\"docutils literal notranslate\"><span class=\"pre\">plist</span></code> file to launchd.</p>\n<div class=\"highlight-xml notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>\n<span class=\"cp\">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>\n<span class=\"nt\">&lt;plist</span> <span class=\"na\">version=</span><span class=\"s\">&quot;1.0&quot;</span><span class=\"nt\">&gt;</span>\n<span class=\"nt\">&lt;dict&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>Disabled<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;false/&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>KeepAlive<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;false/&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>Debug<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;false/&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>Label<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;string&gt;</span>varnishd<span class=\"nt\">&lt;/string&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>OnDemand<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;false/&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>GroupName<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;string&gt;</span>wheel<span class=\"nt\">&lt;/string&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>UserName<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;string&gt;</span>root<span class=\"nt\">&lt;/string&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>ProgramArguments<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;array&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>/usr/local/sbin/varnishd<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>-F<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>-a<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>:80<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>-T<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>localhost:6082<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>-f<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>/usr/local/etc/varnish/varnish.zotonic.vcl<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>-s<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>malloc<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>-u<span class=\"nt\">&lt;/string&gt;</span>\n        <span class=\"nt\">&lt;string&gt;</span>nobody<span class=\"nt\">&lt;/string&gt;</span>\n    <span class=\"nt\">&lt;/array&gt;</span>\n    <span class=\"nt\">&lt;key&gt;</span>RunAtLoad<span class=\"nt\">&lt;/key&gt;</span>\n    <span class=\"nt\">&lt;false/&gt;</span>\n<span class=\"nt\">&lt;/dict&gt;</span>\n<span class=\"nt\">&lt;/plist&gt;</span>\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:48Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/varnish.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:38Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_deployment_varnish",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:38Z",
+    "slug": "using-varnish-as-frontend-for-zotonic",
+    "title": "Using Varnish as frontend for Zotonic",
+    "title_slug": "using-varnish-as-frontend-for-zotonic",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1990",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1990"
+  }
+}

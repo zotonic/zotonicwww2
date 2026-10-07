@@ -1,0 +1,190 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:08Z",
+          "object_id": {
+            "id": 1278,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_rsc",
+            "title": "rsc",
+            "uri": "https://zotonic.com/id/1278"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:08Z",
+          "object_id": {
+            "id": 1768,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_site",
+            "title": "site",
+            "uri": "https://zotonic.com/id/1768"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:08Z",
+          "object_id": {
+            "id": 1534,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "controller"
+            ],
+            "name": "doc_controller_controller_page",
+            "title": "controller_page",
+            "uri": "https://zotonic.com/id/1534"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:08Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1860,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1860"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_bestpractices_templates",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1860/template-best-practices-and-pitfalls",
+    "x-default": "https://zotonic.com/docs/1860/template-best-practices-and-pitfalls"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>This chapter lists some preferred solutions to common tasks and\npitfalls you may encounter while developing with templates.</p>\n<div class=\"section\">\n<h2>Variable Naming</h2>\n<p>Name your variables for what they represent.  If you are searching for\narticles, name the search result variable <code class=\"docutils literal notranslate\"><span class=\"pre\">article</span></code> to make things clear.</p>\n<p>In particular, if you are iterating over a list or other iterable\nvariable called images, then your item variable should be named <code class=\"docutils literal notranslate\"><span class=\"pre\">image</span></code>.\nThis makes generative templates easier to follow.</p>\n</div>\n<div class=\"section\">\n<h2>Use <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">m.rsc</span></code></h2>\n<p>For the most frequently used model <a class=\"reference internal\" href=\"/id/doc_model_model_rsc\"><span class=\"std std-ref\">m_rsc</span></a>, use a shortcut syntax:\nwrite <code class=\"docutils literal notranslate\"><span class=\"pre\">{{</span> <span class=\"pre\">id.title</span> <span class=\"pre\">}}</span></code> instead of <code class=\"docutils literal notranslate\"><span class=\"pre\">{{</span> <span class=\"pre\">m.rsc[id].title</span> <span class=\"pre\">}}</span></code>. So this:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">&lt;li&gt;</span>\n<span class=\"x\">  &lt;h3&gt;</span><span class=\"cp\">{{</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">id</span><span class=\"o\">]</span><span class=\"nv\">.title</span> <span class=\"cp\">}}</span><span class=\"x\">&lt;/h3&gt;</span>\n<span class=\"x\">  </span><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">image_id</span> <span class=\"k\">in</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">id</span><span class=\"o\">]</span><span class=\"nv\">.o.depiction</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">  &lt;figure&gt;</span>\n<span class=\"x\">      </span><span class=\"cp\">{%</span> <span class=\"k\">media</span> <span class=\"nv\">image_id</span> <span class=\"nv\">width</span><span class=\"o\">=</span><span class=\"m\">100</span> <span class=\"nv\">link</span><span class=\"o\">=</span><span class=\"nv\">id</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">      </span><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">image_id</span><span class=\"o\">]</span><span class=\"nv\">.summary</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">          &lt;p class=&quot;image-caption&quot;&gt;</span><span class=\"cp\">{{</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">image_id</span><span class=\"o\">]</span><span class=\"nv\">.summary</span> <span class=\"cp\">}}</span><span class=\"x\">&lt;/p&gt;</span>\n<span class=\"x\">      </span><span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">  &lt;/figure&gt;</span>\n<span class=\"x\">  </span><span class=\"cp\">{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;/li&gt;</span>\n</pre></div>\n</div>\n<p>becomes:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">&lt;li&gt;</span>\n<span class=\"x\">    &lt;h3&gt;</span><span class=\"cp\">{{</span> <span class=\"nv\">id.title</span> <span class=\"cp\">}}</span><span class=\"x\">&lt;/h3&gt;</span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">image_id</span> <span class=\"k\">in</span> <span class=\"nv\">id.o.depiction</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;figure&gt;</span>\n<span class=\"x\">      </span><span class=\"cp\">{%</span> <span class=\"k\">media</span> <span class=\"nv\">image_id</span> <span class=\"nv\">width</span><span class=\"o\">=</span><span class=\"m\">100</span> <span class=\"nv\">link</span><span class=\"o\">=</span><span class=\"nv\">id</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">      </span><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"nv\">image_id.summary</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">          &lt;p class=&quot;image-caption&quot;&gt;</span><span class=\"cp\">{{</span> <span class=\"nv\">image_id.summary</span> <span class=\"cp\">}}</span><span class=\"x\">&lt;/p&gt;</span>\n<span class=\"x\">      </span><span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;/figure&gt;</span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;/li&gt;</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Pitfalls</h2>\n<div class=\"section\">\n<h3>Using ‘m’ as a template variable blocks model access</h3>\n<p>Avoid using the name <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> for a variable.  It has a special meaning\nin templates for accessing models like <a class=\"reference internal\" href=\"/id/doc_model_model_site\"><span class=\"std std-ref\">m_site</span></a> and\n<a class=\"reference internal\" href=\"/id/doc_model_model_rsc\"><span class=\"std std-ref\">m_rsc</span></a> as <cite>m.site</cite> and <cite>m.rsc</cite>.  Effectively. all Erlang\nmodules with names starting with <cite>m_</cite> are made available in templates\nthrough the <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> variable.</p>\n<p>It is particularly important since using m as a variable name will\ndisable model module access for the entire scope within which that\nvariable is defined.  This can lead to very confusing template errors.</p>\n</div>\n<div class=\"section\">\n<h3>Using ‘id’ as a template variable blocks access to the current page</h3>\n<p>When rendering a page through <a class=\"reference internal\" href=\"/id/doc_controller_controller_page\"><span class=\"std std-ref\">controller_page</span></a>, Zotonic sets the\n<cite>id</cite> variable based on the <a class=\"reference internal\" href=\"/id/doc_glossary#term-resource\"><span class=\"xref std std-term\">resource</span></a> (page) being rendered.  It\nis also conventionally used by dispatch rules to supply the id of the\npage to render.</p>\n<p>Note, however, that there are legitmate cases for using id as a\ntemplate variable. It is a good idea to reuse another template to\nrender a section for one page and treating related content as the\n“current page” for that template by assigning id in a for loop or with\ncontext.  Using id otherwise will likely confuse other developers\ntrying to read your templates.</p>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:41Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/best-practices/templates.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:27Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_bestpractices_templates",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:27Z",
+    "slug": "template-best-practices-and-pitfalls",
+    "title": "Template Best Practices and Pitfalls",
+    "title_slug": "template-best-practices-and-pitfalls",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1860",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1860"
+  }
+}

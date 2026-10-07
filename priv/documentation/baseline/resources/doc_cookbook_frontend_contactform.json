@@ -1,0 +1,203 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:59Z",
+          "object_id": {
+            "id": 1327,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_scomp"
+            ],
+            "name": "doc_template_scomp_scomp_wire",
+            "title": "wire",
+            "uri": "https://zotonic.com/id/1327"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:59Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:59Z",
+          "object_id": {
+            "id": 1552,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_email",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "E-mail handling"
+              }
+            },
+            "uri": "https://zotonic.com/id/1552"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1582,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1582"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_contactform",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1582/implementing-a-simple-contact-form",
+    "x-default": "https://zotonic.com/cookbook/1582/implementing-a-simple-contact-form"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>This tutorial teaches you to create a form, validate it, submit it\nover Ajax and e-mail the results back to you.</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>Making a simple contact form might seem difficult, but with the smart\napplication of different Zotonic techniques you’ll see that it’s\nactually very easy.</p>\n<ol class=\"arabic simple\">\n<li>Create the contact page URL dispatcher and template</li>\n<li>Create the contact form</li>\n<li>Create the contact-form handler Erlang file.</li>\n</ol>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are assumed to be comfortable both in developing Zotonic\ntemplates and in writing Erlang modules.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>Create the contact page URL dispatcher and template</p>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">Your actual site location might be different, see the <a class=\"reference internal\" href=\"/id/doc_glossary#term-zotonic-user-directory\"><span class=\"xref std std-term\">Zotonic user directory</span></a>.</p>\n</aside>\n<p>The URL dispatcher is placed in <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/yoursite/priv/dispatch/dispatch</span></code>. Add this line:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">contact_url</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"s\">&quot;contact&quot;</span><span class=\"p\">],</span> <span class=\"n\">controller_template</span><span class=\"p\">,</span> <span class=\"p\">[</span> <span class=\"p\">{</span><span class=\"n\">template</span><span class=\"p\">,</span> <span class=\"s\">&quot;contact.tpl&quot;</span><span class=\"p\">}</span> <span class=\"p\">]},</span>\n</pre></div>\n</div>\n<p>This says that the page at “/contact” will use the “contact.tpl” template. Let’s create this template, at <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/yoursite/priv/templates/contact.tpl</span></code>:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"s2\">&quot;base.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">content</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;h1&gt;Contact page&lt;/h1&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>Now we have this, let’s try to see if it loads. Flush the Zotonic\ncache (to refresh the URL dispatchers) by going to “modules” -&gt;\n“rescan modules” in the admin. Now, point your browser to\n<a class=\"reference external\" href=\"http://yoursite:8000/contact\">http://yoursite:8000/contact</a>. This should show the contact page with the\ntemplate you just made.</p>\n<div class=\"section\">\n<h3>Create the contact form</h3>\n<p>Now you should write the acual contact form. You should decide what\nfields you want in the form, so for now, just put a name, e-mail and\ncomment field:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">wire</span> <span class=\"nv\">id</span><span class=\"o\">=</span><span class=\"s2\">&quot;contact-form&quot;</span> <span class=\"nv\">type</span><span class=\"o\">=</span><span class=\"s2\">&quot;submit&quot;</span> <span class=\"nv\">postback</span><span class=\"o\">={</span><span class=\"nv\">contact</span><span class=\"o\">}</span> <span class=\"nv\">delegate</span><span class=\"o\">=</span><span class=\"s2\">&quot;my_contactform&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;form id=&quot;contact-form&quot; method=&quot;post&quot; action=&quot;postback&quot;&gt;</span>\n\n<span class=\"x\">  &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;</span>\n<span class=\"x\">  &lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;name&quot; /&gt;</span>\n\n<span class=\"x\">  &lt;label for=&quot;email&quot;&gt;E-mail&lt;/label&gt;</span>\n<span class=\"x\">  &lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot; /&gt;</span>\n<span class=\"x\">  </span><span class=\"cp\">{%</span> <span class=\"k\">validate</span> <span class=\"nv\">id</span><span class=\"o\">=</span><span class=\"s2\">&quot;mail&quot;</span> <span class=\"nv\">type</span><span class=\"o\">={</span><span class=\"nv\">presence</span><span class=\"o\">}</span> <span class=\"nv\">type</span><span class=\"o\">={</span><span class=\"nv\">email</span><span class=\"o\">}</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"x\">  &lt;label for=&quot;message&quot;&gt;Message&lt;/label&gt;</span>\n<span class=\"x\">  &lt;textarea name=&quot;message&quot; id=&quot;message&quot; cols=&quot;60&quot; rows=&quot;8&quot;&gt;&lt;/textarea&gt;</span>\n<span class=\"x\">  </span><span class=\"cp\">{%</span> <span class=\"k\">validate</span> <span class=\"nv\">id</span><span class=\"o\">=</span><span class=\"s2\">&quot;message&quot;</span> <span class=\"nv\">type</span><span class=\"o\">={</span><span class=\"nv\">presence</span><span class=\"o\">}</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"x\">  &lt;input type=&quot;submit&quot; value=&quot;Send&quot; /&gt;</span>\n<span class=\"x\">&lt;/form&gt;</span>\n</pre></div>\n</div>\n<p>This form has 3 fields, of which the message and the e-mail are required, and the e-mail input has to contain a valid e-mail address. The name field is optional.</p>\n</div>\n<div class=\"section\">\n<h3>Create the contact-form handler Erlang file</h3>\n<p>As you see in the <a class=\"reference internal\" href=\"/id/doc_template_scomp_scomp_wire#scomp-wire\"><span class=\"std std-ref\">wire</span></a> statement in the contact form, the\n<cite>delegate</cite> argument is set to <code class=\"docutils literal notranslate\"><span class=\"pre\">my_contactform</span></code>, which is\nthe name of an erlang module which we still have to create. When the\nform submits, this module’s event/2 function gets called. Create a\nfile <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/yoursite/src/support/my_contactform.erl</span></code>\nwith the following contents:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">my_contactform</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">event</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">]).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;zotonic_core/include/zotonic.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"nf\">event</span><span class=\"p\">(</span><span class=\"nl\">#submit</span><span class=\"p\">{</span><span class=\"n\">message</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"n\">contact</span><span class=\"p\">,</span> <span class=\"p\">[]}},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n  <span class=\"o\">?</span><span class=\"nv\">DEBUG</span><span class=\"p\">(</span><span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">get_q_all</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">)),</span>\n  <span class=\"nv\">Context</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n<p>This is the most simple version of a Zotonic form-handling function:\nit just dumps all form input it gets to the Zotonic console (using the\n?DEBUG macro). To compile this Erlang module, enter the following on\nthe zotonic console:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z</span><span class=\"p\">:</span><span class=\"nf\">m</span><span class=\"p\">().</span>\n</pre></div>\n</div>\n<p>You’ll see a notice that the file is recompiled, which should end with\na <code class=\"docutils literal notranslate\"><span class=\"pre\">ok</span></code> message to indicate the success. This compiling is actually\nvery important: Whenever you change the .erl file, you’ll need to\nrecompile it using this command.</p>\n</div>\n<div class=\"section\">\n<h3>E-mail the contents of the contact form to somebody</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_email#send-email\"><span class=\"std std-ref\">Sending E-mail</span></a></p>\n</aside>\n<p>Using Zotonic’s email module, you can very easily send somebody an\ne-mail. Let’s create a simple template to send the contents of the\nform to the site administrator.</p>\n<p>Create the file <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/yoursite/priv/templates/_email_contact.tpl</span></code>:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">&lt;html&gt;</span>\n<span class=\"x\">  &lt;head&gt;</span>\n<span class=\"x\">    &lt;title&gt;Contact form&lt;/title&gt;</span>\n<span class=\"x\">  &lt;/head&gt;</span>\n<span class=\"x\">  &lt;body&gt;</span>\n<span class=\"x\">    &lt;p&gt;Hello, the contact form of the site has been submitted.&lt;/p&gt;</span>\n<span class=\"x\">    &lt;p&gt;Name: </span><span class=\"cp\">{{</span> <span class=\"nv\">name</span><span class=\"o\">|</span><span class=\"nf\">escape</span> <span class=\"cp\">}}</span><span class=\"x\">&lt;/p&gt;</span>\n<span class=\"x\">    &lt;p&gt;E-mail: </span><span class=\"cp\">{{</span> <span class=\"nv\">mail</span><span class=\"o\">|</span><span class=\"nf\">escape</span> <span class=\"cp\">}}</span><span class=\"x\">&lt;/p&gt;</span>\n<span class=\"x\">    &lt;p&gt;The contents of the message was this:&lt;/p&gt;</span>\n<span class=\"x\">    &lt;pre&gt;</span><span class=\"cp\">{{</span> <span class=\"nv\">message</span><span class=\"o\">|</span><span class=\"nf\">escape</span> <span class=\"cp\">}}</span><span class=\"x\">&lt;/pre&gt;</span>\n<span class=\"x\">    &lt;p&gt;Regards, your website.&lt;/p&gt;</span>\n<span class=\"x\">  &lt;/body&gt;</span>\n<span class=\"x\">&lt;/html&gt;</span>\n</pre></div>\n</div>\n<p>This template will function as the message body that will be\nsent. Note: this template gets scanned for the &lt;title&gt; tag, which will\ndouble as the e-mail’s subject, so be sure to include it!</p>\n<p>Now we have to change our <code class=\"docutils literal notranslate\"><span class=\"pre\">event/2</span></code> function to render this template and\ne-mail it using mod_emailer. Change the event function to the\nfollowing:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nf\">event</span><span class=\"p\">(</span><span class=\"nl\">#submit</span><span class=\"p\">{</span><span class=\"n\">message</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"n\">contact</span><span class=\"p\">,</span> <span class=\"p\">[]}},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n  <span class=\"nv\">Vars</span> <span class=\"o\">=</span> <span class=\"p\">[{</span><span class=\"n\">mail</span><span class=\"p\">,</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">get_q</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;mail&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)},</span>\n          <span class=\"p\">{</span><span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">get_q</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;name&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)},</span>\n          <span class=\"p\">{</span><span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">get_q</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;message&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)}],</span>\n  <span class=\"nn\">z_email</span><span class=\"p\">:</span><span class=\"nf\">send_render</span><span class=\"p\">(</span><span class=\"nn\">z_email</span><span class=\"p\">:</span><span class=\"nf\">get_admin_email</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">),</span> <span class=\"s\">&quot;_email_contact.tpl&quot;</span><span class=\"p\">,</span> <span class=\"nv\">Vars</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">),</span>\n  <span class=\"nn\">z_render</span><span class=\"p\">:</span><span class=\"nf\">update</span><span class=\"p\">(</span>\n      <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;contact-form&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span>\n      <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;&lt;p&gt;The form has been submitted! Thank you, we&#39;ll get in touch soon.&lt;/p&gt;&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span>\n      <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>This loads the relevant values from the form, puts them in the Vars\nvariable, and then calls the z_email module to mail the given template\nto the e-mail address of the site admin (which is defined in your\nsite’s config file). For more information on sending mails from\nZotonic, please see the mod_emailer documentation.</p>\n<p>Finally, this contact-form handler replaces the contact form with a\n<code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;p&gt;</span></code> tag with a success message, using the <code class=\"docutils literal notranslate\"><span class=\"pre\">z_render:update</span></code>\nfunction.</p>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-contactform.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:22Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_frontend_contactform",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:22Z",
+    "slug": "implementing-a-simple-contact-form",
+    "title": "Implementing a simple contact form",
+    "title_slug": "implementing-a-simple-contact-form",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1582",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1582"
+  }
+}

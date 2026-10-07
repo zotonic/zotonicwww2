@@ -1,0 +1,149 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:50Z",
+          "object_id": {
+            "id": 1881,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "controller"
+            ],
+            "name": "doc_controller_controller_http_error",
+            "title": "controller_http_error",
+            "uri": "https://zotonic.com/id/1881"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1581,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1581"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_error_pages",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1581/how-to-customise-error-pages",
+    "x-default": "https://zotonic.com/cookbook/1581/how-to-customise-error-pages"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<div class=\"section\">\n<h2>Specific error pages</h2>\n<p>Zotonic’s <a class=\"reference internal\" href=\"/id/doc_controller_controller_http_error\"><span class=\"std std-ref\">controller_http_error</span></a> first tries to find an error page\ntemplate that is specific for the HTTP status code, named\n<code class=\"file docutils literal notranslate\"><span class=\"pre\">templates/error.</span><em><span class=\"pre\">status_code</span></em><span class=\"pre\">.tpl</span></code>. So, to override the 404 template,\ncreate a file <code class=\"file docutils literal notranslate\"><span class=\"pre\">templates/error.404.tpl</span></code>.</p>\n</div>\n<div class=\"section\">\n<h2>Generic error page</h2>\n<p>If no specific error page template exists, Zotonic falls back to the generic\n<code class=\"file docutils literal notranslate\"><span class=\"pre\">templates/error.tpl</span></code>.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/error-pages.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:36Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_error_pages",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:36Z",
+    "slug": "how-to-customise-error-pages",
+    "title": "How to customise error pages",
+    "title_slug": "how-to-customise-error-pages",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1581",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1581"
+  }
+}

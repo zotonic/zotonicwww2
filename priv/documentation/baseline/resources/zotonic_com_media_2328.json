@@ -1,0 +1,228 @@
+{
+  "depiction_url": "https://zotonic.com/image/2022/9/20/dsc07845.jpg%28800x800%29%28upscale%29%28UXyHlE1iwy-1kuj937uiG-9fckzZB20TzWa7dV3TqAU%29.jpg",
+  "edges": {},
+  "id": 2328,
+  "is_a": [
+    "media",
+    "image"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/2328"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": {
+    "created": "2022-09-20T12:48:59Z",
+    "digest": null,
+    "exif": {
+      "contrast": "Normal",
+      "date_time_original": "2019:07:11 11:25:02",
+      "custom_rendered": "Normal process",
+      "orientation": "Top-left",
+      "exposure_mode": "Auto exposure",
+      "sharpness": "Normal",
+      "file_source": "DSC",
+      "make": "SONY",
+      "model": "ILCE-6300",
+      "software": "Photos 4.0",
+      "saturation": "Normal",
+      "flashpix_version": "FlashPix Version 1.0",
+      "pixel_x_dimension": 6000,
+      "focal_length": {
+        "_type": "ratio",
+        "denominator": 1,
+        "numerator": 70
+      },
+      "date_time": "2019:07:11 11:25:02",
+      "flash": 16,
+      "brightness_value": {
+        "_type": "ratio",
+        "denominator": 10375,
+        "numerator": 110129
+      },
+      "metering_mode": 5,
+      "exposure_time": {
+        "_type": "ratio",
+        "denominator": 400,
+        "numerator": 1
+      },
+      "scene_type": 1,
+      "pixel_y_dimension": 4000,
+      "f_number": {
+        "_type": "ratio",
+        "denominator": 1,
+        "numerator": 8
+      },
+      "digital_zoom_ratio": {
+        "_type": "ratio",
+        "denominator": 1,
+        "numerator": 1
+      },
+      "light_source": 0,
+      "date_time_digitized": "2019:07:11 11:25:02",
+      "compressed_bits_per_pixel": {
+        "_type": "ratio",
+        "denominator": 1,
+        "numerator": 8
+      },
+      "focal_length_in_35mm_film": 105,
+      "x_resolution": {
+        "_type": "ratio",
+        "denominator": 1,
+        "numerator": 72
+      },
+      "white_balance": "Auto white balance",
+      "exposure_program": 2,
+      "photometric_interpretation": 32803,
+      "exposure_bias_value": {
+        "_type": "ratio",
+        "denominator": 10,
+        "numerator": -3
+      },
+      "y_resolution": {
+        "_type": "ratio",
+        "denominator": 1,
+        "numerator": 72
+      },
+      "components_configuration": [
+        1,
+        2,
+        3,
+        0
+      ],
+      "scene_capture_type": "Standard",
+      "max_aperture_value": {
+        "_type": "ratio",
+        "denominator": 1,
+        "numerator": 4
+      },
+      "exif_version": "Unknown Exif Version",
+      "iso_speed_ratings": 100
+    },
+    "filename": "2022/9/20/dsc07845.jpg",
+    "frame_count": null,
+    "height": 4000,
+    "id": 2328,
+    "is_av_scanned": true,
+    "is_deletable_file": true,
+    "is_deletable_preview": false,
+    "mime": "image/jpeg",
+    "orientation": 1,
+    "original_filename": "DSC07845.jpeg",
+    "preview_filename": null,
+    "preview_height": 0,
+    "preview_width": 0,
+    "rootname": "dsc07845",
+    "size": 3545685,
+    "width": 6000
+  },
+  "medium_url": "https://zotonic.com/media/attachment/id/2328",
+  "name": null,
+  "page_url": {
+    "en": "https://zotonic.com/page/2328/dsc07845.jpeg",
+    "x-default": "https://zotonic.com/page/2328/dsc07845.jpeg"
+  },
+  "preview_url": "https://zotonic.com/image/2022/9/20/dsc07845.jpg%28800x800%29%28upscale%29%28UXyHlE1iwy-1kuj937uiG-9fckzZB20TzWa7dV3TqAU%29.jpg",
+  "resource": {
+    "category_id": {
+      "id": 111,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "image",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "nl": "Afbeelding",
+          "en": "Image"
+        }
+      },
+      "uri": "http://purl.org/dc/dcmitype/StillImage"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2022-09-20T12:48:59Z",
+    "creator_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "date_end": "2019-07-11T11:25:02Z",
+    "date_start": "2019-07-11T11:25:02Z",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "medium_edit_settings": {},
+    "modified": "2022-09-20T12:48:59Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "name": null,
+    "org_pubdate": "2019-07-11T11:25:02Z",
+    "original_filename": "DSC07845.jpeg",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-09-20T12:48:59Z",
+    "slug": "dsc07845.jpeg",
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "DSC07845.jpeg"
+      }
+    },
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "dsc07845.jpeg"
+      }
+    },
+    "tz": "UTC",
+    "uri": null,
+    "version": 1,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/2328",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/2328"
+  }
+}

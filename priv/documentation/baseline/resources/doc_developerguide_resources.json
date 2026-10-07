@@ -1,0 +1,323 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:15Z",
+          "object_id": {
+            "id": 1277,
+            "is_a": [
+              "text",
+              "documentation",
+              "userguide"
+            ],
+            "name": "doc_userguide_datamodel",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "The Zotonic data model"
+              }
+            },
+            "uri": "https://zotonic.com/id/1277"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:15Z",
+          "object_id": {
+            "id": 1278,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_rsc",
+            "title": "rsc",
+            "uri": "https://zotonic.com/id/1278"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:15Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1280,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_media",
+            "title": "Media",
+            "uri": "https://zotonic.com/id/1280"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1281,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_custom_pivot",
+            "title": "Custom pivots",
+            "uri": "https://zotonic.com/id/1281"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1282,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_pivot_templates",
+            "title": "Pivot Templates",
+            "uri": "https://zotonic.com/id/1282"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1283,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_category",
+            "title": "category",
+            "uri": "https://zotonic.com/id/1283"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1284,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_media",
+            "title": "media",
+            "uri": "https://zotonic.com/id/1284"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1278,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_rsc",
+            "title": "rsc",
+            "uri": "https://zotonic.com/id/1278"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1285,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_identity",
+            "title": "identity",
+            "uri": "https://zotonic.com/id/1285"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1286,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_rsc_gone",
+            "title": "rsc_gone",
+            "uri": "https://zotonic.com/id/1286"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1276,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1276"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_resources",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1276/resources",
+    "x-default": "https://zotonic.com/docs/1276/resources"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Resources are Zotonic’s main data unit. You may want to familiarise yourself\nwith the Zotonic <a class=\"reference internal\" href=\"/id/doc_userguide_datamodel#guide-datamodel\"><span class=\"std std-ref\">data model</span></a> in the User Guide.</p>\n<div class=\"section\">\n<h2>Resource properties</h2>\n<p>Resources are very flexible data units: they can have any property\nthat the developer needs them to have. However, by default, Zotonic’s\nadmin is designed to edit a common set of properties. The\n<a class=\"reference internal\" href=\"/id/doc_model_model_rsc\"><span class=\"std std-ref\">m_rsc model</span></a> is used to edit resources and display them in\ntemplates.</p>\n</div>\n<div class=\"section\">\n<a name=\"id1\"></a><h2>Categories</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_model_model_category\"><span class=\"std std-ref\">m_category</span></a> model reference</p>\n</aside>\n<p>Every resource belongs to a single category.</p>\n<p>There is no real distinction between rsc records that are a person, a\nnews item, a video or something else. The only difference is the\n<em>category</em> of the rsc record, which can easily be changed. Even\ncategories and predicates themselves are represented as rsc records\nand can, subsequently, have their own page on the web site.</p>\n<p>Categories are organized in a hierarchical fashion, and used to\norganize the resources into meaningful groups. Zotonic has a standard\nset of categories (see <a class=\"reference internal\" href=\"/id/doc_userguide_datamodel#guide-datamodel\"><span class=\"std std-ref\">The Zotonic data model</span></a>), but it is\nvery usual to define your own in your own site, resulting in a custom\n<a class=\"reference internal\" href=\"/id/doc_glossary#term-domain-model\"><span class=\"xref std std-term\">domain model</span></a>.</p>\n<p>In the database, categories are stored in an extra metadata table,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">category</span></code>, which defines the hierarchy of categories using the\n<a class=\"reference external\" href=\"http://en.wikipedia.org/wiki/Nested_set_model\">Nested Set model</a>. The tree is\nstrictly hierarchical: Every category has at most a single parent\ncategory, and every resource belongs to exactly one category.  That a\nresource can’t belong to more than a single category is done to\nmaintain the datamodel’s simplicity and speed of the searches in the\nsystem.</p>\n<p>Since in Zotonic, <cite>everything is a resource</cite>, categories <cite>themselves</cite>\nare also resources, namely, resources of the category <cite>category</cite>. This\nallows the category to be titled and described, just like other\nresources. The category table only describes the nested hierarchy of\nthe categories. All other properties of a category are defined by its\nrsc record.</p>\n</div>\n<div class=\"section\">\n<h2>Medium</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_model_model_media\"><span class=\"std std-ref\">m_media</span></a></p>\n</aside>\n<p>Medium management is described in full in <a class=\"reference internal\" href=\"/id/doc_developerguide_media#guide-media\"><span class=\"std std-ref\">Media</span></a>. Media\nmetadata is stored in a separate table, called <code class=\"docutils literal notranslate\"><span class=\"pre\">medium</span></code>, since one\nmedia is a medium. When a resource contains a medium, this table holds\na record describing it. Amongst others, it stores its mime type,\nwidth, height and file size.</p>\n<p>Besides the <code class=\"docutils literal notranslate\"><span class=\"pre\">medium</span></code> table, a <code class=\"docutils literal notranslate\"><span class=\"pre\">medium_deleted</span></code> table exists. When\na medium is deleted then any files referenced by that medium will be\nadded to this table. Zotonic periodically checks this table to delete\nfiles that are no longer referenced by any media.</p>\n</div>\n<div class=\"section\">\n<h2>Blocks</h2>\n<p>Blocks are a specific feature in a resource. The <code class=\"docutils literal notranslate\"><span class=\"pre\">blocks</span></code> property\nof a resource is a list of blocks which can be dynamically added and\nremoved from the resource in the admin edit page. Each module can\ndefine their own blocks, which consist of an edit template and a view\ntemplate.</p>\n<p>The survey module uses the blocks feature to allow you to dynamically\ncreate a list of questions which a user has to answer.</p>\n<aside class=\"admonition-todo admonition\">\n<p class=\"first admonition-title\">Todo</p>\n<p class=\"last\">Fix blocks documentation</p>\n</aside>\n</div>\n<div class=\"section\">\n<h2>Manipulating resources</h2>\n<div class=\"section\">\n<h3>How resources are stored</h3>\n<p>Each <a class=\"reference internal\" href=\"/id/doc_glossary#term-resource\"><span class=\"xref std std-term\">resource</span></a> on a site is stored in the <code class=\"docutils literal notranslate\"><span class=\"pre\">rsc</span></code> database table. The\nresource’s properties are stored in two ways.</p>\n<ul class=\"simple\">\n<li>The <em>core properties</em> are persisted in separate columns. They include id, name,\ncategory, modification date, path, publication period. These properties are\nused for searching, filtering and sorting resources. As they can have unique\nor foreign key constraints, they help in preserving data sanity.</li>\n<li>All <em>other properties</em> are serialized together into one binary blob column\nnamed <code class=\"docutils literal notranslate\"><span class=\"pre\">props</span></code>. This includes any custom properties that you set on the\nresource. These serialized properties cannot be used for finding or sorting\ndata, but only for later retrieval.</li>\n</ul>\n<p>Storing properties in a serialized form is a flexible approach. You can save any\nproperty on a resource without having to make changes to your database schema.</p>\n</div>\n<div class=\"section\">\n<h3>Changing resources</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_model_model_rsc\"><span class=\"std std-ref\">m_rsc model reference</span></a></p>\n</aside>\n<p>Imagine you wish to store whether resources are liked by users. No need to\nchange the database schema, define the property or whatsoever. Just update the\nresource and set a custom <code class=\"docutils literal notranslate\"><span class=\"pre\">is_liked</span></code> property (using <a class=\"reference internal\" href=\"/id/doc_model_model_rsc\"><span class=\"std std-ref\">m_rsc</span></a>):</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">m_rsc</span><span class=\"p\">:</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"mi\">123</span><span class=\"p\">,</span> <span class=\"p\">#{</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;is_liked&quot;</span><span class=\"o\">&gt;&gt;</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span> <span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">is_liked=true</span></code> will now be stored in the database for resource <code class=\"docutils literal notranslate\"><span class=\"pre\">123</span></code>, so\nyou can retrieve it like you would any other property:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"o\">?</span><span class=\"nv\">DEBUG</span><span class=\"p\">(</span><span class=\"nn\">m_rsc</span><span class=\"p\">:</span><span class=\"nf\">p</span><span class=\"p\">(</span><span class=\"mi\">123</span><span class=\"p\">,</span> <span class=\"n\">is_liked</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)).</span>\n<span class=\"c\">%% prints: true</span>\n</pre></div>\n</div>\n<p>Or, in a template:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{{</span> <span class=\"nv\">id.is_liked</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n\n<span class=\"x\">which is equivalent to:</span>\n\n<span class=\"cp\">{{</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">id</span><span class=\"o\">]</span><span class=\"nv\">.is_liked</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>To remove the property, just store it as <code class=\"docutils literal notranslate\"><span class=\"pre\">undefined</span></code>:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">m_rsc</span><span class=\"p\">:</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"mi\">123</span><span class=\"p\">,</span> <span class=\"p\">#{</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;is_liked&quot;</span><span class=\"o\">&gt;&gt;</span> <span class=\"o\">=&gt;</span> <span class=\"n\">undefined</span> <span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>This flexible approach is fine for custom properties that you only want to\nretrieve and display. However, if you need to <em>find</em> all liked resources, you\nneed to define <code class=\"docutils literal notranslate\"><span class=\"pre\">is_liked</span></code> as a pivot column (see below).</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Pivots</h2>\n<div class=\"section\">\n<h3>Pivot columns</h3>\n<p>If you want to <em>filter</em> or <em>sort</em> on any custom defined property, you need to store\nthat property in a separate database column using a\n<a class=\"reference internal\" href=\"/id/doc_cookbook_custom_pivot#cookbook-custom-pivots\"><span class=\"std std-ref\">custom pivot</span></a>. If you want to <em>find</em> resources\nbased on text values in custom properties, you can change the texts that are\npivoted with <a class=\"reference internal\" href=\"/id/doc_cookbook_pivot_templates#cookbook-pivot-templates\"><span class=\"std std-ref\">pivot templates</span></a>.</p>\n</div>\n<div class=\"section\">\n<h3>The pivot queue</h3>\n<p>When the version number or modification date of a resource is updated\nthen its id is added to the <cite>pivot queue</cite>. Zotonic has a pivot process\nrunning in the background which looks at this queue and for each\nqueued resource, extract all texts and some other information from the\nrecord, filling the pivot columns of the rsc record. The pivot columns\nare used for searching, they contain amongst others the full text\nindex.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">rsc_pivot_queue</span></code> table is used to hold the queue of resource\nids that are waiting to be pivoted.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">pivot_task_queue</span></code> holds a second queue for more generic task\nprocessing: it holds references to functions which need to be called\nin the background.</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Identities</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_model_model_identity\"><span class=\"std std-ref\">m_identity</span></a>.</p>\n</aside>\n<p>An rsc record can become a user by adding the user’s credentials to\nthis table. A single user can have multiple kinds of credentials,\nthink of his/her username, openid uri etc. A user isn’t necessarily a\nperson.</p>\n</div>\n<div class=\"section\">\n<h2>Deleted resources</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_model_model_rsc_gone\"><span class=\"std std-ref\">m_rsc_gone</span></a>.</p>\n</aside>\n<p>Whenever a resource is deleted, an entry is added to the <code class=\"docutils literal notranslate\"><span class=\"pre\">rsc_gone</span></code>\ntable.  The page and id controllers will serve a <em>410 Gone</em> when a\ndeleted resource is requested.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:15Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/resources.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:42Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_resources",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:42Z",
+    "slug": "resources",
+    "title": "Resources",
+    "title_slug": "resources",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1276",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1276"
+  }
+}

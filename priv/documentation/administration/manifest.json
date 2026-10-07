@@ -1,0 +1,1885 @@
+{
+  "format": "zotonic-documentation-v2",
+  "language": "en",
+  "target_site": "https://zotonic.com",
+  "root": "admin_guide",
+  "resources": [
+    {
+      "name": "admin_guide",
+      "title": "Site administration",
+      "summary": "Manage access, configure services, and keep Zotonic sites running.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": null,
+      "order": 0,
+      "required_modules": [],
+      "file": "index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "site_administrator",
+        "site_management"
+      ]
+    },
+    {
+      "name": "admin_collection_people",
+      "title": "People and permissions",
+      "summary": "Give people the access they need and review it when responsibilities change.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_guide",
+      "order": 1,
+      "required_modules": [],
+      "file": "01-people-and-permissions/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "site_administrator",
+        "identity_and_accounts",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "admin_collection_settings",
+      "title": "Site settings and modules",
+      "summary": "Enable features, languages, and appropriate upload limits.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_guide",
+      "order": 2,
+      "required_modules": [],
+      "file": "02-site-settings-and-modules/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "site_administrator",
+        "site_management",
+        "configuration"
+      ]
+    },
+    {
+      "name": "admin_collection_deployment",
+      "title": "Installation and deployment",
+      "summary": "Prepare an environment and deploy a release with a recovery plan.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_guide",
+      "order": 3,
+      "required_modules": [],
+      "file": "03-installation-and-deployment/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "site_management",
+        "configuration",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_collection_services",
+      "title": "Configuration and services",
+      "summary": "Manage hostnames, HTTPS, email, storage, and database connections.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_guide",
+      "order": 4,
+      "required_modules": [],
+      "file": "04-configuration-and-services/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "configuration"
+      ]
+    },
+    {
+      "name": "admin_collection_backups",
+      "title": "Backups and recovery",
+      "summary": "Make recoverable backups and practise restoring a complete site.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_guide",
+      "order": 5,
+      "required_modules": [],
+      "file": "05-backups-and-recovery/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "backup_and_restore",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_collection_maintenance",
+      "title": "Updates and maintenance",
+      "summary": "Update code and dependencies while protecting site data.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_guide",
+      "order": 6,
+      "required_modules": [],
+      "file": "06-updates-and-maintenance/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "site_management",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_collection_monitoring",
+      "title": "Monitoring and troubleshooting",
+      "summary": "Check user-facing health, diagnose failures, and hand over useful evidence.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_guide",
+      "order": 7,
+      "required_modules": [],
+      "file": "07-monitoring-and-troubleshooting/index.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "operator",
+        "logging_and_monitoring",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_assign_access",
+      "title": "Assign user groups and check access",
+      "summary": "Give an account the permissions required for its work.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_people",
+      "order": 2,
+      "required_modules": [
+        "mod_acl_user_groups"
+      ],
+      "file": "01-people-and-permissions/assign-access.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "site_administrator",
+        "identity_and_accounts",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "admin_access_rules",
+      "title": "Test and publish access rules",
+      "summary": "Check a rule change before it affects everyone.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_people",
+      "order": 3,
+      "required_modules": [
+        "mod_acl_user_groups"
+      ],
+      "file": "01-people-and-permissions/access-rules.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "site_administrator",
+        "authorization_and_access_control",
+        "validate",
+        "security"
+      ]
+    },
+    {
+      "name": "admin_remove_access",
+      "title": "Remove access when someone leaves",
+      "summary": "Remove login methods and permissions without deleting their authored content.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_people",
+      "order": 4,
+      "required_modules": [],
+      "file": "01-people-and-permissions/remove-access.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "site_administrator",
+        "identity_and_accounts",
+        "authentication",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "admin_review_access",
+      "title": "Review accounts and shared responsibilities",
+      "summary": "Find obsolete access and verify who can administer the site.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_people",
+      "order": 5,
+      "required_modules": [],
+      "file": "01-people-and-permissions/review-access.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "site_administrator",
+        "identity_and_accounts",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "admin_admin_scopes",
+      "title": "Choose the site admin or the status site",
+      "summary": "Use the right management surface and account.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_settings",
+      "order": 1,
+      "required_modules": [],
+      "file": "02-site-settings-and-modules/admin-scopes.md",
+      "zotonic_keywords": [
+        "explanation",
+        "site_administrator",
+        "site_management",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "admin_enable_modules",
+      "title": "Enable or disable a site feature",
+      "summary": "Change module activation and verify the affected workflow.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_settings",
+      "order": 2,
+      "required_modules": [],
+      "file": "02-site-settings-and-modules/enable-modules.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "site_administrator",
+        "module_management",
+        "configure"
+      ]
+    },
+    {
+      "name": "admin_enable_languages",
+      "title": "Add a language and choose its availability",
+      "summary": "Prepare translations before making a language visible to visitors.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_settings",
+      "order": 3,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "02-site-settings-and-modules/enable-languages.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "site_administrator",
+        "localization_and_translation",
+        "configure"
+      ]
+    },
+    {
+      "name": "admin_upload_policy",
+      "title": "Set upload sizes and allowed file types",
+      "summary": "Adjust group upload limits and test with an ordinary account.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_settings",
+      "order": 4,
+      "required_modules": [
+        "mod_acl_user_groups"
+      ],
+      "file": "02-site-settings-and-modules/upload-policy.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "site_administrator",
+        "file_uploads",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "admin_prepare_environment",
+      "title": "Prepare an acceptance or production environment",
+      "summary": "Separate environments and record how the site is operated.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_deployment",
+      "order": 2,
+      "required_modules": [],
+      "file": "03-installation-and-deployment/prepare-environment.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "site_management",
+        "configuration",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_deploy_release",
+      "title": "Deploy and verify a release",
+      "summary": "Apply a tested revision and check the site from a visitor’s perspective.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_deployment",
+      "order": 3,
+      "required_modules": [],
+      "file": "03-installation-and-deployment/deploy-release.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "site_management",
+        "configuration",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_service_startup",
+      "title": "Configure service startup and restart behaviour",
+      "summary": "Run Zotonic under the installation’s service manager.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_deployment",
+      "order": 4,
+      "required_modules": [],
+      "file": "03-installation-and-deployment/service-startup.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "site_management",
+        "configuration",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_persistent_settings",
+      "title": "Change persistent configuration",
+      "summary": "Choose the right configuration layer and verify the effective value.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_services",
+      "order": 1,
+      "required_modules": [],
+      "file": "04-configuration-and-services/persistent-settings.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "configuration",
+        "configure"
+      ]
+    },
+    {
+      "name": "admin_hostnames_https",
+      "title": "Configure hostnames and HTTPS",
+      "summary": "Align DNS, site selection, and certificate termination.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_services",
+      "order": 2,
+      "required_modules": [],
+      "file": "04-configuration-and-services/hostnames-https.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "routing_and_redirects",
+        "tls_and_certificates",
+        "configuration"
+      ]
+    },
+    {
+      "name": "admin_outbound_email",
+      "title": "Configure outbound email and verify delivery",
+      "summary": "Set a relay at the correct scope and test a real site message.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_services",
+      "order": 3,
+      "required_modules": [],
+      "file": "04-configuration-and-services/outbound-email.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "email_delivery",
+        "configuration"
+      ]
+    },
+    {
+      "name": "admin_test_email",
+      "title": "Direct test mail to a controlled recipient",
+      "summary": "Prevent an acceptance workflow from emailing real users.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_services",
+      "order": 4,
+      "required_modules": [],
+      "file": "04-configuration-and-services/test-email.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "email_delivery",
+        "configuration",
+        "privacy"
+      ]
+    },
+    {
+      "name": "admin_media_storage",
+      "title": "Configure and check persistent media storage",
+      "summary": "Keep original uploads accessible across deployments and restarts.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_services",
+      "order": 5,
+      "required_modules": [],
+      "file": "04-configuration-and-services/media-storage.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "file_storage",
+        "media_management",
+        "file_store"
+      ]
+    },
+    {
+      "name": "admin_database_connection",
+      "title": "Check or change a site database connection",
+      "summary": "Verify host, role, database, and schema before restarting a site.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_services",
+      "order": 6,
+      "required_modules": [],
+      "file": "04-configuration-and-services/database-connection.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "database",
+        "postgresql",
+        "configuration"
+      ]
+    },
+    {
+      "name": "admin_backup_plan",
+      "title": "Define what a complete backup includes",
+      "summary": "Choose recovery coverage, retention, and an owner.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_backups",
+      "order": 1,
+      "required_modules": [],
+      "file": "05-backups-and-recovery/backup-plan.md",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "backup_and_restore",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_make_backup",
+      "title": "Create and check a site backup",
+      "summary": "Request a backup and verify its completion and scope.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_backups",
+      "order": 2,
+      "required_modules": [
+        "mod_backup"
+      ],
+      "file": "05-backups-and-recovery/make-backup.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "backup_and_restore",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_restore_site",
+      "title": "Rehearse a complete site restore",
+      "summary": "Restore into isolation and verify content, media, and access.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_backups",
+      "order": 3,
+      "required_modules": [
+        "mod_backup"
+      ],
+      "file": "05-backups-and-recovery/restore-site.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "backup_and_restore",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_recover_page",
+      "title": "Recover one page without restoring the whole site",
+      "summary": "Use revisions or deleted-page recovery for an editorial mistake.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_backups",
+      "order": 4,
+      "required_modules": [],
+      "file": "05-backups-and-recovery/recover-page.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "backup_and_restore",
+        "resource",
+        "editorial_workflow"
+      ]
+    },
+    {
+      "name": "admin_upgrade",
+      "title": "Plan and apply an upgrade",
+      "summary": "Test version-specific changes and establish a recovery point.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_maintenance",
+      "order": 1,
+      "required_modules": [],
+      "file": "06-updates-and-maintenance/upgrade.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "site_management",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_rollback",
+      "title": "Prepare and carry out recovery from a failed release",
+      "summary": "Recover code and data to a compatible state.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_maintenance",
+      "order": 2,
+      "required_modules": [],
+      "file": "06-updates-and-maintenance/rollback.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "site_management",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_maintenance_window",
+      "title": "Run a planned maintenance window",
+      "summary": "Coordinate changes and verify service before reopening access.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_maintenance",
+      "order": 3,
+      "required_modules": [],
+      "file": "06-updates-and-maintenance/maintenance-window.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "site_management",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_health_checks",
+      "title": "Check that a site is working",
+      "summary": "Monitor the user-facing service as well as its processes.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_monitoring",
+      "order": 1,
+      "required_modules": [],
+      "file": "07-monitoring-and-troubleshooting/health-checks.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "operator",
+        "logging_and_monitoring",
+        "reliability",
+        "monitor"
+      ]
+    },
+    {
+      "name": "admin_logs",
+      "title": "Read logs and collect useful evidence",
+      "summary": "Find the relevant failure without exposing credentials or personal data.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_monitoring",
+      "order": 2,
+      "required_modules": [],
+      "file": "07-monitoring-and-troubleshooting/logs.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "operator",
+        "logging_and_monitoring"
+      ]
+    },
+    {
+      "name": "admin_startup_failures",
+      "title": "Diagnose a site that will not start",
+      "summary": "Separate node, site, database, and application failures.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_monitoring",
+      "order": 3,
+      "required_modules": [],
+      "file": "07-monitoring-and-troubleshooting/startup-failures.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "operator",
+        "site_management",
+        "database",
+        "configuration"
+      ]
+    },
+    {
+      "name": "admin_mail_failures",
+      "title": "Diagnose missing or failed email",
+      "summary": "Trace one message from request to recipient.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_monitoring",
+      "order": 4,
+      "required_modules": [],
+      "file": "07-monitoring-and-troubleshooting/mail-failures.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "operator",
+        "email_delivery",
+        "logging_and_monitoring"
+      ]
+    },
+    {
+      "name": "admin_media_failures",
+      "title": "Diagnose failed uploads or missing media",
+      "summary": "Locate the failure in permission, storage, or processing.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_monitoring",
+      "order": 5,
+      "required_modules": [],
+      "file": "07-monitoring-and-troubleshooting/media-failures.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "operator",
+        "media_management",
+        "file_storage",
+        "logging_and_monitoring"
+      ]
+    },
+    {
+      "name": "admin_incident",
+      "title": "Hand over an incident and record recovery",
+      "summary": "Give the next operator enough context to continue safely.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_monitoring",
+      "order": 6,
+      "required_modules": [],
+      "file": "07-monitoring-and-troubleshooting/incident.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "operator",
+        "logging_and_monitoring",
+        "reliability"
+      ]
+    },
+    {
+      "name": "admin_media_sandbox",
+      "title": "Configure media sandboxing and an optional media runner",
+      "summary": "Check media-process isolation and decide whether to run conversions on a separate service.",
+      "category": "adminguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "admin_collection_services",
+      "order": 8,
+      "required_modules": [],
+      "source_paths": [
+        "doc/technotes/media-sandboxing.md",
+        "apps/zotonic_core/src/support/z_exec.erl",
+        "apps/zotonic_core/src/media/z_media_runner.erl",
+        "apps/zotonic_core/src/media/z_media_runner_pool.erl",
+        "apps/zotonic_mod_base/src/controllers/controller_media_runner_callback.erl"
+      ],
+      "file": "04-configuration-and-services/media-sandbox.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "operator",
+        "media_management",
+        "security",
+        "configuration",
+        "api_and_integration"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "name": "admin_screenshot_languages",
+      "file": "assets/languages.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "admin_screenshot_access_rule_controls",
+      "file": "assets/access-rule-controls.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "admin_screenshot_upload_permissions",
+      "file": "assets/upload-permissions.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "admin_screenshot_start_backup",
+      "file": "assets/start-backup.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    }
+  ],
+  "edges": [
+    {
+      "subject": "admin_guide",
+      "predicate": "haspart",
+      "objects": [
+        "admin_collection_people"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_guide",
+      "predicate": "haspart",
+      "objects": [
+        "admin_collection_settings"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_guide",
+      "predicate": "haspart",
+      "objects": [
+        "admin_collection_deployment"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_guide",
+      "predicate": "haspart",
+      "objects": [
+        "admin_collection_services"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_guide",
+      "predicate": "haspart",
+      "objects": [
+        "admin_collection_backups"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "admin_guide",
+      "predicate": "haspart",
+      "objects": [
+        "admin_collection_maintenance"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "admin_guide",
+      "predicate": "haspart",
+      "objects": [
+        "admin_collection_monitoring"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "admin_collection_people",
+      "predicate": "haspart",
+      "objects": [
+        "editor_creating_user"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_collection_people",
+      "predicate": "haspart",
+      "objects": [
+        "admin_assign_access"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_assign_access",
+      "predicate": "relation",
+      "objects": [
+        "editor_permissions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_assign_access",
+      "predicate": "relation",
+      "objects": [
+        "admin_access_rules"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_people",
+      "predicate": "haspart",
+      "objects": [
+        "admin_access_rules"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_access_rules",
+      "predicate": "relation",
+      "objects": [
+        "admin_assign_access"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_access_rules",
+      "predicate": "relation",
+      "objects": [
+        "admin_review_access"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_people",
+      "predicate": "haspart",
+      "objects": [
+        "admin_remove_access"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_remove_access",
+      "predicate": "relation",
+      "objects": [
+        "admin_assign_access"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_remove_access",
+      "predicate": "relation",
+      "objects": [
+        "admin_review_access"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_remove_access",
+      "predicate": "relation",
+      "objects": [
+        "editor_ownership"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_people",
+      "predicate": "haspart",
+      "objects": [
+        "admin_review_access"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "admin_review_access",
+      "predicate": "relation",
+      "objects": [
+        "admin_remove_access"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_review_access",
+      "predicate": "relation",
+      "objects": [
+        "editor_collaboration"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_review_access",
+      "predicate": "relation",
+      "objects": [
+        "editor_permissions"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_settings",
+      "predicate": "haspart",
+      "objects": [
+        "admin_admin_scopes"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_admin_scopes",
+      "predicate": "relation",
+      "objects": [
+        "developer_status_and_admin"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_admin_scopes",
+      "predicate": "relation",
+      "objects": [
+        "admin_health_checks"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_settings",
+      "predicate": "haspart",
+      "objects": [
+        "admin_enable_modules"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_enable_modules",
+      "predicate": "relation",
+      "objects": [
+        "admin_admin_scopes"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_enable_modules",
+      "predicate": "relation",
+      "objects": [
+        "developer_enable_development"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_enable_modules",
+      "predicate": "relation",
+      "objects": [
+        "editor_collection_surveys_forms"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_settings",
+      "predicate": "haspart",
+      "objects": [
+        "admin_enable_languages"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_enable_languages",
+      "predicate": "relation",
+      "objects": [
+        "admin_enable_modules"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_collection_settings",
+      "predicate": "haspart",
+      "objects": [
+        "admin_upload_policy"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_upload_policy",
+      "predicate": "relation",
+      "objects": [
+        "editor_upload_restrictions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_upload_policy",
+      "predicate": "relation",
+      "objects": [
+        "admin_media_failures"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_deployment",
+      "predicate": "haspart",
+      "objects": [
+        "developer_local_environment"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_collection_deployment",
+      "predicate": "haspart",
+      "objects": [
+        "admin_prepare_environment"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_prepare_environment",
+      "predicate": "relation",
+      "objects": [
+        "developer_environment_settings"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_prepare_environment",
+      "predicate": "relation",
+      "objects": [
+        "admin_service_startup"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_prepare_environment",
+      "predicate": "relation",
+      "objects": [
+        "admin_backup_plan"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_prepare_environment",
+      "predicate": "relation",
+      "objects": [
+        "admin_test_email"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_collection_deployment",
+      "predicate": "haspart",
+      "objects": [
+        "admin_deploy_release"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_deploy_release",
+      "predicate": "relation",
+      "objects": [
+        "admin_prepare_environment"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_deploy_release",
+      "predicate": "relation",
+      "objects": [
+        "admin_upgrade"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_deploy_release",
+      "predicate": "relation",
+      "objects": [
+        "admin_rollback"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_deploy_release",
+      "predicate": "relation",
+      "objects": [
+        "admin_health_checks"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_collection_deployment",
+      "predicate": "haspart",
+      "objects": [
+        "admin_service_startup"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_service_startup",
+      "predicate": "relation",
+      "objects": [
+        "developer_cmd_start"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_service_startup",
+      "predicate": "relation",
+      "objects": [
+        "developer_cmd_stop"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_service_startup",
+      "predicate": "relation",
+      "objects": [
+        "admin_logs"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_services",
+      "predicate": "haspart",
+      "objects": [
+        "admin_persistent_settings"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_persistent_settings",
+      "predicate": "relation",
+      "objects": [
+        "developer_configuration_layers"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_persistent_settings",
+      "predicate": "relation",
+      "objects": [
+        "developer_runtime_config"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_services",
+      "predicate": "haspart",
+      "objects": [
+        "admin_hostnames_https"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_hostnames_https",
+      "predicate": "relation",
+      "objects": [
+        "admin_persistent_settings"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_hostnames_https",
+      "predicate": "relation",
+      "objects": [
+        "admin_health_checks"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_hostnames_https",
+      "predicate": "relation",
+      "objects": [
+        "developer_site_configuration"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_services",
+      "predicate": "haspart",
+      "objects": [
+        "admin_outbound_email"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_outbound_email",
+      "predicate": "relation",
+      "objects": [
+        "admin_test_email"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_outbound_email",
+      "predicate": "relation",
+      "objects": [
+        "admin_mail_failures"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_outbound_email",
+      "predicate": "relation",
+      "objects": [
+        "admin_persistent_settings"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_services",
+      "predicate": "haspart",
+      "objects": [
+        "admin_test_email"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_test_email",
+      "predicate": "relation",
+      "objects": [
+        "admin_outbound_email"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_test_email",
+      "predicate": "relation",
+      "objects": [
+        "admin_prepare_environment"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_services",
+      "predicate": "haspart",
+      "objects": [
+        "admin_media_storage"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "admin_media_storage",
+      "predicate": "relation",
+      "objects": [
+        "admin_backup_plan"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_media_storage",
+      "predicate": "relation",
+      "objects": [
+        "admin_media_failures"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_media_storage",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_module_mod_filestore"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_collection_services",
+      "predicate": "haspart",
+      "objects": [
+        "admin_database_connection"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "admin_database_connection",
+      "predicate": "relation",
+      "objects": [
+        "developer_local_postgresql"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_database_connection",
+      "predicate": "relation",
+      "objects": [
+        "admin_persistent_settings"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_database_connection",
+      "predicate": "relation",
+      "objects": [
+        "admin_startup_failures"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_backups",
+      "predicate": "haspart",
+      "objects": [
+        "admin_backup_plan"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_backup_plan",
+      "predicate": "relation",
+      "objects": [
+        "admin_make_backup"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_backup_plan",
+      "predicate": "relation",
+      "objects": [
+        "admin_restore_site"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_backup_plan",
+      "predicate": "relation",
+      "objects": [
+        "admin_media_storage"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_backups",
+      "predicate": "haspart",
+      "objects": [
+        "admin_make_backup"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_make_backup",
+      "predicate": "relation",
+      "objects": [
+        "admin_backup_plan"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_make_backup",
+      "predicate": "relation",
+      "objects": [
+        "admin_restore_site"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_make_backup",
+      "predicate": "relation",
+      "objects": [
+        "developer_cmd_backup"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_backups",
+      "predicate": "haspart",
+      "objects": [
+        "admin_restore_site"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_restore_site",
+      "predicate": "relation",
+      "objects": [
+        "developer_cmd_backup"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_restore_site",
+      "predicate": "relation",
+      "objects": [
+        "admin_test_email"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_restore_site",
+      "predicate": "relation",
+      "objects": [
+        "admin_backup_plan"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_backups",
+      "predicate": "haspart",
+      "objects": [
+        "admin_recover_page"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_recover_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_revisions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_recover_page",
+      "predicate": "relation",
+      "objects": [
+        "admin_restore_site"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_maintenance",
+      "predicate": "haspart",
+      "objects": [
+        "admin_upgrade"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_upgrade",
+      "predicate": "relation",
+      "objects": [
+        "admin_deploy_release"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_upgrade",
+      "predicate": "relation",
+      "objects": [
+        "admin_rollback"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_upgrade",
+      "predicate": "relation",
+      "objects": [
+        "admin_make_backup"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_maintenance",
+      "predicate": "haspart",
+      "objects": [
+        "admin_rollback"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_rollback",
+      "predicate": "relation",
+      "objects": [
+        "admin_restore_site"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_rollback",
+      "predicate": "relation",
+      "objects": [
+        "admin_deploy_release"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_maintenance",
+      "predicate": "haspart",
+      "objects": [
+        "admin_maintenance_window"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_maintenance_window",
+      "predicate": "relation",
+      "objects": [
+        "admin_make_backup"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_maintenance_window",
+      "predicate": "relation",
+      "objects": [
+        "admin_health_checks"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_maintenance_window",
+      "predicate": "relation",
+      "objects": [
+        "admin_deploy_release"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_monitoring",
+      "predicate": "haspart",
+      "objects": [
+        "admin_health_checks"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_health_checks",
+      "predicate": "relation",
+      "objects": [
+        "admin_logs"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_health_checks",
+      "predicate": "relation",
+      "objects": [
+        "admin_startup_failures"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_health_checks",
+      "predicate": "relation",
+      "objects": [
+        "admin_backup_plan"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_monitoring",
+      "predicate": "haspart",
+      "objects": [
+        "admin_logs"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_logs",
+      "predicate": "relation",
+      "objects": [
+        "admin_incident"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_logs",
+      "predicate": "relation",
+      "objects": [
+        "developer_cmd_status"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_monitoring",
+      "predicate": "haspart",
+      "objects": [
+        "admin_startup_failures"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_startup_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_database_connection"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_startup_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_service_startup"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_startup_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_logs"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_monitoring",
+      "predicate": "haspart",
+      "objects": [
+        "admin_mail_failures"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_mail_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_outbound_email"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_mail_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_test_email"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_mail_failures",
+      "predicate": "relation",
+      "objects": [
+        "editor_mailing_lists"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_monitoring",
+      "predicate": "haspart",
+      "objects": [
+        "admin_media_failures"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "admin_media_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_upload_policy"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_media_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_media_storage"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_media_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_logs"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_monitoring",
+      "predicate": "haspart",
+      "objects": [
+        "admin_incident"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "admin_incident",
+      "predicate": "relation",
+      "objects": [
+        "admin_health_checks"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_incident",
+      "predicate": "relation",
+      "objects": [
+        "admin_logs"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_incident",
+      "predicate": "relation",
+      "objects": [
+        "admin_rollback"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_collection_deployment",
+      "predicate": "haspart",
+      "objects": [
+        "developer_status_and_admin"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "admin_collection_services",
+      "predicate": "haspart",
+      "objects": [
+        "developer_configuration_layers"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "admin_collection_backups",
+      "predicate": "haspart",
+      "objects": [
+        "developer_cmd_backup"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "admin_guide",
+      "predicate": "relation",
+      "objects": [
+        "developer_local_environment"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_guide",
+      "predicate": "relation",
+      "objects": [
+        "editor_guide"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_collection_services",
+      "predicate": "haspart",
+      "objects": [
+        "admin_media_sandbox"
+      ],
+      "sequence": 8
+    },
+    {
+      "subject": "admin_media_sandbox",
+      "predicate": "relation",
+      "objects": [
+        "admin_media_storage"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "admin_media_sandbox",
+      "predicate": "relation",
+      "objects": [
+        "admin_media_failures"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "admin_media_sandbox",
+      "predicate": "relation",
+      "objects": [
+        "admin_persistent_settings"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_media_sandbox",
+      "predicate": "relation",
+      "objects": [
+        "admin_health_checks"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "admin_media_sandbox",
+      "predicate": "relation",
+      "objects": [
+        "admin_hostnames_https"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "admin_media_storage",
+      "predicate": "relation",
+      "objects": [
+        "admin_media_sandbox"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "admin_media_failures",
+      "predicate": "relation",
+      "objects": [
+        "admin_media_sandbox"
+      ],
+      "sequence": 4
+    }
+  ],
+  "connection_policy": {
+    "haspart": "Ordered collection members; follow only these edges for the reading tree.",
+    "relation": "Ordered editorial suggestions; outgoing links only, no automatic inverse copy.",
+    "hasreference": "Documentation used or cited by this page; target an existing resource by name."
+  },
+  "external_resources": [
+    "developer_cmd_backup",
+    "developer_cmd_start",
+    "developer_cmd_status",
+    "developer_cmd_stop",
+    "developer_configuration_layers",
+    "developer_enable_development",
+    "developer_environment_settings",
+    "developer_local_environment",
+    "developer_local_postgresql",
+    "developer_runtime_config",
+    "developer_site_configuration",
+    "developer_status_and_admin",
+    "doc_module_mod_filestore",
+    "editor_collaboration",
+    "editor_collection_surveys_forms",
+    "editor_creating_user",
+    "editor_guide",
+    "editor_mailing_lists",
+    "editor_ownership",
+    "editor_permissions",
+    "editor_revisions",
+    "editor_upload_restrictions"
+  ],
+  "predicates": [
+    {
+      "name": "hasreference",
+      "title": "Documentation reference",
+      "subject_categories": [
+        "text",
+        "collection"
+      ],
+      "object_categories": [
+        "text",
+        "collection",
+        "media"
+      ],
+      "managed_by": "zotonicwww2",
+      "description": "Curated further reading; separate from mod_admin-managed refers edges."
+    }
+  ],
+  "publication_policy": "Publish newly created pages, collections and screenshot resources on import for review. Preserve publication state when adopting or updating existing resources."
+}

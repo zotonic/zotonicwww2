@@ -1,0 +1,233 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "haspart": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:17Z",
+          "object_id": {
+            "id": 1819,
+            "is_a": [
+              "text",
+              "documentation",
+              "userguide"
+            ],
+            "name": "doc_userguide_cms",
+            "title": "CMS",
+            "uri": "https://zotonic.com/id/1819"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:17Z",
+          "object_id": {
+            "id": 1277,
+            "is_a": [
+              "text",
+              "documentation",
+              "userguide"
+            ],
+            "name": "doc_userguide_datamodel",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "The Zotonic data model"
+              }
+            },
+            "uri": "https://zotonic.com/id/1277"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:17Z",
+          "object_id": {
+            "id": 2045,
+            "is_a": [
+              "text",
+              "documentation",
+              "userguide"
+            ],
+            "name": "doc_userguide_user_management",
+            "title": "User management",
+            "uri": "https://zotonic.com/id/2045"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:17Z",
+          "object_id": {
+            "id": 2021,
+            "is_a": [
+              "text",
+              "documentation",
+              "userguide"
+            ],
+            "name": "doc_userguide_issues_and_features",
+            "title": "Issues and features",
+            "uri": "https://zotonic.com/id/2021"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 310,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "haspart",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Contains"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/hasPart"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:17Z",
+          "object_id": {
+            "id": 1635,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_index",
+            "title": "Developer Guide",
+            "uri": "https://zotonic.com/id/1635"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 2173,
+  "is_a": [
+    "text",
+    "documentation",
+    "userguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/2173"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_userguide_index",
+  "page_url": {
+    "en": "https://zotonic.com/user-guide",
+    "x-default": "https://zotonic.com/user-guide"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 18,
+    "pivot_location_lat": null,
+    "title": "User Guide",
+    "is_authoritative": true,
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">if you’re a developer who’s already familiar with Zotonic, you may want to\nread the <a class=\"reference internal\" href=\"/id/doc_developerguide_index#developer-guide\"><span class=\"std std-ref\">Developer Guide</span></a> instead.</p>\n</aside>\n<p>Welcome to the Zotonic User Guide. This guide is a non-technical introduction to\nZotonic.</p>\n<p class=\"rubric\">Table of contents</p>\n<div class=\"toctree-wrapper compound\">\n<ul>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_userguide_cms\">CMS</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_userguide_datamodel\">The Zotonic data model</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_userguide_user_management\">User management</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_userguide_issues_and_features\">Issues and features</a></li>\n</ul>\n</div>\n<aside class=\"admonition-todo admonition\">\n<p class=\"first admonition-title\">Todo</p>\n<p class=\"last\">Add more chapters to have a complete run-through of all user-facing aspects\nof Zotonic.</p>\n</aside>\n<p>See <a class=\"reference external\" href=\"http://zotonic.com/support\">http://zotonic.com/support</a> for getting help and support.</p>\n</div>\n\n\n           </div>",
+    "slug": "user-guide",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 316,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "userguide",
+      "title": "User guide",
+      "uri": "https://zotonic.com/id/userguide"
+    },
+    "publication_start": "2022-02-15T10:01:37Z",
+    "is_website_redirect": false,
+    "page_path": "/user-guide",
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/user-guide/index.rst",
+    "pivot_location_lng": null,
+    "name": "doc_userguide_index",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:48:17Z",
+    "uri": null,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2022-02-15T10:01:37Z",
+    "title_slug": "user-guide"
+  },
+  "uri": "https://zotonic.com/id/2173",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/2173"
+  }
+}

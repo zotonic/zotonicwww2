@@ -1,0 +1,149 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:17Z",
+          "object_id": {
+            "id": 1982,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "notification"
+            ],
+            "name": "doc_notification_search_query",
+            "title": "observe_search_query/2",
+            "uri": "https://zotonic.com/id/1982"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1575,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1575"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_custom_search",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1575/custom-search",
+    "x-default": "https://zotonic.com/cookbook/1575/custom-search"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Implement a custom search by observing the <a class=\"reference internal\" href=\"/id/doc_notification_search_query#search-query\"><span class=\"std std-ref\">search_query</span></a> notification\nin your module. Imagine you want to search cookies in your database that\neither have chocolate or do not:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;zotonic_core/include/zotonic.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span>\n    <span class=\"n\">observe_search_query</span><span class=\"o\">/</span><span class=\"mi\">2</span>\n<span class=\"p\">]).</span>\n\n<span class=\"nf\">observe_search_query</span><span class=\"p\">(</span><span class=\"nl\">#search_query</span><span class=\"p\">{</span><span class=\"n\">search</span> <span class=\"o\">=</span> <span class=\"nv\">Search</span><span class=\"p\">,</span> <span class=\"n\">offsetlimit</span> <span class=\"o\">=</span> <span class=\"nv\">OffsetLimit</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">%% Pass on to an internal function.</span>\n    <span class=\"n\">search</span><span class=\"p\">(</span><span class=\"nv\">Search</span><span class=\"p\">,</span> <span class=\"nv\">OffsetLimit</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n\n<span class=\"nf\">search</span><span class=\"p\">({</span><span class=\"n\">cookies</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">chocolate</span><span class=\"p\">,</span> <span class=\"nv\">Boolean</span><span class=\"p\">}]},</span> <span class=\"p\">_</span><span class=\"nv\">OffsetLimit</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span>\n    <span class=\"c\">%% Handle search queries of the cookie type.</span>\n    <span class=\"nl\">#search_sql</span><span class=\"p\">{</span>\n        <span class=\"n\">select</span><span class=\"o\">=</span><span class=\"s\">&quot;c.id&quot;</span><span class=\"p\">,</span>\n        <span class=\"n\">from</span><span class=\"o\">=</span><span class=\"s\">&quot;foo c&quot;</span><span class=\"p\">,</span>\n        <span class=\"n\">where</span><span class=\"o\">=</span><span class=\"s\">&quot;c.chocolate = $1&quot;</span><span class=\"p\">,</span>\n        <span class=\"n\">order</span><span class=\"o\">=</span><span class=\"s\">&quot;c.name desc&quot;</span><span class=\"p\">,</span>\n        <span class=\"n\">args</span><span class=\"o\">=</span><span class=\"p\">[</span><span class=\"nv\">Boolean</span><span class=\"p\">],</span>\n        <span class=\"n\">tables</span><span class=\"o\">=</span><span class=\"p\">[{</span><span class=\"n\">cookies_table</span><span class=\"p\">,</span> <span class=\"s\">&quot;c&quot;</span><span class=\"p\">}]</span>\n    <span class=\"p\">};</span>\n<span class=\"nf\">search</span><span class=\"p\">(_</span><span class=\"nv\">Other</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">OffsetLimit</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">%% Let other modules handle other types of search queries.</span>\n    <span class=\"n\">undefined</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n<p>Do not forget to add the last function that matches and returns\n<code class=\"docutils literal notranslate\"><span class=\"pre\">undefined</span></code> for any other search request. If you forget this, the\nnotification fold will crash when using any other search query.</p>\n<p>This can then be used in your template like this:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">id</span> <span class=\"k\">in</span> <span class=\"nv\">m.search</span><span class=\"o\">[{</span><span class=\"nv\">cookies</span> <span class=\"nv\">chocolate</span><span class=\"o\">=</span><span class=\"kp\">true</span><span class=\"o\">}]</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    Looping over all ids in the ‘cookies_table’ table for which chocolate = true</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:26Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-search.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:29Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_custom_search",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:29Z",
+    "slug": "custom-search",
+    "title": "Custom search",
+    "title_slug": "custom-search",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1575",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1575"
+  }
+}

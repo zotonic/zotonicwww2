@@ -1,0 +1,168 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:50Z",
+          "object_id": {
+            "id": 1638,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_search",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Search"
+              }
+            },
+            "uri": "https://zotonic.com/id/1638"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:50Z",
+          "object_id": {
+            "id": 1281,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_custom_pivot",
+            "title": "Custom pivots",
+            "uri": "https://zotonic.com/id/1281"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1282,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1282"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_pivot_templates",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1282/pivot-templates",
+    "x-default": "https://zotonic.com/cookbook/1282/pivot-templates"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p><a class=\"reference internal\" href=\"/id/doc_developerguide_search#guide-datamodel-query-model\"><span class=\"std std-ref\">Search</span></a> uses database indices on special pivot\ncolumns and full text fields.</p>\n<p>These columns and text fields are extracted in a process called <em>pivoting</em>.\nThis is done a short period after a resource has been updated.</p>\n<p>The content of the pivot columns is determined by a template. This template is\ncalled <code class=\"docutils literal notranslate\"><span class=\"pre\">pivot/pivot.tpl</span></code> (in <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_base</span></code>) and is rendered using a <em>catinclude</em>.\nThis makes it possible to have your own unique indexing per category.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">pivot/pivot.tpl</span></code> template consists of multiple blocks. Each block corresponds\nto a pivot column. The block is rendered for determining the pivot’s content.</p>\n<p>The following blocks are defined:</p>\n<p><strong>a, b, c and d</strong></p>\n\n<p>These blocks are used for the full text index. Block <em>a</em> contains more\nimportant texts than block <em>b</em>, <em>c</em> or <em>d</em>. Per default the title and other\nessential texts are shown in block <em>a</em>, and block <em>d</em> is used for related\ntexts (think titles of connected resources).\nThe default pivot template uses the following catincluded templates for the\ndifferent blocks:\n\n<ul class=\"simple\">\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">pivot/_title_text.tpl</span></code> for block <em>a</em></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">pivot/_main_text.tpl</span></code> for block <em>b</em></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">pivot/_block_text.tpl</span></code> for block <em>c</em></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">pivot/_related_text.tpl</span></code> for block <em>d</em></li>\n</ul>\n\n</p>\n<p><strong>title</strong></p>\n\n<p>The title used for database sorting etc. Per default the lowercased title in the selected\npivot language or the default site language.</p>\n<p><strong>related_ids</strong></p>\n\n<p>The ids of all related resources and categories. This is a full text index used for\nfinding resources that are similar to some other resource.\nAll matching resource ids should be prefixed with <code class=\"docutils literal notranslate\"><span class=\"pre\">zpo</span></code> and category ids with <code class=\"docutils literal notranslate\"><span class=\"pre\">zpc</span></code>\n(for example <code class=\"docutils literal notranslate\"><span class=\"pre\">zpo1234</span></code>).\nThe catincluded template <code class=\"docutils literal notranslate\"><span class=\"pre\">pivot/_related_ids.tpl</span></code> is used for extracting these ids.\nThis template also adds the id of the content group as a related resource.\n</p>\n<p><strong>address_street, address_city, address_postcode, address_state, address_country</strong></p>\n\n<p>The address to be used for searches. Defaults to the related <code class=\"docutils literal notranslate\"><span class=\"pre\">address_…</span></code> properties\nwith a fallback to the <code class=\"docutils literal notranslate\"><span class=\"pre\">mail_address_…</span></code> properties.\nThe country should be the two letter ISO code, not the country’s descriptive text.\n</p>\n<p><strong>name_first, name_surname</strong></p>\n\n<p>If the resource is a person then this should contain the first name and surname.</p>\n<p><strong>gender</strong></p>\n\n<p>The gender of the person, currently a single letter.  For example: <code class=\"docutils literal notranslate\"><span class=\"pre\">f</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">m</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">?</span></code>.</p>\n<p><strong>date_start, date_end</strong></p>\n\n<p>The start or end date associated with the resource. This should be in a parseable format, which\nwill be done automatically when echoing a date directly. Make sure UTC is used as the timezone (note that the timezone will be set to UTC when pivoting).</p>\n<p><strong>date_start_month_day, date_end_month_day</strong></p>\n\n<p>A four digit number representing the month and day for the date start and date end. Think of\nan index for birthdays, without exposing the birth year.\nDefaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">{{</span> <span class=\"pre\">id.date_start|date:&quot;md&quot;</span> <span class=\"pre\">}}</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">{{</span> <span class=\"pre\">id.date_end|date:&quot;md&quot;</span> <span class=\"pre\">}}</span></code>.\n</p>\n<p><strong>location_lat, location_lng</strong></p>\n\n<p>The latitude and longitude of the resource location. This should be empty or a floating point number.\nDefaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">{{</span> <span class=\"pre\">id.computed_location_lat|default:id.location_lat</span> <span class=\"pre\">}}</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">{{</span> <span class=\"pre\">id.computed_location_lng|default:id.location_lng</span> <span class=\"pre\">}}</span></code>\n</p>\n<p><strong>date_repivot</strong></p>\n\n<p>The date and time this resource should be repivoted. This is useful if some resources (like events) should be indexed with lower priorities after a certain date. A pivot task will be scheduled at the specified date.\nPer default no repivot will be scheduled.</p>\n<p>See <a class=\"reference internal\" href=\"/id/doc_cookbook_custom_pivot#cookbook-custom-pivots\"><span class=\"std std-ref\">Custom pivots</span></a> for adding your own custom pivot columns.</p>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:16Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/pivot-templates.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:38Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_pivot_templates",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:38Z",
+    "slug": "pivot-templates",
+    "title": "Pivot Templates",
+    "title_slug": "pivot-templates",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1282",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1282"
+  }
+}

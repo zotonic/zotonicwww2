@@ -1,0 +1,184 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 2113,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_artwork",
+            "title": "mod_artwork",
+            "uri": "https://zotonic.com/id/2113"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 1637,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_icons",
+            "title": "Icons",
+            "uri": "https://zotonic.com/id/1637"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1579,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1579"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_template_icons",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1579/icons-in-templates",
+    "x-default": "https://zotonic.com/cookbook/1579/icons-in-templates"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_icons#ref-icons\"><span class=\"std std-ref\">Icons</span></a> reference</p>\n</aside>\n<p>Zotonic provides a couple of ways to show icons in templates:</p>\n<ul class=\"simple\">\n<li><a class=\"reference internal\" href=\"/id/doc_module_mod_artwork\"><span class=\"std std-ref\">mod_artwork</span></a> gives access to FontAwesome and Material Design icons.\nIt also has a number of other icon collections, mostly PNG images. Activate\nthe module and follow the instructions on the doc page.</li>\n<li>Zotonic icons provided by <cite>mod_base</cite>. This is explained on the current page.</li>\n</ul>\n<p>To create a certain amount of consistency across modules, Zotonic comes with a\nsmall set of commonly used icons and CSS classes (edit, help, close, etcetera)\nplus the Zotonic logo.</p>\n<p>Use cases:</p>\n<ul class=\"simple\">\n<li>You create your frontend from scratch, but you also have pages in your site\nthat are provided by other modules, for instance the login screens. It would\nbe good if the social login icons show up.</li>\n<li>You are writing a template or module and like to take advantage of ready\navailable icons.</li>\n<li>You are writing frontend styles in LESS and you would like to extend Zotonic\n/ FontAwesome / Material Design icons.</li>\n</ul>\n<p>Include the Zotonic icons CSS file in your template:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"c\">% lib</span>\n    <span class=\"s\">&quot;css/z.icons.css&quot;</span>\n<span class=\"c\">%}</span>\n</pre></div>\n</div>\n<p>Then use this syntax in your template HTML:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">z</span><span class=\"o\">-</span><span class=\"n\">icon</span> <span class=\"n\">z</span><span class=\"o\">-</span><span class=\"n\">icon</span><span class=\"o\">-&lt;</span><span class=\"n\">name</span><span class=\"o\">&gt;</span>\n</pre></div>\n</div>\n<p>For instance:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"o\">&lt;</span><span class=\"n\">span</span> <span class=\"n\">class</span><span class=\"o\">=</span><span class=\"s\">&quot;z-icon z-icon-off&quot;</span><span class=\"o\">&gt;&lt;/</span><span class=\"n\">span</span><span class=\"o\">&gt;</span>\n</pre></div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:26Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/template-icons.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:37Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_template_icons",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:37Z",
+    "slug": "icons-in-templates",
+    "title": "Icons in templates",
+    "title_slug": "icons-in-templates",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1579",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1579"
+  }
+}

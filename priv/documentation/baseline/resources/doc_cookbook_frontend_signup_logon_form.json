@@ -1,0 +1,188 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 2010,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_signup",
+            "title": "mod_signup",
+            "uri": "https://zotonic.com/id/2010"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 1306,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_authentication",
+            "title": "mod_authentication",
+            "uri": "https://zotonic.com/id/1306"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1589,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1589"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_signup_logon_form",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1589/customizing-the-sign-up-and-sign-in-form",
+    "x-default": "https://zotonic.com/cookbook/1589/customizing-the-sign-up-and-sign-in-form"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 19,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Customizing the sign up and sign in form"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>You want to change parts of the form, or change its appearance.</p>\n<div class=\"section\">\n<h2>Sign up form</h2>\n<p>The sign up form is called with dispatch rule <code class=\"docutils literal notranslate\"><span class=\"pre\">signup</span></code>, implemented by <a class=\"reference internal\" href=\"/id/doc_module_mod_signup\"><span class=\"std std-ref\">mod_signup</span></a>. This module must be enabled to view the form.</p>\n<p>The form is built from quite a number of sub templates. While this creates some level of complexity (to find out what goes where), this also provides the flexibility to change the resulting output without breaking the functional code.</p>\n<p>For details, see “Template structure Sign up form” below.</p>\n<div class=\"section\">\n<h3>Overriding templates</h3>\n<p>Some sub templates are more critical than others.</p>\n<p>While it is technically possible to override the sub templates, this will likely end up with non-working pages. The Page Controller expects to receive certain values from the submitted form.</p>\n<p>These form fields are expected to have a value:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">email</span>\n<span class=\"n\">name_first</span>\n<span class=\"n\">name_surname</span>\n<span class=\"n\">username</span>\n<span class=\"n\">password1</span>\n<span class=\"n\">signup_tos_agree</span>\n</pre>\n</div>\n</div>\n<p>If you want to hide a part of the form that contains a critical value, for instance the terms and conditions checkbox, you cannot just create an empty file <code class=\"docutils literal notranslate\"><span class=\"pre\">_signup_form_fields_tos.tpl</span></code> in your project, because the form value <code class=\"docutils literal notranslate\"><span class=\"pre\">signup_tos_agree</span></code> will no longer be passed.</p>\n<p>Instead you need to pass the value through the form using a hidden input field:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"o\">&lt;</span><span class=\"n\">input</span> <span class=\"n\">type</span><span class=\"o\">=</span><span class=\"s\">&quot;hidden&quot;</span> <span class=\"n\">name</span><span class=\"o\">=</span><span class=\"s\">&quot;signup_tos_agree&quot;</span> <span class=\"n\">value</span><span class=\"o\">=</span><span class=\"s\">&quot;1&quot;</span> <span class=\"o\">/&gt;</span>\n</pre>\n</div>\n</div>\n<p>Non-critical templates can be overridden safely. For instance <code class=\"docutils literal notranslate\"><span class=\"pre\">_signup_title.tpl</span></code> will only change the title above the form, so this can be done without affecting the functionality. You could decide to add a brand logo to the title, or remove the title altogether.</p>\n</div>\n<div class=\"section\">\n<h3>Changing the configuration</h3>\n<p>The template file <code class=\"docutils literal notranslate\"><span class=\"pre\">_signup_config.tpl</span></code> is made to quickly define what parts of the sign up page should be shown. Copy the file from <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_signup</span></code> to your project and change the values.</p>\n<p>For convenience, critical variables are not exposed in the config file.</p>\n<p>By default, two form parts are set to hidden. Make them visible by changing the value from 0 to 1:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">show_signup_name_prefix</span>         <span class=\"o\">//</span> <span class=\"n\">surname</span> <span class=\"n\">prefix</span> <span class=\"p\">(</span><span class=\"s\">&quot;van&quot;</span> <span class=\"nv\">Gogh</span><span class=\"p\">)</span>\n<span class=\"n\">show_signup_password2</span>           <span class=\"o\">//</span> <span class=\"n\">repeat</span> <span class=\"n\">password</span>\n</pre>\n</div>\n</div>\n<p>Two other configuration values deal with appearance: <code class=\"docutils literal notranslate\"><span class=\"pre\">style_boxed</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">style_width</span></code> - see below.</p>\n</div>\n<div class=\"section\">\n<h3>Changing appearance</h3>\n<p>Form fields are displayed using the Bootstrap 3 HTML structure. If you need a radical different layout that cannot be managed with CSS alone, you will need to override the form field templates.</p>\n<p>The width of the form can be set with configuration value <code class=\"docutils literal notranslate\"><span class=\"pre\">style_width</span></code>. This should be a CSS value like “300px”. If no value is set, the form will expand to maximum width - in which case the width needs to be set by CSS.</p>\n<p>A form background can be set with configuration value <code class=\"docutils literal notranslate\"><span class=\"pre\">style_boxed</span></code>.</p>\n<p>CSS styles are defined in <code class=\"docutils literal notranslate\"><span class=\"pre\">css/logon.css</span></code> (mod_authentication).</p>\n</div>\n<div class=\"section\">\n<h3>Password length</h3>\n<p>The minimum password length is 8 characters, and can be changed in config value <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_authentication.password_min_length</span></code>.</p>\n</div>\n<div class=\"section\">\n<h3>Sign up form in a modal dialog</h3>\n<p>Instead of directing the user to the sign up page, the form can be shown in a modal dialog:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"o\">&lt;</span><span class=\"n\">a</span> <span class=\"n\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;{{ #signup }}&quot;</span> <span class=\"n\">href</span><span class=\"o\">=</span><span class=\"s\">&quot;#&quot;</span><span class=\"o\">&gt;</span><span class=\"p\">{_</span> <span class=\"nv\">Sign</span> <span class=\"n\">up</span> <span class=\"p\">_}</span><span class=\"o\">&lt;/</span><span class=\"n\">a</span><span class=\"o\">&gt;</span>\n<span class=\"p\">{</span><span class=\"c\">% wire</span>\n    <span class=\"n\">id</span><span class=\"o\">=</span><span class=\"nl\">#signup</span>\n    <span class=\"n\">action</span><span class=\"o\">=</span><span class=\"p\">{</span>\n        <span class=\"n\">dialog_open</span>\n        <span class=\"n\">title</span><span class=\"o\">=</span><span class=\"s\">&quot;Sign up&quot;</span>\n        <span class=\"n\">template</span><span class=\"o\">=</span><span class=\"s\">&quot;signup.tpl&quot;</span>\n    <span class=\"p\">}</span>\n<span class=\"c\">%}</span>\n</pre>\n</div>\n</div>\n<p>However, this does not work well if the user wants to switch to sign in: clicking the link will load the sign in page, removing the dialog.</p>\n<p>A better approach is to use the sign in templates and pass <code class=\"docutils literal notranslate\"><span class=\"pre\">logon_state</span></code>:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"o\">&lt;</span><span class=\"n\">a</span> <span class=\"n\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;{{ #signup }}&quot;</span> <span class=\"n\">href</span><span class=\"o\">=</span><span class=\"s\">&quot;#&quot;</span><span class=\"o\">&gt;</span><span class=\"p\">{_</span> <span class=\"nv\">Sign</span> <span class=\"n\">up</span> <span class=\"p\">_}</span><span class=\"o\">&lt;/</span><span class=\"n\">a</span><span class=\"o\">&gt;</span>\n<span class=\"p\">{</span><span class=\"c\">% wire</span>\n    <span class=\"n\">id</span><span class=\"o\">=</span><span class=\"nl\">#signup</span>\n    <span class=\"n\">action</span><span class=\"o\">=</span><span class=\"p\">{</span>\n        <span class=\"n\">dialog_open</span>\n        <span class=\"n\">title</span><span class=\"o\">=</span><span class=\"s\">&quot;Sign up&quot;</span>\n        <span class=\"n\">template</span><span class=\"o\">=</span><span class=\"s\">&quot;logon_modal.tpl&quot;</span>\n        <span class=\"n\">logon_state</span><span class=\"o\">=</span><span class=\"s\">&quot;signup&quot;</span>\n    <span class=\"p\">}</span>\n<span class=\"c\">%}</span>\n</pre>\n</div>\n</div>\n<p>If the user now clicks on the link to sign in, the new form is shown in the same dialog.</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Sign in form</h2>\n<p>For a general understanding of the templates and configuration, first read the section on Sign Up form above.</p>\n<p>The sign in form is called with dispatch rule <code class=\"docutils literal notranslate\"><span class=\"pre\">logon</span></code>, implemented by <a class=\"reference internal\" href=\"/id/doc_module_mod_authentication\"><span class=\"std std-ref\">mod_authentication</span></a>. This module will normally be enabled.</p>\n<p>Sign In covers a number of associated functions:</p>\n<ul class=\"simple\">\n<li>Sign in (both public and admin)</li>\n<li>Request password reset</li>\n<li>Feedback after reset</li>\n<li>Create new password</li>\n<li>Feedback when account needs verification</li>\n</ul>\n<p>This makes the template structure more complex than the sign up form.</p>\n<div class=\"section\">\n<h3>Overriding templates</h3>\n<p>The templates are quite minimal and will probably not need structural changes. Most likely candidates for changing are titles and perhaps removing/adding extra links.</p>\n<p>For details see “Template structure Sign Up form” below.</p>\n</div>\n<div class=\"section\">\n<h3>Changing the configuration</h3>\n<p>The two configuration values in template file <code class=\"docutils literal notranslate\"><span class=\"pre\">_logon_config.tpl</span></code> deal with appearance: <code class=\"docutils literal notranslate\"><span class=\"pre\">style_boxed</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">style_width</span></code> (see below). Copy the file from <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_authentication</span></code> to your project and change the values.</p>\n</div>\n<div class=\"section\">\n<h3>Changing appearance</h3>\n<p>Form fields are displayed using the Bootstrap 3 HTML structure. To change the layout, look at the form field templates:</p>\n<ul class=\"simple\">\n<li>_logon_login_form_fields.tpl</li>\n<li>_logon_reminder_form_fields</li>\n<li>_logon_reset_form_fields</li>\n</ul>\n<p>The width of the form can be set with configuration value <code class=\"docutils literal notranslate\"><span class=\"pre\">style_width</span></code>. This should be a CSS value like “300px”. If no value is set, the form will expand to maximum width - in which case the width needs to be set by CSS</p>\n<p>A form background can be set with configuration value <code class=\"docutils literal notranslate\"><span class=\"pre\">style_boxed</span></code>.</p>\n<p>CSS styles are defined in <code class=\"docutils literal notranslate\"><span class=\"pre\">css/logon.css</span></code> (mod_authentication).</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Reference: Template structure Sign up form</h2>\n<p>Template tree:</p>\n<div class=\"highlight-none notranslate\">\n<div class=\"highlight\">\n<pre>signup.tpl                                   // sign up page\n`-- _signup_config.tpl                       // template and field configuration\n    `-- _signup.tpl                          // if signed in, redirects to user page\n        `-- _signup_box.tpl                  // form box components\n            `-- _signup_stage.tpl            // feedback message\n</pre>\n</div>\n</div>\n<p>The central form template <code class=\"docutils literal notranslate\"><span class=\"pre\">_signup_box.tpl</span></code> is further populated by sub templates:</p>\n<div class=\"highlight-none notranslate\">\n<div class=\"highlight\">\n<pre>_signup_box.tpl\n|-- _signup_title.tpl                        // header &quot;Sign up&quot;\n|-- _signup_extra.tpl                        // sign up with other auth modules (if activated)\n|-- _signup_form_form.tpl                    // HTML form\n|   `-- _signup_form_fields.tpl              // 3 form parts plus submit button\n|       |-- _signup_form_fields_email.tpl    // name and email\n|       |-- _signup_form_fields_username.tpl // username and password\n|       `-- _signup_form_fields_tos.tpl      // terms of service\n|-- _signup_support.tpl                      // left empty\n|-- _signup_outside.tpl                      // link (back) to sign in\n`-- _logon_link.tpl                          // shown below sign in form\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Reference: Template structure Sign Up form</h2>\n<p>Template tree:</p>\n<div class=\"highlight-none notranslate\">\n<div class=\"highlight\">\n<pre>logon.tpl                                    // sign in page\n|-- _logon_config.tpl                        // template and field configuration\n|   `-- _logon.tpl or _logon_modal.tpl       // logon module\n|       `-- _logon_box.tpl                   // form box components\n|           `-- _logon_stage.tpl             // feedback messages\n`-- logoff.tpl                               // log off page, redirects to q.p or homepage\n</pre>\n</div>\n</div>\n<p>Two mechanisms handle the state to determine which sub templates should be read:</p>\n<ul class=\"simple\">\n<li>For display on the page: the dispatch rule</li>\n<li>For display inside a modal: the <code class=\"docutils literal notranslate\"><span class=\"pre\">logon_state</span></code> value</li>\n</ul>\n<p>Depending on the the state value, <code class=\"docutils literal notranslate\"><span class=\"pre\">_logon_box.tpl</span></code> is populated by different sub templates:</p>\n<div class=\"highlight-none notranslate\">\n<div class=\"highlight\">\n<pre>when logon_state is::\n|== logon_reminder:                          // request a pw reset\n|   `-- _logon_box.tpl\n|       |-- _logon_reminder_title.tpl\n|       |-- _logon_reminder_form.tpl\n|       |   `-- _logon_reminder_form_fields.tpl or _logon_reminder_admin_form_fields.tpl\n|       `-- _logon_reminder_support.tpl      // backlink to logon form\n|== logon_reset:                             // reset pw\n|   `-- _logon_box.tpl\n|       |-- _logon_reset_title.tpl\n|       |-- _logon_reset_form.tpl\n|       |   `-- _logon_reset_form_fields.tpl\n|       `-- _logon_reset_support.tpl         // backlink to logon form\n|== admin_logon:\n|   `-- _logon_box.tpl\n|       |-- _logon_error.tpl\n|       |-- _logon_login_form.tpl\n|       |   `-- logon_login_admin_form_fields.tpl\n|       |-- _logon_login_support.tpl         // link forgot password\n|== signup (logon_state/modal only)\n|   `-- _signup_config.tpl (see Sign Up form)\n|       |-- _signup_support.tpl              // backlink to logon form\n`== else:\n    `-- _logon_box.tpl\n        |== awaiting verification:\n        |   `-- _logon_stage.tpl             // alternative content for logon box\n        `== else:\n            |-- _logon_login_title.tpl       // title &quot;Sign in to ...&quot;\n            |-- _logon_login_extra.tpl       // all-include by other modules\n            |-- _logon_error.tpl\n            |-- _logon_login_form.tpl\n            |   `-- _logon_login_form_fields.tpl\n            |-- _logon_login_support.tpl     // link forgot password\n            |-- _logon_login_outside.tpl     // all-include _logon_link.tpl\n               `-- _logon_link.tpl           // all-include by other modules\n</pre>\n</div>\n</div>\n<p>Here the sub templates ensure a consistent markup inside the box when going from state to state.</p>\n</div>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "customizing-the-sign-up-and-sign-in-form",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-signup-logon-form.rst",
+    "pivot_location_lng": null,
+    "name": "doc_cookbook_frontend_signup_logon_form",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:27Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "translation_status": {
+      "en": ""
+    },
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2024-05-15T12:10:21Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "customizing-the-sign-up-and-sign-in-form"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1589",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1589"
+  }
+}

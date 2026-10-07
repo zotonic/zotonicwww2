@@ -1,0 +1,3407 @@
+{
+  "inspected_on": "2026-10-06",
+  "scope": "Guide roots and their connected pages; current cookbook category; selected configuration/reference/release roots. Not a complete site crawl.",
+  "source": "Public anonymous rsc_export GET API and cookbook category search",
+  "resources": [
+    {
+      "id": 318,
+      "name": "cookbook",
+      "title": "Cookbook",
+      "url": "https://test.zotonic.com/id/318",
+      "category": "category",
+      "word_count": 26,
+      "headings": [],
+      "github_url": null,
+      "source_kind": null,
+      "modified": "2026-09-11T16:22:32Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1274,
+      "name": "doc_developerguide_notifications",
+      "title": "Notifications",
+      "url": "https://zotonic.com/id/1274",
+      "category": "developerguide",
+      "word_count": 979,
+      "headings": [
+        "Sending notifications",
+        "Notification types",
+        "notify",
+        "notify1",
+        "first",
+        "map",
+        "foldl",
+        "foldr",
+        "notify_sync",
+        "Subscribing to notifications",
+        "Subscription shorthands",
+        "Handling notifications"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/notifications.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:16Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1276,
+      "name": "doc_developerguide_resources",
+      "title": "Resources",
+      "url": "https://zotonic.com/id/1276",
+      "category": "developerguide",
+      "word_count": 1054,
+      "headings": [
+        "Resource properties",
+        "Categories",
+        "Medium",
+        "Blocks",
+        "Manipulating resources",
+        "How resources are stored",
+        "Changing resources",
+        "Pivots",
+        "Pivot columns",
+        "The pivot queue",
+        "Identities",
+        "Deleted resources"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/resources.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:42Z",
+      "children": [],
+      "has_todo": true
+    },
+    {
+      "id": 1277,
+      "name": "doc_userguide_datamodel",
+      "title": "The Zotonic data model",
+      "url": "https://zotonic.com/id/1277",
+      "category": "userguide",
+      "word_count": 932,
+      "headings": [
+        "The data model by example",
+        "Pages",
+        "Resource Properties",
+        "Categories",
+        "Edges",
+        "Predicates"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/user-guide/datamodel.rst",
+      "source_kind": null,
+      "modified": "2022-03-14T17:01:54Z",
+      "children": [],
+      "has_todo": true
+    },
+    {
+      "id": 1280,
+      "name": "doc_developerguide_media",
+      "title": "Media",
+      "url": "https://zotonic.com/id/1280",
+      "category": "developerguide",
+      "word_count": 658,
+      "headings": [
+        "Adding media",
+        "In templates",
+        "Media classes",
+        "Responsive images",
+        "Raw ImageMagick options"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/media.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:32Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1281,
+      "name": "doc_cookbook_custom_pivot",
+      "title": "Custom pivots",
+      "url": "https://zotonic.com/id/1281",
+      "category": "cookbook",
+      "word_count": 374,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-pivot.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:32Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1282,
+      "name": "doc_cookbook_pivot_templates",
+      "title": "Pivot Templates",
+      "url": "https://zotonic.com/id/1282",
+      "category": "cookbook",
+      "word_count": 521,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/pivot-templates.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:38Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1290,
+      "name": "doc_cookbook_frontend_sitemap",
+      "title": "Displaying a site map",
+      "url": "https://zotonic.com/id/1290",
+      "category": "cookbook",
+      "word_count": 259,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-sitemap.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:38Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1302,
+      "name": "doc_developerguide_server_browser_interaction",
+      "title": "Browser/server interaction",
+      "url": "https://zotonic.com/id/1302",
+      "category": "developerguide",
+      "word_count": 914,
+      "headings": [
+        "Publish/subscribe (MQTT)",
+        "API Methods",
+        "Wires",
+        "Wired events",
+        "Trigger server side notifications from JavaScript",
+        "Transport",
+        "From browser to server",
+        "Quality of service",
+        "From server to browser"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/server-browser-interaction.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:20Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1318,
+      "name": "doc_cookbook_exometer",
+      "title": "Exometer metrics",
+      "url": "https://zotonic.com/id/1318",
+      "category": "cookbook",
+      "word_count": 1056,
+      "headings": [
+        "Step 1: get a Time Series Database (TSDB)",
+        "Step 2: configure Exometer to report to your TSDB",
+        "Step 3: tell Exometer what to report, and how often",
+        "Using the Zotonic Shell",
+        "Complete configuration example"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/exometer.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:42Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1319,
+      "name": "doc_developerguide_deployment_server_configuration",
+      "title": "Server configuration",
+      "url": "https://zotonic.com/id/1319",
+      "category": "developerguide",
+      "word_count": 355,
+      "headings": [
+        "File descriptors",
+        "Network connections"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/server-configuration.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:44Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1340,
+      "name": "doc_cookbook_custom_action",
+      "title": "Create a custom action",
+      "url": "https://zotonic.com/id/1340",
+      "category": "cookbook",
+      "word_count": 3,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-action.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:32Z",
+      "children": [],
+      "has_todo": true
+    },
+    {
+      "id": 1352,
+      "name": "doc_developerguide_templates",
+      "title": "Templates",
+      "url": "https://zotonic.com/id/1352",
+      "category": "developerguide",
+      "word_count": 1031,
+      "headings": [
+        "Variables",
+        "Filters",
+        "Tags",
+        "Models",
+        "Template names",
+        "Overriding templates",
+        "Page templates",
+        "Template structure",
+        "Including templates",
+        "Inheritance"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/templates.rst",
+      "source_kind": null,
+      "modified": "2024-03-25T16:48:35Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1353,
+      "name": "doc_developerguide_modules",
+      "title": "Modules",
+      "url": "https://zotonic.com/id/1353",
+      "category": "developerguide",
+      "word_count": 3078,
+      "headings": [
+        "Activating modules",
+        "Module configuration",
+        "Directory structure",
+        "The module file",
+        "Module subdirectories",
+        "priv/dispatch/",
+        "priv/lib/",
+        "priv/lib-src/",
+        "priv/templates/",
+        "src/actions/",
+        "src/scomps/",
+        "src/controllers/",
+        "src/models/",
+        "src/filters/",
+        "src/validators/",
+        "Changing / recompiling files",
+        "Priority",
+        "Dependencies",
+        "Module startup order",
+        "Module versioning",
+        "Using categories defined by other modules",
+        "gen_server based modules",
+        "A minimal example"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/modules.rst",
+      "source_kind": null,
+      "modified": "2022-05-17T07:17:36Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1409,
+      "name": "doc_developerguide_translation",
+      "title": "Translation",
+      "url": "https://zotonic.com/id/1409",
+      "category": "developerguide",
+      "word_count": 1041,
+      "headings": [
+        "Enabling multiple languages",
+        "Translation sources",
+        "Generation of translations",
+        "Creating a new translation for a module",
+        "Updating translation strings",
+        "Helpful commands",
+        "Translated content",
+        "Text searches, translations and stemming"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/translation.rst",
+      "source_kind": null,
+      "modified": "2026-09-15T14:21:12Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1411,
+      "name": "doc_developerguide_docker",
+      "title": "Docker",
+      "url": "https://zotonic.com/id/1411",
+      "category": "developerguide",
+      "word_count": 333,
+      "headings": [
+        "zotonic-dev"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/docker.rst",
+      "source_kind": null,
+      "modified": "2024-11-04T11:38:55Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1416,
+      "name": "doc_cookbook_frontend_growl",
+      "title": "Enabling Growl Notifications",
+      "url": "https://zotonic.com/id/1416",
+      "category": "cookbook",
+      "word_count": 125,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-growl.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:21Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1418,
+      "name": "doc_template_validator_validator_custom",
+      "title": "custom",
+      "url": "https://zotonic.com/id/1418",
+      "category": "template_validator",
+      "word_count": 145,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_custom.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1419,
+      "name": "doc_developerguide_forms_and_validation",
+      "title": "Forms and validation",
+      "url": "https://zotonic.com/id/1419",
+      "category": "developerguide",
+      "word_count": 190,
+      "headings": [
+        "Client- and server-side",
+        "Validators"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/forms-and-validation.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:19Z",
+      "children": [
+        {
+          "id": 1743,
+          "name": "doc_template_validator_validator_acceptance",
+          "title": "acceptance",
+          "sequence": 1000000
+        },
+        {
+          "id": 1744,
+          "name": "doc_template_validator_validator_confirmation",
+          "title": "confirmation",
+          "sequence": 1000000
+        },
+        {
+          "id": 1418,
+          "name": "doc_template_validator_validator_custom",
+          "title": "custom",
+          "sequence": 1000000
+        },
+        {
+          "id": 1745,
+          "name": "doc_template_validator_validator_date",
+          "title": "date",
+          "sequence": 1000000
+        },
+        {
+          "id": 1746,
+          "name": "doc_template_validator_validator_email",
+          "title": "email",
+          "sequence": 1000000
+        },
+        {
+          "id": 1433,
+          "name": "doc_template_validator_validator_email_unique",
+          "title": "email_unique",
+          "sequence": 1000000
+        },
+        {
+          "id": 1747,
+          "name": "doc_template_validator_validator_format",
+          "title": "format",
+          "sequence": 1000000
+        },
+        {
+          "id": 1730,
+          "name": "doc_template_validator_validator_length",
+          "title": "length",
+          "sequence": 1000000
+        },
+        {
+          "id": 1748,
+          "name": "doc_template_validator_validator_name_unique",
+          "title": "name_unique",
+          "sequence": 1000000
+        },
+        {
+          "id": 1749,
+          "name": "doc_template_validator_validator_numericality",
+          "title": "numericality",
+          "sequence": 1000000
+        },
+        {
+          "id": 1750,
+          "name": "doc_template_validator_validator_postback",
+          "title": "postback",
+          "sequence": 1000000
+        },
+        {
+          "id": 1751,
+          "name": "doc_template_validator_validator_presence",
+          "title": "presence",
+          "sequence": 1000000
+        },
+        {
+          "id": 1432,
+          "name": "doc_template_validator_validator_username_unique",
+          "title": "username_unique",
+          "sequence": 1000000
+        }
+      ],
+      "has_todo": false
+    },
+    {
+      "id": 1422,
+      "name": "doc_cookbook_shell_debuggingdatabase",
+      "title": "Debugging db (query) issues",
+      "url": "https://zotonic.com/id/1422",
+      "category": "cookbook",
+      "word_count": 139,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-debuggingdatabase.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:23Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1428,
+      "name": "doc_cookbook_justenough_otp2",
+      "title": "Just enough Erlang/OTP and rebar, part 2",
+      "url": "https://zotonic.com/id/1428",
+      "category": "cookbook",
+      "word_count": 1017,
+      "headings": [
+        "WHY",
+        "ASSUMPTIONS",
+        "HOW",
+        "How can I kill a running process?",
+        "How can I generate documentation?",
+        "TROUBLESHOOTING",
+        "WHAT YOU’VE LEARNED",
+        "WHERE TO GO FROM HERE",
+        "REFERENCES"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/justenough-otp2.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:26Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1429,
+      "name": "doc_cookbook_justenough_otp1",
+      "title": "Just enough Erlang/OTP and rebar, part 1",
+      "url": "https://zotonic.com/id/1429",
+      "category": "cookbook",
+      "word_count": 1247,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How",
+        "How can I install and learn Rebar?",
+        "Download the rebar binary",
+        "How can I create an application",
+        "How can I add a gen_server template to my new application?",
+        "How can I make my new gen_server do something?",
+        "How can I compile these two applications?",
+        "How can I test?",
+        "Troubleshooting",
+        "What you’ve learned",
+        "Where to go from here",
+        "References on the web",
+        "Books"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/justenough-otp1.rst",
+      "source_kind": null,
+      "modified": "2022-06-20T15:24:08Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1430,
+      "name": "doc_cookbook_admin_custom_style",
+      "title": "Customizing the style of an admin page",
+      "url": "https://zotonic.com/id/1430",
+      "category": "cookbook",
+      "word_count": 101,
+      "headings": [
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-custom-style.rst",
+      "source_kind": null,
+      "modified": "2022-06-13T17:11:53Z",
+      "children": [],
+      "has_todo": true
+    },
+    {
+      "id": 1432,
+      "name": "doc_template_validator_validator_username_unique",
+      "title": "username_unique",
+      "url": "https://zotonic.com/id/1432",
+      "category": "template_validator",
+      "word_count": 58,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_admin_identity/src/validators/validator_admin_identity_username_unique.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:30Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1433,
+      "name": "doc_template_validator_validator_email_unique",
+      "title": "email_unique",
+      "url": "https://zotonic.com/id/1433",
+      "category": "template_validator",
+      "word_count": 60,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_admin_identity/src/validators/validator_admin_identity_email_unique.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:30Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1454,
+      "name": "doc_developerguide_configuration_zotonic_configuration",
+      "title": "Global configuration",
+      "url": "https://zotonic.com/id/1454",
+      "category": "reference",
+      "word_count": 565,
+      "headings": [
+        "Config file locations",
+        "The zotonic.config file",
+        "The erlang.config file"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/ref/configuration/zotonic-configuration.rst",
+      "source_kind": null,
+      "modified": "2023-06-24T08:17:44Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1455,
+      "name": "doc_developerguide_upgrading",
+      "title": "Upgrade notes",
+      "url": "https://zotonic.com/id/1455",
+      "category": "developerguide",
+      "word_count": 1869,
+      "headings": [
+        "Upgrading from 0.x to 1.0",
+        "Erlang/OTP",
+        "Docker",
+        "Sites and modules are now OTP apps",
+        "Resources",
+        "Media",
+        "ACL",
+        "Authentication",
+        "Configuration",
+        "Errors",
+        "Logging",
+        "Export",
+        "JSON",
+        "Removed or deprecated functions",
+        "Module schema and data initialization",
+        "Templates",
+        "Port, proxies and SSL certificates",
+        "Erlang code, Controllers, Event handlers",
+        "Binaries for request variables",
+        "Events like submit, postback and postback_notify",
+        "Cookies",
+        "Request and response headers",
+        "Controllers",
+        "Search",
+        "Notifications",
+        "Modules",
+        "Menus"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/upgrading.rst",
+      "source_kind": null,
+      "modified": "2026-09-20T16:12:44Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1481,
+      "name": "doc_developerguide_deployment_env",
+      "title": "Useful environment variables",
+      "url": "https://zotonic.com/id/1481",
+      "category": "developerguide",
+      "word_count": 842,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/env.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1482,
+      "name": "doc_developerguide_configuration_port_ssl_configuration",
+      "title": "Port configurations",
+      "url": "https://zotonic.com/id/1482",
+      "category": "reference",
+      "word_count": 1003,
+      "headings": [
+        "Server direct on the Internet",
+        "Server accessed via NAT",
+        "Server behind a proxy like Nginx or HAProxy",
+        "SSL certificates",
+        "HTTPS and security",
+        "Secure cookies",
+        "Erlang SSL Configuration",
+        "Adding your own SSL options or certificates"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/ref/configuration/port-ssl-configuration.rst",
+      "source_kind": null,
+      "modified": "2023-06-24T08:17:58Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1526,
+      "name": "doc_developerguide_getting_started",
+      "title": "Getting Started",
+      "url": "https://zotonic.com/id/1526",
+      "category": "developerguide",
+      "word_count": 846,
+      "headings": [
+        "Docker",
+        "Podman",
+        "Nix",
+        "Cloud-Init",
+        "Manual installation",
+        "Preparation",
+        "Ubuntu / Debian",
+        "macOS",
+        "FreeBSD",
+        "Windows",
+        "Getting Zotonic",
+        "Next steps"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/getting-started.rst",
+      "source_kind": null,
+      "modified": "2026-09-19T11:40:38Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1527,
+      "name": "doc_developerguide_sites",
+      "title": "Sites",
+      "url": "https://zotonic.com/id/1527",
+      "category": "developerguide",
+      "word_count": 454,
+      "headings": [
+        "Create a site",
+        "Anatomy of a site",
+        "Next steps"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/sites.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:20Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1528,
+      "name": "doc_developerguide_status_site",
+      "title": "The Status site",
+      "url": "https://zotonic.com/id/1528",
+      "category": "developerguide",
+      "word_count": 395,
+      "headings": [
+        "Logging in",
+        "Getting the global sites status",
+        "Restarting sites"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/status-site.rst",
+      "source_kind": null,
+      "modified": "2022-06-14T07:26:18Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1529,
+      "name": "doc_developerguide_troubleshooting",
+      "title": "Troubleshooting",
+      "url": "https://zotonic.com/id/1529",
+      "category": "developerguide",
+      "word_count": 309,
+      "headings": [
+        "Installation",
+        "Zotonic won’t start and shows errors when running zotonic debug",
+        "Unable to read boot script",
+        "Erlang crashes",
+        "Sites",
+        "Site doesn’t start",
+        "Browsers can’t connect to http://yoursite.test:8000",
+        "Browsers give self-signed certificate warning"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/troubleshooting.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:27Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1530,
+      "name": "doc_reference_installation_requirements",
+      "title": "Installation requirements",
+      "url": "https://zotonic.com/id/1530",
+      "category": "reference",
+      "word_count": 555,
+      "headings": [
+        "Erlang",
+        "ImageMagick",
+        "PostgreSQL",
+        "Enabling trust-authentication in PostgreSQL",
+        "Platform-specific notes",
+        "Ubuntu / Debian",
+        "FreeBSD",
+        "macOS",
+        "Windows"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/ref/installation/requirements.rst",
+      "source_kind": null,
+      "modified": "2026-09-19T11:39:13Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1536,
+      "name": "doc_developerguide_access_control",
+      "title": "Access control",
+      "url": "https://zotonic.com/id/1536",
+      "category": "developerguide",
+      "word_count": 468,
+      "headings": [
+        "Authentication",
+        "Customizing authentication",
+        "Authorization",
+        "Protecting access to controllers",
+        "Protecting access to resources and modules",
+        "Customizing authorization"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/access-control.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:38Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1538,
+      "name": "doc_cookbook_shell_characters",
+      "title": "Filter and convert characters",
+      "url": "https://zotonic.com/id/1538",
+      "category": "cookbook",
+      "word_count": 937,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-characters.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:24Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1539,
+      "name": "doc_developerguide_wires",
+      "title": "Wires",
+      "url": "https://zotonic.com/id/1539",
+      "category": "developerguide",
+      "word_count": 518,
+      "headings": [
+        "Actions",
+        "Trigger actions from JavaScript",
+        "Server postbacks",
+        "Trigger browser actions from the server",
+        "Named actions",
+        "Auto-generated identifiers"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/wires.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:26Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1540,
+      "name": "doc_developerguide_controllers",
+      "title": "Controllers",
+      "url": "https://zotonic.com/id/1540",
+      "category": "developerguide",
+      "word_count": 381,
+      "headings": [
+        "Anatomy of a controller",
+        "Rendering templates",
+        "Differences between Cowmachine and Basho’s Webmachine"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/controllers.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:23Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1541,
+      "name": "doc_developerguide_dispatch_rules",
+      "title": "Dispatch rules",
+      "url": "https://zotonic.com/id/1541",
+      "category": "developerguide",
+      "word_count": 1489,
+      "headings": [
+        "Defining dispatch rules",
+        "1. Dispatch rule name",
+        "2. Match pattern",
+        "Order of rules",
+        "Match pattern constraints with regular expressions",
+        "3. Controller",
+        "4. Controller arguments",
+        "Generating URLs",
+        "In templates",
+        "In Erlang",
+        "Dispatcher details",
+        "Organizing dispatch files",
+        "URL rewriting",
+        "Dispatch rule options",
+        "Unmatched hosts/domains",
+        "Unmatched paths",
+        "Dispatch rule BNF"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/dispatch-rules.rst",
+      "source_kind": null,
+      "modified": "2024-03-25T16:47:21Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1544,
+      "name": "doc_cookbook_shell_completion",
+      "title": "Erlang tab completion",
+      "url": "https://zotonic.com/id/1544",
+      "category": "cookbook",
+      "word_count": 156,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-completion.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:36Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1546,
+      "name": "doc_developerguide_testing",
+      "title": "Testing sites",
+      "url": "https://zotonic.com/id/1546",
+      "category": "developerguide",
+      "word_count": 970,
+      "headings": [
+        "Example sitetest module",
+        "Test Driven Development",
+        "Example testing output"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/testing.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:31Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1547,
+      "name": "doc_reference_cli_index",
+      "title": "Command-line",
+      "url": "https://zotonic.com/id/1547",
+      "category": "reference",
+      "word_count": 815,
+      "headings": [
+        "Shell environment variables",
+        "Commands"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/ref/cli/index.rst",
+      "source_kind": null,
+      "modified": "2023-10-13T07:54:47Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1552,
+      "name": "doc_developerguide_email",
+      "title": "E-mail handling",
+      "url": "https://zotonic.com/id/1552",
+      "category": "developerguide",
+      "word_count": 1685,
+      "headings": [
+        "Site-specific configuration",
+        "Zotonic-wide configuration",
+        "Zotonic-wide configuration for sending email",
+        "Zotonic-wide settings for receiving email",
+        "The sender’s domain",
+        "How does Zotonic know the domain?",
+        "Sending E-mail",
+        "Send e-mail from a template",
+        "Send e-mail to the admin",
+        "Receiving E-mail",
+        "Configuring incoming E-mail",
+        "Handling incoming E-mail",
+        "Feedback",
+        "Troubleshooting"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/email.rst",
+      "source_kind": null,
+      "modified": "2024-02-29T07:52:27Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1553,
+      "name": "doc_cookbook_admin_datetime",
+      "title": "Storing date/time fields",
+      "url": "https://zotonic.com/id/1553",
+      "category": "cookbook",
+      "word_count": 414,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How",
+        "Internals"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-datetime.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:19Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1572,
+      "name": "doc_cookbook_custom_filter",
+      "title": "Create a custom filter",
+      "url": "https://zotonic.com/id/1572",
+      "category": "cookbook",
+      "word_count": 146,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-filter.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:18Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1573,
+      "name": "doc_cookbook_custom_model",
+      "title": "Create a custom model",
+      "url": "https://zotonic.com/id/1573",
+      "category": "cookbook",
+      "word_count": 1791,
+      "headings": [
+        "Model modules",
+        "m_get",
+        "Example: Setting up m_omdb",
+        "Template interface",
+        "Model skeleton",
+        "Querying the API",
+        "Lookup functions",
+        "Full source code",
+        "Possible enhancements"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-model.rst",
+      "source_kind": null,
+      "modified": "2022-05-09T14:19:49Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1574,
+      "name": "doc_cookbook_custom_tag",
+      "title": "Create a custom tag",
+      "url": "https://zotonic.com/id/1574",
+      "category": "cookbook",
+      "word_count": 343,
+      "headings": [
+        "Implementing a custom tag",
+        "Scomp internals"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-tag.rst",
+      "source_kind": null,
+      "modified": "2022-09-08T13:32:08Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1575,
+      "name": "doc_cookbook_custom_search",
+      "title": "Custom search",
+      "url": "https://zotonic.com/id/1575",
+      "category": "cookbook",
+      "word_count": 221,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-search.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1576,
+      "name": "doc_cookbook_writing_module",
+      "title": "Writing your own module",
+      "url": "https://zotonic.com/id/1576",
+      "category": "cookbook",
+      "word_count": 5,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/writing-module.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:22Z",
+      "children": [],
+      "has_todo": true
+    },
+    {
+      "id": 1577,
+      "name": "doc_cookbook_overriding",
+      "title": "Overriding Zotonic",
+      "url": "https://zotonic.com/id/1577",
+      "category": "cookbook",
+      "word_count": 130,
+      "headings": [
+        "Overriding templates",
+        "Overriding assets",
+        "Overriding logic"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/overriding.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:21Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1578,
+      "name": "doc_cookbook_task_queue",
+      "title": "Execute tasks asynchronously using the task queue",
+      "url": "https://zotonic.com/id/1578",
+      "category": "cookbook",
+      "word_count": 524,
+      "headings": [
+        "Add a task to the queue",
+        "Execute queued tasks",
+        "Handle failing tasks",
+        "Prevent duplicate tasks"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/task-queue.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:42Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1579,
+      "name": "doc_cookbook_template_icons",
+      "title": "Icons in templates",
+      "url": "https://zotonic.com/id/1579",
+      "category": "cookbook",
+      "word_count": 205,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/template-icons.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:37Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1580,
+      "name": "doc_cookbook_logstash",
+      "title": "Logging to Logstash",
+      "url": "https://zotonic.com/id/1580",
+      "category": "cookbook",
+      "word_count": 332,
+      "headings": [
+        "Step 1: add a Logstash handler",
+        "Step 2: configure the Logstash handler"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/logstash.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:16Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1581,
+      "name": "doc_cookbook_error_pages",
+      "title": "How to customise error pages",
+      "url": "https://zotonic.com/id/1581",
+      "category": "cookbook",
+      "word_count": 55,
+      "headings": [
+        "Specific error pages",
+        "Generic error page"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/error-pages.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:36Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1582,
+      "name": "doc_cookbook_frontend_contactform",
+      "title": "Implementing a simple contact form",
+      "url": "https://zotonic.com/id/1582",
+      "category": "cookbook",
+      "word_count": 805,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How",
+        "Create the contact form",
+        "Create the contact-form handler Erlang file",
+        "E-mail the contents of the contact form to somebody"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-contactform.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:22Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1583,
+      "name": "doc_cookbook_frontend_custom_content_block",
+      "title": "How to add a custom page block",
+      "url": "https://zotonic.com/id/1583",
+      "category": "cookbook",
+      "word_count": 744,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-custom-content-block.rst",
+      "source_kind": null,
+      "modified": "2024-12-10T12:56:12Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1584,
+      "name": "doc_cookbook_frontend_formupdating",
+      "title": "Updating form field from a dialog",
+      "url": "https://zotonic.com/id/1584",
+      "category": "cookbook",
+      "word_count": 250,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-formupdating.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:28Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1586,
+      "name": "doc_cookbook_frontend_pagebackgrounds",
+      "title": "Page-specific dynamic backgrounds",
+      "url": "https://zotonic.com/id/1586",
+      "category": "cookbook",
+      "word_count": 870,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-pagebackgrounds.rst",
+      "source_kind": null,
+      "modified": "2024-06-20T08:17:44Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1587,
+      "name": "doc_cookbook_frontend_retrieving_category",
+      "title": "Retrieving the category of a page",
+      "url": "https://zotonic.com/id/1587",
+      "category": "cookbook",
+      "word_count": 118,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-retrieving-category.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:36Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1588,
+      "name": "doc_cookbook_frontend_share_variable",
+      "title": "Share variable binding across blocks",
+      "url": "https://zotonic.com/id/1588",
+      "category": "cookbook",
+      "word_count": 508,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-share-variable.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:19Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1589,
+      "name": "doc_cookbook_frontend_signup_logon_form",
+      "title": "Customizing the sign up and sign in form",
+      "url": "https://zotonic.com/id/1589",
+      "category": "cookbook",
+      "word_count": 1251,
+      "headings": [
+        "Sign up form",
+        "Overriding templates",
+        "Changing the configuration",
+        "Changing appearance",
+        "Password length",
+        "Sign up form in a modal dialog",
+        "Sign in form",
+        "Overriding templates",
+        "Changing the configuration",
+        "Changing appearance",
+        "Reference: Template structure Sign up form",
+        "Reference: Template structure Sign Up form"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-signup-logon-form.rst",
+      "source_kind": null,
+      "modified": "2024-05-15T12:10:21Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1590,
+      "name": "doc_cookbook_frontend_signup_redirection",
+      "title": "Managing redirection after login and signup",
+      "url": "https://zotonic.com/id/1590",
+      "category": "cookbook",
+      "word_count": 444,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How",
+        "Example 1",
+        "Example 2",
+        "Example 3",
+        "Example 4"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-signup-redirection.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:34Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1591,
+      "name": "doc_cookbook_frontend_sitespecific_signup",
+      "title": "Site-specific signup actions",
+      "url": "https://zotonic.com/id/1591",
+      "category": "cookbook",
+      "word_count": 249,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-sitespecific-signup.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:28Z",
+      "children": [],
+      "has_todo": true
+    },
+    {
+      "id": 1592,
+      "name": "doc_cookbook_frontend_template_select_value",
+      "title": "Dynamic select options using a wired template",
+      "url": "https://zotonic.com/id/1592",
+      "category": "cookbook",
+      "word_count": 321,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-template-select-value.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:42Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1593,
+      "name": "doc_cookbook_admin_a_custom_widget",
+      "title": "Creating a custom widget on the edit page",
+      "url": "https://zotonic.com/id/1593",
+      "category": "cookbook",
+      "word_count": 242,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "Custom widget",
+        "Word of caution"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-a-custom-widget.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:35Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1594,
+      "name": "doc_cookbook_admin_custom_layout",
+      "title": "Customizing the layout of the admin edit page",
+      "url": "https://zotonic.com/id/1594",
+      "category": "cookbook",
+      "word_count": 272,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "Page structure",
+        "Content parts",
+        "Sidebar",
+        "Category and instance",
+        "Word of caution"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-custom-layout.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:25Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1595,
+      "name": "doc_cookbook_admin_templates",
+      "title": "Admin template specific things",
+      "url": "https://zotonic.com/id/1595",
+      "category": "cookbook",
+      "word_count": 43,
+      "headings": [
+        "Linking to edit pages"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-templates.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:28Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1596,
+      "name": "doc_cookbook_admin_user_group",
+      "title": "Automatically add new users to a user group",
+      "url": "https://zotonic.com/id/1596",
+      "category": "cookbook",
+      "word_count": 189,
+      "headings": [
+        "Why",
+        "Solution"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-user-group.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:38Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1597,
+      "name": "doc_cookbook_shell_activate_modules",
+      "title": "Activate/deactivate modules",
+      "url": "https://zotonic.com/id/1597",
+      "category": "cookbook",
+      "word_count": 169,
+      "headings": [
+        "Why",
+        "How",
+        "Check Your Hostname"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-activate-modules.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:34Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1598,
+      "name": "doc_cookbook_shell_resetpassword",
+      "title": "Reset a user’s password",
+      "url": "https://zotonic.com/id/1598",
+      "category": "cookbook",
+      "word_count": 189,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How",
+        "Troubleshooting"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-resetpassword.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:33Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1599,
+      "name": "doc_cookbook_shell_restoring_db",
+      "title": "Restore/upgrade content db from backup",
+      "url": "https://zotonic.com/id/1599",
+      "category": "cookbook",
+      "word_count": 439,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How",
+        "Instructions"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-restoring-db.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:44Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1600,
+      "name": "doc_cookbook_justenough_postgres",
+      "title": "Just enough Postgres",
+      "url": "https://zotonic.com/id/1600",
+      "category": "cookbook",
+      "word_count": 1646,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How",
+        "Troubleshooting",
+        "Resources",
+        "Books"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/justenough-postgres.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1601,
+      "name": "doc_cookbook_justenough_re",
+      "title": "Just Enough Regular Expressions (in Erlang)",
+      "url": "https://zotonic.com/id/1601",
+      "category": "cookbook",
+      "word_count": 1365,
+      "headings": [
+        "WHY",
+        "ASSUMPTIONS",
+        "HOW",
+        "What is a regular expression?",
+        "What is a pattern?",
+        "How can I replace a substring in a string?",
+        "What is a metacharacter?",
+        "How can I match non-printing characters?",
+        "TROUBLESHOOTING",
+        "RESOURCES"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/justenough-re.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:41Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1602,
+      "name": "doc_cookbook_justenough_shell",
+      "title": "Just enough Erlang shell",
+      "url": "https://zotonic.com/id/1602",
+      "category": "cookbook",
+      "word_count": 400,
+      "headings": [
+        "WHY",
+        "ASSUMPTIONS",
+        "HOW",
+        "REFERENCES"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/justenough-shell.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:36Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1635,
+      "name": "doc_developerguide_index",
+      "title": "Developer Guide",
+      "url": "https://zotonic.com/id/1635",
+      "category": "developerguide",
+      "word_count": 63,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/index.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:31Z",
+      "children": [
+        {
+          "id": 1636,
+          "name": "doc_developerguide_introduction",
+          "title": "Introduction",
+          "sequence": 1
+        },
+        {
+          "id": 1526,
+          "name": "doc_developerguide_getting_started",
+          "title": "Getting Started",
+          "sequence": 2
+        },
+        {
+          "id": 1411,
+          "name": "doc_developerguide_docker",
+          "title": "Docker",
+          "sequence": 3
+        },
+        {
+          "id": 2176,
+          "name": "doc_developerguide_directory_structure",
+          "title": "Directory structure",
+          "sequence": 4
+        },
+        {
+          "id": 1527,
+          "name": "doc_developerguide_sites",
+          "title": "Sites",
+          "sequence": 5
+        },
+        {
+          "id": 1528,
+          "name": "doc_developerguide_status_site",
+          "title": "The Status site",
+          "sequence": 6
+        },
+        {
+          "id": 1540,
+          "name": "doc_developerguide_controllers",
+          "title": "Controllers",
+          "sequence": 7
+        },
+        {
+          "id": 1541,
+          "name": "doc_developerguide_dispatch_rules",
+          "title": "Dispatch rules",
+          "sequence": 8
+        },
+        {
+          "id": 1276,
+          "name": "doc_developerguide_resources",
+          "title": "Resources",
+          "sequence": 9
+        },
+        {
+          "id": 1352,
+          "name": "doc_developerguide_templates",
+          "title": "Templates",
+          "sequence": 10
+        },
+        {
+          "id": 2410,
+          "name": null,
+          "title": "CSS classes used in templates",
+          "sequence": 11
+        },
+        {
+          "id": 1280,
+          "name": "doc_developerguide_media",
+          "title": "Media",
+          "sequence": 12
+        },
+        {
+          "id": 1637,
+          "name": "doc_developerguide_icons",
+          "title": "Icons",
+          "sequence": 13
+        },
+        {
+          "id": 1419,
+          "name": "doc_developerguide_forms_and_validation",
+          "title": "Forms and validation",
+          "sequence": 14
+        },
+        {
+          "id": 1638,
+          "name": "doc_developerguide_search",
+          "title": "Search",
+          "sequence": 15
+        },
+        {
+          "id": 1409,
+          "name": "doc_developerguide_translation",
+          "title": "Translation",
+          "sequence": 16
+        },
+        {
+          "id": 1539,
+          "name": "doc_developerguide_wires",
+          "title": "Wires",
+          "sequence": 17
+        },
+        {
+          "id": 1536,
+          "name": "doc_developerguide_access_control",
+          "title": "Access control",
+          "sequence": 18
+        },
+        {
+          "id": 1353,
+          "name": "doc_developerguide_modules",
+          "title": "Modules",
+          "sequence": 19
+        },
+        {
+          "id": 1274,
+          "name": "doc_developerguide_notifications",
+          "title": "Notifications",
+          "sequence": 20
+        },
+        {
+          "id": 1302,
+          "name": "doc_developerguide_server_browser_interaction",
+          "title": "Browser/server interaction",
+          "sequence": 21
+        },
+        {
+          "id": 1552,
+          "name": "doc_developerguide_email",
+          "title": "E-mail handling",
+          "sequence": 22
+        },
+        {
+          "id": 1639,
+          "name": "doc_developerguide_shell",
+          "title": "Command-line shell",
+          "sequence": 23
+        },
+        {
+          "id": 1640,
+          "name": "doc_developerguide_logging",
+          "title": "Logging",
+          "sequence": 24
+        },
+        {
+          "id": 1546,
+          "name": "doc_developerguide_testing",
+          "title": "Testing sites",
+          "sequence": 25
+        },
+        {
+          "id": 1641,
+          "name": "doc_developerguide_deployment_index",
+          "title": "Deployment",
+          "sequence": 26
+        },
+        {
+          "id": 1529,
+          "name": "doc_developerguide_troubleshooting",
+          "title": "Troubleshooting",
+          "sequence": 27
+        },
+        {
+          "id": 1642,
+          "name": "doc_developerguide_contributing",
+          "title": "Contributing to Zotonic",
+          "sequence": 28
+        },
+        {
+          "id": 1643,
+          "name": "doc_releasenotes_index",
+          "title": "Release Notes",
+          "sequence": 29
+        },
+        {
+          "id": 1455,
+          "name": "doc_developerguide_upgrading",
+          "title": "Upgrade notes",
+          "sequence": 30
+        }
+      ],
+      "has_todo": false
+    },
+    {
+      "id": 1636,
+      "name": "doc_developerguide_introduction",
+      "title": "Introduction",
+      "url": "https://zotonic.com/id/1636",
+      "category": "developerguide",
+      "word_count": 158,
+      "headings": [
+        "An overview of Zotonic"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/introduction.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:16Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1637,
+      "name": "doc_developerguide_icons",
+      "title": "Icons",
+      "url": "https://zotonic.com/id/1637",
+      "category": "developerguide",
+      "word_count": 831,
+      "headings": [
+        "Including Zotonic icons CSS",
+        "Writing Zotonic icons CSS classes",
+        "Buttons",
+        "Social login buttons",
+        "Writing LESS",
+        "Extending Zotonic icons",
+        "Extending Material Design icons",
+        "Extending FontAwesome 4 icons"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/icons.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:32Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1638,
+      "name": "doc_developerguide_search",
+      "title": "Search",
+      "url": "https://zotonic.com/id/1638",
+      "category": "developerguide",
+      "word_count": 2208,
+      "headings": [
+        "Trying it out",
+        "Query arguments",
+        "cat",
+        "cat_exact",
+        "cat_exclude",
+        "id_exclude",
+        "filter",
+        "hassubject",
+        "hasobject",
+        "hasanyobject",
+        "hasmedium",
+        "match_objects",
+        "match_object_ids",
+        "is_authoritative",
+        "is_featured",
+        "is_published",
+        "is_findable",
+        "is_unfindable",
+        "upcoming",
+        "ongoing",
+        "finished",
+        "unfinished",
+        "unfinished_or_nodate",
+        "sort / asort / zsort",
+        "pivot.name",
+        "pivot.mypivot.name",
+        "facet.name",
+        "hasobjectpredicate",
+        "hassubjectpredicate",
+        "text",
+        "query_id",
+        "qargs",
+        "publication_month",
+        "publication_year",
+        "publication_after",
+        "publication_before",
+        "date_start_after",
+        "date_start_before",
+        "date_start_year",
+        "date_end_after",
+        "date_end_before",
+        "date_end_year",
+        "created_after",
+        "created_before",
+        "modified_after",
+        "modified_before",
+        "content_group",
+        "name",
+        "language",
+        "Filter behaviour",
+        "Query resources"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/search.rst",
+      "source_kind": null,
+      "modified": "2026-09-29T13:38:31Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1639,
+      "name": "doc_developerguide_shell",
+      "title": "Command-line shell",
+      "url": "https://zotonic.com/id/1639",
+      "category": "developerguide",
+      "word_count": 520,
+      "headings": [
+        "Tab completion",
+        "Often used commands",
+        "Activating/deactivating modules",
+        "Resetting a user password",
+        "Accessing data",
+        "Searching",
+        "Debugging"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/shell.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:34Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1640,
+      "name": "doc_developerguide_logging",
+      "title": "Logging",
+      "url": "https://zotonic.com/id/1640",
+      "category": "developerguide",
+      "word_count": 484,
+      "headings": [
+        "Configuration"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/logging.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:21Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1641,
+      "name": "doc_developerguide_deployment_index",
+      "title": "Deployment",
+      "url": "https://zotonic.com/id/1641",
+      "category": "developerguide",
+      "word_count": 168,
+      "headings": [
+        "Table of contents"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/index.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:18Z",
+      "children": [
+        {
+          "id": 1987,
+          "name": "doc_developerguide_deployment_startup",
+          "title": "Automatic startup on system boot",
+          "sequence": 1000000
+        },
+        {
+          "id": 1319,
+          "name": "doc_developerguide_deployment_server_configuration",
+          "title": "Server configuration",
+          "sequence": 1000000
+        },
+        {
+          "id": 1789,
+          "name": "doc_developerguide_deployment_privilegedports",
+          "title": "Running on Port 80 and Port 443",
+          "sequence": 1000000
+        },
+        {
+          "id": 1755,
+          "name": "doc_developerguide_deployment_https",
+          "title": "HTTPS support",
+          "sequence": 1000000
+        },
+        {
+          "id": 1990,
+          "name": "doc_developerguide_deployment_varnish",
+          "title": "Using Varnish as frontend for Zotonic",
+          "sequence": 1000000
+        },
+        {
+          "id": 1790,
+          "name": "doc_developerguide_deployment_nginx",
+          "title": "Proxying Zotonic with nginx",
+          "sequence": 1000000
+        },
+        {
+          "id": 1481,
+          "name": "doc_developerguide_deployment_env",
+          "title": "Useful environment variables",
+          "sequence": 1000000
+        }
+      ],
+      "has_todo": false
+    },
+    {
+      "id": 1642,
+      "name": "doc_developerguide_contributing",
+      "title": "Contributing to Zotonic",
+      "url": "https://zotonic.com/id/1642",
+      "category": "developerguide",
+      "word_count": 1489,
+      "headings": [
+        "Coding standards",
+        "Emacs",
+        "Writing commit messages",
+        "Git best practices",
+        "The CONTRIBUTORS file",
+        "Running the tests",
+        "Contributing documentation",
+        "Build the documentation",
+        "Heading styles",
+        "References",
+        "Table styles",
+        "Writing consistent Cookbook items",
+        "Zotonic releases",
+        "Release dates",
+        "Release schedule",
+        "Hotfix releases"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/contributing.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:38Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1643,
+      "name": "doc_releasenotes_index",
+      "title": "Release Notes",
+      "url": "https://zotonic.com/id/1643",
+      "category": "documentation",
+      "word_count": 309,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/releasenotes/index.rst",
+      "source_kind": null,
+      "modified": "2026-10-06T13:25:41Z",
+      "children": [
+        {
+          "id": 2511,
+          "name": "doc_releasenotes_rel_1_0_0_rc_17",
+          "title": "1.0.0_rc.17",
+          "sequence": 1
+        },
+        {
+          "id": 2510,
+          "name": "doc_releasenotes_rel_1_0_0_rc_16",
+          "title": "1.0.0_rc.16",
+          "sequence": 2
+        },
+        {
+          "id": 2363,
+          "name": "doc_releasenotes_rel_1_0_0_rc_15",
+          "title": "1.0.0_rc.15",
+          "sequence": 3
+        },
+        {
+          "id": 2344,
+          "name": "doc_releasenotes_rel_1_0_0_rc_14",
+          "title": "1.0.0_rc.14",
+          "sequence": 4
+        },
+        {
+          "id": 2339,
+          "name": "doc_releasenotes_rel_1_0_0_rc_13",
+          "title": "1.0.0_rc.13",
+          "sequence": 5
+        },
+        {
+          "id": 2335,
+          "name": "doc_releasenotes_rel_1_0_0_rc_12",
+          "title": "1.0.0_rc.12",
+          "sequence": 6
+        },
+        {
+          "id": 2334,
+          "name": "doc_releasenotes_rel_1_0_0_rc_11",
+          "title": "1.0.0_rc.11",
+          "sequence": 7
+        },
+        {
+          "id": 2333,
+          "name": "doc_releasenotes_rel_1_0_0_rc_10",
+          "title": "1.0.0_rc.10",
+          "sequence": 8
+        },
+        {
+          "id": 2331,
+          "name": "doc_releasenotes_rel_1_0_0_rc_9",
+          "title": "1.0.0_rc.9",
+          "sequence": 9
+        },
+        {
+          "id": 2326,
+          "name": "doc_releasenotes_rel_1_0_0_rc_8",
+          "title": "1.0.0_rc.8",
+          "sequence": 10
+        },
+        {
+          "id": 2522,
+          "name": "doc_releasenotes_rel_0_94_0",
+          "title": "0.94.0",
+          "sequence": 11
+        },
+        {
+          "id": 2520,
+          "name": "doc_releasenotes_rel_0_93_0",
+          "title": "0.93.0",
+          "sequence": 12
+        },
+        {
+          "id": 2521,
+          "name": "doc_releasenotes_rel_0_92_0",
+          "title": "0.92.0",
+          "sequence": 13
+        },
+        {
+          "id": 2504,
+          "name": "doc_releasenotes_rel_0_91_0",
+          "title": "0.91.0",
+          "sequence": 14
+        },
+        {
+          "id": 2440,
+          "name": "doc_releasenotes_rel_0_90_0",
+          "title": "0.90.0",
+          "sequence": 15
+        },
+        {
+          "id": 2436,
+          "name": "doc_releasenotes_rel_0_89_1",
+          "title": "0.89.1",
+          "sequence": 16
+        },
+        {
+          "id": 2435,
+          "name": "doc_releasenotes_rel_0_89_0",
+          "title": "0.89.0",
+          "sequence": 17
+        },
+        {
+          "id": 2430,
+          "name": "doc_releasenotes_rel_0_88_0",
+          "title": "0.88.0",
+          "sequence": 18
+        },
+        {
+          "id": 2428,
+          "name": "doc_releasenotes_rel_0_87_0",
+          "title": "0.87.0",
+          "sequence": 19
+        },
+        {
+          "id": 2421,
+          "name": "doc_releasenotes_rel_0_84_0",
+          "title": "0.84.0",
+          "sequence": 20
+        },
+        {
+          "id": 2420,
+          "name": "doc_releasenotes_rel_0_83_1",
+          "title": "0.83.1",
+          "sequence": 21
+        },
+        {
+          "id": 2418,
+          "name": "doc_releasenotes_rel_0_83_0",
+          "title": "0.83.0",
+          "sequence": 22
+        },
+        {
+          "id": 2408,
+          "name": "doc_releasenotes_rel_0_82_0",
+          "title": "0.82.0",
+          "sequence": 23
+        },
+        {
+          "id": 2406,
+          "name": "doc_releasenotes_rel_0_81_0",
+          "title": "0.81.0",
+          "sequence": 24
+        },
+        {
+          "id": 2403,
+          "name": "doc_releasenotes_rel_0_80_0",
+          "title": "0.80.0",
+          "sequence": 25
+        },
+        {
+          "id": 2381,
+          "name": "doc_releasenotes_rel_0_78_1",
+          "title": "0.78.1",
+          "sequence": 26
+        },
+        {
+          "id": 2378,
+          "name": "doc_releasenotes_rel_0_78_0",
+          "title": "0.78.0",
+          "sequence": 27
+        },
+        {
+          "id": 2370,
+          "name": "doc_releasenotes_rel_0_77_0",
+          "title": "0.77.0",
+          "sequence": 28
+        },
+        {
+          "id": 2368,
+          "name": "doc_releasenotes_rel_0_76_0",
+          "title": "0.76.0",
+          "sequence": 29
+        },
+        {
+          "id": 2366,
+          "name": "doc_releasenotes_rel_0_75_0",
+          "title": "0.75.0",
+          "sequence": 30
+        },
+        {
+          "id": 2340,
+          "name": "doc_releasenotes_rel_0_73_0",
+          "title": "0.73.0",
+          "sequence": 31
+        },
+        {
+          "id": 2336,
+          "name": "doc_releasenotes_rel_0_72_0",
+          "title": "0.72.0",
+          "sequence": 32
+        },
+        {
+          "id": 2332,
+          "name": "doc_releasenotes_rel_0_71_0",
+          "title": "0.71.0",
+          "sequence": 33
+        },
+        {
+          "id": 2329,
+          "name": "doc_releasenotes_rel_0_70_1",
+          "title": "0.70.1",
+          "sequence": 34
+        },
+        {
+          "id": 2327,
+          "name": "doc_releasenotes_rel_0_70_0",
+          "title": "0.70.0",
+          "sequence": 35
+        },
+        {
+          "id": 2323,
+          "name": "doc_releasenotes_rel_0_69_0",
+          "title": "0.69.0",
+          "sequence": 36
+        },
+        {
+          "id": 2322,
+          "name": "doc_releasenotes_rel_0_68_0",
+          "title": "0.68.0",
+          "sequence": 37
+        },
+        {
+          "id": 2321,
+          "name": "doc_releasenotes_rel_0_67_0",
+          "title": "0.67.0",
+          "sequence": 38
+        },
+        {
+          "id": 2320,
+          "name": "doc_releasenotes_rel_0_66_0",
+          "title": "0.66.0",
+          "sequence": 39
+        },
+        {
+          "id": 2309,
+          "name": "doc_releasenotes_rel_0_65_0",
+          "title": "0.65.0",
+          "sequence": 40
+        },
+        {
+          "id": 2308,
+          "name": "doc_releasenotes_rel_0_64_0",
+          "title": "0.64.0",
+          "sequence": 41
+        },
+        {
+          "id": 2270,
+          "name": "doc_releasenotes_rel_0_63_0",
+          "title": "0.63.0",
+          "sequence": 42
+        },
+        {
+          "id": 2258,
+          "name": "doc_releasenotes_rel_0_62_0",
+          "title": "0.62.0",
+          "sequence": 43
+        },
+        {
+          "id": 2256,
+          "name": "doc_releasenotes_rel_0_61_0",
+          "title": "0.61.0",
+          "sequence": 44
+        },
+        {
+          "id": 2240,
+          "name": "doc_releasenotes_rel_0_60_0",
+          "title": "0.60.0",
+          "sequence": 45
+        },
+        {
+          "id": 2236,
+          "name": "doc_releasenotes_rel_0_59_0",
+          "title": "0.59.0",
+          "sequence": 46
+        },
+        {
+          "id": 2194,
+          "name": "doc_releasenotes_rel_0_58_0",
+          "title": "0.58.0",
+          "sequence": 47
+        },
+        {
+          "id": 1644,
+          "name": "doc_releasenotes_rel_0_57_1",
+          "title": "0.57.1",
+          "sequence": 48
+        },
+        {
+          "id": 1554,
+          "name": "doc_releasenotes_rel_0_57_0",
+          "title": "0.57.0",
+          "sequence": 49
+        },
+        {
+          "id": 2191,
+          "name": "doc_releasenotes_rel_0_56_3",
+          "title": "0.56.3",
+          "sequence": 50
+        },
+        {
+          "id": 2178,
+          "name": "doc_releasenotes_rel_0_56_1",
+          "title": "0.56.1",
+          "sequence": 51
+        },
+        {
+          "id": 1645,
+          "name": "doc_releasenotes_rel_0_56_0",
+          "title": "0.56.0",
+          "sequence": 52
+        },
+        {
+          "id": 1646,
+          "name": "doc_releasenotes_rel_0_55_1",
+          "title": "0.55.1",
+          "sequence": 53
+        },
+        {
+          "id": 1647,
+          "name": "doc_releasenotes_rel_0_55_0",
+          "title": "0.55.0",
+          "sequence": 54
+        },
+        {
+          "id": 2190,
+          "name": "doc_releasenotes_rel_0_54_3",
+          "title": "0.54.3",
+          "sequence": 55
+        },
+        {
+          "id": 2187,
+          "name": "doc_releasenotes_rel_0_54_2",
+          "title": "0.54.2",
+          "sequence": 56
+        },
+        {
+          "id": 2179,
+          "name": "doc_releasenotes_rel_0_54_1",
+          "title": "0.54.1",
+          "sequence": 57
+        },
+        {
+          "id": 1648,
+          "name": "doc_releasenotes_rel_0_54_0",
+          "title": "0.54.0",
+          "sequence": 58
+        },
+        {
+          "id": 1649,
+          "name": "doc_releasenotes_rel_0_53_0",
+          "title": "0.53.0",
+          "sequence": 59
+        },
+        {
+          "id": 1650,
+          "name": "doc_releasenotes_rel_0_52_0",
+          "title": "0.52.0",
+          "sequence": 60
+        },
+        {
+          "id": 1651,
+          "name": "doc_releasenotes_rel_0_51_2",
+          "title": "0.51.2",
+          "sequence": 61
+        },
+        {
+          "id": 1652,
+          "name": "doc_releasenotes_rel_0_51_1",
+          "title": "0.51.1",
+          "sequence": 62
+        },
+        {
+          "id": 1653,
+          "name": "doc_releasenotes_rel_0_51_0",
+          "title": "0.51.0",
+          "sequence": 63
+        },
+        {
+          "id": 1654,
+          "name": "doc_releasenotes_rel_0_50_0",
+          "title": "0.50.0",
+          "sequence": 64
+        },
+        {
+          "id": 1655,
+          "name": "doc_releasenotes_rel_0_49_2",
+          "title": "0.49.2",
+          "sequence": 65
+        },
+        {
+          "id": 1656,
+          "name": "doc_releasenotes_rel_0_49_1",
+          "title": "0.49.1",
+          "sequence": 66
+        },
+        {
+          "id": 1629,
+          "name": "doc_releasenotes_rel_0_49_0",
+          "title": "0.49.0",
+          "sequence": 67
+        },
+        {
+          "id": 1657,
+          "name": "doc_releasenotes_rel_0_48_1",
+          "title": "0.48.1",
+          "sequence": 68
+        },
+        {
+          "id": 1658,
+          "name": "doc_releasenotes_rel_0_48_0",
+          "title": "0.48.0",
+          "sequence": 69
+        },
+        {
+          "id": 1659,
+          "name": "doc_releasenotes_rel_0_47_0",
+          "title": "0.47.0",
+          "sequence": 70
+        },
+        {
+          "id": 1660,
+          "name": "doc_releasenotes_rel_0_46_0",
+          "title": "0.46.0",
+          "sequence": 71
+        },
+        {
+          "id": 1661,
+          "name": "doc_releasenotes_rel_0_45_0",
+          "title": "0.45.0",
+          "sequence": 72
+        },
+        {
+          "id": 1662,
+          "name": "doc_releasenotes_rel_0_44_0",
+          "title": "0.44.0",
+          "sequence": 73
+        },
+        {
+          "id": 1663,
+          "name": "doc_releasenotes_rel_0_43_0",
+          "title": "0.43.0",
+          "sequence": 74
+        },
+        {
+          "id": 1431,
+          "name": "doc_releasenotes_rel_0_42_0",
+          "title": "0.42.0",
+          "sequence": 75
+        },
+        {
+          "id": 1405,
+          "name": "doc_releasenotes_rel_0_41_0",
+          "title": "0.41.0",
+          "sequence": 76
+        },
+        {
+          "id": 1664,
+          "name": "doc_releasenotes_rel_0_40_0",
+          "title": "0.40.0",
+          "sequence": 77
+        },
+        {
+          "id": 1665,
+          "name": "doc_releasenotes_rel_0_38_0",
+          "title": "0.38.0",
+          "sequence": 78
+        },
+        {
+          "id": 1560,
+          "name": "doc_releasenotes_rel_0_37_0",
+          "title": "0.37.0",
+          "sequence": 79
+        },
+        {
+          "id": 1666,
+          "name": "doc_releasenotes_rel_0_36_0",
+          "title": "0.36.0",
+          "sequence": 80
+        },
+        {
+          "id": 1603,
+          "name": "doc_releasenotes_rel_0_35_0",
+          "title": "0.35.0",
+          "sequence": 81
+        },
+        {
+          "id": 1667,
+          "name": "doc_releasenotes_rel_0_34_0",
+          "title": "0.34.0",
+          "sequence": 82
+        },
+        {
+          "id": 1668,
+          "name": "doc_releasenotes_rel_0_33_0",
+          "title": "0.33.0",
+          "sequence": 83
+        },
+        {
+          "id": 1669,
+          "name": "doc_releasenotes_rel_0_32_0",
+          "title": "0.32.0",
+          "sequence": 84
+        },
+        {
+          "id": 1670,
+          "name": "doc_releasenotes_rel_0_30_0",
+          "title": "0.30.0",
+          "sequence": 85
+        },
+        {
+          "id": 1317,
+          "name": "doc_releasenotes_rel_0_29_0",
+          "title": "0.29.0",
+          "sequence": 86
+        },
+        {
+          "id": 1622,
+          "name": "doc_releasenotes_rel_0_28_0",
+          "title": "0.28.0",
+          "sequence": 87
+        },
+        {
+          "id": 1671,
+          "name": "doc_releasenotes_rel_0_27_0",
+          "title": "0.27.0",
+          "sequence": 88
+        },
+        {
+          "id": 1672,
+          "name": "doc_releasenotes_rel_0_26_0",
+          "title": "0.26.0",
+          "sequence": 89
+        },
+        {
+          "id": 1673,
+          "name": "doc_releasenotes_rel_0_25_0",
+          "title": "0.25.0",
+          "sequence": 90
+        },
+        {
+          "id": 1674,
+          "name": "doc_releasenotes_rel_0_24_0",
+          "title": "0.24.0",
+          "sequence": 91
+        },
+        {
+          "id": 1675,
+          "name": "doc_releasenotes_rel_0_23_0",
+          "title": "0.23.0",
+          "sequence": 92
+        },
+        {
+          "id": 1676,
+          "name": "doc_releasenotes_rel_0_22_0",
+          "title": "0.22.0",
+          "sequence": 93
+        },
+        {
+          "id": 1677,
+          "name": "doc_releasenotes_rel_0_21_0",
+          "title": "0.21.0",
+          "sequence": 94
+        },
+        {
+          "id": 1678,
+          "name": "doc_releasenotes_rel_0_20_0",
+          "title": "0.20.0",
+          "sequence": 95
+        },
+        {
+          "id": 1679,
+          "name": "doc_releasenotes_rel_0_19_0",
+          "title": "0.19.0",
+          "sequence": 96
+        },
+        {
+          "id": 1680,
+          "name": "doc_releasenotes_rel_0_18_0",
+          "title": "0.18.0",
+          "sequence": 97
+        },
+        {
+          "id": 1681,
+          "name": "doc_releasenotes_rel_0_17_0",
+          "title": "0.17.0",
+          "sequence": 98
+        },
+        {
+          "id": 1682,
+          "name": "doc_releasenotes_rel_0_16_0",
+          "title": "0.16.0",
+          "sequence": 99
+        },
+        {
+          "id": 1683,
+          "name": "doc_releasenotes_rel_0_15_0",
+          "title": "0.15.0",
+          "sequence": 100
+        },
+        {
+          "id": 1684,
+          "name": "doc_releasenotes_rel_0_14_0",
+          "title": "0.14.0",
+          "sequence": 101
+        },
+        {
+          "id": 1685,
+          "name": "doc_releasenotes_rel_0_13_8",
+          "title": "0.13.8",
+          "sequence": 102
+        },
+        {
+          "id": 1686,
+          "name": "doc_releasenotes_rel_0_13_7",
+          "title": "0.13.7",
+          "sequence": 103
+        },
+        {
+          "id": 1687,
+          "name": "doc_releasenotes_rel_0_13_6",
+          "title": "0.13.6",
+          "sequence": 104
+        },
+        {
+          "id": 1688,
+          "name": "doc_releasenotes_rel_0_13_5",
+          "title": "0.13.5",
+          "sequence": 105
+        },
+        {
+          "id": 1689,
+          "name": "doc_releasenotes_rel_0_13_4",
+          "title": "0.13.4",
+          "sequence": 106
+        },
+        {
+          "id": 1690,
+          "name": "doc_releasenotes_rel_0_13_3",
+          "title": "0.13.3",
+          "sequence": 107
+        },
+        {
+          "id": 1691,
+          "name": "doc_releasenotes_rel_0_13_2",
+          "title": "0.13.2",
+          "sequence": 108
+        },
+        {
+          "id": 1692,
+          "name": "doc_releasenotes_rel_0_13_1",
+          "title": "0.13.1",
+          "sequence": 109
+        },
+        {
+          "id": 1693,
+          "name": "doc_releasenotes_rel_0_13_0",
+          "title": "0.13.0",
+          "sequence": 110
+        },
+        {
+          "id": 1624,
+          "name": "doc_releasenotes_rel_0_12_4",
+          "title": "0.12.4",
+          "sequence": 111
+        },
+        {
+          "id": 1694,
+          "name": "doc_releasenotes_rel_0_12_3",
+          "title": "0.12.3",
+          "sequence": 112
+        },
+        {
+          "id": 1351,
+          "name": "doc_releasenotes_rel_0_12_2",
+          "title": "0.12.2",
+          "sequence": 113
+        },
+        {
+          "id": 1695,
+          "name": "doc_releasenotes_rel_0_12_1",
+          "title": "0.12.1",
+          "sequence": 114
+        },
+        {
+          "id": 1696,
+          "name": "doc_releasenotes_rel_0_12_0",
+          "title": "0.12.0",
+          "sequence": 115
+        },
+        {
+          "id": 1697,
+          "name": "doc_releasenotes_rel_0_11_1",
+          "title": "0.11.1",
+          "sequence": 116
+        },
+        {
+          "id": 1453,
+          "name": "doc_releasenotes_rel_0_11_0",
+          "title": "0.11.0",
+          "sequence": 117
+        },
+        {
+          "id": 1698,
+          "name": "doc_releasenotes_rel_0_10_2",
+          "title": "0.10.2",
+          "sequence": 118
+        },
+        {
+          "id": 1699,
+          "name": "doc_releasenotes_rel_0_10_1",
+          "title": "0.10.1",
+          "sequence": 119
+        },
+        {
+          "id": 1700,
+          "name": "doc_releasenotes_rel_0_10_0",
+          "title": "0.10.0",
+          "sequence": 120
+        },
+        {
+          "id": 1701,
+          "name": "doc_releasenotes_rel_0_09_5",
+          "title": "0.09.5",
+          "sequence": 121
+        },
+        {
+          "id": 1702,
+          "name": "doc_releasenotes_rel_0_09_3",
+          "title": "0.09.3",
+          "sequence": 122
+        },
+        {
+          "id": 1452,
+          "name": "doc_releasenotes_rel_0_09_2",
+          "title": "0.09.2",
+          "sequence": 123
+        },
+        {
+          "id": 1703,
+          "name": "doc_releasenotes_rel_0_09_1",
+          "title": "0.09.1",
+          "sequence": 124
+        },
+        {
+          "id": 1704,
+          "name": "doc_releasenotes_rel_0_09_0",
+          "title": "0.09.0",
+          "sequence": 125
+        },
+        {
+          "id": 1705,
+          "name": "doc_releasenotes_rel_0_08_2",
+          "title": "0.08.2",
+          "sequence": 126
+        },
+        {
+          "id": 1304,
+          "name": "doc_releasenotes_rel_0_08_1",
+          "title": "0.08.1",
+          "sequence": 127
+        },
+        {
+          "id": 1617,
+          "name": "doc_releasenotes_rel_0_08_0",
+          "title": "0.08.0",
+          "sequence": 128
+        },
+        {
+          "id": 1706,
+          "name": "doc_releasenotes_rel_0_07_5",
+          "title": "0.07.5",
+          "sequence": 129
+        },
+        {
+          "id": 1707,
+          "name": "doc_releasenotes_rel_0_07_4",
+          "title": "0.07.4",
+          "sequence": 130
+        },
+        {
+          "id": 1708,
+          "name": "doc_releasenotes_rel_0_07_3",
+          "title": "0.07.3",
+          "sequence": 131
+        },
+        {
+          "id": 1709,
+          "name": "doc_releasenotes_rel_0_07_2",
+          "title": "0.07.2",
+          "sequence": 132
+        },
+        {
+          "id": 1710,
+          "name": "doc_releasenotes_rel_0_07_1",
+          "title": "0.07.1",
+          "sequence": 133
+        },
+        {
+          "id": 1711,
+          "name": "doc_releasenotes_rel_0_07_0",
+          "title": "0.07.0",
+          "sequence": 134
+        },
+        {
+          "id": 1712,
+          "name": "doc_releasenotes_rel_0_06_1",
+          "title": "0.06.1",
+          "sequence": 135
+        },
+        {
+          "id": 1462,
+          "name": "doc_releasenotes_rel_0_06_0",
+          "title": "0.06.0",
+          "sequence": 136
+        },
+        {
+          "id": 1713,
+          "name": "doc_releasenotes_rel_0_05_0",
+          "title": "0.05.0",
+          "sequence": 137
+        },
+        {
+          "id": 1714,
+          "name": "doc_releasenotes_rel_0_04_0",
+          "title": "0.04.0",
+          "sequence": 138
+        },
+        {
+          "id": 1715,
+          "name": "doc_releasenotes_rel_0_03_0",
+          "title": "0.03.0",
+          "sequence": 139
+        },
+        {
+          "id": 1716,
+          "name": "doc_releasenotes_rel_0_02_0",
+          "title": "0.02.0",
+          "sequence": 140
+        },
+        {
+          "id": 1717,
+          "name": "doc_releasenotes_rel_0_01_0",
+          "title": "0.01.0",
+          "sequence": 141
+        }
+      ],
+      "has_todo": false
+    },
+    {
+      "id": 1728,
+      "name": "doc_developerguide_configuration_site_configuration",
+      "title": "Site configuration",
+      "url": "https://zotonic.com/id/1728",
+      "category": "reference",
+      "word_count": 1148,
+      "headings": [
+        "Site config locations",
+        "Parameters",
+        "admin_password",
+        "dbhost",
+        "dbport",
+        "dbuser",
+        "dbpassword",
+        "dbdatabase",
+        "dbschema",
+        "db_max_connections",
+        "depcache_memory_max",
+        "hostname",
+        "hostalias",
+        "redirect",
+        "skeleton",
+        "install_menu",
+        "modules",
+        "ip_allowlist",
+        "smtphost",
+        "cookie_domain",
+        "installer",
+        "Setting module-specific config values in the site config",
+        "Using environment variables in the site config"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/ref/configuration/site-configuration.rst",
+      "source_kind": null,
+      "modified": "2023-06-24T08:17:56Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1730,
+      "name": "doc_template_validator_validator_length",
+      "title": "length",
+      "url": "https://zotonic.com/id/1730",
+      "category": "template_validator",
+      "word_count": 150,
+      "headings": [
+        "Arguments"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_length.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1743,
+      "name": "doc_template_validator_validator_acceptance",
+      "title": "acceptance",
+      "url": "https://zotonic.com/id/1743",
+      "category": "template_validator",
+      "word_count": 54,
+      "headings": [
+        "Arguments"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_acceptance.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1744,
+      "name": "doc_template_validator_validator_confirmation",
+      "title": "confirmation",
+      "url": "https://zotonic.com/id/1744",
+      "category": "template_validator",
+      "word_count": 80,
+      "headings": [
+        "Arguments"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_confirmation.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1745,
+      "name": "doc_template_validator_validator_date",
+      "title": "date",
+      "url": "https://zotonic.com/id/1745",
+      "category": "template_validator",
+      "word_count": 84,
+      "headings": [
+        "Arguments"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_date.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1746,
+      "name": "doc_template_validator_validator_email",
+      "title": "email",
+      "url": "https://zotonic.com/id/1746",
+      "category": "template_validator",
+      "word_count": 45,
+      "headings": [
+        "Arguments"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_email.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1747,
+      "name": "doc_template_validator_validator_format",
+      "title": "format",
+      "url": "https://zotonic.com/id/1747",
+      "category": "template_validator",
+      "word_count": 114,
+      "headings": [
+        "Arguments"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_format.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1748,
+      "name": "doc_template_validator_validator_name_unique",
+      "title": "name_unique",
+      "url": "https://zotonic.com/id/1748",
+      "category": "template_validator",
+      "word_count": 67,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_name_unique.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:28Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1749,
+      "name": "doc_template_validator_validator_numericality",
+      "title": "numericality",
+      "url": "https://zotonic.com/id/1749",
+      "category": "template_validator",
+      "word_count": 200,
+      "headings": [
+        "Arguments"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_numericality.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:28Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1750,
+      "name": "doc_template_validator_validator_postback",
+      "title": "postback",
+      "url": "https://zotonic.com/id/1750",
+      "category": "template_validator",
+      "word_count": 143,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_postback.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:28Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1751,
+      "name": "doc_template_validator_validator_presence",
+      "title": "presence",
+      "url": "https://zotonic.com/id/1751",
+      "category": "template_validator",
+      "word_count": 41,
+      "headings": [
+        "Arguments"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_base/src/validators/validator_base_presence.erl",
+      "source_kind": "validator",
+      "modified": "2026-10-06T13:25:28Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1755,
+      "name": "doc_developerguide_deployment_https",
+      "title": "HTTPS support",
+      "url": "https://zotonic.com/id/1755",
+      "category": "developerguide",
+      "word_count": 102,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/https.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:37Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1789,
+      "name": "doc_developerguide_deployment_privilegedports",
+      "title": "Running on Port 80 and Port 443",
+      "url": "https://zotonic.com/id/1789",
+      "category": "developerguide",
+      "word_count": 995,
+      "headings": [
+        "Pre-launch notes",
+        "Running behind another web server / proxy",
+        "Using authbind",
+        "Using setcap",
+        "Using iptables"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/privilegedports.rst",
+      "source_kind": null,
+      "modified": "2024-03-22T13:11:54Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1790,
+      "name": "doc_developerguide_deployment_nginx",
+      "title": "Proxying Zotonic with nginx",
+      "url": "https://zotonic.com/id/1790",
+      "category": "developerguide",
+      "word_count": 531,
+      "headings": [
+        "Zotonic configuration",
+        "Nginx configuration"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/nginx.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:33Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1819,
+      "name": "doc_userguide_cms",
+      "title": "CMS",
+      "url": "https://zotonic.com/id/1819",
+      "category": "userguide",
+      "word_count": 11,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/user-guide/cms.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:40Z",
+      "children": [],
+      "has_todo": true
+    },
+    {
+      "id": 1907,
+      "name": "doc_developerguide_configuration_index",
+      "title": "Configuration",
+      "url": "https://zotonic.com/id/1907",
+      "category": "reference",
+      "word_count": 6,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/ref/configuration/index.rst",
+      "source_kind": null,
+      "modified": "2023-01-30T19:24:03Z",
+      "children": [
+        {
+          "id": 1454,
+          "name": "doc_developerguide_configuration_zotonic_configuration",
+          "title": "Global configuration",
+          "sequence": 1000000
+        },
+        {
+          "id": 1728,
+          "name": "doc_developerguide_configuration_site_configuration",
+          "title": "Site configuration",
+          "sequence": 1000000
+        },
+        {
+          "id": 1482,
+          "name": "doc_developerguide_configuration_port_ssl_configuration",
+          "title": "Port configurations",
+          "sequence": 1000000
+        }
+      ],
+      "has_todo": false
+    },
+    {
+      "id": 1987,
+      "name": "doc_developerguide_deployment_startup",
+      "title": "Automatic startup on system boot",
+      "url": "https://zotonic.com/id/1987",
+      "category": "developerguide",
+      "word_count": 147,
+      "headings": [
+        "Creating an init script"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/startup.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:28Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 1990,
+      "name": "doc_developerguide_deployment_varnish",
+      "title": "Using Varnish as frontend for Zotonic",
+      "url": "https://zotonic.com/id/1990",
+      "category": "developerguide",
+      "word_count": 404,
+      "headings": [
+        "Full varnish example configuration file",
+        "Auto-starting Varnish on Mac OSX"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/varnish.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:38Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 2021,
+      "name": "doc_userguide_issues_and_features",
+      "title": "Issues and features",
+      "url": "https://zotonic.com/id/2021",
+      "category": "userguide",
+      "word_count": 69,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/user-guide/issues-and-features.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:29Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 2045,
+      "name": "doc_userguide_user_management",
+      "title": "User management",
+      "url": "https://zotonic.com/id/2045",
+      "category": "userguide",
+      "word_count": 41,
+      "headings": [
+        "Create new users"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/user-guide/user-management.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:36Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 2173,
+      "name": "doc_userguide_index",
+      "title": "User Guide",
+      "url": "https://zotonic.com/id/2173",
+      "category": "userguide",
+      "word_count": 69,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/user-guide/index.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:37Z",
+      "children": [
+        {
+          "id": 1819,
+          "name": "doc_userguide_cms",
+          "title": "CMS",
+          "sequence": 1000000
+        },
+        {
+          "id": 1277,
+          "name": "doc_userguide_datamodel",
+          "title": "The Zotonic data model",
+          "sequence": 1000000
+        },
+        {
+          "id": 2045,
+          "name": "doc_userguide_user_management",
+          "title": "User management",
+          "sequence": 1000000
+        },
+        {
+          "id": 2021,
+          "name": "doc_userguide_issues_and_features",
+          "title": "Issues and features",
+          "sequence": 1000000
+        }
+      ],
+      "has_todo": true
+    },
+    {
+      "id": 2175,
+      "name": "doc_reference_index",
+      "title": "Reference",
+      "url": "https://zotonic.com/id/2175",
+      "category": "reference",
+      "word_count": 40,
+      "headings": [
+        "EDoc reference"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/ref/index.rst",
+      "source_kind": null,
+      "modified": "2023-06-24T08:17:55Z",
+      "children": [
+        {
+          "id": 320,
+          "name": "module",
+          "title": "Modules",
+          "sequence": 1
+        },
+        {
+          "id": 326,
+          "name": "template_action",
+          "title": "Actions",
+          "sequence": 2
+        },
+        {
+          "id": 321,
+          "name": "controller",
+          "title": "Controllers",
+          "sequence": 3
+        },
+        {
+          "id": 325,
+          "name": "template_filter",
+          "title": "Filters",
+          "sequence": 4
+        },
+        {
+          "id": 324,
+          "name": "template_tag",
+          "title": "Tags",
+          "sequence": 5
+        },
+        {
+          "id": 1840,
+          "name": "doc_reference_global_variables",
+          "title": "Global template variables",
+          "sequence": 6
+        },
+        {
+          "id": 322,
+          "name": "model",
+          "title": "Models",
+          "sequence": 7
+        },
+        {
+          "id": 328,
+          "name": "template_validator",
+          "title": "Validators",
+          "sequence": 8
+        },
+        {
+          "id": 1122,
+          "name": "notification",
+          "title": "Notifications",
+          "sequence": 9
+        },
+        {
+          "id": 1530,
+          "name": "doc_reference_installation_requirements",
+          "title": "Installation requirements",
+          "sequence": 10
+        },
+        {
+          "id": 1907,
+          "name": "doc_developerguide_configuration_index",
+          "title": "Configuration",
+          "sequence": 11
+        },
+        {
+          "id": 1547,
+          "name": "doc_reference_cli_index",
+          "title": "Command-line",
+          "sequence": 12
+        }
+      ],
+      "has_todo": false
+    },
+    {
+      "id": 2176,
+      "name": "doc_developerguide_directory_structure",
+      "title": "Directory structure",
+      "url": "https://zotonic.com/id/2176",
+      "category": "developerguide",
+      "word_count": 361,
+      "headings": [],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/directory-structure.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:31Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 2259,
+      "name": "doc_cookbook_custom_controller",
+      "title": "Create a custom controller",
+      "url": "https://zotonic.com/id/2259",
+      "category": "cookbook",
+      "word_count": 403,
+      "headings": [
+        "Handling POST requests"
+      ],
+      "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-controller.rst",
+      "source_kind": null,
+      "modified": "2022-02-15T10:01:39Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 2325,
+      "name": null,
+      "title": "Security, templates and XSS prevention",
+      "url": "https://zotonic.com/id/2325",
+      "category": "cookbook",
+      "word_count": 514,
+      "headings": [
+        "Why",
+        "Assumptions",
+        "How",
+        "Special care",
+        "Why is m.rsc safe?"
+      ],
+      "github_url": null,
+      "source_kind": null,
+      "modified": "2022-09-20T12:56:53Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 2410,
+      "name": null,
+      "title": "CSS classes used in templates",
+      "url": "https://zotonic.com/id/2410",
+      "category": "developerguide",
+      "word_count": 176,
+      "headings": [],
+      "github_url": null,
+      "source_kind": null,
+      "modified": "2024-05-21T10:31:01Z",
+      "children": [],
+      "has_todo": false
+    },
+    {
+      "id": 2695,
+      "name": "page_start",
+      "title": "Start with Zotonic",
+      "url": "https://zotonic.com/id/2695",
+      "category": "collection",
+      "word_count": 0,
+      "headings": [],
+      "github_url": null,
+      "source_kind": null,
+      "modified": "2026-09-11T16:21:11Z",
+      "children": [],
+      "has_todo": false
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1588,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1588"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_share_variable",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1588/share-variable-binding-across-blocks",
+    "x-default": "https://zotonic.com/cookbook/1588/share-variable-binding-across-blocks"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>How to avoid having to call the same query inside several blocks of the same page</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>In some situations, you may have to use the same query result inside\nseveral blocks of the same template. For instance, you may need to use\nit in the body of a page and in its JavaScript block. Intuitively, you\nwould program your template as shown in these scripts:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">{# base.tpl #}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;html&gt;</span>\n<span class=\"x\">&lt;head&gt;...&lt;/head&gt;</span>\n<span class=\"x\">&lt;body&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">html_body</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;!-- This is the default body --&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;/body&gt;</span>\n\n<span class=\"x\">&lt;script&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">js</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    // This is the default js</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;/script&gt;</span>\n\n<span class=\"x\">&lt;/html&gt;</span>\n</pre></div>\n</div>\n<p>And a page:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">{# mypage_1.tpl #}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"s2\">&quot;base_1.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"c\">{# THIS won’t WORK BECAUSE %with% AND %block% TAGS CANNOT BE NESTED THIS WAY #}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">with</span> <span class=\"nv\">m.mymodule.myquery</span> <span class=\"k\">as</span> <span class=\"nv\">myresult</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">html_body</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    Here is your result: </span><span class=\"cp\">{{</span> <span class=\"nv\">myresult</span><span class=\"o\">|</span><span class=\"nf\">escape</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">js</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    alert(&#39;Do something with your result: </span><span class=\"cp\">{{</span> <span class=\"nv\">myresult</span><span class=\"o\">|</span><span class=\"nf\">escapejs</span> <span class=\"cp\">}}</span><span class=\"x\">&#39;);</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">endwith</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>Unfortunately, this doesn’t work, because Zotonic doesn’t allow you to place a <code class=\"docutils literal notranslate\"><span class=\"pre\">{%</span> <span class=\"pre\">with</span> <span class=\"pre\">%}</span></code> tag around all <code class=\"docutils literal notranslate\"><span class=\"pre\">{%</span> <span class=\"pre\">block</span> <span class=\"pre\">%}</span></code> tags of <cite>mypage_1.tpl</cite>.</p>\n<p>One solution consists in duplicating the <code class=\"docutils literal notranslate\"><span class=\"pre\">{%</span> <span class=\"pre\">with</span> <span class=\"pre\">%}</span></code> tag and moving it inside each block:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"s2\">&quot;base_1.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">html_body</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">with</span> <span class=\"nv\">m.mymodule.myquery</span> <span class=\"k\">as</span> <span class=\"nv\">myresult</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">        Here is your result: </span><span class=\"cp\">{{</span> <span class=\"nv\">myresult</span><span class=\"o\">|</span><span class=\"nf\">escape</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">endwith</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">js</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">with</span> <span class=\"nv\">m.mymodule.myquery</span> <span class=\"k\">as</span> <span class=\"nv\">myresult</span> <span class=\"cp\">%}</span><span class=\"x\"> </span><span class=\"c\">{# AGAIN THE SAME QUERY #}</span><span class=\"x\"></span>\n<span class=\"x\">    alert(&#39;Do something with your result: </span><span class=\"cp\">{{</span> <span class=\"nv\">myresult</span><span class=\"o\">|</span><span class=\"nf\">escapejs</span> <span class=\"cp\">}}</span><span class=\"x\">&#39;);</span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">endwith</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>However, this has a severe drawback: the same assignment will be done\ntwice, and if it comes from an “expansive” database query, this query\nwill be performed twice (or the query result will have to be cached,\nwhich increases the complexity of your system significantly).</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are assumed to be comfortable with the template syntax and with template inheritance, specifically the <code class=\"docutils literal notranslate\"><span class=\"pre\">{%</span> <span class=\"pre\">extends</span> <span class=\"pre\">%}</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">{%</span> <span class=\"pre\">block</span> <span class=\"pre\">%}</span></code> tags.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>The solution is to move both blocks to a new template, <code class=\"docutils literal notranslate\"><span class=\"pre\">_html_body_and_js.tpl</span></code>:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">{# _html_body_and_js.tpl #}</span><span class=\"x\"></span>\n\n<span class=\"x\">&lt;body&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">html_body</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;!-- This is the default body --&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;/body&gt;</span>\n\n<span class=\"x\">&lt;script&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">js</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    // This is the default js</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;/script&gt;</span>\n</pre></div>\n</div>\n<p>Our base template includes the new template so its contents will be drawn on the page:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">{# base.tpl #}</span><span class=\"x\"></span>\n\n<span class=\"x\">&lt;html&gt;</span>\n\n<span class=\"x\">&lt;head&gt;...&lt;/head&gt;</span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">html_body_and_js</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">include</span> <span class=\"s2\">&quot;_html_body_and_js.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"x\">&lt;/html&gt;</span>\n</pre></div>\n</div>\n<p>Now we make sure that <code class=\"docutils literal notranslate\"><span class=\"pre\">_html_body_and_js.tpl</span></code> gets data. In a base subtemplate <code class=\"docutils literal notranslate\"><span class=\"pre\">smart_base.tpl</span></code> we override the block with the query:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">{# smart_base.tpl #}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"s2\">&quot;base.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">html_body_and_js</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">with</span> <span class=\"nv\">m.mymodule.myquery</span> <span class=\"k\">as</span> <span class=\"nv\">myresult</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">        </span><span class=\"cp\">{%</span> <span class=\"k\">include</span> <span class=\"s2\">&quot;_html_body_and_js.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">endwith</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>The page that needs the data extends <code class=\"docutils literal notranslate\"><span class=\"pre\">smart_base.tpl</span></code>. Variable <code class=\"docutils literal notranslate\"><span class=\"pre\">myresult</span></code> is now accessible and can be used in both blocks:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">{# mypage.tpl #}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"s2\">&quot;smart_base.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">html_body</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    Here is your result: </span><span class=\"cp\">{{</span> <span class=\"nv\">myresult</span><span class=\"o\">|</span><span class=\"nf\">escape</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">js</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    alert(&#39;Do something with your result: </span><span class=\"cp\">{{</span> <span class=\"nv\">myresult</span><span class=\"o\">|</span><span class=\"nf\">escapejs</span> <span class=\"cp\">}}</span><span class=\"x\">&#39;);</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-share-variable.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:19Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_frontend_share_variable",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:19Z",
+    "slug": "share-variable-binding-across-blocks",
+    "title": "Share variable binding across blocks",
+    "title_slug": "share-variable-binding-across-blocks",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1588",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1588"
+  }
+}

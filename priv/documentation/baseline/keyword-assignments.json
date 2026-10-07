@@ -1,0 +1,1250 @@
+{
+  "format": "zotonic-documentation-keywords-v1",
+  "resources": [
+    {
+      "name": "doc_developerguide_notifications",
+      "source_uri": "https://zotonic.com/id/1274",
+      "source_sha256": "3c722da4dde1c2e2d315f90d9d0bc6cab6032c78cf3ed13d7c1a9a3248ffb076",
+      "title": "Notifications",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "notification",
+        "messaging_and_pubsub"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_resources",
+      "source_uri": "https://zotonic.com/id/1276",
+      "source_sha256": "ca02d6b2ba273f5c01d2e54ee5028f1352ced94ca5c14e2e7555f40ea24b935c",
+      "title": "Resources",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "resource",
+        "content_modeling"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_userguide_datamodel",
+      "source_uri": "https://zotonic.com/id/1277",
+      "source_sha256": "713bf6c3ee62e38b2936888e37a172c2709af1e53a0da1fa6de2609bff2cc4ca",
+      "title": "The Zotonic data model",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "resource",
+        "category",
+        "edge",
+        "content_modeling"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_media",
+      "source_uri": "https://zotonic.com/id/1280",
+      "source_sha256": "10ac7c05315d26fe9eb75bac5362ce6fc68f96f7a0943ec2466ee3d82dc929e2",
+      "title": "Media",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "media_management",
+        "media_resource"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_custom_pivot",
+      "source_uri": "https://zotonic.com/id/1281",
+      "source_sha256": "d65f291b88e9ff4a64749734eb3a9b90184474643e96c7b6c314e250ccce0f41",
+      "title": "Custom pivots",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "pivot_index",
+        "database",
+        "search_and_discovery"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_pivot_templates",
+      "source_uri": "https://zotonic.com/id/1282",
+      "source_sha256": "16508a994dba5f102cc2d0c834df0b37f7bcdddbe948faac397e1e6a467335cd",
+      "title": "Pivot Templates",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "pivot_index",
+        "template",
+        "search_and_discovery"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_sitemap",
+      "source_uri": "https://zotonic.com/id/1290",
+      "source_sha256": "a296608ba3a93e2d3e00952c946ae1c8235272f5109891b81d9900b5c5388104",
+      "title": "Displaying a site map",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "navigation",
+        "template",
+        "search_engine_optimization"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_server_browser_interaction",
+      "source_uri": "https://zotonic.com/id/1302",
+      "source_sha256": "5c9118635c4fcd72ccf1ac8fa4f587938a449d42cce94d82f2e5930dd1a257f4",
+      "title": "Browser/server interaction",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "messaging_and_pubsub",
+        "mqtt",
+        "cotonic"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_exometer",
+      "source_uri": "https://zotonic.com/id/1318",
+      "source_sha256": "2c19b56d66b0adc2e7394d30c1681a7806dfda171fb6fdef1853d91947ae379a",
+      "title": "Exometer metrics",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "operator",
+        "logging_and_monitoring",
+        "performance"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_deployment_server_configuration",
+      "source_uri": "https://zotonic.com/id/1319",
+      "source_sha256": "8df96ae0be7585a1aa7290de2eb9fd86fde81fa16c8c8a3fc0881684273d6901",
+      "title": "Server configuration",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "configuration",
+        "reliability"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_custom_action",
+      "source_uri": "https://zotonic.com/id/1340",
+      "source_sha256": "6da5e28a5849a23650d3912f5ee12673d45148d34044d7ba7cca08e681c7fed3",
+      "title": "Create a custom action",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "wire_action",
+        "user_interface_and_interaction"
+      ],
+      "review_note": "Legacy placeholder: keywords describe intended topic; content still needs completion."
+    },
+    {
+      "name": "doc_developerguide_templates",
+      "source_uri": "https://zotonic.com/id/1352",
+      "source_sha256": "69743504585531b4dc97b688744c383039342b5311ad994c8f0c2c7f9baaf627",
+      "title": "Templates",
+      "zotonic_keywords": [
+        "explanation",
+        "frontend_developer",
+        "template",
+        "render"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_modules",
+      "source_uri": "https://zotonic.com/id/1353",
+      "source_sha256": "d149a4ed9c3915e98466bc875ea8b8fb3009f8b2532633180974af11f5c80a10",
+      "title": "Modules",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "module",
+        "module_management"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_translation",
+      "source_uri": "https://zotonic.com/id/1409",
+      "source_sha256": "5ab0da0b5ec659f375440a34ef9f5f7cb4061934e5cdf32c2d050432130e6f90",
+      "title": "Translation",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "localization_and_translation",
+        "translated_text"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_docker",
+      "source_uri": "https://zotonic.com/id/1411",
+      "source_sha256": "02994630489305ac4f6ae5239f8fdad733b1c3a38ef1167ee1a4f9188de378bb",
+      "title": "Docker",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "site_management",
+        "configuration"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_growl",
+      "source_uri": "https://zotonic.com/id/1416",
+      "source_sha256": "ba3765b0b202421b88dd55777d1fa6f6c6a11b205fc05fbcf892d2b6f7042989",
+      "title": "Enabling Growl Notifications",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "wire_action",
+        "user_interface_and_interaction"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_forms_and_validation",
+      "source_uri": "https://zotonic.com/id/1419",
+      "source_sha256": "cb30bb108ab5ed54520b70335f797a55504b1a2ff1c915436fa328f1890f434b",
+      "title": "Forms and validation",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "forms",
+        "template_validator",
+        "validate"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_shell_debuggingdatabase",
+      "source_uri": "https://zotonic.com/id/1422",
+      "source_sha256": "1127133e81609ebf81e02f1cad6a444e332d9c438e0a1b6990a87941e7a3bef3",
+      "title": "Debugging db (query) issues",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "backend_developer",
+        "database",
+        "postgresql",
+        "logging_and_monitoring"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_justenough_otp2",
+      "source_uri": "https://zotonic.com/id/1428",
+      "source_sha256": "1746f496c9111d74e0c19c76dde479f45f723bd77a4c44d30850e00f5ae8ea69",
+      "title": "Just enough Erlang/OTP and rebar, part 2",
+      "zotonic_keywords": [
+        "tutorial",
+        "backend_developer",
+        "erlang_otp",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_justenough_otp1",
+      "source_uri": "https://zotonic.com/id/1429",
+      "source_sha256": "85c7a5ecb2b3a7c7cf23a5728190d4917d5d74a7760a0f6008efc8b51362927e",
+      "title": "Just enough Erlang/OTP and rebar, part 1",
+      "zotonic_keywords": [
+        "tutorial",
+        "backend_developer",
+        "erlang_otp",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_admin_custom_style",
+      "source_uri": "https://zotonic.com/id/1430",
+      "source_sha256": "af86d4e1ad3a8e4fa7e3fed9c98044cc38e7c3343a4063b09599bfded1a903d5",
+      "title": "Customizing the style of an admin page",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "template",
+        "user_interface_and_interaction"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_upgrading",
+      "source_uri": "https://zotonic.com/id/1455",
+      "source_sha256": "219b1b6141eae3cd266f43b9c2c401d4240a8c735abe50d8f5001b0913f67dde",
+      "title": "Upgrade notes",
+      "zotonic_keywords": [
+        "migration_guide",
+        "backend_developer",
+        "migrate",
+        "reliability"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_deployment_env",
+      "source_uri": "https://zotonic.com/id/1481",
+      "source_sha256": "a75a86ca06cd0d8985986171452e160db805a655a32b9f96f5cb2164a33562b9",
+      "title": "Useful environment variables",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "configuration",
+        "site_management"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_getting_started",
+      "source_uri": "https://zotonic.com/id/1526",
+      "source_sha256": "455faa81195eaaa5d91640b79fba428412951c2d2bfea9d602d68b2a275822d2",
+      "title": "Getting Started",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "site_management",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_sites",
+      "source_uri": "https://zotonic.com/id/1527",
+      "source_sha256": "5771320820cdb9a5ab5e6df85a74f316cea2d19a79f214dd060f597f048d4669",
+      "title": "Sites",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "site",
+        "site_management"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_status_site",
+      "source_uri": "https://zotonic.com/id/1528",
+      "source_sha256": "ca107f145585516b75366d4899e497fbf22c70cd52cdf26a6a33035c49ddf14a",
+      "title": "The Status site",
+      "zotonic_keywords": [
+        "explanation",
+        "site_administrator",
+        "site_management",
+        "monitor"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_troubleshooting",
+      "source_uri": "https://zotonic.com/id/1529",
+      "source_sha256": "5cdb96769c14f483cd6355fae657ece9a2bf01cee07dc759896ead4846a24ce5",
+      "title": "Troubleshooting",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "backend_developer",
+        "development_and_debugging",
+        "site_management"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_reference_installation_requirements",
+      "source_uri": "https://zotonic.com/id/1530",
+      "source_sha256": "9383ee9fbfdb645ff410c51f70b2e71f37cf3eaafe91819c23a0705e5ecbcb8e",
+      "title": "Installation requirements",
+      "zotonic_keywords": [
+        "reference",
+        "backend_developer",
+        "configuration",
+        "erlang_otp",
+        "postgresql"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_access_control",
+      "source_uri": "https://zotonic.com/id/1536",
+      "source_sha256": "dd1eabb62d2af8366c8e4bf8a1527076f52fe2f4348432704baebef424fb569c",
+      "title": "Access control",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "authorization_and_access_control",
+        "security"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_shell_characters",
+      "source_uri": "https://zotonic.com/id/1538",
+      "source_sha256": "5f0888483fed890a866f3768591047039b2558a3a8c64ce465672205175397e3",
+      "title": "Filter and convert characters",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "data_processing_and_formatting",
+        "erlang_otp",
+        "text"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_wires",
+      "source_uri": "https://zotonic.com/id/1539",
+      "source_sha256": "55f450cc7cd9541c6aa2840ce21b3d9bb2812f4530456df9bf9577d84d1af7ab",
+      "title": "Wires",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "wire_action",
+        "user_interface_and_interaction"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_controllers",
+      "source_uri": "https://zotonic.com/id/1540",
+      "source_sha256": "01ba8f8b22c30f3845209faf07835ddc44cbdfa290ec53337222131423fad0f8",
+      "title": "Controllers",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "controller",
+        "http"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_dispatch_rules",
+      "source_uri": "https://zotonic.com/id/1541",
+      "source_sha256": "c7194c03826dd63c842d430130ad171f7549981e09644fbeffaf59f0bff5b8bf",
+      "title": "Dispatch rules",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "dispatch_rule",
+        "routing_and_redirects"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_shell_completion",
+      "source_uri": "https://zotonic.com/id/1544",
+      "source_sha256": "85f010acce3b0860fe15ed4a0d8af83485650dfa96c9e59573dc794b41948b5a",
+      "title": "Erlang tab completion",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "erlang_otp",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_testing",
+      "source_uri": "https://zotonic.com/id/1546",
+      "source_sha256": "0b724c049af48c0e390f53ebd4a20d46c5fdf8fa77e263cfc0d098e3a73d8022",
+      "title": "Testing sites",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "validate",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_reference_cli_index",
+      "source_uri": "https://zotonic.com/id/1547",
+      "source_sha256": "4ecd10b8483a56905ad57cbe33b1cf10baaec0983e70c8e76c3e78e0dd02d9ea",
+      "title": "Command-line",
+      "zotonic_keywords": [
+        "reference",
+        "backend_developer",
+        "development_and_debugging",
+        "erlang_otp"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_email",
+      "source_uri": "https://zotonic.com/id/1552",
+      "source_sha256": "d1c8613493aa380e9c1f37bc5fa57ea2cf1abc930ba83d53892fb916a2ad2dcf",
+      "title": "E-mail handling",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "email",
+        "email_delivery",
+        "email_receiving"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_admin_datetime",
+      "source_uri": "https://zotonic.com/id/1553",
+      "source_sha256": "76b8ed1925d1162a4562fdc6748b7052061c13ad038601bc5cd46f239b0ef810",
+      "title": "Storing date/time fields",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "resource",
+        "date_and_time",
+        "data_processing_and_formatting"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_custom_filter",
+      "source_uri": "https://zotonic.com/id/1572",
+      "source_sha256": "deb2d0417a69c5051cba76fe2b4b2cf3d4f43b659426fa77ad5349aad8881232",
+      "title": "Create a custom filter",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "template_filter",
+        "data_processing_and_formatting"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_custom_model",
+      "source_uri": "https://zotonic.com/id/1573",
+      "source_sha256": "4f088bde8c419fb1fc90a867b9539fa9c6da14dc8390054d75bc7653c7ce1265",
+      "title": "Create a custom model",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "model",
+        "api_and_integration"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_custom_tag",
+      "source_uri": "https://zotonic.com/id/1574",
+      "source_sha256": "9e0d55b2ad0c31acc72c246a79a6a41943b1e1e6a99d0ad82667450741ffaa4f",
+      "title": "Create a custom tag",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "scomp",
+        "template"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_custom_search",
+      "source_uri": "https://zotonic.com/id/1575",
+      "source_sha256": "7e81724d0e2625e49c4b142bf84cb0ae62c398a90c771c09a44016be9d98b3a0",
+      "title": "Custom search",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "search_and_discovery",
+        "notification",
+        "query"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_writing_module",
+      "source_uri": "https://zotonic.com/id/1576",
+      "source_sha256": "bc603b743df1fe0c218309a3068038925a3273e9bd56d429b6960698352262b5",
+      "title": "Writing your own module",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "module",
+        "development_and_debugging"
+      ],
+      "review_note": "Legacy placeholder: keywords describe intended topic; content still needs completion."
+    },
+    {
+      "name": "doc_cookbook_overriding",
+      "source_uri": "https://zotonic.com/id/1577",
+      "source_sha256": "27a5617913392c85727f36fca439f604c3ffdec16181ad315a4a3d24cc62eb98",
+      "title": "Overriding Zotonic",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "module",
+        "template",
+        "maintainability"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_task_queue",
+      "source_uri": "https://zotonic.com/id/1578",
+      "source_sha256": "8c778709d521e0fccbe3dde41bc0cf806af584727947ddabc1881eebee70e389",
+      "title": "Execute tasks asynchronously using the task queue",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "scheduled_and_background_work",
+        "background_task"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_template_icons",
+      "source_uri": "https://zotonic.com/id/1579",
+      "source_sha256": "f716dad32de1472faef6cd80382829ddf08831be2509a1770964c9129ce6bc17",
+      "title": "Icons in templates",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "template",
+        "user_interface_and_interaction"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_logstash",
+      "source_uri": "https://zotonic.com/id/1580",
+      "source_sha256": "3de4a54b902729b70b4e2bfaba53ff50db10a3beb38837c864fdd03c3363d45d",
+      "title": "Logging to Logstash",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "operator",
+        "logging_and_monitoring"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_error_pages",
+      "source_uri": "https://zotonic.com/id/1581",
+      "source_sha256": "d741054172ca8828a3eca3d72294033795e307734490a92004c8f84dd3b7d347",
+      "title": "How to customise error pages",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "controller",
+        "template",
+        "http"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_contactform",
+      "source_uri": "https://zotonic.com/id/1582",
+      "source_sha256": "5d3d09782ec31a732a8700be3444c437bfff7cedcbd2fa39b6e260e8f4ec2ce3",
+      "title": "Implementing a simple contact form",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "forms",
+        "email",
+        "template"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_custom_content_block",
+      "source_uri": "https://zotonic.com/id/1583",
+      "source_sha256": "28d14c8f3da412c6351b96e1d50b97e55c865e2cff7de825e82d14fcd34a9d03",
+      "title": "How to add a custom page block",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "content_modeling",
+        "template",
+        "content_authoring"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_formupdating",
+      "source_uri": "https://zotonic.com/id/1584",
+      "source_sha256": "25f94a5a12dfe6227d8badcb33d06960ff74e17fb2404b57488d133d7b4cd663",
+      "title": "Updating form field from a dialog",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "forms",
+        "wire_action"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_pagebackgrounds",
+      "source_uri": "https://zotonic.com/id/1586",
+      "source_sha256": "10beeef2756bbf1cfa49b2387caf22df39120927dd939303c5cd086854215c0b",
+      "title": "Page-specific dynamic backgrounds",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "template",
+        "image_management"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_retrieving_category",
+      "source_uri": "https://zotonic.com/id/1587",
+      "source_sha256": "d65b6c146d0906b664d35596f67c93c07c2d5374c79ec2c75ff98c696a392999",
+      "title": "Retrieving the category of a page",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "category",
+        "template"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_share_variable",
+      "source_uri": "https://zotonic.com/id/1588",
+      "source_sha256": "21c0656b89b5d1b2fa9e9d81b302be2f66d10e88de7d8e2f3717dbf94faf1278",
+      "title": "Share variable binding across blocks",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "template",
+        "data_processing_and_formatting"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_signup_logon_form",
+      "source_uri": "https://zotonic.com/id/1589",
+      "source_sha256": "fe31fa70096701809471ac4ef9a37f595e93aaaff069b0a200743e5cd03fda97",
+      "title": "Customizing the sign up and sign in form",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "authentication",
+        "identity_and_accounts",
+        "forms"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_signup_redirection",
+      "source_uri": "https://zotonic.com/id/1590",
+      "source_sha256": "466b90ee0c6338ca97817afa28189f8de7f8eff2d49e50a7028bc0ea07907fdf",
+      "title": "Managing redirection after login and signup",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "authentication",
+        "routing_and_redirects"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_sitespecific_signup",
+      "source_uri": "https://zotonic.com/id/1591",
+      "source_sha256": "9070bc081f77e750b46e20693212dc361a5485ae6c5ebff3524dd8398c71c40b",
+      "title": "Site-specific signup actions",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "identity_and_accounts",
+        "notification"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_frontend_template_select_value",
+      "source_uri": "https://zotonic.com/id/1592",
+      "source_sha256": "7d33789db7f0e453d55324f445fb16d8244f8f71de3e0c40b7ecb5d92ad280d4",
+      "title": "Dynamic select options using a wired template",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "forms",
+        "wire_action",
+        "template"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_admin_a_custom_widget",
+      "source_uri": "https://zotonic.com/id/1593",
+      "source_sha256": "27484feced3d0bfb0536e607ad773c0fdd8a4904c605abe83eaa29b8e5ccc964",
+      "title": "Creating a custom widget on the edit page",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "template",
+        "content_authoring"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_admin_custom_layout",
+      "source_uri": "https://zotonic.com/id/1594",
+      "source_sha256": "c3595be8caad46416ef984982a91ba36afcf248fa330ac57b514d10b3db5bbbf",
+      "title": "Customizing the layout of the admin edit page",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "template",
+        "content_authoring"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_admin_templates",
+      "source_uri": "https://zotonic.com/id/1595",
+      "source_sha256": "85a9a3dcee597269e93408a85bf901908078905c3461afc5f8415db48c3f7d76",
+      "title": "Admin template specific things",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "template",
+        "content_authoring"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_admin_user_group",
+      "source_uri": "https://zotonic.com/id/1596",
+      "source_sha256": "ed2e04e833d55b6709bd50e09e9f3c6c4c7a081eaa5d423ae79bc523e72f8dc4",
+      "title": "Automatically add new users to a user group",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "identity_and_accounts",
+        "authorization_and_access_control",
+        "notification"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_shell_activate_modules",
+      "source_uri": "https://zotonic.com/id/1597",
+      "source_sha256": "68455778ad66914a41490f5c68e845f9a2873119d1e3569695127daa2f96ae4a",
+      "title": "Activate/deactivate modules",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "backend_developer",
+        "module_management",
+        "erlang_otp"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_shell_resetpassword",
+      "source_uri": "https://zotonic.com/id/1598",
+      "source_sha256": "d75992cf56ab919e223df840c6e8d057c78749f26cebc519e7f2b61b4b6dff5c",
+      "title": "Reset a user’s password",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "backend_developer",
+        "authentication",
+        "identity_and_accounts",
+        "erlang_otp"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_shell_restoring_db",
+      "source_uri": "https://zotonic.com/id/1599",
+      "source_sha256": "20aa850ee8807038f3a207d52b53142d57cb303bbd200037a89dc5fe0919dffc",
+      "title": "Restore/upgrade content db from backup",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "operator",
+        "backup_and_restore",
+        "postgresql",
+        "database"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_justenough_postgres",
+      "source_uri": "https://zotonic.com/id/1600",
+      "source_sha256": "2b6abab68f7b13bb2f5e3113cff749bd152a0c1ee9d0aa3f137133348b1f7b5e",
+      "title": "Just enough Postgres",
+      "zotonic_keywords": [
+        "tutorial",
+        "backend_developer",
+        "postgresql",
+        "database"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_justenough_re",
+      "source_uri": "https://zotonic.com/id/1601",
+      "source_sha256": "d9464dfa64343c9b707e48620ccf32a69f19c3e758913a8e1978cd00a31f442d",
+      "title": "Just Enough Regular Expressions (in Erlang)",
+      "zotonic_keywords": [
+        "tutorial",
+        "backend_developer",
+        "data_processing_and_formatting",
+        "erlang_otp",
+        "text"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_justenough_shell",
+      "source_uri": "https://zotonic.com/id/1602",
+      "source_sha256": "df98ffdba725a15cd70a5cc0245d4320db8c0269e54f1906f4529c1b02d6b8bb",
+      "title": "Just enough Erlang shell",
+      "zotonic_keywords": [
+        "tutorial",
+        "backend_developer",
+        "erlang_otp",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_bestpractices_creating_sites",
+      "source_uri": "https://zotonic.com/id/1618",
+      "source_sha256": "3e2e9588211a9eb506ed8a88307028bcfe40a51933e547cd8b9ff0ad746a8798",
+      "title": "Creating sites",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "site_management",
+        "maintainability"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_index",
+      "source_uri": "https://zotonic.com/id/1635",
+      "source_sha256": "3956a9b395ccbd7f8dac59bec14a54bd5030358f72cd9600aa71edebfe07bc61",
+      "title": "Developer Guide",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_introduction",
+      "source_uri": "https://zotonic.com/id/1636",
+      "source_sha256": "02a14238d8b46563dd027e2e3e44b82fe2e4649f4be463b9f2b152464299e3be",
+      "title": "Introduction",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "development_and_debugging",
+        "site_management"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_icons",
+      "source_uri": "https://zotonic.com/id/1637",
+      "source_sha256": "91a1d4a41b0a54217865a1db56412376b1aa850c4ad6a050e02ee592253caae4",
+      "title": "Icons",
+      "zotonic_keywords": [
+        "explanation",
+        "frontend_developer",
+        "template",
+        "user_interface_and_interaction"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_search",
+      "source_uri": "https://zotonic.com/id/1638",
+      "source_sha256": "f8a568a3e1b20c7c19f4a1f8a67d656c20a4203e0b9d0560db0a27aafa06cca2",
+      "title": "Search",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "search_and_discovery",
+        "query"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_shell",
+      "source_uri": "https://zotonic.com/id/1639",
+      "source_sha256": "0df4a3e3051f256aadf25d5f57c4f2877bb1491962583b8d8ce4c02c05d39868",
+      "title": "Command-line shell",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "erlang_otp",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_logging",
+      "source_uri": "https://zotonic.com/id/1640",
+      "source_sha256": "9c5d2b1399992ac3f2979b4841b444aab631426ae128a5e4d073de373ef723c8",
+      "title": "Logging",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "logging_and_monitoring"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_deployment_index",
+      "source_uri": "https://zotonic.com/id/1641",
+      "source_sha256": "e601dbd715ee4db024511cd1d589d991257c6ca9a4c40169408f4e95debb37fa",
+      "title": "Deployment",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "site_management",
+        "configuration"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_contributing",
+      "source_uri": "https://zotonic.com/id/1642",
+      "source_sha256": "b835aadb192c3d8dad6cb5b9aa9224eb8a0125666b5b169dfb02932ef2beb7aa",
+      "title": "Contributing to Zotonic",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "development_and_debugging",
+        "maintainability"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_deployment_https",
+      "source_uri": "https://zotonic.com/id/1755",
+      "source_sha256": "34a964342a34288da661a8e82cc7a974f7f2d9bcc20d7eafa05c06cc08816407",
+      "title": "HTTPS support",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "tls_and_certificates",
+        "security",
+        "configuration"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_deployment_privilegedports",
+      "source_uri": "https://zotonic.com/id/1789",
+      "source_sha256": "524e06360ce09a2af28acedfd2cfc1ffd4123e50ebc1bd1fb1ba8a8e12cf5f33",
+      "title": "Running on Port 80 and Port 443",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "configuration",
+        "http",
+        "security"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_deployment_nginx",
+      "source_uri": "https://zotonic.com/id/1790",
+      "source_sha256": "11ac7b1afa8f910e5a7afa7e6219106c718aa41e6b4e4c6be3a5892f324fc13d",
+      "title": "Proxying Zotonic with nginx",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "http",
+        "configuration",
+        "tls_and_certificates"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_userguide_cms",
+      "source_uri": "https://zotonic.com/id/1819",
+      "source_sha256": "78da3c9e522214cfb08f06151e223ab794f96b34e8f6b86f3ebc206c0e3b6c64",
+      "title": "CMS",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_management",
+        "content_authoring"
+      ],
+      "review_note": "Legacy placeholder: keywords describe intended topic; content still needs completion."
+    },
+    {
+      "name": "doc_bestpractices_media",
+      "source_uri": "https://zotonic.com/id/1854",
+      "source_sha256": "477545febf336427b7ad6ebc5355fd240e454b35194e6ec79fd98edfd0f680fd",
+      "title": "Media Best Practices",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "media_management",
+        "media_resource"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_bestpractices_templates",
+      "source_uri": "https://zotonic.com/id/1860",
+      "source_sha256": "87e7e17c32134dc6316d8692941b81d385414719f78e48bcda261d8e536d262f",
+      "title": "Template Best Practices and Pitfalls",
+      "zotonic_keywords": [
+        "explanation",
+        "frontend_developer",
+        "template",
+        "render"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_bestpractices_index",
+      "source_uri": "https://zotonic.com/id/1914",
+      "source_sha256": "7d3e67a303298d977f3092a8092eb0985649cbc30473076c42cf059bb67fe3a7",
+      "title": "Best Practices",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_deployment_startup",
+      "source_uri": "https://zotonic.com/id/1987",
+      "source_sha256": "bf999a6d9792b6ff30ca48943a85189365ac28597fb930917fdbb089f1188f29",
+      "title": "Automatic startup on system boot",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "site_management",
+        "configuration",
+        "reliability"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_deployment_varnish",
+      "source_uri": "https://zotonic.com/id/1990",
+      "source_sha256": "ee510093bba2534a611e371c6c1f315ddf326e554a84276b635c8b5639ec7be9",
+      "title": "Using Varnish as frontend for Zotonic",
+      "zotonic_keywords": [
+        "explanation",
+        "operator",
+        "cache",
+        "performance",
+        "http"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_userguide_issues_and_features",
+      "source_uri": "https://zotonic.com/id/2021",
+      "source_sha256": "759daf9727dc388db52ac6fb8589b9b33d21ce43c3bf187ec1e99ac486e3f7a7",
+      "title": "Issues and features",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "development_and_debugging"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_userguide_user_management",
+      "source_uri": "https://zotonic.com/id/2045",
+      "source_sha256": "e076692c3167a8e2682685b181d1d2de3f28fcaa28ac8848c2ac2ffa9d238bde",
+      "title": "User management",
+      "zotonic_keywords": [
+        "explanation",
+        "site_administrator",
+        "identity_and_accounts",
+        "authorization_and_access_control"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_userguide_index",
+      "source_uri": "https://zotonic.com/id/2173",
+      "source_sha256": "4e7b29b78426e31f618b19c50833eaf49313e9904f0399033d3c9d122a34a851",
+      "title": "User Guide",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_management"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_directory_structure",
+      "source_uri": "https://zotonic.com/id/2176",
+      "source_sha256": "745d8fe400be47ec0485def3a194f0e33c9995fa0d81a2c38a01f3b4d8ec8e65",
+      "title": "Directory structure",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "site",
+        "module",
+        "maintainability"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_custom_controller",
+      "source_uri": "https://zotonic.com/id/2259",
+      "source_sha256": "204b73e52c83f2b88d9723e9d38a9bfa91a9d1aca1cbd79e0a535e00b511531d",
+      "title": "Create a custom controller",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "backend_developer",
+        "controller",
+        "http"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_download",
+      "source_uri": "https://zotonic.com/id/2310",
+      "source_sha256": "6614a61172c6a4399da9ff0555d6ea3111b8568af85e7cdb8a6597a7d8bc10d9",
+      "title": "Download Zotonic",
+      "zotonic_keywords": [
+        "explanation",
+        "backend_developer",
+        "site_management"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_cookbook_security_templates_xss",
+      "source_uri": "https://zotonic.com/id/2325",
+      "source_sha256": "edf52146990b84bf76aa7bf5a4ba9230ca63ecb7546bd5064abe09c450826abc",
+      "title": "Security, templates and XSS prevention",
+      "zotonic_keywords": [
+        "cookbook_recipe",
+        "frontend_developer",
+        "template",
+        "security",
+        "html"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    },
+    {
+      "name": "doc_developerguide_css_classes",
+      "source_uri": "https://zotonic.com/id/2410",
+      "source_sha256": "2bfc5314eb0ccf1efe40966a36653ea56260bf37d41c27aff1016ea3ad3d1f04",
+      "title": "CSS classes used in templates",
+      "zotonic_keywords": [
+        "explanation",
+        "frontend_developer",
+        "template",
+        "user_interface_and_interaction"
+      ],
+      "review_note": "Preserve existing unrelated subject connections."
+    }
+  ]
+}

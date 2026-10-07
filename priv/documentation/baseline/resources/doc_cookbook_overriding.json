@@ -1,0 +1,223 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:07Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:07Z",
+          "object_id": {
+            "id": 1352,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_templates",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/1352"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:07Z",
+          "object_id": {
+            "id": 1274,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_notifications",
+            "title": "Notifications",
+            "uri": "https://zotonic.com/id/1274"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:07Z",
+          "object_id": {
+            "id": 1581,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_error_pages",
+            "title": "How to customise error pages",
+            "uri": "https://zotonic.com/id/1581"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1577,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1577"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_overriding",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1577/overriding-zotonic",
+    "x-default": "https://zotonic.com/cookbook/1577/overriding-zotonic"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>This chapter describes how to override the templates, styling and logic\nprovided by Zotonic.</p>\n<p>Overriding works by adding a site or module that has a higher\n<a class=\"reference internal\" href=\"/id/doc_developerguide_modules\"><span class=\"std std-ref\">priority</span></a> than Zotonic’s built-in modules. In your\nmodule/site, you add templates, assets and create notification observers.</p>\n<div class=\"section\">\n<h2>Overriding templates</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_cookbook_error_pages#cookbook-error-pages\"><span class=\"std std-ref\">How to customise error pages</span></a></p>\n</aside>\n<p><a class=\"reference internal\" href=\"/id/doc_developerguide_templates#overriding-templates\"><span class=\"std std-ref\">Override templates</span></a> by adding a template with\nthe same name to your module/site.</p>\n</div>\n<div class=\"section\">\n<h2>Overriding assets</h2>\n<p>If you wish to fully override a CSS or JavaScript file, do so in the same way\nas you do templates: create a file with the same name in your module/site.\nAlternatively, <em>add</em> your own CSS file and selectively override CSS styles.</p>\n</div>\n<div class=\"section\">\n<h2>Overriding logic</h2>\n<p><a class=\"reference internal\" href=\"/id/doc_developerguide_notifications#guide-notifications-observe\"><span class=\"std std-ref\">Observe notifications</span></a> to influence the\ndecisions that Zotonic makes. You can change or add properties before a resource\nis persisted,</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:26Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/overriding.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:21Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_overriding",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:21Z",
+    "slug": "overriding-zotonic",
+    "title": "Overriding Zotonic",
+    "title_slug": "overriding-zotonic",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1577",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1577"
+  }
+}

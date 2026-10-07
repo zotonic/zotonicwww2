@@ -1,0 +1,169 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:57Z",
+          "object_id": {
+            "id": 1981,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "notification"
+            ],
+            "name": "doc_notification_rsc_update_done",
+            "title": "observe_rsc_update_done/2",
+            "uri": "https://zotonic.com/id/1981"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1578,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1578"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_task_queue",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1578/execute-tasks-asynchronously-using-the-task-queue",
+    "x-default": "https://zotonic.com/cookbook/1578/execute-tasks-asynchronously-using-the-task-queue"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>The Zotonic task queue lets applications perform tasks asynchronously.</p>\n<p>Let’s say you have some external HTTP API that you want to update whenever\na resource in Zotonic is changed. You can so by queuing an task after each\nresource update. The HTTP request to the external API will be executed\nasynchronously, so you application and its users do not have have to wait for\nit.</p>\n<div class=\"section\">\n<h2>Add a task to the queue</h2>\n<p>To add a task to the queue, provide a module and function that should be called\nwhen the task is popped from the queue. So to add a task that will call the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">external_api_client:update_external_rsc()</span></code> as a callback function:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z_pivot_rsc</span><span class=\"p\">:</span><span class=\"nf\">insert_task</span><span class=\"p\">(</span>\n    <span class=\"n\">external_api_client</span><span class=\"p\">,</span>\n    <span class=\"n\">update_external_rsc</span><span class=\"p\">,</span>\n    <span class=\"nv\">Context</span>\n<span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>You can also supply arguments that will be passed to the function. So to have\n<code class=\"docutils literal notranslate\"><span class=\"pre\">external_api_client:update_external_rsc(RscId)</span></code> called:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">RscId</span> <span class=\"o\">=</span> <span class=\"mi\">123</span><span class=\"p\">,</span>\n<span class=\"nn\">z_pivot_rsc</span><span class=\"p\">:</span><span class=\"nf\">insert_task</span><span class=\"p\">(</span>\n    <span class=\"n\">external_api_client</span><span class=\"p\">,</span>\n    <span class=\"n\">update_external_rsc</span><span class=\"p\">,</span>\n    <span class=\"n\">undefined</span><span class=\"p\">,</span>\n    <span class=\"p\">[</span><span class=\"nv\">RscId</span><span class=\"p\">]</span>\n    <span class=\"nv\">Context</span>\n<span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>If you want to queue the task whenever a resource is changed, add this code\nto an <a class=\"reference internal\" href=\"/id/doc_notification_rsc_update_done#rsc-update-done\"><span class=\"std std-ref\">rsc_update_done</span></a> observer in your <a class=\"reference internal\" href=\"/id/doc_developerguide_modules\"><span class=\"std std-ref\">site module</span></a>:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">%% yoursite.erl</span>\n<span class=\"nf\">module</span><span class=\"p\">(</span><span class=\"n\">yoursite</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span>\n    <span class=\"n\">observe_rsc_update_done</span><span class=\"o\">/</span><span class=\"mi\">2</span>\n<span class=\"p\">]).</span>\n\n<span class=\"nf\">observe_rsc_update_done</span><span class=\"p\">(</span><span class=\"nl\">#rsc_update_done</span><span class=\"p\">{</span><span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"nv\">RscId</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nn\">z_pivot_rsc</span><span class=\"p\">:</span><span class=\"nf\">insert_task</span><span class=\"p\">(</span>\n        <span class=\"n\">external_api_client</span><span class=\"p\">,</span>\n        <span class=\"n\">update_external_rsc</span><span class=\"p\">,</span>\n        <span class=\"n\">undefined</span><span class=\"p\">,</span>\n        <span class=\"p\">[</span><span class=\"nv\">RscId</span><span class=\"p\">]</span>\n        <span class=\"nv\">Context</span>\n    <span class=\"p\">).</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Execute queued tasks</h2>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">Your callback function receives an anonymous <code class=\"docutils literal notranslate\"><span class=\"pre\">Context</span></code>, so if it performs actions that\ndepend on access checks, make sure to use either <code class=\"docutils literal notranslate\"><span class=\"pre\">m_rsc:p_no_acl/3</span></code> or\n<code class=\"docutils literal notranslate\"><span class=\"pre\">z_acl:sudo(Context)</span></code>.</p>\n</aside>\n<p>Add the callback function <code class=\"docutils literal notranslate\"><span class=\"pre\">update_external_rsc/2</span></code> referenced above to your module:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">%% external_api_client.erl</span>\n<span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">external_api_client</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span>\n    <span class=\"n\">update_external_rsc</span><span class=\"o\">/</span><span class=\"mi\">2</span>\n<span class=\"p\">]).</span>\n\n<span class=\"nf\">update_external_rsc</span><span class=\"p\">(</span><span class=\"nv\">RscId</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">%% Fetch resource properties</span>\n    <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nv\">JSON</span><span class=\"p\">}</span> <span class=\"o\">=</span> <span class=\"nn\">m_rsc_export</span><span class=\"p\">:</span><span class=\"nf\">full</span><span class=\"p\">(</span><span class=\"nv\">Id</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">),</span>\n    <span class=\"nv\">Data</span> <span class=\"o\">=</span> <span class=\"nn\">jsxrecord</span><span class=\"p\">:</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"nv\">JSON</span><span class=\"p\">),</span>\n\n    <span class=\"c\">%% Execute HTTP POST to external API</span>\n    <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nv\">Response</span><span class=\"p\">}</span> <span class=\"o\">=</span> <span class=\"nn\">httpc</span><span class=\"p\">:</span><span class=\"nf\">request</span><span class=\"p\">(</span>\n        <span class=\"n\">post</span><span class=\"p\">,</span>\n        <span class=\"p\">{</span>\n            <span class=\"s\">&quot;https://some-external-api.com&quot;</span><span class=\"p\">,</span>\n            <span class=\"p\">[],</span>\n            <span class=\"s\">&quot;application/json&quot;</span><span class=\"p\">,</span>\n            <span class=\"nv\">Data</span>\n        <span class=\"p\">},</span>\n        <span class=\"p\">[],</span>\n        <span class=\"p\">[]</span>\n    <span class=\"p\">),</span>\n\n    <span class=\"c\">%% Return anything to signal the task was executed successfully</span>\n    <span class=\"n\">ok</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Handle failing tasks</h2>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">update_external_rsc</span></code> function above assumes that the HTTP request will\nreturn successfully. Of course, this is not always the case. To handle failing\ntasks, you can return a <code class=\"docutils literal notranslate\"><span class=\"pre\">{delay,</span> <span class=\"pre\">NumberOfSeconds}</span></code> tuple that will retry the\ntask later:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nf\">update_external_rsc</span><span class=\"p\">(</span><span class=\"nv\">RscId</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n\n    <span class=\"k\">case</span> <span class=\"nn\">httpc</span><span class=\"p\">:</span><span class=\"nf\">request</span><span class=\"p\">(</span>\n        <span class=\"p\">...</span>\n    <span class=\"p\">)</span> <span class=\"k\">of</span>\n        <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nv\">Response</span><span class=\"p\">}</span> <span class=\"o\">-&gt;</span>\n            <span class=\"n\">ok</span><span class=\"p\">;</span>\n        <span class=\"p\">{</span><span class=\"n\">error</span><span class=\"p\">,</span> <span class=\"nv\">Error</span><span class=\"p\">}</span> <span class=\"o\">-&gt;</span>\n            <span class=\"c\">%% Try the task again in one minute</span>\n            <span class=\"p\">{</span><span class=\"n\">delay</span><span class=\"p\">,</span> <span class=\"mi\">60</span><span class=\"p\">}</span>\n    <span class=\"k\">end</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Prevent duplicate tasks</h2>\n<p>We decided above that the task should run whenever a resource is changed in\nZotonic. However, if a resource is quickly edited multiple times in a row, we\nonly need to send the latest changes once to the external API. In other words,\nwe want to coalesce the tasks into one. You can do so by providing a unique key\nwhen queueing the task:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">UniqueKey</span> <span class=\"o\">=</span> <span class=\"s\">&quot;external-api-&quot;</span> <span class=\"o\">++</span> <span class=\"nn\">z_convert</span><span class=\"p\">:</span><span class=\"nf\">to_list</span><span class=\"p\">(</span><span class=\"nv\">RscId</span><span class=\"p\">),</span>\n<span class=\"nn\">z_pivot_rsc</span><span class=\"p\">:</span><span class=\"nf\">insert_task</span><span class=\"p\">(</span>\n    <span class=\"n\">external_api_client</span><span class=\"p\">,</span>\n    <span class=\"n\">update_external_rsc</span><span class=\"p\">,</span>\n    <span class=\"nv\">UniqueKey</span><span class=\"p\">,</span>\n    <span class=\"p\">[</span><span class=\"nv\">RscId</span><span class=\"p\">],</span>\n    <span class=\"nv\">Context</span>\n<span class=\"p\">).</span>\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:26Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/task-queue.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:42Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_task_queue",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:42Z",
+    "slug": "execute-tasks-asynchronously-using-the-task-queue",
+    "title": "Execute tasks asynchronously using the task queue",
+    "title_slug": "execute-tasks-asynchronously-using-the-task-queue",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1578",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1578"
+  }
+}

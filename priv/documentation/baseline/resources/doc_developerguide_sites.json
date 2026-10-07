@@ -1,0 +1,267 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 1352,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_templates",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/1352"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 1541,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_dispatch_rules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Dispatch rules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1541"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 1728,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_developerguide_configuration_site_configuration",
+            "title": "Site configuration",
+            "uri": "https://zotonic.com/id/1728"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 1529,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_troubleshooting",
+            "title": "Troubleshooting",
+            "uri": "https://zotonic.com/id/1529"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:15Z",
+          "object_id": {
+            "id": 1529,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_troubleshooting",
+            "title": "Troubleshooting",
+            "uri": "https://zotonic.com/id/1529"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1527,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1527"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_sites",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1527/sites",
+    "x-default": "https://zotonic.com/docs/1527/sites"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Zotonic has the capability of serving more than one site at a time. You can have\nmultiple sites enabled, each with its own set of templates, database and\ndispatch rules. Each site has its own hostname.</p>\n<div class=\"section\">\n<a name=\"guide-create-site\"></a><h2>Create a site</h2>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">If anything goes wrong, see the <a class=\"reference internal\" href=\"/id/doc_developerguide_troubleshooting#ref-troubleshooting-installation\"><span class=\"std std-ref\">Installation</span></a>.</p>\n</aside>\n<p>First, prepare the database. In your terminal, connect to PostgreSQL:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>$ sudo -u postgres psql <span class=\"o\">(</span>enter your OS password<span class=\"o\">)</span>\n</pre></div>\n</div>\n<p>And create a database user for Zotonic. You may want to change the password:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># CREATE USER zotonic WITH PASSWORD &#39;zotonic&#39;;</span>\n</pre></div>\n</div>\n<p>Now, either give this user create rights to have Zotonic automatically create\nthe database for you (recommended):</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># ALTER USER zotonic CREATEDB;</span>\n</pre></div>\n</div>\n<p>Or create the site database manually:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># CREATE DATABASE zotonic WITH OWNER = zotonic ENCODING = &#39;UTF8&#39;;</span>\n<span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># GRANT ALL ON DATABASE zotonic TO zotonic;</span>\n</pre></div>\n</div>\n<p>And quit postgres:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># \\q</span>\n</pre></div>\n</div>\n<p>Now that there is a database Zotonic can be started. We do this in debug mode\nso that all console output is visible:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>$ bin/zotonic debug\n</pre></div>\n</div>\n<p>In a new terminal window, edit your <code class=\"docutils literal notranslate\"><span class=\"pre\">/etc/hosts</span></code> file, adding an entry for <code class=\"docutils literal notranslate\"><span class=\"pre\">yoursite.test</span></code> (the\nsite hostname) to point at your local host:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>127.0.0.1   yoursite.test\n</pre></div>\n</div>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">Zotonic has to be running for the <code class=\"docutils literal notranslate\"><span class=\"pre\">addsite</span></code> command to succeed.</p>\n</aside>\n<p>Create a new Zotonic site, based on the ‘blog’ skeleton site:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>$ bin/zotonic addsite -s blog yoursite\n</pre></div>\n</div>\n<p>Finally, point your browser to <a class=\"reference external\" href=\"https://yoursite.test:8443\">https://yoursite.test:8443</a> to see your new site.\nThe browser will ask to accept a self-signed certificate. Zotonic generates a\nself-signed certificate for every site. These are stored in <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/.config/zotonic/security</span></code>\n(on macOS <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/Library/Application</span> <span class=\"pre\">Support/zotonic/security</span></code>).</p>\n<p>You can log into the admin at <a class=\"reference external\" href=\"https://yoursite.test:8443/admin\">https://yoursite.test:8443/admin</a> using the username <code class=\"docutils literal notranslate\"><span class=\"pre\">admin</span></code>\nwith the password that you can find in your site’s configuration. Use for this the command:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>$ bin/zotonic siteconfig yoursite\n</pre></div>\n</div>\n<p>The configuration is stored in the file <code class=\"file docutils literal notranslate\"><span class=\"pre\">apps_user/yoursite/priv/zotonic_site.config</span></code>\nin the <a class=\"reference internal\" href=\"/id/doc_glossary#term-zotonic-user-directory\"><span class=\"xref std std-term\">zotonic user directory</span></a>.</p>\n<p>You can stop Zotonic by typing twice Ctrl-C at the Erlang command prompt.</p>\n<p>If you want to start Zotonic in the background then use:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>$ bin/zotonic start\n</pre></div>\n</div>\n<p>This can be stopped with:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>$ bin/zotonic stop\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<a name=\"guide-site-anatomy\"></a><h2>Anatomy of a site</h2>\n<p>A Zotonic site is a folder which lives in the <a class=\"reference internal\" href=\"/id/doc_glossary#term-zotonic-user-directory\"><span class=\"xref std std-term\">zotonic user directory</span></a> and\ncontains at least:</p>\n<ul class=\"simple\">\n<li>a <code class=\"docutils literal notranslate\"><span class=\"pre\">priv/zotonic_site.config</span></code> file: sets the site’s hostname and other parameters</li>\n<li>a <code class=\"docutils literal notranslate\"><span class=\"pre\">src/sitename.erl</span></code> file: initialises the site.</li>\n<li>a <code class=\"docutils literal notranslate\"><span class=\"pre\">src/sitename.app.src</span></code> file: an OTP app source file</li>\n</ul>\n<p>In fact, a site is a special type of <a class=\"reference internal\" href=\"/id/doc_developerguide_modules#guide-modules\"><span class=\"std std-ref\">module</span></a>.\nLike modules, sites usually contain additional resources such as\n<a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-templates\"><span class=\"std std-ref\">templates</span></a>,\n<a class=\"reference internal\" href=\"/id/doc_developerguide_dispatch_rules\"><span class=\"std std-ref\">dispatch rules</span></a> and\n<a class=\"reference internal\" href=\"/id/doc_developerguide_modules#guide-modules-versioning\"><span class=\"std std-ref\">data</span></a> . Unlike modules, however, sites have\ntheir own hostname and database connection.</p>\n</div>\n<div class=\"section\">\n<h2>Next steps</h2>\n<ul class=\"simple\">\n<li>Consult the reference for all site <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_site_configuration#ref-site-configuration\"><span class=\"std std-ref\">configuration parameters</span></a>.</li>\n<li>If something goes wrong, consult the <a class=\"reference internal\" href=\"/id/doc_developerguide_troubleshooting#ref-troubleshooting-sites\"><span class=\"std std-ref\">troubleshooting reference</span></a>.</li>\n</ul>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:24Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/sites.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:20Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_sites",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:20Z",
+    "slug": "sites",
+    "title": "Sites",
+    "title_slug": "sites",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1527",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1527"
+  }
+}

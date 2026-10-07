@@ -10,7 +10,7 @@
                     {% media medium mediaclass=mediaclass %}
                 </div>
             {% else %}
-                {% media medium mediaclass=mediaclass crop=crop link=link alt=id.title %}
+                {% media medium mediaclass=mediaclass crop=crop link=link alt=alt|default:id.title %}
                 {% if caption /= '-' %}
                     {% if caption|default:(id|summary) as caption %}
                         <br>{{ caption }}
@@ -25,7 +25,7 @@
                     {% media medium mediaclass=mediaclass %}
                 </div>
             {% else %}
-                {% media medium mediaclass=mediaclass crop=crop link=link alt=id.title %}
+                {% media medium mediaclass=mediaclass crop=crop link=link alt=alt|default:id.title %}
                 {% if caption /= '-' %}
                     {% if caption|default:(id|summary) as caption %}
                         <figcaption class="maincolumn-figure">{{ caption }}</figcaption>
@@ -40,7 +40,7 @@
                     {% media medium mediaclass=mediaclass %}
                 </div>
             {% else %}
-                {% media medium mediaclass=mediaclass crop=crop link=link alt=id.title %}
+                {% media medium mediaclass=mediaclass crop=crop link=link alt=alt|default:id.title %}
                 {% if caption /= '-' %}
                     {% if caption|default:(id|summary) as caption %}
                         <figcaption>{{ caption }}</figcaption>

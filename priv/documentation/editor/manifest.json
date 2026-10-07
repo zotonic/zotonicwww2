@@ -1,0 +1,5396 @@
+{
+  "format": "zotonic-documentation-v2",
+  "language": "en",
+  "source_proposal": "https://chatgpt.com/share/6ac53fef-99f0-83ed-805a-fa4421190569",
+  "target_site": "https://zotonic.com",
+  "root": "editor_guide",
+  "resources": [
+    {
+      "name": "editor_guide",
+      "title": "Zotonic for editors",
+      "summary": "Practical help for writing, organizing, and publishing website content.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": null,
+      "order": 0,
+      "required_modules": [],
+      "file": "index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_management"
+      ]
+    },
+    {
+      "name": "editor_collection_getting_started",
+      "title": "Getting started",
+      "summary": "Find your way around the admin and make your first change.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 1,
+      "required_modules": [],
+      "file": "01-getting-started/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_management"
+      ]
+    },
+    {
+      "name": "editor_introduction",
+      "title": "Introduction to editing with Zotonic",
+      "summary": "Use the admin to keep your website up to date.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_getting_started",
+      "order": 1,
+      "required_modules": [],
+      "file": "01-getting-started/introduction.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_management"
+      ]
+    },
+    {
+      "name": "editor_admin_interface",
+      "title": "The admin interface",
+      "summary": "Know where to find pages, editing controls, and settings.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_getting_started",
+      "order": 2,
+      "required_modules": [],
+      "file": "01-getting-started/admin-interface.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_management"
+      ]
+    },
+    {
+      "name": "editor_first_page",
+      "title": "Your first page",
+      "summary": "Create, check, and publish a simple page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_getting_started",
+      "order": 3,
+      "required_modules": [],
+      "file": "01-getting-started/first-page.md",
+      "zotonic_keywords": [
+        "tutorial",
+        "content_editor",
+        "content_management"
+      ]
+    },
+    {
+      "name": "editor_finding_content",
+      "title": "Finding content",
+      "summary": "Find a page without creating a duplicate.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_getting_started",
+      "order": 4,
+      "required_modules": [],
+      "file": "01-getting-started/finding-content.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "search_and_discovery",
+        "query"
+      ]
+    },
+    {
+      "name": "editor_understanding_content",
+      "title": "Understanding pages and content",
+      "summary": "Recognize the different kinds of content you can edit.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_getting_started",
+      "order": 5,
+      "required_modules": [],
+      "file": "01-getting-started/understanding-content.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_modeling",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_collection_creating_and_editing",
+      "title": "Creating and editing content",
+      "summary": "Write clear pages, add links and blocks, and manage changes.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 2,
+      "required_modules": [],
+      "file": "02-creating-and-editing/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_authoring",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_creating_page",
+      "title": "Creating a page",
+      "summary": "Start a new page with the right category and language.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 1,
+      "required_modules": [],
+      "file": "02-creating-and-editing/creating-page.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_authoring",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_editing_page",
+      "title": "Editing a page",
+      "summary": "Change existing content and check the result.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 2,
+      "required_modules": [],
+      "file": "02-creating-and-editing/editing-page.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_authoring",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_titles_summary_body",
+      "title": "Titles, summaries, and body text",
+      "summary": "Put each part of your text in the right field.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 3,
+      "required_modules": [],
+      "file": "02-creating-and-editing/titles-summary-body.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_authoring",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_formatting_text",
+      "title": "Formatting text",
+      "summary": "Make body text easy to scan and read.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 4,
+      "required_modules": [],
+      "file": "02-creating-and-editing/formatting-text.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_authoring",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_adding_links",
+      "title": "Adding links",
+      "summary": "Link readers to another page, website, or email address.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 5,
+      "required_modules": [],
+      "file": "02-creating-and-editing/adding-links.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation",
+        "url"
+      ]
+    },
+    {
+      "name": "editor_content_blocks",
+      "title": "Adding content blocks",
+      "summary": "Add structured sections when your site provides them.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 6,
+      "required_modules": [],
+      "file": "02-creating-and-editing/content-blocks.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_authoring",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_change_category",
+      "title": "Changing the category of a page",
+      "summary": "Change the kind of content without making a new page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 7,
+      "required_modules": [],
+      "file": "02-creating-and-editing/change-category.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "categorization",
+        "category"
+      ]
+    },
+    {
+      "name": "editor_duplicate_reuse",
+      "title": "Duplicating or reusing content",
+      "summary": "Choose between a new copy and a connection to existing content.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 8,
+      "required_modules": [],
+      "file": "02-creating-and-editing/duplicate-reuse.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_authoring",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_deleting_content",
+      "title": "Deleting content",
+      "summary": "Remove a page that is no longer needed.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 9,
+      "required_modules": [],
+      "file": "02-creating-and-editing/deleting-content.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_authoring",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_revisions",
+      "title": "Viewing and restoring earlier versions",
+      "summary": "Recover an earlier saved version when revision history is available.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 10,
+      "required_modules": [],
+      "file": "02-creating-and-editing/revisions.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_authoring",
+        "editorial_workflow"
+      ]
+    },
+    {
+      "name": "editor_editorial_notes",
+      "title": "Adding an editorial note",
+      "summary": "Leave a short note for other editors.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_creating_and_editing",
+      "order": 11,
+      "required_modules": [],
+      "file": "02-creating-and-editing/editorial-notes.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "editorial_workflow"
+      ]
+    },
+    {
+      "name": "editor_collection_publishing",
+      "title": "Publishing",
+      "summary": "Control when a page is available and who can see it.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 3,
+      "required_modules": [],
+      "file": "03-publishing/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "publishing",
+        "editorial_workflow"
+      ]
+    },
+    {
+      "name": "editor_publication",
+      "title": "Publishing and unpublishing",
+      "summary": "Make a page available or take it out of public view.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_publishing",
+      "order": 1,
+      "required_modules": [],
+      "file": "03-publishing/publication.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "publishing",
+        "editorial_workflow"
+      ]
+    },
+    {
+      "name": "editor_publication_dates",
+      "title": "Publication dates",
+      "summary": "Understand the dates that control availability.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_publishing",
+      "order": 2,
+      "required_modules": [],
+      "file": "03-publishing/publication-dates.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "publishing",
+        "date_and_time"
+      ]
+    },
+    {
+      "name": "editor_scheduling",
+      "title": "Scheduling a page",
+      "summary": "Prepare a page to appear at a future time.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_publishing",
+      "order": 3,
+      "required_modules": [],
+      "file": "03-publishing/scheduling.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "publishing",
+        "schedule"
+      ]
+    },
+    {
+      "name": "editor_visibility",
+      "title": "Who can see a page?",
+      "summary": "Check publication and access separately.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_publishing",
+      "order": 4,
+      "required_modules": [],
+      "file": "03-publishing/visibility.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "publishing",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "editor_preview",
+      "title": "Previewing content",
+      "summary": "Check a saved page before visitors see it.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_publishing",
+      "order": 5,
+      "required_modules": [],
+      "file": "03-publishing/preview.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "publishing",
+        "validate"
+      ]
+    },
+    {
+      "name": "editor_remove_from_website",
+      "title": "Removing a page from the website",
+      "summary": "Choose the right way to remove content.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_publishing",
+      "order": 6,
+      "required_modules": [],
+      "file": "03-publishing/remove-from-website.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "publishing",
+        "editorial_workflow"
+      ]
+    },
+    {
+      "name": "editor_noindex_page",
+      "title": "Keeping a page out of search engines",
+      "summary": "Request that search engines leave a page out of their results.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_publishing",
+      "order": 7,
+      "required_modules": [],
+      "file": "03-publishing/noindex-page.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "publishing",
+        "search_engine_optimization"
+      ]
+    },
+    {
+      "name": "editor_collection_media",
+      "title": "Media",
+      "summary": "Upload, reuse, and display images, documents, and video.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 4,
+      "required_modules": [],
+      "file": "04-media/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_working_with_media",
+      "title": "Working with media",
+      "summary": "Understand where images and files are stored.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 1,
+      "required_modules": [],
+      "file": "04-media/working-with-media.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_uploading_image",
+      "title": "Uploading an image",
+      "summary": "Add a new image to the media library.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 2,
+      "required_modules": [],
+      "file": "04-media/uploading-image.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "image_management",
+        "file_uploads"
+      ]
+    },
+    {
+      "name": "editor_existing_image",
+      "title": "Adding an existing image",
+      "summary": "Reuse an image instead of uploading a second copy.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 3,
+      "required_modules": [],
+      "file": "04-media/existing-image.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_page_image",
+      "title": "Adding an image to a page",
+      "summary": "Attach a lead image or other media used by the page layout.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 4,
+      "required_modules": [],
+      "file": "04-media/page-image.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_text_images",
+      "title": "Adding images in rich text",
+      "summary": "Place an image between or beside paragraphs.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 5,
+      "required_modules": [],
+      "file": "04-media/text-images.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_captions_alignment",
+      "title": "Image captions and alignment",
+      "summary": "Adjust an image inserted in the body text.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 6,
+      "required_modules": [],
+      "file": "04-media/captions-alignment.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_replace_media",
+      "title": "Replacing an image or file",
+      "summary": "Update a media item while keeping the item itself.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 7,
+      "required_modules": [],
+      "file": "04-media/replace-media.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_uploading_documents",
+      "title": "Uploading documents",
+      "summary": "Offer a PDF or another file for readers to download.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 8,
+      "required_modules": [],
+      "file": "04-media/uploading-documents.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "file_uploads",
+        "media_management"
+      ]
+    },
+    {
+      "name": "editor_video_embeds",
+      "title": "Adding video and other embedded media",
+      "summary": "Add supported online media or a video file.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 9,
+      "required_modules": [],
+      "file": "04-media/video-embeds.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "video_management",
+        "oembed"
+      ]
+    },
+    {
+      "name": "editor_finding_media",
+      "title": "Finding media",
+      "summary": "Locate the right file in the media library.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 10,
+      "required_modules": [],
+      "file": "04-media/finding-media.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_removing_media",
+      "title": "Removing media",
+      "summary": "Remove an image from one page or delete the shared item.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 11,
+      "required_modules": [],
+      "file": "04-media/removing-media.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_image_accessibility",
+      "title": "Making images understandable",
+      "summary": "Provide useful text for readers who cannot see an image.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_media",
+      "order": 12,
+      "required_modules": [],
+      "file": "04-media/image-accessibility.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "image_management",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "editor_collection_organizing_content",
+      "title": "Organizing content",
+      "summary": "Use categories, keywords, connections, and collections to organize pages.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 5,
+      "required_modules": [],
+      "file": "05-organizing-content/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_relationships",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_organizing_overview",
+      "title": "How Zotonic organizes content",
+      "summary": "Choose the right tool for organizing a page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_organizing_content",
+      "order": 1,
+      "required_modules": [],
+      "file": "05-organizing-content/organizing-overview.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_relationships",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_categories",
+      "title": "Choosing categories",
+      "summary": "Describe what kind of content a page contains.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_organizing_content",
+      "order": 2,
+      "required_modules": [],
+      "file": "05-organizing-content/categories.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "categorization",
+        "category"
+      ]
+    },
+    {
+      "name": "editor_keywords",
+      "title": "Adding keywords or tags",
+      "summary": "Connect a page to its subjects.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_organizing_content",
+      "order": 3,
+      "required_modules": [],
+      "file": "05-organizing-content/keywords.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "metadata",
+        "search_and_discovery"
+      ]
+    },
+    {
+      "name": "editor_connecting_pages",
+      "title": "Connecting pages",
+      "summary": "Link an article to an author, subject, or another page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_organizing_content",
+      "order": 4,
+      "required_modules": [],
+      "file": "05-organizing-content/connecting-pages.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_relationships",
+        "edge"
+      ]
+    },
+    {
+      "name": "editor_featured_related",
+      "title": "Featured and related content",
+      "summary": "Suggest which pages deserve attention.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_organizing_content",
+      "order": 5,
+      "required_modules": [],
+      "file": "05-organizing-content/featured-related.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_relationships",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_collections",
+      "title": "Creating and using collections",
+      "summary": "Group pages into an ordered set.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_organizing_content",
+      "order": 6,
+      "required_modules": [],
+      "file": "05-organizing-content/collections.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation",
+        "collection"
+      ]
+    },
+    {
+      "name": "editor_content_order",
+      "title": "Changing the order of content",
+      "summary": "Put connected pages or media in the intended sequence.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_organizing_content",
+      "order": 7,
+      "required_modules": [],
+      "file": "05-organizing-content/content-order.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation",
+        "collection"
+      ]
+    },
+    {
+      "name": "editor_relationships",
+      "title": "Understanding relationships",
+      "summary": "Read outgoing and incoming page connections.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_organizing_content",
+      "order": 8,
+      "required_modules": [],
+      "file": "05-organizing-content/relationships.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "content_relationships",
+        "edge",
+        "predicate"
+      ]
+    },
+    {
+      "name": "editor_collection_menus_and_navigation",
+      "title": "Menus and navigation",
+      "summary": "Help visitors move through your website.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 6,
+      "required_modules": [
+        "mod_menu"
+      ],
+      "file": "06-menus-and-navigation/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_editing_menus",
+      "title": "Editing the main menu",
+      "summary": "Find the menu that your website displays.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_menus_and_navigation",
+      "order": 1,
+      "required_modules": [
+        "mod_menu"
+      ],
+      "file": "06-menus-and-navigation/editing-menus.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_add_menu_page",
+      "title": "Adding a page to a menu",
+      "summary": "Create a navigation entry for an existing page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_menus_and_navigation",
+      "order": 2,
+      "required_modules": [
+        "mod_menu"
+      ],
+      "file": "06-menus-and-navigation/add-menu-page.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_moving_menu_items",
+      "title": "Moving menu items",
+      "summary": "Change the order and position of navigation entries.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_menus_and_navigation",
+      "order": 3,
+      "required_modules": [
+        "mod_menu"
+      ],
+      "file": "06-menus-and-navigation/moving-menu-items.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_submenus",
+      "title": "Creating submenus",
+      "summary": "Place a menu entry under another entry.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_menus_and_navigation",
+      "order": 4,
+      "required_modules": [
+        "mod_menu"
+      ],
+      "file": "06-menus-and-navigation/submenus.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_remove_menu_item",
+      "title": "Removing a menu item",
+      "summary": "Remove a navigation entry while keeping its page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_menus_and_navigation",
+      "order": 5,
+      "required_modules": [
+        "mod_menu"
+      ],
+      "file": "06-menus-and-navigation/remove-menu-item.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_multiple_menus",
+      "title": "Working with multiple menus",
+      "summary": "Keep main, footer, and section navigation separate.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_menus_and_navigation",
+      "order": 6,
+      "required_modules": [
+        "mod_menu"
+      ],
+      "file": "06-menus-and-navigation/multiple-menus.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_collection_languages_and_translations",
+      "title": "Languages and translations",
+      "summary": "Maintain several languages on the same page.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 7,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "07-languages-and-translations/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "localization_and_translation",
+        "translated_text"
+      ]
+    },
+    {
+      "name": "editor_multilingual_content",
+      "title": "Working with multilingual content",
+      "summary": "Understand what is shared and what is translated.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_languages_and_translations",
+      "order": 1,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "07-languages-and-translations/multilingual-content.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "localization_and_translation",
+        "translated_text"
+      ]
+    },
+    {
+      "name": "editor_translating_page",
+      "title": "Translating a page",
+      "summary": "Add and review text in another language.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_languages_and_translations",
+      "order": 2,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "07-languages-and-translations/translating-page.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "localization_and_translation",
+        "translated_text"
+      ]
+    },
+    {
+      "name": "editor_page_languages",
+      "title": "Seeing which languages a page has",
+      "summary": "Check available languages and translation completeness.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_languages_and_translations",
+      "order": 3,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "07-languages-and-translations/page-languages.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "localization_and_translation",
+        "translated_text"
+      ]
+    },
+    {
+      "name": "editor_add_remove_translation",
+      "title": "Adding or removing a translation",
+      "summary": "Manage the languages of an individual page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_languages_and_translations",
+      "order": 4,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "07-languages-and-translations/add-remove-translation.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "localization_and_translation",
+        "translated_text"
+      ]
+    },
+    {
+      "name": "editor_copy_language",
+      "title": "Copying content between languages",
+      "summary": "Use existing text as a starting point for a translation.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_languages_and_translations",
+      "order": 5,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "07-languages-and-translations/copy-language.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "localization_and_translation",
+        "translated_text"
+      ]
+    },
+    {
+      "name": "editor_missing_translations",
+      "title": "Missing translations and fallback languages",
+      "summary": "Understand why a page may show text in another language.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_languages_and_translations",
+      "order": 6,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "07-languages-and-translations/missing-translations.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "localization_and_translation",
+        "translated_text"
+      ]
+    },
+    {
+      "name": "editor_language_urls",
+      "title": "Language-specific URLs",
+      "summary": "Check links to translated content.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_languages_and_translations",
+      "order": 7,
+      "required_modules": [
+        "mod_translation"
+      ],
+      "file": "07-languages-and-translations/language-urls.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "localization_and_translation",
+        "translated_text"
+      ]
+    },
+    {
+      "name": "editor_collection_people_and_access",
+      "title": "People and access",
+      "summary": "Understand editorial accounts, permissions, and shared work.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 8,
+      "required_modules": [],
+      "file": "08-people-and-access/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "identity_and_accounts",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "editor_users_editors",
+      "title": "Users and editors",
+      "summary": "Understand the difference between a person page and an account.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_people_and_access",
+      "order": 1,
+      "required_modules": [],
+      "file": "08-people-and-access/users-editors.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "identity_and_accounts",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "editor_creating_user",
+      "title": "Creating a user",
+      "summary": "Set up an account when your role allows user management.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_people_and_access",
+      "order": 2,
+      "required_modules": [],
+      "file": "08-people-and-access/creating-user.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "site_administrator",
+        "identity_and_accounts",
+        "create"
+      ]
+    },
+    {
+      "name": "editor_permissions",
+      "title": "What am I allowed to edit?",
+      "summary": "Understand why available actions differ between editors.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_people_and_access",
+      "order": 3,
+      "required_modules": [],
+      "file": "08-people-and-access/permissions.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "editor_cannot_edit",
+      "title": "Why can’t I edit this page?",
+      "summary": "Check your account and the page before requesting help.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_people_and_access",
+      "order": 4,
+      "required_modules": [],
+      "file": "08-people-and-access/cannot-edit.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "editor_ownership",
+      "title": "Content ownership",
+      "summary": "Know who created content and who is responsible for it.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_people_and_access",
+      "order": 5,
+      "required_modules": [],
+      "file": "08-people-and-access/ownership.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "authorization_and_access_control",
+        "content_group"
+      ]
+    },
+    {
+      "name": "editor_collaboration",
+      "title": "Collaboration groups",
+      "summary": "Work with a group when your site supports group-based content.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_people_and_access",
+      "order": 6,
+      "required_modules": [],
+      "file": "08-people-and-access/collaboration.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "authorization_and_access_control",
+        "content_group"
+      ]
+    },
+    {
+      "name": "editor_upload_restrictions",
+      "title": "Upload restrictions",
+      "summary": "Resolve a rejected file upload.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_people_and_access",
+      "order": 7,
+      "required_modules": [],
+      "file": "08-people-and-access/upload-restrictions.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "file_uploads",
+        "authorization_and_access_control"
+      ]
+    },
+    {
+      "name": "editor_collection_mailing_lists",
+      "title": "Mailing lists and newsletters",
+      "summary": "Prepare, test, send, and follow up on email mailings.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 9,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "mailing_lists",
+        "email_delivery"
+      ]
+    },
+    {
+      "name": "editor_mailing_lists",
+      "title": "Working with mailing lists",
+      "summary": "Choose the audience for an email mailing.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_mailing_lists",
+      "order": 1,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/mailing-lists.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "mailing_lists",
+        "email_delivery"
+      ]
+    },
+    {
+      "name": "editor_managing_recipients",
+      "title": "Managing recipients",
+      "summary": "Keep a mailing list accurate.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_mailing_lists",
+      "order": 2,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/managing-recipients.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "mailing_lists",
+        "email_delivery"
+      ]
+    },
+    {
+      "name": "editor_creating_mailing",
+      "title": "Creating a mailing",
+      "summary": "Prepare the page that will become your email.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_mailing_lists",
+      "order": 3,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/creating-mailing.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "mailing_lists",
+        "email_delivery"
+      ]
+    },
+    {
+      "name": "editor_test_mailing",
+      "title": "Sending a test mailing",
+      "summary": "Check an email with a small, controlled test.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_mailing_lists",
+      "order": 4,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/test-mailing.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "mailing_lists",
+        "email_delivery"
+      ]
+    },
+    {
+      "name": "editor_sending_mailing",
+      "title": "Sending a mailing",
+      "summary": "Review the audience and email before the full send.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_mailing_lists",
+      "order": 5,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/sending-mailing.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "mailing_lists",
+        "email_delivery"
+      ]
+    },
+    {
+      "name": "editor_schedule_mailing",
+      "title": "Scheduling a mailing",
+      "summary": "Choose when an email mailing should start.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_mailing_lists",
+      "order": 6,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/schedule-mailing.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "mailing_lists",
+        "email_delivery"
+      ]
+    },
+    {
+      "name": "editor_mailing_status",
+      "title": "Checking mailing status",
+      "summary": "See what happened after a mailing was started.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_mailing_lists",
+      "order": 7,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/mailing-status.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "mailing_lists",
+        "email_delivery",
+        "monitor"
+      ]
+    },
+    {
+      "name": "editor_recipient_import_export",
+      "title": "Importing and exporting recipients",
+      "summary": "Transfer a list of email addresses.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_mailing_lists",
+      "order": 8,
+      "required_modules": [
+        "mod_mailinglist"
+      ],
+      "file": "09-mailing-lists/recipient-import-export.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "mailing_lists",
+        "import_and_migration",
+        "export_and_syndication"
+      ]
+    },
+    {
+      "name": "editor_collection_seo_and_sharing",
+      "title": "SEO and sharing",
+      "summary": "Help people recognize and find your pages.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 11,
+      "required_modules": [
+        "mod_seo"
+      ],
+      "file": "11-seo-and-sharing/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "search_engine_optimization"
+      ]
+    },
+    {
+      "name": "editor_seo_basics",
+      "title": "SEO basics for editors",
+      "summary": "Make useful pages easy to understand and discover.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_seo_and_sharing",
+      "order": 1,
+      "required_modules": [
+        "mod_seo"
+      ],
+      "file": "11-seo-and-sharing/seo-basics.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "search_engine_optimization"
+      ]
+    },
+    {
+      "name": "editor_seo_titles",
+      "title": "Page titles and descriptions",
+      "summary": "Write a useful title and description for search and sharing.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_seo_and_sharing",
+      "order": 2,
+      "required_modules": [
+        "mod_seo"
+      ],
+      "file": "11-seo-and-sharing/seo-titles.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "search_engine_optimization"
+      ]
+    },
+    {
+      "name": "editor_search_visibility",
+      "title": "Search engine visibility",
+      "summary": "Distinguish public access from search indexing.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_seo_and_sharing",
+      "order": 3,
+      "required_modules": [
+        "mod_seo"
+      ],
+      "file": "11-seo-and-sharing/search-visibility.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "search_engine_optimization"
+      ]
+    },
+    {
+      "name": "editor_social_sharing",
+      "title": "Social sharing information",
+      "summary": "Check how a page looks when its link is shared.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_seo_and_sharing",
+      "order": 4,
+      "required_modules": [
+        "mod_seo"
+      ],
+      "file": "11-seo-and-sharing/social-sharing.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "search_engine_optimization"
+      ]
+    },
+    {
+      "name": "editor_urls",
+      "title": "Changing page URLs",
+      "summary": "Understand slugs and paths before changing an address.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_seo_and_sharing",
+      "order": 5,
+      "required_modules": [
+        "mod_seo"
+      ],
+      "file": "11-seo-and-sharing/urls.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "routing_and_redirects",
+        "url"
+      ]
+    },
+    {
+      "name": "editor_redirects",
+      "title": "Redirecting an old address",
+      "summary": "Help readers reach replacement content.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_seo_and_sharing",
+      "order": 6,
+      "required_modules": [
+        "mod_seo"
+      ],
+      "file": "11-seo-and-sharing/redirects.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "routing_and_redirects",
+        "url"
+      ]
+    },
+    {
+      "name": "editor_collection_troubleshooting",
+      "title": "Common tasks and troubleshooting",
+      "summary": "Find the cause of common editing and publishing problems.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 12,
+      "required_modules": [],
+      "file": "12-troubleshooting/index.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "content_management"
+      ]
+    },
+    {
+      "name": "editor_changes_not_visible",
+      "title": "My changes don’t appear on the website",
+      "summary": "Check saving, language, and the page being displayed.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 1,
+      "required_modules": [],
+      "file": "12-troubleshooting/changes-not-visible.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "publishing",
+        "cache"
+      ]
+    },
+    {
+      "name": "editor_cannot_find",
+      "title": "Why can’t I find a page?",
+      "summary": "Clear filters and check access before creating another copy.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 2,
+      "required_modules": [],
+      "file": "12-troubleshooting/cannot-find.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "search_and_discovery"
+      ]
+    },
+    {
+      "name": "editor_not_published",
+      "title": "Why isn’t my page published?",
+      "summary": "Check the controls that determine visitor access.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 3,
+      "required_modules": [],
+      "file": "12-troubleshooting/not-published.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "publishing"
+      ]
+    },
+    {
+      "name": "editor_image_not_showing",
+      "title": "Why isn’t an image showing?",
+      "summary": "Check the media item and how the page uses it.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 4,
+      "required_modules": [],
+      "file": "12-troubleshooting/image-not-showing.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "image_management"
+      ]
+    },
+    {
+      "name": "editor_wrong_image",
+      "title": "Why is the wrong image showing?",
+      "summary": "Find which image source the page layout uses.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 5,
+      "required_modules": [],
+      "file": "12-troubleshooting/wrong-image.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "image_management"
+      ]
+    },
+    {
+      "name": "editor_old_language",
+      "title": "Why does another language show old content?",
+      "summary": "Update the translation and check fallback text.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 6,
+      "required_modules": [],
+      "file": "12-troubleshooting/old-language.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "localization_and_translation"
+      ]
+    },
+    {
+      "name": "editor_not_in_menu",
+      "title": "Why isn’t my page in the menu?",
+      "summary": "Check navigation separately from publication.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 7,
+      "required_modules": [],
+      "file": "12-troubleshooting/not-in-menu.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor_accidental_change",
+      "title": "I accidentally changed or deleted something",
+      "summary": "Take the next step without overwriting more content.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 8,
+      "required_modules": [],
+      "file": "12-troubleshooting/accidental-change.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "editorial_workflow",
+        "content_authoring"
+      ]
+    },
+    {
+      "name": "editor_broken_link",
+      "title": "A link is broken",
+      "summary": "Find and repair the link at its source.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_troubleshooting",
+      "order": 9,
+      "required_modules": [],
+      "file": "12-troubleshooting/broken-link.md",
+      "zotonic_keywords": [
+        "troubleshooting",
+        "content_editor",
+        "navigation",
+        "url"
+      ]
+    },
+    {
+      "name": "editor_collection_understanding_zotonic",
+      "title": "Understanding Zotonic",
+      "summary": "Learn the few concepts that make everyday editing easier.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 13,
+      "required_modules": [],
+      "file": "13-understanding-zotonic/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "content_modeling",
+        "resource"
+      ]
+    },
+    {
+      "name": "editor_pages_resources",
+      "title": "Pages and resources",
+      "summary": "Understand why people, images, and articles share an editor.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_understanding_zotonic",
+      "order": 1,
+      "required_modules": [],
+      "file": "13-understanding-zotonic/pages-resources.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "resource",
+        "content_modeling"
+      ]
+    },
+    {
+      "name": "editor_categories_concept",
+      "title": "What categories mean",
+      "summary": "Separate a content type from a topic or a folder.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_understanding_zotonic",
+      "order": 2,
+      "required_modules": [],
+      "file": "13-understanding-zotonic/categories-concept.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "category",
+        "categorization"
+      ]
+    },
+    {
+      "name": "editor_connections_concept",
+      "title": "What connections mean",
+      "summary": "Understand how separate content works together.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_understanding_zotonic",
+      "order": 3,
+      "required_modules": [],
+      "file": "13-understanding-zotonic/connections-concept.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "edge",
+        "predicate",
+        "content_relationships"
+      ]
+    },
+    {
+      "name": "editor_media_depictions",
+      "title": "Media and depictions",
+      "summary": "Understand shared files and page images.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_understanding_zotonic",
+      "order": 4,
+      "required_modules": [],
+      "file": "13-understanding-zotonic/media-depictions.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "media_management",
+        "media_resource"
+      ]
+    },
+    {
+      "name": "editor_menus_collections",
+      "title": "Menus and collections",
+      "summary": "Choose navigation or an ordered group of content.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_understanding_zotonic",
+      "order": 5,
+      "required_modules": [],
+      "file": "13-understanding-zotonic/menus-collections.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "navigation",
+        "collection"
+      ]
+    },
+    {
+      "name": "editor_languages_concept",
+      "title": "How languages work",
+      "summary": "Understand translated fields on one page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_understanding_zotonic",
+      "order": 6,
+      "required_modules": [],
+      "file": "13-understanding-zotonic/languages-concept.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "localization_and_translation"
+      ]
+    },
+    {
+      "name": "editor_publication_concept",
+      "title": "Publication and visibility",
+      "summary": "Understand the separate decisions behind a visible page.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_understanding_zotonic",
+      "order": 7,
+      "required_modules": [],
+      "file": "13-understanding-zotonic/publication-concept.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "publishing"
+      ]
+    },
+    {
+      "name": "editor_collection_surveys_forms",
+      "title": "Surveys and forms",
+      "summary": "Build forms, collect responses, and follow up on what people submit.",
+      "category": "collection",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_guide",
+      "order": 10,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/index.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "surveys",
+        "forms"
+      ]
+    },
+    {
+      "name": "editor_surveys_forms",
+      "title": "Surveys and forms: what you can make",
+      "summary": "Use surveys for feedback, registrations, simple requests, polls, and quizzes.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 1,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/surveys-forms.md",
+      "zotonic_keywords": [
+        "explanation",
+        "content_editor",
+        "surveys",
+        "forms"
+      ]
+    },
+    {
+      "name": "editor_creating_form",
+      "title": "Creating your first form",
+      "summary": "Create an unpublished survey and give respondents a clear introduction.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 2,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/creating-form.md",
+      "zotonic_keywords": [
+        "tutorial",
+        "content_editor",
+        "surveys",
+        "forms"
+      ]
+    },
+    {
+      "name": "editor_survey_questions",
+      "title": "Adding and arranging questions",
+      "summary": "Choose field types, set required answers, and keep question names stable.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 3,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/adding-questions.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "forms"
+      ]
+    },
+    {
+      "name": "editor_survey_choices",
+      "title": "Adding answer choices",
+      "summary": "Offer clear choices while preserving the values used in stored answers.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 4,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/answer-choices.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "forms"
+      ]
+    },
+    {
+      "name": "editor_survey_pages",
+      "title": "Splitting a form into pages",
+      "summary": "Group questions and show respondents only the sections they need.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 5,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/pages-and-jumps.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "forms"
+      ]
+    },
+    {
+      "name": "editor_survey_settings",
+      "title": "Choosing how people can respond",
+      "summary": "Set repeat submissions, saved progress, limits, and the final screen.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 6,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/answering-settings.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "forms",
+        "privacy"
+      ]
+    },
+    {
+      "name": "editor_survey_email",
+      "title": "Sending form notifications and confirmations",
+      "summary": "Notify the responsible team and tell respondents their form was received.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 7,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/confirmation-emails.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "forms",
+        "email_delivery"
+      ]
+    },
+    {
+      "name": "editor_survey_test_publish",
+      "title": "Testing and publishing a form",
+      "summary": "Check the entire respondent journey before sharing the form.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 8,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/testing-publishing.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "forms"
+      ]
+    },
+    {
+      "name": "editor_survey_results",
+      "title": "Reviewing and following up on responses",
+      "summary": "Read submitted answers, add internal status notes, and make deliberate corrections.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 9,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/reviewing-results.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "privacy"
+      ]
+    },
+    {
+      "name": "editor_survey_export",
+      "title": "Downloading survey results",
+      "summary": "Export answers and check what information the file contains.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 10,
+      "required_modules": [
+        "mod_survey",
+        "mod_export"
+      ],
+      "file": "10-surveys-and-forms/exporting-results.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "export_and_syndication",
+        "privacy"
+      ]
+    },
+    {
+      "name": "editor_survey_change_close",
+      "title": "Changing or closing a form",
+      "summary": "Protect the meaning of existing responses when a form changes.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 11,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/changing-closing.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "forms"
+      ]
+    },
+    {
+      "name": "editor_survey_quiz",
+      "title": "Creating a quiz",
+      "summary": "Mark correct answers, set scores, and choose the feedback respondents see.",
+      "category": "userguide",
+      "language": "en",
+      "is_published": true,
+      "parent": "editor_collection_surveys_forms",
+      "order": 12,
+      "required_modules": [
+        "mod_survey"
+      ],
+      "file": "10-surveys-and-forms/quizzes.md",
+      "zotonic_keywords": [
+        "how_to_guide",
+        "content_editor",
+        "surveys",
+        "forms",
+        "validate"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_getting_started"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_getting_started",
+      "predicate": "haspart",
+      "objects": [
+        "editor_introduction"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_getting_started",
+      "predicate": "haspart",
+      "objects": [
+        "editor_admin_interface"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_getting_started",
+      "predicate": "haspart",
+      "objects": [
+        "editor_first_page"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_getting_started",
+      "predicate": "haspart",
+      "objects": [
+        "editor_finding_content"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_getting_started",
+      "predicate": "haspart",
+      "objects": [
+        "editor_understanding_content"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_creating_and_editing"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_creating_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_editing_page"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_titles_summary_body"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_formatting_text"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_adding_links"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_content_blocks"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_change_category"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_duplicate_reuse"
+      ],
+      "sequence": 8
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_deleting_content"
+      ],
+      "sequence": 9
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_revisions"
+      ],
+      "sequence": 10
+    },
+    {
+      "subject": "editor_collection_creating_and_editing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_editorial_notes"
+      ],
+      "sequence": 11
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_publishing"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_publishing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_publication"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_publishing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_publication_dates"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_publishing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_scheduling"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_publishing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_publishing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_preview"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_publishing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_remove_from_website"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_publishing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_noindex_page"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_media"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_working_with_media"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_uploading_image"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_existing_image"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_page_image"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_text_images"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_captions_alignment"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_replace_media"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_uploading_documents"
+      ],
+      "sequence": 8
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_video_embeds"
+      ],
+      "sequence": 9
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_finding_media"
+      ],
+      "sequence": 10
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_removing_media"
+      ],
+      "sequence": 11
+    },
+    {
+      "subject": "editor_collection_media",
+      "predicate": "haspart",
+      "objects": [
+        "editor_image_accessibility"
+      ],
+      "sequence": 12
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_organizing_content"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_organizing_content",
+      "predicate": "haspart",
+      "objects": [
+        "editor_organizing_overview"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_organizing_content",
+      "predicate": "haspart",
+      "objects": [
+        "editor_categories"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_organizing_content",
+      "predicate": "haspart",
+      "objects": [
+        "editor_keywords"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_organizing_content",
+      "predicate": "haspart",
+      "objects": [
+        "editor_connecting_pages"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_organizing_content",
+      "predicate": "haspart",
+      "objects": [
+        "editor_featured_related"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_organizing_content",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collections"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_organizing_content",
+      "predicate": "haspart",
+      "objects": [
+        "editor_content_order"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_collection_organizing_content",
+      "predicate": "haspart",
+      "objects": [
+        "editor_relationships"
+      ],
+      "sequence": 8
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_menus_and_navigation"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_menus_and_navigation",
+      "predicate": "haspart",
+      "objects": [
+        "editor_editing_menus"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_menus_and_navigation",
+      "predicate": "haspart",
+      "objects": [
+        "editor_add_menu_page"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_menus_and_navigation",
+      "predicate": "haspart",
+      "objects": [
+        "editor_moving_menu_items"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_menus_and_navigation",
+      "predicate": "haspart",
+      "objects": [
+        "editor_submenus"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_menus_and_navigation",
+      "predicate": "haspart",
+      "objects": [
+        "editor_remove_menu_item"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_menus_and_navigation",
+      "predicate": "haspart",
+      "objects": [
+        "editor_multiple_menus"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_languages_and_translations"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_collection_languages_and_translations",
+      "predicate": "haspart",
+      "objects": [
+        "editor_multilingual_content"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_languages_and_translations",
+      "predicate": "haspart",
+      "objects": [
+        "editor_translating_page"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_languages_and_translations",
+      "predicate": "haspart",
+      "objects": [
+        "editor_page_languages"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_languages_and_translations",
+      "predicate": "haspart",
+      "objects": [
+        "editor_add_remove_translation"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_languages_and_translations",
+      "predicate": "haspart",
+      "objects": [
+        "editor_copy_language"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_languages_and_translations",
+      "predicate": "haspart",
+      "objects": [
+        "editor_missing_translations"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_languages_and_translations",
+      "predicate": "haspart",
+      "objects": [
+        "editor_language_urls"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_people_and_access"
+      ],
+      "sequence": 8
+    },
+    {
+      "subject": "editor_collection_people_and_access",
+      "predicate": "haspart",
+      "objects": [
+        "editor_users_editors"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_people_and_access",
+      "predicate": "haspart",
+      "objects": [
+        "editor_creating_user"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_people_and_access",
+      "predicate": "haspart",
+      "objects": [
+        "editor_permissions"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_people_and_access",
+      "predicate": "haspart",
+      "objects": [
+        "editor_cannot_edit"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_people_and_access",
+      "predicate": "haspart",
+      "objects": [
+        "editor_ownership"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_people_and_access",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collaboration"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_people_and_access",
+      "predicate": "haspart",
+      "objects": [
+        "editor_upload_restrictions"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_mailing_lists"
+      ],
+      "sequence": 9
+    },
+    {
+      "subject": "editor_collection_mailing_lists",
+      "predicate": "haspart",
+      "objects": [
+        "editor_mailing_lists"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_mailing_lists",
+      "predicate": "haspart",
+      "objects": [
+        "editor_managing_recipients"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_mailing_lists",
+      "predicate": "haspart",
+      "objects": [
+        "editor_creating_mailing"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_mailing_lists",
+      "predicate": "haspart",
+      "objects": [
+        "editor_test_mailing"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_mailing_lists",
+      "predicate": "haspart",
+      "objects": [
+        "editor_sending_mailing"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_mailing_lists",
+      "predicate": "haspart",
+      "objects": [
+        "editor_schedule_mailing"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_mailing_lists",
+      "predicate": "haspart",
+      "objects": [
+        "editor_mailing_status"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_collection_mailing_lists",
+      "predicate": "haspart",
+      "objects": [
+        "editor_recipient_import_export"
+      ],
+      "sequence": 8
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_seo_and_sharing"
+      ],
+      "sequence": 11
+    },
+    {
+      "subject": "editor_collection_seo_and_sharing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_seo_basics"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_seo_and_sharing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_seo_titles"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_seo_and_sharing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_search_visibility"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_seo_and_sharing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_social_sharing"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_seo_and_sharing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_urls"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_seo_and_sharing",
+      "predicate": "haspart",
+      "objects": [
+        "editor_redirects"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_troubleshooting"
+      ],
+      "sequence": 12
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_changes_not_visible"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_cannot_find"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_not_published"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_image_not_showing"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_wrong_image"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_old_language"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_not_in_menu"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_accidental_change"
+      ],
+      "sequence": 8
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_broken_link"
+      ],
+      "sequence": 9
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "haspart",
+      "objects": [
+        "editor_cannot_edit"
+      ],
+      "sequence": 10
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_understanding_zotonic"
+      ],
+      "sequence": 13
+    },
+    {
+      "subject": "editor_collection_understanding_zotonic",
+      "predicate": "haspart",
+      "objects": [
+        "editor_pages_resources"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_understanding_zotonic",
+      "predicate": "haspart",
+      "objects": [
+        "editor_categories_concept"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_understanding_zotonic",
+      "predicate": "haspart",
+      "objects": [
+        "editor_connections_concept"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_understanding_zotonic",
+      "predicate": "haspart",
+      "objects": [
+        "editor_media_depictions"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_understanding_zotonic",
+      "predicate": "haspart",
+      "objects": [
+        "editor_menus_collections"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_understanding_zotonic",
+      "predicate": "haspart",
+      "objects": [
+        "editor_languages_concept"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_understanding_zotonic",
+      "predicate": "haspart",
+      "objects": [
+        "editor_publication_concept"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_introduction",
+      "predicate": "relation",
+      "objects": [
+        "editor_first_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_introduction",
+      "predicate": "relation",
+      "objects": [
+        "editor_admin_interface"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_admin_interface",
+      "predicate": "relation",
+      "objects": [
+        "editor_finding_content"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_admin_interface",
+      "predicate": "relation",
+      "objects": [
+        "editor_editing_page"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_first_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_first_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_add_menu_page"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_finding_content",
+      "predicate": "relation",
+      "objects": [
+        "editor_cannot_find"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_finding_content",
+      "predicate": "relation",
+      "objects": [
+        "editor_finding_media"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_understanding_content",
+      "predicate": "relation",
+      "objects": [
+        "editor_pages_resources"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_understanding_content",
+      "predicate": "relation",
+      "objects": [
+        "editor_connections_concept"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_creating_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_titles_summary_body"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_creating_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_change_category"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_editing_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_preview"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_editing_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_revisions"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_titles_summary_body",
+      "predicate": "relation",
+      "objects": [
+        "editor_formatting_text"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_titles_summary_body",
+      "predicate": "relation",
+      "objects": [
+        "editor_seo_titles"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_formatting_text",
+      "predicate": "relation",
+      "objects": [
+        "editor_adding_links"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_formatting_text",
+      "predicate": "relation",
+      "objects": [
+        "editor_text_images"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_adding_links",
+      "predicate": "relation",
+      "objects": [
+        "editor_broken_link"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_adding_links",
+      "predicate": "relation",
+      "objects": [
+        "editor_uploading_documents"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_content_blocks",
+      "predicate": "relation",
+      "objects": [
+        "editor_page_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_content_blocks",
+      "predicate": "relation",
+      "objects": [
+        "editor_collections"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_change_category",
+      "predicate": "relation",
+      "objects": [
+        "editor_categories"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_change_category",
+      "predicate": "relation",
+      "objects": [
+        "editor_keywords"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_duplicate_reuse",
+      "predicate": "relation",
+      "objects": [
+        "editor_existing_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_duplicate_reuse",
+      "predicate": "relation",
+      "objects": [
+        "editor_collections"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_deleting_content",
+      "predicate": "relation",
+      "objects": [
+        "editor_remove_from_website"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_deleting_content",
+      "predicate": "relation",
+      "objects": [
+        "editor_accidental_change"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_revisions",
+      "predicate": "relation",
+      "objects": [
+        "editor_accidental_change"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_revisions",
+      "predicate": "relation",
+      "objects": [
+        "editor_editing_page"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_editorial_notes",
+      "predicate": "relation",
+      "objects": [
+        "editor_editing_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_editorial_notes",
+      "predicate": "relation",
+      "objects": [
+        "editor_ownership"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_publication",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication_dates"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_publication",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_publication",
+      "predicate": "relation",
+      "objects": [
+        "editor_not_published"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_publication_dates",
+      "predicate": "relation",
+      "objects": [
+        "editor_scheduling"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_publication_dates",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication_concept"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_scheduling",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication_dates"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_scheduling",
+      "predicate": "relation",
+      "objects": [
+        "editor_schedule_mailing"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_visibility",
+      "predicate": "relation",
+      "objects": [
+        "editor_permissions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_visibility",
+      "predicate": "relation",
+      "objects": [
+        "editor_search_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_preview",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_preview",
+      "predicate": "relation",
+      "objects": [
+        "editor_changes_not_visible"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_remove_from_website",
+      "predicate": "relation",
+      "objects": [
+        "editor_remove_menu_item"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_remove_from_website",
+      "predicate": "relation",
+      "objects": [
+        "editor_deleting_content"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_remove_from_website",
+      "predicate": "relation",
+      "objects": [
+        "editor_redirects"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_noindex_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_search_visibility"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_noindex_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_working_with_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_page_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_working_with_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_text_images"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_working_with_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_media_depictions"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_uploading_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_existing_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_uploading_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_page_image"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_uploading_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_upload_restrictions"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_existing_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_replace_media"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_existing_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_text_images"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_page_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_text_images"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_page_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_wrong_image"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_text_images",
+      "predicate": "relation",
+      "objects": [
+        "editor_captions_alignment"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_text_images",
+      "predicate": "relation",
+      "objects": [
+        "editor_image_accessibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_captions_alignment",
+      "predicate": "relation",
+      "objects": [
+        "editor_image_accessibility"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_captions_alignment",
+      "predicate": "relation",
+      "objects": [
+        "editor_text_images"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_replace_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_duplicate_reuse"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_replace_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_finding_media"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_uploading_documents",
+      "predicate": "relation",
+      "objects": [
+        "editor_adding_links"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_uploading_documents",
+      "predicate": "relation",
+      "objects": [
+        "editor_replace_media"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_video_embeds",
+      "predicate": "relation",
+      "objects": [
+        "editor_text_images"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_video_embeds",
+      "predicate": "relation",
+      "objects": [
+        "editor_image_not_showing"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_finding_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_existing_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_finding_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_cannot_find"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_removing_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_deleting_content"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_removing_media",
+      "predicate": "relation",
+      "objects": [
+        "editor_replace_media"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_image_accessibility",
+      "predicate": "relation",
+      "objects": [
+        "editor_captions_alignment"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_image_accessibility",
+      "predicate": "relation",
+      "objects": [
+        "editor_media_depictions"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_organizing_overview",
+      "predicate": "relation",
+      "objects": [
+        "editor_categories"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_organizing_overview",
+      "predicate": "relation",
+      "objects": [
+        "editor_keywords"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_organizing_overview",
+      "predicate": "relation",
+      "objects": [
+        "editor_collections"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_categories",
+      "predicate": "relation",
+      "objects": [
+        "editor_change_category"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_categories",
+      "predicate": "relation",
+      "objects": [
+        "editor_keywords"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_categories",
+      "predicate": "relation",
+      "objects": [
+        "editor_categories_concept"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_keywords",
+      "predicate": "relation",
+      "objects": [
+        "editor_connecting_pages"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_keywords",
+      "predicate": "relation",
+      "objects": [
+        "editor_organizing_overview"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_connecting_pages",
+      "predicate": "relation",
+      "objects": [
+        "editor_relationships"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_connecting_pages",
+      "predicate": "relation",
+      "objects": [
+        "editor_featured_related"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_featured_related",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_featured_related",
+      "predicate": "relation",
+      "objects": [
+        "editor_keywords"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_featured_related",
+      "predicate": "relation",
+      "objects": [
+        "editor_connecting_pages"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collections",
+      "predicate": "relation",
+      "objects": [
+        "editor_content_order"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collections",
+      "predicate": "relation",
+      "objects": [
+        "editor_menus_collections"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_content_order",
+      "predicate": "relation",
+      "objects": [
+        "editor_collections"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_content_order",
+      "predicate": "relation",
+      "objects": [
+        "editor_moving_menu_items"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_relationships",
+      "predicate": "relation",
+      "objects": [
+        "editor_connecting_pages"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_relationships",
+      "predicate": "relation",
+      "objects": [
+        "editor_connections_concept"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_editing_menus",
+      "predicate": "relation",
+      "objects": [
+        "editor_add_menu_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_editing_menus",
+      "predicate": "relation",
+      "objects": [
+        "editor_multiple_menus"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_add_menu_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_moving_menu_items"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_add_menu_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_not_in_menu"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_moving_menu_items",
+      "predicate": "relation",
+      "objects": [
+        "editor_submenus"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_moving_menu_items",
+      "predicate": "relation",
+      "objects": [
+        "editor_multiple_menus"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_submenus",
+      "predicate": "relation",
+      "objects": [
+        "editor_moving_menu_items"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_submenus",
+      "predicate": "relation",
+      "objects": [
+        "editor_menus_collections"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_remove_menu_item",
+      "predicate": "relation",
+      "objects": [
+        "editor_remove_from_website"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_remove_menu_item",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_multiple_menus",
+      "predicate": "relation",
+      "objects": [
+        "editor_editing_menus"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_multiple_menus",
+      "predicate": "relation",
+      "objects": [
+        "editor_collections"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_multilingual_content",
+      "predicate": "relation",
+      "objects": [
+        "editor_translating_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_multilingual_content",
+      "predicate": "relation",
+      "objects": [
+        "editor_missing_translations"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_translating_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_copy_language"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_translating_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_language_urls"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_page_languages",
+      "predicate": "relation",
+      "objects": [
+        "editor_add_remove_translation"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_page_languages",
+      "predicate": "relation",
+      "objects": [
+        "editor_missing_translations"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_add_remove_translation",
+      "predicate": "relation",
+      "objects": [
+        "editor_translating_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_add_remove_translation",
+      "predicate": "relation",
+      "objects": [
+        "editor_missing_translations"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_copy_language",
+      "predicate": "relation",
+      "objects": [
+        "editor_translating_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_copy_language",
+      "predicate": "relation",
+      "objects": [
+        "editor_old_language"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_missing_translations",
+      "predicate": "relation",
+      "objects": [
+        "editor_old_language"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_missing_translations",
+      "predicate": "relation",
+      "objects": [
+        "editor_page_languages"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_language_urls",
+      "predicate": "relation",
+      "objects": [
+        "editor_urls"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_language_urls",
+      "predicate": "relation",
+      "objects": [
+        "editor_adding_links"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_users_editors",
+      "predicate": "relation",
+      "objects": [
+        "editor_creating_user"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_users_editors",
+      "predicate": "relation",
+      "objects": [
+        "editor_permissions"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_creating_user",
+      "predicate": "relation",
+      "objects": [
+        "editor_users_editors"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_creating_user",
+      "predicate": "relation",
+      "objects": [
+        "editor_permissions"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_permissions",
+      "predicate": "relation",
+      "objects": [
+        "editor_cannot_edit"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_permissions",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_cannot_edit",
+      "predicate": "relation",
+      "objects": [
+        "editor_permissions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_cannot_edit",
+      "predicate": "relation",
+      "objects": [
+        "editor_ownership"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_ownership",
+      "predicate": "relation",
+      "objects": [
+        "editor_editorial_notes"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_ownership",
+      "predicate": "relation",
+      "objects": [
+        "editor_collaboration"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collaboration",
+      "predicate": "relation",
+      "objects": [
+        "editor_permissions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collaboration",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_upload_restrictions",
+      "predicate": "relation",
+      "objects": [
+        "editor_uploading_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_upload_restrictions",
+      "predicate": "relation",
+      "objects": [
+        "editor_uploading_documents"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_mailing_lists",
+      "predicate": "relation",
+      "objects": [
+        "editor_managing_recipients"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_mailing_lists",
+      "predicate": "relation",
+      "objects": [
+        "editor_creating_mailing"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_managing_recipients",
+      "predicate": "relation",
+      "objects": [
+        "editor_recipient_import_export"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_managing_recipients",
+      "predicate": "relation",
+      "objects": [
+        "editor_mailing_status"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_creating_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_test_mailing"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_creating_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_sending_mailing"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_test_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_sending_mailing"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_test_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_mailing_status"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_sending_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_test_mailing"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_sending_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_schedule_mailing"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_sending_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_mailing_status"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_schedule_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication_dates"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_schedule_mailing",
+      "predicate": "relation",
+      "objects": [
+        "editor_mailing_status"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_mailing_status",
+      "predicate": "relation",
+      "objects": [
+        "editor_sending_mailing"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_mailing_status",
+      "predicate": "relation",
+      "objects": [
+        "editor_managing_recipients"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_recipient_import_export",
+      "predicate": "relation",
+      "objects": [
+        "editor_managing_recipients"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_recipient_import_export",
+      "predicate": "relation",
+      "objects": [
+        "editor_mailing_lists"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_seo_basics",
+      "predicate": "relation",
+      "objects": [
+        "editor_seo_titles"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_seo_basics",
+      "predicate": "relation",
+      "objects": [
+        "editor_search_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_seo_basics",
+      "predicate": "relation",
+      "objects": [
+        "editor_social_sharing"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_seo_titles",
+      "predicate": "relation",
+      "objects": [
+        "editor_titles_summary_body"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_seo_titles",
+      "predicate": "relation",
+      "objects": [
+        "editor_seo_basics"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_search_visibility",
+      "predicate": "relation",
+      "objects": [
+        "editor_noindex_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_search_visibility",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_search_visibility",
+      "predicate": "relation",
+      "objects": [
+        "editor_not_published"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_social_sharing",
+      "predicate": "relation",
+      "objects": [
+        "editor_page_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_social_sharing",
+      "predicate": "relation",
+      "objects": [
+        "editor_wrong_image"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_social_sharing",
+      "predicate": "relation",
+      "objects": [
+        "editor_seo_titles"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_urls",
+      "predicate": "relation",
+      "objects": [
+        "editor_redirects"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_urls",
+      "predicate": "relation",
+      "objects": [
+        "editor_language_urls"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_redirects",
+      "predicate": "relation",
+      "objects": [
+        "editor_urls"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_redirects",
+      "predicate": "relation",
+      "objects": [
+        "editor_broken_link"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_redirects",
+      "predicate": "relation",
+      "objects": [
+        "editor_remove_from_website"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_changes_not_visible",
+      "predicate": "relation",
+      "objects": [
+        "editor_editing_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_changes_not_visible",
+      "predicate": "relation",
+      "objects": [
+        "editor_old_language"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_changes_not_visible",
+      "predicate": "relation",
+      "objects": [
+        "editor_preview"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_cannot_find",
+      "predicate": "relation",
+      "objects": [
+        "editor_finding_content"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_cannot_find",
+      "predicate": "relation",
+      "objects": [
+        "editor_accidental_change"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_not_published",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_not_published",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_not_published",
+      "predicate": "relation",
+      "objects": [
+        "editor_not_in_menu"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_image_not_showing",
+      "predicate": "relation",
+      "objects": [
+        "editor_page_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_image_not_showing",
+      "predicate": "relation",
+      "objects": [
+        "editor_text_images"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_image_not_showing",
+      "predicate": "relation",
+      "objects": [
+        "editor_video_embeds"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_wrong_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_page_image"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_wrong_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_replace_media"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_wrong_image",
+      "predicate": "relation",
+      "objects": [
+        "editor_social_sharing"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_old_language",
+      "predicate": "relation",
+      "objects": [
+        "editor_missing_translations"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_old_language",
+      "predicate": "relation",
+      "objects": [
+        "editor_copy_language"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_not_in_menu",
+      "predicate": "relation",
+      "objects": [
+        "editor_add_menu_page"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_not_in_menu",
+      "predicate": "relation",
+      "objects": [
+        "editor_multiple_menus"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_not_in_menu",
+      "predicate": "relation",
+      "objects": [
+        "editor_submenus"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_accidental_change",
+      "predicate": "relation",
+      "objects": [
+        "editor_revisions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_accidental_change",
+      "predicate": "relation",
+      "objects": [
+        "editor_deleting_content"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_broken_link",
+      "predicate": "relation",
+      "objects": [
+        "editor_adding_links"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_broken_link",
+      "predicate": "relation",
+      "objects": [
+        "editor_redirects"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_broken_link",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_pages_resources",
+      "predicate": "relation",
+      "objects": [
+        "editor_categories_concept"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_pages_resources",
+      "predicate": "relation",
+      "objects": [
+        "editor_connections_concept"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_pages_resources",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_model_model_rsc"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_categories_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_categories"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_categories_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_keywords"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_categories_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_menus_collections"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_categories_concept",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_model_model_category"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_connections_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_connecting_pages"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_connections_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_relationships"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_connections_concept",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_model_model_edge"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_media_depictions",
+      "predicate": "relation",
+      "objects": [
+        "editor_working_with_media"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_media_depictions",
+      "predicate": "relation",
+      "objects": [
+        "editor_page_image"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_media_depictions",
+      "predicate": "relation",
+      "objects": [
+        "editor_replace_media"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_media_depictions",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_model_model_media"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_menus_collections",
+      "predicate": "relation",
+      "objects": [
+        "editor_collections"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_menus_collections",
+      "predicate": "relation",
+      "objects": [
+        "editor_editing_menus"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_languages_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_multilingual_content"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_languages_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_missing_translations"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_languages_concept",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_module_mod_translation"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_publication_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_publication_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_publication_concept",
+      "predicate": "relation",
+      "objects": [
+        "editor_search_visibility"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_connections_concept",
+      "predicate": "relation",
+      "objects": [
+        "developer_content_edges"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_media_depictions",
+      "predicate": "relation",
+      "objects": [
+        "developer_template_media"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "haspart",
+      "objects": [
+        "editor_collection_surveys_forms"
+      ],
+      "sequence": 10
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_surveys_forms"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_creating_form"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_questions"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_choices"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_pages"
+      ],
+      "sequence": 5
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_settings"
+      ],
+      "sequence": 6
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_email"
+      ],
+      "sequence": 7
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_test_publish"
+      ],
+      "sequence": 8
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_results"
+      ],
+      "sequence": 9
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_export"
+      ],
+      "sequence": 10
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_change_close"
+      ],
+      "sequence": 11
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "haspart",
+      "objects": [
+        "editor_survey_quiz"
+      ],
+      "sequence": 12
+    },
+    {
+      "subject": "editor_surveys_forms",
+      "predicate": "relation",
+      "objects": [
+        "editor_creating_form"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_surveys_forms",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_quiz"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_creating_form",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_questions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_creating_form",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_settings"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_creating_form",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_test_publish"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_survey_questions",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_choices"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_questions",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_pages"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_questions",
+      "predicate": "relation",
+      "objects": [
+        "editor_translating_page"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_survey_questions",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_change_close"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_survey_choices",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_quiz"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_choices",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_change_close"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_pages",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_questions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_pages",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_test_publish"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_settings",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_email"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_settings",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_export"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_settings",
+      "predicate": "relation",
+      "objects": [
+        "editor_visibility"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_survey_email",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_questions"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_email",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_results"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_email",
+      "predicate": "relation",
+      "objects": [
+        "editor_mailing_status"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_survey_test_publish",
+      "predicate": "relation",
+      "objects": [
+        "editor_publication"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_test_publish",
+      "predicate": "relation",
+      "objects": [
+        "editor_add_menu_page"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_test_publish",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_results"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_survey_results",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_export"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_results",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_change_close"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_export",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_results"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_export",
+      "predicate": "relation",
+      "objects": [
+        "editor_managing_recipients"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_change_close",
+      "predicate": "relation",
+      "objects": [
+        "editor_duplicate_reuse"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_change_close",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_export"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_change_close",
+      "predicate": "relation",
+      "objects": [
+        "editor_remove_from_website"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_survey_quiz",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_choices"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_quiz",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_settings"
+      ],
+      "sequence": 2
+    },
+    {
+      "subject": "editor_survey_quiz",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_test_publish"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_content_blocks",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_questions"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_creating_page",
+      "predicate": "relation",
+      "objects": [
+        "editor_creating_form"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_mailing_lists",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_email"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_collection_troubleshooting",
+      "predicate": "relation",
+      "objects": [
+        "editor_survey_test_publish"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_collection_surveys_forms",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_module_mod_survey"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_surveys_forms",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_module_mod_survey"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_pages",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_module_mod_survey"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_settings",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_module_mod_survey"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_survey_quiz",
+      "predicate": "hasreference",
+      "objects": [
+        "doc_module_mod_survey"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_guide",
+      "predicate": "relation",
+      "objects": [
+        "admin_guide"
+      ],
+      "sequence": 1
+    },
+    {
+      "subject": "editor_creating_user",
+      "predicate": "relation",
+      "objects": [
+        "admin_assign_access"
+      ],
+      "sequence": 3
+    },
+    {
+      "subject": "editor_creating_user",
+      "predicate": "relation",
+      "objects": [
+        "admin_remove_access"
+      ],
+      "sequence": 4
+    },
+    {
+      "subject": "editor_upload_restrictions",
+      "predicate": "relation",
+      "objects": [
+        "admin_upload_policy"
+      ],
+      "sequence": 3
+    }
+  ],
+  "media": [
+    {
+      "name": "editor_screenshot_create_page",
+      "file": "assets/create-page.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_edit_menu",
+      "file": "assets/edit-menu.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_edit_page",
+      "file": "assets/edit-page.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_mailing_status",
+      "file": "assets/mailing-status.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_publication_period",
+      "file": "assets/publication-period.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_seo_fields",
+      "file": "assets/seo-fields.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_test_mailing",
+      "file": "assets/test-mailing.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_translate_page",
+      "file": "assets/translate-page.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_upload_media",
+      "file": "assets/upload-media.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_survey_questions",
+      "file": "assets/survey-questions.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_survey_settings",
+      "file": "assets/survey-settings.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_survey_export",
+      "file": "assets/survey-export.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_change_category",
+      "file": "assets/change-category.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_add_connection",
+      "file": "assets/add-connection.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_survey_response",
+      "file": "assets/survey-response.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    },
+    {
+      "name": "editor_screenshot_page_revisions",
+      "file": "assets/page-revisions.jpg",
+      "category": "image",
+      "language": "en",
+      "is_published": true
+    }
+  ],
+  "publication_policy": "Publish newly created pages, collections and screenshot resources on import for review. Preserve publication state when adopting or updating existing resources.",
+  "connection_policy": {
+    "haspart": "Ordered collection members; follow only these edges for the reading tree.",
+    "relation": "Ordered editorial suggestions; outgoing links only, no automatic inverse copy.",
+    "hasreference": "Documentation used or cited by this page; target an existing resource by name."
+  },
+  "external_resources": [
+    "admin_assign_access",
+    "admin_guide",
+    "admin_remove_access",
+    "admin_upload_policy",
+    "developer_content_edges",
+    "developer_template_media",
+    "doc_model_model_category",
+    "doc_model_model_edge",
+    "doc_model_model_media",
+    "doc_model_model_rsc",
+    "doc_module_mod_survey",
+    "doc_module_mod_translation"
+  ],
+  "predicates": [
+    {
+      "name": "hasreference",
+      "title": "Documentation reference",
+      "subject_categories": [
+        "text",
+        "collection"
+      ],
+      "object_categories": [
+        "text",
+        "collection",
+        "media"
+      ],
+      "managed_by": "zotonicwww2",
+      "description": "Curated further reading; separate from mod_admin-managed refers edges."
+    }
+  ]
+}

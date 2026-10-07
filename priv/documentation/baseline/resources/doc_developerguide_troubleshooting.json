@@ -1,0 +1,157 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:04Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:04Z",
+          "object_id": {
+            "id": 1319,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_deployment_server_configuration",
+            "title": "Server configuration",
+            "uri": "https://zotonic.com/id/1319"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1529,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1529"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_troubleshooting",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1529/troubleshooting",
+    "x-default": "https://zotonic.com/docs/1529/troubleshooting"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<div class=\"section\">\n<h2>Installation</h2>\n<div class=\"section\">\n<h3>Zotonic won’t start and shows errors when running zotonic debug</h3>\n<p>Check your site’s database configuration.</p>\n<p>Check PostgreSQL Authentication Config (<code class=\"docutils literal notranslate\"><span class=\"pre\">pg_hba.conf</span></code> in <code class=\"docutils literal notranslate\"><span class=\"pre\">/etc/postgresql</span></code>).</p>\n<p>If you get connection failures when starting Zotonic you should\ndouble-check <code class=\"docutils literal notranslate\"><span class=\"pre\">pg_hba.conf</span></code> and make sure to <code class=\"docutils literal notranslate\"><span class=\"pre\">/etc/init.d/postgresql</span>\n<span class=\"pre\">reload</span></code> to make sure it gets loaded.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">pg_hba.conf</span></code> should contain something like:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span># IPv4 local connections:\nhost    all             all             127.0.0.1/32            md5\n# IPv6 local connections:\nhost    all             all             ::1/128                 md5\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Unable to read boot script</h3>\n<p>In some cases the Zotonic nodename does not resolve well and you see an error like:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>[error] Unable to read boot script (start_sasl.script): {error,enoent}\n</pre></div>\n</div>\n<p>or:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>erl_call: can&#39;t ei_gethostbyname(MacBook-Pro-Apple)\nZotonic is not running. You need to start Zotonic first to use this command.\n</pre></div>\n</div>\n<p>Solution: Add the computer name to <code class=\"docutils literal notranslate\"><span class=\"pre\">/etc/hosts</span></code>, for instance:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>127.0.0.1 MacBook-Pro-Apple\n</pre></div>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Erlang crashes</h2>\n<p>Here we list some common causes of Erlang crashes.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">{{badmatch,{error,emfile}}</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">{reason,</span> <span class=\"pre\">emfile}</span></code></p>\n<p>You need to raise the <a class=\"reference internal\" href=\"/id/doc_developerguide_deployment_server_configuration#file-descriptors\"><span class=\"std std-ref\">File descriptors</span></a> limit.</p>\n</div>\n<div class=\"section\">\n<a name=\"ref-troubleshooting-sites\"></a><h2>Sites</h2>\n<div class=\"section\">\n<h3>Site doesn’t start</h3>\n<p>Check your database connection configuration in the <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic_site.config</span></code>\nfile which is located in the <a class=\"reference internal\" href=\"/id/doc_glossary#term-zotonic-user-directory\"><span class=\"xref std std-term\">zotonic user directory</span></a>. This can be found\nin <code class=\"docutils literal notranslate\"><span class=\"pre\">yoursite/priv/zotonic_site.config</span></code>. The priv directory should also be\nsoft linked in the <code class=\"docutils literal notranslate\"><span class=\"pre\">_build</span></code> directory: <code class=\"docutils literal notranslate\"><span class=\"pre\">_build/default/lib/yoursite/priv/zotonic_site.config</span></code></p>\n</div>\n<div class=\"section\">\n<h3>Browsers can’t connect to <a class=\"reference external\" href=\"http://yoursite.test:8000\">http://yoursite.test:8000</a></h3>\n<p>Check the <code class=\"docutils literal notranslate\"><span class=\"pre\">/etc/hosts</span></code> file and make sure you have an entry like the following:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>127.0.0.1   yoursite.test\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Browsers give self-signed certificate warning</h3>\n<p>If you connect to <code class=\"docutils literal notranslate\"><span class=\"pre\">https://yoursite.test:8443</span></code> the browser warns that the\nsite is not trusted. This is correct, as the certificate is self-signed.</p>\n<p>You can connect if you accept the certificate. For Safari and Firefox just follow\nthe instructions shown to you by the browser.</p>\n<p>For Chrome you have to do something silly:</p>\n\n<p><ul class=\"simple\">\n<li>Click anywhere in the white on the window</li>\n<li>Type: <code class=\"docutils literal notranslate\"><span class=\"pre\">thisisunsafe</span></code></li>\n</ul>\n</p>\n<p>You won‘t see any characters echo to the screen. After typing the magic\nstrings the page should reload and the site certificate is accepted.</p>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:24Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/troubleshooting.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:27Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_troubleshooting",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:27Z",
+    "slug": "troubleshooting",
+    "title": "Troubleshooting",
+    "title_slug": "troubleshooting",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1529",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1529"
+  }
+}

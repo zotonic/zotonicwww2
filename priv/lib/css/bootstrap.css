@@ -8296,7 +8296,7 @@ h2 + .subject-label-list {
 }
 
 .start-guides__grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .category-index__card {
@@ -9363,6 +9363,280 @@ input:focus-visible {
     width: 100%;
     margin: 0;
     padding: 0;
+  }
+}
+.guide-navigation, .guide-contents, .guide-pagination, .guide-alternatives {
+  font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif;
+  clear: both;
+}
+
+.guide-navigation {
+  margin: 0 0 2rem;
+  font-size: 1rem;
+}
+.guide-navigation .guide-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.95rem;
+}
+.guide-navigation .guide-breadcrumbs li {
+  margin: 0;
+}
+.guide-navigation .guide-breadcrumbs li + li::before {
+  content: "/";
+  color: #81929a;
+  margin-right: 0.5rem;
+}
+.guide-navigation .guide-breadcrumbs [aria-current] {
+  color: #52616b;
+}
+.guide-navigation .guide-outline {
+  max-width: 48rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid #d5e2e7;
+  border-radius: 0.5rem;
+  background: #f4f8fa;
+}
+.guide-navigation .guide-outline summary {
+  cursor: pointer;
+  color: #266c91;
+  font-weight: 600;
+}
+.guide-navigation .guide-outline ol {
+  width: auto;
+  max-width: none;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+.guide-navigation .guide-outline li {
+  margin: 0.4rem 0;
+}
+.guide-navigation .guide-outline [aria-current] {
+  font-weight: 700;
+  color: #222;
+}
+.guide-navigation .guide-outline p {
+  font-size: 1rem;
+  width: auto;
+  margin: 0.8rem 0 0;
+}
+
+.guide-contents {
+  margin: 2rem 0;
+}
+.guide-contents > h2 {
+  margin-bottom: 1rem;
+}
+.guide-contents .guide-contents__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  list-style: none;
+}
+.guide-contents .guide-contents__grid li {
+  margin: 0;
+}
+.guide-contents .guide-contents__grid a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  height: 100%;
+  padding: 1.2rem;
+  border: 1px solid #d5e2e7;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  background: #fff;
+  text-shadow: none;
+  font-size: 1.05rem;
+}
+.guide-contents .guide-contents__grid a:hover {
+  background: #f4f8fa;
+  border-color: #579dc1;
+}
+.guide-contents .guide-contents__grid a > span:nth-child(2) {
+  flex: 1;
+}
+.guide-contents .guide-contents__number {
+  font-size: 0.85rem;
+  color: #638293;
+}
+.guide-contents .guide-contents__summary {
+  display: block;
+  margin-top: 0.4rem;
+  color: #52616b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.guide-pagination {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid #d5e2e7;
+  border-bottom: 1px solid #d5e2e7;
+}
+.guide-pagination a {
+  font-size: 1rem;
+  background: none;
+  text-shadow: none;
+}
+.guide-pagination small {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #52616b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.guide-pagination > :last-child {
+  text-align: right;
+}
+
+main .guide-alternatives {
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .guide-contents .guide-contents__grid {
+    grid-template-columns: 1fr;
+  }
+  .guide-pagination {
+    grid-template-columns: 1fr;
+  }
+  .guide-pagination > :last-child {
+    text-align: left;
+  }
+  .guide-pagination > span:empty {
+    display: none;
+  }
+}
+.guide-outline summary::after {
+  content: "+";
+  float: right;
+  margin-left: 0.75rem;
+}
+
+.guide-outline[open] summary::after {
+  content: "−";
+}
+
+main article .body ol {
+  list-style: decimal outside;
+}
+
+main article .body ol > li {
+  list-style: inherit;
+}
+
+main article .body ul {
+  list-style: disc outside;
+}
+
+main article .body ul > li {
+  list-style: inherit;
+}
+
+.guide-extra {
+  clear: both;
+  margin: 1.5rem 0 2rem;
+  font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif;
+}
+.guide-extra summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.guide-extra summary::after {
+  content: " +";
+}
+.guide-extra[open] summary::after {
+  content: " −";
+}
+.guide-extra ul {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+main .related-pages {
+  clear: both;
+  margin: 2rem 0;
+  font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif;
+}
+main .related-pages h2 {
+  margin: 0 0 1rem;
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+}
+main .related-pages .related-pages__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+main .related-pages .related-pages__grid li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+main .related-pages .related-pages__card {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  height: 100%;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--site-rule);
+  border-radius: 0.5rem;
+  background: rgba(28, 165, 222, 0.035);
+  color: var(--site-accent);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-decoration: none;
+  text-shadow: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+main .related-pages .related-pages__card:hover, main .related-pages .related-pages__card:focus-visible {
+  border-color: var(--site-accent);
+  background: rgba(28, 165, 222, 0.085);
+}
+main .related-pages .related-pages__card:focus-visible {
+  outline: 2px solid var(--site-accent);
+  outline-offset: 3px;
+}
+main .related-pages .related-pages__text {
+  flex: 1;
+  min-width: 0;
+}
+main .related-pages .related-pages__summary {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--site-muted);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+main .related-pages .related-pages__arrow {
+  flex: none;
+}
+@media (max-width: 760px) {
+  main .related-pages .related-pages__grid {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -1,0 +1,301 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:25Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "subject": {
+      "objects": [
+        {
+          "created": "2026-09-15T13:43:18Z",
+          "object_id": {
+            "id": 2557,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_information_type"
+            ],
+            "name": "zotonic_topic_cookbook_recipe",
+            "title": "Cookbook recipe",
+            "uri": "https://zotonic.com/id/2557"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T13:43:23Z",
+          "object_id": {
+            "id": 2564,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_audience"
+            ],
+            "name": "zotonic_topic_backend_developer",
+            "title": "Backend developer",
+            "uri": "https://zotonic.com/id/2564"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T13:43:30Z",
+          "object_id": {
+            "id": 2612,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_domain"
+            ],
+            "name": "zotonic_topic_data_processing_and_formatting",
+            "title": "Data processing and formatting",
+            "uri": "https://zotonic.com/id/2612"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T13:44:10Z",
+          "object_id": {
+            "id": 2662,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_data_type"
+            ],
+            "name": "zotonic_topic_date_and_time",
+            "title": "Date and time",
+            "uri": "https://zotonic.com/id/2662"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T13:44:21Z",
+          "object_id": {
+            "id": 2638,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_task"
+            ],
+            "name": "zotonic_topic_edit",
+            "title": "Edit",
+            "uri": "https://zotonic.com/id/2638"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T13:45:20Z",
+          "object_id": {
+            "id": 2563,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_audience"
+            ],
+            "name": "zotonic_topic_frontend_developer",
+            "title": "Frontend developer",
+            "uri": "https://zotonic.com/id/2563"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T13:45:48Z",
+          "object_id": {
+            "id": 2620,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_architecture"
+            ],
+            "name": "zotonic_topic_template",
+            "title": "Template",
+            "uri": "https://zotonic.com/id/2620"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T13:45:57Z",
+          "object_id": {
+            "id": 2582,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_domain"
+            ],
+            "name": "zotonic_topic_forms",
+            "title": "Forms",
+            "uri": "https://zotonic.com/id/2582"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-15T13:46:34Z",
+          "object_id": {
+            "id": 2672,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_technology"
+            ],
+            "name": "zotonic_topic_html",
+            "title": "HTML",
+            "uri": "https://zotonic.com/id/2672"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 308,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "subject",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Keyword"
+          }
+        },
+        "uri": "http://purl.org/dc/elements/1.1/subject"
+      }
+    }
+  },
+  "id": 1553,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1553"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_admin_datetime",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1553/storing-date-time-fields",
+    "x-default": "https://zotonic.com/cookbook/1553/storing-date-time-fields"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Some interesting tidbits about saving/updating a date/time field of a\nresource.</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>The purpose of this guide is to explain how Zotonic stores date-time\ndata so that you can work with it in your own modules.</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are expected to be interested in authoring Zotonic Modules.\nTo be successful you should be fairly experienced with Erlang\nprogramming.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>When updating a <a class=\"reference internal\" href=\"/id/doc_glossary#term-resource\"><span class=\"xref std std-term\">resource</span></a> by passing a proplist to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">m_rsc:update/3</span></code>, Zotonic has a way of looking for specific name\npatterns in the proplist that tells it what items are date/time fields\nand which ones are not. This allows Zotonic to split those off the\nproplists and use the name to derive information about the date, such\nas expected format, if the default time should be 00:00 or 23:59, and\nthe actual field name that should be updated.</p>\n<p>Here is an example format: <code class=\"docutils literal notranslate\"><span class=\"pre\">dt:ymd:0:date_end</span></code></p>\n<p>Literally this means …</p>\n<ul class=\"simple\">\n<li>the characters <code class=\"docutils literal notranslate\"><span class=\"pre\">dt:</span></code>, signifying the date-time marker</li>\n<li>followed by some year, month, date pattern or whatever combination</li>\n<li>followed by “:”</li>\n<li>followed by 1 or 0 to designate default 00:00 or 23:59</li>\n<li>followed by “:”</li>\n<li>followed by the field name to by updated.</li>\n</ul>\n<p>Have a look at <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_date.tpl</span></code> in the default site templates tosee this and\nother formatting options.</p>\n<p>For example passing <code class=\"docutils literal notranslate\"><span class=\"pre\">[</span> <span class=\"pre\">{&lt;&lt;&quot;dt:ymd:0:date_end&quot;&gt;&gt;,</span> <span class=\"pre\">&lt;&lt;&quot;2011-04-05&quot;&gt;&gt;}</span> <span class=\"pre\">]</span></code> to <code class=\"docutils literal notranslate\"><span class=\"pre\">m_rsc:update/3</span></code> would\nupdate the date_end field.</p>\n<p>Here is an example event callback:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nf\">event</span><span class=\"p\">(</span><span class=\"nl\">#submit</span><span class=\"p\">{</span><span class=\"n\">message</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"n\">edit_details</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"nv\">Id</span><span class=\"p\">}]}},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nv\">End_date</span> <span class=\"o\">=</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">get_q</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;dt:ymd:0:date_end&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">),</span>\n    <span class=\"nv\">Props1</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n        <span class=\"p\">{</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;dt:ymd:0:date_end&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">End_date</span><span class=\"p\">}</span>\n    <span class=\"p\">],</span>\n    <span class=\"k\">case</span> <span class=\"nn\">m_rsc</span><span class=\"p\">:</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"nv\">Id</span><span class=\"p\">,</span> <span class=\"nv\">Props1</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"k\">of</span>\n       <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"p\">_}</span> <span class=\"o\">-&gt;</span>\n          <span class=\"nn\">z_render</span><span class=\"p\">:</span><span class=\"nf\">wire</span><span class=\"p\">({</span><span class=\"n\">reload</span><span class=\"p\">,</span> <span class=\"p\">[]},</span> <span class=\"nv\">Context</span><span class=\"p\">);</span>\n       <span class=\"p\">{</span><span class=\"n\">error</span><span class=\"p\">,</span> <span class=\"p\">_}</span> <span class=\"o\">-&gt;</span>\n           <span class=\"nn\">z_render</span><span class=\"p\">:</span><span class=\"nf\">growl_error</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Could not update record.&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n<p>Of course the input field of your form could be named whatever you\nwish, but when you assign it to the proplist you would use the naming\nconvention above.</p>\n</div>\n<div class=\"section\">\n<h2>Internals</h2>\n<p>The <em>date recombination</em> is done if and only if the input for the update (or insert)\noperation is a list with key/value pairs.</p>\n<p>It is assumed the list is from a form post. Form inputs are often separate for the\ndate and the time parts and need to be recombined to full dates.</p>\n<p>This recombination process is done in the <code class=\"docutils literal notranslate\"><span class=\"pre\">z_props</span></code> module on conversion from the\nlist with key/value pairs to a (nested) map.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:25Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-datetime.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:19Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_admin_datetime",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:19Z",
+    "slug": "storing-date-time-fields",
+    "title": "Storing date/time fields",
+    "title_slug": "storing-date-time-fields",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1553",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1553"
+  }
+}

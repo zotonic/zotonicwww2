@@ -1,0 +1,227 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:52Z",
+          "object_id": {
+            "id": 1352,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_templates",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/1352"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:52Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:52Z",
+          "object_id": {
+            "id": 1352,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_templates",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/1352"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:52Z",
+          "object_id": {
+            "id": 325,
+            "is_a": [
+              "meta",
+              "category"
+            ],
+            "name": "template_filter",
+            "title": "Filters",
+            "uri": "https://test.zotonic.com/id/325"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1572,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1572"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_custom_filter",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1572/create-a-custom-filter",
+    "x-default": "https://zotonic.com/cookbook/1572/create-a-custom-filter"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-templates\"><span class=\"std std-ref\">Templates</span></a> guide</p>\n</aside>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/template_filter#filters\"><span class=\"std std-ref\">Filters</span></a> reference</p>\n</aside>\n<p>Create custom <a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-filters\"><span class=\"std std-ref\">template filters</span></a> to change the way\nvariables are rendered in your templates. By following some simple rules,\nZotonic will automatically find the filter for you:</p>\n<ol class=\"arabic simple\">\n<li>Create a file in the <a class=\"reference internal\" href=\"/id/doc_developerguide_modules\"><span class=\"std std-ref\">src/filters/</span></a> directory of\nyour site or module.</li>\n<li>Prepend the filter filename with <code class=\"docutils literal notranslate\"><span class=\"pre\">filter_</span></code>.</li>\n<li>Export a function with the name of your filter that corresponds to the\nfilename.</li>\n</ol>\n<p>So, let’s say you need to sort a list of items and remove duplicate values from\nit:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">mod_yourmodule/src/filters/filter_uniquesort.erl</span></div>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">filter_uniquesort</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">uniquesort</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">]).</span>\n<span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;zotonic_core/include/zotonic.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"nf\">uniquesort</span><span class=\"p\">(</span><span class=\"nv\">List</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nn\">lists</span><span class=\"p\">:</span><span class=\"nf\">usort</span><span class=\"p\">(</span><span class=\"nv\">List</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n</div>\n<p>The custom <code class=\"docutils literal notranslate\"><span class=\"pre\">uniquesort</span></code> filter is then available in your templates:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">thing</span> <span class=\"k\">in</span> <span class=\"nv\">list_of_things</span><span class=\"o\">|</span><span class=\"nf\">uniquesort</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    </span><span class=\"cp\">{{</span> <span class=\"nv\">thing</span> <span class=\"cp\">}}</span><span class=\"x\"> is now sorted and unique!</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:26Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-filter.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:18Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_custom_filter",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:18Z",
+    "slug": "create-a-custom-filter",
+    "title": "Create a custom filter",
+    "title_slug": "create-a-custom-filter",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1572",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1572"
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "depiction_url": "https://zotonic.com/image/2022/9/20/dsc07845.jpg%28800x800%29%28upscale%29%28UXyHlE1iwy-1kuj937uiG-9fckzZB20TzWa7dV3TqAU%29.jpg",
+  "edges": {
+    "depiction": {
+      "objects": [
+        {
+          "created": "2022-09-20T12:48:59Z",
+          "object_id": {
+            "id": 2328,
+            "is_a": [
+              "media",
+              "image"
+            ],
+            "name": null,
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "DSC07845.jpeg"
+              }
+            },
+            "uri": "https://zotonic.com/id/2328"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 304,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "depiction",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Afbeelding",
+            "en": "Depiction"
+          }
+        },
+        "uri": "http://xmlns.com/foaf/0.1/depiction"
+      }
+    },
+    "subject": {
+      "objects": [
+        {
+          "created": "2026-09-14T05:48:06Z",
+          "object_id": {
+            "id": 2556,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_information_type"
+            ],
+            "name": "zotonic_topic_explanation",
+            "title": "Explanation",
+            "uri": "https://zotonic.com/id/2556"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-14T05:48:09Z",
+          "object_id": {
+            "id": 2563,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_audience"
+            ],
+            "name": "zotonic_topic_frontend_developer",
+            "title": "Frontend developer",
+            "uri": "https://zotonic.com/id/2563"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-14T05:49:20Z",
+          "object_id": {
+            "id": 2613,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_domain"
+            ],
+            "name": "zotonic_topic_development_and_debugging",
+            "title": "Development and debugging",
+            "uri": "https://zotonic.com/id/2613"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-14T05:50:03Z",
+          "object_id": {
+            "id": 2620,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_architecture"
+            ],
+            "name": "zotonic_topic_template",
+            "title": "Template",
+            "uri": "https://zotonic.com/id/2620"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-14T05:50:25Z",
+          "object_id": {
+            "id": 2641,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_task"
+            ],
+            "name": "zotonic_topic_render",
+            "title": "Render",
+            "uri": "https://zotonic.com/id/2641"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-14T05:50:52Z",
+          "object_id": {
+            "id": 2659,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_data_type"
+            ],
+            "name": "zotonic_topic_text",
+            "title": "Text",
+            "uri": "https://zotonic.com/id/2659"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-14T05:50:59Z",
+          "object_id": {
+            "id": 2685,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_quality"
+            ],
+            "name": "zotonic_topic_security",
+            "title": "Security",
+            "uri": "https://zotonic.com/id/2685"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2026-09-14T05:51:31Z",
+          "object_id": {
+            "id": 2672,
+            "is_a": [
+              "categorization",
+              "keyword",
+              "keyword_technology"
+            ],
+            "name": "zotonic_topic_html",
+            "title": "HTML",
+            "uri": "https://zotonic.com/id/2672"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 308,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "subject",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Keyword"
+          }
+        },
+        "uri": "http://purl.org/dc/elements/1.1/subject"
+      }
+    }
+  },
+  "id": 2325,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/2325"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": null,
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/2325/security-templates-and-xss-prevention",
+    "x-default": "https://zotonic.com/cookbook/2325/security-templates-and-xss-prevention"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 15,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Security, templates and XSS prevention"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<h2>Why</h2>\n<p>A small mistake can open the flood gates of attacks to your website. Common errors are cross site scripting attacks (xss).</p>\n<h2>Assumptions</h2>\n<p>Readers are assumed to be comfortable in writing or editing templates.</p>\n<h2>How</h2>\n<p>If we have the following request:</p>\n<pre>https://example.com/page/1234?foo=bar</pre>\n<aside>\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">Learn more about <a title=\"Dispatch rules\" href=\"/docs/1541/dispatch-rules\">dispatch rules</a>.</p>\n</aside>\n<p>For the dispatch rule:</p>\n<pre>{page, [ &quot;page&quot;, id ], contoller_page, []}</pre>\n<p>Then in the template we can access the query arguments:</p>\n<pre>Hello {{ q.foo|escape }} your id is {{ q.id|escape }}.<br />Controller page said the resource id is {{ id }}.</pre>\n<p>You see  that <code>q.foo</code> and <code>q.id</code> are both <em>escaped</em> before they are shown. But <code>id</code> is not.</p>\n<aside>\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">More documentation about the <a title=\"escape\" href=\"/docs/1461/escape\">escape filter</a>.</p>\n</aside>\n<p>This is because <code>q.foo</code> and <code>q.id</code> both contain <em>unfiltered</em> content <em>supplied by the user</em>. This content could even be a complete script tag that transfers the users information to some other server or modified content on our site. To prevent this we apply the escape filter to the content so that input like:</p>\n<pre>https://example.com/page/1234?foo=%3Cscript%3Ealert%28%27a%27%29%3B%3C%2Fscript%3E</pre>\n<p>Will not add the following script tag to the HTML:</p>\n<pre>&lt;script&gt;alert(&#39;a&#39;);&lt;/script&gt;</pre>\n<p>But instead the escape filter transforms it into the following safe HTML text:</p>\n<pre>&amp;lt;script&amp;gt;alert(&amp;#39;a&amp;#39;);&amp;lt;/script&amp;gt;</pre>\n<aside>\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">The controller <a title=\"controller_page\" href=\"/docs/1534/controller_page\">controller_page</a> is used for rendering HTML pages of a resource id.</p>\n</aside>\n<p>But why was <code>id</code> not escaped? The <code>id</code> provided by <code>controller_page</code> is the output of the mapping of <code>q.id</code> to a resource id, using the function <code>m_rsc:rid/2</code> function. The output of this function is either a number or <code>undefined</code>, so doesn&#39;t need any further escaping when used.</p>\n<h3>Special care</h3>\n<p>There are more functions that can give unfiltered user input back to the template. Examples are <code>m.req</code>, <code>m.identity</code> (for example email addresses which can contain HTML unsafe characters), and exif or other metadata in the medium records.</p>\n<p>A good habit is to prefix all untrusted content with a q, like this:</p>\n<pre>{% with id|default:q.id as qid %} {# q.id is unsafe #}</pre>\n<pre>{% with m.rsc[id|default:q.id].id as id %} {# The m.rsc lookup ensure a safe mapping #}</pre>\n<p>And NEVER something like this:</p>\n<pre>{% with id|default:q.id as id %} {# DO NOT DO THIS #}</pre>\n<p>Why not?  In templates we have the shorthand:</p>\n<pre>{{ q.title }}</pre>\n<p>And templates might be rendered using API calls, which can pass structured data for the query arguments like the following JSON:</p>\n<pre>{ &quot;id&quot;: { &quot;title&quot;: &quot;&lt;script&gt;...&lt;/script&gt;&quot; } }</pre>\n<p>It is clear that this is not something you want to echo directly in your templates.</p>\n<h3>Why is m.rsc safe?</h3>\n<p>As a rule of thumb all data inside <code>m.rsc</code> is safe to echo in the templates. This is because all data stored into resource records is sanitized. The sanitization removes or escapes all dangerous content. For exampe, HTML body texts have malicious content like scripts and iframes without a white-listed domain removed. All HTML attributes that might contain scripts are removed or cleaned, and css is also cleaned up to remove external content references.</p>\n<p>An exception is content that is postfixed with ...<code>_unsafe</code>.  Like <code>myprop_unsafe</code>. This content is passed as-is through the sanitizer without any modification.</p>"
+      }
+    },
+    "slug": "security-templates-and-xss-prevention",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "publication_start": "2022-09-08T19:06:00Z",
+    "is_website_redirect": false,
+    "pivot_location_lng": null,
+    "name": null,
+    "is_unfindable": false,
+    "is_published": true,
+    "summary": {
+      "_type": "trans",
+      "tr": {
+        "en": "Ensuring that you don&#39;t fall victim to cross site scripting and other injection attacks takes vigilance, eye for details and especially some good naming habits."
+      }
+    },
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2022-09-08T19:06:30Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "seo_noindex": false,
+    "modified": "2022-09-20T12:56:53Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "security-templates-and-xss-prevention"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/2325",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/2325"
+  }
+}

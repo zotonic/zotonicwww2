@@ -1,0 +1,198 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1640,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_logging",
+            "title": "Logging",
+            "uri": "https://zotonic.com/id/1640"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2022-02-02T20:18:50Z",
+          "object_id": {
+            "id": 1454,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_developerguide_configuration_zotonic_configuration",
+            "title": "Global configuration",
+            "uri": "https://zotonic.com/id/1454"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1640,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_logging",
+            "title": "Logging",
+            "uri": "https://zotonic.com/id/1640"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1580,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1580"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_logstash",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1580/logging-to-logstash",
+    "x-default": "https://zotonic.com/cookbook/1580/logging-to-logstash"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">the <a class=\"reference internal\" href=\"/id/doc_developerguide_logging#dev-logging\"><span class=\"std std-ref\">Logging</span></a> chapter in the Developer Guide.</p>\n</aside>\n<p><a class=\"reference external\" href=\"http://www.elastic.co/products/logstash\">Logstash</a> is often used for log centralization and analysis. This cookbook\ndescribes how to set up Zotonic for logging to Logstash over UDP. As mentioned\nin the <a class=\"reference internal\" href=\"/id/doc_developerguide_logging#dev-logging\"><span class=\"std std-ref\">Logging chapter</span></a>, Zotonic uses <a class=\"reference external\" href=\"https://www.erlang.org/doc/apps/kernel/logger_chapter.html\">Logger</a>.</p>\n<p>So we will change Zotonic’s Logstash configuration in order\nto send messages to Logstash.</p>\n<div class=\"section\">\n<h2>Step 1: add a Logstash handler</h2>\n<p>Zotonic comes with the <a class=\"reference external\" href=\"https://github.com/zotonic/logstasher\">logstash handler</a> <code class=\"docutils literal notranslate\"><span class=\"pre\">logstasher_h</span></code> for logger. The\nhandler will be started automatically if it is configured as a logger\nhandler in <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_zotonic_configuration#erlang-config\"><span class=\"std std-ref\">The erlang.config file</span></a>:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">erlang.config</span></div>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">kernel</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"c\">% Minimum log level for all loggers below.</span>\n    <span class=\"p\">{</span><span class=\"n\">logger_level</span><span class=\"p\">,</span> <span class=\"n\">info</span><span class=\"p\">},</span>\n\n    <span class=\"p\">{</span><span class=\"n\">logger</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n\n        <span class=\"c\">%% To use logstash:</span>\n        <span class=\"c\">%% - Enable the logstasher_h handler</span>\n        <span class=\"c\">%% - Configure logstasher (see below the kernel config)</span>\n        <span class=\"c\">%%</span>\n        <span class=\"p\">{</span><span class=\"n\">handler</span><span class=\"p\">,</span> <span class=\"n\">logstash</span><span class=\"p\">,</span> <span class=\"n\">logstasher_h</span><span class=\"p\">,</span>\n            <span class=\"p\">#{</span>\n                <span class=\"n\">level</span> <span class=\"o\">=&gt;</span> <span class=\"n\">info</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">},</span>\n\n        <span class=\"c\">%%% Other logger configs here</span>\n        <span class=\"p\">...</span>\n    <span class=\"p\">}</span>\n<span class=\"p\">]},</span>\n</pre></div>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Step 2: configure the Logstash handler</h2>\n<p>The next step is to tell the Logstash handler where it should send its messages\nto. The configuration of <code class=\"docutils literal notranslate\"><span class=\"pre\">logstasher</span></code> in the <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_zotonic_configuration#erlang-config\"><span class=\"std std-ref\">The erlang.config file</span></a> can be found\nbelow the kernel section or else added there:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">erlang.config</span></div>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">%% Logstash configuration.</span>\n<span class=\"c\">%% If a logger handler with &#39;logstasher_h&#39; is defined then zotonic_core will start the</span>\n<span class=\"c\">%% logstasher application.</span>\n<span class=\"p\">{</span><span class=\"n\">logstasher</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"n\">transport</span><span class=\"p\">,</span> <span class=\"n\">udp</span><span class=\"p\">},</span>     <span class=\"c\">% tcp | udp | console</span>\n    <span class=\"p\">{</span><span class=\"n\">host</span><span class=\"p\">,</span> <span class=\"s\">&quot;localhost&quot;</span><span class=\"p\">},</span>  <span class=\"c\">% inet:hostname()</span>\n    <span class=\"p\">{</span><span class=\"n\">port</span><span class=\"p\">,</span> <span class=\"mi\">5000</span><span class=\"p\">}</span>          <span class=\"c\">% inet:port_number()</span>\n<span class=\"p\">]},</span>\n</pre></div>\n</div>\n</div>\n<p>Replace <code class=\"docutils literal notranslate\"><span class=\"pre\">logger</span></code> with the hostname or IP address of your logger. IP addresses can\nbe configured as an Erlang tuple, for example: <code class=\"docutils literal notranslate\"><span class=\"pre\">{127,0,0,1}</span></code></p>\n<p>If the console output is shipped to Logstash, then use <code class=\"docutils literal notranslate\"><span class=\"pre\">console</span></code> as the transport.\nThe transport <code class=\"docutils literal notranslate\"><span class=\"pre\">console</span></code> ignores the configurations <code class=\"docutils literal notranslate\"><span class=\"pre\">host</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">port</span></code>.</p>\n<p>After you changed the <code class=\"docutils literal notranslate\"><span class=\"pre\">erlang.config</span></code> file you will need to restart Zotonic.</p>\n<p>You should now find all Zotonic log messages in Logstash. To test this, just\ncall:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">logger</span><span class=\"p\">:</span><span class=\"nf\">error_msg</span><span class=\"p\">(</span><span class=\"s\">&quot;Just testing the Logstash setup here!&quot;</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/logstash.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:16Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_logstash",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:16Z",
+    "slug": "logging-to-logstash",
+    "title": "Logging to Logstash",
+    "title_slug": "logging-to-logstash",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1580",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1580"
+  }
+}

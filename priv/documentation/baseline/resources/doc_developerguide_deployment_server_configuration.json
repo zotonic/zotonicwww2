@@ -1,0 +1,179 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:57Z",
+          "object_id": {
+            "id": 1892,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "controller"
+            ],
+            "name": "doc_controller_controller_mqtt_transport",
+            "title": "controller_mqtt_transport",
+            "uri": "https://zotonic.com/id/1892"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:57Z",
+          "object_id": {
+            "id": 1318,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_exometer",
+            "title": "Exometer metrics",
+            "uri": "https://zotonic.com/id/1318"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1319,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1319"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_deployment_server_configuration",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1319/server-configuration",
+    "x-default": "https://zotonic.com/docs/1319/server-configuration"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<ul class=\"last simple\">\n<li>See <a class=\"reference internal\" href=\"/id/doc_cookbook_exometer#cookbook-exometer\"><span class=\"std std-ref\">Exometer metrics</span></a> on how to monitor your Zotonic system.</li>\n<li>For general Erlang troubleshooting, Fred Hebert’s free ebook\n<a class=\"reference external\" href=\"https://www.erlang-in-anger.com\">Stuff goes bad: Erlang in anger</a> is a very good resource.</li>\n</ul>\n</aside>\n<p>This chapter describes how to configure your Linux server for running Zotonic.</p>\n<div class=\"section\">\n<a name=\"id1\"></a><h2>File descriptors</h2>\n<p>By default, Linux limits the number of file descriptors (i.e. the maximum number\nof open files) at 1024. Running Zotonic at scale will require many more than\nthat, particularly because Zotonic uses\n<a class=\"reference internal\" href=\"/id/doc_controller_controller_mqtt_transport\"><span class=\"std std-ref\">WebSockets</span></a> extensively; remember that every open\nport is an open file.</p>\n<p>The limit applies on several levels:</p>\n<ol class=\"arabic simple\">\n<li>the process, in our case the Erlang VM (BEAM) that runs Zotonic</li>\n<li>the Zotonic user</li>\n<li>system-wide.</li>\n</ol>\n<p>To check the current process usage, find BEAM’s PID:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c1\"># pidof beam.smp</span>\n<span class=\"m\">10006</span> <span class=\"o\">(</span><span class=\"k\">for</span> instance<span class=\"o\">)</span>\n</pre></div>\n</div>\n<p>Then count its open files:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c1\"># lsof -a -p 10006 | wc -l</span>\n</pre></div>\n</div>\n<p>And compare it to the process limit:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c1\"># cat /proc/10006/limits | grep &#39;Max open files&#39;</span>\n</pre></div>\n</div>\n<p>You can raise the process limit by adding <code class=\"docutils literal notranslate\"><span class=\"pre\">ulimit</span> <span class=\"pre\">-n</span></code> to your Zotonic init\nscript:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nb\">ulimit</span> -n <span class=\"m\">50000</span>\n</pre></div>\n</div>\n<p>Or change the limit in your system definition. For instance, when using\nsystemd:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"o\">[</span>Service<span class=\"o\">]</span>\n<span class=\"nv\">LimitNOFILE</span><span class=\"o\">=</span><span class=\"m\">50000</span>\n</pre></div>\n</div>\n<p>Finally, make sure to check <a class=\"reference external\" href=\"https://www.cyberciti.biz/faq/linux-increase-the-maximum-number-of-open-files/\">your system-wide limits</a>, too.</p>\n</div>\n<div class=\"section\">\n<h2>Network connections</h2>\n<p>If you have stateful connection tracking enabled, high-traffic Zotonic sites\nmay <a class=\"reference external\" href=\"http://antmeetspenguin.blogspot.nl/2011/01/high-performance-linux-router.html\">overflow your conntrack table</a>.</p>\n<p>Compare the current number of connections with the limit:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c1\"># sysctl net.netfilter.nf_conntrack_max</span>\n<span class=\"c1\"># sysctl net.netfilter.nf_conntrack_count</span>\n</pre></div>\n</div>\n<p>When you increase the maximum number of connections in the connection tracking\ntable it is important to increase the size of the table which stores the\nconnections.\nThe rule of the thumb for this is: <code class=\"docutils literal notranslate\"><span class=\"pre\">nf_conntrack_buckets</span> <span class=\"pre\">=</span> <span class=\"pre\">nf_conntrack_max</span> <span class=\"pre\">/</span> <span class=\"pre\">8</span></code>.</p>\n<p>If you need to raise the limit, edit <code class=\"docutils literal notranslate\"><span class=\"pre\">/etc/sysctl.conf</span></code>:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">/etc/sysctl.conf</span></div>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>net.netfilter.nf_conntrack_max = some_number\nnet.netfilter.nf_conntrack_buckets = some_other_number\n</pre></div>\n</div>\n</div>\n<p>Moreover, to reduce the number of open connections, you can decrease their\ntime-out values so they get closed sooner. By default, inactive connections can\nstay in the conntrack table for 5(!) days. To change this:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">/etc/sysctl.conf</span></div>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>net.netfilter.nf_conntrack_tcp_timeout_established = 600\n</pre></div>\n</div>\n</div>\n<p>If you have a proxy in front of Zotonic (e.g. HAProxy or Varnish), you need to\nchange the limits on the proxy, too.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:18Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/server-configuration.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:44Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_deployment_server_configuration",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:44Z",
+    "slug": "server-configuration",
+    "title": "Server configuration",
+    "title_slug": "server-configuration",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1319",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1319"
+  }
+}

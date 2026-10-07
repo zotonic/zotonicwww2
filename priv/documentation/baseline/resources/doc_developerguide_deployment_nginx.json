@@ -1,0 +1,108 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1790,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1790"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_deployment_nginx",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1790/proxying-zotonic-with-nginx",
+    "x-default": "https://zotonic.com/docs/1790/proxying-zotonic-with-nginx"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>It is possible to put Zotonic behind the <cite>nginx &lt;http://nginx.org/&gt;</cite>\nweb server, for example if you have other, non-Zotonic virtual hosts\nrunning on your system.</p>\n<p>When proxying, don’t forget to check the config files of the sites you\nare planning to server (the <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/yoursite/priv/zotonic_site.config</span></code>\nfiles). The <code class=\"docutils literal notranslate\"><span class=\"pre\">hostname</span></code> value should not contain any port number, if\nyou run from port 80/443: <code class=\"docutils literal notranslate\"><span class=\"pre\">{hostname,</span> <span class=\"pre\">&quot;test.zotonic.com&quot;}</span></code>.</p>\n<div class=\"section\">\n<h2>Zotonic configuration</h2>\n<p>Example of <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic.config</span></code> (find the location using <code class=\"docutils literal notranslate\"><span class=\"pre\">bin/zotonic</span> <span class=\"pre\">configfiles</span></code>) ip/port\nsettings when terminating SSL in nginx proxy and using plain HTTP towards the Zotonic\nbackend:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">%%% IP address on which Zotonic will listen for HTTP requests.</span>\n<span class=\"p\">{</span><span class=\"n\">listen_ip</span><span class=\"p\">,</span> <span class=\"n\">any</span><span class=\"p\">},</span>\n\n<span class=\"c\">%%% Port on which Zotonic will listen for HTTP requests.</span>\n<span class=\"p\">{</span><span class=\"n\">listen_port</span><span class=\"p\">,</span> <span class=\"mi\">8000</span><span class=\"p\">},</span>\n\n<span class=\"c\">%%% Port on which Zotonic will listen for HTTPS requests.</span>\n<span class=\"c\">%%% Set to the atom &#39;none&#39; to disable SSL</span>\n<span class=\"p\">{</span><span class=\"n\">ssl_listen_port</span><span class=\"p\">,</span> <span class=\"n\">none</span><span class=\"p\">},</span>\n\n<span class=\"c\">%%% Outside port on which Zotonic will listen for HTTP requests.</span>\n<span class=\"p\">{</span><span class=\"n\">port</span><span class=\"p\">,</span> <span class=\"mi\">80</span><span class=\"p\">},</span>\n\n<span class=\"c\">%%% Outside port zotonic uses to receive incoming HTTPS requests.</span>\n<span class=\"p\">{</span><span class=\"n\">ssl_port</span><span class=\"p\">,</span> <span class=\"mi\">443</span><span class=\"p\">},</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Nginx configuration</h2>\n<p>Below is an example configuration file to proxy nginx to zotonic. Be\nsure to replace all occurrences of <code class=\"docutils literal notranslate\"><span class=\"pre\">test.zotonic.com</span></code> with your own\nhostname:</p>\n<div class=\"highlight-nginx notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"k\">server</span> <span class=\"p\">{</span>\n      <span class=\"kn\">listen</span> <span class=\"mi\">80</span><span class=\"p\">;</span>\n      <span class=\"kn\">listen</span>   <span class=\"s\">[::]:80</span> <span class=\"s\">default_server</span> <span class=\"s\">ipv6only=on</span><span class=\"p\">;</span> <span class=\"c1\">## listen for ipv6</span>\n\n      <span class=\"kn\">listen</span> <span class=\"mi\">443</span> <span class=\"s\">ssl</span> <span class=\"s\">http2</span><span class=\"p\">;</span>\n      <span class=\"kn\">listen</span> <span class=\"s\">[::]:443</span> <span class=\"s\">ssl</span> <span class=\"s\">http2</span> <span class=\"s\">ipv6only=on</span><span class=\"p\">;</span>\n\n      <span class=\"kn\">server_name</span>  <span class=\"s\">test.zotonic.com</span><span class=\"p\">;</span>\n\n      <span class=\"kn\">access_log</span>  <span class=\"s\">/var/log/nginx/test.zotonic.com.access.log</span><span class=\"p\">;</span>\n      <span class=\"kn\">error_log</span>  <span class=\"s\">/var/log/nginx/test.zotonic.com.error.log</span><span class=\"p\">;</span>\n\n      <span class=\"kn\">keepalive_timeout</span> <span class=\"mi\">65</span><span class=\"p\">;</span>\n      <span class=\"kn\">gzip</span> <span class=\"no\">off</span><span class=\"p\">;</span>\n\n      <span class=\"kn\">ssl_protocols</span> <span class=\"s\">TLSv1.2</span> <span class=\"s\">TLSv1.3</span><span class=\"p\">;</span>\n      <span class=\"kn\">ssl_ciphers</span> <span class=\"s\">&quot;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:ECDHE-RSA-AES128-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA128:DHE-RSA-AES128-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-GCM-SHA128:ECDHE-RSA-AES128-SHA384:ECDHE-RSA-AES128-SHA128:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA128:DHE-RSA-AES128-SHA128:DHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA384:AES128-GCM-SHA128:AES128-SHA128:AES128-SHA128:AES128-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4&quot;</span><span class=\"p\">;</span>\n      <span class=\"kn\">ssl_prefer_server_ciphers</span> <span class=\"no\">on</span><span class=\"p\">;</span>\n\n      <span class=\"c1\"># Disable preloading HSTS for now. Enable when you know that your</span>\n      <span class=\"c1\"># server certs works. You can use the header line that includes</span>\n      <span class=\"c1\"># the &quot;preload&quot; directive if you understand the implications.</span>\n      <span class=\"c1\"># add_header Strict-Transport-Security &quot;max-age=15768000; includeSubdomains&quot;; # six months</span>\n      <span class=\"c1\"># add_header Strict-Transport-Security &quot;max-age=15768000; includeSubdomains; preload&quot;;</span>\n\n      <span class=\"kn\">ssl_session_cache</span> <span class=\"s\">shared:SSL:10m</span><span class=\"p\">;</span>\n      <span class=\"kn\">ssl_session_timeout</span> <span class=\"mi\">5m</span><span class=\"p\">;</span>\n\n      <span class=\"c1\"># create with: openssl dhparam -out /etc/nginx/dhparam.pem 2048</span>\n      <span class=\"c1\"># ssl_dhparam /etc/nginx/dhparam.pem;</span>\n\n      <span class=\"kn\">ssl_certificate</span> <span class=\"s\">/path/to/ssl.crt</span><span class=\"p\">;</span>\n      <span class=\"kn\">ssl_certificate_key</span> <span class=\"s\">/path/to/ssl.key</span><span class=\"p\">;</span>\n\n      <span class=\"kn\">location</span> <span class=\"s\">/</span> <span class=\"p\">{</span>\n          <span class=\"kn\">proxy_pass</span> <span class=\"s\">http://127.0.0.1:8000/</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_redirect</span> <span class=\"no\">off</span><span class=\"p\">;</span>\n\n          <span class=\"kn\">proxy_set_header</span>  <span class=\"s\">Host</span>              <span class=\"nv\">$http_host</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_set_header</span>  <span class=\"s\">X-Real-IP</span>         <span class=\"nv\">$remote_addr</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_set_header</span>  <span class=\"s\">X-Forwarded-For</span>   <span class=\"nv\">$proxy_add_x_forwarded_for</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_set_header</span>  <span class=\"s\">X-Forwarded-Proto</span> <span class=\"nv\">$scheme</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_pass_request_headers</span> <span class=\"no\">on</span><span class=\"p\">;</span>\n\n          <span class=\"kn\">client_max_body_size</span>       <span class=\"mi\">0</span><span class=\"p\">;</span>\n          <span class=\"kn\">client_body_buffer_size</span>    <span class=\"mi\">128k</span><span class=\"p\">;</span>\n\n          <span class=\"kn\">proxy_connect_timeout</span>      <span class=\"mi\">90</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_send_timeout</span>         <span class=\"mi\">90</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_read_timeout</span>         <span class=\"mi\">90</span><span class=\"p\">;</span>\n\n          <span class=\"kn\">proxy_buffer_size</span>          <span class=\"mi\">4k</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_buffers</span>              <span class=\"mi\">4</span> <span class=\"mi\">32k</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_busy_buffers_size</span>    <span class=\"mi\">64k</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_temp_file_write_size</span> <span class=\"mi\">64k</span><span class=\"p\">;</span>\n      <span class=\"p\">}</span>\n\n      <span class=\"kn\">location</span> <span class=\"s\">/mqtt-transport</span> <span class=\"p\">{</span>\n          <span class=\"kn\">proxy_pass</span> <span class=\"s\">http://127.0.0.1:8000/mqtt-transport</span><span class=\"p\">;</span>\n\n          <span class=\"kn\">proxy_http_version</span> <span class=\"mi\">1</span><span class=\"s\">.1</span><span class=\"p\">;</span>\n\n          <span class=\"kn\">proxy_set_header</span> <span class=\"s\">Host</span>              <span class=\"nv\">$host</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_set_header</span> <span class=\"s\">X-Real-IP</span>         <span class=\"nv\">$remote_addr</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_set_header</span> <span class=\"s\">X-Forwarded-For</span>   <span class=\"nv\">$proxy_add_x_forwarded_for</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_set_header</span> <span class=\"s\">X-Forwarded-Proto</span> <span class=\"nv\">$scheme</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_set_header</span> <span class=\"s\">Upgrade</span>           <span class=\"nv\">$http_upgrade</span><span class=\"p\">;</span>\n          <span class=\"kn\">proxy_set_header</span> <span class=\"s\">Connection</span>        <span class=\"s\">&quot;upgrade&quot;</span><span class=\"p\">;</span>\n\n          <span class=\"kn\">proxy_pass_request_headers</span> <span class=\"no\">on</span><span class=\"p\">;</span>\n      <span class=\"p\">}</span>\n\n      <span class=\"kn\">location</span> <span class=\"s\">/close-connection</span> <span class=\"p\">{</span>\n           <span class=\"kn\">keepalive_timeout</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n           <span class=\"kn\">empty_gif</span><span class=\"p\">;</span>\n      <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</pre></div>\n</div>\n<p>As shown in the example above:</p>\n<ul class=\"simple\">\n<li>Add <code class=\"docutils literal notranslate\"><span class=\"pre\">X-Forwarded-Proto</span></code> to proxied header so that Zotonic knows that HTTPS is used before the proxy even though HTTP is used between the proxy and backend.</li>\n<li>Add <code class=\"docutils literal notranslate\"><span class=\"pre\">X-Real-IP</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">X-Forwarded-For</span></code> headers.</li>\n</ul>\n<p>Zotonic always redirects to HTTPS so the proxy needs to be configured for\nboth HTTP and HTTPS.</p>\n<p>Zotonic makes use of a websocket connection for MQTT messages at the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">/mqtt-transport</span></code> endpoint, so you need to pass the <code class=\"docutils literal notranslate\"><span class=\"pre\">Upgrade</span></code>\nand <code class=\"docutils literal notranslate\"><span class=\"pre\">Connection</span></code> headers.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">/mqtt-transport</span></code> endpoint is also used to POST uploaded files\nusing a HTML multi-part form post.</p>\n<p>See the <a class=\"reference external\" href=\"http://nginx.org/en/docs/\">nginx documentation</a> for more\ninformation on its configuration procedure.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:36Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/nginx.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:33Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_deployment_nginx",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:33Z",
+    "slug": "proxying-zotonic-with-nginx",
+    "title": "Proxying Zotonic with nginx",
+    "title_slug": "proxying-zotonic-with-nginx",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1790",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1790"
+  }
+}

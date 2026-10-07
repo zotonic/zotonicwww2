@@ -1,0 +1,113 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1422,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1422"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_shell_debuggingdatabase",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1422/debugging-db-query-issues",
+    "x-default": "https://zotonic.com/cookbook/1422/debugging-db-query-issues"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Techniques for finding root cause when queries are involved.</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>When you face unexpected behavior as a result of some database query\n(z_db:q et al), you either have to hunt down the queries and re-run\nthem by hand, which is really time consuming and painful, or, which\nthis cookbook will detail, have postgresql log the queries for you.</p>\n<p>The principal documentation and with more details, may be found here:\n<a class=\"reference external\" href=\"https://www.postgresql.org/docs/9.5/static/runtime-config-logging.html\">https://www.postgresql.org/docs/9.5/static/runtime-config-logging.html</a></p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>A working system where you want to inspect the db queries being run.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>Edit your <code class=\"docutils literal notranslate\"><span class=\"pre\">postgresql.conf</span></code> file, enabling <code class=\"docutils literal notranslate\"><span class=\"pre\">logstatement</span> <span class=\"pre\">=</span>\n<span class=\"pre\">&#39;all&#39;</span></code>. This file has a lot of options commented out, with comments\nwhich you may review. Options of interest in this scenario all begin\nwith “log” (or similar).</p>\n<p>By having <code class=\"docutils literal notranslate\"><span class=\"pre\">log_destination</span> <span class=\"pre\">=</span> <span class=\"pre\">&#39;stderr&#39;</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">logging_collector</span> <span class=\"pre\">=</span>\n<span class=\"pre\">on</span></code>, you can capture your logging output to file.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:21Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-debuggingdatabase.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:23Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_shell_debuggingdatabase",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:23Z",
+    "slug": "debugging-db-query-issues",
+    "title": "Debugging db (query) issues",
+    "title_slug": "debugging-db-query-issues",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1422",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1422"
+  }
+}

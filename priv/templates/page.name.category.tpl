@@ -7,6 +7,7 @@
         'documentation',
         'userguide',
         'developerguide',
+        'adminguide',
         'cookbook',
         'article',
         'reference',

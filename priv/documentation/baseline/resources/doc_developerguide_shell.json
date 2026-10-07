@@ -1,0 +1,144 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:43Z",
+          "object_id": {
+            "id": 1547,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_reference_cli_index",
+            "title": "Command-line",
+            "uri": "https://zotonic.com/id/1547"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1639,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1639"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_shell",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1639/command-line-shell",
+    "x-default": "https://zotonic.com/docs/1639/command-line-shell"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_reference_cli_index#ref-cli\"><span class=\"std std-ref\">Command-line</span></a></p>\n</aside>\n<p>The Zotonic shell gives you access to a running Zotonic instance with its code and data.</p>\n<p>To connect to the background Zotonic server instance within an EShell (Erlang shell):</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">zotonic</span> <span class=\"n\">shell</span>\n</pre></div>\n</div>\n<p>Alternatively, use the <cite>debug</cite> commmand to launch the Zotonic server interactively and get an EShell on the running instance:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">zotonic</span> <span class=\"n\">debug</span>\n</pre></div>\n</div>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">start.sh</span></code> command in the root folder is a shortcut for this command.</p>\n<div class=\"section\">\n<h2>Tab completion</h2>\n<p>The Zotonic shell has tab completion.</p>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">z_&lt;tab&gt;</span></code></dt>\n<dd>Lists Zotonic library modules.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">m_&lt;tab&gt;</span></code></dt>\n<dd>Lists Zotonic models.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">mod_&lt;tab&gt;</span></code></dt>\n<dd>Lists Zotonic modules.</dd>\n</dl>\n<p>Add a colon to get all available functions from a module, for instance: <code class=\"docutils literal notranslate\"><span class=\"pre\">m_rsc:&lt;tab&gt;</span></code>.</p>\n</div>\n<div class=\"section\">\n<h2>Often used commands</h2>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">z</span></code> module provides shortcuts for the most used commands. From within the Zotonic shell:</p>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">z:m().</span></code></dt>\n<dd>(Re)makes all erlang source modules and resets the caches.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">z:flush(sitename).</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">z:flush().</span></code></dt>\n<dd>Resets all caches, reloads the dispatch rules and rescans all modules.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">z:ld(modulename).</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">z:ld().</span></code></dt>\n<dd>Reloads an Erlang module, or reloads all changed Erlang modules</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">z:restart(sitename).</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">z:restart().</span></code></dt>\n<dd>Restarts the site, or restarts Zotonic</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">z:c(sitename).</span></code></dt>\n<dd>Gets the current site context. This call is often used inside another function call - see examples below.</dd>\n</dl>\n</div>\n<div class=\"section\">\n<h2>Activating/deactivating modules</h2>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">z_module_manager:deactivate(mod_modulename,</span> <span class=\"pre\">z:c(sitename)).</span></code></dt>\n<dd>Deactivates a module.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">z_module_manager:activate(mod_modulename,</span> <span class=\"pre\">z:c(sitename)).</span></code></dt>\n<dd>Activates a module.</dd>\n</dl>\n</div>\n<div class=\"section\">\n<h2>Resetting a user password</h2>\n<p>Sometimes it happens that you want to reset an user’s password from the Erlang shell. You can do this from the Erlang shell without using the admin or the reset-password mail/dialog.</p>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">m_identity:set_username_pw(1234,</span> <span class=\"pre\">&quot;username&quot;,</span> <span class=\"pre\">&quot;password&quot;,</span> <span class=\"pre\">z:c(sitename)).</span></code></dt>\n<dd>Where 1234 is the rsc id of your user (1 for the admin), this must be an integer.</dd>\n</dl>\n</div>\n<div class=\"section\">\n<h2>Accessing data</h2>\n<p>Sometimes it is desirable to access data stored in Zotonic from the EShell. This is useful for experimenting with code without having to go through an involved process or through HTTP requests to test it.</p>\n<p>These calls use the site context as parameter. Get it using:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">Context</span> <span class=\"o\">=</span> <span class=\"nn\">z</span><span class=\"p\">:</span><span class=\"nf\">c</span><span class=\"p\">(</span><span class=\"n\">sitename</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">m_rsc</span></code> model module provides functions for retrieving and interacting with pages and other resources stored in Zotonic’s datastore for the site.</p>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">RscProps</span> <span class=\"pre\">=</span> <span class=\"pre\">m_rsc:get(Id,</span> <span class=\"pre\">Context).</span></code></dt>\n<dd>Returns the entire resource as a proplists structure. Id is the resource Id number.</dd>\n</dl>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">Title</span> <span class=\"pre\">=</span> <span class=\"pre\">m_rsc:p(Id,</span> <span class=\"pre\">title,</span> <span class=\"pre\">Context).</span></code></p>\n<p>You can also use the Erlang proplists module:</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">Title</span> <span class=\"pre\">=</span> <span class=\"pre\">proplists:get_value(title,</span> <span class=\"pre\">RscProps).</span></code></p>\n</div>\n<div class=\"section\">\n<h2>Searching</h2>\n<p>To perform a search on the running site, use the <code class=\"docutils literal notranslate\"><span class=\"pre\">z_search</span></code> module.</p>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">rr(z_search).</span></code></dt>\n<dd>Loads all records defined in <code class=\"docutils literal notranslate\"><span class=\"pre\">z_search</span></code> (including those defined in include files such as the <code class=\"docutils literal notranslate\"><span class=\"pre\">#search_result</span></code> record).</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">Results</span> <span class=\"pre\">=</span> <span class=\"pre\">z_search:search(&lt;&lt;&quot;latest&quot;&gt;&gt;,</span> <span class=\"pre\">#{</span> <span class=\"pre\">&lt;&lt;&quot;cat&quot;&gt;&gt;</span> <span class=\"pre\">=&gt;</span> <span class=\"pre\">text</span> <span class=\"pre\">},</span> <span class=\"pre\">1,</span> <span class=\"pre\">20,</span> <span class=\"pre\">Context).</span></code></dt>\n<dd>Returns the search result record, for the search on pages from the category <cite>text</cite>. You can specify the category as a string, binary, atom or integer.</dd>\n</dl>\n<p>To retrieve the list of pages, we access the <code class=\"docutils literal notranslate\"><span class=\"pre\">result</span></code> property of the record data:</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">Pages</span> <span class=\"pre\">=</span> <span class=\"pre\">Results#search_result.result.</span></code></p>\n<p>Use <code class=\"docutils literal notranslate\"><span class=\"pre\">m_rsc:get(Id,</span> <span class=\"pre\">Context)</span></code> to retrieve Page information of each search result (see above).</p>\n</div>\n<div class=\"section\">\n<h2>Debugging</h2>\n<p>We have added the <code class=\"docutils literal notranslate\"><span class=\"pre\">recon</span></code> application to the zotonic deps. This allows one\nto easily debug many aspects of a running zotonic node. It contains tools for tracing\ncalls, check memory and bandwidth usage and a lot more. For more information see:\n<a class=\"reference external\" href=\"http://www.erlang-in-anger.com\">Stuff Goes Bad: Erlang in Anger</a>.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:29Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/shell.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:34Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_shell",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:34Z",
+    "slug": "command-line-shell",
+    "title": "Command-line shell",
+    "title_slug": "command-line-shell",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1639",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1639"
+  }
+}

@@ -1,0 +1,496 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1352,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_templates",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/1352"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1540,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_controllers",
+            "title": "Controllers",
+            "uri": "https://zotonic.com/id/1540"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1541,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_dispatch_rules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Dispatch rules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1541"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1476,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_admin_modules",
+            "title": "mod_admin_modules",
+            "uri": "https://zotonic.com/id/1476"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1728,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_developerguide_configuration_site_configuration",
+            "title": "Site configuration",
+            "uri": "https://zotonic.com/id/1728"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1528,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_status_site",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "The Status site"
+              }
+            },
+            "uri": "https://zotonic.com/id/1528"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1372,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_lib",
+            "title": "lib",
+            "uri": "https://zotonic.com/id/1372"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1347,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_extends",
+            "title": "extends",
+            "uri": "https://zotonic.com/id/1347"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1539,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_wires",
+            "title": "Wires",
+            "uri": "https://zotonic.com/id/1539"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1419,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_forms_and_validation",
+            "title": "Forms and validation",
+            "uri": "https://zotonic.com/id/1419"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1752,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_acl_user_groups",
+            "title": "mod_acl_user_groups",
+            "uri": "https://zotonic.com/id/1752"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1274,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_notifications",
+            "title": "Notifications",
+            "uri": "https://zotonic.com/id/1274"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 320,
+            "is_a": [
+              "meta",
+              "category"
+            ],
+            "name": "module",
+            "title": "Modules",
+            "uri": "https://test.zotonic.com/id/320"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1576,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_writing_module",
+            "title": "Writing your own module",
+            "uri": "https://zotonic.com/id/1576"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1541,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_dispatch_rules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Dispatch rules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1541"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1372,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_lib",
+            "title": "lib",
+            "uri": "https://zotonic.com/id/1372"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1352,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_templates",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/1352"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1539,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_wires",
+            "title": "Wires",
+            "uri": "https://zotonic.com/id/1539"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1540,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_controllers",
+            "title": "Controllers",
+            "uri": "https://zotonic.com/id/1540"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:40Z",
+          "object_id": {
+            "id": 1419,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_forms_and_validation",
+            "title": "Forms and validation",
+            "uri": "https://zotonic.com/id/1419"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1353,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1353"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_modules",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1353/modules",
+    "x-default": "https://zotonic.com/docs/1353/modules"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 19,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Modules"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">The reference for a list of <a class=\"reference internal\" href=\"/id/module#ref-modules\"><span class=\"std std-ref\">all modules</span></a>.</p>\n</aside>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">You can <a class=\"reference internal\" href=\"/id/doc_cookbook_writing_module#cookbook-custom-module\"><span class=\"std std-ref\">roll your own module</span></a>.</p>\n</aside>\n<p>Modules are the building blocks of Zotonic. They add functionality to your Zotonic website such as:</p>\n<ul class=\"simple\">\n<li>the admin web interface</li>\n<li>embedding videos in your content</li>\n<li>search engine optimization (SEO)</li>\n<li>social media integration.</li>\n</ul>\n<p>Structurally, a module is a directory containing the module’s Erlang code, <a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-templates\"><span class=\"std std-ref\">templates</span></a>, <a class=\"reference internal\" href=\"/id/doc_developerguide_controllers\"><span class=\"std std-ref\">controllers</span></a>, <a class=\"reference internal\" href=\"/id/doc_developerguide_dispatch_rules\"><span class=\"std std-ref\">dispatch rules</span></a> and more.</p>\n<div class=\"section\"><a name=\"id1\"></a>\n<h2>Activating modules</h2>\n<p>Before you can use a module, you need to activate it. You can do so in two ways.</p>\n<ol class=\"arabic\">\n<li>\n<p class=\"first\">For testing, you can enable the module in the <a class=\"reference internal\" href=\"/id/doc_module_mod_admin_modules\"><span class=\"std std-ref\">admin interface</span></a>, under System &gt; Modules.</p>\n</li>\n<li>\n<p class=\"first\">If you decide to use the module in your site, it’s best to declare so in your <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_site_configuration#site-configuration-modules\"><span class=\"std std-ref\">site configuration</span></a>. This ensures that the module is activated not only for you but also for other developers and on other servers that the website may run on (e.g. a production server). Add the module name to the <code class=\"file docutils literal notranslate\"><span class=\"pre\">sites/yoursite/config</span></code> file, under the <code class=\"docutils literal notranslate\"><span class=\"pre\">modules</span></code> key:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">[</span>\n    <span class=\"c\">% ...</span>\n    <span class=\"p\">{</span><span class=\"n\">modules</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n        <span class=\"c\">% ...,</span>\n        <span class=\"n\">mod_example</span>\n    <span class=\"p\">]}</span>\n    <span class=\"c\">%...</span>\n<span class=\"p\">].</span>\n</pre>\n</div>\n</div>\n<p>Then <a class=\"reference internal\" href=\"/id/doc_developerguide_status_site#ref-status-site\"><span class=\"std std-ref\">restart the site</span></a> for the changes to be picked up.</p>\n</li>\n</ol>\n</div>\n<div class=\"section\"><a name=\"dev-configuration-parameters\"></a>\n<h2>Module configuration</h2>\n<p>Some modules can be configured to influence their behaviour. The module’s documentation will tell you about its configuration parameters.</p>\n</div>\n<div class=\"section\"><a name=\"guide-module-structure\"></a>\n<h2>Directory structure</h2>\n<p>A module groups related functions together into a single directory. It contains an Erlang module (from here on called the ‘module file’) and subdirectories for templates, actions, tags, dispatch rules and more.</p>\n<p>The generic structure is:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">zotonic_mod_example</span><span class=\"o\">/</span>\n    <span class=\"n\">priv</span><span class=\"o\">/</span><span class=\"n\">dispatch</span><span class=\"o\">/</span>\n    <span class=\"n\">priv</span><span class=\"o\">/</span><span class=\"n\">templates</span><span class=\"o\">/</span>\n    <span class=\"n\">priv</span><span class=\"o\">/</span><span class=\"n\">lib</span><span class=\"o\">/</span>\n    <span class=\"n\">priv</span><span class=\"o\">/</span><span class=\"n\">lib</span><span class=\"o\">-</span><span class=\"n\">src</span><span class=\"o\">/</span>\n    <span class=\"n\">src</span><span class=\"o\">/</span><span class=\"n\">mod_example</span><span class=\"p\">.</span><span class=\"n\">erl</span>\n    <span class=\"n\">src</span><span class=\"o\">/</span><span class=\"n\">zotonic_mod_exampe</span><span class=\"p\">.</span><span class=\"n\">app</span><span class=\"p\">.</span><span class=\"n\">src</span>\n    <span class=\"n\">src</span><span class=\"o\">/</span><span class=\"n\">models</span><span class=\"o\">/</span><span class=\"p\">...</span>\n    <span class=\"n\">src</span><span class=\"o\">/</span><span class=\"n\">filters</span><span class=\"o\">/</span><span class=\"p\">...</span>\n    <span class=\"n\">rebar</span><span class=\"p\">.</span><span class=\"n\">config</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\"><a name=\"module-file\"></a>\n<h2>The module file</h2>\n<p>At the very minimum, a Zotonic module must have a module file. The name of the module file is an Erlang file that must be the same as the name of the module’s directory. Zotonic scans this file for metadata about the module and uses it to start the module:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">mod_example</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">author</span><span class=\"p\">(</span><span class=\"s\">&quot;Nomen Nescio &lt;nomen@example.com&gt;&quot;</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_title</span><span class=\"p\">(</span><span class=\"s\">&quot;Your module title&quot;</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_description</span><span class=\"p\">(</span><span class=\"s\">&quot;Description what this module does.&quot;</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_prio</span><span class=\"p\">(</span><span class=\"mi\">500</span><span class=\"p\">).</span>\n</pre>\n</div>\n</div>\n<p>In this case, the module code only consists of some metadata properties, there is no real code in there. This is fine for a lot of modules: since Zotonic already provides so many functions, there is often little need to write custom code.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_title</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_description</span></code> properties describe your module in natural language: these properties will be visible on the admin modules page. The <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_prio</span></code> property defines the <a class=\"reference internal\" href=\"#module-priority\"><span class=\"std std-ref\">priority</span></a> of the module.</p>\n<p>In cases where you need to execute code when the module starts, you can export an optional <code class=\"docutils literal notranslate\"><span class=\"pre\">init/1</span></code> function. The parameter is a context record initialized for the site the module will be running in. This is useful when you need to initialize the database or other data structures for which you don’t need a running process. When you also need to execute code when a module stops you can export an optional <code class=\"docutils literal notranslate\"><span class=\"pre\">terminate/2</span></code> function. This function will be called when the module terminates. The first parameter is a Reason parameter which indicates why the module stopped. The second a context record similar to the one in the <code class=\"docutils literal notranslate\"><span class=\"pre\">init/1</span></code> function.</p>\n<p>When you do need a running process, read about those in the next topic, <a class=\"reference internal\" href=\"#guide-modules-gen-server\"><span class=\"std std-ref\">gen_server based modules</span></a>.</p>\n</div>\n<div class=\"section\">\n<h2>Module subdirectories</h2>\n<p>Besides the module code file, a module usually has one or more subdirectories. These are specially named; different parts of Zotonic scan through different folders.</p>\n<p>This section describes what each of the module folders hold.</p>\n<div class=\"section\">\n<h3>priv/dispatch/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_dispatch_rules\"><span class=\"std std-ref\">Dispatch rules</span></a></p>\n</aside>\n<p>This directory contains files with <a class=\"reference internal\" href=\"/id/doc_developerguide_dispatch_rules\"><span class=\"std std-ref\">dispatch rules</span></a>. You can name your files however you want, just don’t give them the extension <code class=\"docutils literal notranslate\"><span class=\"pre\">.erl</span></code>, because then the Makefile will try to compile them.</p>\n</div>\n<div class=\"section\">\n<h3>priv/lib/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_lib\"><span class=\"std std-ref\">lib</span></a> template tag.</p>\n</aside>\n<p>The <code class=\"file docutils literal notranslate\"><span class=\"pre\">lib</span></code> (short for <cite>library</cite>) directory contains static images, CSS and javascript files. These files will be served with via the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_lib\"><span class=\"std std-ref\">lib</span></a>. The usual layout of the lib directory is:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">priv</span><span class=\"o\">/</span><span class=\"n\">lib</span><span class=\"o\">/</span><span class=\"n\">css</span><span class=\"o\">/</span>\n<span class=\"n\">priv</span><span class=\"o\">/</span><span class=\"n\">lib</span><span class=\"o\">/</span><span class=\"n\">images</span><span class=\"o\">/</span>\n<span class=\"n\">priv</span><span class=\"o\">/</span><span class=\"n\">lib</span><span class=\"o\">/</span><span class=\"n\">js</span><span class=\"o\">/</span>\n<span class=\"n\">priv</span><span class=\"o\">/</span><span class=\"n\">lib</span><span class=\"o\">/</span><span class=\"n\">misc</span><span class=\"o\">/</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>priv/lib-src/</h3>\n<p>This directory contains the source files for the <code class=\"file docutils literal notranslate\"><span class=\"pre\">lib</span></code> directory. Examples are Less, Scss, and other files.</p>\n<p>If a file in the lib-src directory changes then the system will search for a <code class=\"file docutils literal notranslate\"><span class=\"pre\">Makefile</span></code> in the directory of the changed file or one of its parent directories. If a Makefile is found then it is executed.</p>\n<p>Scss files starting with a <code class=\"docutils literal notranslate\"><span class=\"pre\">_</span></code> (like <code class=\"file docutils literal notranslate\"><span class=\"pre\">_home.scss</span></code>) are known to be include files. If no Makefile is found then a Scss file without underscore is searched and used to generate the corresponding css.</p>\n<p>If no Makefile is found then any input file is converted to a similar sub-directory in the <code class=\"file docutils literal notranslate\"><span class=\"pre\">lib</span></code> directory. For example <code class=\"file docutils literal notranslate\"><span class=\"pre\">lib-src/foo/bar.scss</span></code> is used to generated <code class=\"file docutils literal notranslate\"><span class=\"pre\">lib/foo/bar.css</span></code></p>\n<p>There are standard file handlers for the following extensions/formats:</p>\n<ul class=\"simple\">\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">.scss</span></code> (<code class=\"file docutils literal notranslate\"><span class=\"pre\">Makefile</span></code>, <code class=\"file docutils literal notranslate\"><span class=\"pre\">sassc</span></code>, or <code class=\"file docutils literal notranslate\"><span class=\"pre\">sass</span></code>)</li>\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">.less</span></code> (<code class=\"file docutils literal notranslate\"><span class=\"pre\">Makefile</span></code> or <code class=\"file docutils literal notranslate\"><span class=\"pre\">lessc</span></code>)</li>\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">.coffee</span></code> (<code class=\"file docutils literal notranslate\"><span class=\"pre\">Makefile</span></code> or <code class=\"file docutils literal notranslate\"><span class=\"pre\">coffee</span></code>)</li>\n</ul>\n</div>\n<div class=\"section\">\n<h3>priv/templates/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-templates\"><span class=\"std std-ref\">Templates</span></a></p>\n</aside>\n<p>This directory contains all <a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-templates\"><span class=\"std std-ref\">templates</span></a>. Templates do not have any prefix in their name, as they are not (directly) compiled as Erlang modules.</p>\n<p>The following naming conventions for templates are used:</p>\n<ul class=\"simple\">\n<li>All templates have the extension “.tpl”</li>\n<li>Templates used as a complete page can have any name: ”my_special_page.tpl”</li>\n<li>Templates used as the base of other templates, using the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_extends\"><span class=\"std std-ref\">extends</span></a> tag, have the word “base” in them: ”base.tpl”; “email_base.tpl”.</li>\n<li>Templates only used by including them in other templates start their name with an underscore: “_example.tpl“</li>\n<li>The template for the home page of a site is called “home.tpl”</li>\n<li>Templates for displaying resources are called “page.tpl”</li>\n</ul>\n</div>\n<div class=\"section\">\n<h3>src/actions/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_wires#guide-actions\"><span class=\"std std-ref\">Actions</span></a></p>\n</aside>\n<p>This directory holds the <a class=\"reference internal\" href=\"/id/doc_developerguide_wires#guide-actions\"><span class=\"std std-ref\">actions</span></a> defined by the module. Every action name must be prefixed with the word “action” and the module name (without the <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_</span></code>). For example the filename for the action <code class=\"docutils literal notranslate\"><span class=\"pre\">dialog_open</span></code> in the module <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_base</span></code> will be <code class=\"docutils literal notranslate\"><span class=\"pre\">action_base_dialog_open.erl</span></code></p>\n</div>\n<div class=\"section\">\n<h3>src/scomps/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-tags\"><span class=\"std std-ref\">Tags</span></a></p>\n</aside>\n<p>Any custom tags that you define yourself go into the <code class=\"docutils literal notranslate\"><span class=\"pre\">src/scomps/</span></code> directory.</p>\n<p>Scomps are prefixed in the same way as actions, except that the word “scomp” is used. For example the scomp <code class=\"docutils literal notranslate\"><span class=\"pre\">button</span></code> in the module <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_base</span></code> has as file name <code class=\"docutils literal notranslate\"><span class=\"pre\">scomp_base_button.erl</span></code>.</p>\n</div>\n<div class=\"section\">\n<h3>src/controllers/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_controllers\"><span class=\"std std-ref\">Controllers</span></a></p>\n</aside>\n<p>This directory contains Erlang modules which define controllers which are called from the dispatch system to handle incoming HTTP requests.</p>\n<p>Controllers must have unique names, as they are compiled and loaded in the Erlang system. The convention is to prefix every controller with <code class=\"docutils literal notranslate\"><span class=\"pre\">controller_</span></code> and the name of the module, for example <code class=\"docutils literal notranslate\"><span class=\"pre\">controller_admin_edit.erl</span></code>.</p>\n</div>\n<div class=\"section\">\n<h3>src/models/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-models\"><span class=\"std std-ref\">Models</span></a></p>\n</aside>\n<p>This directory contains Erlang modules, each of which is a <a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-models\"><span class=\"std std-ref\">model</span></a>.</p>\n<p>The module name of a model always starts with <code class=\"docutils literal notranslate\"><span class=\"pre\">m_</span></code>, for example <code class=\"docutils literal notranslate\"><span class=\"pre\">m_comment</span></code>. This model is then to be used in the templates as <code class=\"docutils literal notranslate\"><span class=\"pre\">m.comment</span></code>. Be careful to give your models a unique name to prevent name clashes with other models and Erlang modules.</p>\n</div>\n<div class=\"section\"><a name=\"module-directory-filters\"></a>\n<h3>src/filters/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-filters\"><span class=\"std std-ref\">Filters</span></a></p>\n</aside>\n<p>This directory holds Erlang modules, each of which defines a <a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-filters\"><span class=\"std std-ref\">template filter</span></a>.</p>\n<p>Each filter must have an unique name, reflecting the filter’s name. For example, the filter “tail” resides in the Erlang module <code class=\"docutils literal notranslate\"><span class=\"pre\">filter_tail.erl</span></code> and exports the function <code class=\"docutils literal notranslate\"><span class=\"pre\">tail/1</span></code>. Filters are added in the filters directory. The template compiler will insert references to the correct modules into the compiled templates. A missing filter will result in a crash of the compiled template.</p>\n</div>\n<div class=\"section\">\n<h3>src/validators/</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_forms_and_validation#guide-validators\"><span class=\"std std-ref\">Forms and validation</span></a></p>\n</aside>\n<p>This directory holds Erlang modules, each of which defines a <a class=\"reference internal\" href=\"/id/doc_developerguide_forms_and_validation#guide-validators\"><span class=\"std std-ref\">validator</span></a>.</p>\n<p>Validators are prefixed in the same way as actions and scomps, except that the word “validator” is used. For example the validator “email” in the module “mod_base” has the file name: “validator_base_email.erl”</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Changing / recompiling files</h2>\n<p>Changes to the Erlang files in a module are visible after issuing the <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">update</span></code> CLI command, or <code class=\"docutils literal notranslate\"><span class=\"pre\">z:m().</span></code> from the Zotonic shell. Any new lib or template files, or changes in the dispatch rules are visible after the module indexer has rescanned all modules. You can do this with the “rescan modules” button on the modules page in the admin. Changes to templates are directly visible.</p>\n</div>\n<div class=\"section\"><a name=\"module-priority\"></a>\n<h2>Priority</h2>\n<p>The <em class=\"dfn\">module priority</em> is a number defined in the module’s code and is usually a number between 1 and 1000; the default is 500. A lower number gives a higher priority. Modules with higher priority are checked first for <a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-lookup-system\"><span class=\"std std-ref\">templates</span></a>, actions, custom tags etc.</p>\n<p>The priority is defined by <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_prio</span></code> in the <a class=\"reference internal\" href=\"#module-file\"><span class=\"std std-ref\">module file</span></a>. For a site, the priority is usually set to 1, to make sure that its templates etc override the ones from the Zotonic mouules.</p>\n<p>When two modules have the same priority then the modules are sorted by their name. That means that, given the same priority number, <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_aloha</span></code> has higher priority than <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_hello</span></code>.</p>\n</div>\n<div class=\"section\"><a name=\"guide-module-dependencies\"></a>\n<h2>Dependencies</h2>\n<p>Modules can have dependencies on other modules. These are expressed via the module’s metadata, as follows:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">mod_depends</span><span class=\"p\">([</span><span class=\"n\">mod_admin</span><span class=\"p\">]).</span>\n</pre>\n</div>\n</div>\n<p>This states that the current module is dependent on <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_admin</span></code> to be activated.</p>\n<p>Sometimes, explicitly depending on a module name is not a good idea: there might be more modules that perform the same functions but are competing in implementation. In that case, such modules can export a <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_provides</span></code> meta tag, so that dependent modules can depend on what one of these modules provides.</p>\n<p>Example: <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_b</span></code> both provide some functionality, <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code>:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">mod_a</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_provides</span><span class=\"p\">([</span><span class=\"n\">foo</span><span class=\"p\">]).</span>\n</pre>\n</div>\n</div>\n<p>and:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">mod_b</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_provides</span><span class=\"p\">([</span><span class=\"n\">foo</span><span class=\"p\">]).</span>\n</pre>\n</div>\n</div>\n<p>Now, another module, <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_bar</span></code>, needs the “foo” functionality:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">mod_bar</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_depends</span><span class=\"p\">([</span><span class=\"n\">foo</span><span class=\"p\">]).</span>\n</pre>\n</div>\n</div>\n<p>Now, the module manager will require either (or both!) of the <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_a</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_b</span></code> modules to be activated, before <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_bar</span></code> can be activated.</p>\n<p>A module automatically provides its own module name, as well as its name minus the <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_</span></code>. So, <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_bar</span></code> has implicitly the following provides constructs:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">mod_bar</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_provides</span><span class=\"p\">([</span><span class=\"n\">mod_bar</span><span class=\"p\">,</span> <span class=\"n\">bar</span><span class=\"p\">]).</span>\n</pre>\n</div>\n</div>\n<p>These two provides are there even when a module adds its own provides clauses.</p>\n<div class=\"section\"><a name=\"guide-module-startup-order\"></a>\n<h3>Module startup order</h3>\n<p>Note that when a site starts, its modules are started in order of module dependency, in such a way that a module’s dependencies are always started before the module itself starts.</p>\n</div>\n</div>\n<div class=\"section\"><a name=\"guide-modules-versioning\"></a>\n<h2>Module versioning</h2>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">The function <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_schema/2</span></code> is called inside a transaction, so that any installation errors are rolled back. <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_data/2</span></code> Is called outside a transaction, and after all resources, predicates etc. are installed, but before the current module version number is updated.</p>\n</aside>\n<p>Modules can export a <code class=\"docutils literal notranslate\"><span class=\"pre\">-module_schema()</span></code> attribute which contains an integer number, denoting the current module’s version. On module initialization, <code class=\"docutils literal notranslate\"><span class=\"pre\">Module:manage_schema/2</span></code> is called which handles installation and upgrade of data.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_schema/2</span></code> function returns either <code class=\"docutils literal notranslate\"><span class=\"pre\">ok</span></code>, a <code class=\"docutils literal notranslate\"><span class=\"pre\">#datamodel{}</span></code> record or a list of <code class=\"docutils literal notranslate\"><span class=\"pre\">#datamodel{}</span></code> records:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">spec</span> <span class=\"n\">manage_schame</span><span class=\"p\">(</span> <span class=\"n\">install</span> <span class=\"p\">|</span> <span class=\"p\">{</span><span class=\"n\">upgrade</span><span class=\"p\">,</span> <span class=\"n\">integer</span><span class=\"p\">()},</span> <span class=\"nn\">z</span><span class=\"p\">:</span><span class=\"nf\">context</span><span class=\"p\">()</span> <span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"n\">ok</span> <span class=\"p\">|</span> <span class=\"nl\">#datamodel</span><span class=\"p\">{}</span> <span class=\"p\">|</span> <span class=\"p\">[</span> <span class=\"nl\">#datamodel</span><span class=\"p\">{}</span> <span class=\"p\">].</span>\n</pre>\n</div>\n</div>\n<p>In a <code class=\"docutils literal notranslate\"><span class=\"pre\">#datamodel{}</span></code> record you can define:</p>\n<ul class=\"simple\">\n<li>categories</li>\n<li>predicates</li>\n<li>resources</li>\n<li>edges</li>\n<li><a class=\"reference internal\" href=\"/id/doc_module_mod_acl_user_groups#managed-rules\"><span class=\"std std-ref\">ACL rules</span></a>.</li>\n</ul>\n<p>After the <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_schema/2</span></code> function is called, the optional <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_data/2</span></code> function is called. The function <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_data/2</span></code> is called if and only if the <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_schema/2</span></code> is called. If you only want a <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_data/2</span></code> function, then add a dummy <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_schema/2</span></code> function that returns <cite>ok</cite> and does nothing else.</p>\n<p>For example:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">mod_twitter.erl</span></div>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">mod_twitter</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_title</span><span class=\"p\">(</span><span class=\"s\">&quot;Twitter module&quot;</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_schema</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">).</span>  <span class=\"c\">%% we are currently at revision 3</span>\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span>\n    <span class=\"n\">manage_schema</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span>\n    <span class=\"n\">manage_data</span><span class=\"o\">/</span><span class=\"mi\">2</span>\n<span class=\"p\">]).</span>\n\n<span class=\"c\">%% ...</span>\n\n<span class=\"nf\">manage_schema</span><span class=\"p\">(</span><span class=\"n\">install</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">%% Return a #datamodel{} record with items that will be created when</span>\n    <span class=\"c\">%% the module starts.</span>\n\n    <span class=\"nl\">#datamodel</span><span class=\"p\">{</span>\n        <span class=\"n\">categories</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">tweet</span><span class=\"p\">,</span>  <span class=\"c\">%% unique category name</span>\n                <span class=\"n\">text</span><span class=\"p\">,</span>   <span class=\"c\">%% parent category (can be undefined)</span>\n\n                <span class=\"c\">%% category properties</span>\n                <span class=\"p\">[</span>\n                    <span class=\"p\">{</span><span class=\"n\">title</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Tweet&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">}</span>\n                <span class=\"p\">]</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">],</span>\n        <span class=\"n\">predicates</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">tweets</span><span class=\"p\">,</span>  <span class=\"c\">%% unique predicate name</span>\n\n                <span class=\"c\">%% predicate properties</span>\n                <span class=\"p\">[</span>\n                    <span class=\"p\">{</span><span class=\"n\">title</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">trans</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n                        <span class=\"p\">{</span><span class=\"n\">en</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Tweets&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">},</span>\n                        <span class=\"p\">{</span><span class=\"n\">nl</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Twittert&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">}</span>\n                    <span class=\"p\">]}}</span>\n                <span class=\"p\">],</span>\n\n                <span class=\"c\">%% predicate from/to categories:</span>\n                <span class=\"p\">[</span>\n                    <span class=\"p\">{</span><span class=\"n\">person</span><span class=\"p\">,</span> <span class=\"n\">tweet</span><span class=\"p\">}</span>\n                <span class=\"p\">]</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">],</span>\n        <span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">person_tweeter</span><span class=\"p\">,</span>  <span class=\"c\">%% resource’s unique name</span>\n                <span class=\"n\">person</span><span class=\"p\">,</span>          <span class=\"c\">%% category</span>\n\n                <span class=\"c\">%% resource properties</span>\n                <span class=\"p\">[</span>\n                    <span class=\"p\">{</span><span class=\"n\">title</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Test Tweeter&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">},</span>\n                    <span class=\"p\">{</span><span class=\"n\">name_first</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Sir&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">},</span>\n                    <span class=\"p\">{</span><span class=\"n\">name_surname</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Tweetalot&quot;</span><span class=\"o\">&gt;&gt;</span>\n                <span class=\"p\">]</span>\n            <span class=\"p\">},</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">silly_tweet</span><span class=\"p\">,</span>\n                <span class=\"n\">tweet</span><span class=\"p\">,</span>\n                <span class=\"p\">[</span>\n                    <span class=\"p\">{</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;What’s your favourite colour?&quot;</span><span class=\"o\">/</span><span class=\"n\">utf8</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">}</span>\n                <span class=\"p\">]</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">],</span>\n        <span class=\"n\">edges</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n            <span class=\"c\">%% subject       predicate     object</span>\n            <span class=\"p\">{</span><span class=\"n\">person_tweeter</span><span class=\"p\">,</span> <span class=\"n\">tweets</span><span class=\"p\">,</span>       <span class=\"n\">silly_tweet</span><span class=\"p\">}</span>\n        <span class=\"p\">]</span>\n    <span class=\"p\">};</span>\n\n<span class=\"nf\">manage_schema</span><span class=\"p\">({</span><span class=\"n\">upgrade</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">%% code to upgrade from 1 to 2</span>\n    <span class=\"n\">ok</span><span class=\"p\">;</span>\n\n<span class=\"nf\">manage_schema</span><span class=\"p\">({</span><span class=\"n\">upgrade</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">%% code to upgrade from 2 to 3: update the person_tweeter resource</span>\n    <span class=\"nl\">#datamodel</span><span class=\"p\">{</span>\n        <span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n            <span class=\"p\">{</span>\n                <span class=\"n\">person_tweeter</span><span class=\"p\">,</span>\n                <span class=\"n\">person</span><span class=\"p\">,</span>\n                <span class=\"p\">[</span>\n                    <span class=\"p\">{</span><span class=\"n\">name_surname</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Tweetalot the Second&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">}</span>\n                <span class=\"p\">]</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">]</span>\n    <span class=\"p\">}.</span>\n\n<span class=\"nf\">manage_data</span><span class=\"p\">(_</span><span class=\"nv\">Version</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">%% Whatever data needs to be installed after the datamodel</span>\n    <span class=\"c\">%% has been installed.</span>\n    <span class=\"n\">ok</span><span class=\"p\">.</span>\n</pre>\n</div>\n</div>\n</div>\n<p>Note that the install function should always be kept up-to-date according to the latest schema version. When you install a module for the first time, no upgrade functions are called, but only the <code class=\"docutils literal notranslate\"><span class=\"pre\">install</span></code> clause. The upgrade functions exist for migrating old data, not for newly installing a module.</p>\n<div class=\"section\">\n<h3>Using categories defined by other modules</h3>\n<p>When your site needs to add resources which are defined by other module’s <code class=\"docutils literal notranslate\"><span class=\"pre\">manage_schema</span></code> functions, you need to make sure that those modules manage functions are called first. This can be realised by adding a dependency to those modules, as explained in <a class=\"reference internal\" href=\"#guide-module-startup-order\"><span class=\"std std-ref\">Module startup order</span></a>.</p>\n<p>For instance, when you want to create a custom menu for your site:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"nf\">manage_schema</span><span class=\"p\">(</span><span class=\"n\">install</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nl\">#datamodel</span><span class=\"p\">{</span>\n        <span class=\"n\">resources</span><span class=\"o\">=</span><span class=\"p\">[</span>\n            <span class=\"p\">{</span><span class=\"n\">help_menu</span><span class=\"p\">,</span> <span class=\"n\">menu</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n                <span class=\"p\">{</span><span class=\"n\">title</span><span class=\"p\">,</span> <span class=\"s\">&quot;Help&quot;</span><span class=\"p\">},</span>\n                <span class=\"p\">{</span><span class=\"n\">menu</span><span class=\"p\">,</span> <span class=\"p\">[...]}</span>\n            <span class=\"p\">]}</span>\n        <span class=\"p\">]</span>\n    <span class=\"p\">}.</span>\n</pre>\n</div>\n</div>\n<p>You also need to make sure that you add a <a class=\"reference internal\" href=\"#guide-module-dependencies\"><span class=\"std std-ref\">dependency</span></a> to <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_menu</span></code>, which creates the <code class=\"docutils literal notranslate\"><span class=\"pre\">menu</span></code> category for you:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">mod_depends</span><span class=\"p\">([</span><span class=\"n\">mod_menu</span><span class=\"p\">]).</span>\n</pre>\n</div>\n</div>\n</div>\n</div>\n<div class=\"section\"><a name=\"guide-modules-gen-server\"></a>\n<h2>gen_server based modules</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference external\" href=\"http://erlang.org/doc/design_principles/gen_server_concepts.html\">gen_server</a> in the Erlang documentation.</p>\n</aside>\n<p>When you need a running process, i.e., a module that does something in the background, then it is possible to implement your module as a <a class=\"reference external\" href=\"http://erlang.org/doc/design_principles/gen_server_concepts.html\">gen_server</a> (or supervisor). A gen_server is a standard way to implement a reliable Erlang worker process.</p>\n<p>In that case you will need to add the behaviour and gen_server functions. You also need to change the <code class=\"docutils literal notranslate\"><span class=\"pre\">init/1</span></code> function to accept a property list, which contains the site definition and a <code class=\"docutils literal notranslate\"><span class=\"pre\">{context,</span>\n<span class=\"pre\">Context}</span></code> property.</p>\n<p>This server module will be started for every site in a Zotonic system where the module is enabled, so it can’t be a named server.</p>\n<p>If you want to observe Zotonic’s <a class=\"reference internal\" href=\"/id/doc_developerguide_notifications#guide-notification\"><span class=\"std std-ref\">notifications</span></a> and handle them through your module’s gen_server, export <code class=\"docutils literal notranslate\"><span class=\"pre\">pid_observe_...</span></code> functions (instead of the regular <code class=\"docutils literal notranslate\"><span class=\"pre\">observe_...</span></code> ones). These function will then be passed the gen_server’s PID:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"nf\">export</span><span class=\"p\">([</span>\n    <span class=\"n\">pid_observe_custom_pivot</span><span class=\"o\">/</span><span class=\"mi\">3</span>\n<span class=\"p\">]).</span>\n\n<span class=\"nf\">pid_observe_custom_pivot</span><span class=\"p\">(</span><span class=\"nv\">Pid</span><span class=\"p\">,</span> <span class=\"nl\">#custom_pivot</span><span class=\"p\">{}</span> <span class=\"o\">=</span> <span class=\"nv\">Msg</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nn\">gen_server</span><span class=\"p\">:</span><span class=\"nf\">cast</span><span class=\"p\">(</span><span class=\"nv\">Pid</span><span class=\"p\">,</span> <span class=\"nv\">Msg</span><span class=\"p\">).</span>\n\n<span class=\"nf\">handle_cast</span><span class=\"p\">(</span><span class=\"nl\">#custom_pivot</span><span class=\"p\">{</span><span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"nv\">Id</span><span class=\"p\">},</span> <span class=\"nv\">State</span><span class=\"p\">)</span>\n    <span class=\"c\">%% Do things here...</span>\n    <span class=\"p\">{</span><span class=\"n\">noreply</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">}.</span>\n</pre>\n</div>\n</div>\n<div class=\"section\">\n<h3>A minimal example</h3>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"c\">%% Zotonic modules always start with &#39;mod_&#39;</span>\n<span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">mod_example</span><span class=\"p\">).</span>\n\n<span class=\"c\">%% The author - also shown in the admin ui</span>\n<span class=\"p\">-</span><span class=\"ni\">author</span><span class=\"p\">(</span><span class=\"s\">&quot;Nomen Nescio &lt;nomen@example.com&gt;&quot;</span><span class=\"p\">).</span>\n\n<span class=\"c\">%% A module can be a &#39;gen_server&#39;, a &#39;supervisor&#39;, or just a module</span>\n<span class=\"c\">%% without behaviour.</span>\n<span class=\"p\">-</span><span class=\"ni\">behaviour</span><span class=\"p\">(</span><span class=\"n\">gen_server</span><span class=\"p\">).</span>\n\n<span class=\"c\">%% The title of your module</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_title</span><span class=\"p\">(</span><span class=\"s\">&quot;Your module title&quot;</span><span class=\"p\">).</span>\n\n<span class=\"c\">%% A short description, shown in the admin ui</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_description</span><span class=\"p\">(</span><span class=\"s\">&quot;Description what this module does.&quot;</span><span class=\"p\">).</span>\n\n<span class=\"c\">%% Priority, lower is higher prio, 500 is default.</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_prio</span><span class=\"p\">(</span><span class=\"mi\">500</span><span class=\"p\">).</span>\n\n<span class=\"c\">%% The modules or services this module depends on.</span>\n<span class=\"c\">%% This module is only started after the mentioned modules</span>\n<span class=\"c\">%% or services are started.</span>\n<span class=\"c\">%% List of atoms.</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_depends</span><span class=\"p\">([]).</span>\n\n<span class=\"c\">%% The modules or services this module provides.</span>\n<span class=\"c\">%% A module always provides itself (&#39;mod_example&#39; in this case)</span>\n<span class=\"c\">%% List of atoms.</span>\n<span class=\"p\">-</span><span class=\"ni\">mod_provides</span><span class=\"p\">([]).</span>\n\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">init</span><span class=\"o\">/</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">handle_call</span><span class=\"o\">/</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"n\">handle_cast</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">handle_info</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">terminate</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">code_change</span><span class=\"o\">/</span><span class=\"mi\">3</span><span class=\"p\">]).</span>\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">start_link</span><span class=\"o\">/</span><span class=\"mi\">1</span><span class=\"p\">]).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;zotonic_core/include/zotonic.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">record</span><span class=\"p\">(</span><span class=\"nl\">state</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"n\">context</span> <span class=\"p\">::</span> <span class=\"nn\">z</span><span class=\"p\">:</span><span class=\"nf\">context</span><span class=\"p\">()</span>\n    <span class=\"p\">}).</span>\n\n<span class=\"c\">%% Module API</span>\n\n<span class=\"c\">%% The Args is a proplists with the site config and a context.</span>\n<span class=\"c\">%% The {context, z:context()} is added to it so there is</span>\n<span class=\"c\">%% an instantiated site context. The site context is</span>\n<span class=\"c\">%% authenticated as the admin.</span>\n<span class=\"nf\">start_link</span><span class=\"p\">(</span><span class=\"nv\">Args</span><span class=\"p\">)</span> <span class=\"k\">when</span> <span class=\"nb\">is_list</span><span class=\"p\">(</span><span class=\"nv\">Args</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nn\">gen_server</span><span class=\"p\">:</span><span class=\"nf\">start_link</span><span class=\"p\">(</span><span class=\"o\">?</span><span class=\"nv\">MODULE</span><span class=\"p\">,</span> <span class=\"nv\">Args</span><span class=\"p\">,</span> <span class=\"p\">[]).</span>\n\n<span class=\"c\">%% gen_server callbacks</span>\n\n<span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"nv\">Args</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{</span><span class=\"n\">context</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">}</span> <span class=\"o\">=</span> <span class=\"nn\">proplists</span><span class=\"p\">:</span><span class=\"nf\">lookup</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">,</span> <span class=\"nv\">Args</span><span class=\"p\">),</span>\n    <span class=\"c\">% Instantiate a new, empty, and anonymous site context.</span>\n    <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nl\">#state</span><span class=\"p\">{</span> <span class=\"n\">context</span> <span class=\"o\">=</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"p\">}}.</span>\n\n<span class=\"nf\">handle_call</span><span class=\"p\">(</span><span class=\"nv\">Message</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">From</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{</span><span class=\"n\">stop</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">unknown_call</span><span class=\"p\">,</span> <span class=\"nv\">Message</span><span class=\"p\">},</span> <span class=\"nv\">State</span><span class=\"p\">}.</span>\n\n<span class=\"nf\">handle_cast</span><span class=\"p\">(</span><span class=\"nv\">Message</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{</span><span class=\"n\">stop</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">unknown_cast</span><span class=\"p\">,</span> <span class=\"nv\">Message</span><span class=\"p\">},</span> <span class=\"nv\">State</span><span class=\"p\">}.</span>\n\n<span class=\"nf\">handle_info</span><span class=\"p\">(_</span><span class=\"nv\">Info</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{</span><span class=\"n\">noreply</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">}.</span>\n\n<span class=\"nf\">terminate</span><span class=\"p\">(_</span><span class=\"nv\">Reason</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">State</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"n\">ok</span><span class=\"p\">.</span>\n\n<span class=\"nf\">code_change</span><span class=\"p\">(_</span><span class=\"nv\">OldVsn</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">Extra</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">}.</span>\n</pre>\n</div>\n</div>\n<p>As you can see, this code is almost identical to the standard Erlang <code class=\"docutils literal notranslate\"><span class=\"pre\">gen_server</span></code> boilerplate, with the exception of the metadata on top.</p>\n<p>You also see that the <code class=\"docutils literal notranslate\"><span class=\"pre\">start_link/1</span></code> function is already implemented. Note that in this function the gen_server is started without registering the server under a name: this is done because the module can be started multiple times; once for each site that needs it.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">init/1</span></code> function contains some more boilerplate for getting the <code class=\"docutils literal notranslate\"><span class=\"pre\">context{}</span></code> argument from the arguments, and storing this context into the server’s state. This way, you’ll always have access to the current context of the site in the rest of the gen_server’s functions.</p>\n</div>\n</div>\n</div>\n</div>"
+      }
+    },
+    "slug": "modules",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/modules.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_modules",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:19Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2022-05-17T07:17:36Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "modules"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1353",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1353"
+  }
+}

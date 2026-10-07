@@ -1,0 +1,190 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:19Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:19Z",
+          "object_id": {
+            "id": 1284,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_media",
+            "title": "media",
+            "uri": "https://zotonic.com/id/1284"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:19Z",
+          "object_id": {
+            "id": 1341,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_image",
+            "title": "image",
+            "uri": "https://zotonic.com/id/1341"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:19Z",
+          "object_id": {
+            "id": 1342,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_filter"
+            ],
+            "name": "doc_template_filter_filter_show_media",
+            "title": "show_media",
+            "uri": "https://zotonic.com/id/1342"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1280,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1280"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_media",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1280/media",
+    "x-default": "https://zotonic.com/docs/1280/media"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p><a class=\"reference internal\" href=\"/id/doc_glossary#term-resource\"><span class=\"xref std std-term\">Resources</span></a> can have media resources attached to them.\nResources and their media (images, video and audio) are connected through\n‘depiction’ <a class=\"reference internal\" href=\"/id/doc_glossary#term-edge\"><span class=\"xref std std-term\">edges</span></a>. Additionally, resources can be <em>embedded</em> in\nsome HTML text, such as the resource’s body text.</p>\n<div class=\"section\">\n<h2>Adding media</h2>\n<p>Media is added to resources with the ‘Add media item’ button in the admin. You\ncan embed resources by using the admin’s rich text editor.</p>\n<p>Programmatically, use the <a class=\"reference internal\" href=\"/id/doc_model_model_media\"><span class=\"std std-ref\">m_media</span></a> model to insert the media resource:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nv\">MediaId</span><span class=\"p\">}</span> <span class=\"o\">=</span> <span class=\"nn\">m_media</span><span class=\"p\">:</span><span class=\"nf\">insert_url</span><span class=\"p\">(</span><span class=\"s\">&quot;http://some-site/images/img.jpg&quot;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>Or, with some properties:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">Props</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"n\">title</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;This will be the title of the media resource&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">},</span>\n    <span class=\"p\">{</span><span class=\"n\">category</span><span class=\"p\">,</span> <span class=\"n\">audio</span><span class=\"p\">},</span>\n    <span class=\"p\">{</span><span class=\"n\">is_published</span><span class=\"p\">,</span> <span class=\"n\">true</span><span class=\"p\">}</span>\n<span class=\"p\">],</span>\n<span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nv\">MediaId</span><span class=\"p\">}</span> <span class=\"o\">=</span> <span class=\"nn\">m_media</span><span class=\"p\">:</span><span class=\"nf\">insert_file</span><span class=\"p\">(</span><span class=\"s\">&quot;/path/to/audio.wav&quot;</span><span class=\"p\">,</span> <span class=\"nv\">Props</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>Then link the owning resource and the media resource:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">m_edge</span><span class=\"p\">:</span><span class=\"nf\">insert</span><span class=\"p\">(</span><span class=\"nv\">Id</span><span class=\"p\">,</span> <span class=\"n\">depiction</span><span class=\"p\">,</span> <span class=\"nv\">MediaId</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>In templates</h2>\n<p>To render some resource’s (<code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code>) first depiction, use the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_image\"><span class=\"std std-ref\">image</span></a>\ntag:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">image</span> <span class=\"nv\">id</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>You can also add inline <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_image\"><span class=\"std std-ref\">parameters</span></a>:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">image</span> <span class=\"nv\">id</span> <span class=\"nv\">width</span><span class=\"o\">=</span><span class=\"m\">200</span> <span class=\"nv\">height</span><span class=\"o\">=</span><span class=\"m\">200</span> <span class=\"nv\">crop</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>To render embedded media, use the <a class=\"reference internal\" href=\"/id/doc_template_filter_filter_show_media\"><span class=\"std std-ref\">show_media</span></a> filter:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{{</span> <span class=\"nv\">id.body</span><span class=\"o\">|</span><span class=\"nf\">show_media</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<a name=\"guide-media-classes\"></a><h2>Media classes</h2>\n<p>Instead of inline image tag parameters, you can use media classes to define\nimage transformations. The advantage is that this image definition can then be\nreused amongst templates.</p>\n<p>Create a <code class=\"file docutils literal notranslate\"><span class=\"pre\">templates/mediaclass.config</span></code> file in your site directory:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"s\">&quot;thumb&quot;</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n        <span class=\"p\">{</span><span class=\"n\">width</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">},</span>\n        <span class=\"p\">{</span><span class=\"n\">height</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">},</span>\n        <span class=\"n\">crop</span>\n    <span class=\"p\">]}</span>\n<span class=\"p\">].</span>\n</pre></div>\n</div>\n<p>This defines a media class called ‘thumb’, which can be used to display a\n120x120 cropped square image. You then only need to refer to this media class in\nyour image tag:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">image</span> <span class=\"nv\">id</span> <span class=\"nv\">mediaclass</span><span class=\"o\">=</span><span class=\"s2\">&quot;thumb&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>The image URL will have a checksum embedded in it so that when the contents of\nthe media class is changed, all images which use that media class will be\nregenerated to reflect the new media class.</p>\n<div class=\"section\">\n<h3>Responsive images</h3>\n<p>To provide images in multiple <a class=\"reference external\" href=\"https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-srcset\">responsive sizes</a>, use the <code class=\"docutils literal notranslate\"><span class=\"pre\">srcset</span></code> attribute:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">%% templates/mediaclass.config</span>\n<span class=\"x\">[</span>\n<span class=\"x\">    {&quot;masthead&quot;, [</span>\n<span class=\"x\">        {width, 1600},</span>\n<span class=\"x\">        {height, 900},</span>\n<span class=\"x\">        {crop, center},</span>\n<span class=\"x\">        upscale,</span>\n<span class=\"x\">        {quality, 85},</span>\n<span class=\"x\">        {srcset, [</span>\n<span class=\"x\">            {&quot;640w&quot;, [{quality, 50}]},</span>\n<span class=\"x\">            {&quot;1200w&quot;, []},</span>\n<span class=\"x\">            {&quot;2x&quot;, []}</span>\n<span class=\"x\">        ]},</span>\n<span class=\"x\">        {sizes, &quot;100vw&quot;}</span>\n<span class=\"x\">    ]}</span>\n<span class=\"x\">].</span>\n</pre></div>\n</div>\n<p>An <code class=\"docutils literal notranslate\"><span class=\"pre\">{%</span> <span class=\"pre\">image</span> <span class=\"pre\">id</span> <span class=\"pre\">mediaclass=&quot;masthead&quot;</span> <span class=\"pre\">%}</span></code> tag in your template will output:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">&lt;img src=&#39;image-default.jpg&#39;</span>\n<span class=\"x\">    sizes=&#39;100vw&#39;</span>\n<span class=\"x\">    srcset=&#39;image-640.jpg 640w, image-1200.jpg 1200w, image-2400.jpg 2x&#39;</span>\n<span class=\"x\">    class=&quot;mediaclass-masthead&quot;&gt;</span>\n</pre></div>\n</div>\n<p>Each <code class=\"docutils literal notranslate\"><span class=\"pre\">srcset</span></code> value is either a <a class=\"reference external\" href=\"https://html.spec.whatwg.org/multipage/embedded-content.html#image-candidate-string\">width descriptor</a> or a pixel density\ndescriptor.</p>\n\n<p><ul class=\"simple\">\n<li>A width descriptor of <code class=\"docutils literal notranslate\"><span class=\"pre\">640w</span></code> will resize the image to a width of 640 pixels.</li>\n<li>A pixel density descriptor of <code class=\"docutils literal notranslate\"><span class=\"pre\">2x</span></code> will resize the image to 2 times the\noriginal media class width value, so 2 * 1600 = 3200.</li>\n</ul>\n</p>\n<p>By default, each srcset image will inherit all properties from the parent\nmedia class. So, in the example above, the 640w image will have a reduced\nquality value of 50 while the 1200w image will inherit its parent’s value of 85.</p>\n<p>So you can override the automatically determined width of 3200 for the 2x\ndescriptor by adding:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">{&quot;2x&quot;, [{width, 2000}]}</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Raw ImageMagick options</h3>\n<p>Besides the normal image processing options, as described in <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_image\"><span class=\"std std-ref\">image</span></a>,\nit is possible to add literal ImageMagick convert commands to the mediaclass\ndefinition.</p>\n<p>For example:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">{magick, &quot;-level 90%,100% +level-colors \\\\#FE7D18,\\\\#331575&quot;}</span>\n</pre></div>\n</div>\n<p>(Note that you have to double any backslashes that were needed for the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">convert</span></code> command line.)</p>\n<p>This command is given <em>as-is</em> to the ImageMagick <code class=\"docutils literal notranslate\"><span class=\"pre\">convert</span></code> command, therefore it\nis best to first try it with the command-line <code class=\"docutils literal notranslate\"><span class=\"pre\">convert</span></code> command to find the\ncorrect options and command line escapes needed.</p>\n<p>There are three variations: <code class=\"docutils literal notranslate\"><span class=\"pre\">pre_magick</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">magick</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">post_magick</span></code>.\nThe only difference is that the <code class=\"docutils literal notranslate\"><span class=\"pre\">pre_magick</span></code> is added before any other filter\nargument, <code class=\"docutils literal notranslate\"><span class=\"pre\">magick</span></code> somewhere between, and <code class=\"docutils literal notranslate\"><span class=\"pre\">post_magick</span></code> after the last filter.</p>\n<p>In this way it is possible to pre- or post-process an image before or after\nresizing.</p>\n<p>See <a class=\"reference external\" href=\"http://www.imagemagick.org/Usage/\">http://www.imagemagick.org/Usage/</a> for examples of using ImageMagick from the\ncommand line.</p>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:16Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/media.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:32Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_media",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:32Z",
+    "slug": "media",
+    "title": "Media",
+    "title_slug": "media",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1280",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1280"
+  }
+}

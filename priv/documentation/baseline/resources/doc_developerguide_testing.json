@@ -1,0 +1,163 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:25Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:25Z",
+          "object_id": {
+            "id": 1547,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_reference_cli_index",
+            "title": "Command-line",
+            "uri": "https://zotonic.com/id/1547"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1546,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1546"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_testing",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1546/testing-sites",
+    "x-default": "https://zotonic.com/docs/1546/testing-sites"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>It is possible to create end-to-end integration tests for Zotonic\nwebsites.  Tests like these are called <em>sitetests</em>. They run within\nthe Zotonic shell, starting the website under test using a special\ndatabase schema so that the main database is not affected by the\ntests.</p>\n<p>To run the sitetests for a site called <code class=\"docutils literal notranslate\"><span class=\"pre\">example</span></code>, run the following command:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z_sitetest</span><span class=\"p\">:</span><span class=\"nf\">run</span><span class=\"p\">(</span><span class=\"n\">example</span><span class=\"p\">).</span>\n</pre></div>\n</div>\n<p>This will stop the <code class=\"docutils literal notranslate\"><span class=\"pre\">example</span></code> site, create a new database schema\n(called <code class=\"docutils literal notranslate\"><span class=\"pre\">z_sitetest</span></code>), start the site (which installs all the site’s data, e.g. those defined by the <a class=\"reference internal\" href=\"/id/doc_developerguide_modules#guide-modules-versioning\"><span class=\"std std-ref\">Module versioning</span></a>,\ninto the new schema), and then scans all compiled Erlang modules for\nmodules named <code class=\"docutils literal notranslate\"><span class=\"pre\">example_*_sitetest.erl</span></code>. These found test modules are\nthen run using Erlang’s standard <a class=\"reference external\" href=\"http://erlang.org/doc/apps/eunit/chapter.html\">EUnit test framework</a>.</p>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">The filename pattern of the tests is\n<code class=\"docutils literal notranslate\"><span class=\"pre\">(sitename)_(testname)_sitetest.erl</span></code>, where <code class=\"docutils literal notranslate\"><span class=\"pre\">sitename</span></code> is the name\nof the site under test (lowercase alphanumerics + underscores), and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">testname</span></code> is a name for the test suite (lowercase alphanumerics\nonly). <code class=\"docutils literal notranslate\"><span class=\"pre\">testname</span></code> <em>cannot</em> contain any underscores.</p>\n</aside>\n<p>Besides running the tests from the Erlang shell, they can also be run\nfrom the terminal <a class=\"reference internal\" href=\"/id/doc_reference_cli_index#ref-cli\"><span class=\"std std-ref\">Command-line</span></a>:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>$ zotonic sitetest example\n</pre></div>\n</div>\n<p>This is convenient for integration into CI systems.</p>\n<div class=\"section\">\n<h2>Example <code class=\"docutils literal notranslate\"><span class=\"pre\">sitetest</span></code> module</h2>\n<p>Put the following inside the <code class=\"docutils literal notranslate\"><span class=\"pre\">example</span></code> site under the filename\n<code class=\"docutils literal notranslate\"><span class=\"pre\">tests/example_administrator_sitetest.erl</span></code>:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">example_administrator_sitetest</span><span class=\"p\">).</span>\n<span class=\"p\">-</span><span class=\"ni\">compile</span><span class=\"p\">(</span><span class=\"n\">export_all</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;eunit/include/eunit.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"nf\">sudo_context</span><span class=\"p\">()</span> <span class=\"o\">-&gt;</span>\n  <span class=\"nn\">z_acl</span><span class=\"p\">:</span><span class=\"nf\">sudo</span><span class=\"p\">(</span><span class=\"nn\">z</span><span class=\"p\">:</span><span class=\"nf\">c</span><span class=\"p\">(</span><span class=\"n\">example</span><span class=\"p\">)).</span>\n\n<span class=\"nf\">administrator_name_test</span><span class=\"p\">()</span> <span class=\"o\">-&gt;</span>\n  <span class=\"o\">?</span><span class=\"n\">assertEqual</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Site Administrator&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nn\">m_rsc</span><span class=\"p\">:</span><span class=\"nf\">p</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">title</span><span class=\"p\">,</span> <span class=\"n\">sudo_context</span><span class=\"p\">())),</span>\n  <span class=\"n\">ok</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Test Driven Development</h2>\n<p>Running the sitetests is integrated into the filewatcher hooks. As\nsoon as you edit a <code class=\"docutils literal notranslate\"><span class=\"pre\">*_sitetest.erl</span></code> file, all tests in that specific\nsitetest file will be executed.</p>\n<p>While developing a site it is often handy to continuously run the\ntests while you are developing the site.</p>\n<p>To establish this, you can call <code class=\"docutils literal notranslate\"><span class=\"pre\">z_sitetest:watch(site)</span></code> to start\nwatching all Erlang files inside the site under development. When the\nfiletest is watching a site, all filetests are triggered as soon as\nany Erlang module inside your site is being recompiled.</p>\n<p>To stop the automatic test running again, call\n<code class=\"docutils literal notranslate\"><span class=\"pre\">z_sitetest:unwatch(site)</span></code>.</p>\n</div>\n<div class=\"section\">\n<h2>Example testing output</h2>\n<p>Running the test command <code class=\"docutils literal notranslate\"><span class=\"pre\">z_sitetest:run(example).</span></code>, will produce output similar to the following:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">(</span><span class=\"n\">zotonic001</span><span class=\"p\">@</span><span class=\"n\">host</span><span class=\"p\">)</span><span class=\"mi\">33</span><span class=\"o\">&gt;</span> <span class=\"nn\">z_sitetest</span><span class=\"p\">:</span><span class=\"nf\">run</span><span class=\"p\">(</span><span class=\"n\">example</span><span class=\"p\">).</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">18</span><span class=\"p\">.</span><span class=\"mi\">162</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"nv\">Site</span> <span class=\"nn\">stopped</span><span class=\"p\">:</span> <span class=\"n\">example</span> <span class=\"p\">(</span><span class=\"o\">&lt;</span><span class=\"mi\">0</span><span class=\"p\">.</span><span class=\"mi\">17763</span><span class=\"p\">.</span><span class=\"mi\">0</span><span class=\"o\">&gt;</span><span class=\"p\">)</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">18</span><span class=\"p\">.</span><span class=\"mi\">682</span> <span class=\"p\">[</span><span class=\"n\">warning</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"nv\">Database</span> <span class=\"n\">connection</span> <span class=\"nn\">failure</span><span class=\"p\">:</span> <span class=\"n\">noschema</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">18</span><span class=\"p\">.</span><span class=\"mi\">688</span> <span class=\"p\">[</span><span class=\"n\">warning</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"nv\">Creating</span> <span class=\"n\">schema</span> <span class=\"s\">&quot;z_sitetest&quot;</span> <span class=\"n\">in</span> <span class=\"n\">database</span> <span class=\"s\">&quot;example&quot;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">18</span><span class=\"p\">.</span><span class=\"mi\">693</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"nv\">Retrying</span> <span class=\"n\">install</span> <span class=\"n\">check</span> <span class=\"k\">after</span> <span class=\"n\">db</span> <span class=\"n\">creation</span><span class=\"p\">.</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">18</span><span class=\"p\">.</span><span class=\"mi\">702</span> <span class=\"p\">[</span><span class=\"n\">warning</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"nv\">Installing</span> <span class=\"n\">database</span> <span class=\"n\">with</span> <span class=\"n\">db</span> <span class=\"nn\">options</span><span class=\"p\">:</span> <span class=\"p\">[{</span><span class=\"n\">dbschema</span><span class=\"p\">,</span><span class=\"s\">&quot;z_sitetest&quot;</span><span class=\"p\">},{</span><span class=\"n\">dbdatabase</span><span class=\"p\">,</span><span class=\"s\">&quot;example&quot;</span><span class=\"p\">},{</span><span class=\"n\">dbhost</span><span class=\"p\">,</span><span class=\"s\">&quot;localhost&quot;</span><span class=\"p\">},{</span><span class=\"n\">dbport</span><span class=\"p\">,</span><span class=\"mi\">5432</span><span class=\"p\">},{</span><span class=\"n\">dbuser</span><span class=\"p\">,</span><span class=\"s\">&quot;zotonic&quot;</span><span class=\"p\">}]</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">226</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"nn\">example</span><span class=\"p\">:</span> <span class=\"nv\">Install</span> <span class=\"n\">start</span><span class=\"p\">.</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">226</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"nv\">Inserting</span> <span class=\"n\">categories</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">257</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"nv\">Inserting</span> <span class=\"n\">base</span> <span class=\"n\">resources</span> <span class=\"p\">(</span><span class=\"n\">admin</span><span class=\"p\">,</span> <span class=\"n\">etc</span><span class=\"p\">.)</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">264</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"nv\">Inserting</span> <span class=\"n\">username</span> <span class=\"n\">for</span> <span class=\"n\">the</span> <span class=\"n\">admin</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">267</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"nv\">Inserting</span> <span class=\"n\">predicates</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">290</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"nn\">example</span><span class=\"p\">:</span> <span class=\"nv\">Install</span> <span class=\"n\">done</span><span class=\"p\">.</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">299</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"nv\">Site</span> <span class=\"nn\">started</span><span class=\"p\">:</span> <span class=\"n\">example</span> <span class=\"p\">(</span><span class=\"o\">&lt;</span><span class=\"mi\">0</span><span class=\"p\">.</span><span class=\"mi\">22082</span><span class=\"p\">.</span><span class=\"mi\">0</span><span class=\"o\">&gt;</span><span class=\"p\">)</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">575</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">category</span> <span class=\"n\">&#39;menu&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">604</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">menu</span> <span class=\"n\">&#39;main_menu&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">723</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">category</span> <span class=\"n\">&#39;content_group&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">755</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">content_group</span> <span class=\"n\">&#39;system_content_group&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">775</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">content_group</span> <span class=\"n\">&#39;default_content_group&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">893</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">category</span> <span class=\"n\">&#39;acl_user_group&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">19</span><span class=\"p\">.</span><span class=\"mi\">959</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">category</span> <span class=\"n\">&#39;acl_collaboration_group&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">20</span><span class=\"p\">.</span><span class=\"mi\">001</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">predicate</span> <span class=\"n\">&#39;hasusergroup&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">20</span><span class=\"p\">.</span><span class=\"mi\">033</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">predicate</span> <span class=\"n\">&#39;hascollabmember&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">20</span><span class=\"p\">.</span><span class=\"mi\">044</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">predicate</span> <span class=\"n\">&#39;hascollabmanager&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">20</span><span class=\"p\">.</span><span class=\"mi\">059</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">acl_user_group</span> <span class=\"n\">&#39;acl_user_group_anonymous&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">20</span><span class=\"p\">.</span><span class=\"mi\">071</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">acl_user_group</span> <span class=\"n\">&#39;acl_user_group_members&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">20</span><span class=\"p\">.</span><span class=\"mi\">079</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">acl_user_group</span> <span class=\"n\">&#39;acl_user_group_editors&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">20</span><span class=\"p\">.</span><span class=\"mi\">086</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">acl_user_group</span> <span class=\"n\">&#39;acl_user_group_managers&#39;</span>\n<span class=\"mi\">15</span><span class=\"p\">:</span><span class=\"mi\">45</span><span class=\"p\">:</span><span class=\"mi\">20</span><span class=\"p\">.</span><span class=\"mi\">393</span> <span class=\"p\">[</span><span class=\"n\">info</span><span class=\"p\">]</span> <span class=\"p\">[</span><span class=\"n\">example</span><span class=\"p\">]</span> <span class=\"n\">info</span> <span class=\"p\">@</span> <span class=\"nn\">z_datamodel</span><span class=\"p\">:</span><span class=\"mi\">169</span>  <span class=\"nv\">Creating</span> <span class=\"n\">new</span> <span class=\"n\">category</span> <span class=\"n\">&#39;admin_content_query&#39;</span>\n<span class=\"o\">========================</span> <span class=\"nv\">EUnit</span> <span class=\"o\">========================</span>\n<span class=\"nn\">example_testone_sitetest</span><span class=\"p\">:</span> <span class=\"n\">administrator_name_test</span> <span class=\"p\">(</span><span class=\"n\">module</span> <span class=\"n\">&#39;example_administrator_sitetest&#39;</span><span class=\"p\">)...[</span><span class=\"mi\">0</span><span class=\"p\">.</span><span class=\"mi\">022</span> <span class=\"n\">s</span><span class=\"p\">]</span> <span class=\"n\">ok</span>\n<span class=\"o\">=======================================================</span>\n  <span class=\"nv\">Test</span> <span class=\"n\">passed</span><span class=\"p\">.</span>\n<span class=\"n\">ok</span>\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:25Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/testing.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:31Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_testing",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:31Z",
+    "slug": "testing-sites",
+    "title": "Testing sites",
+    "title_slug": "testing-sites",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1546",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1546"
+  }
+}

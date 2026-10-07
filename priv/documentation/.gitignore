@@ -1,0 +1,11 @@
+# Derived previews; regenerate with each guide's prepare.py.
+prepared/
+editor/prepared/
+developer/prepared/
+administration/prepared/
+# Local site IDs and execution reports are not portable fixtures.
+baseline/local-*.json
+
+# Python validation caches.
+__pycache__/
+review/__pycache__/

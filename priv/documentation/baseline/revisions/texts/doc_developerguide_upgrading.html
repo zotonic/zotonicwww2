@@ -1,0 +1,342 @@
+<div class="section">
+<p>These notes list the most important changes between Zotonic versions. Please read these notes carefully when upgrading to a new major Zotonic version.</p>
+<div class="section">
+<h2>Upgrading from 0.x to 1.0</h2>
+<p>Before upgrading to 1.0, be sure to check the upgrade notes for the latest 0.x version, especially if you are upgrading from before 0.12. See <a class="reference external" href="https://github.com/zotonic/zotonic/blob/0.x/doc/developer-guide/upgrading.rst">the upgrade notes on 0.x</a> for more information.</p>
+<div class="section">
+<h3>Erlang/OTP</h3>
+<p>This is a historical migration guide from Zotonic 0.x. For current development use Erlang/OTP 28 and the current installation requirements; do not interpret old-version examples below as installation advice.</p>
+<p>Zotonic modules are now separately published as packages to <a class="reference external" href="https://hex.pm">Hex.pm</a>, which allows you to build your own Zotonic distribution and to have each of your sites depend on the Zotonic modules (and other Erlang packages) it needs.</p>
+<p>This was done by restructuring Zotonic into an <a class="reference external" href="https://www.rebar3.org/v3/docs/from-rebar-2x-to-rebar3#section-required-directory-structure">umbrella application</a>. The <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory was moved to new <code class="docutils literal notranslate"><span class="pre">zotonic_core</span></code> app.</p>
+<p>Before:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="p">-</span><span class="ni">include_lib</span><span class="p">(</span><span class="s">&quot;zotonic.hrl&quot;</span><span class="p">).</span>
+</pre>
+</div>
+</div>
+<p>After:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="p">-</span><span class="ni">include_lib</span><span class="p">(</span><span class="s">&quot;zotonic_core/include/zotonic.hrl&quot;</span><span class="p">).</span>
+</pre>
+</div>
+</div>
+<p>The HTTP and SMTP listeners were moved to a new <code class="docutils literal notranslate"><span class="pre">zotonic_listen_http</span></code> and <code class="docutils literal notranslate"><span class="pre">zotonic_listen_smtp</span></code> app respectively.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">zotonic_launcher</span></code> app was introduced for starting Zotonic.</p>
+<p>All built-in modules, the testsandbox and the status sites are now to be found in the <code class="docutils literal notranslate"><span class="pre">apps/</span></code> directory.</p>
+</div>
+<div class="section">
+<h3>Docker</h3>
+<p>Only the <a class="reference external" href="https://hub.docker.com/r/zotonic/zotonic-dev/">zotonic/zotonic-dev</a> image is now available and automatically updated.</p>
+<p>We have decided to drop the other Docker images as in practice everybody was creating their own production images anyway.</p>
+<p>All files used by the Docker container are now placed in the <code class="file docutils literal notranslate"><span class="pre">docker-data</span></code> directory.</p>
+<p>See for more information <a class="reference internal" href="/id/doc_developerguide_docker#guide-docker"><span class="std std-ref">Docker</span></a>.</p>
+</div>
+<div class="section">
+<h3>Sites and modules are now OTP apps</h3>
+<p>Both sites and modules now follow the standard <a class="reference external" href="http://erlang.org/doc/design_principles/applications.html#id82228">OTP directory structure</a>, which means all Erlang files should reside in <code class="file docutils literal notranslate"><span class="pre">src/</span></code> and all other files (templates, dispatch rules etc.) in <code class="file docutils literal notranslate"><span class="pre">priv</span></code>/.</p>
+<p>Before:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="n">yoursite</span><span class="o">/</span>
+    <span class="n">models</span><span class="o">/</span>
+        <span class="n">m_some_model</span><span class="p">.</span><span class="n">erl</span>
+    <span class="n">templates</span><span class="o">/</span>
+        <span class="n">some_template</span><span class="p">.</span><span class="n">tpl</span>
+    <span class="n">yoursite</span><span class="p">.</span><span class="n">erl</span>
+    <span class="n">config</span>
+    <span class="p">...</span>
+</pre>
+</div>
+</div>
+<p>After:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="n">yoursite</span><span class="o">/</span>
+    <span class="n">priv</span><span class="o">/</span>
+        <span class="n">zotonic_site</span><span class="p">.</span><span class="n">config</span>
+        <span class="n">templates</span><span class="o">/</span><span class="n">some_template</span><span class="p">.</span><span class="n">tpl</span>
+        <span class="p">...</span>
+    <span class="n">src</span><span class="o">/</span>
+        <span class="n">models</span><span class="o">/</span><span class="n">m_some_model</span><span class="p">.</span><span class="n">erl</span>
+        <span class="n">yoursite</span><span class="p">.</span><span class="n">erl</span>
+        <span class="n">yoursite</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">src</span>
+        <span class="p">...</span>
+    <span class="n">rebar</span><span class="p">.</span><span class="n">config</span>
+</pre>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">user_sites_dir</span></code> and <code class="docutils literal notranslate"><span class="pre">user_modules_dir</span></code> configurations have been removed. The default location for sites and modules is now the <code class="docutils literal notranslate"><span class="pre">apps_user</span></code> directory. With the <code class="docutils literal notranslate"><span class="pre">ZOTONIC_APPS</span></code> environment variable you can define an additional source directory outside the Zotonic umbrella <code class="docutils literal notranslate"><span class="pre">apps</span></code> directory.</p>
+<p>To upgrade, move your <code class="docutils literal notranslate"><span class="pre">user/modules</span></code> and <code class="docutils literal notranslate"><span class="pre">user/sites</span></code> applications to the <code class="docutils literal notranslate"><span class="pre">apps_user</span></code> directory.</p>
+<p>Also ensure that module directories are renamed, for example <code>mod_mymod</code> becomes:</p>
+<pre>zotonic_mod_mymod<br />    src/mod_mymod.erl<br />    src/zotonic_mod_mymod.app.src</pre>
+</div>
+<div class="section">
+<p>Sites do not need to be renamed, though they <em>must</em> have the <code>priv/zotonic_site.config</code> file.</p>
+<h3>Resources</h3>
+<p>All resources are now <em>maps</em> with <em>binary</em> keys. Use of the previous 0.x proplists is deprecated, the fetch routines will always return maps, the update routines will convert property lists to maps before updating.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">name_to_id_check/2</span></code> functions were removed from <code class="docutils literal notranslate"><span class="pre">m_category</span></code>, <code class="docutils literal notranslate"><span class="pre">m_predicate</span></code> and <code class="docutils literal notranslate"><span class="pre">m_rsc</span></code>.</p>
+<p>Before:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="nv">Id</span> <span class="o">=</span> <span class="nn">m_rsc</span><span class="p">:</span><span class="nf">name_to_id_check</span><span class="p">(</span><span class="nv">Value</span><span class="p">,</span> <span class="nv">Context</span><span class="p">).</span>
+</pre>
+</div>
+</div>
+<p>After:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="p">{</span><span class="n">ok</span><span class="p">,</span> <span class="nv">Id</span><span class="p">}</span> <span class="o">=</span> <span class="nn">m_rsc</span><span class="p">:</span><span class="nf">name_to_id</span><span class="p">(</span><span class="nv">Value</span><span class="p">,</span> <span class="nv">Context</span><span class="p">).</span>
+</pre>
+</div>
+</div>
+<p>Inserting or deleting an edge no longer modifies the last modified and modifier properties of the edge’s subject resource.</p>
+<p>There are extra access controls on rsc properties. The <code class="docutils literal notranslate"><span class="pre">privacy</span></code> property controls what is visible for whom.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">m_rsc:get_visible/2</span></code> has been removed. The function <code class="docutils literal notranslate"><span class="pre">m_rsc:get/2</span></code> now checks on visibility of properties. To fetch all properties, either use <code class="docutils literal notranslate"><span class="pre">m_rsc:get_raw/2</span></code> or call <code class="docutils literal notranslate"><span class="pre">m_rsc:get/2</span></code> as a administrator level user.</p>
+</div>
+<div class="section">
+<h3>Media</h3>
+<p>The medium record is now a <em>map</em> with <em>binary</em> keys. Use of the previous 0.x proplists is deprecated, the fetch routines will always return maps, the update routines will convert property lists to maps before updating.</p>
+</div>
+<div class="section">
+<h3>ACL</h3>
+<p>mod_acl_adminonly was replaced by <a class="reference internal" href="/id/doc_module_mod_acl_user_groups"><span class="std std-ref">mod_acl_user_groups</span></a>. To create users that have access to the admin, add them to the ‘Managers’ user group.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">visible_for</span></code> property semantics and the the <code class="docutils literal notranslate"><span class="pre">acl_can_see</span></code> notification were removed. You can get similar functionality by adding users to user and collaboration groups. These are provided by mod_acl_user_groups. The <code class="docutils literal notranslate"><span class="pre">visible_for</span></code> <code class="docutils literal notranslate"><span class="pre">rsc</span></code> table property has been kept for BC. So if you’re using mod_acl_adminonly, mod_acl_simple_roles or a custom ACL module you can still rely on the property.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">acl_rsc_update_check</span></code> notification was removed.</p>
+</div>
+<div class="section">
+<h3>Authentication</h3>
+<p>All auth notifications values were converted to records.</p>
+<p>Before:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="nf">observe_auth_logon</span><span class="p">(</span><span class="n">auth_logon</span><span class="p">,</span> <span class="nv">Context</span><span class="p">,</span> <span class="p">_</span><span class="nv">Context</span><span class="p">)</span> <span class="o">-&gt;</span>
+</pre>
+</div>
+</div>
+<p>After:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="nf">observe_auth_logon</span><span class="p">(</span><span class="nl">#auth_logon</span><span class="p">{},</span> <span class="nv">Context</span><span class="p">,</span> <span class="p">_</span><span class="nv">Context</span><span class="p">)</span> <span class="o">-&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="section">
+<h3>Configuration</h3>
+<p>Port configuration <a class="reference internal" href="/id/doc_developerguide_deployment_env#guide-deployment-env"><span class="std std-ref">environment variables</span></a> were changed.</p>
+<p>Before:</p>
+<div class="highlight-bash notranslate">
+<div class="highlight">
+<pre><span class="nv">ZOTONIC_PORT</span><span class="o">=</span><span class="m">80</span> <span class="nv">ZOTONIC_SSL_PORT</span><span class="o">=</span><span class="m">443</span> bin/zotonic start
+</pre>
+</div>
+</div>
+<p>After:</p>
+<div class="highlight-bash notranslate">
+<div class="highlight">
+<pre><span class="nv">ZOTONIC_LISTEN_PORT</span><span class="o">=</span><span class="m">80</span> <span class="nv">ZOTONIC_SSL_LISTEN_PORT</span><span class="o">=</span><span class="m">443</span> bin/zotonic start
+</pre>
+</div>
+</div>
+<p>Black/white-lists are now called block/allow-lists.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">proxy_whitelist</span></code> is now <code class="docutils literal notranslate"><span class="pre">proxy_allowlist</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">smtp_dnsbl</span></code> is now <code class="docutils literal notranslate"><span class="pre">smtp_dns_blocklist</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">smtp_dnswl</span></code> is now <code class="docutils literal notranslate"><span class="pre">smtp_dns_allowlist</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ip_whitelist</span></code> is now <code class="docutils literal notranslate"><span class="pre">ip_allowlist</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ip_whitelist_system_management</span></code> is now <code class="docutils literal notranslate"><span class="pre">ip_allowlist_system_management</span></code></li>
+</ul>
+<p>If an IP is on DNS allowlist then <code class="docutils literal notranslate"><span class="pre">z_email_dnsbl:status/2</span></code> returns now <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">allowed}</span></code>.</p>
+</div>
+<div class="section">
+<h3>Errors</h3>
+<p><code class="docutils literal notranslate"><span class="pre">m_edge</span></code>, <code class="docutils literal notranslate"><span class="pre">m_identity</span></code>, <code class="docutils literal notranslate"><span class="pre">m_rsc</span></code>, <code class="docutils literal notranslate"><span class="pre">m_rsc_import</span></code> and <code class="docutils literal notranslate"><span class="pre">m_rsc_update</span></code> no longer throw exceptions. Instead, they return an <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">atom()}</span></code> tuple on failure.</p>
+<p>Before:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="nn">m_edge</span><span class="p">:</span><span class="nf">insert</span><span class="p">(</span><span class="nv">Id</span><span class="p">,</span> <span class="n">this_predicate_does_not_exist</span><span class="p">,</span> <span class="nv">UserId</span><span class="p">,</span> <span class="nv">Context</span><span class="p">).</span>
+<span class="c">%% crashes with an exception</span>
+</pre>
+</div>
+</div>
+<p>After:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="nn">m_edge</span><span class="p">:</span><span class="nf">insert</span><span class="p">(</span><span class="nv">Id</span><span class="p">,</span> <span class="n">this_predicate_does_not_exist</span><span class="p">,</span> <span class="nv">UserId</span><span class="p">,</span> <span class="nv">Context</span><span class="p">).</span>
+<span class="c">%% fails silently, so to make it crash:</span>
+
+<span class="p">{</span><span class="n">ok</span><span class="p">,</span> <span class="p">_</span><span class="nv">EdgeId</span><span class="p">}</span> <span class="o">=</span> <span class="nn">m_edge</span><span class="p">:</span><span class="nf">insert</span><span class="p">(</span><span class="nv">Id</span><span class="p">,</span> <span class="n">this_predicate_does_not_exist</span><span class="p">,</span> <span class="nv">UserId</span><span class="p">,</span> <span class="nv">Context</span><span class="p">).</span>
+
+<span class="c">%% alternatively:</span>
+<span class="k">case</span> <span class="nn">m_edge</span><span class="p">:</span><span class="nf">insert</span><span class="p">(</span><span class="nv">Id</span><span class="p">,</span> <span class="n">this_predicate_does_not_exist</span><span class="p">,</span> <span class="nv">UserId</span><span class="p">,</span> <span class="nv">Context</span><span class="p">)</span> <span class="k">of</span>
+    <span class="p">{</span><span class="n">ok</span><span class="p">,</span> <span class="p">_</span><span class="nv">EdgeId</span><span class="p">}</span> <span class="o">-&gt;</span>
+        <span class="s">&quot;Everything fine!&quot;</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">error</span><span class="p">,</span> <span class="nv">Reason</span><span class="p">}</span> <span class="o">-&gt;</span>
+        <span class="s">&quot;Something went wrong!&quot;</span>
+<span class="k">end</span><span class="p">.</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="section">
+<h3>Logging</h3>
+<aside class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="/id/doc_cookbook_logstash#cookbook-logstash"><span class="std std-ref">Logging to Logstash</span></a></p>
+</aside>
+<p>The <code class="docutils literal notranslate"><span class="pre">lager</span></code> logger has been removed and replaced with the standard <a class="reference external" href="https://www.erlang.org/doc/apps/kernel/logger_chapter.html">erlang logger application</a>.</p>
+<p>For this to work:</p>
+<ul class="simple">
+<li>Add the logger configuration to the <code class="docutils literal notranslate"><span class="pre">erlang.config</span></code> file. See <a class="reference internal" href="/id/doc_developerguide_logging#dev-logging"><span class="std std-ref">Logging</span></a> for an example.</li>
+<li>Remove the <code class="docutils literal notranslate"><span class="pre">lager</span></code> definition from the erlang.config file.</li>
+</ul>
+</div>
+<div class="section">
+<h3>Export</h3>
+<p>Modules mod_atom and mod_atom_feed were removed. You can export data in a variety of formats using <a class="reference internal" href="/id/doc_module_mod_export"><span class="std std-ref">mod_export</span></a>.</p>
+</div>
+<div class="section">
+<h3>JSON</h3>
+<p>Mochijson structures replaced with Erlang maps.</p>
+<p>Use the Zotonic JSON wrapper through <code class="docutils literal notranslate"><span class="pre">z_json:encode/1</span></code> and <code class="docutils literal notranslate"><span class="pre">z_json:decode/1</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">{trans,</span> <span class="pre">_}</span></code> tuples should now be unpacked by the client, before calling <code class="docutils literal notranslate"><span class="pre">z_json:encode/1</span></code> (previously <code class="docutils literal notranslate"><span class="pre">z_json:to_mochijson/2</span></code>).</p>
+</div>
+<div class="section">
+<h3>Removed or deprecated functions</h3>
+<p>Deprecated functions have been removed from <code class="docutils literal notranslate"><span class="pre">z_utils</span></code>. Use the <code class="docutils literal notranslate"><span class="pre">z_url</span></code> and <code class="docutils literal notranslate"><span class="pre">z_json</span></code> modules instead.</p>
+<p>Deprecated function <code class="docutils literal notranslate"><span class="pre">z_utils:name_for_host/2</span></code> has been removed; use <code class="docutils literal notranslate"><span class="pre">z_utils:name_for_site/2</span></code> instead.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">stream</span> <span class="pre">%}</span></code> tag was removed, use MQTT websocket instead</p>
+<p>Removed older TinyMCE versions 3.5.0 and 4.2.4.</p>
+<p><code class="docutils literal notranslate"><span class="pre">z_utils:combine/2</span></code> is removed, use <code class="docutils literal notranslate"><span class="pre">lists:join/2</span></code> instead.</p>
+<p><code class="docutils literal notranslate"><span class="pre">z_utils:combine_defined/2</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">z_utils:join_defined/2</span></code>.</p>
+</div>
+<div class="section">
+<h3>Module schema and data initialization</h3>
+<p>The <cite>#datamodel.data</cite> field has been removed. The notifier <cite>#manage_data</cite> has also been removed.</p>
+<p>Now the call to (the optional) <cite>manage_schema/2</cite> will be followed by a call to <cite>manage_data/2</cite>. Note that <cite>manage_data</cite> will be called if and only if you have a <cite>manage_schema/2</cite> function exported (and the <cite>-mod_schema(..)</cite> version changes or the module is installed).</p>
+<p>The <cite>manage_schema/2</cite> function is called inside a transaction. The <cite>manage_data/2</cite> function is called after that transaction and also after all (optional) <cite>#datamodel</cite> changes are applied.</p>
+</div>
+<div class="section">
+<h3>Templates</h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">use_absolute_url</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">image</span></code> and <code class="docutils literal notranslate"><span class="pre">lib</span></code> tags was renamed to <code class="docutils literal notranslate"><span class="pre">absolute_url</span></code>.</p>
+<p>Templates are now stored in <code class="file docutils literal notranslate"><span class="pre">yoursite/priv/templates/</span></code> instead of <code class="file docutils literal notranslate"><span class="pre">yoursite/templates/</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">maxage</span></code> caching argument was renamed to <code class="docutils literal notranslate"><span class="pre">max_age</span></code>.</p>
+<p>The models have now extra ACL checks.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">m.config</span></code>, <code class="docutils literal notranslate"><span class="pre">m.site</span></code> and <code class="docutils literal notranslate"><span class="pre">m.sysconfig</span></code> models are only accessible as administrator. Use the models <em>owning</em> the various settings to access the configurations.</p>
+<p>Exception is that the hostname and site-title information is publicly accessible using <code class="docutils literal notranslate"><span class="pre">m.site</span></code>.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">m.config.site.title.value</span></code> is now <code class="docutils literal notranslate"><span class="pre">m.site.title</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">m.config.mod_editor_tinymce.version.value</span></code> is now <code class="docutils literal notranslate"><span class="pre">m.editor_tinymce.version</span></code></li>
+</ul>
+<p>Check the various models of the modules for the new lookups.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">catinclude</span></code> for a resource with an unique name now looks for (assuming the unique name is <code class="docutils literal notranslate"><span class="pre">my_unique_name</span></code> and the template is <code class="docutils literal notranslate"><span class="pre">page.tpl</span></code>): <code class="docutils literal notranslate"><span class="pre">page.name.my_unique_name.tpl</span></code> and <strong>not</strong> anymore for <code class="docutils literal notranslate"><span class="pre">page.my_unique_name.tpl</span></code>. Rename your templates accordingly.</p>
+<p>The category property <code class="docutils literal notranslate"><span class="pre">feature_show_address</span></code> property is now called <code class="docutils literal notranslate"><span class="pre">is_feature_show_address</span></code>. All feature properties should be called <code class="docutils literal notranslate"><span class="pre">is_feature_...</span></code> to obtain a proper boolean value after the category edit form is saved.</p>
+</div>
+<div class="section">
+<h3>Port, proxies and SSL certificates</h3>
+<p>SSL/https support has been completely refactored.</p>
+<ul class="simple">
+<li>SSL self signed certificates have been moved into the core</li>
+<li>New modules <a class="reference internal" href="/id/doc_module_mod_ssl_ca"><span class="std std-ref">mod_ssl_ca</span></a> and <a class="reference internal" href="/id/doc_module_mod_ssl_letsencrypt"><span class="std std-ref">mod_ssl_letsencrypt</span></a></li>
+<li>Deleted module <code class="docutils literal notranslate"><span class="pre">mod_ssl</span></code></li>
+<li>Port configuration has been changed, see <a class="reference internal" href="/id/doc_developerguide_configuration_port_ssl_configuration#ref-port-ssl-configuration"><span class="std std-ref">Port configurations</span></a></li>
+<li>If you have a <code class="docutils literal notranslate"><span class="pre">priv/ssl</span></code> directory in your site, rename it to <code class="docutils literal notranslate"><span class="pre">priv/security</span></code></li>
+</ul>
+<p>For an overview of https support, see <a class="reference internal" href="/id/doc_developerguide_deployment_https#https-support"><span class="std std-ref">HTTPS support</span></a></p>
+</div>
+<div class="section">
+<h3>Erlang code, Controllers, Event handlers</h3>
+<p>If you made a site using custom controllers or request handling then you need to adapt your Erlang code. Zotonic is now using Cowboy under the hood for the http handling, previously this was MochiWeb.</p>
+<p>The following changes are made:</p>
+<ul class="simple">
+<li>Binaries for all request variables and arguments.</li>
+<li>Events use binaries for strings in templates.</li>
+<li>Cookies are binaries.</li>
+<li>Request headers are binaries.</li>
+<li>Controllers initialization callbacks are removed.</li>
+<li>Controller callbacks have a single <em>Context</em> argument.</li>
+<li>Custom websocket handlers are removed, implement your own using Cowboy.</li>
+<li>The include file <code class="docutils literal notranslate"><span class="pre">include/controller_webmachine_helper.hrl</span></code> is removed (and not needed anymore).</li>
+</ul>
+</div>
+<div class="section">
+<h3>Binaries for request variables</h3>
+<p>If you request an argument with <code class="docutils literal notranslate"><span class="pre">z_context:get_q/2</span></code> and related functions then you might need to adapt some code. Requesting a query argument using an <em>atom</em> or <em>binary</em> will return a <em>binary</em>. Requesting with a <em>string</em> returns a string, this is for backwards compatibility. The function <code class="docutils literal notranslate"><span class="pre">get_q_all</span></code> will return all arguments as binaries.</p>
+<p>In short:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">z_context:get_q(&lt;&lt;&quot;arg&quot;&gt;&gt;,</span> <span class="pre">Context)</span></code> returns <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&quot;value&quot;&gt;&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">z_context:get_q(arg,</span> <span class="pre">Context)</span></code> returns <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&quot;value&quot;&gt;&gt;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">z_context:get_q(&quot;arg&quot;,</span> <span class="pre">Context)</span></code> returns <code class="docutils literal notranslate"><span class="pre">&quot;value&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">z_context:get_q_all(Context)</span></code> returns <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">{&lt;&lt;&quot;arg&quot;&gt;&gt;,&lt;&lt;&quot;value&quot;&gt;&gt;},</span> <span class="pre">...]</span></code></li>
+</ul>
+<p>The binary name is the preferred way to request arguments.</p>
+</div>
+<div class="section">
+<h3>Events like submit, postback and postback_notify</h3>
+<p>Strings in the <code class="docutils literal notranslate"><span class="pre">#submit{}</span></code>, <code class="docutils literal notranslate"><span class="pre">#postback{}</span></code> and <code class="docutils literal notranslate"><span class="pre">#postback_notify{}</span></code> events are now binaries. This is especially the case for the message, trigger, target, and form fields.</p>
+<p>For example, replace <code class="docutils literal notranslate"><span class="pre">#submit{message=&quot;hello&quot;}</span></code> with <code class="docutils literal notranslate"><span class="pre">#submit{message</span> <span class="pre">=</span> <span class="pre">&lt;&lt;&quot;hello&quot;&gt;&gt;}</span></code>. Watch the space between <code class="docutils literal notranslate"><span class="pre">=</span></code> and the <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&quot;...&quot;&gt;&gt;</span></code>, without the space you will get a syntax error.</p>
+</div>
+<div class="section">
+<h3>Cookies</h3>
+<p>Use binaries for fetching and setting cookie names and values, don’t use strings.</p>
+</div>
+<div class="section">
+<h3>Request and response headers</h3>
+<p>All request and response headers now use binary names and values, do not use strings.</p>
+<p>The request and response header names are normalized to lowercase names, so always use <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&quot;x-my-header&quot;&gt;&gt;</span></code> and <em>never</em> <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&quot;X-My-Header&quot;&gt;&gt;</span></code>.</p>
+<p>The header values are passed as-is, and they are always binaries.</p>
+</div>
+<div class="section">
+<h3>Controllers</h3>
+<p>The controllers are simplified and will need some adaptations.</p>
+<p>The following callbacks are removed:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">init</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ping</span></code></li>
+</ul>
+<p>Most resource callbacks now have a single <em>Context</em> argument; <code>process/4</code> receives method, accepted/provided content types and context. the <em>ReqData</em> argument has been removed. There is no need anymore for the <code class="docutils literal notranslate"><span class="pre">?WM_REQ</span></code> and <code class="docutils literal notranslate"><span class="pre">?WM_REPLY</span></code> macros, and they have been removed.</p>
+<p>Other controller changes changes are:</p>
+<ul class="simple">
+<li>Content types are now binaries in <cite>content_types_accepted</cite> and <cite>content_types_provided</cite></li>
+<li>Character sets are now binaries in <cite>charsets_provided</cite></li>
+<li>Methods are now binaries in <cite>allowed_methods</cite> and <cite>known_methods</cite></li>
+<li>Encodings are now binaries in <cite>content_encodings_provided</cite></li>
+<li>The return value of <cite>generate_etag</cite> must be a binary</li>
+</ul>
+</div>
+<div class="section">
+<h3>Search</h3>
+<p>Search argument <code class="docutils literal notranslate"><span class="pre">authoritative</span></code> was renamed to <code class="docutils literal notranslate"><span class="pre">is_authoritative</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">custompivot</span></code> has been removed. Pivot fields can now directly be addressed with <code class="docutils literal notranslate"><span class="pre">pivot.mypivotname.column</span></code>. Pivot tables are now joined automatically, removing the need for the <code class="docutils literal notranslate"><span class="pre">custompivot</span></code> search argument.</p>
+</div>
+<div class="section">
+<h3>Notifications</h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">admin_menu</span></code> notifications is now a tuple: <code class="docutils literal notranslate"><span class="pre">#admin_menu{}</span></code>. Update the <code class="docutils literal notranslate"><span class="pre">observe_admin_menu</span></code> functions in sites and modules.</p>
+</div>
+<div class="section">
+<h3>Modules</h3>
+<p>Moved <code class="docutils literal notranslate"><span class="pre">mod_base_site</span></code> to <a class="reference external" href="https://github.com/zotonic/zotonic_mod_base_site">https://github.com/zotonic/zotonic_mod_base_site</a></p>
+</div>
+<div class="section">
+<h3>Menus</h3>
+<p>The storage format of the <cite>menu</cite> property is changed. Previously it was stored as a list of tuples:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="p">{</span><span class="mi">1234</span><span class="p">,</span> <span class="p">[</span> <span class="p">{</span><span class="mi">5678</span><span class="p">,</span> <span class="p">[</span> <span class="p">...</span> <span class="p">]},</span> <span class="p">...}</span>
+</pre>
+</div>
+</div>
+<p>This doesn’t allow for conversion to JSON, so the structure has been changed to use records:</p>
+<div class="highlight-erlang notranslate">
+<div class="highlight">
+<pre><span class="nl">#rsc_tree</span><span class="p">{</span> <span class="n">id</span> <span class="o">=</span> <span class="p">...,</span>  <span class="n">tree</span> <span class="o">=</span> <span class="p">[</span> <span class="p">...</span> <span class="p">]}</span>
+</pre>
+</div>
+</div>
+<p>Use the current export API for JSON serialization; do not depend on the historical jsxrecord implementation detail.</p>
+</div>
+</div>
+</div>

@@ -1,0 +1,148 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:17Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1590,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1590"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_signup_redirection",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1590/managing-redirection-after-login-and-signup",
+    "x-default": "https://zotonic.com/cookbook/1590/managing-redirection-after-login-and-signup"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Configure mod_signup to redirect to something other than a member’s home page.</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>The default behavior of Zotonic is to redirect the user to his or her\nown page after logon (/page). If you want to change this, you need to\nmodify the <code class=\"docutils literal notranslate\"><span class=\"pre\">sitename.erl</span></code> file, where <cite>sitename</cite> is the name of your\nsite. Remember that this file is located in <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/sitename/src/</span></code>.</p>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">Your actual site location might be different, see the <a class=\"reference internal\" href=\"/id/doc_glossary#term-zotonic-user-directory\"><span class=\"xref std std-term\">Zotonic user directory</span></a>.</p>\n</aside>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are assumed to be comfortable with Erlang syntax and use of the command shell.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>Open <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/sitename/src/sitename.erl</span></code> with your favorite editor:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"sc\">$ </span><span class=\"n\">cd</span> <span class=\"o\">/</span><span class=\"n\">path</span><span class=\"o\">/</span><span class=\"n\">to</span><span class=\"o\">/</span><span class=\"n\">zotonic</span>\n<span class=\"sc\">$ </span><span class=\"n\">vim</span> <span class=\"n\">apps_user</span><span class=\"o\">/</span><span class=\"n\">sitename</span><span class=\"o\">/</span><span class=\"n\">src</span><span class=\"o\">/</span><span class=\"n\">sitename</span><span class=\"p\">.</span><span class=\"n\">erl</span>\n</pre></div>\n</div>\n<div class=\"section\">\n<h3>Example 1</h3>\n<p>Redirection to the /welcome page after signup and to the /welcome-back page after logon</p>\n<p>Add the following code:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">observe_signup_confirm_redirect</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">observe_logon_ready_page</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">]).</span>\n\n<span class=\"c\">%% @doc Set the page that must be opened after signup</span>\n<span class=\"nf\">observe_signup_confirm_redirect</span><span class=\"p\">({</span><span class=\"n\">signup_confirm_redirect</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">UserID</span><span class=\"p\">},</span> <span class=\"p\">_</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"s\">&quot;/welcome&quot;</span><span class=\"p\">.</span>\n\n<span class=\"c\">%% @doc Set the page that must be open after login</span>\n<span class=\"nf\">observe_logon_ready_page</span><span class=\"p\">({</span><span class=\"n\">logon_ready_page</span><span class=\"p\">,</span> <span class=\"p\">_},</span> <span class=\"p\">_</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"s\">&quot;/welcome-back&quot;</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Example 2</h3>\n<p>Conditional redirection, where the site administrator is redirected to\nthe /admin page, and all other users are redirected to the /welcome\npage:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">observe_logon_ready_page</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">]).</span>\n\n<span class=\"c\">%% @doc Set the page that must be opened after logon</span>\n<span class=\"nf\">observe_logon_ready_page</span><span class=\"p\">({</span><span class=\"n\">logon_ready_page</span><span class=\"p\">,</span> <span class=\"p\">_},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"k\">case</span> <span class=\"nn\">z_acl</span><span class=\"p\">:</span><span class=\"nf\">user</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"k\">of</span>\n        <span class=\"o\">?</span><span class=\"nv\">ACL_ADMIN_USER_ID</span>  <span class=\"o\">-&gt;</span> <span class=\"s\">&quot;/admin&quot;</span><span class=\"p\">;</span>\n      <span class=\"p\">_</span>                   <span class=\"o\">-&gt;</span> <span class=\"s\">&quot;/welcome&quot;</span>\n  <span class=\"k\">end</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Example 3</h3>\n<p>Conditional redirection with one option being the default behaviour:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">observe_logon_ready_page</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">]).</span>\n\n<span class=\"c\">%% @doc Set the page that must be opened after logon</span>\n<span class=\"nf\">observe_logon_ready_page</span><span class=\"p\">({</span><span class=\"n\">logon_ready_page</span><span class=\"p\">,</span> <span class=\"p\">_},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"k\">case</span> <span class=\"nn\">z_acl</span><span class=\"p\">:</span><span class=\"nf\">user</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"k\">of</span>\n        <span class=\"o\">?</span><span class=\"nv\">ACL_ADMIN_USER_ID</span>  <span class=\"o\">-&gt;</span> <span class=\"s\">&quot;/admin&quot;</span><span class=\"p\">;</span>\n        <span class=\"p\">_</span>                   <span class=\"o\">-&gt;</span> <span class=\"n\">undefined</span>     <span class=\"c\">% All users except the administrator are redirected to their own pages</span>\n    <span class=\"k\">end</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Example 4</h3>\n<p>Conditional redirection, where the site administrator is redirected to\nthe /admin page and all other users are redirected to the /welcome\npage, unless another URL is specified:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span><span class=\"n\">observe_logon_ready_page</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">]).</span>\n\n<span class=\"c\">%% @doc Set the page that must be opened after logon</span>\n<span class=\"nf\">observe_logon_ready_page</span><span class=\"p\">({</span><span class=\"n\">logon_ready_page</span><span class=\"p\">,</span> <span class=\"nv\">Url</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"k\">case</span> <span class=\"p\">{</span><span class=\"nn\">z_acl</span><span class=\"p\">:</span><span class=\"nf\">user</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">),</span> <span class=\"nv\">Url</span><span class=\"p\">}</span> <span class=\"k\">of</span>\n        <span class=\"p\">{</span><span class=\"o\">?</span><span class=\"nv\">ACL_ADMIN_USER_ID</span><span class=\"p\">,</span> <span class=\"p\">_}</span> <span class=\"o\">-&gt;</span>\n            <span class=\"s\">&quot;/admin&quot;</span><span class=\"p\">;</span>\n        <span class=\"p\">{_,</span> <span class=\"p\">[]}</span> <span class=\"o\">-&gt;</span>\n            <span class=\"s\">&quot;/welcome&quot;</span><span class=\"p\">;</span>\n        <span class=\"p\">_</span> <span class=\"o\">-&gt;</span>\n            <span class=\"nv\">Url</span>\n    <span class=\"k\">end</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n<p>Save your changes and quit.</p>\n<p>Recompile zotonic:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"sc\">$ </span><span class=\"n\">cd</span> <span class=\"o\">/</span><span class=\"n\">path</span><span class=\"o\">/</span><span class=\"n\">to</span><span class=\"o\">/</span><span class=\"n\">zotonic</span>\n<span class=\"sc\">$ </span><span class=\"n\">make</span>\n</pre></div>\n</div>\n<p>Now when logging in, you should see this redirect behaviour in action.</p>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-signup-redirection.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:34Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_frontend_signup_redirection",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:34Z",
+    "slug": "managing-redirection-after-login-and-signup",
+    "title": "Managing redirection after login and signup",
+    "title_slug": "managing-redirection-after-login-and-signup",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1590",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1590"
+  }
+}

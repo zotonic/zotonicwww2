@@ -1,0 +1,113 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1602,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1602"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_justenough_shell",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1602/just-enough-erlang-shell",
+    "x-default": "https://zotonic.com/cookbook/1602/just-enough-erlang-shell"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>An indispensible tool for both learning and programming Erlang.</p>\n<p><cite>Submitted by: LRP; July 30, 2011</cite></p>\n<div class=\"section\">\n<h2>WHY</h2>\n<p>You don’t need to know Erlang or use the Erlang shell to create simple\nZotonic websites. But for Zotonic application development and\ndebugging, Erlang programming skills are essential.</p>\n<p>Erlang is not that hard to learn. Several excellent books and any\nnumber of web tutorials will get you well underway.</p>\n<p>The Erlang shell is an indispensible tool for both learning and\nprogramming Erlang.</p>\n<p>The easiest way to learn how to use the Erlang shell is to fire it up\nand play.</p>\n<p>This Cookbook recipe provides all you need to get started.</p>\n</div>\n<div class=\"section\">\n<h2>ASSUMPTIONS</h2>\n<p>You have a recent version of Erlang installed on your system.</p>\n</div>\n<div class=\"section\">\n<h2>HOW</h2>\n<p><cite>What is the Erlang shell?</cite></p>\n<p>The Erlang shell lets you test Erlang expression sequences both locally and remotely. It also lets you work with Erlang records and manage Erlang jobs.</p>\n<p><cite>How can I enter the Erlang shell?</cite></p>\n<p>From your terminal command line:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"sc\">$ </span><span class=\"n\">erl</span>\n</pre></div>\n</div>\n<p>(and press enter). You’ll see something like:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>Erlang R13B03 (erts-5.7.4) [source] [64-bit] [smp:3:3] [rq:3] [async-threads:0] [hipe] [kernel-poll:false] Eshell V5.7.4 (abort with ^G)\n1&gt;\n</pre></div>\n</div>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">1&gt;</span></code> is the Erlang shell command line. You are now able to execute Erlang expressions.</p>\n<p><cite>How can I get help?</cite></p>\n<p>help(). – list of shell functions\nHow can I execute an expression?</p>\n<p>Type now <code class=\"docutils literal notranslate\"><span class=\"pre\">now()</span></code>. and then hit ENTER.</p>\n<p>NOTE: the period at the end of the expression is necessary. It\nterminates the Erlang expression sequence and initiates evaluation.</p>\n<p><cite>How can I edit a line?</cite></p>\n<ul class=\"simple\">\n<li>Ctrl+A – go to beginning of line</li>\n<li>Ctrl+E – go to end of line</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">li</span></code> &lt;Tab&gt; – tab completiion; for instance, li tab will return <code class=\"docutils literal notranslate\"><span class=\"pre\">lists:</span></code>\n* <code class=\"docutils literal notranslate\"><span class=\"pre\">li</span></code> &lt;Tab&gt; &lt;Tab&gt; – Erlang terms that contain the characters “li”</li>\n</ul>\n<p>For more shell editing commands, refer to Section 1.3.1 in:\n<a class=\"reference external\" href=\"http://www.erlang.org/documentation/doc-5.1/doc/getting_started/getting_started.html\">http://www.erlang.org/documentation/doc-5.1/doc/getting_started/getting_started.html</a></p>\n<p><cite>How can I manage Erlang jobs?</cite></p>\n<ul class=\"simple\">\n<li>Ctrl+G – user switch command; job control options</li>\n<li>Ctrl+G h – help user switch options</li>\n</ul>\n<p><cite>How can I leave the shell?</cite></p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">q().</span></code> – quits Erlang</p>\n<p><cite>Are there other ways to quit?</cite></p>\n<ul class=\"simple\">\n<li>halt(). – exits the Erlang runtime system</li>\n<li>Ctrl+C Ctrl+C – Display break options, then quit</li>\n</ul>\n<p>BEWARE: You don’t want to bring a running Erlang system down just to\nquit the shell. Use q() until you get the hang of stuff.</p>\n<p><cite>When I enter Ctl+C, I get a bunch of choices. What do they mean?</cite></p>\n<p>Refer to: <a class=\"reference external\" href=\"http://www.erlang.org/doc/man/shell.html\">http://www.erlang.org/doc/man/shell.html</a></p>\n</div>\n<div class=\"section\">\n<h2>REFERENCES</h2>\n<p><a class=\"reference external\" href=\"http://www.erlang.org/documentation/doc-5.1/doc/getting_started/getting_started.html\">http://www.erlang.org/documentation/doc-5.1/doc/getting_started/getting_started.html</a></p>\n<p><a class=\"reference external\" href=\"http://www.erlang.org/doc/man/shell.html\">http://www.erlang.org/doc/man/shell.html</a></p>\n<p><a class=\"reference external\" href=\"http://www.erlang.org/doc/getting_started/seq_prog.html\">http://www.erlang.org/doc/getting_started/seq_prog.html</a></p>\n<p>Erlang: Starting Out:\n<a class=\"reference external\" href=\"http://learnyousomeerlang.com/starting-out\">http://learnyousomeerlang.com/starting-out</a></p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/justenough-shell.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:36Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_justenough_shell",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:36Z",
+    "slug": "just-enough-erlang-shell",
+    "title": "Just enough Erlang shell",
+    "title_slug": "just-enough-erlang-shell",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1602",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1602"
+  }
+}

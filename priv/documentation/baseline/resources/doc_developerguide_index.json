@@ -1,0 +1,637 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "haspart": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1636,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_introduction",
+            "title": "Introduction",
+            "uri": "https://zotonic.com/id/1636"
+          },
+          "seq": 1
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1526,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_getting_started",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Getting Started"
+              }
+            },
+            "uri": "https://zotonic.com/id/1526"
+          },
+          "seq": 2
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1411,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_docker",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Docker"
+              }
+            },
+            "uri": "https://zotonic.com/id/1411"
+          },
+          "seq": 3
+        },
+        {
+          "created": "2020-05-30T10:07:03Z",
+          "object_id": {
+            "id": 2176,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_directory_structure",
+            "title": "Directory structure",
+            "uri": "https://zotonic.com/id/2176"
+          },
+          "seq": 4
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1527,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_sites",
+            "title": "Sites",
+            "uri": "https://zotonic.com/id/1527"
+          },
+          "seq": 5
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1528,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_status_site",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "The Status site"
+              }
+            },
+            "uri": "https://zotonic.com/id/1528"
+          },
+          "seq": 6
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1540,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_controllers",
+            "title": "Controllers",
+            "uri": "https://zotonic.com/id/1540"
+          },
+          "seq": 7
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1541,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_dispatch_rules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Dispatch rules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1541"
+          },
+          "seq": 8
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1276,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_resources",
+            "title": "Resources",
+            "uri": "https://zotonic.com/id/1276"
+          },
+          "seq": 9
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1352,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_templates",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/1352"
+          },
+          "seq": 10
+        },
+        {
+          "created": "2024-05-21T10:22:23Z",
+          "object_id": {
+            "id": 2410,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": null,
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "CSS classes used in templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/2410"
+          },
+          "seq": 11
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1280,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_media",
+            "title": "Media",
+            "uri": "https://zotonic.com/id/1280"
+          },
+          "seq": 12
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1637,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_icons",
+            "title": "Icons",
+            "uri": "https://zotonic.com/id/1637"
+          },
+          "seq": 13
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1419,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_forms_and_validation",
+            "title": "Forms and validation",
+            "uri": "https://zotonic.com/id/1419"
+          },
+          "seq": 14
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1638,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_search",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Search"
+              }
+            },
+            "uri": "https://zotonic.com/id/1638"
+          },
+          "seq": 15
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1409,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_translation",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Translation"
+              }
+            },
+            "uri": "https://zotonic.com/id/1409"
+          },
+          "seq": 16
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1539,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_wires",
+            "title": "Wires",
+            "uri": "https://zotonic.com/id/1539"
+          },
+          "seq": 17
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1536,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_access_control",
+            "title": "Access control",
+            "uri": "https://zotonic.com/id/1536"
+          },
+          "seq": 18
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 19
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1274,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_notifications",
+            "title": "Notifications",
+            "uri": "https://zotonic.com/id/1274"
+          },
+          "seq": 20
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1302,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_server_browser_interaction",
+            "title": "Browser/server interaction",
+            "uri": "https://zotonic.com/id/1302"
+          },
+          "seq": 21
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1552,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_email",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "E-mail handling"
+              }
+            },
+            "uri": "https://zotonic.com/id/1552"
+          },
+          "seq": 22
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1639,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_shell",
+            "title": "Command-line shell",
+            "uri": "https://zotonic.com/id/1639"
+          },
+          "seq": 23
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1640,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_logging",
+            "title": "Logging",
+            "uri": "https://zotonic.com/id/1640"
+          },
+          "seq": 24
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1546,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_testing",
+            "title": "Testing sites",
+            "uri": "https://zotonic.com/id/1546"
+          },
+          "seq": 25
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1641,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_deployment_index",
+            "title": "Deployment",
+            "uri": "https://zotonic.com/id/1641"
+          },
+          "seq": 26
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1529,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_troubleshooting",
+            "title": "Troubleshooting",
+            "uri": "https://zotonic.com/id/1529"
+          },
+          "seq": 27
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1642,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_contributing",
+            "title": "Contributing to Zotonic",
+            "uri": "https://zotonic.com/id/1642"
+          },
+          "seq": 28
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1643,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_releasenotes_index",
+            "title": "Release Notes",
+            "uri": "https://zotonic.com/id/1643"
+          },
+          "seq": 29
+        },
+        {
+          "created": "2020-05-30T05:47:29Z",
+          "object_id": {
+            "id": 1455,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_upgrading",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Upgrade notes"
+              }
+            },
+            "uri": "https://zotonic.com/id/1455"
+          },
+          "seq": 30
+        }
+      ],
+      "predicate": {
+        "id": 310,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "haspart",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "Contains"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/hasPart"
+      }
+    }
+  },
+  "id": 1635,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1635"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_index",
+  "page_url": {
+    "en": "https://zotonic.com/developer-guide",
+    "x-default": "https://zotonic.com/developer-guide"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 19,
+    "pivot_location_lat": null,
+    "title": "Developer Guide",
+    "is_authoritative": true,
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>The technical handbook for developers building websites with Zotonic. It guides\nyou through all aspects of the framework.</p>\n<div class=\"toctree-wrapper compound\">\n<ul>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_introduction\">Introduction</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_getting_started\">Getting Started</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_docker\">Docker</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_directory_structure\">Directory structure</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_sites\">Sites</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_status_site\">The Status site</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_controllers\">Controllers</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_dispatch_rules\">Dispatch rules</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_resources\">Resources</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_templates\">Templates</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_media\">Media</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_icons\">Icons</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_forms_and_validation\">Forms and validation</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_search\">Search</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_translation\">Translation</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_wires\">Wires</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_access_control\">Access control</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_modules\">Modules</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_notifications\">Notifications</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_server_browser_interaction\">Browser/server interaction</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_email\">E-mail handling</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_shell\">Command-line shell</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_logging\">Logging</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_testing\">Testing sites</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_deployment_index\">Deployment</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_troubleshooting\">Troubleshooting</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_contributing\">Contributing to Zotonic</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_releasenotes_index\">Release Notes</a></li>\n<li class=\"toctree-l1\"><a class=\"reference internal\" href=\"/id/doc_developerguide_upgrading\">Upgrade notes</a></li>\n</ul>\n</div>\n</div>\n\n\n           </div>",
+    "slug": "developer-guide",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:31Z",
+    "is_website_redirect": false,
+    "page_path": "/developer-guide",
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/index.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_index",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:29Z",
+    "uri": null,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2022-02-15T10:01:31Z",
+    "title_slug": "developer-guide"
+  },
+  "uri": "https://zotonic.com/id/1635",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1635"
+  }
+}

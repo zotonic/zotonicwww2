@@ -36,7 +36,7 @@ and search observers for the Zotonic website.
 
 % The datamodel version, as used by the z_module_manager to call
 % the manage_schema function.
--mod_schema(25).
+-mod_schema(27).
 
 % Modules that should be started before this module
 % In this case 'acl' as an edge to 'acl_user_group_managers' is
@@ -120,6 +120,9 @@ manage_schema(_Version, Context) ->
                 ]},
                 {developerguide, documentation, [
                     {title, <<"Developer guide">>}
+                ]},
+                {adminguide, documentation, [
+                    {title, <<"Administration guide">>}
                 ]},
                 {cookbook, documentation, [
                     {title, <<"Cook book">>}
@@ -254,6 +257,20 @@ manage_schema(_Version, Context) ->
         % they have an extra list to define the valid subject (from)
         % and object (to) categories.
         predicates = [
+            % Curated documentation links, independent of automatically tracked
+            % refers edges and the legacy references predicate below.
+            {hasreference, #{
+                <<"title">> => #trans{tr = [{en, <<"Documentation reference">>}]},
+                <<"summary">> => <<"Further reading selected for this documentation page.">>
+            }, [
+                {text, text},
+                {text, collection},
+                {text, media},
+                {collection, text},
+                {collection, collection},
+                {collection, media}
+            ]},
+
             % Edges from documentation to other documentation that is
             % linked from the HTML content on the page.
             % Kept for editorial links and future link extraction from imported

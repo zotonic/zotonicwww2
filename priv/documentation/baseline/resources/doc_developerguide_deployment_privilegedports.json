@@ -1,0 +1,212 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:48Z",
+          "object_id": {
+            "id": 1990,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_deployment_varnish",
+            "title": "Using Varnish as frontend for Zotonic",
+            "uri": "https://zotonic.com/id/1990"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:48Z",
+          "object_id": {
+            "id": 1790,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_deployment_nginx",
+            "title": "Proxying Zotonic with nginx",
+            "uri": "https://zotonic.com/id/1790"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:48Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1789,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1789"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_deployment_privilegedports",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1789/running-on-port-80-and-port-443",
+    "x-default": "https://zotonic.com/docs/1789/running-on-port-80-and-port-443"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 20,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Running on Port 80 and Port 443"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>Using standard ports helps visitors discover your page and removes the awkward port number from URLs.</p>\n<p>The HTTP and HTTPS protocols are normally served on TCP ports 80 and 443. It is beneficial to run a these services on those standard ports: it aids discovery and lends a air of polish while a non-standard port number suggests something is incomplete.</p>\n<p>*nix systems only allow the superuser (root) to bind to ports below 1024. HTTP &amp; HTTPS use ports 80 &amp; 443 respectively. So setting up Zotonic to serve from those ports without running as superuser presents a problem, as *nix considers all ports below 1024 to be “privileged”, requiring special access.</p>\n<p>Other webservers (like nginx) typically do not have this problem, as they usually run their main unix process as root, but forking off child processes as non-privileged workers. Zotonic cannot be made to work like that because it is just one unix process, and running Zotonic entirely as the root user is considered harmful.</p>\n<p>This manual outlines three different methods to let Zotonic listen on port 80. All of them are for *nix based systems only.</p>\n<div class=\"section\">\n<h2>Pre-launch notes</h2>\n<p>Before Zotonic serves its sites on a privileged ports, the hostname portions of your Zotonic sites need to be changed to reflect this.</p>\n<p>For production release of your new Zotonic site you need to:</p>\n<ul>\n<li>\n<p class=\"first\">Make sure that your server has a public IP address, and that the server accepts connections on port 80.</p>\n</li>\n<li>\n<p class=\"first\">For each of your Zotonic sites, configure their DNS (e.g. <cite>www.mysite.com</cite>) to point to your server’s IP address.</p>\n</li>\n<li>\n<p class=\"first\">Ensure <code class=\"docutils literal notranslate\"><span class=\"pre\">{hostname,</span> <span class=\"pre\">&quot;mysite&quot;}</span></code> is set to <code class=\"docutils literal notranslate\"><span class=\"pre\">{hostname,</span> <span class=\"pre\">&quot;www.mysite.com&quot;}</span></code> in <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/mysite/priv/zotonic_site.config</span></code>. This last change enables the virtual hosting: it makes sure that Zotonic knows which site is being requested when somebody visits <cite>www.mysite.com</cite>.</p>\n<aside class=\"admonition note\">Note Your actual site location might be different, see the <a class=\"reference internal\" href=\"/id/doc_glossary#term-zotonic-user-directory\"><span class=\"xref std std-term\">zotonic user directory</span></a>.</aside>\n</li>\n</ul>\n</div>\n<div class=\"section\">\n<h2>Running behind another web server / proxy</h2>\n<p>You run another web server to proxy requests from port 80 to 8000 and from 443 to 8443. <a class=\"reference internal\" href=\"/id/doc_developerguide_deployment_varnish#guide-deployment-varnish\"><span class=\"std std-ref\">Varnish</span></a> and <a class=\"reference internal\" href=\"/id/doc_developerguide_deployment_nginx#guide-deployment-nginx\"><span class=\"std std-ref\">nginx</span></a> are both very capable web servers for doing this.</p>\n<p>However, Zotonic itself is also very capable of directly serving web content without needing an extra caching layer in between. The other methods listed below explain how Zotonic can obtain direct access to the privileged ports.</p>\n</div>\n<div class=\"section\">\n<h2>Using authbind</h2>\n<p>Note: Instructions below assume site is named <code class=\"docutils literal notranslate\"><span class=\"pre\">mysite</span></code> and Zotonic is installed in <code class=\"docutils literal notranslate\"><span class=\"pre\">/home/zotonic/zotonic</span></code>. Replace as appropriate.</p>\n<p>Install authbind:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>zotonic:~$ sudo apt-get install authbind\n</pre>\n</div>\n</div>\n<p>Configure authbind to allow zotonic user to access port 80:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>zotonic:~$ sudo touch /etc/authbind/byport/80\nzotonic:~$ sudo chown zotonic /etc/authbind/byport/80\nzotonic:~$ sudo chmod <span class=\"m\">500</span> /etc/authbind/byport/80\n</pre>\n</div>\n</div>\n<p>Set up the environment.</p>\n<p>You need to tell Zotonic explicitly which IP address to listen on. Zotonic defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">any</span></code>, which will also bind to any ipv6 addresses available. However authbind doesn’t work with ipv6 and so will cause Zotonic to crash on startup.</p>\n<p>Add the following entries to <code class=\"docutils literal notranslate\"><span class=\"pre\">/home/zotonic/.profile</span></code>, then save file &amp; exit:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"nb\">export</span> <span class=\"nv\">ZOTONIC_LISTEN_PORT</span><span class=\"o\">=</span><span class=\"m\">80</span>\n<span class=\"nb\">export</span> <span class=\"nv\">ZOTONIC_SSL_LISTEN_PORT</span><span class=\"o\">=</span><span class=\"m\">443</span>\n<span class=\"nv\">public_interface</span><span class=\"o\">=</span>eth0\n<span class=\"nb\">export</span> <span class=\"nv\">ZOTONIC_IP</span><span class=\"o\">=</span><span class=\"sb\">`</span>/sbin/ifconfig <span class=\"nv\">$public_interface</span> <span class=\"p\">|</span> grep <span class=\"s1\">&#39;inet addr:&#39;</span> <span class=\"p\">|</span> cut -d: -f2 <span class=\"p\">|</span> awk <span class=\"s1\">&#39;{ print $1}&#39;</span><span class=\"sb\">`</span>\n<span class=\"nb\">export</span> <span class=\"nv\">ERL</span><span class=\"o\">=</span><span class=\"s2\">&quot;authbind --deep erl&quot;</span>\n</pre>\n</div>\n</div>\n<p>Where <code class=\"docutils literal notranslate\"><span class=\"pre\">eth0</span></code> is the name of the Ethernet interface that connects to the Internet (for a MediaTemple (ve) host this was venet0:0). Find the Ethernet interface with <cite>/sbin/ifconfig</cite>. You could alternatively set it to <code class=\"docutils literal notranslate\"><span class=\"pre\">lo</span></code> for localhost-only testing or to a LAN-only interface (say eth1) for a multi-interface server you are using Zotonic to host an intranet site with.</p>\n<p>Source the file to update the environment:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>zotonic:~$ . ~/.profile\n</pre>\n</div>\n</div>\n<p>Check if <code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_IP</span></code> has a value:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"nb\">echo</span> <span class=\"nv\">$ZOTONIC_IP</span>\n</pre>\n</div>\n</div>\n<p>If this doesn’t return an IP address, it might be that your system omits “addr” at the inet line. You could try this instead:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"nb\">export</span> <span class=\"nv\">ZOTONIC_IP</span><span class=\"o\">=</span><span class=\"sb\">`</span>ifconfig <span class=\"nv\">$public_interface</span> <span class=\"p\">|</span> awk <span class=\"s1\">&#39;$1==&quot;inet&quot;{print $2}&#39;</span><span class=\"sb\">`</span>\n</pre>\n</div>\n</div>\n<p>and check the result again.</p>\n<p>Stop zotonic if already running:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>zotonic:~$ ~/zotonic/bin/zotonic stop\n</pre>\n</div>\n</div>\n<p>Start zotonic:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>zotonic:~$ ~/zotonic/bin/zotonic start\n</pre>\n</div>\n</div>\n<p>Browse to <a class=\"reference external\" href=\"https://yoursite/\">https://yoursite/</a> and verify that everything is working like it should.</p>\n</div>\n<div class=\"section\">\n<h2>Using setcap</h2>\n<p>Warning: this is a much broader approach as it grants privileged bind to all Erlang VM processes (the <code class=\"docutils literal notranslate\"><span class=\"pre\">beam.smp</span></code> executable). Unless you are the sole user of such a machine this is not a great idea.</p>\n<p>From a shell, install the setcap program:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>sudo apt-get install libcap2-bin\n</pre>\n</div>\n</div>\n<p>Now configure setcap to allow Erlang BEAM processes user to bind to ports lower than 1024:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>sudo setcap <span class=\"s1\">&#39;cap_net_bind_service=+ep&#39;</span> /usr/lib/erlang/erts-14.2/bin/beam.smp\n</pre>\n</div>\n</div>\n<p>Note that the exact paths to the <code class=\"docutils literal notranslate\"><span class=\"pre\">beam</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">beam.smp</span></code> can be different, depending on the Erlang version.</p>\n<p>During package upgrades Erlang may be upgraded and your site will seem to be broken. Just make sure to check the ERTS version and rerun these setcaps commands for the new version.</p>\n<p>For more granular control, you could create an Erlang release that only the Zotonic User can access. Once the release is created <code class=\"docutils literal notranslate\"><span class=\"pre\">setcap</span></code> could be applied to the beam and beam.smp within that release only.</p>\n</div>\n<div class=\"section\">\n<h2>Using iptables</h2>\n<p>If authbind and setcap will not work for you, using the system firewall to redirect the ports can be an option.</p>\n<p>Firewall prerouting can be enabled as follows to forward communication on port 80 to port 8000 and port 443 to port 8443:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>iptables -t nat -A PREROUTING -p tcp --dport <span class=\"m\">80</span> -j REDIRECT --to <span class=\"m\">8000</span>\niptables -t nat -A PREROUTING -p tcp --dport <span class=\"m\">443</span> -j REDIRECT --to <span class=\"m\">8443</span>\n</pre>\n</div>\n</div>\n<p>You also need two more rules so that the site can reach itself. In the following firewall rules, replace <code class=\"docutils literal notranslate\"><span class=\"pre\">your.ip.address</span></code> with your external IP address:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>iptables -t nat -A OUTPUT -p tcp -d your.ip.address --dport <span class=\"m\">80</span> -j REDIRECT --to <span class=\"m\">8000</span>\niptables -t nat -A OUTPUT -p tcp -d your.ip.address --dport <span class=\"m\">443</span> -j REDIRECT --to <span class=\"m\">8443</span>\n</pre>\n</div>\n</div>\n<p>The downside of using the firewall is that Zotonic still also listens on port 8000. This might be a cause for confusion.</p>\n<p>For instructions on how to save these firewall rules and reinstate them after a system reboot, consult the <a class=\"reference external\" href=\"https://help.ubuntu.com/community/IptablesHowTo#Configuration_on_startup\">Ubuntu firewall administration manual</a>.</p>\n</div>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "running-on-port-80-and-port-443",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/privilegedports.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_deployment_privilegedports",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:36Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2024-03-22T13:11:54Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "running-on-port-80-and-port-443"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1789",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1789"
+  }
+}

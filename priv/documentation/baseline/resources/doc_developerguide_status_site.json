@@ -1,0 +1,240 @@
+{
+  "depiction_url": "https://zotonic.com/image/2022/6/14/dsc06474.jpg%28800x800%29%28upscale%29%28M449e1oVNEvKIDDXCJIshdo4eCm3raQD-9eQNzqec_Q%29.jpg",
+  "edges": {
+    "depiction": {
+      "objects": [
+        {
+          "created": "2022-06-14T07:05:41Z",
+          "object_id": {
+            "id": 2317,
+            "is_a": [
+              "media",
+              "image"
+            ],
+            "name": null,
+            "title": "DSC06474.jpeg",
+            "uri": "https://zotonic.com/id/2317"
+          },
+          "seq": 1
+        },
+        {
+          "created": "2022-06-14T07:02:40Z",
+          "object_id": {
+            "id": 2316,
+            "is_a": [
+              "media",
+              "image"
+            ],
+            "name": null,
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Status site welcome screen"
+              }
+            },
+            "uri": "https://zotonic.com/id/2316"
+          },
+          "seq": 2
+        },
+        {
+          "created": "2022-06-14T07:18:24Z",
+          "object_id": {
+            "id": 2318,
+            "is_a": [
+              "media",
+              "image"
+            ],
+            "name": null,
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Site listing on Zotonic status site"
+              }
+            },
+            "uri": "https://zotonic.com/id/2318"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 304,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "depiction",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Afbeelding",
+            "en": "Depiction"
+          }
+        },
+        "uri": "http://xmlns.com/foaf/0.1/depiction"
+      }
+    },
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:37Z",
+          "object_id": {
+            "id": 1639,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_shell",
+            "title": "Command-line shell",
+            "uri": "https://zotonic.com/id/1639"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1528,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1528"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_status_site",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1528/the-status-site",
+    "x-default": "https://zotonic.com/docs/1528/the-status-site"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 24,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "The Status site"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div class=\"section\">\n<p>The site is shown if the requested hostname (aka domain name) is unknown or if the server is accessed by IP address (eg. <code>https://127.0.0.1:8443/</code>). This is what it looks like:</p>\n<!-- z-media 2316 {\"align\":\"block\",\"caption\":\"Welcome screen of the Zotonic status site.\",\"crop\":false,\"link\":false,\"link_url\":\"\",\"size\":\"large\"} --><br />\n<p>This site is also the <em>fallback</em> site for Zotonic.</p>\n<p>Since Zotonic supports virtual hosting, it uses the HTTP <code class=\"docutils literal notranslate\"><span class=\"pre\">Host:</span></code> parameter to see which site should be served at which URL. If it does not find a <code class=\"docutils literal notranslate\"><span class=\"pre\">Host:</span></code> header, or if the host header does not correspond to any known Zotonic site, it shows the <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic_status</span></code> site instead.</p>\n<div class=\"section\">\n<h2>Logging in</h2>\n<p>Upon first visit, the site shows a friendly message, which tells visitors that the site they are looking at has probably not been configured correctly yet.</p>\n<p>Pressing the <code class=\"docutils literal notranslate\"><span class=\"pre\">Manage</span> <span class=\"pre\">this</span> <span class=\"pre\">server</span></code> button will bring up the login dialog.</p>\n<p>The username for the status site is <code class=\"docutils literal notranslate\"><span class=\"pre\">wwwadmin</span></code>. The password is automatically generated and stored in <code class=\"file docutils literal notranslate\"><span class=\"pre\">~/.config/zotonic/config/[release]/zotonic.config</span></code>, where <code class=\"docutils literal notranslate\"><span class=\"pre\">[release]</span></code> is the Zotonic release number, like <code class=\"docutils literal notranslate\"><span class=\"pre\">1.0</span></code>.</p>\n<p>You can see the password by executing:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">bin</span><span class=\"o\">/</span><span class=\"n\">zotonic</span> <span class=\"n\">config</span>\n</pre>\n</div>\n</div>\n<p>You can see the location of the config files with:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">bin</span><span class=\"o\">/</span><span class=\"n\">zotonic</span> <span class=\"n\">configfiles</span>\n</pre>\n</div>\n</div>\n<p>When logged in to the Zotonic status site, you can manage the running sites on the system: starting, stopping and upgrading them.</p>\n<!-- z-media 2318 {\"align\":\"block\",\"caption\":\"Site listing on Zotonic status site\",\"crop\":false,\"link\":false,\"link_url\":\"\",\"size\":\"large\"} --><br />\n<p>The “update” buttons only appear when the site (or Zotonic itself) is under Mercurial or Git revision control. These buttons do a “pull” from the repository and then rebuild the system.</p>\n</div>\n<div class=\"section\">\n<h2>Getting the global sites status</h2>\n<p>The Zotonic status site exposes an API service to check whether all Zotonic sites are running:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">curl</span> <span class=\"o\">-</span><span class=\"n\">k</span> <span class=\"n\">&#39;https://127.0.0.1:8443/api/model/zotonic_status/get/check&#39;</span>\n</pre>\n</div>\n</div>\n<p>The option <code class=\"docutils literal notranslate\"><span class=\"pre\">-k</span></code> was used because the status site is using a self-signed certificate.</p>\n<p>If all sites are running, it returns:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">{</span><span class=\"s\">&quot;result&quot;</span><span class=\"p\">:</span><span class=\"s\">&quot;ok&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot;status&quot;</span><span class=\"p\">:</span><span class=\"s\">&quot;ok&quot;</span><span class=\"p\">}</span>\n</pre>\n</div>\n</div>\n<p>If one or more sites are failing then it returns:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">{</span><span class=\"s\">&quot;error&quot;</span><span class=\"p\">:</span><span class=\"s\">&quot;fail&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot;message&quot;</span><span class=\"p\">:</span><span class=\"s\">&quot;Not all sites are running.&quot;</span><span class=\"p\">,</span><span class=\"s\">&quot;status&quot;</span><span class=\"p\">:</span><span class=\"s\">&quot;error&quot;</span><span class=\"p\">}</span>\n</pre>\n</div>\n</div>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;Running&quot;</span></code> means that a site’s status is not <code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;retrying&quot;</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;failed&quot;</span></code>; it ignores sites that are manually stopped or disabled.</p>\n<p>This API service can be plugged in to a service like <a class=\"reference external\" href=\"https://www.pingdom.com/\">https://www.pingdom.com/</a> to monitor the availability of all hosted sites at once.</p>\n</div>\n<div class=\"section\"><a name=\"restart-site\"></a>\n<h2>Restarting sites</h2>\n<p>From the command line:</p>\n<pre>$ bin/zotonic stopsite yoursitename<br />Stopping site yoursitename ..ok<br />$ bin/zotonic startsite yoursitename<br />Starting site yoursitename .. ok</pre>\n<p>Alternatively, from the <a class=\"reference internal\" href=\"/id/doc_developerguide_shell#guide-cli-shell\"><span class=\"std std-ref\">Zotonic shell</span></a>:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"nn\">z_sites_manager</span><span class=\"p\">:</span><span class=\"nf\">restart</span><span class=\"p\">(</span><span class=\"n\">yoursitename</span><span class=\"p\">).</span>\n</pre>\n</div>\n</div>\n</div>\n</div>"
+      }
+    },
+    "slug": "the-status-site",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/status-site.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_status_site",
+    "is_unfindable": false,
+    "is_published": true,
+    "summary": {
+      "_type": "trans",
+      "tr": {
+        "en": "The Zotonic “status” site is the first thing you see once you have installed Zotonic, or if you do not have any sites configured yet."
+      }
+    },
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:24Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 2315,
+      "is_a": [
+        "person"
+      ],
+      "name": null,
+      "title": "Marc Worrell",
+      "uri": "https://zotonic.com/id/2315"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2022-06-14T07:26:18Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "the-status-site"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1528",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1528"
+  }
+}

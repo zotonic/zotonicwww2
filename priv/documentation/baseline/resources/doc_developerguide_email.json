@@ -1,0 +1,245 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1352,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_templates",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Templates"
+              }
+            },
+            "uri": "https://zotonic.com/id/1352"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1341,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_image",
+            "title": "image",
+            "uri": "https://zotonic.com/id/1341"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1280,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_media",
+            "title": "Media",
+            "uri": "https://zotonic.com/id/1280"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1465,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_mailinglist",
+            "title": "mod_mailinglist",
+            "uri": "https://zotonic.com/id/1465"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1858,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_logging",
+            "title": "mod_logging",
+            "uri": "https://zotonic.com/id/1858"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1552,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1552"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_email",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1552/e-mail-handling",
+    "x-default": "https://zotonic.com/docs/1552/e-mail-handling"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 20,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "E-mail handling"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>Any Zotonic system is capable of sending and receiving e-mail messages over SMTP.</p>\n<p>Zotonic implements a mailing system for sending text and HTML messages to one or more recipients.</p>\n<p>Out of the box, e-mail sending should “just work”.</p>\n<div class=\"section\">\n<h2>Site-specific configuration</h2>\n<div class=\"table-wrapper\">\n<table class=\"docutils\" border=\"1\">\n<thead>\n<tr>\n<th class=\"head\">Module</th>\n<th class=\"head\">Key</th>\n<th class=\"head\">Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>site</td>\n<td>email_from</td>\n<td>Set this to the from-address you want to e-mail to appear from, e.g. something like <a class=\"reference external\" href=\"mailto:noreply%40yoursite.com\">noreply<span>@</span>yoursite<span>.</span>com</a>.</td>\n</tr>\n<tr>\n<td>site</td>\n<td>email_override</td>\n<td>If set, all e-mail messages that get sent from Zotonic will arrive at this address. Useful if you are testing but don’t want to confuse other people with your test e-mails.</td>\n</tr>\n<tr>\n<td>site</td>\n<td>smtphost</td>\n<td>The hostname where you want messages to appear from. Mostly used for bounce message handling and the EHLO handshake. Defaults to the site’s hostname, but can be overriden</td>\n</tr>\n<tr>\n<td>site</td>\n<td>admin_email</td>\n<td>E-mail address of the admin user, the address where admin log/debug messages get sent to when using <code class=\"docutils literal notranslate\"><span class=\"pre\">z_email:send_admin/3</span></code>.</td>\n</tr>\n<tr>\n<td>site</td>\n<td>bounce_email_override</td>\n<td>E-mail address where bounces are sent to. Normally a special bounce address is generated. See also the discussion about <code class=\"docutils literal notranslate\"><span class=\"pre\">smtp_bounce_email_override</span></code> below.</td>\n</tr>\n<tr>\n<td>site</td>\n<td>email_images_noembed</td>\n<td>Images in emails are inlined if they are smaller than 1MB. Setting this config disables the inlining of images, the html image tags will be unchanged.            </td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n<div class=\"section\">\n<h2>Zotonic-wide configuration</h2>\n<p>The file <code class=\"docutils literal notranslate\"><span class=\"pre\">~/.config/zotonic/1/zotonic.config</span></code> (on macOS <code class=\"docutils literal notranslate\"><span class=\"pre\">~/Library/Application</span> <span class=\"pre\">Support/zotonic/config/1/zotonic.config</span></code>) can be configured to hold any of the configuration options below. They are in effect for every site running in the Zotonic instance.</p>\n<div class=\"section\">\n<h3>Zotonic-wide configuration for sending email</h3>\n<div class=\"table-wrapper\">\n<table class=\"docutils\" border=\"1\">\n<thead>\n<tr>\n<th class=\"head\">Key</th>\n<th class=\"head\">Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>smtp_relay</td>\n<td>Whether or not to use a SMTP relay host. Boolean value, defaults to false.</td>\n</tr>\n<tr>\n<td>smtp_host</td>\n<td>The hostname for the SMTP relay host, only needed if smtp_relay is enabled.</td>\n</tr>\n<tr>\n<td>smtp_ssl</td>\n<td>Whether or not to use SSL/TLS on the relay host, only needed if smtp_relay is enabled.</td>\n</tr>\n<tr>\n<td>smtp_username</td>\n<td>The username for the relay host, only needed if smtp_relay is enabled.</td>\n</tr>\n<tr>\n<td>smtp_password</td>\n<td>The password for the relay host, only needed if smtp_relay is enabled.</td>\n</tr>\n<tr>\n<td>smtp_no_mx_lookups</td>\n<td>Set to true to not do a MX lookup before sending mail. (default: false)</td>\n</tr>\n<tr>\n<td>smtp_verp_as_from</td>\n<td>Use the “from” address as VERP for bounce handling (default: false)</td>\n</tr>\n<tr>\n<td>smtp_bcc</td>\n<td>Optionally send a BCC of every sent to this address</td>\n</tr>\n<tr>\n<td>email_override</td>\n<td>A global e-mail override. The override logic first checks the site override, and then the global override address. Useful for testing and development.</td>\n</tr>\n<tr>\n<td>smtp_bounce_domain</td>\n<td>Which domain to use for bounce VERP messages. Defaults to the smtp domain of the site sending the email.</td>\n</tr>\n<tr>\n<td>smtp_bounce_email_override</td>\n<td>The email address for bounce handling. Only use if all else fails (see the paragraphs after the next one).</td>\n</tr>\n<tr>\n<td>smtp_plaintext_fallback</td>\n<td>Retry using plain-text delivery if the TLS delivery failed with a timeout or closed error. Useful for servers with self-signed certificates or other TLS problems. (default: true)</td>\n</tr>\n<tr>\n<td>smtp_is_blackhole</td>\n<td>Drop all outgoing email, the mail is still logged. Good for testing large mailings.</td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n<div class=\"section\">\n<h3>Zotonic-wide settings for receiving email</h3>\n<p>To receive email the SMTP server has to listen on the correct IP address and port. Spam filtering is done by checking DNSBL (DNS Block List) servers and optionally using Spamassassin.</p>\n<div class=\"table-wrapper\">\n<table class=\"docutils\" border=\"1\">\n<thead>\n<tr>\n<th class=\"head\">Key</th>\n<th class=\"head\">Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>smtp_listen_domain</td>\n<td>The domain announced in the HELO</td>\n</tr>\n<tr>\n<td>smtp_listen_ip</td>\n<td>IP address to listen on for incoming SMTP connections. Defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;127.0.0.1&quot;</span></code> Set to <code class=\"docutils literal notranslate\"><span class=\"pre\">none</span></code> to disable the smtp server.</td>\n</tr>\n<tr>\n<td>smtp_listen_port</td>\n<td>IP address to listen on for incoming SMTP connections. Defaults to 2525. Set to <code class=\"docutils literal notranslate\"><span class=\"pre\">none</span></code> to disable the smtp server.</td>\n</tr>\n<tr>\n<td>smtp_dnsbl</td>\n<td>List for the DNS block lists used for checking incoming email connections. Defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">[&quot;zen.spamhaus.org&quot;,</span> <span class=\"pre\">&quot;dnsbl.sorbs.net&quot;]</span></code></td>\n</tr>\n<tr>\n<td>smtp_dnswl</td>\n<td>List for the DNS white lists used for checking incoming email connections. Defaults to <code class=\"docutils literal notranslate\"><span class=\"pre\">[&quot;list.dnswl.org&quot;,</span> <span class=\"pre\">&quot;swl.spamhaus.org&quot;]</span></code></td>\n</tr>\n<tr>\n<td>smtp_spamd_ip</td>\n<td>Optional IP address for a spamassassin host</td>\n</tr>\n<tr>\n<td>smtp_spamd_port</td>\n<td>Optional port number for a spamassassin host</td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>The sender’s domain</h2>\n<p>Recipients of e-mail want a valid sender’s address on the envelope. This section describes how to set your e-mail bounce/sender domain and fixing domain errors when sending e-mail.</p>\n<p>You have to think of e-mail as normal snail mail. There is a message and an envelope.</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">email_from</span></code> is the address that is written on the <cite>message</cite>. It could be anything, and is generally not used when delivering your mail. Just like with snail mail, the postman only looks on the <cite>envelope</cite>, not on the message.</p>\n<p>The address on the envelope is the most important address. It is where your e-mail is returned to when the message can‘t be delivered (so called bounces). Often it is also checked for validity when the e-mail is delivered at a SMTP server.</p>\n<p>You need a valid domain for this envelope sender address. The part before the <code class=\"docutils literal notranslate\"><span class=\"pre\">@</span></code> is generated by Zotonic and is used for identifying the original message and recipient when the message bounces.</p>\n<p>If the generated part is not acceptable then you can force an envelope address by setting the <code class=\"docutils literal notranslate\"><span class=\"pre\">smtp_bounce_email_override</span></code> option. Setting the bounce/envelop address manually disables Zotonic’s build-in handling of bounces that happen <em>after</em> the e-mail was accepted for delivery by the remote SMTP host.</p>\n<p>The bounce e-mail address can also be set on a per-site basis using the <code class=\"docutils literal notranslate\"><span class=\"pre\">site.bounce_email_override</span></code> configuration. See the site specific settings table above.</p>\n<div class=\"section\">\n<h3>How does Zotonic know the domain?</h3>\n<p>It checks in order:</p>\n<ul class=\"simple\">\n<li>site’s config: <code class=\"docutils literal notranslate\"><span class=\"pre\">bounce_email_override</span></code> (you can also set this with the admin config as site.bounce_email_override)</li>\n<li>global <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic.config</span></code>: <code class=\"docutils literal notranslate\"><span class=\"pre\">smtp_bounce_domain</span></code> setting</li>\n<li>site’s config: <code class=\"docutils literal notranslate\"><span class=\"pre\">smtphost</span></code></li>\n<li>site’s config: <code class=\"docutils literal notranslate\"><span class=\"pre\">hostname</span></code></li>\n</ul>\n<p>Any <em>bounce_email_override</em> configuration must be a complete email address. For example: <code class=\"docutils literal notranslate\"><span class=\"pre\">bounces@example.org</span></code></p>\n<p>If no <em>bounce_email_override</em> is used then the part before the <code class=\"docutils literal notranslate\"><span class=\"pre\">@</span></code> is generated by Zotonic itself, for administration and detection of bounces. A typical sender address on the envelope looks like: <code class=\"docutils literal notranslate\"><span class=\"pre\">noreply+mlcm6godbz2cchtgdvom@example.org</span></code></p>\n</div>\n</div>\n<div class=\"section\"><a name=\"send-email\"></a>\n<h2>Sending E-mail</h2>\n<p>Once configured, you can use the following Erlang commands to send e-mail from Zotonic code:</p>\n<div class=\"table-wrapper\">\n<table class=\"docutils\" border=\"1\">\n<thead>\n<tr>\n<th class=\"head\">Command</th>\n<th class=\"head\">Explanation</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code class=\"docutils literal notranslate\"><span class=\"pre\">z_email:send_admin/3</span></code></td>\n<td>Sends a quick e-mail to the site administrator. Handy to notice the site admin that something is wrong, a job has finished, etc… The e-mail that is used is the admin_email address that is specified in the site’s config file.</td>\n</tr>\n<tr>\n<td><code class=\"docutils literal notranslate\"><span class=\"pre\">z_email:send/4</span></code></td>\n<td>Sends a text message with a subject to a specified recipient.</td>\n</tr>\n<tr>\n<td><code class=\"docutils literal notranslate\"><span class=\"pre\">z_email:send_render/4</span></code></td>\n<td>Renders a template and sends it as a HTML message to a specified recipient.</td>\n</tr>\n<tr>\n<td><code class=\"docutils literal notranslate\"><span class=\"pre\">z_email:send/2</span></code></td>\n<td>Sends an email defined by a <code class=\"docutils literal notranslate\"><span class=\"pre\">#email{}</span></code> record.</td>\n</tr>\n</tbody>\n</table>\n</div>\n<div class=\"section\">\n<h3>Send e-mail from a template</h3>\n<p>First, create a <a class=\"reference internal\" href=\"/id/doc_developerguide_templates#guide-templates\"><span class=\"std std-ref\">template</span></a> for the e-mail. Just like normal templates, it can contain <a class=\"reference internal\" href=\"/id/doc_developerguide_templates#template-variables\"><span class=\"std std-ref\">variables</span></a>. The <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;title&gt;</span></code> tag becomes the e-mail’s subject:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">email.tpl</span></div>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&lt;html&gt;</span>\n<span class=\"x\">    &lt;head&gt;</span>\n<span class=\"x\">        &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span>\n<span class=\"x\">        &lt;title&gt;An e-mail from </span><span class=\"cp\">{{</span> <span class=\"nv\">sender_name</span> <span class=\"cp\">}}</span><span class=\"x\"> at </span><span class=\"cp\">{{</span> <span class=\"nv\">m.site.title</span> <span class=\"cp\">}}</span><span class=\"x\">&lt;/title&gt;</span>\n<span class=\"x\">    &lt;/head&gt;</span>\n\n<span class=\"x\">    &lt;body&gt;</span>\n<span class=\"x\">        Hello </span><span class=\"cp\">{{</span> <span class=\"nv\">id.name_first</span> <span class=\"cp\">}}</span><span class=\"x\">,</span>\n\n<span class=\"x\">        Hope you’re doing fine!</span>\n\n<span class=\"x\">        Cheers,</span>\n\n        <span class=\"cp\">{{</span> <span class=\"nv\">sender_name</span> <span class=\"cp\">}}</span>\n<span class=\"x\">    &lt;/body&gt;</span>\n<span class=\"x\">&lt;/html&gt;</span>\n</pre>\n</div>\n</div>\n</div>\n<p>To include inline images, just add an <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;img&gt;</span></code> tag:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">email.tpl</span></div>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&lt;body&gt;</span>\n<span class=\"x\">    &lt;img src=&quot;https://yoursite.com/logo.png&quot;&gt;</span>\n<span class=\"x\">&lt;/body&gt;</span>\n</pre>\n</div>\n</div>\n</div>\n<p>Use the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_image\"><span class=\"std std-ref\">image tag</span></a> to include a <a class=\"reference internal\" href=\"/id/doc_developerguide_media#guide-media\"><span class=\"std std-ref\">media depiction</span></a>:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">email.tpl</span></div>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&lt;body&gt;</span>\n    <span class=\"cp\">{%</span> <span class=\"k\">image</span> <span class=\"nv\">id.depiction</span> <span class=\"cp\">%}</span>\n<span class=\"x\">&lt;/body&gt;</span>\n</pre>\n</div>\n</div>\n</div>\n<p>After you’ve created the template, you can send the e-mail. You can provide the template variables (we had <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">sender_name</span></code> in the template) as <code class=\"docutils literal notranslate\"><span class=\"pre\">vars</span></code>:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;zotonic_core/include/zotonic.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"nf\">some_function</span><span class=\"p\">(</span><span class=\"nv\">SomeId</span><span class=\"p\">,</span> <span class=\"nv\">Sender</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">%% Create an e-mail record</span>\n    <span class=\"nv\">Email</span> <span class=\"o\">=</span> <span class=\"nl\">#email</span><span class=\"p\">{</span>\n        <span class=\"n\">to</span> <span class=\"o\">=</span> <span class=\"s\">&quot;someone@somewhere.com&quot;</span><span class=\"p\">,</span>\n        <span class=\"n\">vars</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n            <span class=\"p\">{</span><span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"nv\">SomeId</span><span class=\"p\">},</span>\n            <span class=\"p\">{</span><span class=\"n\">sender_name</span><span class=\"p\">,</span> <span class=\"nv\">Sender</span><span class=\"p\">}</span>\n        <span class=\"p\">],</span>\n        <span class=\"n\">html_tpl</span> <span class=\"o\">=</span> <span class=\"s\">&quot;email.tpl&quot;</span>\n    <span class=\"p\">},</span>\n\n    <span class=\"c\">%% And send the e-mail</span>\n    <span class=\"nn\">z_email</span><span class=\"p\">:</span><span class=\"nb\">send</span><span class=\"p\">(</span><span class=\"nv\">Email</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">).</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Send e-mail to the admin</h3>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">z_email:send_admin/3</span></code> command actually looks in three different places for determining the admin e-mail address: the config key <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic.admin_email</span></code>, then the <code class=\"docutils literal notranslate\"><span class=\"pre\">site.admin_email</span></code> key, and finally the <cite>email</cite> property of the admin user (user with id 1).</p>\n<p>If no admin email address is found then the address <code class=\"docutils literal notranslate\"><span class=\"pre\">wwwadmin@example.com</span></code> is used, where <code class=\"docutils literal notranslate\"><span class=\"pre\">example.com</span></code> will be your site’s hostname.</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Receiving E-mail</h2>\n<p>In its default configuration, Zotonic starts an SMTP server on port 2525 for receiving e-mail messages. You can write your own code to decide what happens if somebody sends e-mail to the system, by implementing the <code class=\"docutils literal notranslate\"><span class=\"pre\">email_received</span></code> notification (see below).</p>\n<p>The SMTP server is also used to receive bounce messages from other servers, when sending of a message has failed. <a class=\"reference internal\" href=\"/id/doc_module_mod_mailinglist\"><span class=\"std std-ref\">mod_mailinglist</span></a> uses this functionality to automatically deactivate invalid e-mail addresses.</p>\n<div class=\"section\">\n<h3>Configuring incoming E-mail</h3>\n<p>To send messages to Zotonic, the domain part of the e-mail address should have an A or MX record which points to the server where Zotonic is able to receive on port 25. This means that you have to add a firewall rule to redirect port 25 to 2525.</p>\n<p>If you were to set up e-mail receiving for a site called <code class=\"docutils literal notranslate\"><span class=\"pre\">example.com</span></code>, you could test if this is working by using the <cite>netcat</cite> program, like this:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">nc</span> <span class=\"n\">example</span><span class=\"p\">.</span><span class=\"n\">com</span> <span class=\"mi\">25</span>\n</pre>\n</div>\n</div>\n<p>Then, you should be greeted by Zotonic in the following way:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"mi\">220</span> <span class=\"n\">example</span><span class=\"p\">.</span><span class=\"n\">com</span> <span class=\"nv\">ESMTP</span> <span class=\"nv\">Zotonic</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"mi\">0</span><span class=\"p\">.</span><span class=\"mi\">0</span>\n</pre>\n</div>\n</div>\n<p>Press ctrl-c to exit.</p>\n</div>\n<div class=\"section\">\n<h3>Handling incoming E-mail</h3>\n<p>When receiving an e-mail message, Zotonic looks at the domain part of the e-mail address to determine which <a class=\"reference internal\" href=\"/id/doc_glossary#term-zotonic-site\"><span class=\"xref std std-term\">Zotonic site</span></a> is configured to handle this message. It looks at the <code class=\"docutils literal notranslate\"><span class=\"pre\">host</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">hostalias</span></code> fields in the site’s config file to match the recipient domain.</p>\n<p>If no site matches the e-mails domain, the message is dropped, and a warning logged.</p>\n<p>For handling incoming messages in your site, you need a hook in your site module to do something with the received messages, implementing the <code class=\"docutils literal notranslate\"><span class=\"pre\">email_receive</span></code> notification.</p>\n<p>The code in your module looks like this:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;kernel/include/logger.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"nf\">observe_email_received</span><span class=\"p\">(</span><span class=\"nv\">E</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">C</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"o\">?</span><span class=\"nv\">LOG_WARNING</span><span class=\"p\">(</span><span class=\"s\">&quot;Email from: </span><span class=\"si\">~p</span><span class=\"s\">: </span><span class=\"si\">~p</span><span class=\"s\">&quot;</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"nv\">E</span><span class=\"nl\">#email_received.from</span><span class=\"p\">,</span>\n                                        <span class=\"nv\">E</span><span class=\"nl\">#email_received.email#email.subject</span><span class=\"p\">]),</span>\n    <span class=\"n\">ok</span><span class=\"p\">.</span>\n</pre>\n</div>\n</div>\n<p>Export this function and then restart your site. Now, send an e-mail message to any address <code class=\"docutils literal notranslate\"><span class=\"pre\">@example.com</span></code>, and notice that it arrives in Zotonic:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"p\">(</span><span class=\"n\">zotonic001</span><span class=\"p\">@</span><span class=\"n\">host</span><span class=\"p\">.</span><span class=\"n\">local</span><span class=\"p\">)</span><span class=\"mi\">9</span><span class=\"o\">&gt;</span> <span class=\"mi\">20</span><span class=\"p\">:</span><span class=\"mi\">57</span><span class=\"p\">:</span><span class=\"mi\">54</span><span class=\"p\">.</span><span class=\"mi\">174</span> <span class=\"p\">[</span><span class=\"n\">warning</span><span class=\"p\">]</span> <span class=\"nv\">Email</span> <span class=\"nn\">from</span><span class=\"p\">:</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;arjan@miraclethings.nl&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">:</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Hello!&quot;</span><span class=\"o\">&gt;&gt;</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Feedback</h3>\n<p>If you need feedback on messages that have been sent, enable <a class=\"reference internal\" href=\"/id/doc_module_mod_logging\"><span class=\"std std-ref\">mod_logging</span></a> which provides an overview of sent/received and bounced messages.</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Troubleshooting</h2>\n<p>Check in the admin the log and smtp log. If a message bounces back to the Zotonic SMTP server, you will see errors there. A typical error looks like this:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"nv\">SMTP</span><span class=\"p\">:</span> <span class=\"nn\">bounce</span><span class=\"p\">:</span> <span class=\"mi\">504</span> <span class=\"mi\">5</span><span class=\"p\">.</span><span class=\"mi\">5</span><span class=\"p\">.</span><span class=\"mi\">2</span> <span class=\"o\">&lt;</span><span class=\"n\">noreply</span><span class=\"o\">+</span><span class=\"n\">mlcm6godbz2cchtgdvom</span><span class=\"p\">@</span><span class=\"n\">oeps</span><span class=\"o\">&gt;</span><span class=\"p\">:</span> <span class=\"nv\">Sender</span> <span class=\"n\">address</span> <span class=\"nn\">rejected</span><span class=\"p\">:</span> <span class=\"n\">need</span> <span class=\"n\">fully</span><span class=\"o\">-</span><span class=\"n\">qualified</span> <span class=\"n\">address</span> <span class=\"nv\">To</span><span class=\"p\">:</span> <span class=\"n\">piet</span><span class=\"p\">@</span><span class=\"n\">example</span><span class=\"p\">.</span><span class=\"n\">com</span> <span class=\"p\">(</span><span class=\"mi\">1234</span><span class=\"p\">)</span> <span class=\"nv\">From</span><span class=\"p\">:</span> <span class=\"o\">&lt;</span><span class=\"n\">noreply</span><span class=\"o\">+</span><span class=\"n\">mlcm6godbz2cchtgdvom</span><span class=\"p\">@</span><span class=\"n\">oeps</span><span class=\"o\">&gt;</span>\n</pre>\n</div>\n</div>\n</div>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "e-mail-handling",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/email.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_email",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:25Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2024-02-29T07:52:27Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "e-mail-handling"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1552",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1552"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:27Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:27Z",
+          "object_id": {
+            "id": 1369,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_image_url",
+            "title": "image_url",
+            "uri": "https://zotonic.com/id/1369"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1586,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1586"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_pagebackgrounds",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1586/page-specific-dynamic-backgrounds",
+    "x-default": "https://zotonic.com/cookbook/1586/page-specific-dynamic-backgrounds"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 19,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Page-specific dynamic backgrounds"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>Use edges (<cite>page connections</cite>) to associate backgrounds with pages.</p>\n<p>Contributed by: Dmitrii Dimandt</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>This is a small use case with a lot of words pouring into it.</p>\n<p>I’m doing a very small project for a couple of friends. It currently resides on <a class=\"reference external\" href=\"http://rusukr.dmitriid.com/\">http://rusukr.dmitriid.com/</a> and will soon move to a proper domain.</p>\n<p>What the project needed was different backgrounds for different pages. Compare, for instance, <a class=\"reference external\" href=\"http://rusukr.dmitriid.com/products\">http://rusukr.dmitriid.com/products</a> and <a class=\"reference external\" href=\"http://rusukr.dmitriid.com/investments\">http://rusukr.dmitriid.com/investments</a></p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are expected to be familiar with where templates reside and how things like conditional tags work. To benefit most you should also be comfortable getting around and editing items in Zotonic’s CMS admin interface.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>Now, the most obvious way to implement these backgrounds would be to attach a media item to a page and something along the lines of:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"nv\">id.medium</span> <span class=\"cp\">%}</span>\n  <span class=\"cp\">{%</span> <span class=\"k\">media</span> <span class=\"nv\">id.medium</span> <span class=\"cp\">%}</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>Actually, if you create your site using the blog skeleton, you will see similar code in <cite>_body_media.tpl</cite>. Obviously, such an approach has a severe downside. What if you actually want to attach other media to the page? What if you want to display images and video in your text, not just a background?</p>\n<p>This is where custom predicates come into play. Don’t fret! it’s much easier than you think</p>\n<p><a class=\"reference internal\" href=\"/id/doc_glossary#term-predicate\"><span class=\"xref std std-term\">Predicate</span></a> is nothing but a fancy way to say “relationship”. Predicates define relationships between various places (objects, entities) within Zotonic. If you are into graphs and graph theory, a predicate is a directed labeled edge from one node to another (see Marko Rodriguez’s amazing presentations on (among oher things) graph theory and graph algebra here: <a class=\"reference external\" href=\"http://www.slideshare.net/slidarko/presentations\">http://www.slideshare.net/slidarko/presentations</a> ).</p>\n<p>What a predicate does, it defines how objects relate to other objects. Since predicates are (usually) one-way only, you helps to think about them as follows:</p>\n<p>if I have a parent, how do I discern between its children? Or how do I define its children? if I have an object, how can I have different collections of objects related to it? So, if you have an article A, then you can have:</p>\n<ul class=\"simple\">\n<li>a number of tags describing the article</li>\n<li>several authors who collaborated on it</li>\n<li>a few images to go with the article</li>\n</ul>\n<p>Let’s rephrase that:</p>\n<ul class=\"simple\">\n<li>an article has tags</li>\n<li>an article has authors</li>\n<li>an article has images</li>\n</ul>\n<p>Once you can make such a “has” connection, you can use a predicate:</p>\n<div class=\"highlight-erlang notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"n\">article</span> <span class=\"o\">-----</span><span class=\"n\">tag</span> <span class=\"n\">predicate</span><span class=\"o\">---&gt;</span> <span class=\"n\">tag1</span><span class=\"p\">,</span> <span class=\"n\">tag2</span><span class=\"p\">,</span> <span class=\"n\">tag3</span><span class=\"p\">,</span> <span class=\"n\">etc</span><span class=\"p\">.</span>\n<span class=\"n\">article</span> <span class=\"o\">-----</span><span class=\"n\">author</span> <span class=\"n\">predicate</span><span class=\"o\">---&gt;</span> <span class=\"n\">author1</span><span class=\"p\">,</span> <span class=\"n\">author2</span><span class=\"p\">,</span> <span class=\"n\">author3</span><span class=\"p\">,</span> <span class=\"n\">etc</span><span class=\"p\">.</span>\n<span class=\"n\">article</span> <span class=\"o\">-----</span><span class=\"n\">image</span> <span class=\"n\">predicate</span><span class=\"o\">---&gt;</span> <span class=\"n\">image1</span><span class=\"p\">,</span> <span class=\"n\">image2</span><span class=\"p\">,</span> <span class=\"n\">image3</span><span class=\"p\">,</span> <span class=\"n\">etc</span><span class=\"p\">.</span>\n</pre>\n</div>\n</div>\n<p>Easy, isn’t it?</p>\n<p>The greatest thing about predicates is that you can define your own. Here’s how yu do it.</p>\n<ul class=\"simple\">\n<li>Go to the “Predicates” section (under <cite>Structure</cite>) and click “Make a new predicate”.</li>\n<li>Name it “Background”, since its used to signify a dynamic background on a page.</li>\n<li>Click “Make predicate”.</li>\n</ul>\n<p>On the following screen we have to choose the direction of our predicate. “From” is the entity that can have relations to other objects, and “To” is the entity that can be had . So, our Text has an Image as a background. This means that “From” is Text and “To” is Image. Click the corresponding checkboxes and then click save.</p>\n<p>you’re done!</p>\n<p>Now if you create a new text item (an article or news) you will see that in the Page Connections section there’s now a new option, “Background”. Let’s try and make a new background:</p>\n<ul class=\"simple\">\n<li>Go to Pages</li>\n<li>Click “Make a new media item”</li>\n<li>Name this item, for example, “test”</li>\n<li>Select an image to upload from your computer</li>\n<li>Click “Upload file”</li>\n<li>The page that opens is irreleveant to us right now. Just go back to “Pages”.</li>\n<li>Click “Make a new page”</li>\n<li>Name this page, for example, “test page”</li>\n<li>Click on “Background” in “Page connections section”</li>\n<li>Type in “test”</li>\n<li>Select “test” media item</li>\n<li>Click “Save and view”</li>\n</ul>\n<p>You should now see your test page… with no background on it. This is ok, since we haven’t told Zotonic how we want to display our background. To do this we have to edit a template. Let’s try and display the background image first. First, we can make a checklist to see how we should proceed:</p>\n<ul class=\"simple\">\n<li>We need to make sure the background exists</li>\n<li>We need to retrieve the resource associated with the background</li>\n<li>We need to retrieve path to the image stored on the server</li>\n<li>We need to make sure that this path is actually accessible from a web browser</li>\n</ul>\n<p>The last step is especially important since Zotonic stores uploaded files in a directory that is not directly accessible from the web. However, for images we can use the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_image_url\"><span class=\"std std-ref\">image_url</span></a> tag to circumvent that.</p>\n<p>So, the code to go with our checklist is as follows:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&lt;div</span><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"nv\">id.o.background</span> <span class=\"cp\">%}</span><span class=\"c\">{# we check to see if background exists #}</span>\n<span class=\"x\">    style=&quot;background: url( </span><span class=\"cp\">{%</span> <span class=\"k\">image_url</span> <span class=\"nv\">id.o.background.medium.filename</span> <span class=\"cp\">%}</span><span class=\"c\">{# output web accessible URL to the image #}</span><span class=\"x\"> ) no-repeat&quot;</span>\n    <span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span><span class=\"x\">&gt;</span>\n<span class=\"x\">  &amp;nbsp;</span>\n<span class=\"x\">&lt;/div&gt;</span>\n</pre>\n</div>\n</div>\n<p>Now that we know how to retrieve the background image we can use it to our advantage. Our dynamic background will now look something like this:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&lt;div</span><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"nv\">id.o.background</span> <span class=\"cp\">%}</span><span class=\"x\"> style=&quot;background: url(</span><span class=\"cp\">{%</span> <span class=\"k\">image_url</span> <span class=\"nv\">id.o.background.medium.filename</span> <span class=\"cp\">%}</span><span class=\"x\">)&quot;</span><span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span><span class=\"x\">&gt;</span>\n<span class=\"x\">  &amp;nbsp;</span>\n<span class=\"x\">&lt;/div&gt;</span>\n</pre>\n</div>\n</div>\n</div>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "page-specific-dynamic-backgrounds",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-pagebackgrounds.rst",
+    "pivot_location_lng": null,
+    "name": "doc_cookbook_frontend_pagebackgrounds",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:27Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "translation_status": {
+      "en": ""
+    },
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2024-06-20T08:17:44Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "page-specific-dynamic-backgrounds"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1586",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1586"
+  }
+}

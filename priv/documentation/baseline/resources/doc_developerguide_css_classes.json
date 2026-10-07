@@ -1,0 +1,135 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 2410,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/2410"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": null,
+  "page_url": {
+    "en": "https://zotonic.com/docs/2410/css-classes-used-in-templates",
+    "x-default": "https://zotonic.com/docs/2410/css-classes-used-in-templates"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 4,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "CSS classes used in templates"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<p>Button classes:</p>\n<ul>\n<li>    .btn<br />    .btn-primary<br />    .btn-default<br />    .btn-danger</li>\n</ul>\n<p>Optional for sizing buttons:</p>\n<ul>\n<li>    .btn-sm<br />    .btn-xs</li>\n</ul>\n<p>Lists:</p>\n<ul>\n<li>    .list-unstyled</li>\n</ul>\n<p>Texts:</p>\n<ul>\n<li>    .text-muted<br />    .text-danger<br />    .rtl<br />    .ltr</li>\n</ul>\n<p>Messages:</p>\n<ul>\n<li>    .alert<br />    .alert-warning<br />    .alert-danger<br />    .alert-info</li>\n</ul>\n<p>Dialogs:</p>\n<ul>\n<li>    .dialog<br />    .modal-dialog<br />    .modal-lg<br />    .modal-sm<br />    .modal-header<br />    .modal-title<br />    .modal-body<br />    .modal-content<br />    .modal-footer<br />    .close</li>\n</ul>\n<p>Overlays:</p>\n<ul>\n<li>    .modal-overlay<br />    .modal-overlay-close<br />    .modal-overlay-level-0..3<br />    .overlay-open  (added to the body element)</li>\n</ul>\n<p>Misc:</p>\n<ul>\n<li>    .pull-left<br />    .pull-right</li>\n</ul>\n<p>Forms:</p>\n<ul>\n<li>    .form<br />    .form-inline<br />    .form-group<br />    .form-control<br />    .form-actions<br />    .checkbox<br />    .control-label<br />    .help-block</li>\n<li>    .label-floating (Used to position control label for)</li>\n</ul>\n<p>Form validation (LiveValidation.js):</p>\n<ul>\n<li>    .z_form_valid (element to show when form valid)<br />    .z_form_invalid (element to show when form invalid)</li>\n<li>    .z_invalid (on validation message)<br />    .z_validation.help-block (on validation message)</li>\n<li>    .valid (on field)<br />    .invalid (on field)<br />    .validating (on field when async validation is in progress)</li>\n<li>    .form-group (element grouping the validated input element)<br />    .has-error (on form group)<br />    .has-validated  (on form group)</li>\n</ul>\n<p>Busy indicator for elements (mostly forms when waiting for response):</p>\n<ul>\n<li>    .masked<br />    .loadmask (div positioned over the masked element)<br />    .loadmask-progress<br />    .loadmask-msg<br />    .masked-relative (added to static positioned masked elements)</li>\n</ul>\n<p>Growl messages:</p>\n<ul>\n<li>    .notice-wrap<br />    .notice-item-wrapper<br />    .notice-item<br />    .notice-item-close</li>\n</ul>\n<p>HTML element classes:</p>\n<ul>\n<li>    .environment-...  (development, production, acceptance etc.)</li>\n<li>    .ui-state-auth-anonymous<br />    .ui-state-auth-user<br />    .ui-state-auth-authenticating<br />    .ui-state-auth-error-fetch<br />    .ui-state-auth-error</li>\n<li>    .ui-state-bridge-disconnected<br />    .ui-state-bridge-connected</li>\n</ul>\n<p>For the MQTT bridge status template (_bridge_warning.tpl):</p>\n<ul>\n<li>    .z-bridge-warning<br />    .z-bridge-ok</li>\n</ul>\n<p> </p>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "css-classes-used-in-templates",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2024-05-21T10:22:00Z",
+    "is_website_redirect": false,
+    "pivot_location_lng": null,
+    "name": null,
+    "is_unfindable": false,
+    "is_published": true,
+    "summary": {
+      "_type": "trans",
+      "tr": {
+        "en": "If you are building a website then you might want to use the standard dialogs, overlays, authentication and other parts of Zotonic. To make those look like your own design it is useful to know which classnames are used. This is a short overview of most of the classes used in these standard components."
+      }
+    },
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2024-05-21T10:22:23Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "translation_status": {
+      "en": ""
+    },
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 2315,
+      "is_a": [
+        "person"
+      ],
+      "name": null,
+      "title": "Marc Worrell",
+      "uri": "https://zotonic.com/id/2315"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 2315,
+      "is_a": [
+        "person"
+      ],
+      "name": null,
+      "title": "Marc Worrell",
+      "uri": "https://zotonic.com/id/2315"
+    },
+    "seo_noindex": false,
+    "modified": "2024-05-21T10:31:01Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "css-classes-used-in-templates"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/2410",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/2410"
+  }
+}

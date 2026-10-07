@@ -1,0 +1,149 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:28Z",
+          "object_id": {
+            "id": 1521,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_backup",
+            "title": "mod_backup",
+            "uri": "https://zotonic.com/id/1521"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1599,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1599"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_shell_restoring_db",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1599/restore-upgrade-content-db-from-backup",
+    "x-default": "https://zotonic.com/cookbook/1599/restore-upgrade-content-db-from-backup"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p><cite>Contributed by: Scott Finnie</cite></p>\n<p>How to protect your Zotonic content and bring it back in case of disaster.</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>Restore / upgrade the content for a site from a database dump.</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>You have a dump of the content to restore as a <code class=\"docutils literal notranslate\"><span class=\"pre\">.sql</span></code> file, which\nwas created by <a class=\"reference internal\" href=\"/id/doc_module_mod_backup\"><span class=\"std std-ref\">mod_backup</span></a>.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>Dumps from postgres include both database structure (tables,\nsequences, constraints, etc.) as well as content. Therefore it’s not\npossible to simply import the dump directly into an existing Zotonic\ndatabase populated with content. The target database must be empty\nbefore the dump can be imported. There are (at least) 2 ways to do\nthis:</p>\n<ol class=\"arabic simple\">\n<li>Drop contents of the target db and import the dump file;</li>\n<li>Create a new database, import contents, rename old database to\nsomething temporary, rename new database to match site, and finally\ndelete the old database.</li>\n</ol>\n<p>Option 2 seems more involved but is safer and quicker: it’s\nnon-destructive. The old db remains intact until after the new one is\nactivated. If anything goes wrong, you can fall back to the original.</p>\n<p>It also means less downtime. The site can stay live on the old db\nwhile the new db is being created. Downtime is restricted to the\nrename operations (which are quick and db size independent).</p>\n<p>For small databases the downtime difference will be minimal. However\nthe safety is appealing. Hence this cookbook uses the second approach.</p>\n</div>\n<div class=\"section\">\n<h2>Instructions</h2>\n<p>These assume the following naming conventions:</p>\n<ul class=\"simple\">\n<li>Your Zotonic site is named yoursite.</li>\n<li>The postgres dump file to load is named zotonic-dump.sql.</li>\n<li>Zotonic is installed in ~zotonic/zotonic</li>\n</ul>\n<p>Replace these assumptions as appropriate in all commands below.\nEnsure the db dump file is available on target machine (see\npre-requisites).</p>\n<p>Create a new database in postgres:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>zotonic:~$ sudo su -l postgres\npostgres:~$ ~zotonic/zotonic/bin/zotonic createdb yoursite_new\nCREATE DATABASE\nGRANT\nYou are now connected to database <span class=\"s2\">&quot;zotonic_yoursite_new&quot;</span>.\nCREATE LANGUAGE\npostgres:~$\n</pre></div>\n</div>\n<p>Import the dump file into the newly created db:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>postgres:~$ psql -U zotonic -d zotonic_yoursite_new -f /path/to/zotonic-dump.sql\n<span class=\"o\">[</span>…lots of SQL statements…<span class=\"o\">]</span>\npostgres:~$\n</pre></div>\n</div>\n<p>Note: the final sql commands shown will likely say ‘no privileges could be revoked for “public”’. You can ignore this.</p>\n<p>Stop Zotonic (if running):</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>postgres:~$ ~zotonic/zotonic/bin/zotonic stop\nStopping zotonic zotonic001@hostname\nStop:<span class=\"s1\">&#39;zotonic001@hostname&#39;</span>\npostgres:~$\n</pre></div>\n</div>\n<p>Rename the databases:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>postgres:~$ psql\n<span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># ALTER DATABASE zotonic_yoursite RENAME TO zotonic_yoursite_old;</span>\nALTER DATABASE\n<span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># ALTER DATABASE zotonic_yoursite_new RENAME TO zotonic_yoursite;</span>\nALTER DATABASE\n<span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># \\q</span>\npostgres:~$ <span class=\"nb\">exit</span>\nzotonic:~$\n</pre></div>\n</div>\n<p>Restart Zotonic:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>zotonic:~$ ~/zotonic/bin/zotonic start\n</pre></div>\n</div>\n<p>Browse to your site &amp; test it’s now serving updated content.</p>\n<p>(Optional) Drop the old database:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span>zotonic:~$ sudo -u postgres psql\n<span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># DROP DATABASE zotonic_yoursite_old;</span>\nDROP DATABASE\n<span class=\"nv\">postgres</span><span class=\"o\">=</span><span class=\"c1\"># \\q</span>\nzotonic:~$\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-restoring-db.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:44Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_shell_restoring_db",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:44Z",
+    "slug": "restore-upgrade-content-db-from-backup",
+    "title": "Restore/upgrade content db from backup",
+    "title_slug": "restore-upgrade-content-db-from-backup",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1599",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1599"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1544,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1544"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_shell_completion",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1544/erlang-tab-completion",
+    "x-default": "https://zotonic.com/cookbook/1544/erlang-tab-completion"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Get quicker access to Zotonic code on the shell.</p>\n<p><cite>Contributed by: Maas-Maarten Zeeman</cite></p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>When you are working on the shell chances are you are looking to be\nfast.  A way to be faster is to leverage the EShell’s tab completion.</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are assumed to be comfortable using the EShell to run Erlang\ncode interactively.  This feature this guide describes only works with\nZotonic modules only from <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">debug</span></code>.  With the <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span>\n<span class=\"pre\">shell</span></code> command, the Zotonic modules need to be explicitly loaded to\nwork with tab-completion.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>The Erlang shell has tab-completion. IIt is very handy for using in\nZotonic, especially because of Zotonic’s naming scheme. Just type:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">1</span><span class=\"o\">&gt;</span> <span class=\"n\">z_</span><span class=\"o\">&lt;</span><span class=\"n\">tab</span><span class=\"o\">&gt;</span>\n</pre></div>\n</div>\n<p>And you get a list of zotonic library modules. Type:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">2</span><span class=\"o\">&gt;</span> <span class=\"n\">mod_</span><span class=\"o\">&lt;</span><span class=\"n\">tab</span><span class=\"o\">&gt;</span><span class=\"p\">,</span> <span class=\"n\">type</span> <span class=\"n\">m_</span><span class=\"o\">&lt;</span><span class=\"n\">tab</span><span class=\"o\">&gt;</span> <span class=\"n\">a</span> <span class=\"n\">list</span> <span class=\"k\">of</span> <span class=\"n\">models</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n<p>You get the idea. The really nice thing is that it works for function names too.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:25Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/shell-completion.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:36Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_shell_completion",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:36Z",
+    "slug": "erlang-tab-completion",
+    "title": "Erlang tab completion",
+    "title_slug": "erlang-tab-completion",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1544",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1544"
+  }
+}

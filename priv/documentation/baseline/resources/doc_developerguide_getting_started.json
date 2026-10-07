@@ -1,0 +1,276 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:24Z",
+          "object_id": {
+            "id": 1527,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_sites",
+            "title": "Sites",
+            "uri": "https://zotonic.com/id/1527"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:24Z",
+          "object_id": {
+            "id": 1528,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_status_site",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "The Status site"
+              }
+            },
+            "uri": "https://zotonic.com/id/1528"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:24Z",
+          "object_id": {
+            "id": 1529,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_troubleshooting",
+            "title": "Troubleshooting",
+            "uri": "https://zotonic.com/id/1529"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:24Z",
+          "object_id": {
+            "id": 1454,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_developerguide_configuration_zotonic_configuration",
+            "title": "Global configuration",
+            "uri": "https://zotonic.com/id/1454"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:24Z",
+          "object_id": {
+            "id": 1411,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_docker",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Docker"
+              }
+            },
+            "uri": "https://zotonic.com/id/1411"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:24Z",
+          "object_id": {
+            "id": 1530,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_reference_installation_requirements",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Installation requirements"
+              }
+            },
+            "uri": "https://zotonic.com/id/1530"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1526,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1526"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_getting_started",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1526/getting-started",
+    "x-default": "https://zotonic.com/docs/1526/getting-started"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 23,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Getting Started"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>You have three options for running Zotonic: to get started quickly, start our<br />Zotonic container. You can also use Nix or manually install the dependencies.</p>\n<div class=\"section\">\n<h2>Docker</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_docker#guide-docker\"><span class=\"std std-ref\">Docker</span></a> for more information on using Docker and how to find the password for the Zotonic status site.</p>\n</aside>\n<p>First <a class=\"reference external\" href=\"https://www.docker.com/products/docker\">download and install Docker</a> . Then build and start Zotonic with a single command:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ ./start-docker.sh\n</pre>\n</div>\n</div>\n<p>Docker will download and boot the container. The container will start building Zotonic. After which Zotonic can be started with:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>bash-4.4$ bin/zotonic debug\n</pre>\n</div>\n</div>\n<p>Zotonic will be available on port 8443 on your machine. Open your browser and go to <a class=\"reference external\" href=\"https://localhost:8443/\">https://localhost:8443/</a> to view the Zotonic Status page. If you wish to quit Zotonic, press twice Ctrl+C. If you wish to quite the container, press Ctrl+D at the bash prompt.</p>\n<p>To see the configuration for the password (and other configurations) for the zotonic status site, type:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>bash-4.4$ bin/zotonic config\n</pre>\n</div>\n</div>\n<p>The password is the <em>password</em> entry, the username is always <code class=\"docutils literal notranslate\"><span class=\"pre\">wwwadmin</span></code>.</p>\n<p>You can now move on to <a class=\"reference internal\" href=\"/id/doc_developerguide_sites#guide-create-site\"><span class=\"std std-ref\">creating your first site</span></a>.</p>\n<h2>Podman</h2>\n<aside>\n<p>Tested with `podman` version 4.3.1 and `podman-compose` version 1.5.0.</p>\n</aside>\n<p>First download and install Podman and Podman Compose (the Python package). Then<br />build and start Zotonic with a single command::</p>\n<pre>$ ./start-podman.sh</pre>\n<p>Podman will download and boot the container. The container will start building Zotonic. After which Zotonic can be started with:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>bash-4.4$ bin/zotonic debug\n</pre>\n</div>\n</div>\n<h2>Nix</h2>\n<p>Download the Zotonic source code using Git or from the <a class=\"reference external\" href=\"https://github.com/zotonic/zotonic/releases\">GitHub releases page</a>.<br />The repo includes a shell.nix file that defines a development shell with all dependencies in scope.<br />You can enter the shell with</p>\n<pre>nix-shell</pre>\n<p>There you should run `make` to compile Zotonic.<br />You can then start Zotonic with</p>\n<pre>bin/zotonic debug</pre>\n<p>Now point your browser to: <a class=\"reference external\" href=\"https://localhost:8443/\">https://localhost:8443/</a>. You should see a welcome message, ‘Powered by Zotonic’. This is the so-called <a class=\"reference internal\" href=\"/id/doc_developerguide_status_site#ref-status-site\"><span class=\"std std-ref\">status website</span></a>. So far, so good! Now it’s time to <a class=\"reference internal\" href=\"/id/doc_developerguide_sites#guide-create-site\"><span class=\"std std-ref\">create your first site</span></a>.</p>\n</div>\n<div class=\"section\">\n<h2>Cloud-Init</h2>\n<p>A <a class=\"reference external\" href=\"https://github.com/zotonic/zotonic/blob/master/cloud-init/zotonic-cloudinit.yml\">cloud-init file for Ubuntu</a> is supplied, this has been tested with Ubuntu 20.04.</p>\n<p>This file can be used to install a VPS by providers that support cloud-init. <a class=\"reference external\" href=\"https://hetzner.de/\">Hetzner</a>, <a class=\"reference external\" href=\"https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-automate-vm-deployment\">Microsoft Azure</a> and <a class=\"reference external\" href=\"https://www.transip.eu/vps/fastinstalls/\">TransIP</a> are such providers.</p>\n<p>After the cloud-init is done with its installation a new server is up and running on port 80 and 443. It will be using a self-signed certificate, located in <code class=\"file docutils literal notranslate\"><span class=\"pre\">/home/zotonic/.config/zotonic/security/self-signed/</span></code> (on macOS the directory is <code class=\"file docutils literal notranslate\"><span class=\"pre\">$HOME/Library/Application</span> <span class=\"pre\">Support/zotonic/security/</span></code>).</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">wwwadmin</span></code> password for the zotonic status site can be found after logging in to your server:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>root:~# sudo su - zotonic\nzotonic:~$ <span class=\"nb\">cd</span> zotonic\nzotonic:~/zotonic$ bin/zotonic config\n\nZotonic config <span class=\"k\">for</span> <span class=\"s1\">&#39;zotonic@yourvps&#39;</span>:\n<span class=\"o\">=================================</span>\n\nzotonic:\n    environment: production\n    zotonic_apps: /home/zotonic/zotonic/apps_user\n    security_dir: /home/zotonic/.config/zotonic/security\n    password: wXuqsZkC4qp8j1AZHyO3\n    timezone: UTC\n    ...\n</pre>\n</div>\n</div>\n<p>The server can be stopped and started using the command line:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>zotonic:~/zotonic$ bin/zotonic stop\nStopping zotonic <span class=\"s1\">&#39;zotonic@yourvps&#39;</span> .... OK\nzotonic:~/zotonic$ bin/zotonic start\nWaiting <span class=\"k\">for</span> zotonic: . OK\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Manual installation</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">a more extensive discussion of <a class=\"reference internal\" href=\"/id/doc_reference_installation_requirements#installation-preinstall\"><span class=\"std std-ref\">all requirements</span></a></p>\n</aside>\n<p>If you don’t like Docker or Nix, or you like to do things yourself, you can always install Zotonic on your computer yourself.</p>\n<div class=\"section\">\n<h3>Preparation</h3>\n<p>First prepare your system for running Zotonic. Zotonic needs:</p>\n<ul class=\"simple\">\n<li>Erlang/OTP 25 or higher</li>\n<li>PostgreSQL 14 or higher</li>\n<li>ImageMagick 6.5 or higher for image resizing</li>\n<li>Git for pulling in external dependencies</li>\n<li>C++ compiler (gcc) for erl_exec and other dependencies</li>\n<li>FFmpeg if you want to use video</li>\n</ul>\n</div>\n<div class=\"section\">\n<h3>Ubuntu / Debian</h3>\n<p>We recommend you install Erlang from the Erlang solutions website:</p>\n<p><a class=\"reference external\" href=\"https://www.erlang-solutions.com/downloads/\">https://www.erlang-solutions.com/downloads/</a></p>\n<p>The other requirements are easily fetched with <code class=\"docutils literal notranslate\"><span class=\"pre\">apt</span></code>:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>sudo apt-get install gcc g++ build-essential git imagemagick postgresql ffmpeg libseccomp-dev </pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>macOS</h3>\n<p>Install <a class=\"reference external\" href=\"https://brew.sh\">Homebrew</a>, then run:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ brew install erlang git imagemagick postgresql ffmpeg\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>FreeBSD</h3>\n<p>Erlang and its dependencies can be installed with <code class=\"docutils literal notranslate\"><span class=\"pre\">pkg</span></code>:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"c1\"># pkg install sudo zip wget bash gmake curl git gcc erlang</span>\n</pre>\n</div>\n</div>\n<p>Also install ImageMagick and PostgreSQL, at the time of writing the commands below can be used, they should be updated with the newest available version:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"c1\"># pkg install ImageMagick7-nox11</span>\n<span class=\"c1\"># pkg install postgresql10-server</span>\n<span class=\"c1\"># pkg install ffmpeg</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Windows</h3>\n<p>Currently, Zotonic is not officially supported on the Windows platform. However, the main dependencies Erlang, PostgreSQL and ImageMagick do work on Windows, so, if you’re adventurous, it should be possible to get it running.</p>\n<p>It is advised to use Docker or the Linux subsystem for Windows.</p>\n</div>\n<div class=\"section\">\n<h3>Getting Zotonic</h3>\n<p>Download the latest Zotonic release ZIP file from the <a class=\"reference external\" href=\"https://github.com/zotonic/zotonic/releases\">GitHub releases page</a>. For instance:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ wget https://github.com/zotonic/zotonic/archive/<span class=\"p\">|</span>release<span class=\"p\">|</span>.zip\n</pre>\n</div>\n</div>\n<p>Then unzip the file and rename the directory:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ unzip <span class=\"p\">|</span>release<span class=\"p\">|</span>.zip\n$ mv zotonic-<span class=\"p\">|</span>release<span class=\"p\">|</span> zotonic\n</pre>\n</div>\n</div>\n<p>Alternatively, clone the latest development version using Git:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ git clone https://github.com/zotonic/zotonic.git\n</pre>\n</div>\n</div>\n<p>You then need to compile the Zotonic sources:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ <span class=\"nb\">cd</span> zotonic\n$ make\n</pre>\n</div>\n</div>\n<p>Then start Zotonic in debug mode:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ bin/zotonic debug\n</pre>\n</div>\n</div>\n<p>Now point your browser to: <a class=\"reference external\" href=\"https://localhost:8443/\">https://localhost:8443/</a>. You should see a welcome message, ‘Powered by Zotonic’. This is the so-called <a class=\"reference internal\" href=\"/id/doc_developerguide_status_site#ref-status-site\"><span class=\"std std-ref\">status website</span></a>. So far, so good! Now it’s time to <a class=\"reference internal\" href=\"/id/doc_developerguide_sites#guide-create-site\"><span class=\"std std-ref\">create your first site</span></a>.</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Next steps</h2>\n<ul class=\"simple\">\n<li><a class=\"reference internal\" href=\"/id/doc_developerguide_sites#guide-create-site\"><span class=\"std std-ref\">Create your first site</span></a>.</li>\n<li>Log in to the <a class=\"reference internal\" href=\"/id/doc_developerguide_status_site#ref-status-site\"><span class=\"std std-ref\">status site</span></a>.</li>\n<li>If something goes wrong, read the <a class=\"reference internal\" href=\"/id/doc_developerguide_troubleshooting#ref-troubleshooting-installation\"><span class=\"std std-ref\">troubleshooting reference</span></a>.</li>\n<li>Read more about Zotonic <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_zotonic_configuration#guide-configuration\"><span class=\"std std-ref\">configuration</span></a>.</li>\n</ul>\n</div>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "getting-started",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/getting-started.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_getting_started",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:24Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "translation_status": {
+      "en": ""
+    },
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2026-09-19T11:40:38Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "getting-started"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1526",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1526"
+  }
+}

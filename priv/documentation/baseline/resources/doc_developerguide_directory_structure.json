@@ -1,0 +1,178 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T10:07:10Z",
+          "object_id": {
+            "id": 1547,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_reference_cli_index",
+            "title": "Command-line",
+            "uri": "https://zotonic.com/id/1547"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T10:07:10Z",
+          "object_id": {
+            "id": 1528,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_status_site",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "The Status site"
+              }
+            },
+            "uri": "https://zotonic.com/id/1528"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T10:07:10Z",
+          "object_id": {
+            "id": 1481,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_deployment_env",
+            "title": "Useful environment variables",
+            "uri": "https://zotonic.com/id/1481"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 2176,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/2176"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_directory_structure",
+  "page_url": {
+    "en": "https://zotonic.com/docs/2176/directory-structure",
+    "x-default": "https://zotonic.com/docs/2176/directory-structure"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Zotonic is a set of regular OTP applications. These can be found in the\nrepository’s <cite>apps/</cite> directory:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">zotonic</span><span class=\"o\">/</span>\n    <span class=\"p\">_</span><span class=\"n\">build</span>\n    <span class=\"p\">_</span><span class=\"n\">checkouts</span>\n    <span class=\"n\">apps</span><span class=\"o\">/</span>\n        <span class=\"n\">zotonic_core</span><span class=\"o\">/</span>\n        <span class=\"n\">zotonic_mod_acl_user_groups</span><span class=\"o\">/</span>\n        <span class=\"n\">zotonic_mod</span><span class=\"p\">...</span>\n        <span class=\"n\">zotonic_site_status</span>\n        <span class=\"n\">zotonic_site_testsandbox</span>\n        <span class=\"p\">...</span>\n    <span class=\"n\">apps_user</span>\n        <span class=\"n\">mysite</span>\n        <span class=\"p\">...</span>\n    <span class=\"n\">bin</span><span class=\"o\">/</span>\n    <span class=\"n\">doc</span><span class=\"o\">/</span>\n    <span class=\"n\">docker</span><span class=\"o\">/</span>\n    <span class=\"n\">priv</span><span class=\"o\">/</span>\n</pre></div>\n</div>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/</span></code></p>\n\n<p>The main directory contains the startup script “start.sh” and the\nmakefile “Makefile” to build the system.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/_build/</span></code></p>\n\n<p>The Rebar3 build directory.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/_checkouts</span></code></p>\n\n<p>Place here checkouts of dependencies that are in development and\nshould be used instead of the dependencies in <code class=\"docutils literal notranslate\"><span class=\"pre\">rebar.lock</span></code> or\nas mentioned in the <code class=\"docutils literal notranslate\"><span class=\"pre\">rebar.config</span></code> files of all other apps.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/bin/</span></code></p>\n\n<p>Shell scripts for the Zotonic <a class=\"reference internal\" href=\"/id/doc_reference_cli_index#ref-cli\"><span class=\"std std-ref\">Command-line</span></a> and scripts for maintaining\nthe translation <code class=\"docutils literal notranslate\"><span class=\"pre\">.po</span></code> files.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/doc/</span></code></p>\n\n<p>Documentation sources files.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/include/</span></code></p>\n\n<p>The main zotonic include files.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_mod_.../</span></code></p>\n\n<p>All core modules of Zotonic. See the modules documentation for more\ninformation.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/priv/</span></code></p>\n\n<p>The priv directory is the place where all non core files statis assets are placed.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/src/</span></code></p>\n\n<p>The Erlang source for the core Zotonic system.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/src/behaviours/</span></code></p>\n\n<p>Currently there are two behaviours defined. One for scomps and one\nfor models.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/src/db/</span></code></p>\n\n<p>The database drivers. Currently, only PostgreSQL is supported as\nDBMS. As the modules and models sometimes use database specific\nqueries (especially for full text search) it will not be easy to\nsubstitute an alternative database. Read this article why Zotonic\nonly supports PostgreSQL.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/src/i18n/</span></code></p>\n\n<p>Internationalization support.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/src/install/</span></code></p>\n\n<p>The database model and basic installation for sites. The files here\nare used when an empty database is found and needs to be installed.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/src/models/</span></code></p>\n\n<p>The data model access files. Implements internal APIs for the\ndifferent data models for use in Erlang modules and\ntemplates. Examples of datamodels are m_rsc, m_config and\nm_category.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/src/support/</span></code></p>\n\n<p>All base Zotonic source code. Here you will find the source code for\nsite supervisors, module supervisors, image resize server, context\nroutines, and much more.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_core/test/</span></code></p>\n\n<p>Contains the EUnit tests for Zotonic.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_site_status</span></code></p>\n\n<p>The Zotonic <a class=\"reference internal\" href=\"/id/doc_developerguide_status_site#ref-status-site\"><span class=\"std std-ref\">status site</span></a>.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps/zotonic_site_testsandbox</span></code></p>\n\n<p>The Zotonic testsandbox site that tests are run against.</p>\n<p><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic/apps_user</span></code></p>\n\n<p>This directory contains user-modifiable source code which runs in\nZotonic, namely user-defined sites, modules and other Erlang/OTP\napplications.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user</span></code> directory is the default location of the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">ZOTONIC_APPS</span></code> environment variable. See <a class=\"reference internal\" href=\"/id/doc_developerguide_deployment_env#guide-deployment-env\"><span class=\"std std-ref\">Useful environment variables</span></a>.\n</p>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T10:07:03Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/directory-structure.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:31Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_directory_structure",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:31Z",
+    "slug": "directory-structure",
+    "title": "Directory structure",
+    "title_slug": "directory-structure",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/2176",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/2176"
+  }
+}

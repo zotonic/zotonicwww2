@@ -1,0 +1,187 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:54Z",
+          "object_id": {
+            "id": 1528,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_status_site",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "The Status site"
+              }
+            },
+            "uri": "https://zotonic.com/id/1528"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:54Z",
+          "object_id": {
+            "id": 1457,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_development",
+            "title": "mod_development",
+            "uri": "https://zotonic.com/id/1457"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1411,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1411"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_docker",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1411/docker",
+    "x-default": "https://zotonic.com/docs/1411/docker"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 25,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Docker"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>We offer the Docker image <a class=\"reference external\" href=\"https://hub.docker.com/r/zotonic/zotonic-dev/\">zotonic/zotonic-dev</a> which contains build tools and Erlang.</p>\n<p>It can be used for development work on Zotonic itself, where you’ll mount your Zotonic directory as a volume in the container.</p>\n<p>To use this image, first <a class=\"reference external\" href=\"https://www.docker.com/get-started\">download and install Docker</a>.</p>\n<div class=\"section\">\n<h2>zotonic-dev</h2>\n<p>You can use the <a class=\"reference external\" href=\"https://hub.docker.com/r/zotonic/zotonic-dev/\">zotonic/zotonic-dev</a> image for doing development work on Zotonic and Zotonic sites.</p>\n<p>Start the container from your local Zotonic clone:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ git clone https://github.com/zotonic/zotonic.git\n</pre>\n</div>\n</div>\n<p>Start the container:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ <span class=\"nb\">cd</span> zotonic\n$ ./start-docker.sh\n</pre>\n</div>\n</div>\n<p>This uses Docker Compose to start the Zotonic container and a PostgreSQL container.</p>\n<p>On first start Zotonic will be compiled and all dependencies are fetched. This can take quite some time if you are not running on Linux (Docker’s file i/o is quite inefficient on non-Linux platforms).</p>\n<p>A shell prompt will appear after the build is complete. Now Zotonic can be started:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>bash-4.4$ bin/zotonic debug\n</pre>\n</div>\n</div>\n<p>You can stop Zotonic (Erlang) by typing Ctrl+C twice.</p>\n<p>The configuration, including the Zotonic status site password, can be found with:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>bash-4.4$ bin/zotonic config\n</pre>\n</div>\n</div>\n<p>Zotonic’s port 8443 and 8000 are exposed as local ports. You can view the <a class=\"reference internal\" href=\"/id/doc_developerguide_status_site#ref-status-site\"><span class=\"std std-ref\">Zotonic status page</span></a> at <code class=\"docutils literal notranslate\"><span class=\"pre\">https://localhost:8443/</span></code>. You can log in using the username <cite>wwwadmin</cite> and the password from the config.</p>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">Note</p>\n<p>If your are using the Docker containers then the PostgreSQL database is available at the host <strong>postgres</strong> and not <strong>localhost</strong>.</p>\n</aside>\n<p>All configurarions, logs and site data used in the container are stored in the <code class=\"file docutils literal notranslate\"><span class=\"pre\">docker-data</span></code> directory.</p>\n<p>Zotonic is running with a self-signed certificate. The certificate can be found in <code class=\"docutils literal notranslate\"><span class=\"pre\">docker-data/security/self-signed/</span></code>.</p>\n<p>You can also run other commands in the container, such as running the tests:</p>\n<div class=\"highlight-bash notranslate\">\n<div class=\"highlight\">\n<pre>$ bin/zotonic runtests\n</pre>\n</div>\n</div>\n<p>Any changes you make in the Zotonic source files will be propagated to the container and <a class=\"reference internal\" href=\"/id/doc_module_mod_development#automatic-recompilation\"><span class=\"std std-ref\">automatically compiled</span></a>.</p>\n<p>You can stop the container using Ctrl+D at the Bash shell prompt.</p>\n<p>Directories:</p>\n<ul class=\"simple\">\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">docker-data/config</span></code> The Zotonic and Erlang configuration files</li>\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">docker-data/security</span></code> Certificates used by Zotonic and sites</li>\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">docker-data/logs</span></code> All log files</li>\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">docker-data/data</span></code> Site data and mnesia files</li>\n<li><code class=\"file docutils literal notranslate\"><span class=\"pre\">_build</span></code> All compiled files</li>\n</ul>\n</div>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "docker",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/docker.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_docker",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:21Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "translation_status": {
+      "en": ""
+    },
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2024-11-04T11:38:55Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "docker"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1411",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1411"
+  }
+}

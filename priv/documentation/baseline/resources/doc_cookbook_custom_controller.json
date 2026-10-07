@@ -1,0 +1,203 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2021-07-20T12:20:59Z",
+          "object_id": {
+            "id": 1540,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_controllers",
+            "title": "Controllers",
+            "uri": "https://zotonic.com/id/1540"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2021-07-20T12:20:59Z",
+          "object_id": {
+            "id": 1541,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_dispatch_rules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Dispatch rules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1541"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2021-07-20T12:20:59Z",
+          "object_id": {
+            "id": 1540,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_controllers",
+            "title": "Controllers",
+            "uri": "https://zotonic.com/id/1540"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 2259,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/2259"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_custom_controller",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/2259/create-a-custom-controller",
+    "x-default": "https://zotonic.com/cookbook/2259/create-a-custom-controller"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_controllers\"><span class=\"std std-ref\">Controllers</span></a> in the Developer Guide</p>\n</aside>\n<p>Zotonic comes with a large collection <a class=\"reference internal\" href=\"/id/doc_developerguide_controllers\"><span class=\"std std-ref\">controllers</span></a>\nthat cover many use cases, so you’ll probably have to resort to custom\ncontrollers less often than you may be used to from other web frameworks. Still,\nthe time may come when you need to process HTTP requests in your own way.</p>\n<p>You can do so by creating a custom <a class=\"reference internal\" href=\"/id/doc_developerguide_controllers\"><span class=\"std std-ref\">controller</span></a>. Create\na module in your site’s <code class=\"file docutils literal notranslate\"><span class=\"pre\">src/controllers/</span></code> directory and prefix it with\n<code class=\"docutils literal notranslate\"><span class=\"pre\">controller_</span></code>:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">yoursite/src/controllers/controller_say_hello.erl</span></div>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">controller_say_hello</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span>\n    <span class=\"n\">process</span><span class=\"o\">/</span><span class=\"mi\">4</span>\n<span class=\"p\">]).</span>\n\n<span class=\"c\">%% This function renders some HTML when the controller is called</span>\n<span class=\"nf\">process</span><span class=\"p\">(_</span><span class=\"nv\">Method</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">AcceptedContentType</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">ProvidedContentType</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Hello world and all the people in it!&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">}.</span>\n</pre></div>\n</div>\n</div>\n<p>To be able to handle HTTP requests with this controller, you need to\n<a class=\"reference internal\" href=\"/id/doc_developerguide_dispatch_rules\"><span class=\"std std-ref\">define a dispatch rule</span></a> that maps some request\nURL to this controller:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">yoursite/priv/dispatch/dispatch</span></div>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"n\">say_hello</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"s\">&quot;hello&quot;</span><span class=\"p\">],</span> <span class=\"n\">controller_say_hello</span><span class=\"p\">,</span> <span class=\"p\">[]}</span>\n<span class=\"p\">].</span>\n</pre></div>\n</div>\n</div>\n<p>Now, if you go to <code class=\"docutils literal notranslate\"><span class=\"pre\">https://yoursite.test:8443/hello</span></code> in your browser, you will see\nthe output of the <code class=\"docutils literal notranslate\"><span class=\"pre\">controller_say_hello</span></code> controller.</p>\n<div class=\"section\">\n<h2>Handling POST requests</h2>\n<p>Now you’ve seen how to handle GET requests, let’s turn to POST requests. First,\nyour controller must show that it can handle POSTs. You do so by adding an\n<code class=\"docutils literal notranslate\"><span class=\"pre\">allowed_methods/1</span></code> function:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">yoursite/src/controllers/controller_say_hello.erl</span></div>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">controller_say_hello</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span>\n    <span class=\"c\">%% ...</span>\n    <span class=\"n\">allowed_methods</span><span class=\"o\">/</span><span class=\"mi\">1</span>\n<span class=\"p\">]).</span>\n\n<span class=\"c\">%% ...</span>\n\n<span class=\"c\">%% This controller will handle only GETs and POSTs</span>\n<span class=\"nf\">allowed_methods</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{[</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;GET&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;POST&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">],</span> <span class=\"nv\">Context</span><span class=\"p\">}.</span>\n</pre></div>\n</div>\n</div>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">process/4</span></code> function will be called with the POST data, so define it:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">yoursite/src/controllers/controller_say_hello.erl</span></div>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">module</span><span class=\"p\">(</span><span class=\"n\">controller_say_hello</span><span class=\"p\">).</span>\n\n<span class=\"p\">-</span><span class=\"ni\">export</span><span class=\"p\">([</span>\n    <span class=\"n\">allowed_methods</span><span class=\"o\">/</span><span class=\"mi\">1</span><span class=\"p\">,</span>\n    <span class=\"n\">process</span><span class=\"o\">/</span><span class=\"mi\">4</span><span class=\"p\">,</span>\n<span class=\"p\">]).</span>\n\n<span class=\"nf\">allowed_methods</span><span class=\"p\">(</span><span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{[</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;GET&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;POST&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">],</span> <span class=\"nv\">Context</span><span class=\"p\">}.</span>\n\n<span class=\"nf\">process</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;GET&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">AcceptedContentType</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">ProvidedContentType</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"p\">{</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Hello world and all the people in it!&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">};</span>\n<span class=\"nf\">process</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;POST&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">AcceptedContentType</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">ProvidedContentType</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"c\">% Process the POST data</span>\n    <span class=\"nv\">Name</span> <span class=\"o\">=</span> <span class=\"nn\">z_html</span><span class=\"p\">:</span><span class=\"nf\">escape</span><span class=\"p\">(</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nf\">get_q</span><span class=\"p\">(</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;name&quot;</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">,</span> <span class=\"o\">&lt;&lt;&gt;&gt;</span><span class=\"p\">)</span> <span class=\"p\">),</span>\n    <span class=\"p\">{</span><span class=\"o\">&lt;&lt;</span><span class=\"s\">&quot;Thank you posting, &quot;</span><span class=\"p\">,</span> <span class=\"nv\">Name</span><span class=\"o\">/</span><span class=\"n\">binary</span><span class=\"o\">&gt;&gt;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">}.</span>\n</pre></div>\n</div>\n</div>\n<p>Try it out on the command line:</p>\n<div class=\"highlight-shell notranslate\"><div class=\"highlight\"><pre><span></span>$ curl -k -v -X POST -d <span class=\"s1\">&#39;name=David&#39;</span> https://yoursite.test:8443/hello\n\n<span class=\"c1\"># prints:</span>\nThank you posting, David\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2021-07-20T12:20:37Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/custom-controller.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:39Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_custom_controller",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:39Z",
+    "slug": "create-a-custom-controller",
+    "title": "Create a custom controller",
+    "title_slug": "create-a-custom-controller",
+    "tz": "UTC",
+    "uri": null,
+    "version": 14,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/2259",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/2259"
+  }
+}

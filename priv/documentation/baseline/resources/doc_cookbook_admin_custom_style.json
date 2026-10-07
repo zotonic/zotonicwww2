@@ -1,0 +1,172 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1430,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1430"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_admin_custom_style",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1430/customizing-the-style-of-an-admin-page",
+    "x-default": "https://zotonic.com/cookbook/1430/customizing-the-style-of-an-admin-page"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 18,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Customizing the style of an admin page"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<p>How to make style customizations to admin pages.</p>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are expected to have experience with Zotonic templates.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>Creating a custom style for admin pages is best done using a module:</p>\n<ul class=\"simple\">\n<li>Create a directory for your skin, for instance <code class=\"docutils literal notranslate\"><span class=\"pre\">apps_user/zotonic_mod_skin_admin</span></code>.</li>\n<li>Populate the module directory with <code class=\"docutils literal notranslate\"><span class=\"pre\">src/mod_skin_admin.erl</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">src/mod_skin_admin.app.src</span></code> file, sub directories <code class=\"docutils literal notranslate\"><span class=\"pre\">priv/lib/css/</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">priv/templates/</span></code> (see also: <a class=\"reference internal\" href=\"/id/doc_developerguide_modules#guide-module-structure\"><span class=\"std std-ref\">Directory structure</span></a>).</li>\n<li>Put your custom CSS file (f.i. <code class=\"docutils literal notranslate\"><span class=\"pre\">skin-admin.css</span></code>) in <code class=\"docutils literal notranslate\"><span class=\"pre\">priv/lib/css/</span></code>.</li>\n<li>Create a template file <code class=\"docutils literal notranslate\"><span class=\"pre\">_html_head_admin.tpl</span></code> with the contents <code class=\"docutils literal notranslate\"><span class=\"pre\">{%</span> <span class=\"pre\">lib</span> <span class=\"pre\">&quot;css/skin-admin.css&quot;</span> <span class=\"pre\">%}</span></code>.</li>\n<li>Enable the module in admin.</li>\n</ul>\n<aside class=\"admonition-todo admonition\">\n<p class=\"first admonition-title\">Todo</p>\n<p class=\"last\">reference to making a module using rebar3 templates (src/mod_skin_admin.erl, src/mod_skin_admin.app.src)</p>\n</aside>\n</div>\n</div>\n</div>"
+      }
+    },
+    "slug": "customizing-the-style-of-an-admin-page",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-custom-style.rst",
+    "pivot_location_lng": null,
+    "name": "doc_cookbook_admin_custom_style",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:21Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 2315,
+      "is_a": [
+        "person"
+      ],
+      "name": null,
+      "title": "Marc Worrell",
+      "uri": "https://zotonic.com/id/2315"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2022-06-13T17:11:53Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "customizing-the-style-of-an-admin-page"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1430",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1430"
+  }
+}

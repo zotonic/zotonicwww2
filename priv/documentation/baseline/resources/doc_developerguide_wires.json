@@ -1,0 +1,276 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "in_module": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:20Z",
+          "object_id": {
+            "id": 1303,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_wires",
+            "title": "mod_wires",
+            "uri": "https://zotonic.com/id/1303"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 333,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "in_module",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "In module"
+          }
+        },
+        "uri": "https://zotonic.com/id/in_module"
+      }
+    },
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:20Z",
+          "object_id": {
+            "id": 1324,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_mqtt",
+            "title": "mod_mqtt",
+            "uri": "https://zotonic.com/id/1324"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:20Z",
+          "object_id": {
+            "id": 1512,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_action"
+            ],
+            "name": "doc_template_action_action_fade_out",
+            "title": "fade_out",
+            "uri": "https://zotonic.com/id/1512"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:20Z",
+          "object_id": {
+            "id": 1327,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_scomp"
+            ],
+            "name": "doc_template_scomp_scomp_wire",
+            "title": "wire",
+            "uri": "https://zotonic.com/id/1327"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:20Z",
+          "object_id": {
+            "id": 1340,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_custom_action",
+            "title": "Create a custom action",
+            "uri": "https://zotonic.com/id/1340"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:20Z",
+          "object_id": {
+            "id": 1630,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_action"
+            ],
+            "name": "doc_template_action_action_postback",
+            "title": "postback",
+            "uri": "https://zotonic.com/id/1630"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:20Z",
+          "object_id": {
+            "id": 326,
+            "is_a": [
+              "meta",
+              "category"
+            ],
+            "name": "template_action",
+            "title": "Actions",
+            "uri": "https://test.zotonic.com/id/326"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1539,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1539"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_wires",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1539/wires",
+    "x-default": "https://zotonic.com/docs/1539/wires"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n\n<p>Wires are the older way to code actions and client/server interaction. It\nis now advised to use MQTT topics with <a class=\"reference internal\" href=\"/id/doc_module_mod_mqtt\"><span class=\"std std-ref\">mod_mqtt</span></a> instead.</p>\n<div class=\"section\">\n<a name=\"guide-actions\"></a><h2>Actions</h2>\n<p>The action defines what should happen when the wire is triggered. Actions can\nbe client-side (such as JavaScript animations) or server-side postbacks.</p>\n<div class=\"section\">\n<h3>Trigger actions from JavaScript</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"#guide-template-autoids\"><span class=\"std std-ref\">Auto-generated identifiers</span></a>, <a class=\"reference internal\" href=\"/id/doc_cookbook_custom_action#cookbook-custom-action\"><span class=\"std std-ref\">Create a custom action</span></a></p>\n</aside>\n<p>To trigger an action from an HTML element, you attach a wire to the element:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"o\">&lt;</span><span class=\"n\">a</span> <span class=\"n\">href</span><span class=\"o\">=</span><span class=\"s\">&quot;#&quot;</span> <span class=\"n\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;link&quot;</span><span class=\"o\">&gt;</span><span class=\"nv\">Click</span> <span class=\"n\">me</span><span class=\"o\">!&lt;/</span><span class=\"n\">a</span><span class=\"o\">&gt;</span>\n<span class=\"p\">{</span><span class=\"c\">% wire type=&quot;click&quot; id=&quot;link&quot; action={fade_out target=&quot;link&quot;} %}</span>\n</pre></div>\n</div>\n<p>The wire’s <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code> value must match the <code class=\"docutils literal notranslate\"><span class=\"pre\">id</span></code> value of the HTML element. This\nwires up a link with a <a class=\"reference internal\" href=\"/id/doc_template_action_action_fade_out\"><span class=\"std std-ref\">fade_out</span></a> action, so that when the link\nis clicked, it fades away.</p>\n<p>Actions can be called from the template, but can also be called when some\nserver-side event occurs.</p>\n</div>\n<div class=\"section\">\n<h3>Server postbacks</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_template_action_action_postback\"><span class=\"std std-ref\">postback reference</span></a></p>\n</aside>\n<p>Postbacks are server-side actions. For instance, to submit a form asynchronously\nthrough Ajax, use a postback:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"c\">% wire type=&quot;submit&quot; id=&quot;myform&quot; postback=&quot;form_submitted&quot; delegate=&quot;mysite&quot; %}</span>\n<span class=\"o\">&lt;</span><span class=\"n\">form</span> <span class=\"n\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;myform&quot;</span> <span class=\"n\">method</span><span class=\"o\">=</span><span class=\"s\">&quot;post&quot;</span> <span class=\"n\">action</span><span class=\"o\">=</span><span class=\"s\">&quot;postback&quot;</span><span class=\"o\">&gt;</span>\n    <span class=\"o\">&lt;</span><span class=\"n\">input</span> <span class=\"n\">name</span><span class=\"o\">=</span><span class=\"s\">&quot;username&quot;</span> <span class=\"o\">/&gt;</span>\n    <span class=\"o\">&lt;</span><span class=\"n\">button</span><span class=\"o\">&gt;</span><span class=\"nv\">Submit</span> <span class=\"n\">form</span><span class=\"o\">&lt;/</span><span class=\"n\">button</span><span class=\"o\">&gt;</span>\n<span class=\"o\">&lt;/</span><span class=\"n\">form</span><span class=\"o\">&gt;</span>\n</pre></div>\n</div>\n<p>This will submit the form over Ajax; the result is that a function will be\ncalled in the specified delegate module <code class=\"docutils literal notranslate\"><span class=\"pre\">mysite.erl</span></code>, called <code class=\"docutils literal notranslate\"><span class=\"pre\">event/2</span></code>:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nf\">event</span><span class=\"p\">(</span><span class=\"nl\">#submit</span><span class=\"p\">{},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n    <span class=\"nn\">io</span><span class=\"p\">:</span><span class=\"nf\">format</span><span class=\"p\">(</span><span class=\"s\">&quot;The value of &#39;username&#39; is: </span><span class=\"si\">~s~n</span><span class=\"s\">&quot;</span><span class=\"p\">,</span> <span class=\"nn\">z_context</span><span class=\"p\">:</span><span class=\"nb\">get</span><span class=\"p\">(</span><span class=\"s\">&quot;username&quot;</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">),</span>\n    <span class=\"nv\">Context</span><span class=\"p\">.</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h3>Trigger browser actions from the server</h3>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">listing of all <a class=\"reference internal\" href=\"/id/template_action#actions\"><span class=\"std std-ref\">actions</span></a>.</p>\n</aside>\n</div>\n<div class=\"section\">\n<h3>Named actions</h3>\n<p>If you want to trigger actions from your JavaScript code, give the action a\nname:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"c\">% wire name=&quot;my_action&quot; action={growl text=&quot;Hello World&quot;} %}</span>\n</pre></div>\n</div>\n<p>You can then refer to it in your JavaScript code:</p>\n<div class=\"highlight-javascript notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nx\">z_event</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_action&quot;</span><span class=\"p\">);</span>\n</pre></div>\n</div>\n<p>And pass arguments to the action:</p>\n<div class=\"highlight-javascript notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nx\">z_event</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_action&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"nx\">foo</span><span class=\"o\">:</span> <span class=\"nx\">bar</span> <span class=\"p\">});</span>\n</pre></div>\n</div>\n<p>The argument <code class=\"docutils literal notranslate\"><span class=\"pre\">foo</span></code> will become a query argument, that you can access in your\nErlang module with <code class=\"docutils literal notranslate\"><span class=\"pre\">z_context:get_q(foo,</span> <span class=\"pre\">Context)</span></code>.</p>\n</div>\n</div>\n<div class=\"section\">\n<a name=\"guide-template-autoids\"></a><h2>Auto-generated identifiers</h2>\n<p>If you include a template many times (i.e. from a for loop), then having\nfixed element identifiers are no good. Zotonic provides a mechanism to generate\nan identifer which has a unique value within the template.</p>\n<p>To prefix the id with a unique value (per invocation of the\ntemplate) prefix the id with a <code class=\"docutils literal notranslate\"><span class=\"pre\">#</span></code>-sign:</p>\n<div class=\"highlight-html notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">&lt;</span><span class=\"nt\">div</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;{{ #foo }}&quot;</span><span class=\"p\">&gt;</span>\n</pre></div>\n</div>\n<p>This special notation will replace <code class=\"docutils literal notranslate\"><span class=\"pre\">#foo</span></code> with an auto-generated\nidentifer, which will expand to something like this:</p>\n<div class=\"highlight-html notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">&lt;</span><span class=\"nt\">div</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;ubifgt-foo&quot;</span><span class=\"p\">&gt;</span>\n</pre></div>\n</div>\n<p>Unique ids can also be generated inside a <code class=\"docutils literal notranslate\"><span class=\"pre\">for</span></code> loop:</p>\n<div class=\"highlight-html notranslate\"><div class=\"highlight\"><pre><span></span>{% for id in mylist %}\n    <span class=\"p\">&lt;</span><span class=\"nt\">li</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;{{ #foo.id }}&quot;</span><span class=\"p\">&gt;</span>{{ id.title }}<span class=\"p\">&lt;/</span><span class=\"nt\">li</span><span class=\"p\">&gt;</span>\n{% endfor %}\n</pre></div>\n</div>\n<p>This will generate HTML like this:</p>\n<div class=\"highlight-html notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">&lt;</span><span class=\"nt\">li</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;gdjqa-foo-1234&quot;</span><span class=\"p\">&gt;</span>Some great news<span class=\"p\">&lt;/</span><span class=\"nt\">li</span><span class=\"p\">&gt;</span>\n</pre></div>\n</div>\n<p>When using a <a class=\"reference internal\" href=\"/id/doc_template_scomp_scomp_wire#scomp-wire\"><span class=\"std std-ref\">wire</span></a> tag, that same unique id can be referenced:</p>\n<div class=\"highlight-html notranslate\"><div class=\"highlight\"><pre><span></span>{% for id in mylist %}\n    <span class=\"p\">&lt;</span><span class=\"nt\">li</span><span class=\"p\">&gt;&lt;</span><span class=\"nt\">a</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;{{ #list.id }}&quot;</span> <span class=\"na\">href</span><span class=\"o\">=</span><span class=\"s\">&quot;#&quot;</span><span class=\"p\">&gt;</span>{{ m.rsc[id].title }}<span class=\"p\">&lt;/</span><span class=\"nt\">a</span><span class=\"p\">&gt;&lt;/</span><span class=\"nt\">li</span><span class=\"p\">&gt;</span>\n    {% wire id=#list.id action=some_action %}\n{% endfor %}\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:25Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/wires.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:26Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_wires",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:26Z",
+    "slug": "wires",
+    "title": "Wires",
+    "title_slug": "wires",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1539",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1539"
+  }
+}

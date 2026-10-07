@@ -1,0 +1,113 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1592,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1592"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_template_select_value",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1592/dynamic-select-options-using-a-wired-template",
+    "x-default": "https://zotonic.com/cookbook/1592/dynamic-select-options-using-a-wired-template"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<div class=\"section\">\n<h2>Why</h2>\n<p>Suppose you want to wire a change event for a select box to update a\nanother select box, i.e. you want to wire the action to\nuse the selected value when rendering the template.</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are assumed to be comfortable editing templates and have\nZotonic Scomp knowledge.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>We want to select an image from a page in 2 steps. First we select a page from the pages that have images. Then we select an image from the selected page.</p>\n<p>This is how the main template will look:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">&lt;div class=&quot;form-group&quot;&gt;</span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">wire</span> <span class=\"nv\">id</span><span class=\"o\">=</span><span class=\"s2\">&quot;pages&quot;</span> <span class=\"nv\">type</span><span class=\"o\">=</span><span class=\"s2\">&quot;change&quot;</span> <span class=\"nv\">action</span><span class=\"o\">={</span><span class=\"nv\">update</span>\n        <span class=\"nv\">target</span><span class=\"o\">=</span><span class=\"s2\">&quot;media_list&quot;</span>\n        <span class=\"nv\">template</span><span class=\"o\">=</span><span class=\"s2\">&quot;_media_list.tpl&quot;</span>\n    <span class=\"o\">}</span><span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;select id=&quot;pages&quot; class=&quot;form-control&quot;&gt;</span>\n<span class=\"x\">        &lt;option value=&quot;&quot;&gt;--Select a page--&lt;/option&gt;</span>\n<span class=\"x\">        </span><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">page_id</span> <span class=\"k\">in</span> <span class=\"nv\">m.search</span><span class=\"o\">[{</span><span class=\"nv\">query</span>\n            <span class=\"nv\">hasobjectpredicate</span><span class=\"o\">=</span><span class=\"s1\">&#39;depiction&#39;</span>\n            <span class=\"nv\">sort</span><span class=\"o\">=</span><span class=\"s1\">&#39;+rsc.pivot_title&#39;</span>\n        <span class=\"o\">}]</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">            &lt;option value=&quot;</span><span class=\"cp\">{{</span> <span class=\"nv\">page_id</span> <span class=\"cp\">}}</span><span class=\"x\">&quot;&gt;</span>\n<span class=\"x\">                </span><span class=\"cp\">{{</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">page_id</span><span class=\"o\">]</span><span class=\"nv\">.title</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n<span class=\"x\">            &lt;/option&gt;</span>\n<span class=\"x\">        </span><span class=\"cp\">{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;/select&gt;</span>\n<span class=\"x\">&lt;/div&gt;</span>\n<span class=\"x\">&lt;div id=&quot;media_list&quot;&gt;</span>\n<span class=\"x\">    &lt;!- contents will be updated --&gt;</span>\n<span class=\"x\">&lt;/div&gt;</span>\n</pre></div>\n</div>\n<p>When an item is selected (by the change event), element with id “media_list” will be replaced by <code class=\"docutils literal notranslate\"><span class=\"pre\">_media_list.tpl</span></code> which looks like this:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">with</span> <span class=\"nv\">q.triggervalue</span> <span class=\"k\">as</span> <span class=\"nv\">page_id</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;div class=&quot;form-group&quot;&gt;</span>\n<span class=\"x\">    &lt;select class=&quot;form-control&quot;&gt;</span>\n<span class=\"x\">        &lt;option value=&quot;&quot;&gt;--Select an image--&lt;/option&gt;</span>\n<span class=\"x\">        </span><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">media_id</span> <span class=\"k\">in</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">page_id</span><span class=\"o\">]</span><span class=\"nv\">.media</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">            &lt;option value=&quot;</span><span class=\"cp\">{{</span><span class=\"nv\">media_id</span><span class=\"cp\">}}</span><span class=\"x\">&quot;&gt;</span>\n<span class=\"x\">                </span><span class=\"cp\">{{</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">media_id</span><span class=\"o\">]</span><span class=\"nv\">.title</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n<span class=\"x\">            &lt;/option&gt;</span>\n<span class=\"x\">        </span><span class=\"cp\">{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;/select&gt;</span>\n<span class=\"x\">&lt;/div&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endwith</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>This template uses the q.triggervalue returned from the postback of\nthe wire event, and it contains the value of the selected option.</p>\n<p>We can go one step further to show the selected image. <code class=\"docutils literal notranslate\"><span class=\"pre\">_media_list.tpl</span></code> also gets a wire action:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">with</span> <span class=\"nv\">q.triggervalue</span> <span class=\"k\">as</span> <span class=\"nv\">page_id</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;div class=&quot;form-group&quot;&gt;</span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">wire</span> <span class=\"nv\">id</span><span class=\"o\">=</span><span class=\"s2\">&quot;images&quot;</span> <span class=\"nv\">type</span><span class=\"o\">=</span><span class=\"s2\">&quot;change&quot;</span> <span class=\"nv\">action</span><span class=\"o\">={</span><span class=\"nv\">update</span>\n        <span class=\"nv\">target</span><span class=\"o\">=</span><span class=\"s2\">&quot;image&quot;</span>\n        <span class=\"nv\">template</span><span class=\"o\">=</span><span class=\"s2\">&quot;_image.tpl&quot;</span>\n    <span class=\"o\">}</span><span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;select class=&quot;form-control&quot; id=&quot;images&quot;&gt;</span>\n<span class=\"x\">        &lt;option value=&quot;&quot;&gt;--Select an image--&lt;/option&gt;</span>\n<span class=\"x\">        </span><span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">media_id</span> <span class=\"k\">in</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">page_id</span><span class=\"o\">]</span><span class=\"nv\">.media</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">            &lt;option value=&quot;</span><span class=\"cp\">{{</span><span class=\"nv\">media_id</span><span class=\"cp\">}}</span><span class=\"x\">&quot;&gt;</span>\n<span class=\"x\">                </span><span class=\"cp\">{{</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">media_id</span><span class=\"o\">]</span><span class=\"nv\">.title</span> <span class=\"cp\">}}</span><span class=\"x\"></span>\n<span class=\"x\">            &lt;/option&gt;</span>\n<span class=\"x\">        </span><span class=\"cp\">{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    &lt;/select&gt;</span>\n<span class=\"x\">&lt;/div&gt;</span>\n<span class=\"x\">&lt;div id=&quot;image&quot;&gt;</span>\n<span class=\"x\">    &lt;!- contents will be updated --&gt;</span>\n<span class=\"x\">&lt;/div&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endwith</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>And we show the image using <code class=\"docutils literal notranslate\"><span class=\"pre\">_image.tpl</span></code>:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">with</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">q.triggervalue</span><span class=\"o\">]</span><span class=\"nv\">.medium</span> <span class=\"k\">as</span> <span class=\"nv\">medium</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;div class=&quot;form-group&quot;&gt;</span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">image</span> <span class=\"nv\">medium</span> <span class=\"nv\">width</span><span class=\"o\">=</span><span class=\"m\">300</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">&lt;/div&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endwith</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-template-select-value.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:42Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_frontend_template_select_value",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:42Z",
+    "slug": "dynamic-select-options-using-a-wired-template",
+    "title": "Dynamic select options using a wired template",
+    "title_slug": "dynamic-select-options-using-a-wired-template",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1592",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1592"
+  }
+}

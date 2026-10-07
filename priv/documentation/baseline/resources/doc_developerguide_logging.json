@@ -1,0 +1,194 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:14Z",
+          "object_id": {
+            "id": 1454,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_developerguide_configuration_zotonic_configuration",
+            "title": "Global configuration",
+            "uri": "https://zotonic.com/id/1454"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:14Z",
+          "object_id": {
+            "id": 1580,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_logstash",
+            "title": "Logging to Logstash",
+            "uri": "https://zotonic.com/id/1580"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:14Z",
+          "object_id": {
+            "id": 1858,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_logging",
+            "title": "mod_logging",
+            "uri": "https://zotonic.com/id/1858"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1640,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1640"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_logging",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1640/logging",
+    "x-default": "https://zotonic.com/docs/1640/logging"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_cookbook_logstash#cookbook-logstash\"><span class=\"std std-ref\">Logging to Logstash</span></a> cookbook</p>\n</aside>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\">To log messages to the database, you can use <a class=\"reference internal\" href=\"/id/doc_module_mod_logging\"><span class=\"std std-ref\">mod_logging</span></a>.</p>\n</aside>\n<p>Zotonic uses <a class=\"reference external\" href=\"https://www.erlang.org/doc/man/logger.html\">Logger</a> for logging. Logger metadata is automatically set by\nZotonic in the controller functions.</p>\n<p>To log a message from your code, simply call Logger directly:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">-</span><span class=\"ni\">include_lib</span><span class=\"p\">(</span><span class=\"s\">&quot;kernel/include/logger.hrl&quot;</span><span class=\"p\">).</span>\n\n<span class=\"o\">?</span><span class=\"nv\">LOG_ERROR</span><span class=\"p\">(</span><span class=\"s\">&quot;Something went very wrong with </span><span class=\"si\">~p</span><span class=\"s\">&quot;</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"nv\">SomeParam</span><span class=\"p\">]).</span>\n</pre></div>\n</div>\n<p>which will write the following in the <code class=\"file docutils literal notranslate\"><span class=\"pre\">error.log</span></code> file:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>2022-01-28 17:17:45 ERROR &lt;0.9.0&gt; [some_module:some_function/0:42] ▸ text=&quot;Something went very wrong with whatever&quot;\n</pre></div>\n</div>\n<div class=\"section\">\n<h2>Configuration</h2>\n<p>In <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_zotonic_configuration#erlang-config\"><span class=\"std std-ref\">The erlang.config file</span></a> file, change the <code class=\"docutils literal notranslate\"><span class=\"pre\">kernel</span></code> section to configure log\nhandlers and formatters. See the <a class=\"reference external\" href=\"https://www.erlang.org/doc/apps/kernel/logger_chapter.html\">Logger documentation</a> for more information.</p>\n<p>For instance, to configure Logger for logging to Logstash, uncomment the <code class=\"docutils literal notranslate\"><span class=\"pre\">logstash</span></code>\nhandler in the logger configuration of your <code class=\"docutils literal notranslate\"><span class=\"pre\">erlang.config</span></code> file and check the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">logstasher</span></code> configuration:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">erlang.config</span></div>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">kernel</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"c\">% Minimum log level for all loggers below.</span>\n    <span class=\"p\">{</span><span class=\"n\">logger_level</span><span class=\"p\">,</span> <span class=\"n\">info</span><span class=\"p\">},</span>\n\n    <span class=\"p\">{</span><span class=\"n\">logger</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n\n        <span class=\"c\">%% To use logstash:</span>\n        <span class=\"c\">%% - Enable the logstasher_h handler</span>\n        <span class=\"c\">%% - Configure logstasher (see below the kernel config)</span>\n        <span class=\"c\">%%</span>\n        <span class=\"c\">% {handler, logstash, logstasher_h,</span>\n        <span class=\"c\">%     #{</span>\n        <span class=\"c\">%         level =&gt; info</span>\n        <span class=\"c\">%     }</span>\n        <span class=\"c\">% },</span>\n\n        <span class=\"c\">% Log of all information to the terminal/console.</span>\n        <span class=\"c\">% The &#39;logger_level&#39; above defines what is shown on the console.</span>\n        <span class=\"p\">{</span><span class=\"n\">handler</span><span class=\"p\">,</span> <span class=\"n\">default</span><span class=\"p\">,</span> <span class=\"n\">z_logger_h</span><span class=\"p\">,</span>\n            <span class=\"p\">#{</span>\n                <span class=\"n\">level</span> <span class=\"o\">=&gt;</span> <span class=\"n\">debug</span><span class=\"p\">,</span>\n                <span class=\"n\">formatter</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span><span class=\"n\">z_logger_formatter</span><span class=\"p\">,</span>\n                    <span class=\"p\">#{</span>\n                        <span class=\"n\">prettify</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span><span class=\"p\">,</span>\n                        <span class=\"n\">colored</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_designator</span> <span class=\"o\">=&gt;</span> <span class=\"sc\">$\\s</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_offset</span> <span class=\"o\">=&gt;</span> <span class=\"s\">&quot;&quot;</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_unit</span> <span class=\"o\">=&gt;</span> <span class=\"n\">second</span><span class=\"p\">,</span>\n                        <span class=\"n\">strip_tz</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span><span class=\"p\">,</span>\n                        <span class=\"n\">level_capitalize</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span>\n                    <span class=\"p\">}</span>\n                <span class=\"p\">}</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">},</span>\n\n        <span class=\"c\">% Error log on disk.</span>\n        <span class=\"c\">% LOG_DIR is replaced with the default Zotonic ZOTONIC_LOG_DIR directory.</span>\n        <span class=\"p\">{</span><span class=\"n\">handler</span><span class=\"p\">,</span> <span class=\"n\">error_log</span><span class=\"p\">,</span> <span class=\"n\">z_logger_h</span><span class=\"p\">,</span>\n            <span class=\"p\">#{</span>\n                <span class=\"n\">level</span> <span class=\"o\">=&gt;</span> <span class=\"n\">error</span><span class=\"p\">,</span>\n                <span class=\"n\">config</span> <span class=\"o\">=&gt;</span> <span class=\"p\">#{</span>\n                    <span class=\"n\">type</span> <span class=\"o\">=&gt;</span> <span class=\"n\">file</span><span class=\"p\">,</span>\n                    <span class=\"n\">file</span> <span class=\"o\">=&gt;</span> <span class=\"s\">&quot;LOG_DIR/error.log&quot;</span><span class=\"p\">,</span>\n                    <span class=\"n\">max_no_files</span> <span class=\"o\">=&gt;</span> <span class=\"mi\">10</span><span class=\"p\">,</span>\n                    <span class=\"n\">max_no_bytes</span> <span class=\"o\">=&gt;</span> <span class=\"mi\">52428800</span> <span class=\"c\">% 10 x 5mb</span>\n                <span class=\"p\">},</span>\n                <span class=\"n\">formatter</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span><span class=\"n\">z_logger_formatter</span><span class=\"p\">,</span>\n                    <span class=\"p\">#{</span>\n                        <span class=\"n\">prettify</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span><span class=\"p\">,</span>\n                        <span class=\"n\">colored</span> <span class=\"o\">=&gt;</span> <span class=\"n\">false</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_designator</span> <span class=\"o\">=&gt;</span> <span class=\"sc\">$\\s</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_offset</span> <span class=\"o\">=&gt;</span> <span class=\"s\">&quot;&quot;</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_unit</span> <span class=\"o\">=&gt;</span> <span class=\"n\">second</span><span class=\"p\">,</span>\n                        <span class=\"n\">strip_tz</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span><span class=\"p\">,</span>\n                        <span class=\"n\">level_capitalize</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span>\n                    <span class=\"p\">}</span>\n                <span class=\"p\">}</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">},</span>\n\n        <span class=\"c\">% Console log on disk.</span>\n        <span class=\"c\">% LOG_DIR is replaced with the default Zotonic ZOTONIC_LOG_DIR directory.</span>\n        <span class=\"p\">{</span><span class=\"n\">handler</span><span class=\"p\">,</span> <span class=\"n\">console_log</span><span class=\"p\">,</span> <span class=\"n\">z_logger_h</span><span class=\"p\">,</span>\n            <span class=\"p\">#{</span>\n                <span class=\"n\">level</span> <span class=\"o\">=&gt;</span> <span class=\"n\">debug</span><span class=\"p\">,</span>\n                <span class=\"n\">config</span> <span class=\"o\">=&gt;</span> <span class=\"p\">#{</span>\n                    <span class=\"n\">type</span> <span class=\"o\">=&gt;</span> <span class=\"n\">file</span><span class=\"p\">,</span>\n                    <span class=\"n\">file</span> <span class=\"o\">=&gt;</span> <span class=\"s\">&quot;LOG_DIR/console.log&quot;</span><span class=\"p\">,</span>\n                    <span class=\"n\">max_no_files</span> <span class=\"o\">=&gt;</span> <span class=\"mi\">10</span><span class=\"p\">,</span>\n                    <span class=\"n\">max_no_bytes</span> <span class=\"o\">=&gt;</span> <span class=\"mi\">52428800</span> <span class=\"c\">% 10 x 5mb</span>\n                <span class=\"p\">},</span>\n                <span class=\"n\">formatter</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span><span class=\"n\">z_logger_formatter</span><span class=\"p\">,</span>\n                    <span class=\"p\">#{</span>\n                        <span class=\"n\">prettify</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span><span class=\"p\">,</span>\n                        <span class=\"n\">colored</span> <span class=\"o\">=&gt;</span> <span class=\"n\">false</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_designator</span> <span class=\"o\">=&gt;</span> <span class=\"sc\">$\\s</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_offset</span> <span class=\"o\">=&gt;</span> <span class=\"s\">&quot;&quot;</span><span class=\"p\">,</span>\n                        <span class=\"n\">time_unit</span> <span class=\"o\">=&gt;</span> <span class=\"n\">second</span><span class=\"p\">,</span>\n                        <span class=\"n\">strip_tz</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span><span class=\"p\">,</span>\n                        <span class=\"n\">level_capitalize</span> <span class=\"o\">=&gt;</span> <span class=\"n\">true</span>\n                    <span class=\"p\">}</span>\n                <span class=\"p\">}</span>\n            <span class=\"p\">}</span>\n        <span class=\"p\">}</span>\n    <span class=\"p\">]}</span>\n<span class=\"p\">]},</span>\n\n<span class=\"c\">%% Logstash configuration.</span>\n<span class=\"c\">%% If a logger handler with &#39;logstasher_h&#39; is defined then zotonic_core will start the</span>\n<span class=\"c\">%% logstasher application.</span>\n<span class=\"p\">{</span><span class=\"n\">logstasher</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"n\">transport</span><span class=\"p\">,</span> <span class=\"n\">console</span><span class=\"p\">},</span> <span class=\"c\">% tcp | udp | console</span>\n    <span class=\"p\">{</span><span class=\"n\">host</span><span class=\"p\">,</span> <span class=\"s\">&quot;localhost&quot;</span><span class=\"p\">},</span>  <span class=\"c\">% inet:hostname()</span>\n    <span class=\"p\">{</span><span class=\"n\">port</span><span class=\"p\">,</span> <span class=\"mi\">5000</span><span class=\"p\">}</span>          <span class=\"c\">% inet:port_number()</span>\n<span class=\"p\">]},</span>\n</pre></div>\n</div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:29Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/logging.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:21Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_logging",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:21Z",
+    "slug": "logging",
+    "title": "Logging",
+    "title_slug": "logging",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1640",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1640"
+  }
+}

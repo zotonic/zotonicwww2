@@ -1,5 +1,9 @@
 {% extends "base.tpl" %}
 
+{% block content_before %}
+    {% include "_guide_navigation.tpl" id=id %}
+{% endblock %}
+
 {% block content %}
     <article>
         {% include "_page_meta.tpl" %}
@@ -13,13 +17,18 @@
             {{ id.summary }}
         </p>
 
-        {% include "_page_body.tpl" id=id %}
+        {% include "_page_body.tpl" id=id body=id.body|zotonicwww2_without_title:id.title %}
     </article>
 {% endblock %}
 
 
 {% block content_after %}
 <div class="page-relations">
+
+    {% with m.zotonicwww2_guide.navigation[id] as guide %}
+    {% if guide %}
+        {% include "_guide_contents.tpl" guide=guide id=id %}
+    {% else %}
 
     {% if id.o.haspart|is_visible as haspart %}
         <div class="content-list">
@@ -48,6 +57,11 @@
         {% endfor %}
         {% endwith %}
     {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+
+    {% include "_page_documentation_connections.tpl" id=id %}
 
     {% if id.s.references  as refs %}
         <div class="connections">

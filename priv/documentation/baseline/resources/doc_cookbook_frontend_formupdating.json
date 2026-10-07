@@ -1,0 +1,149 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:19Z",
+          "object_id": {
+            "id": 1539,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_wires",
+            "title": "Wires",
+            "uri": "https://zotonic.com/id/1539"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1584,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1584"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_formupdating",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1584/updating-form-field-from-a-dialog",
+    "x-default": "https://zotonic.com/cookbook/1584/updating-form-field-from-a-dialog"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Ever wanted to update a form field from a dialog, possibly giving the\nuser some list to choose from? Here’s how to do it.</p>\n<div class=\"section\">\n<h2>Why</h2>\n<p>Some interactions benefit from presenting a dialog for input.  This\nguide explains how to take input in a dialog and have it apply to a\nform input value.</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are expected to understand DOM IDs for uniquely identfying\nform inputs and also understand advanced usage of Zotonic Template\ntags.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<p>To be able to update a form field, you need to pass the id of the\nelement you want to update to the dialog. It may look something like:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">button</span> <span class=\"nv\">text</span><span class=\"o\">=</span><span class=\"s2\">&quot;Update field dialog&quot;</span>\n        <span class=\"nv\">action</span><span class=\"o\">={</span><span class=\"nv\">dialog_open</span>\n                <span class=\"nv\">title</span><span class=\"o\">=</span><span class=\"s2\">&quot;Update form field value&quot;</span>\n                <span class=\"nv\">template</span><span class=\"o\">=</span><span class=\"s2\">&quot;my_dialog.tpl&quot;</span>\n                <span class=\"nv\">target_id</span><span class=\"o\">=</span><span class=\"s2\">&quot;input_element_id&quot;</span><span class=\"o\">}</span>\n<span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>Then create your dialog template, my_dialog.tpl in this example, and wire a set_value action to update the input form element:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"x\">&lt;a id=&quot;my_anchor&quot; href=&quot;javascript:void(0)&quot; href=&quot;javascript:void(0)&quot;&gt;Click here to update form value&lt;/a&gt;</span>\n<span class=\"cp\">{%</span> <span class=\"k\">wire</span> <span class=\"nv\">id</span><span class=\"o\">=</span><span class=\"s2\">&quot;my_anchor&quot;</span>\n        <span class=\"nv\">type</span><span class=\"o\">=</span><span class=\"s2\">&quot;click&quot;</span>\n        <span class=\"nv\">action</span><span class=\"o\">={</span><span class=\"nv\">set_value</span> <span class=\"nv\">target</span><span class=\"o\">=</span><span class=\"nv\">target_id</span> <span class=\"nv\">value</span><span class=\"o\">=</span><span class=\"s2\">&quot;My new value&quot;</span><span class=\"o\">}</span>\n        <span class=\"nv\">action</span><span class=\"o\">={</span><span class=\"nv\">dialog_close</span><span class=\"o\">}</span>\n<span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_wires#guide-template-autoids\"><span class=\"std std-ref\">Auto-generated identifiers</span></a></p>\n</aside>\n<p>If you include a template like the one above into your dialog template\nmany times (i.e. from a for loop), then having fixed ids are no\ngood. To prefix the id with a unique value (per invocation of the\ntemplate) prefix the id with a <code class=\"docutils literal notranslate\"><span class=\"pre\">#</span></code>-sign. so the a-tag becomes <code class=\"docutils literal notranslate\"><span class=\"pre\">&lt;a</span>\n<span class=\"pre\">id={{#my_anchor}}…</span></code> and the wire becomes <code class=\"docutils literal notranslate\"><span class=\"pre\">wire</span> <span class=\"pre\">id=#my_anchor…</span></code> which will\nexpand to something like <code class=\"docutils literal notranslate\"><span class=\"pre\">&quot;ubifgt-my_anchor&quot;</span></code>.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-formupdating.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:28Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_frontend_formupdating",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:28Z",
+    "slug": "updating-form-field-from-a-dialog",
+    "title": "Updating form field from a dialog",
+    "title_slug": "updating-form-field-from-a-dialog",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1584",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1584"
+  }
+}

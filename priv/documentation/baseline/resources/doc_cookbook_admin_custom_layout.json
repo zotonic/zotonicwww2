@@ -1,0 +1,148 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:48Z",
+          "object_id": {
+            "id": 1593,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_admin_a_custom_widget",
+            "title": "Creating a custom widget on the edit page",
+            "uri": "https://zotonic.com/id/1593"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1594,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1594"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_admin_custom_layout",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1594/customizing-the-layout-of-the-admin-edit-page",
+    "x-default": "https://zotonic.com/cookbook/1594/customizing-the-layout-of-the-admin-edit-page"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<div class=\"section\">\n<h2>Why</h2>\n<p>After having created a custom widget (see <a class=\"reference internal\" href=\"/id/doc_cookbook_admin_a_custom_widget#admin-a-custom-widget\"><span class=\"std std-ref\">Creating a custom widget on the edit page</span></a>), we want to hide widgets that we don’t need.</p>\n<div class=\"section\">\n<h3>Assumptions</h3>\n<p>Readers are expected to have experience with Zotonic templates.\nFor reference, look at the Zotonic admin template directory <code class=\"docutils literal notranslate\"><span class=\"pre\">apps/zotonic_mod_admin/priv/templates/</span></code>.</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Page structure</h2>\n<p>To hide default widgets from the page, we need to change the template that loads these widgets.</p>\n<p>The edit page widgets are grouped into 2 main areas, main and sidebar. These groups are created by the files <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_main_parts.tpl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_sidebar_parts.tpl</span></code>.</p>\n</div>\n<div class=\"section\">\n<h2>Content parts</h2>\n<p>We won’t change the default Zotonic edit template; instead we will override it by adding the category to the filename.</p>\n<p>Create a file <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_main_parts.webshop.tpl</span></code> and give it the contents:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">all</span> <span class=\"nv\">catinclude</span> <span class=\"s2\">&quot;_admin_edit_basics.tpl&quot;</span> <span class=\"nv\">id</span> <span class=\"nv\">is_editable</span><span class=\"o\">=</span><span class=\"nv\">is_editable</span> <span class=\"nv\">languages</span><span class=\"o\">=</span><span class=\"nv\">languages</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">all</span> <span class=\"nv\">catinclude</span> <span class=\"s2\">&quot;_admin_edit_content.tpl&quot;</span> <span class=\"nv\">id</span> <span class=\"nv\">is_editable</span><span class=\"o\">=</span><span class=\"nv\">is_editable</span> <span class=\"nv\">languages</span><span class=\"o\">=</span><span class=\"nv\">languages</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">include</span> <span class=\"s2\">&quot;_admin_edit_content_advanced.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>This template will now load the Basic widget (Title, Summary, Short title), all content widgets (for now only <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_content.webshop.tpl</span></code>), and the default Advanced widget.</p>\n</div>\n<div class=\"section\">\n<h2>Sidebar</h2>\n<p>For the sidebar area you can follow the same procedure. Of course you need to keep the submit buttons, so always include <code class=\"docutils literal notranslate\"><span class=\"pre\">_admin_edit_content_publish.tpl</span></code>.</p>\n</div>\n<div class=\"section\">\n<h2>Category and instance</h2>\n<p>To show a block on a category edit page, but not on an instance of that category, check for <code class=\"docutils literal notranslate\"><span class=\"pre\">id.is_a.meta</span></code>. To show the block “Features” on the category page we write:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"nv\">id.is_a.meta</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">include</span> <span class=\"s2\">&quot;_admin_edit_meta_features.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Word of caution</h2>\n<p>Admin templates will evolve over time. Custom changes you make now may not work after an update. Use these guidelines at your own risk.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:27Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/admin-custom-layout.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:25Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_admin_custom_layout",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:25Z",
+    "slug": "customizing-the-layout-of-the-admin-edit-page",
+    "title": "Customizing the layout of the admin edit page",
+    "title_slug": "customizing-the-layout-of-the-admin-edit-page",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1594",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1594"
+  }
+}

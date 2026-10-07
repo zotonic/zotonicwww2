@@ -1,0 +1,201 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1291,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_scomp"
+            ],
+            "name": "doc_template_scomp_scomp_menu",
+            "title": "menu",
+            "uri": "https://zotonic.com/id/1291"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1292,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_seo_sitemap",
+            "title": "mod_seo_sitemap",
+            "uri": "https://zotonic.com/id/1292"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:16Z",
+          "object_id": {
+            "id": 1291,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_scomp"
+            ],
+            "name": "doc_template_scomp_scomp_menu",
+            "title": "menu",
+            "uri": "https://zotonic.com/id/1291"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1290,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1290"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_frontend_sitemap",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1290/displaying-a-site-map",
+    "x-default": "https://zotonic.com/cookbook/1290/displaying-a-site-map"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>For the benefit of search engines and fans of tables of contents you\ncan easily provide a site map.</p>\n<aside class=\"admonition note\">\n<p class=\"first admonition-title\">Note</p>\n<p class=\"last\">This article discusses HTML site maps. For the XML kind which Google uses, see <a class=\"reference internal\" href=\"/id/doc_module_mod_seo_sitemap\"><span class=\"std std-ref\">mod_seo_sitemap</span></a>.</p>\n</aside>\n<div class=\"section\">\n<h2>Why</h2>\n<p>Some users prefer to navigate a site based on its underlying\nstructure.  Search engines also use this information to determine how\npages relate to each other within your site.  For these cases it is\nuseful to have a site map.</p>\n</div>\n<div class=\"section\">\n<h2>Assumptions</h2>\n<p>Readers are expected to know where templates go in a site and how they\nbasically work.  To benefit the most you will also need experience in\nCSS to style the end-result effectively.</p>\n</div>\n<div class=\"section\">\n<h2>How</h2>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_template_scomp_scomp_menu#scomp-menu\"><span class=\"std std-ref\">menu</span></a></p>\n</aside>\n<p>This is straight-forward except for the CSS (which isn’t provided\nhere), but that isn’t entirely avoidable since it depends completely\non how you want to display things.  On the other hand this does give\nyou a workable nested unordered list with links to the pages which\ncertainly serves the basic functionality out of the box.</p>\n<p>Create site_map.tpl containing:</p>\n<div class=\"highlight-django notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"s2\">&quot;page.tpl&quot;</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">below_body</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"x\">    </span><span class=\"cp\">{%</span> <span class=\"k\">menu</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\"></span>\n</pre></div>\n</div>\n<p>Create a dispatch rule to take /site-map to your Site Map page:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">site_map</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"s\">&quot;site-map&quot;</span><span class=\"p\">],</span> <span class=\"n\">resource_page</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">template</span><span class=\"p\">,</span> <span class=\"s\">&quot;site_map.tpl&quot;</span><span class=\"p\">},</span> <span class=\"p\">{</span><span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">page_site_map</span><span class=\"p\">}]}</span>\n</pre></div>\n</div>\n<p>Create a Page with the Admin interface and set its Unique Name to\n<code class=\"docutils literal notranslate\"><span class=\"pre\">page_site_map</span></code>. Whatever you put in the body will show above the\nsite map.</p>\n<p>I haven’t discussed CSS, but the HTML generated by the <a class=\"reference internal\" href=\"/id/doc_template_scomp_scomp_menu#scomp-menu\"><span class=\"std std-ref\">menu</span></a> tag is pretty CSS friendly.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:16Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/frontend-sitemap.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:38Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_frontend_sitemap",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:38Z",
+    "slug": "displaying-a-site-map",
+    "title": "Displaying a site map",
+    "title_slug": "displaying-a-site-map",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1290",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1290"
+  }
+}

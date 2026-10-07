@@ -1,0 +1,222 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 1481,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_deployment_env",
+            "title": "Useful environment variables",
+            "uri": "https://zotonic.com/id/1481"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 1639,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_shell",
+            "title": "Command-line shell",
+            "uri": "https://zotonic.com/id/1639"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 2085,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_reference_cli_cli_addsite",
+            "title": "The addsite command",
+            "uri": "https://zotonic.com/id/2085"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 1279,
+            "is_a": [
+              "text",
+              "documentation"
+            ],
+            "name": "doc_glossary",
+            "title": "Glossary",
+            "uri": "https://zotonic.com/id/1279"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 1454,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_developerguide_configuration_zotonic_configuration",
+            "title": "Global configuration",
+            "uri": "https://zotonic.com/id/1454"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:58Z",
+          "object_id": {
+            "id": 1546,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_testing",
+            "title": "Testing sites",
+            "uri": "https://zotonic.com/id/1546"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1547,
+  "is_a": [
+    "text",
+    "documentation",
+    "reference"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1547"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_reference_cli_index",
+  "page_url": {
+    "en": "https://zotonic.com/reference/command-line",
+    "x-default": "https://zotonic.com/reference/command-line"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 3948,
+    "pivot_location_lat": null,
+    "title": "Command-line",
+    "is_authoritative": true,
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span></code> command runs a number of utility commands which all operate on a Zotonic instance.</p>\n<aside class=\"admonition tip\">\n<p class=\"first admonition-title\">Tip</p>\n<p>The <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span></code> command lives in the bin/ folder of the Zotonic\nsource. Putting this path into your PATH variable makes working with\nZotonic a lot easier:</p>\n<div class=\"last highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">export</span> <span class=\"nv\">PATH</span><span class=\"o\">=</span><span class=\"sc\">$H</span><span class=\"nv\">OME</span><span class=\"o\">/</span><span class=\"n\">zotonic</span><span class=\"o\">/</span><span class=\"nn\">bin</span><span class=\"p\">:</span><span class=\"sc\">$P</span><span class=\"nv\">ATH</span>\n</pre></div>\n</div>\n</aside>\n<p>The command determines where the Zotonic base dir is by looking at its path; it always assumes that its zotonic\nbasedir is one dir up from where the binary itself is.</p>\n<div class=\"section\">\n<h2>Shell environment variables</h2>\n<p>See <a class=\"reference internal\" href=\"/id/doc_developerguide_deployment_env#guide-deployment-env\"><span class=\"std std-ref\">environment variables</span></a> for the environment variables that can be set when\nusing the Zotonic command line tools.</p>\n</div>\n<div class=\"section\">\n<h2>Commands</h2>\n<p>Currently, the following subcommands are implemented:</p>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">start</span></code></dt>\n<dd>Start the background Zotonic server instance.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">stop</span></code></dt>\n<dd>Stop the Zotonic server instance.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">debug</span></code></dt>\n<dd>Launch the Zotonic server interactively and get an EShell on the running instance. See <a class=\"reference internal\" href=\"/id/doc_developerguide_shell#guide-cli-shell\"><span class=\"std std-ref\">Command-line shell</span></a>.\nThe <code class=\"docutils literal notranslate\"><span class=\"pre\">start.sh</span></code> command in the root folder is a shortcut for this command. The Zotonic instance can be stopped\nwith twice ctrl-C.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">start_nodaemon</span></code></dt>\n<dd>Start the Zotonic server instance as a foreground process, but without the interactive EShell. This is useful when\nrunning Zotonic in a Docker container or other process.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">restart</span></code></dt>\n<dd>Restart the Zotonic server instance.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">wait</span> <span class=\"pre\">[timeout]</span></code></dt>\n<dd>Wait <code class=\"docutils literal notranslate\"><span class=\"pre\">timeout</span></code> seconds (defaults to 30 seconds) for Zotonic to be started, then return.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">shell</span></code></dt>\n<dd>Get an EShell on the running Zotonic instance. See <a class=\"reference internal\" href=\"/id/doc_developerguide_shell#guide-cli-shell\"><span class=\"std std-ref\">Command-line shell</span></a>.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">status</span></code></dt>\n<dd>List all sites on the running Zotonic instance and their current status.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">configfiles</span></code></dt>\n<dd>List all config files used for Zotonic.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">configtest</span></code></dt>\n<dd>Read all config files and check if they are syntactically correct.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">config</span> <span class=\"pre\">[all</span> <span class=\"pre\">|</span> <span class=\"pre\">zotonic</span> <span class=\"pre\">|</span> <span class=\"pre\">erlang]</span></code></dt>\n<dd>Prints the configuration as defined in the configuration files. Taking into account all shell environment variables.\nDefaults to showing the <cite>zotonic</cite> config.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">rpc</span></code></dt>\n<dd>Send an RPC request to the running Zotonic instance. Example: <cite>zotonic rpc “zotonic ping”</cite></dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">addsite</span> <span class=\"pre\">[options]</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>Creates a new site with [site_name] as its name.  See <a class=\"reference internal\" href=\"/id/doc_reference_cli_cli_addsite#guide-cli-addsite\"><span class=\"std std-ref\">The addsite command</span></a> for a full overview of this command.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">startsite</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>Start the site with name [site_name].</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">stopsite</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>Stop the site with name [site_name].</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">restartsite</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>Restart the site with name [site_name].</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">sitedir</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>Get the absolute path for a site based on [site_name]</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">siteconfig</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>Prints the configuration of site [site_name] as defined in its configuration files.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">siteconfigfiles</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>List all configuration files for of site [site_name]</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">open</span> <span class=\"pre\">[sitename]</span></code></dt>\n<dd>Open the site in Chrome, or when on macOS, in the default browser.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">chrome</span> <span class=\"pre\">[options]</span> <span class=\"pre\">[switches]</span> <span class=\"pre\">[sitename]</span></code></dt>\n<dd>Open the site in Chrome. The switches are options to Chrome.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">chromium</span> <span class=\"pre\">[options]</span> <span class=\"pre\">[switches]</span> <span class=\"pre\">[sitename]</span></code></dt>\n<dd>Open the site in Chromium. The switches are options to Chromium.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">dispatch</span> <span class=\"pre\">&lt;url&gt;</span></code></dt>\n<dd><p class=\"first\">Dispatch an URL. Finds the site matching the hostname and shows the dispatch information for the path.\nExample:</p>\n<div class=\"last highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">bin</span><span class=\"o\">/</span><span class=\"n\">zotonic</span> <span class=\"n\">dispatch</span> <span class=\"nn\">https</span><span class=\"p\">:</span><span class=\"o\">//</span><span class=\"n\">mysite</span><span class=\"p\">.</span><span class=\"nn\">test</span><span class=\"p\">:</span><span class=\"mi\">8443</span><span class=\"o\">/</span><span class=\"n\">en</span><span class=\"o\">/</span><span class=\"n\">page</span><span class=\"o\">/</span><span class=\"mi\">1</span><span class=\"o\">/</span><span class=\"n\">foobar</span>\n</pre></div>\n</div>\n</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">dispatch</span> <span class=\"pre\">&lt;site_name&gt;</span> <span class=\"pre\">[detail]</span></code></dt>\n<dd>List all dispatch rules for a site. Add the <code class=\"docutils literal notranslate\"><span class=\"pre\">detail</span></code> option to show all controller options for each\ndispatch rule.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">dispatch</span> <span class=\"pre\">&lt;site_name&gt;</span> <span class=\"pre\">&lt;path&gt;</span></code></dt>\n<dd><p class=\"first\">Show the dispatch information for a specific path and site. Example:</p>\n<div class=\"last highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">bin</span><span class=\"o\">/</span><span class=\"n\">zotonic</span> <span class=\"n\">dispatch</span> <span class=\"n\">mysite</span> <span class=\"o\">/</span><span class=\"n\">en</span><span class=\"o\">/</span><span class=\"n\">page</span><span class=\"o\">/</span><span class=\"mi\">1</span><span class=\"o\">/</span><span class=\"n\">foobar</span>\n</pre></div>\n</div>\n</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">etop</span></code></dt>\n<dd>Show the processes that consume the most CPU. Stop with twice ctrl-C.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">logtail</span> <span class=\"pre\">[</span> <span class=\"pre\">console</span> <span class=\"pre\">|</span> <span class=\"pre\">error</span> <span class=\"pre\">|</span> <span class=\"pre\">crash</span> <span class=\"pre\">]</span></code></dt>\n<dd>Show the last 50 entries of the <code class=\"docutils literal notranslate\"><span class=\"pre\">console.log</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">error.log</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">crash.log</span></code> file. Defaults\nto the console log.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">flush</span></code></dt>\n<dd>Flush the caches of all sites.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">flush</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>Flush the caches of the site with name [site_name].</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">createdb</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd><p class=\"first\">Create a database called zotonic_[site_name] with the basic setup in place to host a Zotonic datastore.\nThis script will likely need to be run as postgres unless zotonic has been granted CREATEDB in postgres as follows:</p>\n<div class=\"last highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nv\">ALTER</span> <span class=\"nv\">ROLE</span> <span class=\"n\">zotonic</span> <span class=\"nv\">WITH</span> <span class=\"nv\">CREATEDB</span>\n</pre></div>\n</div>\n</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">compilefile</span> <span class=\"pre\">&lt;path/to/filename.erl&gt;</span></code></dt>\n<dd>Compiles and reloads a single <a class=\"reference internal\" href=\"/id/doc_glossary#term-erlang-module\"><span class=\"xref std std-term\">Erlang module</span></a> within the\nZotonic folder. This runs very fast and works very well on a\nsave-hook of your text editor. In Emacs, it would be called like\nthis:</dd>\n</dl>\n<div class=\"highlight-emacs notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">(</span><span class=\"nv\">add-hook</span> <span class=\"ss\">&#39;erlang-mode-hook</span>\n      <span class=\"o\">&#39;</span><span class=\"p\">(</span><span class=\"nb\">lambda</span> <span class=\"p\">()</span>\n         <span class=\"p\">(</span><span class=\"nv\">add-hook</span> <span class=\"ss\">&#39;after-save-hook</span> <span class=\"o\">&#39;</span>\n                   <span class=\"p\">(</span><span class=\"nb\">lambda</span> <span class=\"p\">()</span>\n                     <span class=\"p\">(</span><span class=\"nf\">call-process</span> <span class=\"s\">&quot;/path/to/your/bin/zotonic&quot;</span> <span class=\"no\">nil</span> <span class=\"s\">&quot;*scratch*&quot;</span> <span class=\"no\">nil</span> <span class=\"s\">&quot;compilefile&quot;</span> <span class=\"nf\">buffer-file-name</span><span class=\"p\">)</span>\n                     <span class=\"p\">)</span>\n                   <span class=\"p\">)</span>\n         <span class=\"p\">))</span>\n</pre></div>\n</div>\n<aside class=\"admonition tip\">\n<p class=\"first admonition-title\">Tip</p>\n<p class=\"last\">Install <code class=\"docutils literal notranslate\"><span class=\"pre\">fswatch</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">inotify-tools</span></code> to automatically recompile files when they are changed. These tools will also\nenable automatic loading of changed templates, dispatch rules, and translations.</p>\n</aside>\n<dl class=\"docutils\">\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">compile</span></code></dt>\n<dd>Compiles all the Zotonic Erlang source files, modules and sites,\nincluding those in the user directory (see <a class=\"reference internal\" href=\"/id/doc_developerguide_configuration_zotonic_configuration#guide-configuration\"><span class=\"std std-ref\">Global configuration</span></a>).</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">update</span></code></dt>\n<dd>Like <code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">compile</span></code> but also flushes caches and rescans all modules and sites for new templates etc.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">load</span></code></dt>\n<dd>Reloads all (changed) beam files from disk.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">runtests</span></code></dt>\n<dd>Starts Zotonic in the foreground and runs all (enunit) tests. Stops after completion of the tests.</dd>\n<dt><code class=\"docutils literal notranslate\"><span class=\"pre\">zotonic</span> <span class=\"pre\">sitetest</span> <span class=\"pre\">&lt;site_name&gt;</span></code></dt>\n<dd>Runs all tests for the given site. Zotonic must be running. See <a class=\"reference internal\" href=\"/id/doc_developerguide_testing#dev-testing\"><span class=\"std std-ref\">Testing sites</span></a>.</dd>\n</dl>\n</div>\n</div>\n\n\n           </div>",
+    "slug": "command-line",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 319,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "reference",
+      "title": "Reference",
+      "uri": "https://zotonic.com/id/reference"
+    },
+    "publication_start": "2023-06-24T08:17:43Z",
+    "is_website_redirect": false,
+    "page_path": "/reference/command-line",
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/ref/cli/index.rst",
+    "pivot_location_lng": null,
+    "name": "doc_reference_cli_index",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:25Z",
+    "uri": null,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2023-10-13T07:54:47Z",
+    "title_slug": "command-line"
+  },
+  "uri": "https://zotonic.com/id/1547",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1547"
+  }
+}

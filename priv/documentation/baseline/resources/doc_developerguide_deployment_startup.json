@@ -1,0 +1,158 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:48Z",
+          "object_id": {
+            "id": 1547,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_reference_cli_index",
+            "title": "Command-line",
+            "uri": "https://zotonic.com/id/1547"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:48Z",
+          "object_id": {
+            "id": 1481,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_deployment_env",
+            "title": "Useful environment variables",
+            "uri": "https://zotonic.com/id/1481"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1987,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1987"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_deployment_startup",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1987/automatic-startup-on-system-boot",
+    "x-default": "https://zotonic.com/docs/1987/automatic-startup-on-system-boot"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Once you have Zotonic running, you want to make sure that it\nautomatically starts up when the server reboots, so that the website\nkeeps running after a power failure, for example.</p>\n<div class=\"section\">\n<h2>Creating an init script</h2>\n<p>The <a class=\"reference internal\" href=\"/id/doc_reference_cli_index#ref-cli\"><span class=\"std std-ref\">Zotonic shell command</span></a> can start Zotonic in the\nbackground and stop it again.</p>\n<p>An init script will just need to call the zotonic command with either\n<code class=\"docutils literal notranslate\"><span class=\"pre\">start</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">stop</span></code>. On debian systems it might look like this:</p>\n<div class=\"highlight-bash notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"ch\">#!/bin/sh -e</span>\n\n<span class=\"c1\">### BEGIN INIT INFO</span>\n<span class=\"c1\"># Provides:             zotonic</span>\n<span class=\"c1\"># Required-Start:       $local_fs $remote_fs $network $time postgresql</span>\n<span class=\"c1\"># Required-Stop:        $local_fs $remote_fs $network $time postgresql</span>\n<span class=\"c1\"># Should-Start:</span>\n<span class=\"c1\"># Should-Stop:</span>\n<span class=\"c1\"># Default-Start:        2 3 4 5</span>\n<span class=\"c1\"># Default-Stop:         0 1 6</span>\n<span class=\"c1\"># Short-Description:    Zotonic</span>\n<span class=\"c1\">### END INIT INFO</span>\n\n<span class=\"c1\"># Set any environment variables here, e.g.:</span>\n<span class=\"c1\">#export ZOTONIC_IP=&quot;127.0.0.1&quot;</span>\n\n/usr/bin/sudo -u zotonic -i /home/zotonic/zotonic/bin/zotonic <span class=\"nv\">$@</span>\n</pre></div>\n</div>\n<p>For other environment variables which can be set, see <a class=\"reference internal\" href=\"/id/doc_developerguide_deployment_env#guide-deployment-env\"><span class=\"std std-ref\">Useful environment variables</span></a>.</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:48Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/deployment/startup.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:28Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_deployment_startup",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:28Z",
+    "slug": "automatic-startup-on-system-boot",
+    "title": "Automatic startup on system boot",
+    "title_slug": "automatic-startup-on-system-boot",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1987",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1987"
+  }
+}

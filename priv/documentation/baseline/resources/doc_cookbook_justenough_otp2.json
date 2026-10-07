@@ -1,0 +1,153 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:21Z",
+          "object_id": {
+            "id": 1429,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_justenough_otp1",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Just enough Erlang/OTP and rebar, part 1"
+              }
+            },
+            "uri": "https://zotonic.com/id/1429"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    }
+  },
+  "id": 1428,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1428"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_justenough_otp2",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1428/just-enough-erlang-otp-and-rebar-part-2",
+    "x-default": "https://zotonic.com/cookbook/1428/just-enough-erlang-otp-and-rebar-part-2"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Building a gen_server to front the library and generating\ndocumentation.</p>\n<p><cite>Created Aug 17, 2011 by Lloyd R. Prentice</cite></p>\n<div class=\"section\">\n<h2>WHY</h2>\n<p>If you worked through the Cookbook item <a class=\"reference internal\" href=\"/id/doc_cookbook_justenough_otp1#cookbook-otp1\"><span class=\"std std-ref\">Just enough Erlang/OTP and rebar, part 1</span></a>, you have\ncreated two Erlang applications under management of Rebar. You’ve used\nRebar to create a gen_server template in the first application and\nadded several functions. You’ve also created a library application\nwith one function.</p>\n<p>In this tutorial we’ll call our library function from our gen_server\nand generate documentation.</p>\n</div>\n<div class=\"section\">\n<h2>ASSUMPTIONS</h2>\n<p>You have Erlang 20 or later installed on your system. You have basic\nBash command line skills. File editing tasks refer to vim. But you can\nuse your code editor of choice.</p>\n<p>You’ve successfully compiled the zzz and zzz_lib applications from\nPart I under Rebar.</p>\n<p>This tutorial was tested on Ubuntu 11.04.</p>\n</div>\n<div class=\"section\">\n<h2>HOW</h2>\n<p>How can I call a library function from zzz_lib in a zzz module?</p>\n<p>In the shell:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">learn</span><span class=\"sc\">$ </span><span class=\"n\">cd</span> <span class=\"n\">apps</span><span class=\"o\">/</span><span class=\"n\">zzz</span><span class=\"o\">/</span><span class=\"n\">src</span>\n</pre></div>\n</div>\n<p>Edit handle_call/2 in zzz_srv.erl as follows:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nf\">handle_call</span><span class=\"p\">(</span><span class=\"n\">hello</span><span class=\"p\">,</span> <span class=\"p\">_</span><span class=\"nv\">From</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n  <span class=\"nn\">hello</span><span class=\"p\">:</span><span class=\"nf\">hello</span><span class=\"p\">(),</span>\n  <span class=\"nn\">io</span><span class=\"p\">:</span><span class=\"nf\">format</span><span class=\"p\">(</span><span class=\"s\">&quot;</span><span class=\"si\">~n</span><span class=\"s\">Hello from zzz_srv!</span><span class=\"si\">~n</span><span class=\"s\">&quot;</span><span class=\"p\">,</span> <span class=\"p\">[]),</span>\n  <span class=\"p\">{</span><span class=\"n\">reply</span><span class=\"p\">,</span> <span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">};</span>\n</pre></div>\n</div>\n<p>While you’re at it, check your handle_cast/2 code. It should look like this:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nf\">stop</span><span class=\"p\">()</span> <span class=\"o\">-&gt;</span>\n  <span class=\"nn\">gen_server</span><span class=\"p\">:</span><span class=\"nf\">cast</span><span class=\"p\">(</span><span class=\"o\">?</span><span class=\"nv\">MODULE</span><span class=\"p\">,</span> <span class=\"n\">stop</span><span class=\"p\">).</span>\n\n<span class=\"c\">%% callbacks</span>\n<span class=\"nf\">handle_cast</span><span class=\"p\">(</span><span class=\"n\">stop</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n  <span class=\"p\">{</span><span class=\"n\">stop</span><span class=\"p\">,</span> <span class=\"n\">normal</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">};</span>\n\n<span class=\"nf\">handle_cast</span><span class=\"p\">(_</span><span class=\"nv\">Msg</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span>\n  <span class=\"p\">{</span><span class=\"n\">noreply</span><span class=\"p\">,</span> <span class=\"nv\">State</span><span class=\"p\">}.</span>\n</pre></div>\n</div>\n<p>Now edit and save init/1 in learn/apps/zzz/src/zzz_sup.erl:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nf\">init</span><span class=\"p\">([])</span> <span class=\"o\">-&gt;</span>\n   <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"p\">{{</span><span class=\"n\">one_for_one</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">60</span><span class=\"p\">},</span> <span class=\"p\">[</span><span class=\"o\">?</span><span class=\"nv\">CHILD</span><span class=\"p\">(</span><span class=\"n\">zzz_srv</span><span class=\"p\">,</span> <span class=\"n\">worker</span><span class=\"p\">)]}}.</span>\n</pre></div>\n</div>\n<p>Now recompile:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">learn</span><span class=\"sc\">$ </span><span class=\"p\">.</span><span class=\"o\">/</span><span class=\"n\">rebar</span> <span class=\"n\">clean</span> <span class=\"n\">compile</span>\n</pre></div>\n</div>\n<p>And test:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">learn</span><span class=\"sc\">$ </span><span class=\"n\">erl</span> <span class=\"o\">-</span><span class=\"n\">pa</span> <span class=\"n\">apps</span><span class=\"o\">/*/</span><span class=\"n\">ebin</span>\n<span class=\"p\">...</span>\n<span class=\"mi\">1</span><span class=\"o\">&gt;</span> <span class=\"nn\">zzz_sup</span><span class=\"p\">:</span><span class=\"nf\">start_link</span><span class=\"p\">().</span>\n<span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span><span class=\"o\">&lt;</span><span class=\"mi\">0</span><span class=\"p\">.</span><span class=\"mi\">33</span><span class=\"p\">.</span><span class=\"mi\">0</span><span class=\"o\">&gt;</span><span class=\"p\">}</span>\n</pre></div>\n</div>\n<p>Note that you may see a different PID on your system. Try some functions:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">2</span><span class=\"o\">&gt;</span> <span class=\"nn\">zzz_srv</span><span class=\"p\">:</span><span class=\"nf\">say_hello</span><span class=\"p\">().</span>\n<span class=\"nv\">Hello</span> <span class=\"n\">from</span> <span class=\"n\">zzz_lib</span><span class=\"o\">!</span>\n<span class=\"nv\">Hello</span> <span class=\"n\">from</span> <span class=\"n\">zzz_srv</span><span class=\"o\">!</span>\n<span class=\"n\">ok</span>\n</pre></div>\n</div>\n<p>Both our library function and zzz_svr have performed as we’d hoped.</p>\n<p>While developing this tutorial, I introduced a bug in\n<code class=\"docutils literal notranslate\"><span class=\"pre\">zzz_svr:handle_cast/2</span></code>. Once it started, I couldn’t stop. This was\na good excuse to introduce a valuable debugging tool.</p>\n<div class=\"section\">\n<h3>How can I kill a running process?</h3>\n<p>In the Erlang shell, start <cite>pman</cite>, the process manager:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">3</span><span class=\"o\">&gt;</span> <span class=\"nn\">pman</span><span class=\"p\">:</span><span class=\"nf\">start</span><span class=\"p\">().</span>\n<span class=\"o\">&lt;</span><span class=\"mi\">0</span><span class=\"p\">.</span><span class=\"mi\">37</span><span class=\"p\">.</span><span class=\"mi\">0</span><span class=\"o\">&gt;</span>\n</pre></div>\n</div>\n<p>You should see a graphic window open with a list of running\nprocesses. Find <code class=\"docutils literal notranslate\"><span class=\"pre\">zzz_srv</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">zzz_sup</span></code> under Name. Click on\nzz_sup to highlight. Now pull down the Trace menu item and click on\n<cite>kill</cite>. Note that you’ve not only killed zzz_sup, but zzz_srv as\nwell. Of course. zzz_sup supervises zzz_srv. When it dies, so does\nzzz_srv.</p>\n<p>You can confirm:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">4</span><span class=\"o\">&gt;</span> <span class=\"nn\">zzz_srv</span><span class=\"p\">:</span><span class=\"nf\">say_hello</span><span class=\"p\">().</span>\n<span class=\"o\">**</span> <span class=\"n\">exception</span> <span class=\"nb\">exit</span><span class=\"p\">:</span> <span class=\"p\">{</span><span class=\"n\">noproc</span><span class=\"p\">,{</span><span class=\"n\">gen_server</span><span class=\"p\">,</span><span class=\"n\">call</span><span class=\"p\">,[</span><span class=\"n\">zzz_srv</span><span class=\"p\">,</span><span class=\"n\">hello</span><span class=\"p\">]}}</span>\n   <span class=\"n\">in</span> <span class=\"n\">function</span>  <span class=\"nb\">exit</span><span class=\"o\">/</span><span class=\"mi\">1</span>\n      <span class=\"n\">called</span> <span class=\"n\">as</span> <span class=\"nb\">exit</span><span class=\"p\">({</span><span class=\"n\">noproc</span><span class=\"p\">,{</span><span class=\"n\">gen_server</span><span class=\"p\">,</span><span class=\"n\">call</span><span class=\"p\">,[</span><span class=\"n\">zzz_srv</span><span class=\"p\">,</span><span class=\"n\">hello</span><span class=\"p\">]}})</span>\n   <span class=\"n\">in</span> <span class=\"n\">call</span> <span class=\"n\">from</span> <span class=\"nn\">gen_server</span><span class=\"p\">:</span><span class=\"n\">call</span><span class=\"o\">/</span><span class=\"mi\">2</span>\n</pre></div>\n</div>\n<p><cite>You assassin, you!</cite></p>\n<p>But, no worry, you can start it back up again:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">5</span><span class=\"o\">&gt;</span> <span class=\"nn\">zzz_srv</span><span class=\"p\">:</span><span class=\"nf\">start_link</span><span class=\"p\">().</span>\n<span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span><span class=\"o\">&lt;</span><span class=\"mi\">0</span><span class=\"p\">.</span><span class=\"mi\">48</span><span class=\"p\">.</span><span class=\"mi\">0</span><span class=\"o\">&gt;</span><span class=\"p\">}</span>\n</pre></div>\n</div>\n<p>Now let’s test zzz_srv:stop().:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">6</span><span class=\"p\">)</span> <span class=\"nn\">zzz_srv</span><span class=\"p\">:</span><span class=\"nf\">stop</span><span class=\"p\">().</span>\n<span class=\"n\">ok</span>\n</pre></div>\n</div>\n<p>Seemed to worked. But…:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">7</span><span class=\"o\">&gt;</span> <span class=\"nn\">zzz_srv</span><span class=\"p\">:</span><span class=\"nf\">say_hello</span><span class=\"p\">().</span>\n<span class=\"nv\">Hello</span> <span class=\"n\">from</span> <span class=\"n\">zzz_lib</span><span class=\"o\">!</span>\n<span class=\"nv\">Hello</span> <span class=\"n\">from</span> <span class=\"n\">zzz_srv</span><span class=\"o\">!</span>\n<span class=\"n\">ok</span>\n</pre></div>\n</div>\n<p>It turns out, zzz_sup started it up again. Try it again:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"mi\">8</span><span class=\"o\">&gt;</span> <span class=\"nn\">zzz_srv</span><span class=\"p\">:</span><span class=\"nf\">stop</span><span class=\"p\">().</span>\n<span class=\"o\">**</span> <span class=\"n\">exception</span> <span class=\"nb\">exit</span><span class=\"p\">:</span> <span class=\"n\">shutdown</span>\n</pre></div>\n</div>\n<p>Wait! If you look at pman, you’ll see that zzz_sup also died. What’s going on here?</p>\n<p>If you look at zzz_sup.erl in learn/apps/zzz/src, you’ll note that init/1 allows only one restart, the value following “one_for_one.”:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nf\">init</span><span class=\"p\">([])</span> <span class=\"o\">-&gt;</span>\n   <span class=\"p\">{</span><span class=\"n\">ok</span><span class=\"p\">,</span> <span class=\"p\">{{</span><span class=\"n\">one_for_one</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">60</span><span class=\"p\">},</span> <span class=\"p\">[</span><span class=\"o\">?</span><span class=\"nv\">CHILD</span><span class=\"p\">(</span><span class=\"n\">zzz_srv</span><span class=\"p\">,</span> <span class=\"n\">worker</span><span class=\"p\">)]}}.</span>\n</pre></div>\n</div>\n<p>For more details, checkout the Supervisor Behaviour: <a class=\"reference external\" href=\"http://www.erlang.org/doc/design_principles/sup_princ.html\">http://www.erlang.org/doc/design_principles/sup_princ.html</a></p>\n</div>\n<div class=\"section\">\n<h3>How can I generate documentation?</h3>\n<p>Add comments to learn/apps/zzz/src/zzz_srv.erl as follows:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">%% @spec say_hello() -&gt; none</span>\n<span class=\"c\">%% @doc display greeting</span>\n<span class=\"nf\">say_hello</span><span class=\"p\">()</span> <span class=\"o\">-&gt;</span>\n</pre></div>\n</div>\n<p>And to learn/apps/zzz_lib/src/hello.erl:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"c\">%% @spec hello() -&gt; none</span>\n<span class=\"c\">%% @doc Library test function</span>\n<span class=\"nf\">hello</span><span class=\"p\">()</span> <span class=\"o\">-&gt;</span>\n</pre></div>\n</div>\n<p>Now execute:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">learn</span><span class=\"sc\">$ </span><span class=\"p\">.</span><span class=\"o\">/</span><span class=\"n\">rebar</span> <span class=\"n\">clean</span> <span class=\"n\">compile</span>\n<span class=\"p\">...</span>\n<span class=\"n\">learn</span><span class=\"sc\">$ </span><span class=\"p\">.</span><span class=\"o\">/</span><span class=\"n\">rebar</span> <span class=\"n\">doc</span>\n<span class=\"o\">==&gt;</span> <span class=\"n\">zzz</span> <span class=\"p\">(</span><span class=\"n\">doc</span><span class=\"p\">)</span>\n<span class=\"o\">==&gt;</span> <span class=\"n\">zzz_lib</span> <span class=\"p\">(</span><span class=\"n\">doc</span><span class=\"p\">)</span>\n</pre></div>\n</div>\n<p>Check out your new doc directories:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">learn</span><span class=\"sc\">$ </span><span class=\"n\">ls</span> <span class=\"n\">apps</span><span class=\"o\">/</span><span class=\"n\">zzz</span>\n<span class=\"n\">doc</span>  <span class=\"n\">ebin</span>  <span class=\"n\">src</span>\n\n<span class=\"n\">learn</span><span class=\"sc\">$ </span><span class=\"n\">ls</span> <span class=\"n\">apps</span><span class=\"o\">/</span><span class=\"n\">zzz_lib</span>\n<span class=\"n\">doc</span>  <span class=\"n\">ebin</span>  <span class=\"n\">src</span>\n</pre></div>\n</div>\n<p>Now bring up your browser and point to file:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">file</span><span class=\"p\">:</span><span class=\"o\">///</span><span class=\"n\">home</span><span class=\"o\">/</span><span class=\"n\">learn</span><span class=\"o\">/</span><span class=\"n\">apps</span><span class=\"o\">/</span><span class=\"n\">zzz</span><span class=\"o\">/</span><span class=\"n\">doc</span><span class=\"o\">/</span><span class=\"n\">index</span><span class=\"p\">.</span><span class=\"n\">html</span> <span class=\"nn\">file</span><span class=\"p\">:</span><span class=\"o\">///</span><span class=\"n\">home</span><span class=\"o\">/</span><span class=\"n\">learn</span><span class=\"o\">/</span><span class=\"n\">apps</span><span class=\"o\">/</span><span class=\"n\">zzz_lib</span><span class=\"o\">/</span><span class=\"n\">doc</span><span class=\"o\">/</span><span class=\"n\">index</span><span class=\"p\">.</span><span class=\"n\">html</span>\n</pre></div>\n</div>\n</div>\n</div>\n<div class=\"section\">\n<h2>TROUBLESHOOTING</h2>\n<p>I got an error when I compiled. What now?</p>\n<p>make sure rebar.config in ../learn looks like this:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">sub_dirs</span><span class=\"p\">,</span>\n        <span class=\"p\">[</span><span class=\"s\">&quot;apps/zzz&quot;</span><span class=\"p\">,</span>\n         <span class=\"s\">&quot;apps/zzz/src&quot;</span><span class=\"p\">,</span>\n         <span class=\"s\">&quot;apps/zzz_lib&quot;</span><span class=\"p\">,</span>\n         <span class=\"s\">&quot;apps/zzz_lib/src&quot;</span>\n        <span class=\"p\">]</span>\n<span class=\"p\">}.</span>\n</pre></div>\n</div>\n<p>Make sure you have this directory structure:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>learn$ tree\n.\napps\n│   ├── zzz\n│   │   ├── ebin\n│   │   └── src\n│   │       ├── zzz_app.erl\n│   │       ├── zzz.app.src\n│   │       ├── zzz_srv.erl\n│   │       └── zzz_sup.erl\n│   └── zzz_lib\n│   │   ├── ebin\n│       └── src\n│           ├── hello.erl\n│           ├── zzz_lib_app.erl\n│           ├── zzz_lib.app.src\n│           └── zzz_lib_sup.erl\n├── rebar\n└── rebar.config\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>WHAT YOU’VE LEARNED</h2>\n<p>You’ve now had a good soak in basic Erlang/OTP conventions and\nErlang. You can install Rebar, create an Erlang/OTP application,\ncompile it and create documentation.</p>\n</div>\n<div class=\"section\">\n<h2>WHERE TO GO FROM HERE</h2>\n<p>Study the online and printed Erlang documentation upside and\nsideways. Skim to see what’s there, then reread everytime you have a\nproblem. You’ll be an Erlang/OTP wizard before you know it.</p>\n<p>Now, dive into Zotonic source code. It should be much easier to\nfollow.</p>\n</div>\n<div class=\"section\">\n<h2>REFERENCES</h2>\n<p>Getting Started:\n<a class=\"reference external\" href=\"https://github.com/erlang/rebar3/wiki/Getting-started\">https://github.com/erlang/rebar3/wiki/Getting-started</a></p>\n<p>Damn Technology:\n<a class=\"reference external\" href=\"http://damntechnology.blogspot.com/\">http://damntechnology.blogspot.com/</a></p>\n<p>How to create, build, and run an Erlang OTP application using Rebar:\n<a class=\"reference external\" href=\"http://skeptomai.com/?p=56#sec-3\">http://skeptomai.com/?p=56#sec-3</a></p>\n<p>Commands:\n<a class=\"reference external\" href=\"https://github.com/erlang/rebar3/wiki/Rebar-commands\">https://github.com/erlang/rebar3/wiki/Rebar-commands</a></p>\n<p>Erlang App. Management with Rebar:\n<a class=\"reference external\" href=\"http://erlang-as-is.blogspot.com/2011/04/erlang-app-management-with-rebar-alan.html\">http://erlang-as-is.blogspot.com/2011/04/erlang-app-management-with-rebar-alan.html</a></p>\n<p>Dizzy Smith – Building Erlang Applications with Rebar:\n<a class=\"reference external\" href=\"http://ontwik.com/erlang/dizzy-smith-building-erlang-applications-with-rebar/\">http://ontwik.com/erlang/dizzy-smith-building-erlang-applications-with-rebar/</a></p>\n<p>Rebar Demo using ibrowse:\n<a class=\"reference external\" href=\"http://vimeo.com/8311407\">http://vimeo.com/8311407</a></p>\n<p>rebar / rebar.config.sample:\n<a class=\"reference external\" href=\"https://github.com/erlang/rebar3/blob/master/rebar.config.sample?source=cc\">https://github.com/erlang/rebar3/blob/master/rebar.config.sample?source=cc</a></p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:21Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/justenough-otp2.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:26Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_justenough_otp2",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:26Z",
+    "slug": "just-enough-erlang-otp-and-rebar-part-2",
+    "title": "Just enough Erlang/OTP and rebar, part 2",
+    "title_slug": "just-enough-erlang-otp-and-rebar-part-2",
+    "tz": "UTC",
+    "uri": null,
+    "version": 17,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1428",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1428"
+  }
+}

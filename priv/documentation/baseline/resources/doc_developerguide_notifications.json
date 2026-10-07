@@ -1,0 +1,259 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1577,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_overriding",
+            "title": "Overriding Zotonic",
+            "uri": "https://zotonic.com/id/1577"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1122,
+            "is_a": [
+              "meta",
+              "category"
+            ],
+            "name": "notification",
+            "title": "Notifications",
+            "uri": "https://test.zotonic.com/id/1122"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1457,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_development",
+            "title": "mod_development",
+            "uri": "https://zotonic.com/id/1457"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 2010,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_signup",
+            "title": "mod_signup",
+            "uri": "https://zotonic.com/id/2010"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1331,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "module"
+            ],
+            "name": "doc_module_mod_admin",
+            "title": "mod_admin",
+            "uri": "https://zotonic.com/id/1331"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:48:18Z",
+          "object_id": {
+            "id": 1122,
+            "is_a": [
+              "meta",
+              "category"
+            ],
+            "name": "notification",
+            "title": "Notifications",
+            "uri": "https://test.zotonic.com/id/1122"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1274,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1274"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_notifications",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1274/notifications",
+    "x-default": "https://zotonic.com/docs/1274/notifications"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/notification#notifications-reference\"><span class=\"std std-ref\">list of all notifications</span></a></p>\n</aside>\n<p>At different moments in the lifecycle of the web request, Zotonic sends\nnotifications. By <em>observing</em> these notifications you can\n<a class=\"reference internal\" href=\"/id/doc_cookbook_overriding#cookbook-overriding\"><span class=\"std std-ref\">override</span></a> Zotonic’s behaviour. You can also\nadd your own notifications.</p>\n<p>Zotonic’s notifier system makes it possible to create modular\ncomponents with a pluggable interface. The notifier system is used by\ninternal core Zotonic components like the authentication mechanism,\nthe logging system and more.</p>\n<p>The notification system can not only act as a traditional event\nsubscription system but also as an advanced priority based function\ndispatch system. It uses the same priority system which is used to\nselect templates. This makes it possible to override pre-defined\ndefault behaviour of core Zotonic modules.</p>\n<p>A notification message is a tagged tuple. The first element of the\ntuple is the type of notification message. An observer can use this\nto subscribe to specific messages it is interested in.</p>\n<p>Example:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">acl_logon</span><span class=\"p\">,</span> <span class=\"mi\">1234</span><span class=\"p\">}</span>\n</pre></div>\n</div>\n<p>Or:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">module_activate</span><span class=\"p\">,</span> <span class=\"n\">mod_stream</span><span class=\"p\">,</span> <span class=\"o\">&lt;</span><span class=\"mi\">0</span><span class=\"p\">.</span><span class=\"mi\">32</span><span class=\"p\">.</span><span class=\"mi\">0</span><span class=\"o\">&gt;</span><span class=\"p\">}</span>\n</pre></div>\n</div>\n<p>You can find a <a class=\"reference internal\" href=\"/id/notification#notifications-reference\"><span class=\"std std-ref\">list of all notifications</span></a> in the\nreference section.</p>\n<div class=\"section\">\n<h2>Sending notifications</h2>\n<p>As mentioned earlier, the notification system can not only be used to\njust send events to observers. Observers can also return values\nback. They can do this in various ways described in the methods below.</p>\n</div>\n<div class=\"section\">\n<h2>Notification types</h2>\n<div class=\"section\">\n<a name=\"notification-notify\"></a><h3>notify</h3>\n<p>Send a message to all observers. This is used if you want to\nnotify other observers about a specific event. In Zotonic this\nis used a lot. For instance, it is used to notify modules of\nabout user logons, or notify when modules are activated and\ndeactivated.</p>\n</div>\n<div class=\"section\">\n<h3>notify1</h3>\n<p>Notify the first observer. This is useful for if you want to\nbe sure just one observer can do something with the message.</p>\n</div>\n<div class=\"section\">\n<a name=\"notification-first\"></a><h3>first</h3>\n<p>Call all observers, and use the first non <code class=\"docutils literal notranslate\"><span class=\"pre\">undefined</span></code> answer.\nThis is used to get information from one of the observers. By\nusing the notification system it makes sure that modules are\ndecoupled.</p>\n</div>\n<div class=\"section\">\n<a name=\"notification-map\"></a><h3>map</h3>\n<p>Call all observers and get a list of all answers.</p>\n</div>\n<div class=\"section\">\n<a name=\"notification-foldl\"></a><h3>foldl</h3>\n<p>Do a fold over all observers, high prio observers first.</p>\n</div>\n<div class=\"section\">\n<a name=\"notification-foldr\"></a><h3>foldr</h3>\n<p>Do a fold over all observers, low prio observers first.</p>\n</div>\n<div class=\"section\">\n<a name=\"notification-notify-sync\"></a><h3>notify_sync</h3>\n<p>Synchronous notification, wait till all observers have processed the\nnotification before continuing. The <a class=\"reference internal\" href=\"#notification-notify\"><span class=\"std std-ref\">notify</span></a> will\nnotify all observers asynchronously and returns before all notifications\nare processed.</p>\n<p>The synchronous notification also shares the current database transaction\n(if any) and other context data with the observers. This allows to process\nthe notification within a transaction.</p>\n</div>\n</div>\n<div class=\"section\">\n<a name=\"guide-notifications-observe\"></a><h2>Subscribing to notifications</h2>\n<p>Registering as an observer works as follows:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z_notifier</span><span class=\"p\">:</span><span class=\"nf\">observe</span><span class=\"p\">(</span><span class=\"nv\">NotificationType</span><span class=\"p\">,</span> <span class=\"nv\">Handler</span><span class=\"p\">,</span> <span class=\"nv\">Priority</span><span class=\"p\">,</span> <span class=\"nv\">Context</span><span class=\"p\">)</span>\n</pre></div>\n</div>\n<p>If the module is either a Zotonic module or a site module, the\n<code class=\"docutils literal notranslate\"><span class=\"pre\">Priority</span></code> parameter can be omitted. The observer will then get\nthe same priority as the module.</p>\n<dl class=\"docutils\">\n<dt>NotificationType</dt>\n<dd>The type of notification you want to observe, an atom.</dd>\n<dt>Handler</dt>\n<dd>Can be a <code class=\"docutils literal notranslate\"><span class=\"pre\">pid()</span></code>, or a <code class=\"docutils literal notranslate\"><span class=\"pre\">{Module,</span> <span class=\"pre\">Fun}</span></code> tuple. When the handler\nis a <code class=\"docutils literal notranslate\"><span class=\"pre\">pid()</span></code> and the notification is sent with <code class=\"docutils literal notranslate\"><span class=\"pre\">notify</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">notify1</span></code>\nthe gen_server process receives a <code class=\"docutils literal notranslate\"><span class=\"pre\">handle_cast</span></code>. When an answer is\nexpected back <code class=\"docutils literal notranslate\"><span class=\"pre\">handle_call</span></code> is used. This is the case for <code class=\"docutils literal notranslate\"><span class=\"pre\">first</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">map</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">foldl</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">foldr</span></code>.</dd>\n<dt>Priority</dt>\n<dd>The priority of the observer. This influences the order in which\nthey are called.</dd>\n<dt>Context</dt>\n<dd>The Zotonic context.</dd>\n</dl>\n<p>Example:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"nn\">z_notifier</span><span class=\"p\">:</span><span class=\"nf\">observe</span><span class=\"p\">(</span><span class=\"n\">acl_logon</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">mysitewww</span><span class=\"p\">,</span> <span class=\"n\">handle_logon</span><span class=\"p\">},</span> <span class=\"nv\">Context</span><span class=\"p\">)</span>\n</pre></div>\n</div>\n<div class=\"section\">\n<h3>Subscription shorthands</h3>\n<p>Modules and sites can use shortcuts for registering as an observer. When the\nZotonic module exports a function with the prefix <code class=\"docutils literal notranslate\"><span class=\"pre\">observe_</span></code> or\n<code class=\"docutils literal notranslate\"><span class=\"pre\">pid_observe_</span></code> Zotonic’s module manager will register the observer for you.</p>\n<p>For example exporting <code class=\"docutils literal notranslate\"><span class=\"pre\">observe_acl_logon/2</span></code> will register that function as\nan observer. It will be triggered when the <code class=\"docutils literal notranslate\"><span class=\"pre\">acl_logon</span></code> notification is fired.\nFunctions prefixed with <code class=\"docutils literal notranslate\"><span class=\"pre\">pid_observe_</span></code> are for\n<a class=\"reference internal\" href=\"/id/doc_developerguide_modules#guide-modules-gen-server\"><span class=\"std std-ref\">gen_server based modules</span></a>: they get passed the gen_server’s PID as the\nfirst argument.</p>\n</div>\n</div>\n<div class=\"section\">\n<a name=\"id1\"></a><h2>Handling notifications</h2>\n<p>When a notifications is sent the <code class=\"docutils literal notranslate\"><span class=\"pre\">z_notifier</span></code> module looks in its\ntables to see if there are any observers interested in receiving\nit. There are three types of notifications.</p>\n<dl class=\"docutils\">\n<dt>Cast notifications</dt>\n<dd><p class=\"first\">This is the simplest notification. The notifier does not expect an answer back\nthe result of the handler is ignored. This kind of notification is triggered by\ncalling <code class=\"docutils literal notranslate\"><span class=\"pre\">z_notifier:notify/2</span></code> or <code class=\"docutils literal notranslate\"><span class=\"pre\">z_notifier:notify1/2</span></code>. They are useful\nfor letting other modules know about a certain even or condition. This\nmakes it possible for other modules to act on it.</p>\n<p class=\"last\">For example, <a class=\"reference internal\" href=\"/id/doc_module_mod_development\"><span class=\"std std-ref\">mod_development</span></a> uses call notifications to trigger builds\nand reloads. By doing this other modules can notify <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_development</span></code> to\ntrigger builds. But when <code class=\"docutils literal notranslate\"><span class=\"pre\">mod_development</span></code> is disabled nothing will happen.</p>\n</dd>\n<dt>Call notification</dt>\n<dd><p class=\"first\">For this kind of notification, <code class=\"docutils literal notranslate\"><span class=\"pre\">z_notifier</span></code> expects an answer back. This answer\nis returned back to the notifier. This kind of notifications is used to\ndecouple modules. For instance a module can ask another module for a special\nURL to go to after logging in without knowing which module will do this.\nCall notifications are triggered by: <code class=\"docutils literal notranslate\"><span class=\"pre\">z_notifier:first/2</span></code> and\n<code class=\"docutils literal notranslate\"><span class=\"pre\">z_notifier:map/2</span></code>.</p>\n<p class=\"last\">For example, <a class=\"reference internal\" href=\"/id/doc_module_mod_signup\"><span class=\"std std-ref\">mod_signup</span></a> uses a call notification to find out what page\nto redirect to after a successfull signup. This allows one to customize the\nsignup process.</p>\n</dd>\n</dl>\n<p>Fold notifications</p>\n\n<p>Fold notifications are called, with <code class=\"docutils literal notranslate\"><span class=\"pre\">z_notifier:foldl/3</span></code> or\n<code class=\"docutils literal notranslate\"><span class=\"pre\">z_notifier:foldr/3</span></code>. It works similarly to the <a class=\"reference external\" href=\"http://www.erlang.org/doc/man/lists.html#foldl-3\">lists:foldr and\nlists:foldl</a>\nfunctions of Erlang’s <a class=\"reference external\" href=\"http://www.erlang.org/doc/man/lists.html\">lists</a> module.\nThe fold function calls each observer in sequence, either starting\nat highest (<code class=\"docutils literal notranslate\"><span class=\"pre\">foldl</span></code>) or at lowest (<code class=\"docutils literal notranslate\"><span class=\"pre\">foldr</span></code>) priority, passing\nvalues and an initial accumulator value.\nEach observer can adapt values in the accumulator, and needs to\nreturn it, for passing on to the next observer. The final value of\nthe accumulator is returned as result. This is useful if you want\nmultiple modules to be able to adapt and use values in the\naccumulator.\nFor example, <a class=\"reference internal\" href=\"/id/doc_module_mod_admin\"><span class=\"std std-ref\">mod_admin</span></a> uses a fold notification (called\n<code class=\"docutils literal notranslate\"><span class=\"pre\">admin_menu</span></code>) to build up the admin navigation menu, where each\nobserver is called to add menu entries to the menu.\n</p>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:15Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/notifications.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:16Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_developerguide_notifications",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:16Z",
+    "slug": "notifications",
+    "title": "Notifications",
+    "title_slug": "notifications",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1274",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1274"
+  }
+}

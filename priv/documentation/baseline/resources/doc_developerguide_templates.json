@@ -1,0 +1,586 @@
+{
+  "depiction_url": null,
+  "edges": {
+    "references": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1540,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_controllers",
+            "title": "Controllers",
+            "uri": "https://zotonic.com/id/1540"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1840,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference"
+            ],
+            "name": "doc_reference_global_variables",
+            "title": "Global template variables",
+            "uri": "https://zotonic.com/id/1840"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1388,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_scomp"
+            ],
+            "name": "doc_template_scomp_scomp_debug",
+            "title": "debug",
+            "uri": "https://zotonic.com/id/1388"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 325,
+            "is_a": [
+              "meta",
+              "category"
+            ],
+            "name": "template_filter",
+            "title": "Filters",
+            "uri": "https://test.zotonic.com/id/325"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1572,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_custom_filter",
+            "title": "Create a custom filter",
+            "uri": "https://zotonic.com/id/1572"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 324,
+            "is_a": [
+              "meta",
+              "category"
+            ],
+            "name": "template_tag",
+            "title": "Tags",
+            "uri": "https://test.zotonic.com/id/324"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1574,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_custom_tag",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Create a custom tag"
+              }
+            },
+            "uri": "https://zotonic.com/id/1574"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1860,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_bestpractices_templates",
+            "title": "Template Best Practices and Pitfalls",
+            "uri": "https://zotonic.com/id/1860"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 322,
+            "is_a": [
+              "meta",
+              "category"
+            ],
+            "name": "model",
+            "title": "Models",
+            "uri": "https://test.zotonic.com/id/322"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1573,
+            "is_a": [
+              "text",
+              "documentation",
+              "cookbook"
+            ],
+            "name": "doc_cookbook_custom_model",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Create a custom model"
+              }
+            },
+            "uri": "https://zotonic.com/id/1573"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1527,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_sites",
+            "title": "Sites",
+            "uri": "https://zotonic.com/id/1527"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1353,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_modules",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "Modules"
+              }
+            },
+            "uri": "https://zotonic.com/id/1353"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1355,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_all_include",
+            "title": "all_include",
+            "uri": "https://zotonic.com/id/1355"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1354,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_all_catinclude",
+            "title": "all_catinclude",
+            "uri": "https://zotonic.com/id/1354"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1277,
+            "is_a": [
+              "text",
+              "documentation",
+              "userguide"
+            ],
+            "name": "doc_userguide_datamodel",
+            "title": {
+              "_type": "trans",
+              "tr": {
+                "en": "The Zotonic data model"
+              }
+            },
+            "uri": "https://zotonic.com/id/1277"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1534,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "controller"
+            ],
+            "name": "doc_controller_controller_page",
+            "title": "controller_page",
+            "uri": "https://zotonic.com/id/1534"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1278,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "model"
+            ],
+            "name": "doc_model_model_rsc",
+            "title": "rsc",
+            "uri": "https://zotonic.com/id/1278"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1276,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_resources",
+            "title": "Resources",
+            "uri": "https://zotonic.com/id/1276"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1325,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_catinclude",
+            "title": "catinclude",
+            "uri": "https://zotonic.com/id/1325"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1326,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_include",
+            "title": "include",
+            "uri": "https://zotonic.com/id/1326"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1347,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_extends",
+            "title": "extends",
+            "uri": "https://zotonic.com/id/1347"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1346,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_block",
+            "title": "block",
+            "uri": "https://zotonic.com/id/1346"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1370,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_inherit",
+            "title": "inherit",
+            "uri": "https://zotonic.com/id/1370"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1348,
+            "is_a": [
+              "text",
+              "documentation",
+              "reference",
+              "template_tag"
+            ],
+            "name": "doc_template_tag_tag_overrules",
+            "title": "overrules",
+            "uri": "https://zotonic.com/id/1348"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 332,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "references",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "en": "References"
+          }
+        },
+        "uri": "https://zotonic.com/id/references"
+      }
+    },
+    "relation": {
+      "objects": [
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1280,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_media",
+            "title": "Media",
+            "uri": "https://zotonic.com/id/1280"
+          },
+          "seq": 1000000
+        },
+        {
+          "created": "2020-05-30T05:47:41Z",
+          "object_id": {
+            "id": 1539,
+            "is_a": [
+              "text",
+              "documentation",
+              "developerguide"
+            ],
+            "name": "doc_developerguide_wires",
+            "title": "Wires",
+            "uri": "https://zotonic.com/id/1539"
+          },
+          "seq": 1000000
+        }
+      ],
+      "predicate": {
+        "id": 303,
+        "is_a": [
+          "meta",
+          "predicate"
+        ],
+        "name": "relation",
+        "title": {
+          "_type": "trans",
+          "tr": {
+            "nl": "Relatie",
+            "en": "Relation"
+          }
+        },
+        "uri": "http://purl.org/dc/terms/relation"
+      }
+    }
+  },
+  "id": 1352,
+  "is_a": [
+    "text",
+    "documentation",
+    "developerguide"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1352"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_developerguide_templates",
+  "page_url": {
+    "en": "https://zotonic.com/docs/1352/templates",
+    "x-default": "https://zotonic.com/docs/1352/templates"
+  },
+  "preview_url": null,
+  "resource": {
+    "version": 19,
+    "pivot_location_lat": null,
+    "title": {
+      "_type": "trans",
+      "tr": {
+        "en": "Templates"
+      }
+    },
+    "is_authoritative": true,
+    "body": {
+      "_type": "trans",
+      "tr": {
+        "en": "<div>\n<div class=\"section\">\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_media#guide-media\"><span class=\"std std-ref\">Media</span></a> on how to include images and other media in your templates.</p>\n</aside>\n<aside class=\"admonition seealso\">\n<p class=\"first admonition-title\">See also</p>\n<p class=\"last\"><a class=\"reference internal\" href=\"/id/doc_developerguide_wires#guide-wires\"><span class=\"std std-ref\">Wires</span></a> on using JavaScript to add interaction to your templates.</p>\n</aside>\n<p>Templates are text files marked up using the Zotonic template language. Zotonic interprets that mark-up to dynamically generate HTML pages. Zotonic’s template syntax is very similar to the Django Template Language (DTL).</p>\n<div class=\"section\"><a name=\"template-variables\"></a>\n<h2>Variables</h2>\n<p>Variables are surrounded by <code class=\"docutils literal notranslate\"><span class=\"pre\">{{</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">}}</span></code> (double braces):</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">Hello, I’m </span><span class=\"cp\">{{</span> <span class=\"nv\">first_name</span> <span class=\"cp\">}}</span> <span class=\"cp\">{{</span> <span class=\"nv\">last_name</span> <span class=\"cp\">}}</span><span class=\"x\">.</span>\n</pre>\n</div>\n</div>\n<p>When rendering this template, you need to pass the variables to it. If you pass <code class=\"docutils literal notranslate\"><span class=\"pre\">James</span></code> for <code class=\"docutils literal notranslate\"><span class=\"pre\">first_name</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">Bond</span></code> for <code class=\"docutils literal notranslate\"><span class=\"pre\">last_name</span></code>, the template renders to:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">Hello, I’m James Bond.</span>\n</pre>\n</div>\n</div>\n<p>Instead of strings, variables can also be objects that contain attributes. To access the attributes, use dot notation:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{{</span> <span class=\"nv\">article.title</span> <span class=\"cp\">}}</span><span class=\"x\"> was created by </span><span class=\"cp\">{{</span> <span class=\"nv\">article.author.last_name</span> <span class=\"cp\">}}</span>\n</pre>\n</div>\n</div>\n<p>The variables that you add to your templates get their values from three places:</p>\n<ul class=\"simple\">\n<li>they can be <a class=\"reference internal\" href=\"/id/doc_developerguide_controllers#guide-render\"><span class=\"std std-ref\">passed from controllers</span></a> when rendering the template;</li>\n<li>they can come from <a class=\"reference internal\" href=\"#guide-models\"><span class=\"std std-ref\">models</span></a>;</li>\n<li>or they can be <a class=\"reference internal\" href=\"/id/doc_reference_global_variables#ref-global-variables\"><span class=\"std std-ref\">global variables</span></a>.</li>\n</ul>\n<p>To print the variables in your template for debugging, you can use the <a class=\"reference internal\" href=\"/id/doc_template_scomp_scomp_debug#scomp-debug\"><span class=\"std std-ref\">debug</span></a> tag:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">debug</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n</div>\n<div class=\"section\"><a name=\"guide-filters\"></a>\n<h2>Filters</h2>\n<p>Optionally, you can pipe template variables through filters. Filters transform the value before rendering it. To apply a filter, you append <code class=\"docutils literal notranslate\"><span class=\"pre\">|</span></code> plus the filter’s name to the variable:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{{</span> <span class=\"nv\">first_name</span><span class=\"o\">|</span><span class=\"nf\">lower</span> <span class=\"cp\">}}</span> <span class=\"cp\">{{</span> <span class=\"nv\">last_name</span><span class=\"o\">|</span><span class=\"nf\">upper</span> <span class=\"cp\">}}</span>\n</pre>\n</div>\n</div>\n<p>Renders:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">james BOND</span>\n</pre>\n</div>\n</div>\n<p>There’s a <a class=\"reference internal\" href=\"/id/template_filter#filters\"><span class=\"std std-ref\">reference of built-in filters</span></a>. If you need to, you can also <a class=\"reference internal\" href=\"/id/doc_cookbook_custom_filter#cookbook-custom-filter\"><span class=\"std std-ref\">create your own filters</span></a>.</p>\n</div>\n<div class=\"section\"><a name=\"guide-tags\"></a>\n<h2>Tags</h2>\n<p>With tags, you can add logic and flexibility to your templates. Tags are surrounded by <code class=\"docutils literal notranslate\"><span class=\"pre\">{%</span></code> and <code class=\"docutils literal notranslate\"><span class=\"pre\">%}</span></code>, like this:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">tag</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>Some tags have arguments:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">tagname</span> <span class=\"nv\">id</span> <span class=\"nv\">width</span><span class=\"o\">=</span><span class=\"m\">200</span> <span class=\"nv\">height</span><span class=\"o\">=</span><span class=\"m\">200</span> <span class=\"nv\">crop</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>And some tags are <em>block tags</em>, which require both an opening and a closing tag. The name of the closing tag is always <code class=\"docutils literal notranslate\"><span class=\"pre\">end</span></code> plus the name of the opening tag:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">if</span> <span class=\"nv\">article.is_published</span> <span class=\"cp\">%}</span>\n<span class=\"x\">    There you go:: </span><span class=\"cp\">{{</span> <span class=\"nv\">article.title</span> <span class=\"cp\">}}</span>\n<span class=\"cp\">{%</span> <span class=\"k\">else</span> <span class=\"cp\">%}</span>\n<span class=\"x\">    Sorry, the article hasn’t been published yet!</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endif</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>See also the reference <a class=\"reference internal\" href=\"/id/template_tag#tags\"><span class=\"std std-ref\">all tags</span></a>. You can also <a class=\"reference internal\" href=\"/id/doc_cookbook_custom_tag#cookbook-custom-tag\"><span class=\"std std-ref\">create your own tags</span></a>.</p>\n</div>\n<div class=\"section\"><a name=\"guide-models\"></a>\n<h2>Models</h2>\n<p>A template model provides data to templates through the syntax: <code class=\"docutils literal notranslate\"><span class=\"pre\">m.modelname.property</span></code>. For example:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"c\">{# Get the site&#39;s title #}</span>\n<span class=\"cp\">{{</span> <span class=\"nv\">m.site.title</span> <span class=\"cp\">}}</span>\n\n<span class=\"c\">{# Fetch the title of the page with name page_home #}</span>\n<span class=\"cp\">{{</span> <span class=\"nv\">m.rsc.page_home.title</span> <span class=\"cp\">}}</span>\n\n<span class=\"c\">{# Fetch the title of the page whose id is the integer 1 #}</span>\n<span class=\"cp\">{{</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"m\">1</span><span class=\"o\">]</span><span class=\"nv\">.title</span> <span class=\"cp\">}}</span>\n\n<span class=\"c\">{# Perform a search on all persons #}</span>\n<span class=\"cp\">{%</span> <span class=\"k\">for</span> <span class=\"nv\">p</span> <span class=\"k\">in</span> <span class=\"nv\">m.search</span><span class=\"o\">[{</span><span class=\"nv\">query</span> <span class=\"nv\">cat</span><span class=\"o\">=</span><span class=\"s1\">&#39;person&#39;</span><span class=\"o\">}]</span> <span class=\"cp\">%}{{</span> <span class=\"nv\">p.title</span> <span class=\"cp\">}}{%</span> <span class=\"k\">endfor</span> <span class=\"cp\">%}</span>\n\n<span class=\"c\">{# Fetch the title of the page whose id is the template variable id #}</span>\n<span class=\"cp\">{{</span> <span class=\"nv\">m.rsc</span><span class=\"o\">[</span><span class=\"nv\">id</span><span class=\"o\">]</span><span class=\"nv\">.title</span> <span class=\"cp\">}}</span>\n</pre>\n</div>\n</div>\n<p>You’ll find that you need <code class=\"docutils literal notranslate\"><span class=\"pre\">m.rsc[id]</span></code> the most, so there’s a <a class=\"reference internal\" href=\"/id/doc_bestpractices_templates#best-practices-shortcut-syntax\"><span class=\"std std-ref\">recommended shortcut</span></a> for that:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{{</span> <span class=\"nv\">id.title</span> <span class=\"cp\">}}</span>\n</pre>\n</div>\n</div>\n<p>See the reference for a list of <a class=\"reference internal\" href=\"/id/model#models\"><span class=\"std std-ref\">all models</span></a>. You can also add <a class=\"reference internal\" href=\"/id/doc_cookbook_custom_model#cookbook-custom-model\"><span class=\"std std-ref\">your own models</span></a>.</p>\n</div>\n<div class=\"section\"><a name=\"guide-lookup-system\"></a>\n<h2>Template names</h2>\n<p>All templates are stored in the <code class=\"file docutils literal notranslate\"><span class=\"pre\">priv/templates/</span></code> directory of <a class=\"reference internal\" href=\"/id/doc_developerguide_sites#sites\"><span class=\"std std-ref\">sites</span></a> and <a class=\"reference internal\" href=\"/id/doc_developerguide_modules#guide-modules\"><span class=\"std std-ref\">modules</span></a>. They have the extension <code class=\"docutils literal notranslate\"><span class=\"pre\">.tpl</span></code>. Templates are referred to by their filename, including their subdirectory name within <code class=\"file docutils literal notranslate\"><span class=\"pre\">priv/templates/</span></code> (if any). So if you have these two templates:</p>\n<ul class=\"simple\">\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">modules/mod_example/priv/templates/foobar.tpl</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">modules/mod_example/priv/templates/email/email_base.tpl</span></code></li>\n</ul>\n<p>you refer to them as:</p>\n<ul class=\"simple\">\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">foobar.tpl</span></code></li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">email/email_base.tpl</span></code></li>\n</ul>\n<p>The module name itself (<code class=\"docutils literal notranslate\"><span class=\"pre\">mod_example</span></code>) is never part of the template name, because all templates are grouped together. This allows you to override Zotonic’s templates.</p>\n<div class=\"section\"><a name=\"id1\"></a>\n<h3>Overriding templates</h3>\n<p>If you want to override a template, you create a template with the same name in your site (or module). So what if the <code class=\"docutils literal notranslate\"><span class=\"pre\">email/email_base.tpl</span></code> template from mod_example mentioned above is not to your liking? Just create a <code class=\"docutils literal notranslate\"><span class=\"pre\">email/email_base.tpl</span></code> file in your own site: <code class=\"file docutils literal notranslate\"><span class=\"pre\">sites/yoursite/priv/templates/email/email_base.tpl</span></code>.</p>\n<p>So if multiple templates can have the same name, how does Zotonic know <em>which</em> template to render: the one from mod_example or the one from yoursite? This depends on the <a class=\"reference internal\" href=\"/id/doc_developerguide_modules\"><span class=\"std std-ref\">module priority</span></a>. Usually sites have a higher priority than modules, so yoursite wins and can serve its template.</p>\n<p>If you want to <em>add</em> your template instead of overriding, you can use the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_all_include\"><span class=\"std std-ref\">all include</span></a> and <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_all_catinclude\"><span class=\"std std-ref\">all catinclude</span></a> tags.</p>\n</div>\n<div class=\"section\">\n<h3>Page templates</h3>\n<p>Most of your templates will be <a class=\"reference internal\" href=\"/id/doc_userguide_datamodel#pages\"><span class=\"std std-ref\">page</span></a> templates. When showing a page, Zotonic’s <a class=\"reference internal\" href=\"/id/doc_controller_controller_page\"><span class=\"std std-ref\">page controller</span></a> looks up the appropriate template in order of specificity and renders the first template it finds (assuming the name of the page <code class=\"docutils literal notranslate\"><span class=\"pre\">page_name</span></code>):</p>\n<ol class=\"arabic simple\">\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">page.name.page_name.tpl</span></code> (<a class=\"reference internal\" href=\"/id/doc_model_model_rsc\"><span class=\"std std-ref\">unique name</span></a>)</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">page.category.tpl</span></code> (<a class=\"reference internal\" href=\"/id/doc_developerguide_resources#categories\"><span class=\"std std-ref\">category</span></a>)</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">page.tpl</span></code> (fallback)</li>\n</ol>\n<p>So if you have a page in the category ‘article’ (which is a sub-category of ‘text’) and that page has a unique name ‘my_text_page’, Zotonic will look for the following templates:</p>\n<ol class=\"arabic simple\">\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">page.name.my_text_page.tpl</span></code> (unique name)</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">page.article.tpl</span></code> (category)</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">page.text.tpl</span></code> (category)</li>\n<li><code class=\"docutils literal notranslate\"><span class=\"pre\">page.tpl</span></code> (fallback)</li>\n</ol>\n<p>The same lookup mechanism is used for the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_catinclude\"><span class=\"std std-ref\">catinclude</span></a> tag.</p>\n</div>\n</div>\n<div class=\"section\">\n<h2>Template structure</h2>\n<p>Now you know how Zotonic decides which template to render for a page, let’s go into how you can render templates yourself. Usually, you spread template logic for a page over multiple template files. This allows you to re-use these files in other templates.</p>\n<div class=\"section\">\n<h3>Including templates</h3>\n<p>You can include other templates using the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_include\"><span class=\"std std-ref\">include</span></a> tag:</p>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">This is the main template. To include another template:</span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">include</span> <span class=\"s2\">&quot;other-template.tpl&quot;</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n<p>Zotonic will replace the include tag with the output of <code class=\"file docutils literal notranslate\"><span class=\"pre\">other-template.tpl</span></code>.</p>\n<p>Variants of the include tag are <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_catinclude\"><span class=\"std std-ref\">catinclude</span></a>, <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_all_include\"><span class=\"std std-ref\">all include</span></a> and <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_all_catinclude\"><span class=\"std std-ref\">all catinclude</span></a>: following the <a class=\"reference internal\" href=\"#guide-lookup-system\"><span class=\"std std-ref\">lookup mechanism</span></a> described above, Zotonic will find the best template based on the page and module priority.</p>\n</div>\n<div class=\"section\">\n<h3>Inheritance</h3>\n<p>To improve template re-use, it is common to inherit from a base template. A simple base template might look like this:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">templates/base.tpl</span></div>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"x\">&lt;!DOCTYPE html&gt;</span>\n<span class=\"x\">&lt;html&gt;</span>\n<span class=\"x\">    &lt;head&gt;</span>\n<span class=\"x\">        &lt;title&gt;Zotonic</span><span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">title</span> <span class=\"cp\">%}{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span><span class=\"x\">&lt;/title&gt;</span>\n<span class=\"x\">    &lt;/head&gt;</span>\n\n<span class=\"x\">    &lt;body&gt;</span>\n        <span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">content</span> <span class=\"cp\">%}</span><span class=\"x\">This is default content</span><span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span>\n<span class=\"x\">    &lt;/body&gt;</span>\n<span class=\"x\">&lt;/html&gt;</span>\n</pre>\n</div>\n</div>\n</div>\n<p>You can then extend multiple templates from this single base template using the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_extends\"><span class=\"std std-ref\">extends</span></a> tag. The base template contains <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_block\"><span class=\"std std-ref\">block</span></a> tags that can be overridden in child templates:</p>\n<div class=\"literal-block-wrapper docutils container\">\n<div class=\"code-block-caption\"><span class=\"caption-text\">templates/page.tpl</span></div>\n<div class=\"highlight-django notranslate\">\n<div class=\"highlight\">\n<pre><span class=\"cp\">{%</span> <span class=\"k\">extends</span> <span class=\"p\">&quot;</span><span class=\"nv\">base.tpl</span> <span class=\"cp\">%}</span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">title</span> <span class=\"cp\">%}</span><span class=\"x\">This is the page title</span><span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span>\n\n<span class=\"cp\">{%</span> <span class=\"k\">block</span> <span class=\"nv\">content</span> <span class=\"cp\">%}</span>\n<span class=\"x\">    This will override the content block from base.tpl</span>\n<span class=\"cp\">{%</span> <span class=\"k\">endblock</span> <span class=\"cp\">%}</span>\n</pre>\n</div>\n</div>\n</div>\n<p>Using the <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_inherit\"><span class=\"std std-ref\">inherit</span></a> and <a class=\"reference internal\" href=\"/id/doc_template_tag_tag_overrules\"><span class=\"std std-ref\">overrules</span></a> tags, you adapt the inheritance to your needs.</p>\n</div>\n</div>\n</div>\n</div>"
+      }
+    },
+    "is_mailing_opt_out": false,
+    "slug": "templates",
+    "is_protected": false,
+    "visible_for": 0,
+    "tz": "UTC",
+    "language": [
+      "en"
+    ],
+    "is_featured": false,
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "category_id": {
+      "id": 317,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "developerguide",
+      "title": "Developer guide",
+      "uri": "https://zotonic.com/id/developerguide"
+    },
+    "publication_start": "2022-02-15T10:01:00Z",
+    "is_website_redirect": false,
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/developer-guide/templates.rst",
+    "pivot_location_lng": null,
+    "name": "doc_developerguide_templates",
+    "is_unfindable": false,
+    "is_published": true,
+    "pivot_geocode": null,
+    "custom_slug": false,
+    "created": "2020-05-30T05:47:19Z",
+    "uri": null,
+    "date_is_all_day": false,
+    "is_dependent": false,
+    "is_page_path_multiple": false,
+    "publication_end": "9999-08-17T12:00:00Z",
+    "modifier_id": {
+      "id": 1,
+      "is_a": [
+        "person"
+      ],
+      "name": "administrator",
+      "title": "Site Administrator",
+      "uri": "https://zotonic.com/id/1"
+    },
+    "privacy": 0,
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "seo_noindex": false,
+    "modified": "2024-03-25T16:48:35Z",
+    "title_slug": {
+      "_type": "trans",
+      "tr": {
+        "en": "templates"
+      }
+    }
+  },
+  "uri": "https://zotonic.com/id/1352",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1352"
+  }
+}

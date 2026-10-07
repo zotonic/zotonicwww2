@@ -1,0 +1,113 @@
+{
+  "depiction_url": null,
+  "edges": {},
+  "id": 1318,
+  "is_a": [
+    "text",
+    "documentation",
+    "cookbook"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "target": "https://zotonic.com/.zotonic/websub/topic/1318"
+    },
+    {
+      "rel": "hub",
+      "target": "https://zotonic.com/.zotonic/websub"
+    }
+  ],
+  "medium": null,
+  "medium_url": null,
+  "name": "doc_cookbook_exometer",
+  "page_url": {
+    "en": "https://zotonic.com/cookbook/1318/exometer-metrics",
+    "x-default": "https://zotonic.com/cookbook/1318/exometer-metrics"
+  },
+  "preview_url": null,
+  "resource": {
+    "body": "<div>\n            \n  <div class=\"section\">\n\n<p>Zotonic comes with a system for collecting and exporting metrics (such as how much memory is used, how many database requests were made, etc.) called Exometer. This cookbook details how to make use of that system to report on your Zotonic server’s activity.</p>\n<div class=\"section\">\n<h2>Step 1: get a Time Series Database (TSDB)</h2>\n<p>At the time of writing, Exometer in Zotonic supports sending metrics to Graphite, OpenTSDB and StatsD, as well as being able to send them to another system using AMQP or polling through SNMP. The installation of such a system is outside the scope of this document, but if you want to experiment without setting up a TSDB for yourself, <a class=\"reference external\" href=\"https://www.hostedgraphite.com/\">Hosted Graphite</a> has a 14-day free trial to play with.</p>\n</div>\n<div class=\"section\">\n<h2>Step 2: configure Exometer to report to your TSDB</h2>\n<p>After deciding on a TSDB, you need to configure Exometer to connect to the TSDB. This is done by configuring a <em>reporter</em> in your erlang.config.</p>\n<p>The default erlang.config comes with a number of pre-defined exometer metrics:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">exometer_core</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">predefined</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">memory</span><span class=\"p\">],</span> <span class=\"p\">{</span><span class=\"n\">function</span><span class=\"p\">,</span> <span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">memory</span><span class=\"p\">,</span> <span class=\"p\">[],</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"p\">[]},</span> <span class=\"p\">[]},</span>\n    <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">system_info</span><span class=\"p\">],</span> <span class=\"p\">{</span><span class=\"n\">function</span><span class=\"p\">,</span> <span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">system_info</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">&#39;$dp&#39;</span><span class=\"p\">],</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">process_count</span><span class=\"p\">]},</span> <span class=\"p\">[]},</span>\n    <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">statistics</span><span class=\"p\">],</span> <span class=\"p\">{</span><span class=\"n\">function</span><span class=\"p\">,</span> <span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">statistics</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">&#39;$dp&#39;</span><span class=\"p\">],</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">run_queue</span><span class=\"p\">]},</span> <span class=\"p\">[]},</span>\n    <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"n\">io</span><span class=\"p\">],</span> <span class=\"p\">{</span><span class=\"n\">function</span><span class=\"p\">,</span> <span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">statistics</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">io</span><span class=\"p\">],</span> <span class=\"n\">match</span><span class=\"p\">,</span> <span class=\"p\">{{</span><span class=\"n\">&#39;_&#39;</span><span class=\"p\">,</span> <span class=\"n\">input</span><span class=\"p\">},</span> <span class=\"p\">{</span><span class=\"n\">&#39;_&#39;</span><span class=\"p\">,</span> <span class=\"n\">output</span><span class=\"p\">}}},</span> <span class=\"p\">[]}</span>\n   <span class=\"p\">]}</span>\n<span class=\"p\">]},</span>\n</pre></div>\n</div>\n<p>To configure a reporter, add a block called {reporters, []} and a block inside that for the reporter. For example, to report to a graphite server, the following configuration could be used:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">reporters</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"n\">exometer_report_graphite</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n        <span class=\"p\">{</span><span class=\"n\">connect_timeout</span><span class=\"p\">,</span> <span class=\"mi\">5000</span><span class=\"p\">},</span>\n        <span class=\"p\">{</span><span class=\"n\">prefix</span><span class=\"p\">,</span> <span class=\"s\">&quot;zotonic&quot;</span><span class=\"p\">},</span>\n        <span class=\"p\">{</span><span class=\"n\">host</span><span class=\"p\">,</span> <span class=\"s\">&quot;graphite.server.com&quot;</span><span class=\"p\">},</span>\n        <span class=\"p\">{</span><span class=\"n\">api_key</span><span class=\"p\">,</span> <span class=\"s\">&quot;&quot;</span><span class=\"p\">},</span>\n        <span class=\"p\">{</span><span class=\"n\">port</span><span class=\"p\">,</span> <span class=\"mi\">2003</span><span class=\"p\">}</span>\n    <span class=\"p\">]}</span>\n<span class=\"p\">]}</span>\n</pre></div>\n</div>\n<p>For testing, it is also possible to simply send the output to the console. For this, use the <code class=\"docutils literal notranslate\"><span class=\"pre\">exometer_report_tty</span></code> reporter, like so:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">reporters</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"n\">exometer_report_tty</span><span class=\"p\">,</span> <span class=\"p\">[]}</span>\n<span class=\"p\">]}</span>\n</pre></div>\n</div>\n<p>Other reporters will require different configuration. For more examples, see the <a class=\"reference external\" href=\"https://github.com/Feuerlabs/exometer/tree/master/doc\">Exometer documentation</a>. It is possible to configure multiple reporters at the same time; you can then select what metrics are sent to what reporter with subscriptions.</p>\n</div>\n<div class=\"section\">\n<h2>Step 3: tell Exometer what to report, and how often</h2>\n<p>Now that Exometer knows <em>where</em> to send our metrics, we need to tell it <em>what</em> to send, and when to do it. This is done with a <em>subscription</em> and, like reporters, can be configured in erlang.config in a block called {subscribers, []}. The general format of a subscription is:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">reporter</span><span class=\"p\">,</span> <span class=\"n\">metric</span><span class=\"p\">,</span> <span class=\"n\">datapoint</span><span class=\"p\">,</span> <span class=\"n\">interval</span><span class=\"p\">}</span>\n</pre></div>\n</div>\n<p>Metrics have a hierarchical name consisting of a list of terms plus a datapoint name. For example, the number of requests made to Zotonic’s status page is named:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">[</span><span class=\"n\">zotonic</span><span class=\"p\">,</span> <span class=\"n\">zotonic_status</span><span class=\"p\">,</span> <span class=\"n\">webzmachine</span><span class=\"p\">,</span> <span class=\"n\">requests</span><span class=\"p\">]</span>\n</pre></div>\n</div>\n<p>and the datapoint name is ‘value’. So to report this metric to graphite every minute, we would add a subscription as follows:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">subscribers</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"n\">exometer_report_graphite</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">zotonic</span><span class=\"p\">,</span> <span class=\"n\">zotonic_status</span><span class=\"p\">,</span> <span class=\"n\">webzmachine</span><span class=\"p\">,</span> <span class=\"n\">requests</span><span class=\"p\">],</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"mi\">60000</span><span class=\"p\">}</span>\n<span class=\"p\">]}</span>\n</pre></div>\n</div>\n<p>Since the metric name includes the site name, it may be preferable to set up generic subscriptions instead, that would apply to all sites in the system. This can be done by using a special syntax in place of the metric name:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">select</span><span class=\"p\">,</span> <span class=\"p\">[{</span><span class=\"n\">matchspec</span><span class=\"p\">}]}</span>\n</pre></div>\n</div>\n<p>Where <code class=\"docutils literal notranslate\"><span class=\"pre\">matchspec</span></code> is an <a class=\"reference external\" href=\"http://erlang.org/doc/apps/erts/match_spec.html\">ETS Match Specification</a>. The specifics of the Match specification can be quite complex, but we can use simple ones to get going. To select all zotonic metrics of type counter and send them to graphite every minute, you would enter the following:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">exometer_report_graphite</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">select</span><span class=\"p\">,</span> <span class=\"p\">[{</span> <span class=\"p\">{[</span><span class=\"n\">zotonic</span> <span class=\"p\">|</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">],</span> <span class=\"n\">counter</span><span class=\"p\">,</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">},</span> <span class=\"p\">[],</span> <span class=\"p\">[</span><span class=\"n\">&#39;$_&#39;</span><span class=\"p\">]</span> <span class=\"p\">}]},</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"mi\">60000</span><span class=\"p\">}</span>\n</pre></div>\n</div>\n<p>To send only metrics for a specific site, you can add the site name:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">exometer_report_graphite</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">select</span><span class=\"p\">,</span> <span class=\"p\">[{</span> <span class=\"p\">{[</span><span class=\"n\">zotonic</span><span class=\"p\">,</span> <span class=\"n\">sitename</span> <span class=\"p\">|</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">],</span> <span class=\"n\">counter</span><span class=\"p\">,</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">},</span> <span class=\"p\">[],</span> <span class=\"p\">[</span><span class=\"n\">&#39;$_&#39;</span><span class=\"p\">]</span> <span class=\"p\">}]},</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"mi\">60000</span><span class=\"p\">}</span>\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Using the Zotonic Shell</h2>\n<p>It is possible to set up exometer from the Zotonic shell. As this run-time configuration is lost upon restart, it is best to only use this for testing or to enact configuration file changes without a restart. A number of uses for the shell are shown below.</p>\n<p>To test a match specification. Take the matchspec part of the metric name and feed it to exometer:select(). For example:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>(zotonic001@server)2&gt; exometer:select([{ {[zotonic, zotonic_status | &#39;_&#39;], counter, &#39;_&#39;}, [], [&#39;$_&#39;] }]).\n[{[zotonic,zotonic_status,db,requests],counter,enabled}, …\n</pre></div>\n</div>\n<p>To find out what datapoints a metric contains, you can ask for its information:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>(zotonic001@server)2&gt; exometer:info([zotonic,zotonic_status,webzmachine,requests], datapoints).\n[value,ms_since_reset]\n</pre></div>\n</div>\n<p>To test a subscription, you can manually add it:</p>\n<div class=\"highlight-none notranslate\"><div class=\"highlight\"><pre><span></span>(zotonic001@server)2&gt; exometer_report:subscribe(exometer_report_tty, {select, [{ {[zotonic, zotonic_status | &#39;_&#39;], counter, &#39;_&#39;}, [], [&#39;$_&#39;] }]}, value, 60000).\nok\n</pre></div>\n</div>\n</div>\n<div class=\"section\">\n<h2>Complete configuration example</h2>\n<p>A complete configuration might look like the following:</p>\n<div class=\"highlight-erlang notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"p\">{</span><span class=\"n\">exometer</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n    <span class=\"p\">{</span><span class=\"n\">predefined</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n        <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">memory</span><span class=\"p\">],</span> <span class=\"p\">{</span><span class=\"n\">function</span><span class=\"p\">,</span> <span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">memory</span><span class=\"p\">,</span> <span class=\"p\">[],</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"p\">[]},</span> <span class=\"p\">[]},</span>\n        <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">system_info</span><span class=\"p\">],</span> <span class=\"p\">{</span><span class=\"n\">function</span><span class=\"p\">,</span> <span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">system_info</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">&#39;$dp&#39;</span><span class=\"p\">],</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">process_count</span><span class=\"p\">]},</span> <span class=\"p\">[]},</span>\n        <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">statistics</span><span class=\"p\">],</span> <span class=\"p\">{</span><span class=\"n\">function</span><span class=\"p\">,</span> <span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">statistics</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">&#39;$dp&#39;</span><span class=\"p\">],</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">run_queue</span><span class=\"p\">]},</span> <span class=\"p\">[]},</span>\n        <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"n\">io</span><span class=\"p\">],</span> <span class=\"p\">{</span><span class=\"n\">function</span><span class=\"p\">,</span> <span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">statistics</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">io</span><span class=\"p\">],</span> <span class=\"n\">match</span><span class=\"p\">,</span> <span class=\"p\">{{</span><span class=\"n\">&#39;_&#39;</span><span class=\"p\">,</span> <span class=\"n\">input</span><span class=\"p\">},</span> <span class=\"p\">{</span><span class=\"n\">&#39;_&#39;</span><span class=\"p\">,</span> <span class=\"n\">output</span><span class=\"p\">}}},</span> <span class=\"p\">[]}</span>\n    <span class=\"p\">]},</span>\n    <span class=\"p\">{</span><span class=\"n\">reporters</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n        <span class=\"p\">{</span><span class=\"n\">exometer_report_graphite</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n            <span class=\"p\">{</span><span class=\"n\">connect_timeout</span><span class=\"p\">,</span> <span class=\"mi\">5000</span><span class=\"p\">},</span>\n            <span class=\"p\">{</span><span class=\"n\">prefix</span><span class=\"p\">,</span> <span class=\"s\">&quot;zotonic&quot;</span><span class=\"p\">},</span>\n            <span class=\"p\">{</span><span class=\"n\">host</span><span class=\"p\">,</span> <span class=\"s\">&quot;graphite.server.com&quot;</span><span class=\"p\">},</span>\n            <span class=\"p\">{</span><span class=\"n\">api_key</span><span class=\"p\">,</span> <span class=\"s\">&quot;&quot;</span><span class=\"p\">},</span>\n            <span class=\"p\">{</span><span class=\"n\">port</span><span class=\"p\">,</span> <span class=\"mi\">2003</span><span class=\"p\">}</span>\n        <span class=\"p\">]}</span>\n    <span class=\"p\">]},</span>\n    <span class=\"p\">{</span><span class=\"n\">subscribers</span><span class=\"p\">,</span> <span class=\"p\">[</span>\n        <span class=\"p\">{</span><span class=\"n\">exometer_report_graphite</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">select</span><span class=\"p\">,</span> <span class=\"p\">[{</span> <span class=\"p\">{[</span><span class=\"n\">zotonic</span> <span class=\"p\">|</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">],</span> <span class=\"n\">counter</span><span class=\"p\">,</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">},</span> <span class=\"p\">[],</span> <span class=\"p\">[</span><span class=\"n\">&#39;$_&#39;</span><span class=\"p\">]</span> <span class=\"p\">}]},</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"mi\">60000</span><span class=\"p\">},</span>\n        <span class=\"p\">{</span><span class=\"n\">exometer_report_graphite</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">select</span><span class=\"p\">,</span> <span class=\"p\">[{</span> <span class=\"p\">{[</span><span class=\"n\">zotonic</span> <span class=\"p\">|</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">],</span> <span class=\"n\">gauge</span><span class=\"p\">,</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">},</span> <span class=\"p\">[],</span> <span class=\"p\">[</span><span class=\"n\">&#39;$_&#39;</span><span class=\"p\">]</span> <span class=\"p\">}]},</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"mi\">60000</span><span class=\"p\">},</span>\n        <span class=\"p\">{</span><span class=\"n\">exometer_report_graphite</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">select</span><span class=\"p\">,</span> <span class=\"p\">[{</span> <span class=\"p\">{[</span><span class=\"n\">erlang</span><span class=\"p\">,</span> <span class=\"nb\">memory</span><span class=\"p\">],</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">,</span> <span class=\"n\">&#39;_&#39;</span><span class=\"p\">},</span> <span class=\"p\">[],</span> <span class=\"p\">[</span><span class=\"n\">&#39;$_&#39;</span><span class=\"p\">]</span> <span class=\"p\">}]},</span> <span class=\"n\">value</span><span class=\"p\">,</span> <span class=\"mi\">60000</span><span class=\"p\">},</span>\n    <span class=\"p\">]}</span>\n<span class=\"p\">]},</span>\n</pre></div>\n</div>\n</div>\n</div>\n\n\n           </div>",
+    "category_id": {
+      "id": 318,
+      "is_a": [
+        "meta",
+        "category"
+      ],
+      "name": "cookbook",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Cookbook"
+        }
+      },
+      "uri": "https://test.zotonic.com/id/318"
+    },
+    "content_group_id": {
+      "id": 339,
+      "is_a": [
+        "meta",
+        "content_group"
+      ],
+      "name": "default_content_group",
+      "title": {
+        "_type": "trans",
+        "tr": {
+          "en": "Default Content Group"
+        }
+      },
+      "uri": "https://zotonic.com/id/default_content_group"
+    },
+    "created": "2020-05-30T05:47:18Z",
+    "creator_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "github_url": "https://github.com/zotonic/zotonic/tree/master/doc/cookbook/exometer.rst",
+    "is_authoritative": true,
+    "is_dependent": false,
+    "is_featured": false,
+    "is_protected": false,
+    "is_published": true,
+    "is_unfindable": false,
+    "language": [
+      "en"
+    ],
+    "modified": "2022-02-15T10:01:42Z",
+    "modifier_id": {
+      "id": 336,
+      "is_a": [
+        "person",
+        "robot"
+      ],
+      "name": "gitbot",
+      "title": "Git",
+      "uri": "https://zotonic.com/id/336"
+    },
+    "name": "doc_cookbook_exometer",
+    "pivot_geocode": null,
+    "pivot_location_lat": null,
+    "pivot_location_lng": null,
+    "privacy": 0,
+    "publication_end": "9999-06-01T00:00:00Z",
+    "publication_start": "2022-02-15T10:01:42Z",
+    "slug": "exometer-metrics",
+    "title": "Exometer metrics",
+    "title_slug": "exometer-metrics",
+    "tz": "UTC",
+    "uri": null,
+    "version": 18,
+    "visible_for": 0
+  },
+  "uri": "https://zotonic.com/id/1318",
+  "uri_template": "https://zotonic.com/id/:id",
+  "websub": {
+    "hub": "https://zotonic.com/.zotonic/websub",
+    "topic": "https://zotonic.com/.zotonic/websub/topic/1318"
+  }
+}
