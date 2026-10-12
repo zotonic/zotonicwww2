@@ -325,11 +325,14 @@ git(Args) ->
 %% Bounded runtime and output. No shell interpolation, prompts, hooks, local
 %% protocols, submodules, or repository build commands are permitted.
 command(Args) ->
-    {ok, Pid, OsPid} = exec:run(Args, [monitor, stdout, stderr,
+    {ok, Pid, OsPid} = exec:run(command_args(Args), [monitor, stdout, stderr,
         {env, [{"GIT_TERMINAL_PROMPT", "0"}, {"GIT_CONFIG_NOSYSTEM", "1"},
                {"GIT_CONFIG_GLOBAL", "/dev/null"}]}]),
     Deadline = erlang:monotonic_time(millisecond) + 120000,
     collect(Pid, OsPid, Deadline, [], [], 0).
+
+command_args(Args) ->
+    lists:map(fun z_convert:to_list/1, Args).
 
 collect(Pid, OsPid, Deadline, Out, Err, Size) ->
     Remaining = max(0, Deadline - erlang:monotonic_time(millisecond)),
@@ -349,6 +352,12 @@ collect_data(Pid, OsPid, Deadline, Out, Err, Size) -> collect(Pid, OsPid, Deadli
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+command_args_test() ->
+    ?assertEqual(["git", "--branch", "main", "/tmp/path with spaces"],
+        command_args(["git", "--branch", <<"main">>, <<"/tmp/path with spaces">>])),
+    ?assertEqual(["echo", "$(not-a-shell-command)"],
+        command_args(["echo", <<"$(not-a-shell-command)">>])).
+
 name_length_test() ->
     Repo = #{<<"id">> => 2147483647},
     Long = binary:copy(<<"a">>, 255),

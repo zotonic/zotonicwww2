@@ -118,12 +118,16 @@ preflight(_Dir, Plan, Context) ->
     Collisions = lists:flatmap(fun({R, Id}) -> collision(R, Id, Context) end, Ids),
     Paths = [{maps:get(<<"page_path">>, R, <<>>), Id, maps:get(<<"name">>, R)} || {R, Id} <- Ids],
     PathErrors = [{page_path_collision, Name, Path} || {Path, undefined, Name} <- Paths,
-        is_binary(Path), Path =/= <<>>, is_integer(m_rsc:page_path_to_id(Path, Context))],
+        is_binary(Path), Path =/= <<>>, path_exists(m_rsc:page_path_to_id(Path, Context))],
     #{site => z_context:site(Context), environment => m_site:environment(Context),
       create => [maps:get(<<"name">>, R) || {R, undefined} <- Ids],
       existing => [maps:get(<<"name">>, R) || {R, Id} <- Ids, is_integer(Id)],
       errors => Missing ++ Collisions ++ PathErrors,
       pages => length(maps:get(<<"resources">>, Plan)), media => length(maps:get(<<"media">>, Plan))}.
+
+path_exists({ok, _Id}) -> true;
+path_exists({redirect, _Id}) -> true;
+path_exists({error, _Reason}) -> false.
 
 collision(_Row, undefined, _Context) -> [];
 collision(#{<<"existing">> := <<"owned">>, <<"name">> := Name}, Id, Context) ->
@@ -315,6 +319,12 @@ edge_groups(Plan, Context) ->
     Groups ++ Removed.
 
 -ifdef(TEST).
+path_exists_test() ->
+    ?assert(path_exists({ok, 123})),
+    ?assert(path_exists({redirect, 123})),
+    ?assertNot(path_exists({error, {unknown_page_path, <<"/missing">>}})),
+    ?assertNot(path_exists({error, {illegal_page_path, <<>>, length}})).
+
 empty_translation_test() ->
     ?assertEqual(comparable(undefined), comparable(#trans{tr = [{en, <<>>}]})),
     ?assertNotEqual(comparable(undefined), comparable(#trans{tr = [{nl, <<"Tekst">>}]})).
