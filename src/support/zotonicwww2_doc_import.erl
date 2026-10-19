@@ -221,7 +221,11 @@ sync_entry(#{name := Name} = Entry, Commit, Generation, KeywordIds, Context) ->
         true ->
             mark_editorial(m_rsc:rid(Name, Context), Context),
             {ok, editorial};
-        _ -> sync_source_entry(Entry, Commit, Generation, KeywordIds, Context)
+        _ ->
+            case zotonicwww2_doc_media:prepare(Entry, Context) of
+                {ok, Prepared} -> sync_source_entry(Prepared, Commit, Generation, KeywordIds, Context);
+                {error, _} = Error -> Error
+            end
     end.
 
 %% Reviewed guides/cookbooks have explicitly handed ownership to the bundled
