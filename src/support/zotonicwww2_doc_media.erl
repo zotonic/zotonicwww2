@@ -3,9 +3,6 @@
 %% repository is the boundary: parent traversal outside it and symlinks fail.
 -module(zotonicwww2_doc_media).
 -export([prepare/2]).
--ifdef(TEST).
--export([relative_path/2, prepare/3]).
--endif.
 -include_lib("kernel/include/file.hrl").
 
 -spec prepare(map(), z:context()) -> {ok, map()} | {error, term()}.
