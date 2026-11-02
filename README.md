@@ -275,3 +275,25 @@ The Observes section links to visible notification documentation and lists
 custom or undocumented notifications as plain names. The navigation count
 includes both. Reimporting after removing exports clears the old names and
 connections. Use **Fetch and import now** for an unchanged repository revision.
+
+## Authored guides and reference pages
+
+The core documentation import also recursively reads `doc/guides/**/*.md` and
+`doc/reference/**/*.md` from the configured Zotonic checkout. These are generic
+collections: adding a page does not require an importer change.
+
+- Guides use the `developerguide` category; reference pages use `reference`.
+- Each page must have an H1 heading, used as its resource title. The existing
+  page renderer suppresses the matching heading in the displayed body.
+- Optional YAML front matter uses `keywords` (a list of controlled slugs from
+  `doc/zotonic_subject_topics.csv`) and `module` (a module name for association),
+  matching the template-tag and Cotonic Markdown conventions.
+- Resource names are `doc_guide_` or `doc_reference_` followed by the normalized
+  relative path without `.md`. Subdirectories participate in the identity;
+  normalized-name collisions abort collection. Moving a file changes its identity.
+- Relative links between imported Markdown pages resolve to Zotonic resources,
+  including section fragments and links to template tags. Other relative links
+  resolve to the corresponding GitHub source URL.
+
+Pages participate in the normal core import's update and deprecation tracking.
+They are separate from the reviewed editorial bundle in `priv/documentation`.

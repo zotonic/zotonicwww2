@@ -91,7 +91,7 @@ import_docs(Context) ->
 collect_entries(Context) ->
     NotificationDocs = get_notifications_doc(Context),
     DocumentedNotifications = sets:from_list(maps:keys(NotificationDocs)),
-    notification_entries(NotificationDocs)
+    Entries = notification_entries(NotificationDocs)
     ++ module_entries(Context, DocumentedNotifications)
     ++ dispatch_entries(Context)
     ++ controller_entries(Context)
@@ -102,7 +102,65 @@ collect_entries(Context) ->
     ++ validator_entries(Context)
     ++ release_entries(Context)
     ++ tag_entries(Context)
-    ++ cotonic_model_entries(get_cotonic_models_doc(Context)).
+    ++ cotonic_model_entries(get_cotonic_models_doc(Context))
+    ++ page_entries(m_zotonicwww2_git:git_dir(Context)),
+    repository_page_links(Entries).
+
+%% Generic authored pages use the existing guide/reference categories. Paths,
+%% not basenames, identify nested pages; reject normalized-name collisions.
+-spec page_entries(GitDir) -> Entries when
+    GitDir :: file:filename_all(), Entries :: [map()].
+page_entries(GitDir) ->
+    Entries = lists:flatmap(fun({Directory, Category, Kind}) ->
+        Root = filename:join([GitDir, "doc", Directory]),
+        Files = filelib:fold_files(unicode:characters_to_list(Root), "\\.md$", true,
+            fun(File, Acc) -> [File | Acc] end, []),
+        [page_entry(File, Root, GitDir, Category, Kind) || File <- lists:sort(Files)]
+    end, [{"guides", developerguide, guide}, {"reference", reference, reference}]),
+    Names = [Name || #{name := Name} <- Entries],
+    case length(Names) =:= length(lists:usort(Names)) of
+        true -> Entries;
+        false -> error({duplicate_documentation_page_names, Names})
+    end.
+
+page_entry(File, Root, GitDir, Category, Kind) ->
+    [Doc] = maps:values(markdown_docs([File], GitDir)),
+    #{doc := Body, path := Path, keywords := Keywords, module := Module} = Doc,
+    Relative = filename:rootname(relative_path(File, Root)),
+    Prefix = atom_to_binary(Kind),
+    Name = <<"doc_", Prefix/binary, "_", (z_string:to_name(Relative))/binary>>,
+    Entry = entry(Category, Kind, Name, page_title(Body, Path), Body, Path),
+    Entry#{keywords => Keywords, module => Module}.
+
+%% The first H1 is the page title. Requiring it catches incomplete source pages
+%% before sync, instead of silently publishing a filename as the title.
+page_title(Html, Path) ->
+    case re:run(Html, <<"<h1(?:\\s[^>]*)?>(.*?)</h1>">>,
+            [dotall, {capture, [1], binary}]) of
+        {match, [Heading]} ->
+            case z_string:trim(z_html:unescape(z_html:strip(Heading))) of
+                <<>> -> error({missing_documentation_title, Path});
+                Title -> Title
+            end;
+        nomatch -> error({missing_documentation_title, Path})
+    end.
+
+%% Resolve links across all collected Markdown pages, not just within one
+%% directory. Unimported source links still point at their GitHub source.
+repository_page_links(Entries) ->
+    Targets = maps:from_list([
+        {Path, Name} || #{source_path := Path, name := Name} <- Entries,
+        filename:extension(Path) =:= <<".md">>
+    ]),
+    [case filename:extension(Path) of
+        <<".md">> -> Entry#{body := repository_links(Body, Path, Targets)};
+        _ -> Entry
+     end || #{body := Body, source_path := Path} = Entry <- Entries].
+
+repository_links(Html, Path, Targets) ->
+    Base = <<"https://github.com/zotonic/zotonic/blob/master/", Path/binary>>,
+    Tokens = [repository_link(T, Base, Targets) || T <- z_html_parse:tokens(Html)],
+    iolist_to_binary(z_html_parse:to_html(Tokens)).
 
 module_entries(Context, DocumentedNotifications) ->
     maps:fold(
@@ -290,25 +348,23 @@ cotonic_model_links(Html, Path, Docs) ->
         || {Model, #{path := DocPath}} <- maps:to_list(Docs),
            {Name, _, _, _} <- [cotonic_model_page(Model)]
     ]),
-    Base = <<"https://github.com/zotonic/zotonic/blob/master/", Path/binary>>,
-    Tokens = [cotonic_model_link(T, Base, Targets) || T <- z_html_parse:tokens(Html)],
-    iolist_to_binary(z_html_parse:to_html(Tokens)).
+    repository_links(Html, Path, Targets).
 
-cotonic_model_link({start_tag, Tag, Attrs, Singleton}, Base, Targets) ->
+repository_link({start_tag, Tag, Attrs, Singleton}, Base, Targets) ->
     {start_tag, Tag, [
         case Attr of
             {Key, Url} when Key =:= <<"href">>; Key =:= <<"src">> ->
-                {Key, cotonic_model_url(Url, Base, Targets)};
+                {Key, repository_url(Url, Base, Targets)};
             _ -> Attr
         end
         || Attr <- Attrs
     ], Singleton};
-cotonic_model_link(Token, _Base, _Targets) -> Token.
+repository_link(Token, _Base, _Targets) -> Token.
 
-cotonic_model_url(<<"#", _/binary>> = Url, _Base, _Targets) -> Url;
+repository_url(<<"#", _/binary>> = Url, _Base, _Targets) -> Url;
 % Preserve Zotonic references emitted by the Markdown renderer.
-cotonic_model_url(<<"/id/", _/binary>> = Url, _Base, _Targets) -> Url;
-cotonic_model_url(Url, Base, Targets) ->
+repository_url(<<"/id/", _/binary>> = Url, _Base, _Targets) -> Url;
+repository_url(Url, Base, Targets) ->
     Absolute = uri_string:resolve(Url, Base),
     case Absolute of
         <<"https://github.com/zotonic/zotonic/blob/master/", Relative/binary>> ->
@@ -1061,6 +1117,56 @@ component_name_test() ->
     ?assertEqual(<<"wire">>, remove_mod(<<"action_base_wire">>, <<"mod_base">>)),
     ?assertEqual(<<"menu">>, remove_mod(<<"scomp_base_menu">>, <<"mod_base">>)).
 
+authored_pages_test() ->
+    Root = filename:join("/tmp", "zotonic-doc-pages-" ++ integer_to_list(erlang:unique_integer([positive]))),
+    Guide = filename:join([Root, "doc", "guides", "nested", "translations.md"]),
+    Reference = filename:join([Root, "doc", "reference", "z_trans.md"]),
+    try
+        ok = filelib:ensure_dir(Guide),
+        ok = filelib:ensure_dir(Reference),
+        ok = file:write_file(Guide, <<"---\nkeywords: [explanation, translated_text]\n---\n"
+            "# Translate & explain\n[API](../../reference/z_trans.md#plural-messages)\n">>),
+        ok = file:write_file(Reference, <<"# Erlang `z_trans` API\n"
+            "[Guide](../guides/nested/translations.md)\n[Source](../../src/example.erl)\n">>),
+        Entries = repository_page_links(page_entries(Root)),
+        ?assertEqual(2, length(Entries)),
+        [G] = [E || #{kind := guide} = E <- Entries],
+        [R] = [E || #{kind := reference} = E <- Entries],
+        ?assertEqual(developerguide, maps:get(category, G)),
+        ?assertEqual(<<"Translate & explain">>, maps:get(title, G)),
+        ?assertEqual([<<"explanation">>, <<"translated_text">>], maps:get(keywords, G)),
+        ?assertEqual(<<"Erlang z_trans API">>, maps:get(title, R)),
+        ?assertNotEqual(nomatch, binary:match(maps:get(body, G),
+            <<"/id/doc_reference_z_trans#plural-messages">>)),
+        ?assertNotEqual(nomatch, binary:match(maps:get(body, R),
+            <<"/id/", (maps:get(name, G))/binary>>)),
+        ?assertNotEqual(nomatch, binary:match(maps:get(body, R),
+            <<"https://github.com/zotonic/zotonic/blob/master/src/example.erl">>)),
+        %% A template tag can link into either new collection as well.
+        Tag = entry(template_tag, <<"tag">>, <<"Tag">>,
+            <<"<a href=\"../guides/nested/translations.md\">Guide</a>">>,
+            <<"doc/template-tags/trans_ext.md">>),
+        [LinkedTag | _] = repository_page_links([Tag | Entries]),
+        ?assertNotEqual(nomatch, binary:match(maps:get(body, LinkedTag),
+            <<"/id/", (maps:get(name, G))/binary>>)),
+        %% Missing collections are valid when importing an older checkout.
+        ?assertEqual([], page_entries(filename:join(Root, "absent"))),
+        %% Same basename in another directory remains a distinct page.
+        Other = filename:join([Root, "doc", "guides", "translations.md"]),
+        ok = file:write_file(Other, <<"# Other translation guide">>),
+        ?assertEqual(3, length(page_entries(Root))),
+        ok = file:delete(Other),
+        %% A slash and underscore normalize alike; never silently overwrite.
+        Collision = filename:join([Root, "doc", "guides", "nested_translations.md"]),
+        ok = file:write_file(Collision, <<"# Colliding page">>),
+        ?assertException(error, {duplicate_documentation_page_names, _}, page_entries(Root)),
+        ok = file:delete(Collision),
+        ok = file:write_file(Reference, <<"No heading">>),
+        ?assertError({missing_documentation_title, <<"doc/reference/z_trans.md">>}, page_entries(Root))
+    after
+        file:del_dir_r(Root)
+    end.
+
 relative_path_test() ->
     ?assertEqual(
         <<"apps/zotonic_mod_base/src/mod_base.erl">>,
@@ -1110,13 +1216,13 @@ cotonic_model_urls_test() ->
     Base = <<"https://github.com/zotonic/zotonic/blob/master/doc/cotonic-models/auth.md">>,
     Targets = #{<<"doc/cotonic-models/auth-ui.md">> => <<"doc_zotonic_cotonic_model_auth_ui">>},
     ?assertEqual(<<"/id/doc_zotonic_cotonic_model_auth_ui#commands">>,
-        cotonic_model_url(<<"auth-ui.md#commands">>, Base, Targets)),
+        repository_url(<<"auth-ui.md#commands">>, Base, Targets)),
     ?assertEqual(<<"https://github.com/zotonic/zotonic/blob/master/apps/example.js">>,
-        cotonic_model_url(<<"../../apps/example.js">>, Base, Targets)),
-    ?assertEqual(<<"https://example.com/">>, cotonic_model_url(<<"https://example.com/">>, Base, Targets)),
+        repository_url(<<"../../apps/example.js">>, Base, Targets)),
+    ?assertEqual(<<"https://example.com/">>, repository_url(<<"https://example.com/">>, Base, Targets)),
     ?assertEqual(<<"/id/doc_module_mod_base">>,
-        cotonic_model_url(<<"/id/doc_module_mod_base">>, Base, Targets)),
-    ?assertEqual(<<"#events">>, cotonic_model_url(<<"#events">>, Base, Targets)).
+        repository_url(<<"/id/doc_module_mod_base">>, Base, Targets)),
+    ?assertEqual(<<"#events">>, repository_url(<<"#events">>, Base, Targets)).
 
 markdown_module_test() ->
     ?assertEqual(undefined, markdown_module(undefined)),
