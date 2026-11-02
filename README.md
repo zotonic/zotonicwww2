@@ -297,3 +297,27 @@ collections: adding a page does not require an importer change.
 
 Pages participate in the normal core import's update and deprecation tracking.
 They are separate from the reviewed editorial bundle in `priv/documentation`.
+
+### Short documentation references
+
+Use code spans such as `guide#translations` or `reference#z_trans` for automatic
+reference links. Markdown links allow custom text:
+
+```markdown
+[the z_trans API](reference#z_trans)
+[translation guide](guide#translations)
+[plural messages](reference#z_trans#plural-messages)
+[nested guide](guide#i18n/translations)
+```
+
+Link destinations also accept the existing kinds, for example
+`[template syntax](tag#trans_ext)`. A second `#` adds a section anchor. Page names
+and anchors use lowercase letters, digits, underscores, and hyphens; guide and
+reference names may contain `/` for subdirectories. These names resolve using
+the same normalization as the importer.
+
+Short references do not depend on the linking file's directory. Target identities
+still derive from their source paths, so moving a target requires updating its
+references. Relative Markdown links remain supported. Code blocks and ordinary
+link destinations are not converted to short references, and code spans inside
+existing links are never wrapped in another link.

@@ -2,9 +2,8 @@
 %%
 %% References use the form `kind#name`, for example `tag#print` or
 %% `module#mod_base` or `cotonic#sessionId`. Cotonic references cover both
-%% upstream and Zotonic-owned browser models. Only inline code spans are
-%% considered. Code blocks,
-%% existing links, and Erlang documentation references are left unchanged.
+%% upstream and Zotonic-owned browser models. Inline code spans and Markdown link destinations are resolved. Code blocks
+%% and ordinary links are left unchanged.
 %% @end
 
 %% Copyright 2026 Marc Worrell
@@ -27,9 +26,8 @@ Render documentation Markdown and link Zotonic reference code spans.
 
 References use the form `kind#name`, for example `tag#print` or
 `module#mod_base` or `cotonic#sessionId`. Cotonic references cover both
-upstream and Zotonic-owned browser models. Only inline code spans are
-considered. Code blocks,
-existing links, and Erlang documentation references are left unchanged.
+upstream and Zotonic-owned browser models. Inline code spans and Markdown link destinations are resolved. Code blocks
+and ordinary links are left unchanged.
 ").
 
 -behaviour(markdownz_plugin).
@@ -93,10 +91,11 @@ link_references(Nodes) ->
 
 link_reference({<<"pre">>, _, _} = Pre) ->
     Pre;
-link_reference({<<"a">>, _, _} = Link) ->
-    Link;
+link_reference({<<"a">>, Attrs, Children}) ->
+    %% Resolve the destination without linking code spans inside an existing link.
+    {<<"a">>, [reference_attribute(A) || A <- Attrs], Children};
 link_reference({<<"code">>, _, [Reference]} = Code) when is_binary(Reference) ->
-    case reference_page(Reference) of
+    case reference_target(Reference) of
         {ok, Kind, PageName} ->
             {<<"a">>, [
                 {<<"href">>, <<"/id/", PageName/binary>>},
@@ -111,12 +110,36 @@ link_reference(Text) ->
     Text.
 
 
+reference_attribute({<<"href">>, Reference} = Attr) ->
+    case reference_target(Reference) of
+        {ok, _Kind, Target} -> {<<"href">>, <<"/id/", Target/binary>>};
+        error -> Attr
+    end;
+reference_attribute(Attr) -> Attr.
+
+%% A second # optionally selects a section within the referenced page.
+reference_target(Reference) ->
+    case binary:split(Reference, <<"#">>, [global]) of
+        [Kind, Name, Anchor] ->
+            case {reference_page(Kind, Name), is_name(Anchor)} of
+                {{ok, Kind, Page}, true} -> {ok, Kind, <<Page/binary, "#", Anchor/binary>>};
+                _ -> error
+            end;
+        [_, _] -> reference_page(Reference);
+        _ -> error
+    end.
+
+
 reference_page(Reference) ->
     case binary:split(Reference, <<"#">>) of
         [Kind, Name] -> reference_page(Kind, Name);
         [_] -> error
     end.
 
+reference_page(<<"guide">> = Kind, Name) ->
+    authored_reference(Kind, Name);
+reference_page(<<"reference">> = Kind, Name) ->
+    authored_reference(Kind, Name);
 reference_page(<<"tag">> = Kind, Name) ->
     reference(Kind, <<"doc_template_tag_tag_">>, Name);
 reference_page(<<"filter">> = Kind, Name) ->
@@ -172,6 +195,14 @@ cotonic_model_pages() ->
         <<"console">> => <<"doc_zotonic_cotonic_model_console">>,
         <<"activity">> => <<"doc_zotonic_cotonic_model_activity">>
     }.
+
+%% Match the importer's path-derived identities, including nested source pages.
+authored_reference(Kind, Name) ->
+    case lists:all(fun is_name/1, binary:split(Name, <<"/">>, [global])) of
+        true -> {ok, Kind, <<"doc_", Kind/binary, "_", (z_string:to_name(Name))/binary>>};
+        false -> error
+    end.
+
 
 reference(Kind, Prefix, Name) ->
     case is_name(Name) of
@@ -260,6 +291,32 @@ cotonic#auth
     ?assertEqual(1, length(binary:matches(Html, <<"<a ">>))),
     ?assertNotEqual(nomatch, binary:match(Html, <<"href=\"/id/original\"">>)),
     ?assertEqual(nomatch, binary:match(to_html(<<"`cotonic#auth/../../x`">>), <<"<a ">>)).
+
+authored_reference_links_test_() ->
+    Cases = [
+        {<<"`reference#z_trans`">>, <<"/id/doc_reference_z_trans">>},
+        {<<"`guide#translations`">>, <<"/id/doc_guide_translations">>},
+        {<<"[the z_trans API](reference#z_trans)">>, <<"/id/doc_reference_z_trans">>},
+        {<<"[plural forms](reference#z_trans#plural-messages)">>,
+         <<"/id/doc_reference_z_trans#plural-messages">>},
+        {<<"[nested guide](guide#i18n/translations)">>, <<"/id/doc_guide_i18n_translations">>},
+        {<<"[tag syntax](tag#trans_ext)">>, <<"/id/doc_template_tag_tag_trans_ext">>}
+    ],
+    [?_assertNotEqual(nomatch, binary:match(to_html(Markdown),
+        <<"href=\"", Target/binary, "\"">>)) || {Markdown, Target} <- Cases].
+
+short_link_boundaries_test() ->
+    Html = to_html(<<"[`reference#z_trans`](reference#z_trans \"API title\")">>),
+    ?assertEqual(1, length(binary:matches(Html, <<"<a ">>))),
+    ?assertNotEqual(nomatch, binary:match(Html, <<"title=\"API title\"">>)),
+    ?assertNotEqual(nomatch, binary:match(Html, <<"<code>reference#z_trans</code>">>)),
+    lists:foreach(fun(Markdown) ->
+        ?assertEqual(nomatch, binary:match(to_html(Markdown), <<"href=\"/id/">>))
+    end, [<<"[relative](../reference/z_trans.md)">>,
+          <<"[external](https://example.com/reference#z_trans)">>,
+          <<"[unknown](unknown#z_trans)">>,
+          <<"`guide#../translations`">>, <<"`guide#a//b`">>,
+          <<"```\nreference#z_trans\n```">>]).
 
 non_reference_code_test() ->
     Html = to_html(<<"`unknown#thing` and `z_template:render/3`">>),
