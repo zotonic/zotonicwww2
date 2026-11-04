@@ -113,6 +113,8 @@ collect_entries(Context) ->
 page_entries(GitDir) ->
     Entries = lists:flatmap(fun({Directory, Category, Kind}) ->
         Root = filename:join([GitDir, "doc", Directory]),
+        %% Import authored Markdown only; diagram sources (.dot and .mmd) are assets,
+        %% not documentation pages (even when kept alongside the guides).
         Files = filelib:fold_files(unicode:characters_to_list(Root), "\\.md$", true,
             fun(File, Acc) -> [File | Acc] end, []),
         [page_entry(File, Root, GitDir, Category, Kind) || File <- lists:sort(Files)]
@@ -353,6 +355,9 @@ cotonic_model_links(Html, Path, Docs) ->
 repository_link({start_tag, Tag, Attrs, Singleton}, Base, Targets) ->
     {start_tag, Tag, [
         case Attr of
+            %% doc_media imports repository-local images after this pass.
+            %% Rewriting src to GitHub would bypass that import entirely.
+            {<<"src">>, _} when Tag =:= <<"img">> -> Attr;
             {Key, Url} when Key =:= <<"href">>; Key =:= <<"src">> ->
                 {Key, repository_url(Url, Base, Targets)};
             _ -> Attr
@@ -1125,9 +1130,21 @@ authored_pages_test() ->
         ok = filelib:ensure_dir(Guide),
         ok = filelib:ensure_dir(Reference),
         ok = file:write_file(Guide, <<"---\nkeywords: [explanation, translated_text]\n---\n"
-            "# Translate & explain\n[API](../../reference/z_trans.md#plural-messages)\n">>),
+            "# Translate & explain\n[API](../../reference/z_trans.md#plural-messages)\n"
+            "![Diagram](../images/flow.png)\n"
+            "[Diagram source](../images/flow.dot)\n">>),
         ok = file:write_file(Reference, <<"# Erlang `z_trans` API\n"
             "[Guide](../guides/nested/translations.md)\n[Source](../../src/example.erl)\n">>),
+        %% Diagram sources must not become pages, including compound names.
+        %% Markdown-looking content ensures the extension filter is what excludes them.
+        lists:foreach(fun(Directory) ->
+            lists:foreach(fun(Name) ->
+                Source = filename:join([Root, "doc", Directory, "images", Name]),
+                ok = filelib:ensure_dir(Source),
+                ok = file:write_file(Source, <<"# Diagram source must not be imported\n">>)
+            end, ["flow.dot", "flow.DOT", "flow.md.dot",
+                  "flow.mmd", "flow.MMD", "flow.md.mmd"])
+        end, ["guides", "reference"]),
         Entries = repository_page_links(page_entries(Root)),
         ?assertEqual(2, length(Entries)),
         [G] = [E || #{kind := guide} = E <- Entries],
@@ -1135,6 +1152,10 @@ authored_pages_test() ->
         ?assertEqual(developerguide, maps:get(category, G)),
         ?assertEqual(<<"Translate & explain">>, maps:get(title, G)),
         ?assertEqual([<<"explanation">>, <<"translated_text">>], maps:get(keywords, G)),
+        ?assertNotEqual(nomatch, binary:match(maps:get(body, G),
+            <<"src=\"../images/flow.png\"">>)),
+        ?assertNotEqual(nomatch, binary:match(maps:get(body, G),
+            <<"href=\"https://github.com/zotonic/zotonic/blob/master/doc/guides/images/flow.dot\"">>)),
         ?assertEqual(<<"Erlang z_trans API">>, maps:get(title, R)),
         ?assertNotEqual(nomatch, binary:match(maps:get(body, G),
             <<"/id/doc_reference_z_trans#plural-messages">>)),
@@ -1350,6 +1371,22 @@ notification_pid_callback_is_used_as_fallback_test() ->
             arity := 3
         },
         maps:get(<<"background_job">>, notification_docs(Docs))).
+
+compiled_filestore_notifications_test() ->
+    {ok, #docs_v1{docs = Docs}} = get_doc(code:which(zotonic_observer)),
+    Notifications = notification_docs(Docs),
+    Names = [<<"filestore">>, <<"filestore_request">>,
+        <<"filestore_credentials_lookup">>, <<"filestore_credentials_revlookup">>],
+    lists:foreach(fun(Name) ->
+        #{doc := Body, keywords := Keywords} = maps:get(Name, Notifications),
+        ?assert(byte_size(Body) > 0),
+        ?assert(lists:member(<<"notification">>, Keywords)),
+        ?assert(lists:member(<<"file_storage">>, Keywords))
+    end, Names),
+    Entries = notification_entries(maps:with(Names, Notifications)),
+    ?assertEqual(lists:sort([<<"doc_notification_", N/binary>> || N <- Names]),
+        lists:sort([maps:get(name, E) || E <- Entries])),
+    ?assertNot(maps:is_key(<<"filestore_credentials">>, Notifications)).
 
 compiled_notifications_are_unique_test() ->
     {ok, #docs_v1{docs = Docs}} = get_doc(code:which(zotonic_observer)),

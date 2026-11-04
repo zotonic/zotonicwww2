@@ -7,6 +7,7 @@ media_test_() ->
         ?_test(relative_image(Root)),
         ?_test(component_image()),
         ?_test(invalid_relative_images()),
+        ?_test(diagram_sources_rejected()),
         ?_test(remote_images_preserved()),
         ?_test(missing_image_fails()),
         ?_test(no_images_preserves_entry())
@@ -61,6 +62,15 @@ invalid_relative_images() ->
         zotonicwww2_doc_media:prepare(entry(Source, <<"../../../../secret.jpg">>), #context{})),
     ?assertEqual({error, {documentation_image, Source, {badmatch, false}}},
         zotonicwww2_doc_media:prepare(entry(Source, <<"../doc/settings.config">>), #context{})).
+
+diagram_sources_rejected() ->
+    Source = <<"doc/guides/storage.md">>,
+    lists:foreach(fun(Name) ->
+        Entry = entry(Source, <<"images/", Name/binary>>),
+        ?assertEqual({error, {documentation_image, Source, {badmatch, false}}},
+            zotonicwww2_doc_media:prepare(Entry, #context{}))
+    end, [<<"flow.dot">>, <<"flow.DOT">>, <<"flow.md.dot">>,
+          <<"flow.mmd">>, <<"flow.MMD">>, <<"flow.md.mmd">>]).
 
 remote_images_preserved() ->
     lists:foreach(fun(Url) ->

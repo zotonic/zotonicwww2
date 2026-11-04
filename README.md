@@ -295,6 +295,16 @@ collections: adding a page does not require an importer change.
   including section fragments and links to template tags. Other relative links
   resolve to the corresponding GitHub source URL.
 
+Guide diagrams can use ordinary Markdown image syntax, for example
+`![Storage layers](images/file-storage-layers.png)`. Repository-local PNG, JPEG,
+GIF and WebP images are imported as Zotonic media, with alternative text and
+content-hash change detection. The link-rewriting pass preserves image paths for
+that import; it still resolves ordinary source links to GitHub. Keep an editable
+diagram source alongside each exported image. `.dot` and `.mmd` sources are excluded from
+page collection and rejected as media; links to them remain GitHub source links.
+Only the exported images are imported. The importer needs no Graphviz or
+browser-side diagram renderer. Paths outside the checkout and symlinks are rejected.
+
 Pages participate in the normal core import's update and deprecation tracking.
 They are separate from the reviewed editorial bundle in `priv/documentation`.
 
