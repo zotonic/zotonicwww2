@@ -29,6 +29,7 @@ run(Context) ->
     C = z_acl:sudo(Context),
     {error, eacces} = m_zotonicwww2_external:m_get([<<"list">>], undefined, z_acl:anondo(Context)),
     Result = z_db:transaction(fun(Tx) ->
+        ok = notification_checks(Tx),
         ok = dispatch_checks(Tx),
         Suffix = z_ids:id(12),
         A = <<"test_external_a_", Suffix/binary>>,
@@ -115,7 +116,7 @@ run(Context) ->
         {rollback, verified}
     end, C),
     z_depcache:flush(C),
-    verified = Result,
+    {rollback, verified} = Result,
     ok.
 
 
@@ -180,7 +181,7 @@ dispatch_checks(Context) ->
     true = binary:match(ObserversBin, <<"<a href=">>) =/= nomatch,
     true = binary:match(ObserversBin, <<"<h3 class=\"content-list__title\">", CustomNotification/binary, "</h3>">>) =/= nomatch,
     {NavHtml, _} = z_render:output(z_template:render_block(content_before_body, <<"page.module.tpl">>, [{id, ParentId}], Context), Context),
-    true = binary:match(iolist_to_binary(NavHtml), <<"Notifications <span>2</span>">>) =/= nomatch,
+    true = binary:match(iolist_to_binary(NavHtml), <<"Observed notifications <span>2</span>">>) =/= nomatch,
     {Updated, _} = zotonicwww2_external_import:collect_entries(
         [ModuleRow, ControllerRow, DispatchRow#{<<"rules">> => [Rule#{<<"path">> => <<"/changed/:id">>}]}], Repo, Context),
     {ok, #{updated := 1}} = zotonicwww2_doc_import:sync_external(<<"external_2147483644">>, Updated, <<"dispatch-update">>, Context),
@@ -190,4 +191,41 @@ dispatch_checks(Context) ->
     false = m_rsc:p(DispatchId, is_published, Context),
     [] = m_edge:objects(ParentId, observes, Context),
     [] = m_rsc:p(ParentId, doc_module_observers, Context),
+    ok.
+
+
+notification_checks(C) ->
+    Suffix = z_ids:id(12),
+    A = <<"mod_notify_a_", Suffix/binary>>, B = <<"mod_notify_b_", Suffix/binary>>,
+    Repo = #{<<"id">> => 2147483644, <<"title">> => <<"Notification test">>,
+        <<"git_url">> => <<"https://example.com/notifications">>,
+        <<"website_url">> => <<>>, <<"hex_package">> => <<>>},
+    Rows = lists:flatmap(fun(M) ->
+        Root = <<"./apps/", M/binary, "/src/">>,
+        Base = #{<<"status">> => <<"parsed">>, <<"kind">> => <<"erlang">>,
+            <<"doc">> => <<"Fixture">>, <<"keywords">> => [], <<"config">> => []},
+        [Base#{<<"module">> => M, <<"path">> => <<Root/binary, M/binary, ".erl">>,
+            <<"observes">> => [<<"example">>]},
+         Base#{<<"module">> => <<M/binary, "_observer">>,
+            <<"path">> => <<Root/binary, "behaviours/observer.erl">>,
+            <<"notification_behaviour">> => true,
+            <<"notifications">> => [#{<<"notification">> => <<"example">>,
+                <<"doc">> => <<"Owned example">>, <<"keywords">> => [],
+                <<"signature">> => <<"observe_example/3">>, <<"arity">> => 3,
+                <<"callbacks">> => []}]}]
+    end, [A,B]),
+    {Entries, Report} = zotonicwww2_external_import:collect_entries(Rows, Repo, C),
+    4 = length(Entries), 4 = length(Report),
+    Names = [maps:get(name,E) || #{category := notification} = E <- Entries],
+    2 = length(lists:usort(Names)),
+    true = lists:all(fun(N) -> byte_size(N) =< 80 end, Names),
+    {ok, _} = zotonicwww2_doc_import:sync_external(<<"external_2147483644">>, Entries, <<"test">>, C),
+    lists:foreach(fun(#{category := notification, name := N, module := {page, Owner}}) ->
+            Id = m_rsc:rid(N,C), Parent = m_rsc:rid(Owner,C),
+            [Parent] = m_edge:objects(Id,in_module,C),
+            [Id] = m_edge:objects(Parent,observes,C),
+            {Html,_} = z_render:output(z_template:render(<<"_module_components.tpl">>,[{module_id,Parent}],C),C),
+            true = binary:match(iolist_to_binary(Html), <<"Defined notifications">>) =/= nomatch;
+        (_) -> ok
+    end, Entries),
     ok.

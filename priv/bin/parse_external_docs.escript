@@ -90,9 +90,53 @@ parse_source(Root, Path, Tokens) ->
     Slugs = [keyword(K) || K <- Keywords],
     Configs = lists:append([Cs || {mod_config, Cs} <- Attrs]),
     #{<<"config">> => config_rows(Module, Configs),
+      <<"notifications">> => notification_definitions(Attrs),
+      <<"notification_behaviour">> => lists:any(fun
+          ({moduledoc, M}) when is_map(M) -> maps:get(zotonic_notification_behaviour, M, false) =:= true;
+          (_) -> false
+      end, Attrs),
       <<"observes">> => observer_notifications(Attrs),
       <<"module">> => atom_to_binary(Module), <<"doc">> => Doc,
       <<"keywords">> => lists:usort(Slugs)}.
+
+%% Read literal callback documentation only. Includes and source code are never run.
+notification_definitions(Attrs) ->
+    Marked = lists:any(fun
+        ({moduledoc, M}) when is_map(M) -> maps:get(zotonic_notification_behaviour, M, false) =:= true;
+        (_) -> false
+    end, Attrs),
+    case Marked of
+        true -> notification_definitions(Attrs, undefined, [], #{});
+        false -> []
+    end.
+
+notification_definitions([], _, _, Acc) -> maps:values(Acc);
+notification_definitions([{doc, M} | Rest], Doc, _Keywords, Acc) when is_map(M) ->
+    notification_definitions(Rest, Doc, [keyword(K) || K <- maps:get(zotonic_keywords, M, [])], Acc);
+notification_definitions([{doc, D} | Rest], _Doc, Keywords, Acc) when is_list(D); is_binary(D) ->
+    notification_definitions(Rest, unicode:characters_to_binary(D), Keywords, Acc);
+notification_definitions([{callback, {{Fun, Arity}, _} = Value} | Rest], Doc, Keywords, Acc) ->
+    Name = observer_notification(atom_to_binary(Fun), Arity),
+    Next = case {Name, Doc} of
+        {undefined, _} -> Acc;
+        {_, undefined} -> Acc;
+        _ ->
+            Sig = unicode:characters_to_binary(erl_pp:attribute({attribute, 0, callback, Value})),
+            Variation = case atom_to_binary(Fun) of <<"pid_observe_", _/binary>> -> <<"pid_observe">>; _ -> <<"observe">> end,
+            Callback = #{<<"variation">> => Variation, <<"name">> => atom_to_binary(Fun),
+                <<"arity">> => Arity, <<"signature">> => Sig},
+            D = #{<<"notification">> => Name, <<"doc">> => Doc, <<"keywords">> => Keywords,
+                <<"callbacks">> => [Callback], <<"signature">> => Sig, <<"arity">> => Arity},
+            case maps:find(Name, Acc) of
+                error -> Acc#{Name => D};
+                {ok, Existing} ->
+                    Base = case Variation of <<"observe">> -> D; _ -> Existing end,
+                    Acc#{Name => Base#{<<"callbacks">> => maps:get(<<"callbacks">>, Existing) ++ [Callback]}}
+            end
+    end,
+    notification_definitions(Rest, undefined, [], Next);
+notification_definitions([_ | Rest], Doc, Keywords, Acc) ->
+    notification_definitions(Rest, Doc, Keywords, Acc).
 
 %% Match the callback names and arities registered by z_module_manager.
 %% Only exported functions count; all notification names leave this VM as text.
@@ -125,7 +169,7 @@ attributes([], _Partial, _Acc) -> throw(incomplete_form);
 attributes([{dot, _} = Dot | Rest], Form, Acc) ->
     Tokens = lists:reverse([Dot | Form]),
     Next = case Tokens of
-        [{'-', _}, {atom, _, Name} | _] when Name =:= module; Name =:= moduledoc; Name =:= mod_config; Name =:= export ->
+        [{'-', _}, {atom, _, Name} | _] when Name =:= module; Name =:= moduledoc; Name =:= mod_config; Name =:= export; Name =:= doc; Name =:= callback ->
             case erl_parse:parse_form(Tokens) of
                 {ok, {attribute, _, Name, Value}} -> [{Name, Value} | Acc];
                 {error, Error} -> throw({invalid_attribute, Error})

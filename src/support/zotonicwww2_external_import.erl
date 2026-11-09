@@ -164,14 +164,73 @@ collect_entries(Rows, Repo, Context) ->
     {DispatchRows, SourceRows} = lists:partition(fun(R) -> maps:get(<<"kind">>, R, <<>>) =:= <<"dispatch">> end, Rows),
     Checked = [check_row(R, Duplicates, Context) || R <- SourceRows],
     Parsed = [R || #{<<"status">> := <<"parsed">>} = R <- Checked],
-    Modules = [R || R <- Parsed, category(maps:get(<<"module">>, R)) =:= module],
-    Entries = [entry(R, Repo, module_parent(R, Modules, Repo)) || R <- Parsed],
+    Modules = [R || R <- Parsed, category(maps:get(<<"module">>, R)) =:= module,
+        not maps:get(<<"notification_behaviour">>, R, false)],
+    Definitions = notification_entries(Parsed, Modules, Repo, Context),
+    Entries0 = [entry(R, Repo, module_parent(R, Modules, Repo)) || R <- Parsed,
+        not maps:get(<<"notification_behaviour">>, R, false)],
+    Entries = [resolve_notification_observers(E, Definitions, Context) || E <- Entries0],
     {ModuleEntries, Components} = lists:partition(fun(E) -> maps:get(category, E) =:= module end, Entries),
     CheckedDispatch = [check_dispatch(R, Modules, Context) || R <- DispatchRows],
     DispatchEntries = [dispatch_entry(R, Repo, Parsed, Context) || #{<<"status">> := <<"parsed">>} = R <- CheckedDispatch],
-    Sorted = ModuleEntries ++ Components ++ DispatchEntries,
-    Report = [report_row(R, Repo) || R <- Checked ++ CheckedDispatch],
+    Sorted = Definitions ++ ModuleEntries ++ Components ++ DispatchEntries,
+    Report = [report_row(R, Repo) || R <- Checked ++ CheckedDispatch,
+        not maps:get(<<"notification_behaviour">>, R, false)] ++
+        [#{<<"path">> => maps:get(source_path, E), <<"name">> => maps:get(name, E),
+            <<"status">> => <<"imported">>, <<"kind">> => <<"notification">>} || E <- Definitions],
     {Sorted, Report}.
+
+%% Definitions are scoped to repository and owning module, not callback name alone.
+notification_entries(Rows, Modules, Repo, Context) ->
+    Entries = lists:flatmap(fun(Row) ->
+        case maps:get(<<"notification_behaviour">>, Row, false) of
+            false -> [];
+            true ->
+                Parent = module_parent(Row, Modules, Repo),
+                true = Parent =/= undefined,
+                [begin
+                    N = maps:get(<<"notification">>, D),
+                    Keywords = maps:get(<<"keywords">>, D),
+                    true = lists:all(fun(K) -> valid_keyword(K, Context) end, Keywords),
+                    Name = zotonicwww2_beam_doc:notification_name({maps:get(<<"id">>, Repo), Parent}, N),
+                    #{category => notification, kind => external, name => Name,
+                      title => maps:get(<<"signature">>, D),
+                      body => zotonicwww2_doc_link:to_html(maps:get(<<"doc">>, D)),
+                      source_path => maps:get(<<"path">>, Row), source_url => maps:get(<<"git_url">>, Repo),
+                      module => {page, Parent}, keywords => Keywords,
+                      props => (external_props(Repo))#{<<"notification">> => #{
+                          <<"name">> => N, <<"arity">> => maps:get(<<"arity">>, D),
+                          <<"callbacks">> => maps:get(<<"callbacks">>, D)}}}
+                end || D <- maps:get(<<"notifications">>, Row, [])]
+        end
+    end, Rows),
+    Names = [maps:get(name, E) || E <- Entries],
+    case length(Names) =:= length(lists:usort(Names)) of
+        true -> Entries;
+        false -> error(duplicate_notification_definition)
+    end.
+
+resolve_notification_observers(#{category := module, name := Owner, observes := Ns} = E, Definitions, Context) ->
+    Targets = [begin
+        Local = [maps:get(name, D) || #{module := {page, P}, props := #{<<"notification">> := #{<<"name">> := N0}}} = D <- Definitions,
+            P =:= Owner, N0 =:= N],
+        case Local of
+            [Page] -> {N, Page};
+            [] ->
+                Core = <<"doc_notification_", N/binary>>,
+                Others = [maps:get(name,D) || #{props := #{<<"notification">> := #{<<"name">> := N0}}} = D <- Definitions, N0 =:= N],
+                case {m_rsc:is_a(Core, notification, Context), Others} of
+                    {true, _} -> {N, Core};
+                    {_, []} -> {N, Core};
+                    {_, [Page]} -> {N, Page};
+                    _ -> error({ambiguous_notification, Owner, N})
+                end
+        end
+    end || N <- Ns],
+    E#{observes => [{page, Page} || {_, Page} <- Targets],
+       props => (maps:get(props, E))#{<<"doc_module_observers">> => [
+           #{<<"name">> => N, <<"page_name">> => Page} || {N, Page} <- Targets]}};
+resolve_notification_observers(E, _, _) -> E.
 
 report_row(#{<<"status">> := <<"parsed">>} = Row, Repo) ->
     Name = case Row of

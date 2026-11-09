@@ -9,14 +9,14 @@
             {% if id.is_external_module and id.doc_module_observers %}
                 <li>
                     <a class="module-components-nav__link" href="#module-observes">
-                        {_ Notifications _} <span>{{ id.doc_module_observers|length }}</span>
+                        {_ Observed notifications _} <span>{{ id.doc_module_observers|length }}</span>
                     </a>
                 </li>
             {% elseif not id.is_external_module %}
                 {% if id.o.observes|is_visible as notifications %}
                     <li>
                         <a class="module-components-nav__link" href="#module-observes">
-                            {_ Notifications _} <span>{{ notifications|length }}</span>
+                            {_ Observed notifications _} <span>{{ notifications|length }}</span>
                         </a>
                     </li>
                 {% endif %}

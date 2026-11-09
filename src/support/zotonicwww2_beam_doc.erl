@@ -61,6 +61,7 @@ list of canonical slugs:
     get_releases_doc/1,
     get_tags_doc/1,
     get_cotonic_models_doc/1,
+    notification_name/2,
     get_notifications_doc/1
 ]).
 
@@ -90,7 +91,7 @@ import_docs(Context) ->
 -spec collect_entries(z:context()) -> [map()].
 collect_entries(Context) ->
     NotificationDocs = get_notifications_doc(Context),
-    DocumentedNotifications = sets:from_list(maps:keys(NotificationDocs)),
+    DocumentedNotifications = NotificationDocs,
     Entries = notification_entries(NotificationDocs)
     ++ module_entries(Context, DocumentedNotifications)
     ++ dispatch_entries(Context)
@@ -172,9 +173,9 @@ module_entries(Context, DocumentedNotifications) ->
             [Entry#{
                 keywords => Keywords,
                 observes => [
-                    Notification
+                    {page, Target}
                     || Notification <- Observes,
-                       sets:is_element(Notification, DocumentedNotifications)
+                       Target <- notification_targets(Module, Notification, DocumentedNotifications)
                 ],
                 props => #{<<"erlang_app">> => App, <<"doc_module_config">> => Config}
             } | Acc]
@@ -399,8 +400,12 @@ notification_entries(Docs) when is_map(Docs) ->
                 keywords := Keywords,
                 path := Path
             } = Doc,
-            Name = <<"doc_notification_", Notification/binary>>,
-            Entry = entry(notification, notification, Name, Sig, Body, Path),
+            Name = notification_name(maps:get(owner, Doc, undefined), Notification),
+            Entry0 = entry(notification, notification, Name, Sig, Body, Path),
+            Entry = case maps:get(owner, Doc, undefined) of
+                undefined -> Entry0;
+                Owner -> Entry0#{module => Owner}
+            end,
             [Entry#{
                 keywords => Keywords,
                 props => #{
@@ -789,12 +794,58 @@ markdown_docs(Files, GitDir) ->
 %% as variations of that entry.
 -spec get_notifications_doc(z:context()) -> #{ binary() => map() }.
 get_notifications_doc(Context) ->
-    GitDir = m_zotonicwww2_git:git_dir(Context),
+    notifications_from_dir(m_zotonicwww2_git:git_dir(Context)).
+
+notifications_from_dir(GitDir) ->
     BeamFile = filename:join([ GitDir, "_build", "default", "lib", "zotonic_core", "ebin", "zotonic_observer.beam" ]),
     {ok, #docs_v1{
         docs = Docs
     }} = get_doc(BeamFile),
-    notification_docs(Docs).
+    Core = notification_docs(Docs),
+    Sources = filelib:wildcard(filename:join([GitDir, "apps", "*", "src", "behaviours", "*.erl"])),
+    lists:foldl(fun(Source, Acc) ->
+        App = app_name(Source),
+        Beam = filename:join([GitDir, "_build", "default", "lib", App, "ebin",
+            filename:basename(Source, ".erl") ++ ".beam"]),
+        case get_doc(Beam) of
+            {ok, #docs_v1{metadata = #{zotonic_notification_behaviour := true}, docs = OwnedDocs}} ->
+                Owner = app2mod(App),
+                maps:fold(fun(N, D, A) ->
+                    Key = {Owner, N},
+                    false = maps:is_key(Key, A),
+                    A#{Key => D#{owner => Owner, path => relative_path(Source, GitDir)}}
+                end, Acc, notification_docs(OwnedDocs));
+            _ -> Acc
+        end
+    end, Core, Sources).
+
+%% Resource names are ASCII and capped below rsc.name's 80-character limit.
+%% Hash the full structured identity, never a truncated owner or notification.
+notification_name(undefined, N) -> <<"doc_notification_", N/binary>>;
+notification_name(Owner, N) ->
+    Label = case Owner of
+        B when is_binary(B) -> <<B/binary, "_", N/binary>>;
+        {Repo, Module} -> <<(integer_to_binary(Repo))/binary, "_", Module/binary, "_", N/binary>>
+    end,
+    Safe = re:replace(Label, <<"[^a-z0-9_]">>, <<"_">>, [global, {return, binary}]),
+    Prefix = binary:part(Safe, 0, min(36, byte_size(Safe))),
+    Hash = binary:part(z_url:hex_encode_lc(crypto:hash(sha256, term_to_binary({Owner, N}))), 0, 32),
+    <<"doc_notif_", Prefix/binary, "_", Hash/binary>>.
+
+notification_targets(Owner, N, Docs) ->
+    case maps:is_key({Owner, N}, Docs) of
+        true -> [notification_name(Owner, N)];
+        false ->
+            case maps:is_key(N, Docs) of
+                true -> [notification_name(undefined, N)];
+                false ->
+                    case [O || {O, Name} <- maps:keys(Docs), Name =:= N] of
+                        [O] -> [notification_name(O, N)];
+                        [] -> [];
+                        _ -> error({ambiguous_notification, Owner, N})
+                    end
+            end
+    end.
 
 notification_docs(Docs) ->
     lists:foldl(
@@ -1065,6 +1116,33 @@ get_doc(Filename) ->
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+
+owned_notification_discovery_test() ->
+    %% Run against the compiled local checkout, not the website's disposable clone.
+    {ok, Cwd} = file:get_cwd(),
+    Docs = notifications_from_dir(Cwd),
+    D = maps:get({<<"mod_analytics">>, <<"analytics_events">>}, Docs),
+    ?assertEqual(<<"mod_analytics">>, maps:get(owner, D)),
+    ?assertEqual(<<"apps/zotonic_mod_analytics/src/behaviours/zotonic_analytics_observer.erl">>, maps:get(path,D)),
+    [E] = notification_entries(#{{<<"mod_analytics">>, <<"analytics_events">>} => D}),
+    ?assertEqual(<<"mod_analytics">>, maps:get(module,E)),
+    ?assert(byte_size(maps:get(name,E)) =< 80).
+
+owned_notification_names_test() ->
+    Long = binary:copy(<<"x">>, 200),
+    ?assert(byte_size(notification_name(Long, Long)) =< 80),
+    ?assert(byte_size(notification_name({123, Long}, Long)) =< 80),
+    ?assertNotEqual(notification_name(<<"mod_a_b">>, <<"c">>), notification_name(<<"mod_a">>, <<"b_c">>)),
+    ?assertNotEqual(notification_name({1, <<"mod_a">>}, <<"event">>), notification_name({2, <<"mod_a">>}, <<"event">>)),
+    ?assertEqual(<<"doc_notification_event">>, notification_name(undefined, <<"event">>)).
+
+owned_notification_resolution_test() ->
+    A = <<"mod_a">>, B = <<"mod_b">>, N = <<"event">>,
+    Docs = #{{A,N} => #{}, {B,N} => #{}},
+    ?assertEqual([notification_name(A,N)], notification_targets(A,N,Docs)),
+    ?assertEqual([notification_name(undefined,N)], notification_targets(<<"mod_c">>,N,Docs#{N => #{}})),
+    ?assertError({ambiguous_notification,<<"mod_c">>,N}, notification_targets(<<"mod_c">>,N,Docs)).
+
 
 module_names_test() ->
     ?assertEqual(<<"mod_base">>, app2mod(<<"zotonic_mod_base">>)),

@@ -182,6 +182,10 @@ sync_with_keywords(Source, Entries, Commit, Context) ->
             Report0 = #{created => 0, updated => 0, unchanged => 0, deprecated => 0},
             case sync_entries(Entries, Commit, Generation, KeywordIds, Report0, Context) of
                 {ok, Report1} ->
+                    case link_notification_owners(Entries, Context) of
+                        ok -> ok;
+                        {error, Reason} -> error(Reason)
+                    end,
                     case reconcile(Source, Generation, Context) of
                         {ok, Deprecated} ->
                             {ok, Report1#{
@@ -310,6 +314,7 @@ store_resource(_Result, RscId, Props, Context) when is_integer(RscId) ->
 
 replace_import_edges(RscId, Entry, KeywordIds, Context) ->
     ModuleResult = case Entry of
+        #{category := notification} -> ok;
         #{kind := external} ->
             case maps:get(module, Entry, undefined) of
                 undefined -> m_edge:replace(RscId, in_module, [], Context);
@@ -325,6 +330,15 @@ replace_import_edges(RscId, Entry, KeywordIds, Context) ->
             end;
         {error, _} = Error -> Error
     end.
+
+%% Notifications precede their observing modules; link owners after all pages exist.
+link_notification_owners([], _Context) -> ok;
+link_notification_owners([#{category := notification, name := Name, module := Owner} | Rest], Context) ->
+    case replace_module_edge(m_rsc:rid(Name, Context), Owner, Context) of
+        ok -> link_notification_owners(Rest, Context);
+        Error -> Error
+    end;
+link_notification_owners([_ | Rest], Context) -> link_notification_owners(Rest, Context).
 
 replace_module_edge(_RscId, undefined, _Context) ->
     ok;
@@ -453,6 +467,7 @@ keyword_resource_name(Slug) ->
 module_page_name(<<"zotonic_core">>) -> <<"doc_core">>;
 module_page_name(Module) -> <<"doc_module_", Module/binary>>.
 
+notification_page_name({page, Name}) -> Name;
 notification_page_name(Notification) ->
     <<"doc_notification_", Notification/binary>>.
 

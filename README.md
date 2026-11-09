@@ -331,3 +331,39 @@ still derive from their source paths, so moving a target requires updating its
 references. Relative Markdown links remain supported. Code blocks and ordinary
 link destinations are not converted to short references, and code spans inside
 existing links are never wrapped in another link.
+
+
+### Module-owned notification definitions
+
+Place notification behaviour modules in `src/behaviours/` and opt in with literal
+EEP-48 metadata:
+
+```erlang
+-moduledoc(#{zotonic_notification_behaviour => true}).
+-moduledoc("Notification contracts owned by this application.").
+```
+
+Document each `observe_*` callback with `-doc` Markdown and a separate
+`-doc(#{zotonic_keywords => [...]})`. Use the controlled `notification` keyword.
+Include the notification record header, type the callback arguments and return
+value, and mark the callback optional. Describe the notification mechanism,
+accumulator/result contract, record fields, and a usable observer example.
+`zotonic_analytics_observer` in `zotonic_mod_analytics` is a complete example.
+
+The trusted BEAM collector discovers marked behaviours in each application's
+`src/behaviours`; the external parser reads literal attributes without compiling,
+loading or preprocessing fetched code. External definitions require a documented
+owning module in the same application (or a unique repository-wide parent).
+Regular and PID callback variants share one notification page. Core notification
+resource names remain unchanged. Module-owned names use a readable prefix and
+128-bit hash of the complete owner/name identity, capped at 79 ASCII characters
+(`rsc.name` allows 80). External identities include the repository ID and parent
+module page, so repositories may document the same notification independently.
+Duplicate definitions within one owner are rejected. Observer links prefer an
+own definition, then core, then a unique other definition in the manifest;
+ambiguous definitions fail the import instead of linking arbitrarily.
+
+Notification ownership uses `in_module`, linked after pages are imported to allow
+modules to observe their own notifications on first import. Module pages list
+**Defined notifications** separately from **Observed notifications**. Notification
+pages retain the owner link and their **Observed by** connections.
