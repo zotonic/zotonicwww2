@@ -6,6 +6,10 @@ media_test_() ->
     {setup, fun setup/0, fun cleanup/1, fun(Root) -> [
         ?_test(relative_image(Root)),
         ?_test(component_image()),
+        ?_test(external_local_image(Root)),
+        ?_test(external_remote_image(Root)),
+        ?_test(external_remote_restrictions(Root)),
+        ?_test(external_download_failure(Root)),
         ?_test(invalid_relative_images()),
         ?_test(diagram_sources_rejected()),
         ?_test(remote_images_preserved()),
@@ -88,3 +92,62 @@ no_images_preserves_entry() ->
     Entry = #{source => <<"zotonic">>, source_path => <<"src/example.erl">>,
         body => <<"<p>Text without images.</p>">>},
     ?assertEqual({ok, Entry}, zotonicwww2_doc_media:prepare(Entry, #context{})).
+
+external_local_image(Root) ->
+    Relative = <<"apps/zotonic_mod_base/priv/doc/scomp-base-debug-expanded.png">>,
+    Entry = (entry(<<"README.md">>, Relative))#{source => <<"external_42">>},
+    {ok, Result} = zotonicwww2_doc_media:prepare_external(Entry, Root, #context{}),
+    ?assertMatch(<<"<!-- z-media 123 ", _/binary>>, maps:get(body, Result)),
+    ?assert(meck:called(m_media, insert_file, [filename:join(Root, Relative),
+        meck:is(fun(Props) -> maps:get(<<"doc_image_source">>, Props) =:=
+            <<"external_42:", Relative/binary>> end), '_'])).
+
+external_remote_image(Root) ->
+    Url = <<"https://user-images.githubusercontent.com/123/diagram.png">>,
+    File = filename:join(Root, "download.png"),
+    meck:expect(m_media, download_file, fun(U, Options, #context{}) ->
+        ?assertEqual(Url, U),
+        ?assertEqual(false, proplists:get_value(autoredirect,
+            proplists:get_value(fetch_options, Options))),
+        ?assertEqual(none, proplists:get_value(authorization,
+            proplists:get_value(fetch_options, Options))),
+        ok = file:write_file(File, <<"downloaded image">>),
+        {ok, File, "diagram.png"}
+    end),
+    Entry = (entry(<<"README.md">>, Url))#{source => <<"external_42">>},
+    {ok, Result} = zotonicwww2_doc_media:prepare_external(Entry, Root, #context{}),
+    ?assertMatch(<<"<!-- z-media 123 ", _/binary>>, maps:get(body, Result)),
+    ?assertMatch(#{Url := _}, maps:get(media_hashes, Result)),
+    ?assertNot(filelib:is_file(File)),
+    %% Reimport uses the existing media when its content hash is unchanged.
+    Hash = maps:get(Url, maps:get(media_hashes, Result)),
+    meck:expect(m_rsc, rid, fun(_, _) -> 123 end),
+    meck:expect(m_rsc, p, fun
+        (123, doc_image_source, _) -> <<"external_42:", Url/binary>>;
+        (123, doc_image_hash, _) -> Hash
+    end),
+    meck:expect(m_media, get, fun(123, _) -> #{} end),
+    meck:reset(m_media),
+    ?assertEqual({ok, Result}, zotonicwww2_doc_media:prepare_external(Entry, Root, #context{})),
+    ?assertNot(meck:called(m_media, insert_file, ['_', '_', '_'])),
+    meck:expect(m_rsc, rid, fun(_, _) -> undefined end).
+
+external_remote_restrictions(Root) ->
+    meck:reset(m_media),
+    lists:foreach(fun(Url) ->
+        Entry = (entry(<<"README.md">>, Url))#{source => <<"external_42">>},
+        ?assertEqual({ok, Entry}, zotonicwww2_doc_media:prepare_external(Entry, Root, #context{}))
+    end, [<<"https://localhost/private.png">>,
+        <<"https://user-images.githubusercontent.com.evil.example/image.png">>,
+        <<"https://user-images.githubusercontent.com:8443/image.png">>,
+        <<"https://user@user-images.githubusercontent.com/image.png">>,
+        <<"http://user-images.githubusercontent.com/image.png">>,
+        <<"https://user-images.githubusercontent.com/image.svg">>]),
+    ?assertNot(meck:called(m_media, download_file, ['_', '_', '_'])).
+
+external_download_failure(Root) ->
+    meck:expect(m_media, download_file, fun(_, _, _) -> {error, timeout} end),
+    Entry = (entry(<<"README.md">>,
+        <<"https://raw.githubusercontent.com/example/repo/main/image.png">>))#{source => <<"external_42">>},
+    ?assertMatch({error, {documentation_image, <<"README.md">>, _}},
+        zotonicwww2_doc_media:prepare_external(Entry, Root, #context{})).

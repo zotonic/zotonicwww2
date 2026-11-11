@@ -2,7 +2,7 @@
 %% Relative image URLs are resolved against the documented source file. The
 %% repository is the boundary: parent traversal outside it and symlinks fail.
 -module(zotonicwww2_doc_media).
--export([prepare/2]).
+-export([prepare/2, prepare_external/3]).
 -include_lib("kernel/include/file.hrl").
 
 -spec prepare(map(), z:context()) -> {ok, map()} | {error, term()}.
@@ -10,6 +10,14 @@ prepare(#{source := <<"zotonic">>} = Entry, Context) ->
     prepare(Entry, m_zotonicwww2_git:git_dir(Context), Context);
 prepare(Entry, _Context) ->
     {ok, Entry}.
+
+%% External imports run while their disposable checkout still exists. Scope
+%% media identity to the repository, including identical relative filenames.
+-spec prepare_external(Entry, Root, Context) -> Result when
+    Entry :: map(), Root :: file:filename_all(), Context :: z:context(),
+    Result :: {ok, map()} | {error, term()}.
+prepare_external(Entry, Root, Context) ->
+    prepare(Entry, Root, Context).
 
 prepare(#{body := Body, source_path := Source} = Entry, Root, Context) ->
     try
@@ -19,17 +27,13 @@ prepare(#{body := Body, source_path := Source} = Entry, Root, Context) ->
             {match, Ms} -> Ms
         end,
         {Html, Hashes} = lists:foldl(fun([Tag, Url], {Acc, Hs}) ->
-            case relative_path(Source, z_html:unescape(Url)) of
+            Alt = case re:run(Tag, <<"\\balt=\"([^\"]*)\"">>, [{capture, [1], binary}]) of
+                {match, [A]} -> z_html:unescape(A);
+                nomatch -> <<>>
+            end,
+            case image(Entry, Root, z_html:unescape(Url), Alt, Context) of
                 remote -> {Acc, Hs};
-                {ok, Relative} ->
-                    File = checked_file(Root, Relative),
-                    {ok, Data} = file:read_file(File),
-                    Hash = hex(Data),
-                    Alt = case re:run(Tag, <<"\\balt=\"([^\"]*)\"">>, [{capture, [1], binary}]) of
-                        {match, [A]} -> z_html:unescape(A);
-                        nomatch -> <<>>
-                    end,
-                    {ok, Id} = import_image(Relative, File, Hash, Alt, Context),
+                {Id, Relative, Hash} ->
                     Options = z_json:encode(#{size => <<"large">>, alt => Alt, caption => <<"-">>}),
                     SafeOptions = binary:replace(binary:replace(Options, <<"<">>, <<"\\u003c">>, [global]),
                         <<">">>, <<"\\u003e">>, [global]),
@@ -45,6 +49,53 @@ prepare(#{body := Body, source_path := Source} = Entry, Root, Context) ->
     catch
         error:Reason -> {error, {documentation_image, Source, Reason}}
     end.
+
+image(#{source_path := Source} = Entry, Root, Url, Alt, Context) ->
+    case relative_path(Source, Url) of
+        remote -> remote_image(Entry, Url, Alt, Context);
+        {ok, Relative} ->
+            File = checked_file(Root, Relative),
+            import_file(Entry, Relative, File, Alt, Context)
+    end.
+
+import_file(Entry, Relative, File, Alt, Context) ->
+    {ok, Data} = file:read_file(File),
+    Hash = hex(Data),
+    Identity = case maps:get(source, Entry, <<"zotonic">>) of
+        <<"zotonic">> -> Relative;
+        Source -> <<Source/binary, ":", Relative/binary>>
+    end,
+    {ok, Id} = import_image(Identity, File, Hash, Alt, Context),
+    {Id, Relative, Hash}.
+
+%% Only external documentation downloads remote images. Keep this allowlist
+%% narrow: untrusted README URLs must not reach internal services or carry
+%% site credentials, including via redirects. Other hosts remain remote embeds.
+remote_image(#{source := <<"external_", _/binary>>} = Entry, Url, Alt, Context) ->
+    case downloadable_image(Url) of
+        false -> remote;
+        true ->
+            Options = [{max_length, 10485760}, {timeout, 30000},
+                {fetch_options, [{autoredirect, false}, {authorization, none}]}],
+            {ok, File, _Filename} = m_media:download_file(Url, Options, Context),
+            try import_file(Entry, Url, File, Alt, Context)
+            after file:delete(File) end
+    end;
+remote_image(_, _, _, _) -> remote.
+
+downloadable_image(Url) ->
+    try uri_string:parse(Url) of
+        #{scheme := <<"https">>, host := Host, path := Path} = Parts ->
+            lists:member(Host, [<<"user-images.githubusercontent.com">>,
+                <<"raw.githubusercontent.com">>])
+                andalso not maps:is_key(userinfo, Parts)
+                andalso maps:get(port, Parts, 443) =:= 443
+                andalso not maps:is_key(query, Parts)
+                andalso not maps:is_key(fragment, Parts)
+                andalso lists:member(string:lowercase(filename:extension(Path)),
+                    [<<".jpg">>, <<".jpeg">>, <<".png">>, <<".gif">>, <<".webp">>]);
+        _ -> false
+    catch _:_ -> false end.
 
 %% Root-relative URLs and remote URLs belong to the rendered site or service.
 relative_path(_Source, <<"/", _/binary>>) -> remote;

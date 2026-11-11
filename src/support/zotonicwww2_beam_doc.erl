@@ -792,7 +792,7 @@ markdown_docs(Files, GitDir) ->
 %% @doc Inspect the observer behaviour beam file and extract one documentation
 %% entry per logical notification. Regular and PID observer callbacks are kept
 %% as variations of that entry.
--spec get_notifications_doc(z:context()) -> #{ binary() => map() }.
+-spec get_notifications_doc(z:context()) -> #{ binary() | {binary(), binary()} => map() }.
 get_notifications_doc(Context) ->
     notifications_from_dir(m_zotonicwww2_git:git_dir(Context)).
 

@@ -26,6 +26,12 @@ main(_) ->
         write(Root, "nested/file_doc.erl", <<"-module(file_doc).\n-moduledoc({file, \"../README.md\"}).\n">>),
         write(Root, "escape.erl", <<"-module(escape).\n-moduledoc({file, \"../../../etc/passwd\"}).\n">>),
         write(Root, "link.erl", <<"-module(link).\n-moduledoc({file, \"symlink.erl\"}).\n">>),
+        write(Root, "nested/metadata.erl", <<"-module(metadata).\n-moduledoc(#{zotonic_doc_file => \"../README.md\", zotonic_keywords => [\"module\"]}).\n-moduledoc(\"Short summary\").\n">>),
+        write(Root, "metadata_escape.erl", <<"-module(metadata_escape).\n-moduledoc(\"Summary\").\n-moduledoc(#{zotonic_doc_file => \"../outside.md\"}).\n">>),
+        write(Root, "metadata_hidden.erl", <<"-module(metadata_hidden).\n-moduledoc(false).\n-moduledoc(#{zotonic_doc_file => \"README.md\"}).\n">>),
+        ok = file:make_symlink("README.md", filename:join(Root, "linked.md")),
+        write(Root, "metadata_link.erl", <<"-module(metadata_link).\n-moduledoc(\"Summary\").\n-moduledoc(#{zotonic_doc_file => \"linked.md\"}).\n">>),
+        write(Root, "metadata_missing.erl", <<"-module(metadata_missing).\n-moduledoc(\"Summary\").\n-moduledoc(#{zotonic_doc_file => \"missing.md\"}).\n">>),
         %% Support helpers must not become either imported pages or error rows,
         %% even when they have docs, invalid syntax, or a public-component name.
         write(Root, "src/support/helper.erl", <<"-module(helper).\n">>),
@@ -42,9 +48,9 @@ main(_) ->
         receive {Port, {exit_status, 0}} -> ok after 15000 -> error(parser_failed) end,
         {ok, Bin} = file:read_file(Output),
         Rows = binary_to_term(Bin, [safe]),
-        13 = length(Rows),
+        18 = length(Rows),
         Imported = [R || #{<<"status">> := <<"parsed">>} = R <- Rows],
-        6 = length(Imported),
+        7 = length(Imported),
         [#{<<"notification_behaviour">> := true, <<"notifications">> := [Definition]}] =
             [R || #{<<"module">> := <<"example_observer">>} = R <- Imported],
         #{<<"notification">> := <<"example">>, <<"doc">> := <<"Declare examples.">>,
@@ -64,8 +70,13 @@ main(_) ->
         #{<<"key">> := <<"legacy">>, <<"default">> := <<"#{mode => [one,two]}">>} = Third,
         #{<<"has_default">> := false} = Fourth,
         [#{<<"config">> := []}] = [R || #{<<"module">> := <<"m_plain">>} = R <- Imported],
-        7 = length([R || #{<<"status">> := <<"skipped">>, <<"error">> := _} = R <- Rows]),
-        io:format("Parser: all 13 source fixtures passed; symlink, support, and test subtrees ignored.~n")
+        [#{<<"doc">> := <<"File documentation">>, <<"doc_path">> := <<"README.md">>,
+            <<"keywords">> := [<<"module">>]}] =
+            [R || #{<<"module">> := <<"metadata">>} = R <- Imported],
+        [#{<<"doc_path">> := <<"README.md">>}] =
+            [R || #{<<"module">> := <<"file_doc">>} = R <- Imported],
+        11 = length([R || #{<<"status">> := <<"skipped">>, <<"error">> := _} = R <- Rows]),
+        io:format("Parser: all 18 source fixtures passed; symlink, support, and test subtrees ignored.~n")
     after
         file:del_dir_r(Root), file:delete(Output)
     end.
