@@ -137,7 +137,12 @@ fetch_import(#{<<"id">> := Id, <<"branch">> := Branch} = Repo, Dir, Context) ->
         {ok, Current} = z_db:qmap_row("select * from zotonicwww2_external where id=$1 for update", [Id], Ctx),
         Keys = [<<"title">>, <<"git_url">>, <<"website_url">>, <<"branch">>, <<"hex_package">>, <<"is_enabled">>],
         true = maps:with(Keys, Current) =:= maps:with(Keys, Repo),
-        {ok, _} = zotonicwww2_doc_import:sync_external(source(Id), Entries, Hash, Ctx),
+        {ok, _} = zotonicwww2_doc_import:sync_external(source(Id),
+            [begin
+                {ok, Prepared} = zotonicwww2_doc_media:prepare_external(
+                    E#{source => source(Id)}, Dir, Ctx),
+                Prepared
+            end || E <- Entries], Hash, Ctx),
         FinalReport = [report_id(R, Ctx) || R <- Report],
         _ = z_db:q("update zotonicwww2_external set status='imported', error=null,
             last_imported=now(), git_commit=$2, report=$3 where id=$1",
@@ -325,7 +330,8 @@ entry(#{<<"module">> := Module, <<"doc">> := Doc, <<"path">> := Path, <<"keyword
     Category = category(Module),
     Entry = #{category => Category, kind => external, name => page_name(Repo, Module),
         title => Module, body => zotonicwww2_doc_link:to_html(Doc),
-        source_path => Path, source_url => maps:get(<<"git_url">>, Repo), keywords => Keywords,
+        source_path => maps:get(<<"doc_path">>, Row, Path),
+        source_url => maps:get(<<"git_url">>, Repo), keywords => Keywords,
         props => (external_props(Repo))#{<<"doc_module_config">> => maps:get(<<"config">>, Row, [])}},
     case {Category, Parent} of
         {module, _} ->
@@ -411,6 +417,20 @@ collect_data(Pid, OsPid, Deadline, Out, Err, Size) -> collect(Pid, OsPid, Deadli
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+readme_entry_test() ->
+    Repo = #{<<"id">> => 1, <<"title">> => <<"Example">>,
+        <<"git_url">> => <<"https://example.com/repo">>, <<"website_url">> => <<>>, <<"hex_package">> => <<>>},
+    Row = #{<<"module">> => <<"mod_example">>, <<"path">> => <<"src/mod_example.erl">>,
+        <<"doc_path">> => <<"README.md">>, <<"keywords">> => [],
+        <<"doc">> => <<"# Example\n\n![Diagram](images/diagram.png)">>},
+    Entry = entry(Row, Repo, undefined),
+    ?assertEqual(<<"README.md">>, maps:get(source_path, Entry)),
+    ?assertEqual(<<"doc_external_1_mod_example">>, maps:get(name, Entry)),
+    ?assertEqual(module, maps:get(category, Entry)),
+    ?assertNotEqual(nomatch, binary:match(maps:get(body, Entry), <<"src=\"images/diagram.png\"">>)),
+    Legacy = entry(maps:remove(<<"doc_path">>, Row), Repo, undefined),
+    ?assertEqual(<<"src/mod_example.erl">>, maps:get(source_path, Legacy)).
+
 command_args_test() ->
     ?assertEqual(["git", "--branch", "main", "/tmp/path with spaces"],
         command_args(["git", "--branch", <<"main">>, <<"/tmp/path with spaces">>])),

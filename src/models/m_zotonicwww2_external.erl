@@ -114,6 +114,8 @@ repository_dialog(_, _, _, Context) ->
     feedback({error, enoent}, Context).
 
 feedback({ok, _}, Context) -> z_render:wire({reload, []}, Context);
+feedback({error, duplicate_repository}, Context) ->
+    z_render:growl_error(?__("This repository URL has already been added. Edit the existing repository instead.", Context), Context);
 feedback({error, Reason}, Context) ->
     z_render:growl_error(z_html:escape(iolist_to_binary(io_lib:format("~p", [Reason]))), Context).
 
@@ -124,24 +126,60 @@ save(Id, Context) ->
         ok ->
             Enabled = z_convert:to_bool(z_context:get_q(<<"is_enabled">>, Context)),
             Values = [maps:get(K, Props) || K <- Keys] ++ [Enabled],
-            case Id of
-                undefined ->
-                    NewId = z_db:q1("insert into zotonicwww2_external
-                        (title, git_url, website_url, branch, hex_package, is_enabled, creator_id)
-                        values ($1,$2,$3,$4,$5,$6,$7) returning id",
-                        Values ++ [z_acl:user(Context)], Context),
-                    {ok, NewId};
-                N when is_integer(N) ->
-                    case z_db:q1("update zotonicwww2_external set title=$1, git_url=$2,
-                        website_url=$3, branch=$4, hex_package=$5, is_enabled=$6,
-                        git_commit=null, status='new', error=null where id=$7 returning id",
-                        Values ++ [N], Context) of
-                        undefined -> {error, enoent};
-                        N -> {ok, N}
-                    end
+            case z_db:transaction(fun(Tx) ->
+                %% Serialize writes so simultaneous submissions cannot both pass
+                %% validation. Existing duplicate rows need no schema migration.
+                z_db:q("lock table zotonicwww2_external in share row exclusive mode", Tx),
+                Rows = z_db:q("select id, git_url from zotonicwww2_external", Tx),
+                case has_duplicate(Id, maps:get(<<"git_url">>, Props), Rows) of
+                    true -> {error, duplicate_repository};
+                    false -> save_repository(Id, Values, Tx)
+                end
+            end, Context) of
+                {rollback, Reason} -> {error, Reason};
+                Result -> Result
             end;
         Error -> Error
     end.
+
+%% Callers hold the registry write lock.
+save_repository(Id, Values, Context) ->
+    case Id of
+        undefined ->
+            NewId = z_db:q1("insert into zotonicwww2_external
+                (title, git_url, website_url, branch, hex_package, is_enabled, creator_id)
+                values ($1,$2,$3,$4,$5,$6,$7) returning id",
+                Values ++ [z_acl:user(Context)], Context),
+            {ok, NewId};
+        N when is_integer(N) ->
+            case z_db:q1("update zotonicwww2_external set title=$1, git_url=$2,
+                website_url=$3, branch=$4, hex_package=$5, is_enabled=$6,
+                git_commit=null, status='new', error=null where id=$7 returning id",
+                Values ++ [N], Context) of
+                undefined -> {error, enoent};
+                N -> {ok, N}
+            end
+    end.
+
+%% Disabled and deprecated entries reserve their URL too. Ignore the row being
+%% edited, but do not allow another registration for a different branch.
+has_duplicate(Id, Url, Rows) ->
+    Key = repository_key(Url),
+    lists:any(fun({OtherId, OtherUrl}) ->
+        OtherId =/= Id andalso repository_key(OtherUrl) =:= Key
+    end, Rows).
+
+%% Preserve case-sensitive paths on other hosts; GitHub paths ignore case.
+repository_key(Url) ->
+    Parts = uri_string:parse(z_string:trim(Url)),
+    Host = string:lowercase(maps:get(host, Parts)),
+    Path = string:trim(maps:get(path, Parts, <<>>), trailing, "/"),
+    PathCase = case Host of
+        <<"github.com">> -> string:lowercase(Path);
+        _ -> Path
+    end,
+    Repo = re:replace(PathCase, <<"\\.git$">>, <<>>, [{return, binary}]),
+    {Host, maps:get(port, Parts, 443), Repo}.
 
 input(Key, Context) ->
     case z_context:get_q(Key, Context) of
@@ -200,3 +238,21 @@ queue_all(Context) ->
 enqueue(Id, Force, Context) ->
     z_pivot_rsc:insert_task_after(1, zotonicwww2_external_import, task_run,
         integer_to_binary(Id), [Id, Force], Context).
+
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+
+repository_duplicates_test() ->
+    Url = <<"https://github.com/zotonic/zotonic_mod_payment">>,
+    Rows = [{1, Url}],
+    ?assert(has_duplicate(undefined, Url, Rows)),
+    ?assert(has_duplicate(2, <<Url/binary, ".git/">>, Rows)),
+    ?assert(has_duplicate(2, <<"https://GitHub.com:443/Zotonic/Zotonic_Mod_Payment/">>, Rows)),
+    ?assertNot(has_duplicate(1, Url, Rows)),
+    ?assertNot(has_duplicate(2, <<"https://github.com/zotonic/other">>, Rows)),
+    ?assertNot(has_duplicate(2, <<"https://example.com/zotonic/zotonic_mod_payment">>, Rows)),
+    ?assertNot(has_duplicate(2, <<"https://github.com:444/zotonic/zotonic_mod_payment">>, Rows)),
+    ?assertNot(has_duplicate(2, <<"https://example.com/Repo">>,
+        [{1, <<"https://example.com/repo">>}])).
+
+-endif.

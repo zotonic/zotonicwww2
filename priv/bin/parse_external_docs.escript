@@ -77,12 +77,21 @@ parse_source(Root, Path, Tokens) ->
     Attrs = attributes(Tokens, [], []),
     [Module] = [M || {module, M} <- Attrs, is_atom(M)],
     Docs = [D || {moduledoc, D} <- Attrs, not is_map(D)],
-    Doc = case Docs of
-        [D] when is_list(D); is_binary(D) -> unicode:characters_to_binary(D);
+    {InlineDoc, InlinePath} = case Docs of
+        [D] when is_list(D); is_binary(D) -> {unicode:characters_to_binary(D), unicode:characters_to_binary(Path)};
         [{file, DocPath}] when is_list(DocPath) -> read_doc(Root, Path, DocPath);
         [] -> throw(missing_moduledoc);
         [false] -> throw(hidden_moduledoc);
         _ -> throw(unsupported_moduledoc)
+    end,
+    DocFiles = [F || {moduledoc, M} <- Attrs, is_map(M),
+        {ok, F} <- [maps:find(zotonic_doc_file, M)]],
+    {Doc, DocSource} = case DocFiles of
+        [] -> {InlineDoc, InlinePath};
+        [F] when is_list(F); is_binary(F) ->
+            true = filename:extension(F) =:= ".md" orelse filename:extension(F) =:= <<".md">>,
+            read_doc(Root, Path, unicode:characters_to_list(F));
+        _ -> throw(invalid_zotonic_doc_file)
     end,
     case string:trim(Doc) of <<>> -> throw(missing_moduledoc); _ -> ok end,
     Keywords = lists:append([maps:get(zotonic_keywords, M, []) || {moduledoc, M} <- Attrs, is_map(M)]),
@@ -97,6 +106,7 @@ parse_source(Root, Path, Tokens) ->
       end, Attrs),
       <<"observes">> => observer_notifications(Attrs),
       <<"module">> => atom_to_binary(Module), <<"doc">> => Doc,
+      <<"doc_path">> => DocSource,
       <<"keywords">> => lists:usort(Slugs)}.
 
 %% Read literal callback documentation only. Includes and source code are never run.
@@ -190,7 +200,7 @@ read_doc(Root, Source, DocPath) ->
     {ok, Data} = file:read_file(Full),
     Doc = unicode:characters_to_binary(Data),
     true = is_binary(Doc),
-    Doc.
+    {Doc, unicode:characters_to_binary(filename:join(Parts))}.
 
 normalize_parts([], Acc) -> lists:reverse(Acc);
 normalize_parts(["." | Rest], Acc) -> normalize_parts(Rest, Acc);

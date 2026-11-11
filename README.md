@@ -206,6 +206,36 @@ pages. Public pages show an external-module notice, distinct aside color, Git
 and information URLs, and the optional Hex link. Module-component connections
 use the documented module in the same source tree where possible.
 
+### README-backed external module documentation
+
+Keep a short Erlang moduledoc and select the website's Markdown body in metadata:
+
+```erlang
+-moduledoc(#{
+    zotonic_doc_file => "../README.md",
+    zotonic_keywords => ["reference", "module", "backend_developer"]
+}).
+-moduledoc("A short description for Erlang tooling.").
+```
+
+The external source importer resolves `zotonic_doc_file` relative to the Erlang
+source file. It replaces the displayed prose, retains the module's keywords and
+identity, and records the Markdown source path. The file must be a UTF-8 `.md`
+file inside the repository, without symlinks. Missing or invalid files are
+reported as skipped; `-moduledoc(false)` remains hidden. Existing
+`-moduledoc({file, "../README.md"})` declarations also retain their Markdown path.
+
+Local PNG, JPEG, GIF and WebP images are resolved relative to that Markdown file
+and imported into the site's media library. HTTPS images on
+`user-images.githubusercontent.com` and `raw.githubusercontent.com` are downloaded
+and imported too, including Teleview's README diagrams. Remote downloads are
+anonymous, do not follow redirects, and are limited to 10 MiB and 30 seconds per
+image. Other remote hosts remain external embeds. Media identities are scoped
+to the repository; content hashes reuse unchanged media and replace changed
+images. Download or media failures abort the import instead of publishing a
+partially prepared document. An unchanged repository commit needs **Fetch and
+import now** to apply importer changes or refresh remotely hosted images.
+
 Verification:
 
 - `escript test/external_parser_test.escript` from this site directory tests source
