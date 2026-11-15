@@ -40,6 +40,7 @@ from the compiled module or callback documentation.
     sync/4,
     sync_external/4,
     keyword_coverage/1,
+    missing_keywords_query/2,
     migrate_legacy/1,
     migration_status/1,
     register_delivery/3,
@@ -585,6 +586,32 @@ keyword_coverage(Context0) ->
         {error, _} = Error ->
             Error
     end.
+
+%% @doc Select current imports without a subject keyword, in one exact category.
+%% Return a search term so the caller's normal resource ACLs remain in effect.
+-spec missing_keywords_query(term(), z:context()) -> #search_sql_term{}.
+missing_keywords_query(Category, Context) ->
+    case z_acl:is_admin(Context) of
+        true ->
+            {KeywordFrom, KeywordTo} = m_category:get_range_by_name(keyword, Context),
+            #search_sql_term{
+                where = [
+                    "rsc.category_id = ", '$1',
+                    " and exists (select 1 from zotonicwww2_doc_import doc_import"
+                    " where doc_import.rsc_id = rsc.id and doc_import.status = 'current')"
+                    " and not exists (select 1 from edge"
+                    " join rsc keyword on keyword.id = edge.object_id"
+                    " where edge.subject_id = rsc.id and edge.predicate_id = ", '$2',
+                    " and keyword.pivot_category_nr >= ", '$3',
+                    " and keyword.pivot_category_nr <= ", '$4', ")"
+                ],
+                args = [m_rsc:rid(Category, Context), m_rsc:rid(subject, Context),
+                        KeywordFrom, KeywordTo]
+            };
+        false ->
+            #search_sql_term{ where = <<"false">> }
+    end.
+
 
 keyword_coverage_row(#{
     <<"category_id">> := CategoryId,

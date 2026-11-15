@@ -77,6 +77,7 @@ and search observers for the Zotonic website.
     manage_schema/2,
     manage_data/2,
     observe_search_query/2,
+    observe_search_query_term/2,
     event/2
     ]).
 
@@ -387,6 +388,15 @@ observe_search_query(
         Context) ->
     m_zotonicwww2_search:search_query(Args, query, Context);
 observe_search_query(#search_query{}, _Context) ->
+    undefined.
+
+
+%% @doc Filter the admin overview using the same scope as keyword coverage.
+observe_search_query_term(
+        #search_query_term{ term = <<"docs_missing_keywords">>, arg = Category },
+        Context) ->
+    zotonicwww2_doc_import:missing_keywords_query(Category, Context);
+observe_search_query_term(#search_query_term{}, _Context) ->
     undefined.
 
 

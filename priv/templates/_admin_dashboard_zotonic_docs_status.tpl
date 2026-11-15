@@ -100,7 +100,12 @@
                                     <tr>
                                         <td>{{ m.rsc[coverage.category_id].title|default:coverage.category|escape }}</td>
                                         <td>{{ coverage.covered|escape }} / {{ coverage.total|escape }}</td>
-                                        <td>{{ coverage.missing|escape }}</td>
+                                        <td>
+                                            <a href="{% url admin_overview_rsc qdocs_missing_keywords=coverage.category_id %}"
+                                               title="{_ Show imported pages missing subject keywords _}">
+                                                {{ coverage.missing|escape }}
+                                            </a>
+                                        </td>
                                         <td>{{ coverage.coverage_percent|escape }}%</td>
                                         <td>{{ coverage.keyword_count|escape }}</td>
                                     </tr>
