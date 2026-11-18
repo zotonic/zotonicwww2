@@ -148,17 +148,16 @@ page_title(Html, Path) ->
         nomatch -> error({missing_documentation_title, Path})
     end.
 
-%% Resolve links across all collected Markdown pages, not just within one
-%% directory. Unimported source links still point at their GitHub source.
+%% Resolve links to collected Markdown pages from all documentation sources,
+%% including Erlang module and function docs. Unimported source links still
+%% point at their GitHub source.
 repository_page_links(Entries) ->
     Targets = maps:from_list([
         {Path, Name} || #{source_path := Path, name := Name} <- Entries,
         filename:extension(Path) =:= <<".md">>
     ]),
-    [case filename:extension(Path) of
-        <<".md">> -> Entry#{body := repository_links(Body, Path, Targets)};
-        _ -> Entry
-     end || #{body := Body, source_path := Path} = Entry <- Entries].
+    [Entry#{body := repository_links(Body, Path, Targets)}
+     || #{body := Body, source_path := Path} = Entry <- Entries].
 
 repository_links(Html, Path, Targets) ->
     Base = <<"https://github.com/zotonic/zotonic/blob/master/", Path/binary>>,
@@ -1265,6 +1264,29 @@ authored_pages_test() ->
     after
         file:del_dir_r(Root)
     end.
+
+erlang_guide_links_test() ->
+    Guide = entry(developerguide, guide, <<"doc_guide_llm_site_development">>,
+        <<"LLM site development">>, <<"<h1>LLM site development</h1>">>,
+        <<"doc/guides/llm-site-development.md">>),
+    Model = entry(model, <<"development_capture">>, <<"Development capture">>,
+        zotonicwww2_doc_link:to_html(<<
+            "[Guide](../../../../doc/guides/llm-site-development.md#capture)\n"
+            "[Source](../mod_development.erl)\n"
+            "[Module](module#mod_development)\n"
+            "[External](https://example.com/guide.md)\n"
+        >>),
+        <<"apps/zotonic_mod_development/src/models/m_development_capture.erl">>),
+    [LinkedModel, _] = repository_page_links([Model, Guide]),
+    Body = maps:get(body, LinkedModel),
+    lists:foreach(fun(Url) ->
+        ?assertNotEqual(nomatch, binary:match(Body, <<"href=\"", Url/binary, "\"">>))
+    end, [
+        <<"/id/doc_guide_llm_site_development#capture">>,
+        <<"https://github.com/zotonic/zotonic/blob/master/apps/zotonic_mod_development/src/mod_development.erl">>,
+        <<"/id/doc_module_mod_development">>,
+        <<"https://example.com/guide.md">>
+    ]).
 
 relative_path_test() ->
     ?assertEqual(
